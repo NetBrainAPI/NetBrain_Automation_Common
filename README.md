@@ -8,7 +8,7 @@ NetBrain Automation Package Resource List
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/dvt.png "NetBrain Data View")
 
 ### [Runbook Template](https://www.netbraintech.com/docs/ie80/help/index.html?using-runbook.htm)
-
+![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/runbook.png "NetBrain Runbook")
 
 ### [Parser](https://www.netbraintech.com/docs/ie80/help/index.html?parser-library.htm)
 
