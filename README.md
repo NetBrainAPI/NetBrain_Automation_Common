@@ -4,17 +4,26 @@ NetBrain Automation Package Resource List
 ## Resource includes:
 
 ### [Data View Template](https://www.netbraintech.com/docs/ie80/help/index.html?data-view.htm)
-
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/dvt.png "NetBrain Data View")
 
 ### [Runbook Template](https://www.netbraintech.com/docs/ie80/help/index.html?using-runbook.htm)
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/runbook.png "NetBrain Runbook")
 
 ### [Parser](https://www.netbraintech.com/docs/ie80/help/index.html?parser-library.htm)
+![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/parser.png "NetBrain Parser")
 
-### [Global Variable](https://www.netbraintech.com/docs/ie80/help/index.html?golden-baseline.htm)
-(Golden Baseline Variable)
+### [Golden Baseline](https://www.netbraintech.com/docs/ie80/help/index.html?golden-baseline.htm)
+![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/golden_baseline_variable.png "NetBrain Golden Baseline")
 
 ## Resource are category by network vendor or OS:
-* [Cisco IOS](https://kcgit.netbraintech.com/NEATeam/Team_Resource/blob/master/jump_start/Auto_DVT/KC_CBR_Package/resource_list/vendor_list/cisco_ios.md)
-* [Cisco ASA Firewall](https://kcgit.netbraintech.com/NEATeam/Team_Resource/blob/master/jump_start/Auto_DVT/KC_CBR_Package/resource_list/vendor_list/cisco_asa_firewall.md)
+* [Alcatel Lucent Service Router](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/alcatel_lucent_service_router.md)
+* [Arista Switch](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/arista_switch.md)
+* [Checkpoint Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/checkpoint_firewall.md)
+* [Cisco IOS](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/cisco_ios.md)
+* [Cisco IOS XR](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/cisco_ios_xr.md)
+* [Cisco Nexus (NXOS)](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/cisco_nexus_nxos.md)
+* [Cisco ASA Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/cisco_asa_firewall.md)
+* [F5 Load Balancer](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/F5_load_balancer.md)
+* [Fortigate Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/fortigate_firewall.md)
+* [Juniper (JUNOS)](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/juniper_junos.md)
+* [Palo Alto Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/palo_alto_firewall.md)
