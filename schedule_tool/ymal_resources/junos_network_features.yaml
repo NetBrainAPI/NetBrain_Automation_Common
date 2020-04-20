@@ -1,0 +1,1075 @@
+driver-list:
+  - Juniper Router
+  - Juniper EX Switch
+  - Juniper SRX Firewall
+feature-list:
+  - feature-name: general
+    op-cmds:
+      - show system license
+      - show system uptime
+      - show system alarms
+      - show system storage
+      - show system processes
+      - show chassis alarms
+      - show arp
+      - show system commit
+      - show system users
+      - show system connections
+      - show system processes extensive //done
+      - show system storage detail //done
+      - show pfe statistics traffic
+      - show pfe statistics ip options
+      - show pfe statistics ip icmp
+      - show pfe statistics exceptions
+      - show pfe terse
+      - show log chassisd | no-more
+      - show log inventory | no-more
+      - show log user | no-more
+      - show log mastership | no-more
+      - show log interactive-commands | no-more
+      - show log smartd.trace | no-more
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper SRX Firewall
+          - Juniper Router
+        feature-name:
+          - general
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show system
+            processes extensive [JUNOS Common]
+          variable: cpu_usage
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show system
+            processes extensive [JUNOS Common]
+          variable: memory_usage
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show system
+            processes extensive [JUNOS Common]
+          variable: system_processes_table
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show system
+            storage detail [JUNOS Common]
+          variable: system_storage_table
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: input_errors.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: physical_interfaces.link_status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.hs_link_crc_errors
+              gb: true
+  - feature-name: inventory
+    op-cmds:
+      - show version //done
+      - show chassis hardware //done
+      - show chassis hardware detail
+      - show chassis hardware extensive
+      - show chassis hardware clei-models
+      - show chassis routing-engine
+      - show chassis fpc
+      - show chassis fpc detail
+      - show chassis fpc error
+      - show chassis fpc pic-status
+      - show chassis environment
+      - show chassis environment fpc
+      - show chassis environment routing-engine
+      - show chassis environment pem
+      - show chassis environment pem all-members
+      - show pfe version brief
+      - show pfe version detail
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - inventory
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show version
+            [JUNOS Common]
+          variable: model
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show version
+            [JUNOS Common]
+          variable: version
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show chassis
+            hardware [JUNOS Common]
+          variable: hardware_inventory
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: input_errors.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: physical_interfaces.link_status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.hs_link_crc_errors
+              gb: true
+  - feature-name: interfaces
+    op-cmds:
+      - show interfaces //done
+      - show interfaces terse //done
+      - show interfaces detail
+      - show interfaces extensive //done
+      - show interfaces descriptions
+      - show interfaces filters
+      - show interfaces policers
+      - show interfaces diagnostics optics
+      - show interfaces summary
+      - show interfaces routing-instance all terse //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - interfaces
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show interfaces
+            [JUNOS Common]
+          variable: physical_interfaces
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show interfaces
+            [JUNOS Common]
+          variable: protocol
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show interfaces
+            terse [JUNOS Common]
+          variable: interface_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show interfaces
+            routing-instance all terse [JUNOS Common]
+          variable: interfaces
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: input_errors.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: physical_interfaces.link_status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.hs_link_crc_errors
+              gb: true
+  - feature-name: routing-general
+    op-cmds:
+      - show route
+      - show route summary //done
+      - show route instance
+      - show route instance detail //done
+      - show route instance extensive
+      - show route hidden terse
+      - show route resolution unresolved
+      - show route forwarding-table
+      - show route forwarding-table summary
+      - show pfe route summary
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - routing-general
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show route
+            instance detail [JUNOS Common]
+          variable: vrf
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show route summary
+            [JUNOS Common]
+          variable: routes_per_protocol
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show route summary
+            [JUNOS Common]
+          variable: router_id
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show route summary
+            [JUNOS Common]
+          variable: local_autonomous_system_number
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: input_errors.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: physical_interfaces.link_status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.hs_link_crc_errors
+              gb: true
+  - feature-name: acl
+    patterns-to-match:
+      - patterns:
+          - mregex: ^firewall.+filter
+    op-cmds:
+      - show firewall
+  - feature-name: graceful-switchover
+    patterns-to-match:
+      - patterns:
+          - mregex: ^chassis.+redundancy.+graceful-switchover
+    op-cmds:
+      - show system switchover
+  - feature-name: nonstop-routing
+    patterns-to-match:
+      - patterns:
+          - mregex: ^routing-options.+nonstop-routing
+    op-cmds:
+      - show system switchover
+  - feature-name: ipv6
+    patterns-to-match:
+      - patterns:
+          - mregex: ^interfaces.+family.+inet6.+address
+    op-cmds:
+      - show interfaces
+      - show ipv6 neighbors
+      - show ipv6 router-advertisement
+  - feature-name: snmp-agent
+    patterns-to-match:
+      - patterns:
+          - mregex: ^snmp.+community
+    op-cmds:
+      - show snmp statistics
+  - feature-name: rmon
+    patterns-to-match:
+      - patterns:
+          - mregex: ^snmp.+rmon
+    op-cmds:
+      - show snmp rmon
+      - show snmp rmon history
+      - show snmp rmon logs
+  - feature-name: snmpv3-agent
+    patterns-to-match:
+      - patterns:
+          - mregex: ^snmp.+v3
+    op-cmds:
+      - show snmp statistics
+      - show snmp v3
+  - feature-name: ssh-server
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+services.+ssh
+    op-cmds:
+      - show system connections
+  - feature-name: telnet-server
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+services.+telnet
+    op-cmds:
+      - show system connections
+  - feature-name: ftp-server
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+services.+ftp
+    op-cmds:
+      - show system connections
+  - feature-name: http-server
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+services.+web-management.+http
+    op-cmds:
+      - show system connections
+  - feature-name: https-server
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+services.+web-management.+https
+    op-cmds:
+      - show system connections
+  - feature-name: syslog
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+syslog.+file
+      - patterns:
+          - mregex: ^system.+syslog.+host
+    op-cmds:
+      - show log messages | no-more
+  - feature-name: ntp
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+ntp.+server
+    op-cmds:
+      - show ntp associations
+      - show ntp satus
+  - feature-name: tacplus-authentication
+    patterns-to-match:
+      - patterns:
+          - mregex: ^system.+tacplus-server
+  - feature-name: lag
+    patterns-to-match:
+      - patterns:
+          - mregex: ^interfaces.+lacp
+    op-cmds:
+      - show lacp interfaces
+      - show lacp statistics interfaces
+      - show lacp timeouts
+  - feature-name: lldp
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+lldp.+interface
+    op-cmds:
+      - show lldp
+      - show lldp detail
+      - show lldp local-information
+      - show lldp neighbors
+      - show lldp statistics
+  - feature-name: vrrp
+    patterns-to-match:
+      - patterns:
+          - mregex: ^interfaces.+vrrp-group
+    op-cmds:
+      - show vrrp
+      - show vrrp summary
+      - show vrrp detail
+      - show vrrp extensive
+      - show vrrp nsr
+      - show vrrp track
+      - show vrrp track interfaces detail
+  - feature-name: vrrp-track-interface
+    patterns-to-match:
+      - patterns:
+          - mregex: ^interfaces.+vrrp-group.+track.+interface
+    op-cmds:
+      - show vrrp
+  - feature-name: vrrp-track-route
+    patterns-to-match:
+      - patterns:
+          - mregex: ^interfaces.+vrrp-group.+track.+route
+    op-cmds:
+      - show vrrp
+  - feature-name: ospf
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+ospf.+area\s
+    op-cmds:
+      - show ospf interface //done
+      - show ospf interface brief //done
+      - show ospf interface detail //done
+      - show ospf interface extensive //done
+      - show ospf neighbor //done
+      - show ospf neighbor detail
+      - show ospf neighbor extensive
+      - show ospf neighbor instance all
+      - show ospf neighbor instance all detail
+      - show ospf neighbor instance all extensive
+      - show ospf overview //done
+      - show ospf route
+      - show ospf route detail
+      - show ospf route extensive
+      - show ospf statistics
+      - show ospf database
+      - show ospf database detail
+      - show ospf database extensive
+      - show ospf database summary
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - ospf
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show ospf neighbor
+            [JUNOS Common]
+          variable: table_ospf_neighbors
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show ospf
+            interface extensive [JUNOS Common]
+          variable: ospf_interfaces
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show ospf overview
+            [JUNOS Common]
+          variable: area
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ospf
+                interface [JUNOS Common]
+              variable: ospf_interfaces.state
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ospf
+                interface [JUNOS Common]
+              variable: ospf_interfaces.area
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ospf
+                interface [JUNOS Common]
+              variable: ospf_interfaces.dr_id
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ospf
+                interface [JUNOS Common]
+              variable: ospf_interfaces.bdr_id
+              gb: true
+  - feature-name: ospfv3
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+ospf3.+ area\s
+    op-cmds:
+      - show ospf3 interface
+      - show ospf3 interface detail
+      - show ospf3 interface extensive
+      - show ospf3 neighbor
+      - show ospf3 neighbor detail
+      - show ospf3 neighbor extensive
+      - show ospf3 neighbor instance all
+      - show ospf3 neighbor instance all detail
+      - show ospf3 neighbor instance all extensive
+      - show ospf3 overview
+      - show ospf3 route
+      - show ospf3 route detail
+      - show ospf3 route extensive
+      - show ospf3 statistics
+      - show ospf3 database
+      - show ospf3 database detail
+      - show ospf3 database extensive
+      - show ospf3 database summary
+  - feature-name: isis
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+isis.+interface
+    op-cmds:
+      - show esis interface lo0.0 detail //done
+      - show isis interface //done
+      - show isis interface detail
+      - show isis interface extensive
+      - show isis adjacency //done
+      - show isis adjacency detail //done
+      - show isis adjacency extensive
+      - show isis database
+      - show isis database detail
+      - show isis database extensive
+      - show isis overview //done
+      - show isis route
+      - show isis statistics //done
+      - show isis hostname
+      - show isis authentication
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper Router
+          - Juniper EX Switch
+          - Juniper SRX Firewall
+        feature-name:
+          - isis
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis overview
+            [JUNOS Common]
+          variable: instances
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis
+            adjacency detail [JUNOS Common]
+          variable: isis_neighbors
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis
+            interface [JUNOS Common]
+          variable: interfaces
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis
+            statistics [JUNOS Common]
+          variable: isis_statistics
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis
+                adjacency detail [JUNOS Common]
+              variable: isis_neighbors.neighbor_id
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis
+                adjacency detail [JUNOS Common]
+              variable: isis_neighbors.level
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis
+                adjacency detail [JUNOS Common]
+              variable: isis_neighbors.state
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show isis
+                adjacency detail [JUNOS Common]
+              variable: isis_neighbors.priority
+              gb: true
+  - feature-name: rip
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+rip.+group
+    op-cmds:
+      - show rip neighbor
+      - show rip statistics
+  - feature-name: ripng
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+ripng.+group
+    op-cmds:
+      - show ripng neighbor
+      - show ripng statistics
+  - feature-name: bgp
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+bgp.+group
+    op-cmds:
+      - show bgp summary
+      - show bgp neighbor //done
+      - show bgp group
+      - show bgp group detail
+      - show bgp group summary
+      - show bgp replication
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper Router
+          - Juniper SRX Firewall
+          - Juniper EX Switch
+        feature-name:
+          - bgp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show bgp neighbor
+            [JUNOS Common]
+          variable: bgp_neighbors
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: input_errors.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: physical_interfaces.link_status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.hs_link_crc_errors
+              gb: true
+  - feature-name: bfd
+    patterns-to-match:
+      - patterns:
+          - mregex: bfd-liveness-detection
+    op-cmds:
+      - show bfd session
+      - show bfd detail
+      - show bfd extensive
+      - show bfd summary
+  - feature-name: mpls
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+mpls.+interface
+    op-cmds:
+      - show mpls interface //done
+      - show mpls interface detail
+      - show mpls path
+      - show mpls static-lsp
+      - show system statistics mpls
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - mpls
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show mpls
+            interface [JUNOS Common]
+          variable: mpls_interface_table
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: input_errors.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: physical_interfaces.link_status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.hs_link_crc_errors
+              gb: true
+  - feature-name: ldp
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+ldp.+interface
+    op-cmds:
+      - show ldp interface //done
+      - show ldp interface detail
+      - show ldp interface extensive
+      - show ldp neighbor //done
+      - show ldp neighbor detail
+      - show ldp neighbor extensive //done
+      - show ldp database
+      - show ldp database detail
+      - show ldp database extensive
+      - show ldp oam
+      - show ldp overview
+      - show ldp path
+      - show ldp path detail
+      - show ldp path extensive
+      - show ldp route
+      - show ldp route detail
+      - show ldp route extensive
+      - show ldp session
+      - show ldp session detail
+      - show ldp session extensive
+      - show ldp statistics
+      - show ldp traffic-statistics
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - ldp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show ldp neighbor
+            extensive [JUNOS Common]
+          variable: ldp_neighbors
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show ldp interface
+            [JUNOS Common]
+          variable: ldp_interfaces
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ldp
+                neighbor extensive [JUNOS Common]
+              variable: ldp_neighbors.neighbor_address
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ldp
+                neighbor extensive [JUNOS Common]
+              variable: ldp_neighbors.uptime
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ldp
+                neighbor extensive [JUNOS Common]
+              variable: ldp_neighbors.hello_flags
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show ldp
+                neighbor extensive [JUNOS Common]
+              variable: ldp_neighbors.hold_time
+  - feature-name: rsvp
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+rsvp.+interface
+    op-cmds:
+      - show rsvp interface
+      - show rsvp interface detail
+      - show rsvp interface extensive
+      - show rsvp neighbor
+      - show rsvp neighbor detail
+      - show rsvp session
+      - show rsvp session detail
+      - show rsvp session extensive
+      - show rsvp statistics
+      - show rsvp version
+      - show mpls lsp
+      - show mpls lsp terse
+      - show mpls lsp detail
+      - show mpls lsp extensive
+      - show mpls lsp autobandwidth
+      - show mpls lsp autobandwidth detail
+      - show mpls lsp autobandwidth extensive
+      - show mpls lsp defaults
+      - show mpls lsp descriptions
+      - show mpls lsp statistics
+  - feature-name: vrf
+    patterns-to-match:
+      - patterns:
+          - mregex: ^routing-instances.+instance-type vrf
+    op-cmds:
+      - show route summary table bgp.l3vpn.0
+      - show route summary table bgp.rtarget.0
+      - show route table bgp.rtarget.0
+      - show route summary //done
+  - feature-name: l2circuit
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+l2circuit.+neighbor
+    op-cmds:
+      - show l2circuit connections
+      - show l2circuit connections brief
+      - show l2circuit connections extensive
+      - show l2circuit connections summary
+      - show l2circuit connections logical-system all
+  - feature-name: pim
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+pim.+interface
+    op-cmds:
+      - show pim interfaces //done
+      - show pim interfaces logical-system all
+      - show pim neighbors //done
+      - show pim neighbors detail
+      - show pim neighbors logical-system all
+      - show pim neighbors logical-system all detail
+      - show pim bootstrap
+      - show pim bootstrap logical-system all
+      - show pim join detail
+      - show pim join extensive //done
+      - show pim join logical-system all
+      - show pim join summary
+      - show pim rps
+      - show pim rps detail
+      - show pim rps extensive
+      - show pim rps logical-system all
+      - show pim rps logical-system all detail
+      - show pim rps logical-system all extensive
+      - show pim snooping interfaces
+      - show pim snooping interfaces detail
+      - show pim snooping join
+      - show pim snooping join detail
+      - show pim snooping join extensive
+      - show pim snooping neighbors
+      - show pim snooping neighbors detail
+      - show pim snooping statistics
+      - show pim snooping statistics detail
+      - show pim source
+      - show pim source detail
+      - show pim source logical-system all
+      - show pim source logical-system all detail
+      - show pim statistics
+      - show pim statistics logical-system all
+      - show multicast route
+      - show multicast route detail
+      - show multicast route extensive
+      - show multicast route summary
+      - show multicast route logical-system all
+      - show multicast route logical-system all detail
+      - show multicast route logical-system all extensive
+      - show multicast route logical-system all summary
+      - show multicast rpf
+      - show multicast rpf summary
+      - show multicast rpf logical-system all
+      - show multicast rpf logical-system all summary
+      - show multicast snooping route
+      - show multicast statistics
+      - show multicast statistics logical-system all
+      - show multicast usage
+      - show multicast usage detail
+      - show multicast usage logical-system all detail
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - pim
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show pim
+            interfaces [JUNOS Common]
+          variable: pim_intfs
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show pim neighbors
+            [JUNOS Common]
+          variable: pim_neighbor_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show pim join
+            extensive [JUNOS Common]
+          variable: downstream_neighbors
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show pim
+                interfaces [JUNOS Common]
+              variable: pim_intfs.status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show pim
+                interfaces [JUNOS Common]
+              variable: pim_intfs.state
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show pim
+                interfaces [JUNOS Common]
+              variable: pim_intfs.neighbor_count
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show pim
+                interfaces [JUNOS Common]
+              variable: pim_intfs.dr_address
+              gb: true
+  - feature-name: igmp
+    patterns-to-match:
+      - patterns:
+          - mregex: ^protocols.+igmp.+interface
+    op-cmds:
+      - show igmp group
+      - show igmp group terse
+      - show igmp group detail //done
+      - show igmp group logical-system all terse
+      - show igmp group logical-system all detail
+      - show igmp interface //done
+      - show igmp interface detail
+      - show igmp interface logical-system all
+      - show igmp interface logical-system all detail
+      - show igmp output-group
+      - show igmp output-group detail
+      - show igmp output-group
+      - show igmp output-group logical-system all
+      - show igmp output-group logical-system all detail
+      - show igmp snooping interface
+      - show igmp snooping interface detail
+      - show igmp snooping membership
+      - show igmp snooping membership detail
+      - show igmp snooping options
+      - show igmp snooping options detail
+      - show igmp snooping statistics
+      - show igmp statistics
+      - show igmp statistics logical-system all
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper EX Switch
+          - Juniper Router
+          - Juniper SRX Firewall
+        feature-name:
+          - igmp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show igmp group
+            detail [JUNOS Common]
+          variable: igmp_groups
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Common/show igmp
+            interface [JUNOS Common]
+          variable: igmp_interface_table
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show igmp
+                interface [JUNOS Common]
+              variable: igmp_interface_table.state
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show igmp
+                interface [JUNOS Common]
+              variable: igmp_interface_table.querier
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show igmp
+                interface [JUNOS Common]
+              variable: igmp_interface_table.passive
+              gb: true
+  - feature-name: l2vpn
+    patterns-to-match:
+      - patterns:
+          - mregex: ^routing-instances.+instance-type l2vpn
+    op-cmds:
+      - show l2vpn connections
+      - show l2vpn connections brief
+      - show l2vpn connections extensive
+      - show l2vpn connections summary
+      - show l2vpn connections logical-system all
+  - feature-name: vpls
+    patterns-to-match:
+      - patterns:
+          - mregex: ^routing-instances.+instance-type vpls
+    op-cmds:
+      - show vpls connections
+      - show vpls connections brief
+      - show vpls connections summary
+      - show vpls connections extensive
+      - show vpls mac-table
+      - show vpls mac-table brief
+      - show vpls mac-table detail
+      - show vpls mac-table extensive
+      - show vpls mac-table logical-system all
+      - show vpls mac-table vlan-id all-vlan
+      - show vpls statistics
+      - show vpls statistics logical-system all
+  - feature-name: ha
+    patterns-to-match:
+      - patterns:
+          - mregex: '^apply-groups "${node}"'
+    configlets:
+      - |
+        apply-groups "${node}";
+    op-cmds:
+      - show chassis cluster information //done
+      - show chassis cluster status
+      - show chassis cluster statistics
+      - show chassis cluster interfaces
+      - show chassis cluster ip-monitoring status
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Juniper SRX Firewall
+        feature-name:
+          - ha
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Firewall/show chassis
+            cluster information [Juniper SRX Firewall]
+          variable: redundancy_group
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Juniper/JUNOS Firewall/show chassis
+            cluster information [Juniper SRX Firewall]
+          variable: chassis_cluster_led_information_table
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: input_errors.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: physical_interfaces.link_status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Juniper/JUNOS Common/show
+                interfaces extensive [JUNOS Common]
+              variable: output_errors.hs_link_crc_errors
+              gb: true
+  - feature-name: dynamic-vpn
+    patterns-to-match:
+      - patterns:
+          - mregex: ^dynamic-vpn.+access-profile
+    op-cmds:
+      - show system license
+      - show security dynamic-vpn users
+      - show security dynamic-vpn client version
+      - show security ike active-peer
+      - show security ike security-associations
+      - show security ipsec security-associations

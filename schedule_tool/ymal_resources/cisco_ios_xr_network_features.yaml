@@ -1,0 +1,820 @@
+---
+driver-list:
+  - Cisco IOS XR
+feature-list:
+  - feature-name: ospf
+    patterns-to-match:
+      - patterns:
+          - regex: router ospf \S+
+    configlets:
+      - router ospf 100
+    op-cmds:
+      - show ospf //done
+      - show ospf border-routers
+      - show ospf database
+      - show ospf flood-list
+      - show ospf interface //done
+      - show ospf neighbor //done
+      - show ospf neighbor detail //done
+      - show ospf request-list
+      - show ospf retransmission-list
+      - show ospf routes
+      - show ospf summary-prefix
+      - show ospf virtual-links
+      - show ospf database database-summary //done
+      - show ospf interface brief //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - ospf
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ospf [Cisco
+            IOS XR]
+          variable: ospf
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ospf neighbor
+            [Cisco IOS XR]
+          variable: ospf_nbrs
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ospf
+            interface brief [Cisco IOS XR]
+          variable: ospf_intf
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ospf
+                interface [Cisco IOS XR]
+              variable: ospf_interface_table.area_id
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ospf
+                interface [Cisco IOS XR]
+              variable: ospf_interface_table.cost
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ospf
+                interface [Cisco IOS XR]
+              variable: ospf_interface_table.adjacent_neighbor_address
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ospf
+                interface [Cisco IOS XR]
+              variable: ospf_interface_table.mtu
+              gb: true
+  - feature-name: bgp
+    patterns-to-match:
+      - patterns:
+          - regex: router bgp \S+
+    configlets:
+      - router bgp 100
+    op-cmds:
+      - show bgp
+      - show bgp advertised
+      - show bgp af-group
+      - show bgp attribute-key
+      - show bgp cidr-only
+      - show bgp community
+      - show bgp convergence
+      - show bgp dampened-paths
+      - show bgp flap-statistics
+      - show bgp inconsistent-as
+      - show bgp labels
+      - show bgp neighbor-group
+      - show bgp neighbors  //done
+      - show bgp neighbors nsr
+      - show bgp nexthops
+      - show bgp nsr
+      - show bgp paths
+      - show bgp policy
+      - show bgp process
+      - show bgp route-policy
+      - show bgp session-group
+      - show bgp sessions
+      - show bgp summary  //done
+      - show bgp summary nsr
+      - show bgp table
+      - show bgp truncated-communities
+      - show bgp update-group
+      - show bgp all all summary //done
+      - show bgp vpnv4 unicast summary //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - bgp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show bgp summary
+            [Cisco IOS XR]
+          variable: router_id
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show bgp summary
+            [Cisco IOS XR]
+          variable: local_as
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show bgp summary
+            [Cisco IOS XR]
+          variable: bgp_nbrs
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show bgp neighbors
+            [Cisco IOS XR]
+          variable: address_family
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.crc
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.mtu
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.output_drops
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.input_drops
+              gb: true
+  - feature-name: eigrp
+    patterns-to-match:
+      - patterns:
+          - regex: router eigrp \S+
+    configlets:
+      - router eigrp 100
+    op-cmds:
+      - show eigrp accounting //done
+      - show eigrp interfaces //done
+      - show eigrp interfaces detail //done
+      - show eigrp ipv4 neighbors //done
+      - show eigrp neighbors  //done
+      - show eigrp topology
+      - show eigrp traffic
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - eigrp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp ipv4
+            neighbors [Cisco IOS XR]
+          variable: eigrp_nbrs
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp
+            accounting [Cisco IOS XR]
+          variable: eigrp_nbrs_account
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp
+            interfaces [Cisco IOS XR]
+          variable: eigrp_intfs
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp
+                interfaces detail [Cisco IOS XR]
+              variable: eigrp_intfs.reliability
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp
+                interfaces detail [Cisco IOS XR]
+              variable: eigrp_intfs.bandwidth
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp
+                interfaces detail [Cisco IOS XR]
+              variable: eigrp_intfs.load
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp
+                interfaces detail [Cisco IOS XR]
+              variable: eigrp_intfs.mtu
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show eigrp
+                interfaces detail [Cisco IOS XR]
+              variable: eigrp_intfs.delay
+              gb: true
+  - feature-name: isis
+    patterns-to-match:
+      - patterns:
+          - regex: router isis \S+
+    configlets:
+      - router isis 100
+    op-cmds:
+      - show isis
+      - show isis adjacency
+      - show isis adjacency-log
+      - show isis checkpoint adjacency
+      - show isis checkpoint interface
+      - show isis checkpoint lsp
+      - show isis database
+      - show isis database-log
+      - show isis fast-reroute
+      - show isis hostname
+      - show isis interface //done
+      - show isis lsp-log
+      - show isis mesh-group
+      - show isis neighbors //done
+      - show isis protocol  //done
+      - show isis route
+      - show isis spf-log
+      - show isis statistics  //done
+      - show isis topology
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - isis
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show isis protocol
+            [Cisco IOS XR]
+          variable: isis_protocols
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show isis
+            neighbors [Cisco IOS XR]
+          variable: isis_neighbors
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show isis protocol
+            [Cisco IOS XR]
+          variable: isis_intfs
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show isis
+                interface [Cisco IOS XR]
+              variable: intfs.ciruit_type
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show isis
+                interface [Cisco IOS XR]
+              variable: intfs.level_1_adj_count
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show isis
+                interface [Cisco IOS XR]
+              variable: intfs.media_type
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show isis
+                interface [Cisco IOS XR]
+              variable: intfs.level_2_adj_count
+              gb: true
+  - feature-name: mpls-ldp
+    patterns-to-match:
+      - patterns:
+          - regex: ^mpls ldp
+    configlets:
+      - mpls ldp
+    op-cmds:
+      - show mpls ldp backoff
+      - show mpls ldp bindings
+      - show mpls ldp discovery //done
+      - show mpls ldp forwarding
+      - show mpls ldp graceful-restart
+      - show mpls ldp igp sync
+      - show mpls ldp interface //done
+      - show mpls ldp neighbor //done
+      - show mpls ldp parameters
+      - show mpls ldp statistics msg-counters
+      - show mpls ldp summary
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - mpls-ldp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+            discovery [Cisco IOS XR]
+          variable: local_ldp_id
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+            discovery [Cisco IOS XR]
+          variable: ldp_discovery_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+            neighbor [Cisco IOS XR]
+          variable: ldp_nbrs
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls
+            interface [Cisco IOS XR]
+          variable: mpls_interface_table
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+                neighbor [Cisco IOS XR]
+              variable: ldp_nbrs.ldp_peer_id
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+                neighbor [Cisco IOS XR]
+              variable: ldp_nbrs.message_sent
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+                neighbor [Cisco IOS XR]
+              variable: ldp_nbrs.state
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+                neighbor [Cisco IOS XR]
+              variable: ldp_nbrs.message_received
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mpls ldp
+                neighbor [Cisco IOS XR]
+              variable: ldp_nbrs.uptime
+  - feature-name: vrrp
+    patterns-to-match:
+      - patterns:
+          - regex: ^router vrrp$
+    configlets:
+      - router vrrp
+    op-cmds:
+      - show vrrp //done
+      - show vrrp detail
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - vrrp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show vrrp [Cisco
+            IOS XR]
+          variable: vrrp
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show vrrp
+                [Cisco IOS XR]
+              variable: vrrp.vrouter_addr
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show vrrp
+                [Cisco IOS XR]
+              variable: vrrp.preempt
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show vrrp
+                [Cisco IOS XR]
+              variable: vrrp.master_addr
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show vrrp
+                [Cisco IOS XR]
+              variable: vrrp.state
+              gb: true
+  - feature-name: hsrp
+    patterns-to-match:
+      - patterns:
+          - regex: ^router hsrp
+    configlets:
+      - router hsrp
+    op-cmds:
+      - show hsrp
+      - show hsrp detail
+  - feature-name: pim
+    patterns-to-match:
+      - patterns:
+          - regex: ^router pim
+    configlets:
+      - router pim
+    op-cmds:
+      - show auto-rp candidate-rp
+      - show auto-rp mapping-agent
+      - show pim bgp-safi
+      - show pim bsr candidate-rp
+      - show pim bsr election
+      - show pim bsr rp-cache
+      - show pim context
+      - show pim context detail
+      - show pim context table
+      - show pim df election-state
+      - show pim df winner
+      - show pim group-map
+      - show pim interface //done
+      - show pim join-prune statistic
+      - show pim mdt
+      - show pim mstatic
+      - show pim neighbor
+      - show pim ipv4 neighbor //done
+      - show pim nsf
+      - show pim range-list
+      - show pim rpf
+      - show pim rpf hash
+      - show pim rpf route-policy statistics
+      - show pim rpf route-policy test
+      - show pim rpf summary
+      - show pim summary
+      - show pim table-context
+      - show pim topology
+      - show pim topology detail
+      - show pim topology entry-flag
+      - show pim topology interface-flag
+      - show pim topology summary
+      - show pim traffic
+      - show pim tunnel info
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - pim
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show pim ipv4
+            neighbor [Cisco IOS XR]
+          variable: ipv4_pim_neighbors
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show pim interface
+            [Cisco IOS XR]
+          variable: pim_interface
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show pim
+                interface [Cisco IOS XR]
+              variable: pim_interface.pim
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show pim
+                interface [Cisco IOS XR]
+              variable: pim_interface.dr
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show pim
+                interface [Cisco IOS XR]
+              variable: pim_interface.address
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show pim
+                interface [Cisco IOS XR]
+              variable: pim_interface.nbr_count
+              gb: true
+  - feature-name: igmp
+    patterns-to-match:
+      - patterns:
+          - regex: ^router igmp
+      - patterns:
+          - regex: ^multicast-routing$
+    configlets:
+      - router igmp
+      - multicast-routing
+    op-cmds:
+      - show igmp groups  //done
+      - show igmp interface //done
+      - show igmp nsf
+      - show igmp summary
+      - show igmp ssm map
+      - show igmp traffic
+  - feature-name: mld
+    patterns-to-match:
+      - patterns:
+          - regex: ^router mld
+      - patterns:
+          - regex: ^multicast-routing
+    configlets:
+      - router mld
+      - multicast-routing
+    op-cmds:
+      - show mld groups
+      - show mld interface
+      - show mld nsf
+      - show mld ssm map
+      - show mld summary
+      - show mld traffic
+  - feature-name: netflow
+    patterns-to-match:
+      - patterns:
+          - mregex: ^interface .+\s+flow.+monitor.+sampler.+\n
+    configlets:
+      - |
+        interface TenGigE0/2/0/6/1
+        ipv4 address 81.1.1.2 255.255.255.0
+        ipv6 address 30:1::1/32
+        flow mpls monitor fmm-mpls-ipv4-ipv6 sampler fsm1 ingress
+    op-cmds:
+      - show flow exporter
+      - show flow exporter-map
+      - show flow monitor
+      - show flow monitor-map
+      - show flow platform producer statistics location
+      - show sampler-map
+  - feature-name: lldp
+    patterns-to-match:
+      - patterns:
+          - regex: ^lldp$
+    configlets:
+      - lldp
+    op-cmds:
+      - show lldp
+      - show lldp entry
+      - show lldp errors
+      - show lldp interface
+      - show lldp neighbors
+      - show lldp traffic
+  - feature-name: rip
+    patterns-to-match:
+      - patterns:
+          - regex: router rip
+    configlets:
+      - router rip
+    op-cmds:
+      - show protocols rip
+      - show rip
+      - show rip database
+      - show rip interface
+      - show rip statistics
+  - feature-name: glbp
+    patterns-to-match:
+      - patterns:
+          - regex: glbp \d+ ip \d+\.\d+\.\d+\.\d+
+    configlets:
+      - glbp 123 ip 1.1.1.1
+    op-cmds:
+      - show glbp //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - glbp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show glbp [Cisco
+            IOS XR]
+          variable: interfaces
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show glbp
+                [Cisco IOS XR]
+              variable: interfaces.virtual_ip
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show glbp
+                [Cisco IOS XR]
+              variable: interfaces.preemption
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show glbp
+                [Cisco IOS XR]
+              variable: interfaces.authentication_text
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show glbp
+                [Cisco IOS XR]
+              variable: interfaces.group
+  - feature-name: hsrp
+    patterns-to-match:
+      - patterns:
+          - regex: hsrp \d+
+    configlets:
+      - hsrp 532
+    op-cmds:
+      - show hsrp //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - hsrp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show hsrp [Cisco
+            IOS XR]
+          variable: ipv4_hsrp_table
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show hsrp
+                [Cisco IOS XR]
+              variable: ipv4_hsrp_table.grp
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show hsrp
+                [Cisco IOS XR]
+              variable: ipv4_hsrp_table.priority
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show hsrp
+                [Cisco IOS XR]
+              variable: ipv4_hsrp_table.active_addr
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show hsrp
+                [Cisco IOS XR]
+              variable: ipv4_hsrp_table.preempt
+              gb: true
+  - feature-name: igmp
+    patterns-to-match:
+      - patterns:
+          - regex: router igmp
+    configlets:
+      - router igmp
+    op-cmds:
+      - show igmp groups //done
+      - show igmp interface //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - igmp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show igmp groups
+            [Cisco IOS XR]
+          variable: igmp_groups
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show igmp
+            interface [Cisco IOS XR]
+          variable: igmp_interfaces
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show igmp
+                interface [Cisco IOS XR]
+              variable: igmp_interfaces.joins
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show igmp
+                interface [Cisco IOS XR]
+              variable: igmp_interfaces.leaves
+              gb: true
+  - feature-name: general
+    op-cmds:
+      - dir /all //done
+      - show memory summary //done
+      - show platform //done
+      - show processes cpu //done
+      - show processes memory //done
+      - show tacacs //done
+      - show version //done
+      - show protocols //done
+      - show watchdog memory-state //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - general
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show watchdog
+            memory-state [Cisco IOS XR]
+          variable: free_memory
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show platform
+            [Cisco IOS XR]
+          variable: platform_table
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show protocols
+            [Cisco IOS XR]
+          variable: protocols
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show tacacs [Cisco
+            IOS XR]
+          variable: tacacs_table
+          gb: true
+  - feature-name: interface
+    op-cmds:
+      - show interfaces //done
+      - show interfaces brief //done
+      - show ip interface //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - interface
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.output_drops
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.output_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.input_drops
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.input_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show
+                interfaces [Cisco IOS XR]
+              variable: interfaces.crc
+              gb: true
+  - feature-name: vrf
+    patterns-to-match:
+      - patterns:
+          - regex: vrf \S+
+    configlets:
+      - vrf RED
+    op-cmds:
+      - show ipv4 vrf all interface brief //done
+      - show vrf all detail //done
+      - show vrf all ipv4 detail //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - vrf
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show vrf all
+            detail [Cisco IOS XR]
+          variable: vrf
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ipv4 vrf all
+            interface brief [Cisco IOS XR]
+          variable: vrf_interface
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ipv4 vrf
+                all interface brief [Cisco IOS XR]
+              variable: vrf_interface.ip_address
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ipv4 vrf
+                all interface brief [Cisco IOS XR]
+              variable: vrf_interface.protocol
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ipv4 vrf
+                all interface brief [Cisco IOS XR]
+              variable: vrf_interface.status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show ipv4 vrf
+                all interface brief [Cisco IOS XR]
+              variable: vrf_interface.vrf_name
+  - feature-name: multicast
+    patterns-to-match:
+      - patterns:
+          - regex: ^multicast-routing$
+        configlets:
+          - multicast-routing
+    op-cmds:
+      - show mrib ipv4 route //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Cisco IOS XR
+        feature-name:
+          - multicast
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mrib ipv4
+            route [Cisco IOS XR]
+          variable: groups
+        - parser: >-
+            Built-in Files/Network Vendors/Cisco/Cisco IOS XR/show mrib ipv4
+            route [Cisco IOS XR]
+          variable: mrib_info

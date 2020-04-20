@@ -1,0 +1,405 @@
+driver-list:
+  - Checkpoint Gaia
+  - Checkpoint Gaia R80
+feature-list:
+  - feature-name: general
+    op-cmds:
+      - show uptime
+      - show version all //done
+      - cplic print //done
+      - show snapshots
+      - show backups
+      - show users //done
+      - cpstat fw -f policy //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - general
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            version all [Checkpoint Firewall]
+          variable: product_version
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/cplic
+            print [Checkpoint Firewall]
+          variable: license_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            users [Checkpoint Firewall]
+          variable: user_table
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/cpstat
+            fw -f policy [Checkpoint Firewall]
+          variable: intfs_table_64_bit
+  - feature-name: inventory
+    op-cmds:
+      - show asset all //done
+      - show sysenv all
+      - cpstat os -f sensors
+      - cpstat os -f cpu //done
+      - cpstat os -f memory //done
+      - cpstat os
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - inventory
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/cpstat
+            os -f cpu [Checkpoint Firewall]
+          variable: cpu_usage
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/cpstat
+            os -f cpu [Checkpoint Firewall]
+          variable: cpu_interrupt
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/cpstat
+            os -f memory [Checkpoint Firewall]
+          variable: total_real_memory
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/cpstat
+            os -f memory [Checkpoint Firewall]
+          variable: active_real_memory
+          gb: true
+  - feature-name: interfaces
+    op-cmds:
+      - show interfaces
+      - show interfaces all //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - interfaces
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            interfaces all [Checkpoint Firewall]
+          variable: intfs
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show interfaces all [Checkpoint Firewall]
+              variable: intfs.tx_errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show interfaces all [Checkpoint Firewall]
+              variable: intfs.status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show interfaces all [Checkpoint Firewall]
+              variable: intfs.rx_errors
+              gb: true
+  - feature-name: lag
+    patterns-to-match:
+      - patterns:
+          - regex: ^set bonding group
+    op-cmds:
+      - show bonding groups
+  - feature-name: ipv6
+    patterns-to-match:
+      - patterns:
+          - regex: set ipv6-state on
+    op-cmds:
+      - show ipv6 route
+      - show ipv6 route summary
+  - feature-name: ha
+    op-cmds:
+      - cphaprob state
+      - cphaprob -a if
+      - cphaprob -l list
+      - fw ctl pstat //done
+      - show routed cluster-state detailed
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - ha
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/fw ctl
+            pstat [Checkpoint Firewall]
+          variable: system_capacity_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/fw ctl
+            pstat [Checkpoint Firewall]
+          variable: connection_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/fw ctl
+            pstat [Checkpoint Firewall]
+          variable: nat_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/fw ctl
+            pstat [Checkpoint Firewall]
+          variable: sync_atable
+          gb: true
+  - feature-name: snmp-agent
+    patterns-to-match:
+      - patterns:
+          - regex: ^set snmp agent on
+    op-cmds:
+      - show snmp agent
+      - show snmp agent-version
+      - show snmp communities
+      - show snmp interfaces
+  - feature-name: ospf
+    patterns-to-match:
+      - patterns:
+          - regex: ^set ospf area .+ on
+    op-cmds:
+      - show ospf interfaces //done
+      - show ospf interfaces detailed
+      - show ospf interfaces stats
+      - show ospf neighbors //done
+      - show ospf neighbors detailed //done
+      - show ospf packets
+      - show ospf border-routers
+      - show ospf errors
+      - show ospf events
+      - show ospf database database-summary //done
+      - show ospf summary //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - ospf
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            ospf neighbors detailed [Checkpoint Firewall]
+          variable: OSPF_Neighbors
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            ospf interfaces [Checkpoint Firewall]
+          variable: OSPF_Interface_Table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            ospf database database-summary [Checkpoint Firewall]
+          variable: areas_database
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show ospf interfaces [Checkpoint Firewall]
+              variable: OSPF_Interface_Table.state
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show ospf interfaces [Checkpoint Firewall]
+              variable: OSPF_Interface_Table.errors
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show ospf interfaces [Checkpoint Firewall]
+              variable: OSPF_Interface_Table.area_id
+              gb: true
+  - feature-name: bgp
+    patterns-to-match:
+      - patterns:
+          - regex: ^set as .+
+          - regex: ^set bgp .+
+    op-cmds:
+      - show as
+      - show bgp
+      - show bgp errors
+      - show bgp groups
+      - show bgp memory
+      - show bgp peers //done
+      - show bgp peers advertise
+      - show bgp peers detailed
+      - show bgp peers established
+      - show bgp peers received
+      - show bgp routemap
+      - show bgp stats
+      - show bgp summary //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - bgp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            bgp summary [Checkpoint Firewall]
+          variable: bgp_status
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            bgp summary [Checkpoint Firewall]
+          variable: bgp_local_as
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            bgp peers [Checkpoint Firewall]
+          variable: bgp_peers_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            bgp summary [Checkpoint Firewall]
+          variable: ecmp
+          gb: true
+  - feature-name: igmp
+    patterns-to-match:
+      - patterns:
+          - regex: set igmp interface
+    op-cmds:
+      - show igmp groups //done
+      - show igmp interfaces //done
+      - show igmp stats
+      - show igmp summary
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - igmp
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            igmp groups [Checkpoint Firewall]
+          variable: igmp_table
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            igmp interfaces [Checkpoint Firewall]
+          variable: interface_para
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show igmp interfaces [Checkpoint Firewall]
+              variable: interface_para.number_group_joins
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show igmp interfaces [Checkpoint Firewall]
+              variable: interface_para.number_group_active
+              gb: true
+  - feature-name: pim
+    patterns-to-match:
+      - patterns:
+          - regex: set pim mode
+    op-cmds:
+      - show pim interfaces //done
+      - show pim neighbors //done
+      - show pim stats
+      - show pim summary
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - pim
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            pim interfaces [Checkpoint Firewall]
+          variable: show_pim_interfaces
+          gb: true
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            pim neighbors [Checkpoint Firewall]
+          variable: show_pim_neighbors
+          gb: true
+      interface-position:
+        - interface-type: IPv4 Interface
+          position:
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show pim interfaces [Checkpoint Firewall]
+              variable: show_pim_interfaces.status
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show pim interfaces [Checkpoint Firewall]
+              variable: show_pim_interfaces.nbr_count
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show pim interfaces [Checkpoint Firewall]
+              variable: show_pim_interfaces.state
+              gb: true
+            - parser: >-
+                Built-in Files/Network Vendors/CheckPoint/CheckPoint
+                Firewall/show pim interfaces [Checkpoint Firewall]
+              variable: show_pim_interfaces.mode
+              gb: true
+  - feature-name: netflow
+    patterns-to-match:
+      - patterns:
+          - regex: netflow collector
+    op-cmds:
+      - show netflow all //done
+      - show netflow collector
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - netflow
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            netflow all [Checkpoint Firewall]
+          variable: netflow_collector
+  - feature-name: virtual-system
+    op-cmds:
+      - show virtual-system all //done
+    dvt:
+      node-type: Legacy Device
+      filter-criteria:
+        device-type:
+          - Checkpoint Firewall
+          - Checkpoint Firewall R80
+        feature-name:
+          - virtual-system
+      device-position:
+        - parser: >-
+            Built-in Files/Network Vendors/CheckPoint/CheckPoint Firewall/show
+            virtual-system all [Checkpoint Firewall]
+          variable: vs_table
+          gb: true
