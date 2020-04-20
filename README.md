@@ -19,7 +19,7 @@ Automate Your Commands
 Baseline Your Variables
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/golden_baseline_variable.png "NetBrain Golden Baseline")
 
-## Resource are category by network vendor or OS:
+## Resource category by network vendor or OS:
 * [Alcatel Lucent Service Router](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/alcatel_lucent_service_router.md)
 * [Arista Switch](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/arista_switch.md)
 * [Checkpoint Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/checkpoint_firewall.md)
