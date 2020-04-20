@@ -4,15 +4,19 @@ NetBrain Automation Package Resource List
 ## Resource includes:
 
 ### [Data View Template](https://www.netbraintech.com/docs/ie80/help/index.html?data-view.htm)
+Decode Your Network
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/dvt.png "NetBrain Data View")
 
 ### [Runbook Template](https://www.netbraintech.com/docs/ie80/help/index.html?using-runbook.htm)
+Digitalize Your Procedure
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/runbook.png "NetBrain Runbook")
 
 ### [Parser](https://www.netbraintech.com/docs/ie80/help/index.html?parser-library.htm)
+Automate Your Commands
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/parser.png "NetBrain Parser")
 
 ### [Golden Baseline](https://www.netbraintech.com/docs/ie80/help/index.html?golden-baseline.htm)
+Baseline Your Variables
 ![alt text](https://github.com/NetBrainAPI/Automation_Package/blob/master/images/golden_baseline_variable.png "NetBrain Golden Baseline")
 
 ## Resource are category by network vendor or OS:
