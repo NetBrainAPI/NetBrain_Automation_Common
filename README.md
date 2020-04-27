@@ -1,6 +1,8 @@
 # Automation_Package
 NetBrain Automation Package Resource List
 
+Version: 04/20/2020
+
 ## Resource includes:
 
 ### [Data View Template](https://www.netbraintech.com/docs/ie80/help/index.html?data-view.htm)
