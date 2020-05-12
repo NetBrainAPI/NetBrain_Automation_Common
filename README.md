@@ -29,7 +29,7 @@ Baseline Your Variables
 * [Cisco IOS XR](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/cisco_ios_xr.md)
 * [Cisco Nexus (NXOS)](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/cisco_nexus_nxos.md)
 * [Cisco ASA Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/cisco_asa_firewall.md)
-* [F5 Load Balancer](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/F5_load_balancer.md)
+* [F5 Load Balancer](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/f5_load_balancer.md)
 * [Fortigate Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/fortigate_firewall.md)
 * [Juniper (JUNOS)](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/juniper_junos.md)
 * [Palo Alto Firewall](https://github.com/NetBrainAPI/Automation_Package/blob/master/vendor_list/palo_alto_firewall.md)
