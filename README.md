@@ -26,7 +26,7 @@ Baseline Your Variables
 **(Total Number: 360)**
 
 ## Resource category by network vendor or OS:
-* [Alcatel Lucent Service Router](vendor_list/alcatel_lucent_service_router.md)
+* [Nokia Service Router](vendor_list/nokia_service_router.md)
 * [Arista Switch](vendor_list/arista_switch.md)
 * [Checkpoint Firewall](vendor_list/checkpoint_firewall.md)
 * [Cisco IOS](vendor_list/cisco_ios.md)
