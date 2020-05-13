@@ -7,22 +7,22 @@ Version: 05/12/2020
 ### [Data View Template](https://www.netbraintech.com/docs/ie80/help/index.html?data-view.htm)
 Decode Your Network 
 ![alt text](images/dvt.png "NetBrain Data View")
-**(Total Number: 139)**
+**(Total Number: 126)**
 
 ### [Runbook Template](https://www.netbraintech.com/docs/ie80/help/index.html?using-runbook.htm)
 Digitalize Your Procedure
 ![alt text](images/runbook.png "NetBrain Runbook")
-**(Total Number: 122)**
+**(Total Number: 118)**
 
 ### [Parser](https://www.netbraintech.com/docs/ie80/help/index.html?parser-library.htm)
 Automate Your Commands
 ![alt text](images/parser.png "NetBrain Parser")
-**(Total Number: 1408)**
+**(Total Number: 1407)**
 
 ### [Golden Baseline](https://www.netbraintech.com/docs/ie80/help/index.html?golden-baseline.htm)
 Baseline Your Variables
 ![alt text](images/golden_baseline_variable.png "NetBrain Golden Baseline")
-**(Total Number: 1241)**
+**(Total Number: 360)**
 
 ## Resource category by network vendor or OS:
 * [Alcatel Lucent Service Router](vendor_list/alcatel_lucent_service_router.md)
