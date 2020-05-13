@@ -1,6 +1,7 @@
-# Automation_Package
+# NetBrain Automation Repository
 NetBrain Automation Package Resource List
-Version: 05/12/2020
+
+**Version: 05/12/2020**
 
 ## Resource includes:
 
