@@ -48,16 +48,6 @@
 
 ![](images/dvt_ospf_idu_05.png)
 
-<br/><br/>
-
-# Content Type: Runbook
-## Auto_Runbook_Template\ospf [(Cisco IOS Switch)(Cisco Router)]
-
-<br/>
-
-![](images/runbook_ospf.png)
-
-
 
 
 

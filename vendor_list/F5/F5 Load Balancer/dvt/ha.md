@@ -25,14 +25,7 @@
 
   ![](images/f5_ha_du_04_compare.png)
 
-<!-- 
 
-# Content Type: Runbook
-## NetBrain Path: Auto_Runbook_Template\ha [F5 Load Balancer]
-
-<br/>
-
-![](images/f5_ha_runbook_01.png)
 
 
 

@@ -27,19 +27,14 @@
 
 
 
-<!-- 
 
-# Content Type: Runbook
-## NetBrain Path: Auto_Runbook_Template\general [F5 Load Balancer]
-
-<br/>
-
-![](images/f5_general_runbook_01.png)
 
 
 
 
 [//]: # (This syntax works like a comment, and won't appear in any output.)
+
+<!-- 
 
 
 

@@ -47,17 +47,6 @@
 
 
 
-<br/><br/>
-
-# Content Type: Runbook
-## Auto_Runbook_Template\bgp [(Cisco IOS Switch)(Cisco Router)]
-
-<br/>
-
-![](images/runbook_bgp.png)
-
-
-
 
 
 [//]: # (This syntax works like a comment, and won't appear in any output.)
