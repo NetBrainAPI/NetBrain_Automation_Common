@@ -2,7 +2,7 @@
 ### data_view_template [5]
 * Auto_Data_View_Template\apm [F5 Load Balancer]
 * [Auto_Data_View_Template\general [F5 Load Balancer]](dvt/general.md)
-* [Auto_Data_View_Template\ha [F5 Load Balancer]](dvt/f5_load_balancer/dvt_ha.md)
+* [Auto_Data_View_Template\ha [F5 Load Balancer]](dvt/ha.md)
 * Auto_Data_View_Template\inventory [F5 Load Balancer]
 * Auto_Data_View_Template\ltm [F5 Load Balancer]
 
