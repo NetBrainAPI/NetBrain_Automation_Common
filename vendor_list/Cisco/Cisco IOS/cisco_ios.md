@@ -1,7 +1,7 @@
 ## Cisco IOS
 ### data_view_template [10]
 * Auto_Data_View_Template\acl [(Cisco IOS Switch)(Cisco Router)]
-* Auto_Data_View_Template\bgp [(Cisco IOS Switch)(Cisco Router)]
+* [Auto_Data_View_Template\bgp [(Cisco IOS Switch)(Cisco Router)]](dvt/bgp.md)
 * Auto_Data_View_Template\general [(Cisco IOS Switch)(Cisco Router)]
 * Auto_Data_View_Template\hsrp [(Cisco IOS Switch)(Cisco Router)]
 * Auto_Data_View_Template\interfaces [(Cisco IOS Switch)(Cisco Router)]
@@ -9,7 +9,7 @@
 * Auto_Data_View_Template\isis [(Cisco IOS Switch)(Cisco Router)]
 * Auto_Data_View_Template\mpls [(Cisco IOS Switch)(Cisco Router)]
 * Auto_Data_View_Template\multicast [(Cisco IOS Switch)(Cisco Router)]
-* Auto_Data_View_Template\ospf [(Cisco IOS Switch)(Cisco Router)]
+* [Auto_Data_View_Template\ospf [(Cisco IOS Switch)(Cisco Router)]](dvt/bgp.md)
 
 ### runbook_template [10]
 * Auto_Runbook_Template\acl [(Cisco IOS Switch)(Cisco Router)]
