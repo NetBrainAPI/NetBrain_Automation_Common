@@ -25,8 +25,8 @@ Baseline Your Variables
 ![alt text](images/golden_baseline_variable.png "NetBrain Golden Baseline")
 **(Total Number: 360)**
 
-## Resource category by network vendor or OS:
-* [Nokia Service Router](vendor_list/nokia_service_router.md)
+## Resource category by network vendor and OS:
+* [Nokia Service Router](vendor_list/Nokia/Nokia SROS/nokia_service_router.md)
 * [Arista Switch](vendor_list/arista_switch.md)
 * [Checkpoint Firewall](vendor_list/checkpoint_firewall.md)
 * [Cisco IOS](vendor_list/cisco_ios.md)
