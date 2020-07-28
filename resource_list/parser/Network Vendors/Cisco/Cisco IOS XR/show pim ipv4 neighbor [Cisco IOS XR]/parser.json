@@ -1,0 +1,246 @@
+{
+    "_id": "9ff48ec7-bbc9-cf76-5a08-ae3a73078a10",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show pim ipv4 neighbor",
+    "createTime": {
+        "$date": 1579121527085
+    },
+    "description": "Device Type:\nCisco IOS XR\nCommand:\nshow pim ipv4 neighbor",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:ios#show pim ipv4 neighbor \nFri Jul 18 18:24:02.778 UTC\n\nPIM neighbors in VRF default\nFlag: B - Bidir capable, P - Proxy capable, DR - Designated Router,\n      E - ECMP Redirect capable\n      * indicates the neighbor created for this router\n\nNeighbor Address             Interface              Uptime    Expires  DR pri   Flags\n\n1.1.123.1*                   GigabitEthernet0/0/0/0 07:11:31  00:01:18 1      B P\n1.1.123.111                  GigabitEthernet0/0/0/0 00:55:11  00:01:34 1 (DR)\n1.1.1.1*                     Loopback0              07:11:32  00:01:28 1 (DR) B P ",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ipv4_pim_neighbors.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"68682def-cc72-aff3-b190-46af377ab81a\"},{\"type\":\"4\",\"name\":\"ipv4_pim_neighbors\",\"keyVariables\":\"\",\"startLine\":\"regex[$neighbour_address,$interface,$uptime,$expires,$dr,$pri_flags]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\s+)(.+)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbour_address:string\",\"$interface:string\",\"$uptime:string\",\"$expires:string\",\"$dr:string\",\"$pri_flags:string\"]},\"xxid\":\"07a6b2f4-bea2-43f7-bc65-56abd981cfda\"}]},\"xxid\":\"0d7bff16-8d82-2f27-5acc-c0ae35145cb8\",\"hashColumns\":[\"$neighbour_address\",\"$interface\",\"$dr\",\"$pri_flags\"],\"interfaceKey\":\"$interface\"}]}",
+            "tableKeys": [
+                "_original_result.ipv4_pim_neighbors.$neighbour_address",
+                "_original_result.ipv4_pim_neighbors.$dr",
+                "_original_result.ipv4_pim_neighbors.$pri_flags"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbour_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "pri_flags",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$dr",
+                    "$interface",
+                    "$neighbour_address",
+                    "$pri_flags"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ipv4_pim_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a9366c52b405d9e3f3152845b876193b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipv4_pim_neighbors",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbour_address",
+                    "$interface",
+                    "$dr",
+                    "$pri_flags"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ipv4_pim_neighbors",
+            "intfKey": false,
+            "name": "ipv4_pim_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ipv4_pim_neighbors.$neighbour_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_pim_neighbors.$neighbour_address",
+            "intfKey": false,
+            "name": "$neighbour_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipv4_pim_neighbors.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_pim_neighbors.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ipv4_pim_neighbors.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_pim_neighbors.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipv4_pim_neighbors.$expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_pim_neighbors.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipv4_pim_neighbors.$dr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_pim_neighbors.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipv4_pim_neighbors.$pri_flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_pim_neighbors.$pri_flags",
+            "intfKey": false,
+            "name": "$pri_flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

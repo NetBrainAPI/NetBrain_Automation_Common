@@ -1,0 +1,328 @@
+{
+    "_id": "8804cda6-3318-e735-de12-c0ca0c3f3875",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show inventory",
+    "createTime": {
+        "$date": 1590598651382
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow inventory",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Core#show inventory \r\nSystem Type            : S4810      \r\nSystem Mode            : 1.0       \r\nSoftware Version       : 9.5(0.1)\r\n\r\nUnit Type               Serial Number  Part Number  Rev  Piece Part ID            Rev  Svc Tag  Exprs Svc Code\r\n--------------------------------------------------------------------------------------------------------------\r\n* 0  S4048-ON-PWR-AC    HADL155L20013  7590009602   F    CN-0HW31V-28298-55L-0013 A06  CYMNX42  284 183 055 70\r\n  0  S4048-ON-FAN       H6DL155L20010  7590008502   A    CN-023TW3-28298-55L-0010 A00  N/A      N/A           \r\n  0  S4048-ON-FAN       H6DL155C20141  7590008502   A    CN-023TW3-28298-55C-0141 A00  N/A      N/A           \r\n  0  S4048-FAN          N/A            N/A          N/A  N/A                      N/A  N/A      N/A           \r\n  0  S4048-FAN          N/A            N/A          N/A  N/A                      N/A  N/A      N/A           \r\n\r\n * - Management Unit \r\n\r\n \r\nSoftware Protocol Configured \r\n--------------------------------------------------------------\r\n  LLDP \r\n  DHCP \r\n ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"inventory_table\",\"keyVariables\":\"\",\"startLine\":\"\",\"endLine\":null,\"isLineAsParagraph\":\"1\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"0\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$unit, $type, $serial_num, $part_num, $rev1, $piece_part_id, $rev2, $svc_tag, $exprs_svc_code]:(.*?\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(.+?)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$unit:string\",\"$type:string\",\"$serial_num:string\",\"$part_num:string\",\"$rev1:string\",\"$piece_part_id:string\",\"$rev2:string\",\"$svc_tag:string\",\"$exprs_svc_code:string\"]},\"xxid\":\"6f9299ec-8066-6a46-46c7-a297d2a7ca01\"}]},\"xxid\":\"d4b19efa-92e0-f5ff-7a5c-a72129fa8399\",\"hashColumns\":[\"$serial_num\",\"$type\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$string:sys_type]:System Type\\\\s+\\\\:+\\\\s+(\\\\S+)\",\"regex[$string:sys_mode]:System Mode\\\\s+\\\\:+\\\\s+(\\\\S+)\",\"regex[$string:software_ver]:Software Version\\\\s+\\\\:+\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sys_type:string\",\"$sys_mode:string\",\"$software_ver:string\"]},\"xxid\":\"90ac1944-711a-330b-aa7a-2c130e66e5c9\"}]}",
+            "tableKeys": [
+                "_original_result.inventory_table.$serial_num",
+                "_original_result.inventory_table.$type"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "sys_type",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "sys_mode",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "software_ver",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "unit",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "serial_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "part_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rev1",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "piece_part_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "rev2",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "svc_tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "exprs_svc_code",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$serial_num",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "inventory_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "71c494f326422b62d45d3fa3f9606b43",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "inventory_table",
+            "dataType": "paragraph",
+            "desc": "Inventory table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$serial_num",
+                    "$type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "inventory_table",
+            "intfKey": false,
+            "name": "inventory_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "inventory_table.$unit",
+            "dataType": "string",
+            "desc": "Unit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$unit",
+            "intfKey": false,
+            "name": "$unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$type",
+            "dataType": "string",
+            "desc": "Type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$serial_num",
+            "dataType": "string",
+            "desc": "Serial number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$serial_num",
+            "intfKey": false,
+            "name": "$serial_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$part_num",
+            "dataType": "string",
+            "desc": "Part number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$part_num",
+            "intfKey": false,
+            "name": "$part_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$rev1",
+            "dataType": "string",
+            "desc": "rev",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$rev1",
+            "intfKey": false,
+            "name": "$rev1",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$piece_part_id",
+            "dataType": "string",
+            "desc": "Piece part ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$piece_part_id",
+            "intfKey": false,
+            "name": "$piece_part_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$rev2",
+            "dataType": "string",
+            "desc": "rev",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$rev2",
+            "intfKey": false,
+            "name": "$rev2",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$svc_tag",
+            "dataType": "string",
+            "desc": "Switching virtual circuit tag.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$svc_tag",
+            "intfKey": false,
+            "name": "$svc_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory_table.$exprs_svc_code",
+            "dataType": "string",
+            "desc": "Express switching virtual circuit code.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory_table.$exprs_svc_code",
+            "intfKey": false,
+            "name": "$exprs_svc_code",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$sys_type",
+            "intfKey": false,
+            "name": "$sys_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$sys_mode",
+            "intfKey": false,
+            "name": "$sys_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$software_ver",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$software_ver",
+            "intfKey": false,
+            "name": "$software_ver",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

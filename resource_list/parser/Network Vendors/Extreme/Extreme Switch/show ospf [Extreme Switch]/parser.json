@@ -1,0 +1,576 @@
+{
+    "_id": "312afbe4-3052-d6a0-06eb-a8ee4f4b49db",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf",
+    "createTime": {
+        "$date": 1591076254711
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow ospf",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "* Song sp:1 # show ospf\nRouter Id      OSPF ASBR ABR ExtLSA ExtLSACsum OrigNewLSA RxNewLSA SpfHoldTime\n0.0.0.0         D    NO   NO   0       0x0       0         0         3s\n\nRouterId Selection: Automatic\nExport Static: Disabled\nExport Rip: Disabled\nExport Direct: Disabled\nExport Vip: Disabled\nOriginate Default: Disabled\nOriginate Router ID: Disabled\nASBR route Filter: None\nDirect route Filter: None\n10M Cost = 10, 100M Cost = 5,1G Cost = 4, 10G Cost = 2.\nLsa Batch Interval = 30s.\nAS-external LSA limit: disabled  Timeout: disabled    Current count: 0\nCapabilities: Opaque LSA: Enabled",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"ospf_table\",\"headers\":\"Router Id;OSPF;ASBR;ABR;ExtLSA;ExtLSACsum;OrigNewLSA;RxNewLSA;SpfHoldTime\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Router Id:$string:router_id;OSPF:$string:ospf;ASBR:$string:asbr;ABR:$string:abr;ExtLSA:$string:extlsa;ExtLSACsum:$string:extlsacsum;OrigNewLSA:$string:orignewlsa;RxNewLSA:$string:rxnewlsa;SpfHoldTime:$string:spfholdtime\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$ospf:string\",\"$asbr:string\",\"$abr:string\",\"$extlsa:string\",\"$extlsacsum:string\",\"$orignewlsa:string\",\"$rxnewlsa:string\",\"$spfholdtime:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"63f319cc-9659-a24b-f004-8dbad9169f7a\",\"hashColumns\":[\"$router_id\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$routerid_select, $export_static, $export_rip, $export_direct, $export_vip, $ori_default, $ori_router_id, $asbr_router_filter, $direct_router_filter, $lsa_batch_interval, $as_external_lsa_limit, $asexterna_timeout, $current_count, $capabilities, $opaque_lsa]:RouterId Selection:\\\\s+(\\\\S+)\\\\s+Export Static:\\\\s+(\\\\S+)\\\\s+Export Rip:\\\\s+(\\\\S+)\\\\s+Export Direct:\\\\s+(\\\\S+)\\\\s+Export Vip:\\\\s+(\\\\S+)\\\\s+Originate Default:\\\\s+(\\\\S+)\\\\s+Originate Router ID:\\\\s+(\\\\S+)\\\\s+ASBR route Filter:\\\\s+(\\\\S+)\\\\s+Direct route Filter:\\\\s+(\\\\S+)\\\\s+.+?Lsa Batch Interval = (\\\\S+?)\\\\.\\\\s+AS-external LSA limit:\\\\s+(\\\\S+)\\\\s+Timeout:\\\\s+(\\\\S+)\\\\s+Current count:\\\\s+(\\\\S+)\\\\s+Capabilities:\\\\s+(\\\\S+)\\\\s+LSA:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$routerid_select:string\",\"$export_static:string\",\"$export_rip:string\",\"$export_direct:string\",\"$export_vip:string\",\"$ori_default:string\",\"$ori_router_id:string\",\"$asbr_router_filter:string\",\"$direct_router_filter:string\",\"$lsa_batch_interval:string\",\"$as_external_lsa_limit:string\",\"$asexterna_timeout:string\",\"$current_count:string\",\"$capabilities:string\",\"$opaque_lsa:string\"]},\"xxid\":\"47749937-731b-015f-c4d2-337a519f2830\"}]}",
+            "tableKeys": [
+                "_original_result.ospf_table.$router_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "routerid_select",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "export_static",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "export_rip",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "export_direct",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "export_vip",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "ori_default",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "ori_router_id",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "asbr_router_filter",
+                "type": 4
+            },
+            {
+                "index": 8,
+                "name": "direct_router_filter",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "lsa_batch_interval",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "as_external_lsa_limit",
+                "type": 4
+            },
+            {
+                "index": 11,
+                "name": "asexterna_timeout",
+                "type": 4
+            },
+            {
+                "index": 12,
+                "name": "current_count",
+                "type": 4
+            },
+            {
+                "index": 13,
+                "name": "capabilities",
+                "type": 4
+            },
+            {
+                "index": 14,
+                "name": "opaque_lsa",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ospf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "asbr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "abr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "extlsa",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "extlsacsum",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "orignewlsa",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "rxnewlsa",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "spfholdtime",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$router_id"
+                ],
+                "hashSort": false,
+                "index": 15,
+                "name": "ospf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "6a682081f0e48612673c5ce5ff402de6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_table",
+            "dataType": "table",
+            "desc": "OSPF information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$router_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_table",
+            "intfKey": false,
+            "name": "ospf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_table.$router_id",
+            "dataType": "string",
+            "desc": "OSPF router id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$ospf",
+            "dataType": "string",
+            "desc": "The process of ospf.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$ospf",
+            "intfKey": false,
+            "name": "$ospf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$asbr",
+            "dataType": "string",
+            "desc": "Whether the ASBR.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$asbr",
+            "intfKey": false,
+            "name": "$asbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$abr",
+            "dataType": "string",
+            "desc": "Whether the ABR.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$abr",
+            "intfKey": false,
+            "name": "$abr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$extlsa",
+            "dataType": "string",
+            "desc": "The number of extant LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$extlsa",
+            "intfKey": false,
+            "name": "$extlsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$extlsacsum",
+            "dataType": "string",
+            "desc": "The extant LSA Csum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$extlsacsum",
+            "intfKey": false,
+            "name": "$extlsacsum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$orignewlsa",
+            "dataType": "string",
+            "desc": "The number of original new LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$orignewlsa",
+            "intfKey": false,
+            "name": "$orignewlsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$rxnewlsa",
+            "dataType": "string",
+            "desc": "The number of RX new LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$rxnewlsa",
+            "intfKey": false,
+            "name": "$rxnewlsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_table.$spfholdtime",
+            "dataType": "string",
+            "desc": "The spf hold time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_table.$spfholdtime",
+            "intfKey": false,
+            "name": "$spfholdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routerid_select",
+            "dataType": "string",
+            "desc": "The method of routerid selection.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routerid_select",
+            "intfKey": false,
+            "name": "$routerid_select",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$export_static",
+            "dataType": "string",
+            "desc": "The export static state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$export_static",
+            "intfKey": false,
+            "name": "$export_static",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$export_rip",
+            "dataType": "string",
+            "desc": "The export rip state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$export_rip",
+            "intfKey": false,
+            "name": "$export_rip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$export_direct",
+            "dataType": "string",
+            "desc": "The export driect state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$export_direct",
+            "intfKey": false,
+            "name": "$export_direct",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$export_vip",
+            "dataType": "string",
+            "desc": "The export vip state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$export_vip",
+            "intfKey": false,
+            "name": "$export_vip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ori_default",
+            "dataType": "string",
+            "desc": "The originate default state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ori_default",
+            "intfKey": false,
+            "name": "$ori_default",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ori_router_id",
+            "dataType": "string",
+            "desc": "The originate router id state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ori_router_id",
+            "intfKey": false,
+            "name": "$ori_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$asbr_router_filter",
+            "dataType": "string",
+            "desc": "The ASBR route filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$asbr_router_filter",
+            "intfKey": false,
+            "name": "$asbr_router_filter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$direct_router_filter",
+            "dataType": "string",
+            "desc": "The direct route filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$direct_router_filter",
+            "intfKey": false,
+            "name": "$direct_router_filter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$lsa_batch_interval",
+            "dataType": "string",
+            "desc": "The LSA batch interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$lsa_batch_interval",
+            "intfKey": false,
+            "name": "$lsa_batch_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$as_external_lsa_limit",
+            "dataType": "string",
+            "desc": "The AS-external LSA limit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$as_external_lsa_limit",
+            "intfKey": false,
+            "name": "$as_external_lsa_limit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$asexterna_timeout",
+            "dataType": "string",
+            "desc": "The AS-external LSA timeout.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$asexterna_timeout",
+            "intfKey": false,
+            "name": "$asexterna_timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$current_count",
+            "dataType": "string",
+            "desc": "The AS-external current count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$current_count",
+            "intfKey": false,
+            "name": "$current_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$capabilities",
+            "dataType": "string",
+            "desc": "The capabilities.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$capabilities",
+            "intfKey": false,
+            "name": "$capabilities",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$opaque_lsa",
+            "dataType": "string",
+            "desc": "The LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$opaque_lsa",
+            "intfKey": false,
+            "name": "$opaque_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,399 @@
+{
+    "_id": "84e9f187-7b84-dcd8-ae85-7df1a0a4c27d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show failover",
+    "createTime": {
+        "$date": 1561147146754
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow failover",
+    "devTypes": [
+        2009,
+        2002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "US-BOS-FW/act#show failover\r\nFailover On \r\nFailover unit Primary\r\nFailover LAN Interface: failover Ethernet2 (up)\r\nUnit Poll frequency 200 milliseconds, holdtime 800 milliseconds\r\nInterface Poll frequency 500 milliseconds, holdtime 5 seconds\r\nInterface Policy 1\r\nMonitored Interfaces 2 of 60 maximum\r\nfailover replication http\r\nVersion: Ours 8.4(2), Mate 8.4(2)\r\nLast Failover at: 19:10:37 UTC Jun 5 2019\r\n\tThis host: Primary - Active \r\n\t\tActive time: 120223 (sec)\r\n\t\t  Interface inside (10.8.1.33): Normal (Waiting)\r\n\t\t  Interface outside (10.8.1.49): Normal (Waiting)\r\n\tOther host: Secondary - Failed \r\n\t\tActive time: 0 (sec)\r\n\t\t  Interface inside (10.8.1.34): Unknown (Waiting)\r\n\t\t  Interface outside (10.8.1.50): Unknown (Waiting)\r\n\r\nStateful Failover Logical Update Statistics\r\n\tLink : failover Ethernet2 (up)\r\n\tStateful Obj \txmit       xerr       rcv        rerr      \r\n\tGeneral\t\t0          0          0          0         \r\n\tsys cmd  \t0          0          0          0         \r\n\tup time  \t0          0          0          0         \r\n\tRPC services  \t0          0          0          0         \r\n\tTCP conn \t0          0          0          0         \r\n\tUDP conn \t0          0          0          0         \r\n\tARP tbl  \t0          0          0          0         \r\n\tXlate_Timeout  \t0          0          0          0         \r\n\tIPv6 ND tbl  \t0          0          0          0         \r\n\tVPN IKEv1 SA \t0          0          0          0         \r\n\tVPN IKEv1 P2 \t0          0          0          0         \r\n\tVPN IKEv2 SA \t0          0          0          0         \r\n\tVPN IKEv2 P2 \t0          0          0          0         \r\n\tVPN CTCP upd \t0          0          0          0         \r\n\tVPN SDI upd \t0          0          0          0         \r\n\tVPN DHCP upd \t0          0          0          0         \r\n\tSIP Session \t0          0          0          0         \r\n\tRoute Session \t0          0          0          0         \r\n\tUser-Identity \t0          0          0          0         \r\n\r\n\tLogical Update Queue Information\r\n\t \t \tCur \tMax \tTotal\r\n\tRecv Q: \t0 \t0 \t0\r\n\tXmit Q: \t0 \t0 \t0\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[{\"@Value\":\"Peer context\",\"@Type\":1,\"@Index\":1},{\"@Value\":\"Group\",\"@Type\":2,\"@Index\":2}]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[{\"@index\":0,\"@type\":1,\"@value\":\"Peer context\"},{\"@index\":1,\"@type\":2,\"@value\":\"Group\"}]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$failover_state]:Failover\\\\s+(\\\\S+)\",\"regex[$failover_unit]:Failover\\\\s+unit\\\\s+(\\\\S+)\",\"regex[$failover_lan_intf]:Failover LAN Interface:\\\\s+(.+)\",\"regex[$last_failover]:Last Failover at\\\\:\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$failover_state:string\",\"$failover_unit:string\",\"$failover_lan_intf:string\",\"$last_failover:string\"]},\"xxid\":\"7cc49c32-3b2f-95e9-1cfd-b8f21e829b29\"},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"#show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"6f77805a-15ab-bdea-e01a-2fc43aba8928\"}]},\"xxid\":\"da6252aa-8c22-f68e-45f6-e96fe7664dfa\"},{\"type\":\"1\",\"name\":\"failover_role\",\"startLine\":\"Last Failover\",\"endLine\":\"Stateful Failover\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"43c7d5b3-2f34-099f-328b-4f695d5d3556\"},{\"type\":\"4\",\"name\":\"host_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$unit, $role, $status]:(\\\\S+)\\\\s+host:\\\\s+(\\\\S+)\\\\s+-\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$active_time]:Active time:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$unit:string\",\"$role:string\",\"$status:string\",\"$active_time:string\"]},\"xxid\":\"5a589067-018a-75ae-551c-87b8a0a45ef3\"},{\"type\":\"4\",\"name\":\"failover_interfaces\",\"keyVariables\":\"\",\"startLine\":\"regex[$failover_intfs, $failover_intf_status]:Interface\\\\s+(.+?):\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$failover_intfs:string\",\"$failover_intf_status:string\"]},\"xxid\":\"3033de2d-d179-b35b-19a1-ec1e8564dad4\"}]},\"xxid\":\"eb9520e2-b149-c464-f506-9dee0de1684f\",\"hashColumns\":[\"$failover_intfs\"]}]},\"xxid\":\"48f2797c-c2b5-c6b1-67fa-82948a6a36fb\",\"hashColumns\":[\"$unit\"]}]},\"xxid\":\"6e82f5ae-a9f6-e06a-3262-ffe36f32267b\"}]}",
+            "tableKeys": [
+                "_original_result.failover_role.host_table.$unit",
+                "_original_result.failover_role.host_table.failover_interfaces.$failover_intfs"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "failover_state",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "failover_unit",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "failover_lan_intf",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "last_failover",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "failover_role",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "unit",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "role",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "active_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$unit"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "host_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "failover_intfs",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "failover_intf_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "unit",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "role",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "active_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$failover_intfs"
+                ],
+                "hashSort": false,
+                "index": 7,
+                "name": "failover_interfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "64c85d5dd345e6d281de34a6ecc2009d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "host_table.$active_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.$active_time",
+            "intfKey": false,
+            "name": "$active_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_interfaces.$active_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.failover_interfaces.$active_time",
+            "intfKey": false,
+            "name": "$active_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_interfaces.$failover_intf_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.failover_interfaces.$failover_intf_status",
+            "intfKey": false,
+            "name": "$failover_intf_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_interfaces.$failover_intfs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.failover_interfaces.$failover_intfs",
+            "intfKey": false,
+            "name": "$failover_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$failover_lan_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$failover_lan_intf",
+            "intfKey": false,
+            "name": "$failover_lan_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$failover_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$failover_state",
+            "intfKey": false,
+            "name": "$failover_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$failover_unit",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$failover_unit",
+            "intfKey": false,
+            "name": "$failover_unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$last_failover",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$last_failover",
+            "intfKey": false,
+            "name": "$last_failover",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_table.$role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.$role",
+            "intfKey": false,
+            "name": "$role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_interfaces.$role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.failover_interfaces.$role",
+            "intfKey": false,
+            "name": "$role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_table.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_interfaces.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.failover_interfaces.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_table.$unit",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.$unit",
+            "intfKey": false,
+            "name": "$unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_interfaces.$unit",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role.host_table.failover_interfaces.$unit",
+            "intfKey": false,
+            "name": "$unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_interfaces",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$failover_intfs"
+                ],
+                "hashSort": false
+            },
+            "fullName": "failover_role.host_table.failover_interfaces",
+            "intfKey": false,
+            "name": "failover_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "failover_role",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "failover_role",
+            "intfKey": false,
+            "name": "failover_role",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$unit"
+                ],
+                "hashSort": false
+            },
+            "fullName": "failover_role.host_table",
+            "intfKey": false,
+            "name": "host_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

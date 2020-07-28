@@ -1,0 +1,423 @@
+{
+    "_id": "80c686a8-a0c8-3b98-b88d-77a5f4929f9d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show port",
+    "createTime": {
+        "$date": 1584036460485
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow port",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:AS500_P# show port \r\n\r\n===============================================================================\r\nPorts on Slot 1\r\n===============================================================================\r\nPort        Admin Link Port    Cfg  Oper LAG/ Port Port Port   C/QS/S/XFP/\r\nId          State      State   MTU  MTU  Bndl Mode Encp Type   MDIMDX\r\n-------------------------------------------------------------------------------\r\n1/1/1       Up    Yes  Up      8936 8936    - netw null xcme   GIGE-LX  10KM\r\n1/1/2       Up    Yes  Up      8936 8936    - netw null xcme   GIGE-LX  10KM\r\n1/1/3       Down  No   Down    8936 8936    - netw null xcme   GIGE-LX  10KM\r\n1/1/4       Up    Yes  Up      8936 8936    - netw null xcme   GIGE-LX  10KM\r\n1/1/5       Down  No   Down    8936 8936    - netw null xcme   GIGE-LX  10KM\r\n\r\n===============================================================================\r\nPorts on Slot A\r\n===============================================================================\r\nPort        Admin Link Port    Cfg  Oper LAG/ Port Port Port   C/QS/S/XFP/\r\nId          State      State   MTU  MTU  Bndl Mode Encp Type   MDIMDX\r\n-------------------------------------------------------------------------------\r\nA/1         Up    Yes  Up      1514 1514    - netw null faste  MDI\r\n\r\n===============================================================================\r\nPorts on Slot B                       \r\n===============================================================================\r\nPort        Admin Link Port    Cfg  Oper LAG/ Port Port Port   C/QS/S/XFP/\r\nId          State      State   MTU  MTU  Bndl Mode Encp Type   MDIMDX\r\n-------------------------------------------------------------------------------\r\nB/1         Up    No   Ghost   1514 1514    - netw null faste  \r\n===============================================================================\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ports_on_slot.port_detail.$port_id"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ports_on_slot\",\"keyVariables\":\"\",\"startLine\":\"Ports on Slot $slot\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$slot:string\"]},\"xxid\":\"2aa9c58f-c7bd-218e-c158-1206eb493018\"},{\"type\":\"4\",\"name\":\"port_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$port_id,$admin_state,$link,$port_state,$cfg_mtu,$oper_mtu,$lag_bndl,$port_mode,$port_encp,$port_type,$c_qs_s_xfp_mdimdx]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"0\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$port_id:string\",\"$admin_state:string\",\"$link:string\",\"$port_state:string\",\"$cfg_mtu:string\",\"$oper_mtu:string\",\"$lag_bndl:string\",\"$port_mode:string\",\"$port_encp:string\",\"$port_type:string\",\"$c_qs_s_xfp_mdimdx:string\"]},\"xxid\":\"53017138-aedf-129e-4c17-17574a6c2f5f\"}]},\"xxid\":\"acf2174c-d99e-c28a-d5e8-98a975b192ad\",\"interfaceKey\":\"$port_id\",\"hashColumns\":[\"$port_id\",\"$admin_state\",\"$link\",\"$port_state\",\"$cfg_mtu\",\"$oper_mtu\",\"$lag_bndl\",\"$port_mode\",\"$port_encp\",\"$port_type\",\"$c_qs_s_xfp_mdimdx\",\"$slot\"],\"hashSort\":false}]},\"xxid\":\"f990899e-6803-000b-ce28-3869f289fb30\",\"hashColumns\":[]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"fefaffbe-835b-988a-5489-895648d9c5b3\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "slot",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "ports_on_slot",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "link",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "port_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "cfg_mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "oper_mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "lag_bndl",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "port_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "port_encp",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "port_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "c_qs_s_xfp_mdimdx",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "slot",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_state",
+                    "$c_qs_s_xfp_mdimdx",
+                    "$cfg_mtu",
+                    "$lag_bndl",
+                    "$link",
+                    "$oper_mtu",
+                    "$port_encp",
+                    "$port_id",
+                    "$port_mode",
+                    "$port_state",
+                    "$port_type",
+                    "$slot"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "port_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "9f7a936a4e86ea02a141b0a3f491a9e8",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ports_on_slot",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot",
+            "intfKey": false,
+            "name": "ports_on_slot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ports_on_slot.$slot",
+            "dataType": "string",
+            "desc": "Slot number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.$slot",
+            "intfKey": false,
+            "name": "$slot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port_id",
+                    "$admin_state",
+                    "$link",
+                    "$port_state",
+                    "$cfg_mtu",
+                    "$oper_mtu",
+                    "$lag_bndl",
+                    "$port_mode",
+                    "$port_encp",
+                    "$port_type",
+                    "$c_qs_s_xfp_mdimdx",
+                    "$slot"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail",
+            "intfKey": false,
+            "name": "port_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "port_detail.$port_id",
+            "dataType": "string",
+            "desc": "The port ID configured or displayed in the slot/mda/port format",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$port_id",
+            "intfKey": false,
+            "name": "$port_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "port_detail.$admin_state",
+            "dataType": "string",
+            "desc": "The administrative state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$link",
+            "dataType": "string",
+            "desc": "A physical link is present or not",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$link",
+            "intfKey": false,
+            "name": "$link",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$port_state",
+            "dataType": "string",
+            "desc": "The port is physically present and has physical link present or not",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$port_state",
+            "intfKey": false,
+            "name": "$port_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$cfg_mtu",
+            "dataType": "string",
+            "desc": "The configured MTU",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$cfg_mtu",
+            "intfKey": false,
+            "name": "$cfg_mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$oper_mtu",
+            "dataType": "string",
+            "desc": "The negotiated size of the largest packet which can be sent on the port SONET/SDH, channel, specified in octets",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$oper_mtu",
+            "intfKey": false,
+            "name": "$oper_mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$lag_bndl",
+            "dataType": "string",
+            "desc": "The LAG or multi-link trunk (MLT) that the port is assigned to",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$lag_bndl",
+            "intfKey": false,
+            "name": "$lag_bndl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$port_mode",
+            "dataType": "string",
+            "desc": "Network, acces or hybrid",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$port_mode",
+            "intfKey": false,
+            "name": "$port_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$port_encp",
+            "dataType": "string",
+            "desc": "Port ecap dot1q or null",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$port_encp",
+            "intfKey": false,
+            "name": "$port_encp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$port_type",
+            "dataType": "string",
+            "desc": "The type of port or optics installed",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$port_type",
+            "intfKey": false,
+            "name": "$port_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$c_qs_s_xfp_mdimdx",
+            "dataType": "string",
+            "desc": "Media Dependent Interface or SFP type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$c_qs_s_xfp_mdimdx",
+            "intfKey": false,
+            "name": "$c_qs_s_xfp_mdimdx",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_detail.$slot",
+            "dataType": "string",
+            "desc": "Slot number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ports_on_slot.port_detail.$slot",
+            "intfKey": false,
+            "name": "$slot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,402 @@
+{
+    "_id": "d5fe5d6e-5451-3b90-b9d8-3c83950bea76",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbor detail",
+    "createTime": {
+        "$date": 1591076210417
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow ospf neighbor detail",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "# show ospf neighbor detail       \r\n\r\nNeighbor 10.0.3.2, interface address 12.0.2.2       \r\n    In the area 0.0.0.0 via interface v2       \r\n    Neighbor priority is 1,  State is INIT,38 state changes       \r\n    DR is 12.0.2.1 BDR is 12.0.2.2       \r\n    Options is 0x42       \r\n    Neighbor is up for 00:11:04:05       \r\n    Time since last Hello 00:00:00:00       \r\n    Retransmission queue length is 0       \r\n    BFD Session State: None",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_nbr_detail.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_nbr_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$neighbor_addr, $interface_addr]:^\\\\s*neighbor\\\\s*(\\\\d+\\\\S+),\\\\s*interface address\\\\s*(\\\\d+\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$area_id, $interface]:in the area (\\\\S+) via interface (\\\\S+)\",\"regex[$neighbor_pri, $state, $state_change_times]:neighbor priority is (\\\\d+),\\\\s+state is (\\\\S+),(?:\\\\s*(\\\\d+) state changes)?\",\"regex[$dr, $bdr]:dr is (\\\\S+).+?bdr is (\\\\S+)\",\"regex[$option]:options is (\\\\S+)\",\"regex[$neighbor_state, $neighbor_up_time]:neighbor is (\\\\S+)(?:\\\\s*for\\\\s*(\\\\S+))?\",\"regex[$last_hello]:time since last hello (\\\\S+)\",\"regex[$retransmission_queue_length]:retransmission queue length is (\\\\d+)\",\"regex[$bfd_session_state]:bfd session state:\\\\s*(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbor_addr:string\",\"$interface_addr:string\",\"$area_id:string\",\"$interface:string\",\"$neighbor_pri:string\",\"$state:string\",\"$state_change_times:string\",\"$dr:string\",\"$bdr:string\",\"$option:string\",\"$neighbor_state:string\",\"$neighbor_up_time:string\",\"$last_hello:string\",\"$retransmission_queue_length:string\",\"$bfd_session_state:string\"]},\"xxid\":\"43bb5f11-f1e9-eecb-75d8-7575fd6eba2f\"}]},\"xxid\":\"bd1664cc-cb3d-0a09-44ac-d41dd0bbbba4\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$intf\",\"$interface\",\"$neighbor_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_nbr_detail.$neighbor_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 15,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "neighbor_pri",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "state_change_times",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "option",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "neighbor_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "neighbor_up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "last_hello",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "retransmission_queue_length",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "bfd_session_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$intf",
+                    "$neighbor_addr"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_nbr_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "cc8d30928c60b8d536ec3cf8e99d3993",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_nbr_detail",
+            "dataType": "paragraph",
+            "desc": "OSPF neighbor detail table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface",
+                    "$neighbor_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail",
+            "intfKey": false,
+            "name": "ospf_nbr_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_nbr_detail.$neighbor_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$neighbor_addr",
+            "intfKey": false,
+            "name": "$neighbor_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$interface_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$interface_addr",
+            "intfKey": false,
+            "name": "$interface_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$area_id",
+            "dataType": "string",
+            "desc": "Area ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbr_detail.$neighbor_pri",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$neighbor_pri",
+            "intfKey": false,
+            "name": "$neighbor_pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$state",
+            "dataType": "string",
+            "desc": "OSPF state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$state_change_times",
+            "dataType": "string",
+            "desc": "OSPF state change times.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$state_change_times",
+            "intfKey": false,
+            "name": "$state_change_times",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$dr",
+            "dataType": "string",
+            "desc": "DR.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$bdr",
+            "dataType": "string",
+            "desc": "BDR.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$bdr",
+            "intfKey": false,
+            "name": "$bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$option",
+            "dataType": "string",
+            "desc": "Options.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$option",
+            "intfKey": false,
+            "name": "$option",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$neighbor_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$neighbor_state",
+            "intfKey": false,
+            "name": "$neighbor_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$neighbor_up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$neighbor_up_time",
+            "intfKey": false,
+            "name": "$neighbor_up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$last_hello",
+            "dataType": "string",
+            "desc": "Time since last hello.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$last_hello",
+            "intfKey": false,
+            "name": "$last_hello",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$retransmission_queue_length",
+            "dataType": "string",
+            "desc": "Retransmission queue length.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$retransmission_queue_length",
+            "intfKey": false,
+            "name": "$retransmission_queue_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_detail.$bfd_session_state",
+            "dataType": "string",
+            "desc": "BFD session state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_detail.$bfd_session_state",
+            "intfKey": false,
+            "name": "$bfd_session_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,228 @@
+{
+    "_id": "1baef04a-72aa-7931-b398-f9faa0592b2c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "net sh int all",
+    "createTime": {
+        "$date": 1580488016223
+    },
+    "description": "Retrieves interfaces brief information like state, name, MTU Mode, LLDP, and Summary  (i.e., IP address )",
+    "devTypes": [
+        10674
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n[\n]\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\ndef BuildParameters(context, device_name, params):\n    return (True, [])\n\t\ndef RetrieveData(devices):\n    pass",
+    "samples": [
+        {
+            "content": "cumulus@cumulus:~$net sh int all\r\nState  Name  Spd  MTU    Mode           LLDP                         Summary\r\n-----  ----  ---  -----  -------------  ---------------------------  ---------------------\r\nUP     lo    N/A  65536  Loopback                                    IP: 127.0.0.1/8\r\n       lo                                                            IP: ::1/128\r\nUP     eth0  1G   1500   Mgmt           ZH_CR1 (GigabitEthernet0/0)  IP: 192.168.180.12/24\r\nADMDN  swp1  N/A  1500   NotConfigured\r\nADMDN  swp2  N/A  1500   NotConfigured\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.interfaces.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"interfaces\",\"headers\":\"State;Name;Spd;MTU;Mode;LLDP;Summary\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"State:$string:state;Name:$string:interface;Spd:$string:speed;MTU:$int:mtu;Mode:$string:mode;LLDP:$string:lldp;Summary:$string:summary\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$state:string\",\"$interface:string\",\"$speed:string\",\"$mtu:int\",\"$mode:string\",\"$lldp:string\",\"$summary:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"b2e7381e-2242-44e6-5ce7-7cc9cc99deb7\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$name\",\"$interface\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "speed",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "lldp",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "summary",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$name"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "interfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a73637203f34ae50cbe7542d88e98615",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "interfaces",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "interfaces",
+            "intfKey": false,
+            "name": "interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "interfaces.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interfaces.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interfaces.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interfaces.$speed",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interfaces.$speed",
+            "intfKey": false,
+            "name": "$speed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$mtu",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interfaces.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interfaces.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$lldp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interfaces.$lldp",
+            "intfKey": false,
+            "name": "$lldp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$summary",
+            "dataType": "string",
+            "desc": "interface IP (IPv6 and/or IPv$)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interfaces.$summary",
+            "intfKey": false,
+            "name": "$summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

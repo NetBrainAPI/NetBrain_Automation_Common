@@ -1,0 +1,216 @@
+{
+    "_id": "410a5b11-1f1d-e7bf-3490-0f45eab70df8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mroute",
+    "createTime": {
+        "$date": 1590696348547
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip mroute",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip mroute\r\n \r\nTotal 2 Mroutes\r\nGroup Address   Src Address      Upstream Nbr    Route Address      Proto\r\n--------------+---------------+---------------+----------------+----------\r\n225.0.0.0       214.0.0.2/32      0.0.0.0       214.0.0.0/24        PIM-SM\r\n225.0.0.1       214.0.0.2/32      0.0.0.0       214.0.0.0/24        PIM-DM",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total $int:num_mroutes Mroutes\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num_mroutes:int\"]},\"xxid\":\"1f8ec9c7-d911-ccfb-0268-6565292a4abb\"},{\"type\":\"3\",\"name\":\"mroute_table\",\"headers\":\"Group Address;Src Address;Upstream Nbr;Route Address;Proto\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Group Address:$string:group_addr;Src Address:$string:src_addr;Upstream Nbr:$string:upstream_nbr;Route Address:$string:route_addr;Proto:$string:proto\",\"leftAlign\":\"1\",\"alignType\":\"3\",\"alignRange\":\"1;1;1;1;1\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$group_addr:string\",\"$src_addr:string\",\"$upstream_nbr:string\",\"$route_addr:string\",\"$proto:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"4d20444b-3879-31f3-defd-2575afff7c41\",\"hashColumns\":[\"$group_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.mroute_table.$group_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "num_mroutes",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "src_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "upstream_nbr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "route_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "proto",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group_addr"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "mroute_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8918bfcd1dd7387d54030ca0f53d2010",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$num_mroutes",
+            "dataType": "int",
+            "desc": "Total number of multicast routing tables",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$num_mroutes",
+            "intfKey": false,
+            "name": "$num_mroutes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute_table",
+            "dataType": "table",
+            "desc": "Multicast routing table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mroute_table",
+            "intfKey": false,
+            "name": "mroute_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mroute_table.$group_addr",
+            "dataType": "string",
+            "desc": "The IP multicast group address for this entry.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute_table.$group_addr",
+            "intfKey": false,
+            "name": "$group_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute_table.$src_addr",
+            "dataType": "string",
+            "desc": "The network address which identifies the source for this entry.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute_table.$src_addr",
+            "intfKey": false,
+            "name": "$src_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute_table.$upstream_nbr",
+            "dataType": "string",
+            "desc": "The address of the upstream neighbor from which IP datagrams from these sources to this multicast address are received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute_table.$upstream_nbr",
+            "intfKey": false,
+            "name": "$upstream_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute_table.$route_addr",
+            "dataType": "string",
+            "desc": "The address portion of the route used to find the upstream or parent interface for this multicast forwarding entry.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute_table.$route_addr",
+            "intfKey": false,
+            "name": "$route_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute_table.$proto",
+            "dataType": "string",
+            "desc": "The multicast routing protocol through which this multicast forwarding entry was learned (i.e., DVMRP, PIM-SM or PIM-DM).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute_table.$proto",
+            "intfKey": false,
+            "name": "$proto",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

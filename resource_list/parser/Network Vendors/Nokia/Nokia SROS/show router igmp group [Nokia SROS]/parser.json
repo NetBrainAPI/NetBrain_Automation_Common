@@ -1,0 +1,198 @@
+{
+    "_id": "cc3a99f3-7a09-ca19-ffe6-dfb39c45fa1e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router igmp group",
+    "createTime": {
+        "$date": 1583869547386
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router igmp group",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:vRR# show router igmp group \r\n===============================================================================\r\nIGMP Interface Groups\r\n===============================================================================\r\n \r\n(172.22.184.197,239.0.0.3)                                UpTime: 0d 00:02:44\r\n    Fwd List  : to-r3 \r\n \r\n(172.22.184.198,239.0.0.3)                                UpTime: 0d 00:02:29\r\n    Fwd List  : to-r3 \r\n-------------------------------------------------------------------------------\r\nEntries : 2\r\n===============================================================================\r\nIGMP Host Groups\r\n===============================================================================\r\nNo Matching Entries\r\n===============================================================================\r\nIGMP SAP Groups\r\n===============================================================================\r\nNo Matching Entries\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"igmp_group_filter\",\"startLine\":\"IGMP Interface Groups\",\"endLine\":\"-------------------------------------------------------------------------------\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":{\"excludeLine\":\"===============================================================================\"},\"filterLoop\":\"1\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"c5f88561-8705-d98f-018a-616744d48c72\"},{\"type\":\"4\",\"name\":\"igmp_group_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$igmp_group]:^(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$uptime]:UpTime:\\\\s+(.+)\",\"regex[$fwd_list]:Fwd List  :\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$igmp_group:string\",\"$uptime:string\",\"$fwd_list:string\"]},\"xxid\":\"d41e363a-5951-590c-f10a-23cb7d8579c9\"}]},\"xxid\":\"211c2289-5390-8e25-5518-5546e1d172f5\",\"hashColumns\":[\"$igmp_group\",\"$fwd_list\"],\"hashSort\":false}]},\"xxid\":\"d7d1efd4-f67e-f1ed-6063-f8f1d19bda81\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"598de094-8ff4-c82c-496d-dae39028b139\"}]}",
+            "tableKeys": [
+                "_original_result.igmp_group_filter.igmp_group_table.$igmp_group"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "igmp_group_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "igmp_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "fwd_list",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$fwd_list",
+                    "$igmp_group"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "igmp_group_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "79bcc1d3b3733bfa34a25d15bf5ade80",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_group_filter",
+            "dataType": "filter",
+            "desc": "igmp group filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_group_filter",
+            "intfKey": false,
+            "name": "igmp_group_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_group_table",
+            "dataType": "paragraph",
+            "desc": "igmp group table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$igmp_group",
+                    "$fwd_list"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_group_filter.igmp_group_table",
+            "intfKey": false,
+            "name": "igmp_group_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "igmp_group_table.$igmp_group",
+            "dataType": "string",
+            "desc": "Displays the IP multicast sources corresponding to the IP multicast groups which are statically configured.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_group_filter.igmp_group_table.$igmp_group",
+            "intfKey": false,
+            "name": "$igmp_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_group_table.$uptime",
+            "dataType": "string",
+            "desc": "Up time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_group_filter.igmp_group_table.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_group_table.$fwd_list",
+            "dataType": "string",
+            "desc": "Displays the list of interfaces in the forward list",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_group_filter.igmp_group_table.$fwd_list",
+            "intfKey": false,
+            "name": "$fwd_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

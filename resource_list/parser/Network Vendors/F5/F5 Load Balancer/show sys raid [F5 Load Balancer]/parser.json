@@ -1,0 +1,192 @@
+{
+    "_id": "11c1c49a-539b-6422-a1e0-bfb77e088100",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys raid",
+    "createTime": {
+        "$date": 1579705218513
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys raid",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@(NB-F5-02)(cfg-sync Standalone)(Active)(/Common)(tmos)# show sys raid\r\n\r\n---------------------------------------------------------------\r\nSys::Raid::Disk\r\nName  Serial Number  Array   Array Status  Model\r\n                     Member                 \r\n---------------------------------------------------------------\r\nHD1   VMware-sda     no      undefined     VMware  Virtual disk\r\nHD2   VMware-sdb     no      undefined     VMware  Virtual disk",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"raid_table\",\"headers\":\"Name;Serial Number;Array;Array Status;Model\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":2,\"headerToVariables\":\"Name:$string:name;Serial Number:$string:serial_number;Array Status:$string:array_status;Model:$string:model;Array:$string:array_member\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$name:string\",\"$serial_number:string\",\"$array_status:string\",\"$model:string\",\"$array_member:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"e498c6e8-8db0-d546-7bbb-755b4fda88f3\",\"interfaceKey\":\"\",\"hashColumns\":[\"$name\",\"$serial_number\",\"$array_number\",\"$array_status\"],\"HashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.raid_table.$name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "serial_number",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "array_member",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "array_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "model",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$array_number",
+                    "$array_status",
+                    "$name",
+                    "$serial_number"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "raid_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a51ad6c7d0d83e01d555a9b6f8001b92",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "raid_table",
+            "dataType": "table",
+            "desc": "Raid Detail Table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name",
+                    "$serial_number",
+                    "$array_number",
+                    "$array_status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "raid_table",
+            "intfKey": false,
+            "name": "raid_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "raid_table.$name",
+            "dataType": "string",
+            "desc": "Disk name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "raid_table.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "raid_table.$serial_number",
+            "dataType": "string",
+            "desc": "The serial number of disk.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "raid_table.$serial_number",
+            "intfKey": false,
+            "name": "$serial_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "raid_table.$array_status",
+            "dataType": "string",
+            "desc": "The array status of disk.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "raid_table.$array_status",
+            "intfKey": false,
+            "name": "$array_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "raid_table.$model",
+            "dataType": "string",
+            "desc": "The model of disk.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "raid_table.$model",
+            "intfKey": false,
+            "name": "$model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "raid_table.$array_member",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "raid_table.$array_member",
+            "intfKey": false,
+            "name": "$array_member",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

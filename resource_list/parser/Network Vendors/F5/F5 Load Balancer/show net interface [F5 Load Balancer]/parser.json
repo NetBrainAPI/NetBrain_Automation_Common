@@ -1,0 +1,309 @@
+{
+    "_id": "cfc3ad8a-72db-9e00-8484-711d6efdb93f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show net interface",
+    "createTime": {
+        "$date": 1579625994849
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow net interface",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@(NB-F5-02)(cfg-sync Standalone)(Active)(/Common)(tmos)# show net interface\r\n\r\n-----------------------------------------------------------------\r\nNet::Interface\r\nName  Status   Bits    Bits   Pkts    Pkts  Drops  Errs     Media\r\n                 In     Out     In     Out                       \r\n-----------------------------------------------------------------\r\n1.1       up  80.4G   48.0M  52.9M  100.0K      0     0      none\r\n1.2   uninit      0       0      0       0      0     0      none\r\n1.3   uninit      0       0      0       0      0     0      none\r\nmgmt      up  16.6G  171.2M  28.8M  168.6K      0     0  100TX-FD\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.interface_status_filter.interface_status.$name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"interface_status_filter\",\"startLine\":\"In     Out     In     Out\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":{\"excludeLine\":\"-----------------------------------------------------------------\"},\"filterLoop\":\"1\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"9d5e06a5-4d39-13b0-0ce3-2ca020032167\"},{\"type\":\"4\",\"name\":\"interface_status\",\"keyVariables\":\"\",\"startLine\":\"regex[$name, $status, $bits_in, $bits_out, $pkts_in, $pkts_out, $drops, $errs, $media]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$name:string\",\"$status:string\",\"$bits_in:string\",\"$bits_out:string\",\"$pkts_in:string\",\"$pkts_out:string\",\"$drops:string\",\"$errs:string\",\"$media:string\"]},\"xxid\":\"c8d98a60-df2d-5f19-8844-698b9f09c77e\"}]},\"xxid\":\"20e1905b-0512-1d6b-60c9-1c1146d629a0\",\"interfaceKey\":\"$name\",\"hashColumns\":[\"$name\",\"$status\",\"$drops\"],\"hashSort\":false}]},\"xxid\":\"210ae0ff-6bc8-7229-bfb5-262f975ac9ed\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"0a39df18-cca9-914c-5ac5-dd1bb74f5323\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "interface_status_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "bits_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "bits_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "pkts_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "pkts_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "drops",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "errs",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "media",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$drops",
+                    "$name",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "interface_status",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1baad1493a4e79953f3631761c68cb06",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "interface_status_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter",
+            "intfKey": false,
+            "name": "interface_status_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name",
+                    "$status",
+                    "$drops"
+                ],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status",
+            "intfKey": false,
+            "name": "interface_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "interface_status.$name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interface_status.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status.$bits_in",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$bits_in",
+            "intfKey": false,
+            "name": "$bits_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status.$bits_out",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$bits_out",
+            "intfKey": false,
+            "name": "$bits_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status.$pkts_in",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$pkts_in",
+            "intfKey": false,
+            "name": "$pkts_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status.$pkts_out",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$pkts_out",
+            "intfKey": false,
+            "name": "$pkts_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status.$drops",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$drops",
+            "intfKey": false,
+            "name": "$drops",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status.$errs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$errs",
+            "intfKey": false,
+            "name": "$errs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_status.$media",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_status_filter.interface_status.$media",
+            "intfKey": false,
+            "name": "$media",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

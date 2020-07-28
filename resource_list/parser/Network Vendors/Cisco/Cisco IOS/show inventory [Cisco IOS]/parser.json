@@ -1,0 +1,204 @@
+{
+    "_id": "8449cf92-3237-4b4a-bfd5-e68abfbcc767",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show inventory",
+    "createTime": {
+        "$date": 1580125028521
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand: \nshow inventory",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R5>show inventory\r\nNAME: \"Chassis\", DESCR: \"Cisco 7206VXR, 6-slot chassis\"\r\nPID: CISCO7206VXR      , VID:    , SN: 4279256517 \r\n\r\nNAME: \"NPE400 0\", DESCR: \"Cisco 7200VXR Network Processing Engine NPE-400\"\r\nPID: NPE-400           , VID:    , SN: 11111111   \r\n\r\nNAME: \"module 0\", DESCR: \"I/O Dual FastEthernet Controller\"\r\nPID: C7200-I/O-2FE/E   , VID:    , SN: 00000000   \r\n\r\nNAME: \"disk0\", DESCR: \"Cisco 7200 I/O PCMCIA Flash Disk, 48M\"\r\nPID: MEM-I/O-FLD48M    , VID:    , SN:            \r\n\r\nNAME: \"module 1\", DESCR: \"Ethernet\"\r\nPID: PA-4E=            , VID:    , SN: 4294967295 \r\n\r\nNAME: \"Power Supply 1\", DESCR: \"Cisco 7200 AC Power Supply\"\r\nPID: PWR-7200-AC       , VID:    , SN:            \r\n\r\nNAME: \"Power Supply 2\", DESCR: \"Cisco 7200 AC Power Supply\"\r\nPID: PWR-7200-AC       , VID:    , SN:            ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"inventory\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^Name\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$name]:NAME:\\\\s+\\\"([^\\\"]+)\\\"\",\"regex[$desc]:DESCR:\\\\s+\\\"([^\\\"]+)\\\"\",\"regex[$pid]:PID:\\\\s+([^,]+)\",\"regex[$vid]:VID:\\\\s+([^,]+)\",\"regex[$sn]:SN:\\\\s+([^$]+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$name:string\",\"$desc:string\",\"$pid:string\",\"$vid:string\",\"$sn:string\"]},\"xxid\":\"83f88d9f-205f-7854-c46c-dd8a6659b1ea\"}]},\"xxid\":\"5d9a0b8e-1c00-608a-dec3-8985d3e30cc7\",\"hashColumns\":[\"$pid\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"b8ac0194-3b7b-9789-343b-cb2266c94a42\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "desc",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "pid",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vid",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sn",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$pid"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "inventory",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1155d0d8139471b1159dcc909ccdce68",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "inventory",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$pid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "inventory",
+            "intfKey": false,
+            "name": "inventory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "inventory.$name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory.$desc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory.$desc",
+            "intfKey": false,
+            "name": "$desc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory.$pid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory.$pid",
+            "intfKey": false,
+            "name": "$pid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory.$vid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory.$vid",
+            "intfKey": false,
+            "name": "$vid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "inventory.$sn",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "inventory.$sn",
+            "intfKey": false,
+            "name": "$sn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

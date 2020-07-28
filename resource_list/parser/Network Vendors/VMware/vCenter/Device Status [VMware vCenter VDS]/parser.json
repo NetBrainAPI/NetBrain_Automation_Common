@@ -1,0 +1,103 @@
+{
+    "_id": "c775afa2-4bbe-879d-4073-71a6977cf6d5",
+    "author": "NetBrain",
+    "bizType": "d198c0de-1232-499e-8cc2-91f316cefbe3",
+    "command": "",
+    "createTime": {
+        "$date": 1560793308069
+    },
+    "description": "",
+    "devTypes": [
+        13004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    node_dn = GetDeviceProperties(context, device_name, {'techName': 'ESXI', 'paramType': 'SDN', 'params':['moid', 'nbPathSchema']})\r\n    moid = node_dn['params'].get('moid')\r\n    rtn_params = { 'name':device_name, 'moid' : moid, 'vmi_type': \"VmwareDistributedVirtualSwitch\"}\r\n    return rtn_params\r\n\r\n\r\ndef RetrieveData(rtn_params):\r\n    property_paths = [\"runtime\", \"hostMemberRuntime\"]\r\n    rtn_params['property_paths'] = property_paths\r\n    resp = get_vmi_object_json_data(rtn_params)\r\n    host_members = json.loads(resp)\r\n    host_states = {}\r\n    for host_member in host_members:\r\n        if 'host' in host_member and 'status' in host_member:\r\n            host_moid = host_member['host'].split(':')[-1]\r\n            status = host_member['status']\r\n            host_params = rtn_params\r\n            host_params['moid'] = host_moid\r\n            host_params['vmi_type'] = 'HostSystem'\r\n            host_params['property_names'] = ['name']\r\n            host_params['property_paths'] = []\r\n            resp_host = json.loads(get_vmi_object(host_params))\r\n            if resp_host.get('name', ''):\r\n                host_name = resp_host.get('name')\r\n                host_states[host_name] = status\r\n    return json.dumps(host_states)\r\n",
+    "samples": [
+        {
+            "content": "{\n    \"192.168.48.104\": \"up\",\n    \"192.168.48.103\": \"up\"\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"dev_status\\\", \\\"type\\\": \\\"string\\\"},\\n    {\\\"name\\\": \\\"cpu\\\", \\\"type\\\": \\\"double\\\"},\\n    {\\\"name\\\": \\\"memory\\\", \\\"type\\\": \\\"double\\\"}\\n]\\nEnd Declare\\n\\n'''\\nimport json\\ndef ParseText(_original_result):\\n    dev_status = 'Up'\\n    resp = json.loads(_original_result)\\n    table_dict = {\\n        \\\"name\\\": [],\\n        \\\"status\\\": []\\n        }\\n    for key, value in resp.items():\\n        if key == 'error log':\\n            continue\\n        table_dict['name'].append(key)\\n        table_dict['status'].append(value)\\n        if value.lower() != 'up':\\n            dev_status = 'Down'\\n    rtn = {}\\n    rtn['dev_status'] = dev_status\\n    rtn['cpu'] = None\\n    rtn['memory'] = None\\n    return rtn\",\"variableTypes\":{\"variableType\":[{\"name\":\"$cpu\",\"type\":\"double\"},{\"name\":\"$dev_status\",\"type\":\"string\"},{\"name\":\"$memory\",\"type\":\"double\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"de38efb6-6fc9-e7e7-2f08-e898f73017f2\",\"interfaceKey\":{},\"hashColumns\":[]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cpu",
+                "type": 2
+            },
+            {
+                "index": 1,
+                "name": "dev_status",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "memory",
+                "type": 2
+            }
+        ]
+    },
+    "structureId": "80517e4b7efc3c78a2cf55b9d0f860f3",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$cpu",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cpu",
+            "intfKey": false,
+            "name": "$cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$dev_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$dev_status",
+            "intfKey": false,
+            "name": "$dev_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$memory",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$memory",
+            "intfKey": false,
+            "name": "$memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

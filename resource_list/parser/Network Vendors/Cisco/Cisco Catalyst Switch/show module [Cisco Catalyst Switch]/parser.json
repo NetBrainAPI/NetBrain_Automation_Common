@@ -1,0 +1,499 @@
+{
+    "_id": "45b80e83-4580-a287-a231-acf889160b71",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show module",
+    "createTime": {
+        "$date": 1591100927115
+    },
+    "description": "Device Type:\nCisco Catalyst\nCommand:\n       show module",
+    "devTypes": [
+        2060
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BJ-Cat-5000> (enable) show module\r\nMod Module-Name         Ports Module-Type           Model    Serial-Num Status\r\n--- ------------------- ----- --------------------- --------- --------- -------\r\n1                       2     100BaseTX Supervisor  WS-X5509  008147975 ok\r\n2                       1     Route Switch          WS-X5302  015937415 ok\r\n3                       24    10/100BaseTX Ethernet WS-X5225R 015414599 ok\r\n\r\nMod MAC-Address(es)                        Hw     Fw         Sw\r\n--- -------------------------------------- ------ ---------- -----------------\r\n1   00-10-0b-0e-24-00 to 00-10-0b-0e-27-ff 2.1    2.4(1)     4.1(3)\r\n2   00-e0-1e-90-c6-1c to 00-e0-1e-90-c6-1d 7.6    20.20      12.0(7)W5(16) \r\n3   00-d0-d3-d2-43-48 to 00-d0-d3-d2-43-5f 3.3    4.3(1)     4.1(3)\r\n\r\nMod Sub-Type Sub-Model Sub-Serial Sub-Hw\r\n--- -------- --------- ---------- ------\r\n1   EARL 1+  WS-F5511  0007568278 1.0\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"mod_summary_table\",\"headers\":\"Mod;Module-Name;Ports;Module-Type;Model;Serial-Num;Status\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Mod:$string:mod;Module-Name:$string:module_name;Ports:$int:ports;Module-Type:$string:module_type;Serial-Num:$string:serial_num;Status:$string:status\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$mod:string\",\"$module_name:string\",\"$ports:int\",\"$module_type:string\",\"$serial_num:string\",\"$status:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"8982efdd-6d26-5309-1fe9-13bed570f2c3\",\"hashColumns\":[\"$module_name\",\"$status\",\"$serial_num\"]},{\"type\":\"3\",\"name\":\"mod_version_table\",\"headers\":\"Mod;MAC-Address(es);Hw;Fw;Sw\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Mod:$string:mod;MAC-Address(es):$string:mac_address_es_;Hw:$string:hw;Fw:$string:fw;Sw:$string:sw\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$mod:string\",\"$mac_address_es_:string\",\"$hw:string\",\"$fw:string\",\"$sw:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"c2179c09-fddb-86f7-9300-df9ec32a38b1\",\"hashColumns\":[\"$mod\",\"$sw\"]},{\"type\":\"3\",\"name\":\"sub_mod_table\",\"headers\":\"Mod;Sub-Type;Sub-Model;Sub-Serial;Sub-Hw\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Mod:$string:mod;Sub-Type:$string:sub_type;Sub-Model:$string:sub_model;Sub-Serial:$string:sub_serial;Sub-Hw:$string:sub_hw\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$mod:string\",\"$sub_type:string\",\"$sub_model:string\",\"$sub_serial:string\",\"$sub_hw:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"eb462d4f-a5b7-2220-22e1-e467ad51ee1a\",\"hashColumns\":[\"$mod\",\"$sub_serial\"]}]}",
+            "tableKeys": [
+                "_original_result.mod_summary_table.$module_name",
+                "_original_result.mod_summary_table.$status",
+                "_original_result.mod_version_table.$mod",
+                "_original_result.mod_version_table.$sw",
+                "_original_result.sub_mod_table.$mod",
+                "_original_result.sub_mod_table.$sub_serial",
+                "_original_result.mod_summary_table.$serial_num"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "module_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ports",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "module_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "serial_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$module_name",
+                    "$serial_num",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "mod_summary_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "mac_address_es_",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "hw",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "fw",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sw",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$mod",
+                    "$sw"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "mod_version_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "sub_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "sub_model",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "sub_serial",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sub_hw",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$mod",
+                    "$sub_serial"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "sub_mod_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "043de0d1a9532a04a0dd06a87d5e1b46",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mod_summary_table",
+            "dataType": "table",
+            "desc": "Summary information of module",
+            "extraInfo": {
+                "hashColumns": [
+                    "$module_name",
+                    "$status",
+                    "$serial_num"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table",
+            "intfKey": false,
+            "name": "mod_summary_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mod_summary_table.$mod",
+            "dataType": "string",
+            "desc": "Module slot number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$module_name",
+            "dataType": "string",
+            "desc": "Module name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$module_name",
+            "intfKey": false,
+            "name": "$module_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$ports",
+            "dataType": "int",
+            "desc": "Module ports.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$module_type",
+            "dataType": "string",
+            "desc": "Module type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$module_type",
+            "intfKey": false,
+            "name": "$module_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$serial_num",
+            "dataType": "string",
+            "desc": "Module serial number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$serial_num",
+            "intfKey": false,
+            "name": "$serial_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$status",
+            "dataType": "string",
+            "desc": "Module operation status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table",
+            "dataType": "table",
+            "desc": "Software information of module",
+            "extraInfo": {
+                "hashColumns": [
+                    "$mod",
+                    "$sw"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table",
+            "intfKey": false,
+            "name": "mod_version_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mod_version_table.$mod",
+            "dataType": "string",
+            "desc": "Module slot number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table.$mac_address_es_",
+            "dataType": "string",
+            "desc": "Module MAC address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$mac_address_es_",
+            "intfKey": false,
+            "name": "$mac_address_es_",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table.$hw",
+            "dataType": "string",
+            "desc": "Module hardware version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$hw",
+            "intfKey": false,
+            "name": "$hw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table.$fw",
+            "dataType": "string",
+            "desc": "Module framework version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$fw",
+            "intfKey": false,
+            "name": "$fw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table.$sw",
+            "dataType": "string",
+            "desc": "Module software version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$sw",
+            "intfKey": false,
+            "name": "$sw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sub_mod_table",
+            "dataType": "table",
+            "desc": "Sub module information.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$mod",
+                    "$sub_serial"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sub_mod_table",
+            "intfKey": false,
+            "name": "sub_mod_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sub_mod_table.$mod",
+            "dataType": "string",
+            "desc": "Module slot number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sub_mod_table.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sub_mod_table.$sub_type",
+            "dataType": "string",
+            "desc": "Sub module type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sub_mod_table.$sub_type",
+            "intfKey": false,
+            "name": "$sub_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sub_mod_table.$sub_model",
+            "dataType": "string",
+            "desc": "Sub module model.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sub_mod_table.$sub_model",
+            "intfKey": false,
+            "name": "$sub_model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sub_mod_table.$sub_serial",
+            "dataType": "string",
+            "desc": "Sub module serial number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sub_mod_table.$sub_serial",
+            "intfKey": false,
+            "name": "$sub_serial",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sub_mod_table.$sub_hw",
+            "dataType": "string",
+            "desc": "Sub module hardware version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sub_mod_table.$sub_hw",
+            "intfKey": false,
+            "name": "$sub_hw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

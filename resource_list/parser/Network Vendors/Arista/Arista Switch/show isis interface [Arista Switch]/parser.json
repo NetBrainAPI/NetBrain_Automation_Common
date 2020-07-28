@@ -1,0 +1,593 @@
+{
+    "_id": "c5fd9660-8854-4113-dfb7-0b3eaf238a1b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis interface",
+    "createTime": {
+        "$date": 1581007233813
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow isis interface",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "switch>show isis interface\r\n \r\nISIS Instance: Osiris\r\n  Interface Vlan20:\r\n    Index: 59 SNPA: 0:1c:73:c:5:7f\r\n    MTU: 1497 Type: broadcast\r\n    Level 2:\r\n      Metric: 10, Number of adjacencies: 2\r\n      LAN-ID: 1212.1212.1212, Priority: 64\r\n      DIS: 1212.1212.1212, DIS Priority: 64\r\n  Interface Ethernet30:\r\n    Index: 36 SNPA: 0:1c:73:c:5:7f\r\n    MTU: 1497 Type: broadcast\r\n    Level 2:\r\n      Metric: 10, Number of adjacencies: 1\r\n      LAN-ID: 3030.3030.3030, Priority: 64\r\n      DIS: 3030.3030.3030, DIS Priority: 64",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_instance.isis_intfs.$intf",
+                "_original_result.isis_instance.isis_intfs.isis_intf_level.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_instance\",\"keyVariables\":null,\"startLine\":\"ISIS Instance: $isis_instance\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$isis_instance:string\"]},\"xxid\":\"b1aaa816-5b51-46cc-8d08-29fda725513f\"},{\"type\":\"4\",\"name\":\"isis_intfs\",\"keyVariables\":\"\",\"startLine\":\"Interface $intf\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:index]:Index:\\\\s+(\\\\S+)\",\"regex[$snpa]:SNPA:\\\\s+(\\\\S+)\",\"regex[$int:mtu]:MTU:\\\\s+(\\\\S+)\",\"regex[$type]:Type:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$index:int\",\"$snpa:string\",\"$mtu:int\",\"$type:string\"]},\"xxid\":\"1aa8dded-ecd8-9f95-0951-42265594a4d2\"},{\"type\":\"4\",\"name\":\"isis_intf_level\",\"keyVariables\":\"\",\"startLine\":\"Level $level:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:metric, $int:adjacencies_num]:Metric:\\\\s+(\\\\S+),\\\\s+Number of adjacencies:\\\\s+(\\\\S+)\",\"regex[$lan_id, $int:priority]:LAN-ID:\\\\s+(\\\\S+),\\\\s+Priority:\\\\s+(\\\\S+)\",\"regex[$dis, $int:dis_priority]:DIS:\\\\s+(\\\\S+),\\\\s+DIS Priority:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level:string\",\"$metric:int\",\"$adjacencies_num:int\",\"$lan_id:string\",\"$priority:int\",\"$dis:string\",\"$dis_priority:int\"]},\"xxid\":\"625a3cd0-63c4-87e0-05c1-86b93534b372\"}]},\"xxid\":\"506b1c57-2f79-753e-df8a-f4e25ed33caa\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]}]},\"xxid\":\"ec2a8f75-576c-3d39-91de-0a0e91c9fc89\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]}]},\"xxid\":\"df9b547f-a5cf-8de1-255f-14a7771a0620\",\"hashColumns\":[]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"992d5a7a-16f1-6d64-dc43-0b4150c6f1a3\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "isis_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_instance",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "index",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "isis_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_intfs",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "adjacencies_num",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "lan_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "dis",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "dis_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "index",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "isis_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "isis_intf_level",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5e13bd8123e3c8fc88d2c5f0436ef58c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_instance",
+            "dataType": "paragraph",
+            "desc": "ISIS instance table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance",
+            "intfKey": false,
+            "name": "isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_instance.$isis_instance",
+            "dataType": "string",
+            "desc": "ISIS Process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs",
+            "dataType": "paragraph",
+            "desc": "ISIS process id table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs",
+            "intfKey": false,
+            "name": "isis_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_intfs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_intfs.$index",
+            "dataType": "int",
+            "desc": "ISIS Index",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.$index",
+            "intfKey": false,
+            "name": "$index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$snpa",
+            "dataType": "string",
+            "desc": "Data-link address (also known as the Subnetwork Point of Attachment [SNPA]) of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$mtu",
+            "dataType": "int",
+            "desc": "LSP maximum transmission unit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$type",
+            "dataType": "string",
+            "desc": "Levels the interface is running on (circuit-type configuration) which may be a subset of levels on the router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$isis_instance",
+            "dataType": "string",
+            "desc": "ISIS Process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level",
+            "intfKey": false,
+            "name": "isis_intf_level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_intf_level.$level",
+            "dataType": "string",
+            "desc": "\"Level:\n1 Level 1 only\n2 Level 2 only\n3 Level 1 and Level 2\nAn exclamation point (!) preceding the level number indicates that the adjacency is missing an IP address.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$metric",
+            "dataType": "int",
+            "desc": "IS-IS Level 1 metric for the cost of the adjacency between the originating router and the advertised neighbor, or the metric of the cost to get from the advertising router to the advertised destination (which can be an IP address, an end system (ES), or a connectionless network service (CLNS) prefix).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$metric",
+            "intfKey": false,
+            "name": "$metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$adjacencies_num",
+            "dataType": "int",
+            "desc": "Number of L2 adjacencies over this interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$adjacencies_num",
+            "intfKey": false,
+            "name": "$adjacencies_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$lan_id",
+            "dataType": "string",
+            "desc": "LAN-ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$lan_id",
+            "intfKey": false,
+            "name": "$lan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$priority",
+            "dataType": "int",
+            "desc": "Priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$dis",
+            "dataType": "string",
+            "desc": "DIS",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$dis",
+            "intfKey": false,
+            "name": "$dis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$dis_priority",
+            "dataType": "int",
+            "desc": "DIS priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$dis_priority",
+            "intfKey": false,
+            "name": "$dis_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$intf",
+            "dataType": "string",
+            "desc": "Interface through which the adjacency is made.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_intf_level.$index",
+            "dataType": "int",
+            "desc": "ISIS Index",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$index",
+            "intfKey": false,
+            "name": "$index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$snpa",
+            "dataType": "string",
+            "desc": "Data-link address (also known as the Subnetwork Point of Attachment [SNPA]) of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$mtu",
+            "dataType": "int",
+            "desc": "LSP maximum transmission unit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$type",
+            "dataType": "string",
+            "desc": "Levels the interface is running on (circuit-type configuration) which may be a subset of levels on the router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intf_level.$isis_instance",
+            "dataType": "string",
+            "desc": "ISIS Process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.isis_intfs.isis_intf_level.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

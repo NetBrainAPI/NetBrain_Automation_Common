@@ -1,0 +1,361 @@
+{
+    "_id": "043646cb-3229-4ef7-e875-8d788de9be13",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show eigrp neighbors",
+    "createTime": {
+        "$date": 1579798559339
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow eigrp neighbors",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasEIGRPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-asav-952# show eigrp neighbors \r\nEIGRP-IPv4 Neighbors for AS(1)\r\nH   Address                 Interface       Hold Uptime   SRTT   RTO   Q  Seq\r\n                                            (sec)         (ms)        Cnt Num\r\n0   172.27.128.129          inside           11  00:00:31 22     200  0     3\r\n0   172.27.128.128          outside           11  00:00:31 22     200  0     3\r\nEIGRP-IPv4 Neighbors for AS(2)\r\nH   Address                 Interface       Hold Uptime   SRTT   RTO   Q  Seq\r\n                                            (sec)         (ms)        Cnt Num\r\n0   172.27.128.129          inside           11  00:00:31 22     200  0     3\r\n0   172.27.128.128          outside           11  00:00:31 22     200  0     3\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.eigrp_as.eigrp_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"eigrp_as\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:as]:EIGRP-IPv4\\\\s+Neighbors\\\\s+for\\\\s+AS\\\\((\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$as:int\"]},\"xxid\":\"5278eae7-5f3c-e837-0592-f398131d254b\"},{\"type\":\"4\",\"name\":\"eigrp_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[$h,$addr,$intf,$int:hold,$uptime,$int:srtt,$int:rto,$int:q_cnt,$int:seq_num]:(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$h:string\",\"$addr:string\",\"$intf:string\",\"$hold:int\",\"$uptime:string\",\"$srtt:int\",\"$rto:int\",\"$q_cnt:int\",\"$seq_num:int\"]},\"xxid\":\"2a324ee9-3180-0ce1-47ed-856b379c8a13\"}]},\"xxid\":\"c051c2c0-8158-19ac-63c9-3470ba5a6d2a\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$q_cnt\"]}]},\"xxid\":\"6eec3584-6c11-dc0d-f70b-8c5ca3d7a527\",\"hashColumns\":[\"$as\"]}]}",
+            "tableKeys": [
+                "_original_result.eigrp_as.$as",
+                "_original_result.eigrp_as.eigrp_nbrs.$q_cnt"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "as",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$as"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "eigrp_as",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "h",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "hold",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "srtt",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "rto",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "q_cnt",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "seq_num",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "as",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$q_cnt"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "eigrp_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8f72db7dbd705b575e768f68d331d09b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "eigrp_as",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$as"
+                ],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as",
+            "intfKey": false,
+            "name": "eigrp_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "eigrp_as.$as",
+            "dataType": "int",
+            "desc": "AS number of EIGRP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$q_cnt"
+                ],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs",
+            "intfKey": false,
+            "name": "eigrp_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "eigrp_nbrs.$h",
+            "dataType": "string",
+            "desc": "Reserved",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$h",
+            "intfKey": false,
+            "name": "$h",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$addr",
+            "dataType": "string",
+            "desc": "IP address of the EIGRP peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$addr",
+            "intfKey": false,
+            "name": "$addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$intf",
+            "dataType": "string",
+            "desc": "Interface on which the router is receiving hello packets from the peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "eigrp_nbrs.$hold",
+            "dataType": "int",
+            "desc": "Length of time (in seconds) that the Cisco IOS software will wait to hear from the peer before declaring it down.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$hold",
+            "intfKey": false,
+            "name": "$hold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$uptime",
+            "dataType": "string",
+            "desc": "Elapsed time (in hours:minutes:seconds) since the local router first heard from this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$srtt",
+            "dataType": "int",
+            "desc": "Smooth round-trip time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$srtt",
+            "intfKey": false,
+            "name": "$srtt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$rto",
+            "dataType": "int",
+            "desc": "Retransmission timeout (in milliseconds).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$rto",
+            "intfKey": false,
+            "name": "$rto",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$q_cnt",
+            "dataType": "int",
+            "desc": "Number of EIGRP packets (update, query, and reply) that the software is waiting to send.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$q_cnt",
+            "intfKey": false,
+            "name": "$q_cnt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$seq_num",
+            "dataType": "int",
+            "desc": "Sequence number of the last update, query, or reply packet that was received from this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$seq_num",
+            "intfKey": false,
+            "name": "$seq_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs.$as",
+            "dataType": "int",
+            "desc": "AS number of EIGRP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_nbrs.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

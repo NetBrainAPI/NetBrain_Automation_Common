@@ -1,0 +1,1111 @@
+{
+    "_id": "c51b53af-72b9-9969-2ec7-175be5215904",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show crypto ipsec sa",
+    "createTime": {
+        "$date": 1591037219556
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow crypto ipsec sa",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "pixfirewall#show crypto ipsec sa\r\ninterface: outside\r\n    Crypto map tag: outside_map, seq num: 20, local addr: 10.10.10.1\r\n\r\n     access-list outside_cryptomap_20 permit ip 172.22.1.0 \r\n       255.255.255.0 172.16.1.0 255.255.255.0\r\n     local ident (addr/mask/prot/port): (172.22.1.0/255.255.255.0/0/0)\r\n     remote ident (addr/mask/prot/port): (172.16.1.0/255.255.255.0/0/0)\r\n     current_peer: 10.20.20.1\r\n\r\n      #pkts encaps: 20, #pkts encrypt: 20, #pkts digest: 20\r\n      #pkts decaps: 20, #pkts decrypt: 20, #pkts verify: 20\r\n      #pkts compressed: 0, #pkts decompressed: 0\r\n      #pkts not compressed: 20, #pkts comp failed: 0, #pkts decomp failed: 0\r\n      #send errors: 0, #recv errors: 0\r\n\r\n      local crypto endpt.: 10.10.10.1, remote crypto endpt.: 10.20.20.1\r\n\r\n      path mtu 1500, ipsec overhead 76, media mtu 1500\r\n      current outbound spi: 44532974\r\n\r\n    inbound esp sas:\r\n      spi: 0xA87AD6FA (2826622714)\r\n         transform: esp-aes-256 esp-sha-hmac\r\n         in use settings ={L2L, Tunnel, }\r\n         slot: 0, conn_id: 1, crypto-map: outside_map\r\n         sa timing: remaining key lifetime (kB/sec): (3824998/28246)\r\n         IV size: 16 bytes\r\n         replay detection support: Y\r\n    outbound esp sas:\r\n      spi: 0x44532974 (1146300788)\r\n         transform: esp-aes-256 esp-sha-hmac\r\n         in use settings ={L2L, Tunnel, }\r\n         slot: 0, conn_id: 1, crypto-map: outside_map\r\n         sa timing: remaining key lifetime (kB/sec): (3824998/28245)\r\n         IV size: 16 bytes\r\n         replay detection support: Y",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ipsec_sa_table.$interface_nameif"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ipsec_sa_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface_nameif]:^Interface:\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Crypto map tag: $crypto_map_tag, seq num: $seq_num, local addr: $local_addr\",\"local ident (addr/mask/prot/port): ($local_ident_addr/$local_ident_mask/$local_ident_proto/$local_ident_port)\",\"remote ident (addr/mask/prot/port): ($remote_ident_addr/$remote_ident_mask/$remote_ident_proto/$remote_ident_port)\",\"current_peer: $current_peer\",\"#pkts encaps: $int:pkts_encaps, #pkts encrypt: $int:pkts_encrypt, #pkts digest: $int:pkts_digest\",\"#pkts decaps: $int:pkts_decaps, #pkts decrypt: $int:pkts_decrypt, #pkts verify: $int:pkts_verify\",\"#pkts compressed: $int:pkts_compressed, #pkts decompressed: $int:pkts_decompressed\",\"#pkts not compressed: $int:pkts_not_compressed, #pkts comp failed: $int:pkts_comp_failed, #pkts decomp failed: $int:pkts_decomp_failed\",\"#pre-frag successes: $int:pre_frag_successes, #pre-frag failures: $int:pre_frag_failures, #fragments created: $int:fragments_created\",\"#PMTUs sent: $int:pmtu_sent, #PMTUs rcvd: $int:pmtu_rcvd, #decapsulated frgs needing reassembly: $int:decapsulated_frgs_needing_reassembly\",\"#send errors: $int:send_errors, #recv errors: $int:recv_errors\",\"local crypto endpt.: $local_crypto_endpt, remote crypto endpt.: $remote_crypto_endpt\",\"path mtu $path_mtu, ipsec overhead $ipsec_overhead, media mtu $media_mtu\",\"mregex[$access_list]:access-list (.+?)\\\\s+local ident\",\"regex[$int:current_outbound_spi]:current outbound spi: (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface_nameif:string\",\"$crypto_map_tag:string\",\"$seq_num:string\",\"$local_addr:string\",\"$local_ident_addr:string\",\"$local_ident_mask:string\",\"$local_ident_proto:string\",\"$local_ident_port:string\",\"$remote_ident_addr:string\",\"$remote_ident_mask:string\",\"$remote_ident_proto:string\",\"$remote_ident_port:string\",\"$current_peer:string\",\"$pkts_encaps:int\",\"$pkts_encrypt:int\",\"$pkts_digest:int\",\"$pkts_decaps:int\",\"$pkts_decrypt:int\",\"$pkts_verify:int\",\"$pkts_compressed:int\",\"$pkts_decompressed:int\",\"$pkts_not_compressed:int\",\"$pkts_comp_failed:int\",\"$pkts_decomp_failed:int\",\"$pre_frag_successes:int\",\"$pre_frag_failures:int\",\"$fragments_created:int\",\"$pmtu_sent:int\",\"$pmtu_rcvd:int\",\"$decapsulated_frgs_needing_reassembly:int\",\"$send_errors:int\",\"$recv_errors:int\",\"$local_crypto_endpt:string\",\"$remote_crypto_endpt:string\",\"$path_mtu:string\",\"$ipsec_overhead:string\",\"$media_mtu:string\",\"$access_list:string\",\"$current_outbound_spi:int\"]},\"xxid\":\"3c17fbfa-1e17-63fd-93a1-56255953dcd1\"}]},\"xxid\":\"55087e4c-54a4-c96d-5862-a89764a84f6c\",\"interfaceKey\":\"$interface_nameif\",\"hashColumns\":[\"$intf\",\"$interface_nameif\"]},{\"type\":\"4\",\"name\":\"esp_sas_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$esp_sas_direction]:\\\\s+(.+) esp sas:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$spi_info]:spi: (.+)\",\"regex[$transform]:transform: (.+)\",\"regex[$in_use_settings]:in use settings =(.+)\",\"regex[$int:slot_id, $int:conn_id, $crypto_map]:slot: (\\\\S+), conn_id: (\\\\S+), crypto-map: (\\\\S+)\",\"regex[$sa_timing]:sa timing: (.+\\\\))\",\"regex[$int:iv_size]:IV size: (\\\\d+) bytes\",\"mregex[$replay_detection_support]:replay detection support: (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$esp_sas_direction:string\",\"$spi_info:string\",\"$transform:string\",\"$in_use_settings:string\",\"$slot_id:int\",\"$conn_id:int\",\"$crypto_map:string\",\"$sa_timing:string\",\"$iv_size:int\",\"$replay_detection_support:string\"]},\"xxid\":\"4f9c90c3-90fb-0eca-a773-8d6c3f952ccc\"}]},\"xxid\":\"963de486-5be6-0bda-c281-86b4f0abd346\",\"hashColumns\":[\"$esp_name\",\"$esp_sas_direction\"]}]}",
+            "tableKeys": [
+                "_original_result.esp_sas_info.$esp_sas_direction"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 39,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 40,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface_nameif",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "crypto_map_tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "seq_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "local_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "local_ident_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "local_ident_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "local_ident_proto",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "local_ident_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "remote_ident_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "remote_ident_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "remote_ident_proto",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "remote_ident_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "current_peer",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "pkts_encaps",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "pkts_encrypt",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "pkts_digest",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "pkts_decaps",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "pkts_decrypt",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "pkts_verify",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "pkts_compressed",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "pkts_decompressed",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "pkts_not_compressed",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "pkts_comp_failed",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "pkts_decomp_failed",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "pre_frag_successes",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "pre_frag_failures",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "fragments_created",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "pmtu_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "pmtu_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "decapsulated_frgs_needing_reassembly",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "send_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 31,
+                        "name": "recv_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 32,
+                        "name": "local_crypto_endpt",
+                        "type": 4
+                    },
+                    {
+                        "index": 33,
+                        "name": "remote_crypto_endpt",
+                        "type": 4
+                    },
+                    {
+                        "index": 34,
+                        "name": "path_mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 35,
+                        "name": "ipsec_overhead",
+                        "type": 4
+                    },
+                    {
+                        "index": 36,
+                        "name": "media_mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 37,
+                        "name": "access_list",
+                        "type": 4
+                    },
+                    {
+                        "index": 38,
+                        "name": "current_outbound_spi",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface_nameif",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ipsec_sa_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "esp_sas_direction",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "spi_info",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "transform",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "in_use_settings",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "slot_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "conn_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "crypto_map",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "sa_timing",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "iv_size",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "replay_detection_support",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$esp_name",
+                    "$esp_sas_direction"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "esp_sas_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5cd03d491af7ad2d034a067157784afa",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ipsec_sa_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface_nameif"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table",
+            "intfKey": false,
+            "name": "ipsec_sa_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ipsec_sa_table.$interface_nameif",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$interface_nameif",
+            "intfKey": false,
+            "name": "$interface_nameif",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ipsec_sa_table.$crypto_map_tag",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$crypto_map_tag",
+            "intfKey": false,
+            "name": "$crypto_map_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$seq_num",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$seq_num",
+            "intfKey": false,
+            "name": "$seq_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$local_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$local_addr",
+            "intfKey": false,
+            "name": "$local_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$local_ident_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$local_ident_addr",
+            "intfKey": false,
+            "name": "$local_ident_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$local_ident_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$local_ident_mask",
+            "intfKey": false,
+            "name": "$local_ident_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$local_ident_proto",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$local_ident_proto",
+            "intfKey": false,
+            "name": "$local_ident_proto",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$local_ident_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$local_ident_port",
+            "intfKey": false,
+            "name": "$local_ident_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$remote_ident_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$remote_ident_addr",
+            "intfKey": false,
+            "name": "$remote_ident_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$remote_ident_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$remote_ident_mask",
+            "intfKey": false,
+            "name": "$remote_ident_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$remote_ident_proto",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$remote_ident_proto",
+            "intfKey": false,
+            "name": "$remote_ident_proto",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$remote_ident_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$remote_ident_port",
+            "intfKey": false,
+            "name": "$remote_ident_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$current_peer",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$current_peer",
+            "intfKey": false,
+            "name": "$current_peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_encaps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_encaps",
+            "intfKey": false,
+            "name": "$pkts_encaps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_encrypt",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_encrypt",
+            "intfKey": false,
+            "name": "$pkts_encrypt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_digest",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_digest",
+            "intfKey": false,
+            "name": "$pkts_digest",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_decaps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_decaps",
+            "intfKey": false,
+            "name": "$pkts_decaps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_decrypt",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_decrypt",
+            "intfKey": false,
+            "name": "$pkts_decrypt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_verify",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_verify",
+            "intfKey": false,
+            "name": "$pkts_verify",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_compressed",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_compressed",
+            "intfKey": false,
+            "name": "$pkts_compressed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_decompressed",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_decompressed",
+            "intfKey": false,
+            "name": "$pkts_decompressed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_not_compressed",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_not_compressed",
+            "intfKey": false,
+            "name": "$pkts_not_compressed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_comp_failed",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_comp_failed",
+            "intfKey": false,
+            "name": "$pkts_comp_failed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pkts_decomp_failed",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pkts_decomp_failed",
+            "intfKey": false,
+            "name": "$pkts_decomp_failed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pre_frag_successes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pre_frag_successes",
+            "intfKey": false,
+            "name": "$pre_frag_successes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pre_frag_failures",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pre_frag_failures",
+            "intfKey": false,
+            "name": "$pre_frag_failures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$fragments_created",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$fragments_created",
+            "intfKey": false,
+            "name": "$fragments_created",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pmtu_sent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pmtu_sent",
+            "intfKey": false,
+            "name": "$pmtu_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$pmtu_rcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$pmtu_rcvd",
+            "intfKey": false,
+            "name": "$pmtu_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$decapsulated_frgs_needing_reassembly",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$decapsulated_frgs_needing_reassembly",
+            "intfKey": false,
+            "name": "$decapsulated_frgs_needing_reassembly",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$send_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$send_errors",
+            "intfKey": false,
+            "name": "$send_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$recv_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$recv_errors",
+            "intfKey": false,
+            "name": "$recv_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$local_crypto_endpt",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$local_crypto_endpt",
+            "intfKey": false,
+            "name": "$local_crypto_endpt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$remote_crypto_endpt",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$remote_crypto_endpt",
+            "intfKey": false,
+            "name": "$remote_crypto_endpt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$path_mtu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$path_mtu",
+            "intfKey": false,
+            "name": "$path_mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$ipsec_overhead",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$ipsec_overhead",
+            "intfKey": false,
+            "name": "$ipsec_overhead",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$media_mtu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$media_mtu",
+            "intfKey": false,
+            "name": "$media_mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$access_list",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$access_list",
+            "intfKey": false,
+            "name": "$access_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_sa_table.$current_outbound_spi",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_sa_table.$current_outbound_spi",
+            "intfKey": false,
+            "name": "$current_outbound_spi",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info",
+            "dataType": "paragraph",
+            "desc": "Esp asa information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$esp_name",
+                    "$esp_sas_direction"
+                ],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info",
+            "intfKey": false,
+            "name": "esp_sas_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "esp_sas_info.$esp_sas_direction",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$esp_sas_direction",
+            "intfKey": false,
+            "name": "$esp_sas_direction",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$spi_info",
+            "dataType": "string",
+            "desc": "The spi information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$spi_info",
+            "intfKey": false,
+            "name": "$spi_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$transform",
+            "dataType": "string",
+            "desc": "The transform informatiopn.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$transform",
+            "intfKey": false,
+            "name": "$transform",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$in_use_settings",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$in_use_settings",
+            "intfKey": false,
+            "name": "$in_use_settings",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$slot_id",
+            "dataType": "int",
+            "desc": "The slot id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$slot_id",
+            "intfKey": false,
+            "name": "$slot_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$conn_id",
+            "dataType": "int",
+            "desc": "The conn id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$conn_id",
+            "intfKey": false,
+            "name": "$conn_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$crypto_map",
+            "dataType": "string",
+            "desc": "The name of crypto map.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$crypto_map",
+            "intfKey": false,
+            "name": "$crypto_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$sa_timing",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$sa_timing",
+            "intfKey": false,
+            "name": "$sa_timing",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$iv_size",
+            "dataType": "int",
+            "desc": "The iv size.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$iv_size",
+            "intfKey": false,
+            "name": "$iv_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "esp_sas_info.$replay_detection_support",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "esp_sas_info.$replay_detection_support",
+            "intfKey": false,
+            "name": "$replay_detection_support",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

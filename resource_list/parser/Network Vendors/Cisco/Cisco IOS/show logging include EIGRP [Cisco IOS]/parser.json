@@ -1,0 +1,177 @@
+{
+    "_id": "98576c02-a91b-7750-54ce-13b0edef963e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show logging | in EIGRP",
+    "createTime": {
+        "$date": 1579772022284
+    },
+    "description": "Device Type:\nCisco IOS Switch \nCisco IOS Router\nCommand: \nshow logging | in EIGRP",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasEIGRPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R9#show logging | in EIGRP\n*Mar 18 00:53:23.620: %DUAL-5-NBRCHANGE: EIGRP-IPv4 30000: Neighbor 10.1.79.7 (Ethernet1/2) is resync: summary configured\n*Mar 18 00:53:23.624: %DUAL-5-NBRCHANGE: EIGRP-IPv4 30000: Neighbor 10.1.89.8 (Ethernet1/0) is resync: summary configured\n*Mar 18 00:53:27.936: %DUAL-5-NBRCHANGE: EIGRP-IPv4 30000: Neighbor 10.1.79.7 (Ethernet1/2) is resync: summary configured\n*Mar 18 00:53:27.940: %DUAL-5-NBRCHANGE: EIGRP-IPv4 30000: Neighbor 10.1.89.8 (Ethernet1/0) is resync: summary configured\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"eigrp_log\",\"keyVariables\":\"\",\"startLine\":\"regex[$time, $message_type, $log_message]:(\\\\S+\\\\s+\\\\d+\\\\s+\\\\d+:\\\\d+:\\\\d+.\\\\d+):\\\\s+([^:]+):\\\\s+(.*)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$time:string\",\"$message_type:string\",\"$log_message:string\"]},\"xxid\":\"adbdaa0c-3d52-0e96-7fff-07dbea0b7011\"}]},\"xxid\":\"d5caafb1-f943-dc17-c532-ae7191c89aa0\",\"hashColumns\":[\"$time\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"bec8f330-689c-789a-ad0d-07931ff5718e\"}]}",
+            "tableKeys": [
+                "_original_result.eigrp_log.$time"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "time",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "message_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "log_message",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$time"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "eigrp_log",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "81967d5e5f14ba031bac74d2f60eb01e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "eigrp_log",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$time"
+                ],
+                "hashSort": false
+            },
+            "fullName": "eigrp_log",
+            "intfKey": false,
+            "name": "eigrp_log",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "eigrp_log.$time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_log.$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_log.$message_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_log.$message_type",
+            "intfKey": false,
+            "name": "$message_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_log.$log_message",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_log.$log_message",
+            "intfKey": false,
+            "name": "$log_message",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,207 @@
+{
+    "_id": "24cbdf30-0d1c-c860-4d17-9d5b241588f5",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show environment",
+    "createTime": {
+        "$date": 1580827850262
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand: \nshow environment",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "r2#show environment\r\nPower Supplies:\r\n\tPower supply 1 is Zytek AC Power Supply. Unit is on.\r\n\tPower supply 2 is Zytek AC Power Supply. Unit is on.\r\n\r\nTemperature readings:\r\n\tI/O Cont Inlet   measured at 22C/71F \r\n\tI/O Cont Outlet  measured at 22C/71F \r\n\tNPE Inlet        measured at 22C/71F \r\n\tNPE Outlet       measured at 22C/71F \r\n\r\nVoltage readings:\r\n\t+3.45 V       measured at +3.43 V \r\n\t+5.15 V       measured at +5.13 V \r\n\t+12.15 V      measured at +12.10 V \r\n\t-11.95 V      measured at -11.90 V \r\n\r\nEnvm stats saved 1 time(s) since reload\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[{\"@Value\":\"Envm stats\",\"@Type\":1,\"@Index\":1}]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[{\"@index\":0,\"@type\":1,\"@value\":\"Envm stats\"}]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"temps\",\"keyVariables\":\"\",\"startLine\":\"measured at\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$model,$int:temperature]:(.*) measured at (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$model:string\",\"$temperature:int\"]},\"xxid\":\"429a9f7e-a0e4-7ed3-aaee-1113fc9c8334\"}]},\"xxid\":\"a2776671-8426-388f-00e7-57842701243d\",\"hashColumns\":[\"$temperature\"]}]}",
+            "tableKeys": [
+                "_original_result.temps.$temperature"
+            ]
+        },
+        {
+            "content": "r1#show environment\r\nSYSTEM POWER SUPPLY STATUS\r\n==========================\r\n Internal Power Supply  Type: AC\r\n Internal Power Supply  12V Output Status: Normal\r\n\r\n External Redundant Power Supply is absent or powered off\r\n\r\nSYSTEM FAN STATUS\r\n=================\r\n Fan 1 OK, Low speed setting\r\n Fan 2 OK, Low speed setting\r\n Fan 3 OK, Low speed setting\r\n Fan 4 OK, Low speed setting\r\n\r\nSYSTEM TEMPERATURE STATUS\r\n=========================\r\n Intake Left temperature: 14 Celsius, Normal\r\n Intake Right temperature: 13 Celsius, Normal\r\n Exhaust Left temperature: 24 Celsius, Normal\r\n Exhaust Right temperature: 17 Celsius, Normal\r\n CPU temperature: 43 Celsius, Normal\r\n Power Supply Unit temperature: 34 Celsius, Normal\r\n\r\nREAL TIME CLOCK BATTERY STATUS\r\n==============================\r\n Battery OK (checked at power up)\r\n\r\nSYSTEM POWER\r\n===============\r\n Motherboard Components Power consumption = 67.5 W\r\n Total System Power consumption is: 67.5 W\r\n\r\n Environmental information last updated 00:00:05 ago\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[{\"@Value\":\"SYSTEM TEMPERATURE STATUS\",\"@Type\":1,\"@Index\":1}]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 2,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[{\"@index\":0,\"@type\":1,\"@value\":\"SYSTEM TEMPERATURE STATUS\"}]}",
+            "name": "sample2",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"temps\",\"keyVariables\":\"\",\"startLine\":\"temperature:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$model, $int:temperature]: (.*) temperature: (\\\\d+) Celsius\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$model:string\",\"$temperature:int\"]},\"xxid\":\"8f95dcbe-45b8-cfee-d206-ea95d81c2111\"}]},\"xxid\":\"1f79b54f-4958-ca44-c52e-46b99a5b3b9e\",\"hashColumns\":[\"$temperature\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$temp_ios_cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$temp_ios_cli_output:string\"]},\"xxid\":\"7a0b9706-9bb8-df17-ebf4-b0adc1059af2\"}]}",
+            "tableKeys": [
+                "_original_result.temps.$temperature"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1,
+        2
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "temp_ios_cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "model",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "temperature",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$temperature"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "temps",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "6abb8c2549a08d95a8497a5a4c8b7190",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "temps",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$temperature"
+                ],
+                "hashSort": false
+            },
+            "fullName": "temps",
+            "intfKey": false,
+            "name": "temps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "temps.$model",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "temps.$model",
+            "intfKey": false,
+            "name": "$model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "temps.$temperature",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "temps.$temperature",
+            "intfKey": false,
+            "name": "$temperature",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "temps",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$temperature"
+                ],
+                "hashSort": false
+            },
+            "fullName": "temps",
+            "intfKey": false,
+            "name": "temps",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 3
+        },
+        {
+            "capName": "temps.$model",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "temps.$model",
+            "intfKey": false,
+            "name": "$model",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "temps.$temperature",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "temps.$temperature",
+            "intfKey": false,
+            "name": "$temperature",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "$temp_ios_cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$temp_ios_cli_output",
+            "intfKey": false,
+            "name": "$temp_ios_cli_output",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

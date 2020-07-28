@@ -1,0 +1,64 @@
+{
+    "_id": "941ab5b5-b64f-ea5b-f196-cf2da6561c71",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585588738314
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\n       <Configuration>",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": null,
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Building configuration...\n\nCurrent configuration : 2072 bytes\n!\n! Last configuration change at 14:24:15 UTC Mon Jan 18 2016\nupgrade fpd auto\nversion 15.2\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname Router\n!\nboot-start-marker\nboot-end-marker\n!\n!\n!\nno aaa new-model\nno ip icmp rate-limit unreachable\n!\n!\n!\n!\n!         \n!\nno ip domain lookup\nip cef\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nredundancy\n!\n!\nip tcp synwait-time 5\n! \n!\n!         \n!\n!\n!\n!\n!\n!\n!\ninterface Loopback0\n ip address 1.1.1.1 255.255.255.0\n!\ninterface FastEthernet0/0\n no ip address\n shutdown\n duplex half\n!\ninterface FastEthernet1/0\n no ip address\n shutdown\n duplex half\n!\ninterface FastEthernet2/0\n no ip address\n shutdown \n duplex half\n!\ninterface FastEthernet3/0\n no ip address\n shutdown\n duplex half\n!\ninterface FastEthernet4/0\n no ip address\n shutdown\n duplex half\n!\ninterface FastEthernet5/0\n no ip address\n shutdown\n duplex half\n!\nip forward-protocol nd\nno ip http server\nno ip http secure-server\n!\n!\nip msdp peer 1.1.1.1 remote-as 1 connect-source 2.2.2.2\nip msdp description 1.1.1.1 This is the a msdp peer\nip msdp sa-filter in 1.1.1.1 route-map Sa_routemap\nip msdp sa-filter in 1.1.1.1 list Sa_acl\nip msdp sa-filter in 1.1.1.1 rp-list Sa_rp_routemap\nip msdp sa-filter in 1.1.1.1 rp-route-map Sa_rp_acl\nip msdp sa-filter out 1.1.1.1 route-map Sa_routemap\nip msdp sa-filter out 1.1.1.1 list Sa_routemap\nip msdp sa-filter out 1.1.1.1 rp-list Sa_routemap\nip msdp sa-filter out 1.1.1.1 rp-route-map Sa_routemap\nip msdp filter-sa-request 1.1.1.1 list 12\nip msdp ttl-threshold 1.1.1.1 128\nip msdp sa-limit 1.1.1.1 1000\nip msdp keepalive 1.1.1.1 3 10\nip msdp peer 3.3.3.3\nip msdp peer 4.4.4.4 connect-source Loopback0 remote-as 1\nip msdp peer 5.5.5.5 remote-as 3\nip msdp peer 6.6.6.6 connect-source Loopback0\nip msdp peer 2.2.2.2 remote-as 1\nip msdp description 2.2.2.2 This is the a msdp peer\nip msdp sa-filter in 2.2.2.2 route-map Sa_routemap\nip msdp cache-sa-state\nip msdp cache-rejected-sa 12\nip msdp default-peer 1.1.1.1 prefix-list peer_list\nip msdp default-peer 2.2.2.2 prefix-list peer_list\nip msdp originator-id Loopback0\nip msdp mesh-group AAA 1.1.1.1\nip msdp mesh-group BBB 2.2.2.2\nip msdp password peer 1.1.1.1 Netbrain\nip msdp password peer 2.2.2.2 Netbrain\nip msdp timer 10\n!\nno cdp log mismatch duplex\n!\n!         \n!\ncontrol-plane\n!\nip prefix-list peer_list seq 5 permit 1.1.1.0/24\n!\n!\nmgcp profile default\n!\n!\n!\ngatekeeper\n shutdown\n!\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n login\n transport input all\n!\n!\nend",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$msdp_config]:(^ip msdp.+?!)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$msdp_config:string\"]},\"xxid\":\"caddeb21-d1d9-094b-331c-9c01f983f3ff\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "msdp_config",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "affdc41d928f7de6463b62eea69ef5bd",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "$msdp_config",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$msdp_config",
+            "intfKey": false,
+            "name": "$msdp_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

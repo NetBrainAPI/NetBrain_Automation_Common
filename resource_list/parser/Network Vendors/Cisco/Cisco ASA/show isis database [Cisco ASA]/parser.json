@@ -1,0 +1,275 @@
+{
+    "_id": "aaca53d9-d4f4-2e29-675a-8762da841dbe",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis database",
+    "createTime": {
+        "$date": 1579803598876
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow isis database",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ciscoasa# show isis database\r\n \r\nIS-IS Level-1 Link State Database:\r\nLSPID LSP Seq Num LSP Checksum LSP Holdtime ATT/P/OL\r\nc1.00-00 0xea19d300 0x3d0d 674 0/0/0\r\nrouterA.00-00 0x1b541556 0xa349 928 0/0/0\r\nc3.00-00 0x9257c979 0x9952 759 0/0/0\r\nc2.00-00 *0xef11e977 0x3188 489 0/0/0\r\nc2.01-00 *0xa8333f03 0xd6ea 829 0/0/0\r\nIS-IS Level-2 Link State Database:\r\nLSPID LSP Seq Num LSP Checksum LSP Holdtime ATT/P/OL\r\nc1.00-00 0x63871f24 0xaba2 526 0/0/0\r\nrouterA.00-00 0x0d540b55 0x81d7 472 0/0/0\r\nrouterA.00-01 0xffffff01 0xe20b 677 0/0/0\r\nc3.00-00 0x002e5434 0xb20a 487 0/0/0\r\nc2.00-00 *0x74fd1227 0xbb0f 742 0/0/0\r\nc2.01-00 *0x7ee72c1a 0xb506 968 0/0/0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_pro\",\"keyVariables\":\"\",\"startLine\":\"IS-IS $level\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level:string\"]},\"xxid\":\"540d1fa9-8a34-0c54-b8d2-67a9c6b7e340\"},{\"type\":\"4\",\"name\":\"isis_database\",\"keyVariables\":\"\",\"startLine\":\"regex[$lspis, $lsp_seq_num, $lsp_checksum, $int:lsp_holdtime, $att_p_ol]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$lspis:string\",\"$lsp_seq_num:string\",\"$lsp_checksum:string\",\"$lsp_holdtime:int\",\"$att_p_ol:string\"]},\"xxid\":\"1974463b-2308-48cd-b890-05590abba366\"}]},\"xxid\":\"0db03aa9-4ff1-550d-2c10-8e5a17ed030c\",\"hashColumns\":[\"$lspis\",\"$level\"]}]},\"xxid\":\"8f08186e-22b8-dcb0-39e3-fe640be6e3f0\"}]}",
+            "tableKeys": [
+                "_original_result.isis_pro.isis_database.$lspis",
+                "_original_result.isis_pro.isis_database.$level"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_pro",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "lspis",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "lsp_seq_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "lsp_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "lsp_holdtime",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "att_p_ol",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "level",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$level",
+                    "$lspis"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_database",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a8fda89c359f3341e93e058d5b12edeb",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_pro",
+            "dataType": "paragraph",
+            "desc": "ISIS process table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_pro",
+            "intfKey": false,
+            "name": "isis_pro",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_pro.$level",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_database",
+            "dataType": "paragraph",
+            "desc": "ISIS database table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$lspis",
+                    "$level"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.isis_database",
+            "intfKey": false,
+            "name": "isis_database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_database.$lspis",
+            "dataType": "string",
+            "desc": "\"The LSP identifier. The first six octets form the system ID of the router that originated the LSP.\nThe next octet is the pseudonode ID. When this byte is nonzero, the LSP describes links from the system. When it is zero, the LSP is a so-called nonpseudonode LSP. This mechanism is similar to a router link-state advertisement (LSA) in the Open Shortest Path First (OSPF) protocol. The LSP will describe the state of the originating router.\nFor each LAN, the designated router for that LAN will create and flood a pseudonode LSP, describing all systems attached to that LAN.\nThe last octet is the LSP number. If there is more data than can fit in a single LSP, the LSP will be divided into multiple LSP fragments. Each fragment will have a different LSP number. An asterisk (*) indicates that the LSP was originated by the system on which this command is issued.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.isis_database.$lspis",
+            "intfKey": false,
+            "name": "$lspis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_database.$lsp_seq_num",
+            "dataType": "string",
+            "desc": "Sequence number for the LSP that allows other systems to determine if they have received the latest information from the source.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.isis_database.$lsp_seq_num",
+            "intfKey": false,
+            "name": "$lsp_seq_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_database.$lsp_checksum",
+            "dataType": "string",
+            "desc": "Checksum of the entire LSP packet.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.isis_database.$lsp_checksum",
+            "intfKey": false,
+            "name": "$lsp_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_database.$lsp_holdtime",
+            "dataType": "int",
+            "desc": "Amount of time the LSP remains valid (in seconds). An LSP hold time of zero indicates that this LSP was purged and is being removed from the link-state database (LSDB) of all routers. The value indicates how long the purged LSP will stay in the LSDB before being completely removed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.isis_database.$lsp_holdtime",
+            "intfKey": false,
+            "name": "$lsp_holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_database.$att_p_ol",
+            "dataType": "string",
+            "desc": "\"The Attach bit. This bit indicates that the router is also a Level 2 router, and it can reach other areas. Level 1-only routers and Level 1-2 routers that have lost connection to other Level 2 routers will use the Attach bit to find the closest Level 2 router. They will point a default route to the closest Level 2 router.\nThe P bit. Detects if the intermediate systems is area partition repair-capable. Cisco and other vendors do not support area partition repair.\nThe Overload bit. Determines if the IS is congested. If the Overload bit is set, other routers will not use this system as a transit router when calculating routers. Only packets for destinations directly connected to the overloaded router will be sent to this router.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.isis_database.$att_p_ol",
+            "intfKey": false,
+            "name": "$att_p_ol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_database.$level",
+            "dataType": "string",
+            "desc": "Assigns the routing level for the IS-IS routing process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_pro.isis_database.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

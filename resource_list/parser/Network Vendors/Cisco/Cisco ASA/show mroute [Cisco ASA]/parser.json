@@ -1,0 +1,362 @@
+{
+    "_id": "c6acd05b-261d-0887-d13a-908474cb5d72",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mroute",
+    "createTime": {
+        "$date": 1579811439719
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow mroute",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ciscoasa#show mroute \r\n\r\nMulticast Routing Table\r\nFlags: D - Dense, S - Sparse, B - Bidir Group, s - SSM Group,\r\n       C - Connected, L - Local, I - Received Source Specific Host Report,\r\n       P - Pruned, R - RP-bit set, F - Register flag, T - SPT-bit set,\r\n       J - Join SPT\r\nTimers: Uptime/Expires\r\nInterface state: Interface, State\r\n\r\n(*, 224.1.2.3), 00:00:12/never, RP 172.16.1.2, flags: SCJ\r\n  Incoming interface: outside\r\n  RPF nbr: 172.16.1.2\r\n  Outgoing interface list:\r\n    inside, Forward, 00:00:12/never\r\n    dmz, Forward, 00:00:12/never\r\n\r\n(*, 239.1.1.40), 08:07:24/never, RP 0.0.0.0, flags: DPC\r\nIncoming interface: Null\r\nRPF nbr: 0.0.0.0\r\nOutgoing interface list:\r\n    inside, Null, 08:05:45/never\r\n    tftp, Null, 08:07:24/never\r\n \r\n(*, 239.2.2.1), 08:07:44/never, RP 140.0.0.70, flags: SCJ\r\nIncoming interface: outside\r\nRPF nbr: 140.0.0.70\r\nOutgoing interface list:\r\n    inside, Forward, 08:07:44/never",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.per_pair_route_entry.$in_interface_asa",
+                "_original_result.per_pair_route_entry.out_int_list_parag.$out_int_asa"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"per_pair_route_entry\",\"keyVariables\":\"\",\"startLine\":\"regex:^\\\\(\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$mcast_state_asa,$rp_asa,$flags_asa]:^(\\\\(.+?\\\\d\\\\)),.+?RP\\\\s(\\\\S+),\\\\s+flags:\\\\s+(\\\\S+)\",\"regex[$rpf_nbr_asa]:RPF nbr:\\\\s+(\\\\S+)\",\"regex[$in_interface_asa]:Incoming interface:\\\\s+(\\\\S+)\",\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mcast_state_asa:string\",\"$rp_asa:string\",\"$flags_asa:string\",\"$rpf_nbr_asa:string\",\"$in_interface_asa:string\"]},\"xxid\":\"1439f2a9-d5a2-8afb-37e5-753bb483bafe\"},{\"type\":\"4\",\"name\":\"out_int_list_parag\",\"keyVariables\":\"\",\"startLine\":\"regex[$out_int_asa]:^\\\\s+([A-Z|[a-z]\\\\S+),\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$out_int_asa:string\"]},\"xxid\":\"1db5c83e-2519-1db4-fff7-8c979d4ed20c\"}]},\"xxid\":\"20459b12-988d-b103-5a05-0f7c3078576e\",\"interfaceKey\":\"$out_int_asa\",\"hashColumns\":[\"$out_int_asa\"]}]},\"xxid\":\"633bb9d5-f2ab-823d-4500-1aa055c5f216\",\"interfaceKey\":\"$in_interface_asa\",\"hashColumns\":[\"$in_interface_asa\",\"$rpf_nbr_asa\"]}]}",
+            "tableKeys": [
+                "_original_result.per_pair_route_entry.$rpf_nbr_asa",
+                "_original_result.per_pair_route_entry.$rp_asa"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mcast_state_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "rp_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "flags_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "rpf_nbr_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "in_interface_asa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$in_interface_asa",
+                    "$rpf_nbr_asa"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "per_pair_route_entry",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "out_int_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "mcast_state_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "rp_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "flags_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rpf_nbr_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "in_interface_asa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$out_int_asa"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "out_int_list_parag",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "de9cfe0aa9154adb823d8ff73ad8306c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "per_pair_route_entry",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$in_interface_asa",
+                    "$rpf_nbr_asa"
+                ],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry",
+            "intfKey": false,
+            "name": "per_pair_route_entry",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "per_pair_route_entry.$mcast_state_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.$mcast_state_asa",
+            "intfKey": false,
+            "name": "$mcast_state_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_pair_route_entry.$rp_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.$rp_asa",
+            "intfKey": false,
+            "name": "$rp_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_pair_route_entry.$flags_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.$flags_asa",
+            "intfKey": false,
+            "name": "$flags_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_pair_route_entry.$rpf_nbr_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.$rpf_nbr_asa",
+            "intfKey": false,
+            "name": "$rpf_nbr_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_pair_route_entry.$in_interface_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.$in_interface_asa",
+            "intfKey": false,
+            "name": "$in_interface_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "out_int_list_parag",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$out_int_asa"
+                ],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.out_int_list_parag",
+            "intfKey": false,
+            "name": "out_int_list_parag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "out_int_list_parag.$out_int_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.out_int_list_parag.$out_int_asa",
+            "intfKey": false,
+            "name": "$out_int_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "out_int_list_parag.$mcast_state_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.out_int_list_parag.$mcast_state_asa",
+            "intfKey": false,
+            "name": "$mcast_state_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_int_list_parag.$rp_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.out_int_list_parag.$rp_asa",
+            "intfKey": false,
+            "name": "$rp_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_int_list_parag.$flags_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.out_int_list_parag.$flags_asa",
+            "intfKey": false,
+            "name": "$flags_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_int_list_parag.$rpf_nbr_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.out_int_list_parag.$rpf_nbr_asa",
+            "intfKey": false,
+            "name": "$rpf_nbr_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_int_list_parag.$in_interface_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_pair_route_entry.out_int_list_parag.$in_interface_asa",
+            "intfKey": false,
+            "name": "$in_interface_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

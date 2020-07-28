@@ -1,0 +1,617 @@
+{
+    "_id": "6b514574-3056-08bf-6f6a-5eea3dd1a052",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mroute",
+    "createTime": {
+        "$date": 1591045454834
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow mroute",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BST-FW-PIX# show mroute\nIP Multicast Forwarding Information Base\nEntry flags: C - Directly-Connected Check, S - Signal, D - Drop\nInterface flags: F - Forward, A - Accept, IC - Internal Copy,\nNS - Negate Signal, DP - Don't Preserve, SP - Signal Present,\nEG - Egress\nForwarding Counts: Packets in/Packets out/Bytes out\nFailure Counts: RPF / TTL / Empty Olist / Other\n\n\n(*,224.1.1.2),  Flags: S \n  Last Used: never\n  Forwarding Counts: 0/0/0\n  Failure Counts: 0/0/0/0\n  inside Flags: F \n  intf2 Flags: F \n\n(*,224.1.2.3),  Flags: S \n  Last Used: never\n  Forwarding Counts: 0/0/0\n  Failure Counts: 0/0/0/0\n  intf2 Flags: F \n\n(*,239.255.255.250),  Flags: S \n  Last Used: never\n  Forwarding Counts: 0/0/0\n  Failure Counts: 0/0/0/0\n  inside Flags: F",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"mroute\",\"keyVariables\":\"\",\"startLine\":\"regex[$source, $igmp_group, $flags]:\\\\((\\\\S+),([\\\\d.]+)\\\\),\\\\s+Flags:\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$last_used]:Last Used: (\\\\S+)\",\"regex[$int:forward_packets_in, $int:forward_packets_out, $int:forward_bytes_out]:Forwarding Counts: (\\\\d+)/(\\\\d+)/(\\\\d+)\",\"regex[$int:failure_rpf, $int:failure_ttl, $int:failure_empty_olist, $int:failure_other]:Failure Counts: (\\\\d+)/(\\\\d+)/(\\\\d+)/(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$source:string\",\"$igmp_group:string\",\"$flags:string\",\"$last_used:string\",\"$forward_packets_in:int\",\"$forward_packets_out:int\",\"$forward_bytes_out:int\",\"$failure_rpf:int\",\"$failure_ttl:int\",\"$failure_empty_olist:int\",\"$failure_other:int\"]},\"xxid\":\"14762d8b-1d38-02f5-bf26-868bd6380444\"},{\"type\":\"4\",\"name\":\"interface_flags_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface_name, $interface_flags]:(\\\\S+) Flags: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface_name:string\",\"$interface_flags:string\"]},\"xxid\":\"dee517ae-2193-c3ea-f6a2-b98c43dd29e2\"}]},\"xxid\":\"af23ab5c-098d-44a7-aef9-b2366fcfe425\",\"hashColumns\":[\"$interface_name\"]}]},\"xxid\":\"e658d911-b9cd-3b96-3ffc-9295ac5b85eb\",\"hashColumns\":[\"$igmp_group\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.mroute.$igmp_group",
+                "_original_result.mroute.interface_flags_table.$interface_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "igmp_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "last_used",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "forward_packets_in",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "forward_packets_out",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "forward_bytes_out",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "failure_rpf",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "failure_ttl",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "failure_empty_olist",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "failure_other",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$igmp_group"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "mroute",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "igmp_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "last_used",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "forward_packets_in",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "forward_packets_out",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "forward_bytes_out",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "failure_rpf",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "failure_ttl",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "failure_empty_olist",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "failure_other",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface_name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "interface_flags_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "b22fc093cc1d6b2281a1f7569afc1ad3",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mroute",
+            "dataType": "paragraph",
+            "desc": "Multicast route table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$igmp_group"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mroute",
+            "intfKey": false,
+            "name": "mroute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mroute.$source",
+            "dataType": "string",
+            "desc": "An asterisk (*) in place of the source router indicates all sources.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$igmp_group",
+            "dataType": "string",
+            "desc": "The entry consists of the IP address of the source router followed by the IP address of the multicast group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$igmp_group",
+            "intfKey": false,
+            "name": "$igmp_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$last_used",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$last_used",
+            "intfKey": false,
+            "name": "$last_used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$forward_packets_in",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$forward_packets_in",
+            "intfKey": false,
+            "name": "$forward_packets_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$forward_packets_out",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$forward_packets_out",
+            "intfKey": false,
+            "name": "$forward_packets_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$forward_bytes_out",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$forward_bytes_out",
+            "intfKey": false,
+            "name": "$forward_bytes_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$failure_rpf",
+            "dataType": "int",
+            "desc": "The failure counts of RPF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$failure_rpf",
+            "intfKey": false,
+            "name": "$failure_rpf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$failure_ttl",
+            "dataType": "int",
+            "desc": "The failure counts of TTL.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$failure_ttl",
+            "intfKey": false,
+            "name": "$failure_ttl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$failure_empty_olist",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$failure_empty_olist",
+            "intfKey": false,
+            "name": "$failure_empty_olist",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$failure_other",
+            "dataType": "int",
+            "desc": "The failure counts of other.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$failure_other",
+            "intfKey": false,
+            "name": "$failure_other",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table",
+            "intfKey": false,
+            "name": "interface_flags_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "interface_flags_table.$interface_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$interface_name",
+            "intfKey": false,
+            "name": "$interface_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$interface_flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$interface_flags",
+            "intfKey": false,
+            "name": "$interface_flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$source",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$igmp_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$igmp_group",
+            "intfKey": false,
+            "name": "$igmp_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$last_used",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$last_used",
+            "intfKey": false,
+            "name": "$last_used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$forward_packets_in",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$forward_packets_in",
+            "intfKey": false,
+            "name": "$forward_packets_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$forward_packets_out",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$forward_packets_out",
+            "intfKey": false,
+            "name": "$forward_packets_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$forward_bytes_out",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$forward_bytes_out",
+            "intfKey": false,
+            "name": "$forward_bytes_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$failure_rpf",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$failure_rpf",
+            "intfKey": false,
+            "name": "$failure_rpf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$failure_ttl",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$failure_ttl",
+            "intfKey": false,
+            "name": "$failure_ttl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$failure_empty_olist",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$failure_empty_olist",
+            "intfKey": false,
+            "name": "$failure_empty_olist",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_flags_table.$failure_other",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.interface_flags_table.$failure_other",
+            "intfKey": false,
+            "name": "$failure_other",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

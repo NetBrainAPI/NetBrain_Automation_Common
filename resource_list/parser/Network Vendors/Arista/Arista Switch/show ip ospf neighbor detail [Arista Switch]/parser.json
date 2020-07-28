@@ -1,0 +1,469 @@
+{
+    "_id": "fb25c003-9727-0e84-ca12-3e47e158780d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf neighbor detail",
+    "createTime": {
+        "$date": 1590765573495
+    },
+    "description": "Device Type:\nArista Switch \nCommand: \nshow ip ospf neighbor detail",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-arista-veos>show ip ospf neighbor detail\r\nNeighbor 172.27.128.161, VRF default, interface address 172.27.128.2\r\n  In area 0.0.0.0 interface Ethernet1\r\n  Neighbor priority is 1, State is FULL, 6 state changes\r\n  Adjacency was established 000:01:42:29 ago\r\n  Current state was established 000:01:42:29 ago\r\n  DR IP Address 172.27.128.2 BDR IP Address 172.27.128.1\r\n  Options is E\r\n  Dead timer is due in 00:00:33 seconds\r\n  Inactivity timer deferred 0 times\r\n  LSAs retransmitted 0 times to this neighbor\r\nNeighbor 172.27.128.1, VRF default, interface address 172.27.128.1\r\n  In area 0.0.0.0 interface Ethernet1\r\n  Neighbor priority is 1, State is FULL, 6 state changes\r\n  Adjacency was established 000:01:42:34 ago\r\n  Current state was established 000:01:42:34 ago\r\n  DR IP Address 172.27.128.2 BDR IP Address 172.27.128.1\r\n  Options is E\r\n  Dead timer is due in 00:00:31 seconds\r\n  Inactivity timer deferred 0 times\r\n  LSAs retransmitted 1 time to this neighbor\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_nbr.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_nbr\",\"keyVariables\":\"\",\"startLine\":\"Neighbor $nbr_id, VRF $vrf, interface address $intf_addr\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"In area $area_id interface $intf\",\"Neighbor priority is $priority, State is $state, $changes_time state changes\",\"Adjacency was $adj_state $adj_established_time ago\",\"Current state was $current_state $current_established_time ago\",\"DR IP Address $dr BDR IP Address $bdr\",\"Options is $option\",\"Dead timer is due in $dead_time seconds\",\"Inactivity timer deferred $int:inactivity_times times\",\"regex[$int:num_retransmission]:LSAs retransmitted (\\\\d+) (?:time|times) to this neighbor\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$vrf:string\",\"$intf_addr:string\",\"$area_id:string\",\"$intf:string\",\"$priority:string\",\"$state:string\",\"$changes_time:string\",\"$adj_state:string\",\"$adj_established_time:string\",\"$current_state:string\",\"$current_established_time:string\",\"$dr:string\",\"$bdr:string\",\"$option:string\",\"$dead_time:string\",\"$inactivity_times:int\",\"$num_retransmission:int\"]},\"xxid\":\"205c9546-c099-4b04-b140-0a178aafa08f\"}]},\"xxid\":\"8dcd4715-67fc-542c-dc27-b9c833c00892\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$state\",\"$adj_state\",\"$current_state\",\"$num_retransmission\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_nbr.$state",
+                "_original_result.ospf_nbr.$adj_state",
+                "_original_result.ospf_nbr.$current_state",
+                "_original_result.ospf_nbr.$num_retransmission"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 18,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "changes_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "adj_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "adj_established_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "current_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "current_established_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "option",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "inactivity_times",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "num_retransmission",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$adj_state",
+                    "$current_state",
+                    "$intf",
+                    "$num_retransmission",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_nbr",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "cb2bd6a9050724ab87865abb9d9a79f4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_nbr",
+            "dataType": "paragraph",
+            "desc": "OSPF neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$state",
+                    "$adj_state",
+                    "$current_state",
+                    "$num_retransmission"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr",
+            "intfKey": false,
+            "name": "ospf_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_nbr.$nbr_id",
+            "dataType": "string",
+            "desc": "The router ID of the neighbor router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$vrf",
+            "dataType": "string",
+            "desc": "Vrf name of OSPF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$intf_addr",
+            "dataType": "string",
+            "desc": "The IP address of the interface to which this neighbor is directly connected.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$intf_addr",
+            "intfKey": false,
+            "name": "$intf_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$intf",
+            "dataType": "string",
+            "desc": "The interface on which the OSPF neighbor has formed adjacency.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbr.$priority",
+            "dataType": "string",
+            "desc": "The priority of the neighbor router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$state",
+            "dataType": "string",
+            "desc": "The functional state of the neighbor router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$changes_time",
+            "dataType": "string",
+            "desc": "The state changes times.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$changes_time",
+            "intfKey": false,
+            "name": "$changes_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$adj_state",
+            "dataType": "string",
+            "desc": "OSPF Adjacency state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$adj_state",
+            "intfKey": false,
+            "name": "$adj_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$adj_established_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$adj_established_time",
+            "intfKey": false,
+            "name": "$adj_established_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$current_state",
+            "dataType": "string",
+            "desc": "OSPF Current state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$current_state",
+            "intfKey": false,
+            "name": "$current_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$current_established_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$current_established_time",
+            "intfKey": false,
+            "name": "$current_established_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$dr",
+            "dataType": "string",
+            "desc": "Designated Router (ID).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$bdr",
+            "dataType": "string",
+            "desc": "Backup Designated router (ID).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$bdr",
+            "intfKey": false,
+            "name": "$bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$option",
+            "dataType": "string",
+            "desc": "Options in Hello (E-bit)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$option",
+            "intfKey": false,
+            "name": "$option",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$dead_time",
+            "dataType": "string",
+            "desc": "The Dead Time field indicates the amount of time remaining that the router waits to receive an OSPF hello packet from the neighbor before declaring the neighbor down.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$dead_time",
+            "intfKey": false,
+            "name": "$dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$inactivity_times",
+            "dataType": "int",
+            "desc": "Inactivity timer deferred.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$inactivity_times",
+            "intfKey": false,
+            "name": "$inactivity_times",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr.$num_retransmission",
+            "dataType": "int",
+            "desc": "Number of retransmission.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr.$num_retransmission",
+            "intfKey": false,
+            "name": "$num_retransmission",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

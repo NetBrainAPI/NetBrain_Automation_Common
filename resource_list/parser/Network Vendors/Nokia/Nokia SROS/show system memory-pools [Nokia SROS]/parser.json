@@ -1,0 +1,318 @@
+{
+    "_id": "c3870891-7efb-e3c8-c7f9-79111582c467",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show system memory-pools",
+    "createTime": {
+        "$date": 1584037365539
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow system memory-pools",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:vRR# show system memory-pools \r\n\r\n===============================================================================\r\nMemory Pools\r\n===============================================================================\r\nName                Max Allowed    Current Size      Max So Far          In Use\r\n-------------------------------------------------------------------------------\r\nBFD                    No limit       2,097,152       2,097,152       1,368,744\r\nBGP                    No limit       3,145,728       3,145,728       2,083,704\r\nCFLOWD                 No limit       1,048,576       1,048,576          16,152\r\nCards & Ports          No limit      10,485,760      10,485,760       5,655,440\r\nDHCP Server            No limit       1,048,576       1,048,576         122,896\r\nETH-CFM                No limit       1,048,576       1,048,576          17,288\r\nICC                   8,388,608       1,048,576       1,048,576          10,264\r\nIGMP/MLD               No limit       1,048,576       1,048,576          31,016\r\nIMSI Db Appl           No limit       1,048,576       1,048,576         552,832\r\nIOM                    No limit     505,413,632     505,413,632     470,284,560\r\nIP Stack               No limit       7,340,032       7,340,032       5,395,072\r\nIS-IS                  No limit       1,048,576       1,048,576         662,992\r\nISA                    No limit       3,145,728       3,145,728         717,104\r\nLDP                    No limit       1,048,576       1,048,576         580,496\r\nLogging             205,520,896       4,194,304       4,194,304       1,571,944\r\nMBUF                536,870,912       5,242,880       5,242,880       4,416,360\r\nMCS                    No limit       1,048,576       1,048,576          63,224\r\nMPLS/RSVP              No limit      27,262,976      27,262,976      21,751,600\r\nMSCP                   No limit       2,097,152       2,097,152         627,480\r\nMSDP                   No limit               0               0               0\r\nManagement             No limit       5,242,880       5,242,880       2,083,440\r\nOAM                    No limit       1,048,576       1,048,576         113,456\r\nOSPF                   No limit       2,097,152       2,097,152         787,584\r\nOpenFlow               No limit       1,048,576       1,048,576         311,536\r\nPIM/L2Mcast            No limit      10,485,760      10,485,760       7,249,272\r\nPTP                    No limit       1,048,576       1,048,576             616\r\nRIP                    No limit       1,048,576       1,048,576          53,016\r\nRTM/Policies           No limit       5,242,880       5,242,880       3,739,872\r\nRedundancy             No limit       4,194,304       4,194,304         553,624\r\nSIM                    No limit       2,097,152       2,097,152             488\r\nServices               No limit      19,922,944      19,922,944      14,928,320\r\nStats                  No limit       1,048,576       1,048,576          80,808\r\nSubscriber Mgmt        No limit       7,340,032       7,340,032       1,513,152\r\nSystem                 No limit     168,820,736     168,820,736     161,718,608\r\nTraffic Eng            No limit       1,048,576       1,048,576         340,096\r\nVRRP                   No limit       1,048,576       1,048,576          34,568\r\nWEB Redirect          8,388,608       1,048,576       1,048,576         113,440\r\n-------------------------------------------------------------------------------\r\nCurrent Total Size :      813,694,976 bytes\r\nTotal In Use       :      709,551,064 bytes\r\nAvailable Memory   :      595,591,168 bytes\r\n===============================================================================\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"memory_processes\",\"keyVariables\":\"\",\"startLine\":\"regex[$name,$max_allowed,$current_size,$max_so_far,$in_use]:(.+?)\\\\s+(No limit|[\\\\d\\\\,]+)\\\\s+([\\\\d\\\\,]+)\\\\s+([\\\\d\\\\,]+)\\\\s+([\\\\d\\\\,]+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$name:string\",\"$max_allowed:string\",\"$current_size:string\",\"$max_so_far:string\",\"$in_use:string\"]},\"xxid\":\"0dbdb6b3-b443-5d10-025a-566c0701be83\"}]},\"xxid\":\"51d70dd7-96c6-5604-df66-22a9d22285f3\",\"hashColumns\":[\"$name\",\"$max_allowed\",\"$current_size\",\"$max_so_far\",\"$in_use\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"memory_pools\",\"keyVariables\":\"\",\"startLine\":\"Current Total Size : $current_total_size\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total In Use       : $total_in_use\",\"Available Memory   : $available_memory\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$current_total_size:string\",\"$total_in_use:string\",\"$available_memory:string\"]},\"xxid\":\"fe9bca79-6ef9-ce2b-bc30-3a9693b2f7af\"}]},\"xxid\":\"75c2cece-0517-c7c4-eeb5-6ac3a08dd258\",\"hashColumns\":[\"$current_total_size\",\"$total_in_use\",\"$available_memory\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"5553f8e2-b77e-19f7-69ef-9fb05335d953\"}]}",
+            "tableKeys": [
+                "_original_result.memory_processes.$name",
+                "_original_result.memory_pools.$current_total_size"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "max_allowed",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "current_size",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "max_so_far",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "in_use",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$current_size",
+                    "$in_use",
+                    "$max_allowed",
+                    "$max_so_far",
+                    "$name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "memory_processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "current_total_size",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "total_in_use",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "available_memory",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$available_memory",
+                    "$current_total_size",
+                    "$total_in_use"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "memory_pools",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5a5a9a0ccdb301f480e2fc25c938805f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "memory_processes",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name",
+                    "$max_allowed",
+                    "$current_size",
+                    "$max_so_far",
+                    "$in_use"
+                ],
+                "hashSort": false
+            },
+            "fullName": "memory_processes",
+            "intfKey": false,
+            "name": "memory_processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "memory_processes.$name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_processes.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_processes.$max_allowed",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_processes.$max_allowed",
+            "intfKey": false,
+            "name": "$max_allowed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_processes.$current_size",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_processes.$current_size",
+            "intfKey": false,
+            "name": "$current_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_processes.$max_so_far",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_processes.$max_so_far",
+            "intfKey": false,
+            "name": "$max_so_far",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_processes.$in_use",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_processes.$in_use",
+            "intfKey": false,
+            "name": "$in_use",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_pools",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$current_total_size",
+                    "$total_in_use",
+                    "$available_memory"
+                ],
+                "hashSort": false
+            },
+            "fullName": "memory_pools",
+            "intfKey": false,
+            "name": "memory_pools",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "memory_pools.$current_total_size",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_pools.$current_total_size",
+            "intfKey": false,
+            "name": "$current_total_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_pools.$total_in_use",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_pools.$total_in_use",
+            "intfKey": false,
+            "name": "$total_in_use",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_pools.$available_memory",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_pools.$available_memory",
+            "intfKey": false,
+            "name": "$available_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

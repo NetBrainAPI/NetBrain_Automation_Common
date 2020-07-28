@@ -1,0 +1,327 @@
+{
+    "_id": "49855c04-88c2-6e78-077a-ad936ed6d8d1",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560795899360
+    },
+    "description": "",
+    "devTypes": [
+        30001,
+        30003,
+        30002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n[\n]\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\ndef BuildParameters(context, device_name, params):\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'SDN', 'params' : ['dn','role'] })\n    dn = get_dn['params']['dn']\n    role = get_dn['params']['role']\n    rtn_params = [{ 'devName' : device_name, 'dn' : dn, 'role': role }]\n    return rtn_params\n\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    role = rtn_params['role']\n    \n    qry ='?query-target=subtree'\n    url = '/api/node/class/' + dn + '/faultInfo.json'\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    data = json.loads(data)\n\n    return json.dumps(data)",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"faultInst\": {\n            \"attributes\": {\n                \"ack\": \"no\",\n                \"annotation\": \"\",\n                \"cause\": \"protocol-ntp-sync-failed\",\n                \"changeSet\": \"clock (New: 2019-03-12T02:41:53.485+00:00), clockRaw (New: 8961889445178612465), flags (New: ), leap (New: 0), ntpdCfgFailedBmp (New: ), ntpdCfgFailedTs (New: 00:00:00:00.000), ntpdCfgState (New: 0), peer (New: 0), poll (New: 3), precision (New: -20), refId (New: 73.78.73.84), refName (New: ), refTime (New: 1970-01-01T00:00:00.000+00:00), refTimeRaw (New: 0), rootDelay (New: 0), rootDispersion (New: 436207616), srvStatus (New: not_synchronized), stratum (New: 16)\",\n                \"childAction\": \"deleteNonPresent\",\n                \"code\": \"F1700\",\n                \"created\": \"2019-03-12T02:41:55.624+00:00\",\n                \"delegated\": \"yes\",\n                \"descr\": \"Ntp configuration on spine NBSPINE-4 is Not Synchronized\",\n                \"dn\": \"topology/pod-2/node-204/sys/time/fault-F1700\",\n                \"domain\": \"infra\",\n                \"extMngdBy\": \"\",\n                \"highestSeverity\": \"minor\",\n                \"lastTransition\": \"2019-03-12T02:44:08.617+00:00\",\n                \"lc\": \"raised\",\n                \"modTs\": \"never\",\n                \"occur\": \"1\",\n                \"origSeverity\": \"minor\",\n                \"prevSeverity\": \"minor\",\n                \"rule\": \"datetime-clk-pol-ntp-prov-fault\",\n                \"severity\": \"minor\",\n                \"status\": \"\",\n                \"subject\": \"ntp\",\n                \"type\": \"operational\",\n                \"uid\": \"0\"\n            }\n        }\n    },\n    {\n        \"faultInst\": {\n            \"attributes\": {\n                \"ack\": \"no\",\n                \"annotation\": \"\",\n                \"cause\": \"configuration-failed\",\n                \"changeSet\": \"configQual:provider-is-not-present-under-default-pol, configSt:failed-to-apply\",\n                \"childAction\": \"deleteNonPresent\",\n                \"code\": \"F1295\",\n                \"created\": \"2019-03-12T02:41:08.552+00:00\",\n                \"delegated\": \"yes\",\n                \"descr\": \"Datetime Policy Configuration for default  failed due to : provider-is-not-present-under-default-pol\",\n                \"dn\": \"topology/pod-2/node-204/local/svc-policyelem-id-0/uni/fabric/time-default/issues/fault-F1295\",\n                \"domain\": \"infra\",\n                \"extMngdBy\": \"\",\n                \"highestSeverity\": \"minor\",\n                \"lastTransition\": \"2019-03-12T02:43:08.599+00:00\",\n                \"lc\": \"raised\",\n                \"modTs\": \"never\",\n                \"occur\": \"1\",\n                \"origSeverity\": \"minor\",\n                \"prevSeverity\": \"minor\",\n                \"rule\": \"datetime-conf-issues-config-failed\",\n                \"severity\": \"minor\",\n                \"status\": \"\",\n                \"subject\": \"management\",\n                \"type\": \"config\",\n                \"uid\": \"0\"\n            }\n        }\n    },\n    {\n        \"faultInst\": {\n            \"attributes\": {\n                \"ack\": \"no\",\n                \"annotation\": \"\",\n                \"cause\": \"upgrade-failed\",\n                \"changeSet\": \"upgradeStatus:incompatible\",\n                \"childAction\": \"deleteNonPresent\",\n                \"code\": \"F1480\",\n                \"created\": \"2019-03-12T02:41:25.601+00:00\",\n                \"delegated\": \"yes\",\n                \"descr\": \"Fabric node 204 failed to upgrade to n9000-13.2(2o).  The upgrade has an upgrade status of Failed Due to Incompatible Desired Version - .  The failure occured at the InstallNotStarted stage of the install.\",\n                \"dn\": \"topology/pod-2/node-204/sys/fwstatuscont/upgjob/upgjobfault/fault-F1480\",\n                \"domain\": \"management\",\n                \"extMngdBy\": \"\",\n                \"highestSeverity\": \"major\",\n                \"lastTransition\": \"2019-03-12T02:43:38.603+00:00\",\n                \"lc\": \"raised\",\n                \"modTs\": \"never\",\n                \"occur\": \"1\",\n                \"origSeverity\": \"major\",\n                \"prevSeverity\": \"major\",\n                \"rule\": \"maint-upg-job-fault-failed\",\n                \"severity\": \"major\",\n                \"status\": \"\",\n                \"subject\": \"upgrade-failed\",\n                \"type\": \"operational\",\n                \"uid\": \"0\"\n            }\n        }\n    },\n    {\n        \"faultInst\": {\n            \"attributes\": {\n                \"ack\": \"no\",\n                \"annotation\": \"\",\n                \"cause\": \"equipment-psu-failed\",\n                \"changeSet\": \"operSt (New: fail)\",\n                \"childAction\": \"deleteNonPresent\",\n                \"code\": \"F0411\",\n                \"created\": \"2019-03-12T02:42:46.874+00:00\",\n                \"delegated\": \"no\",\n                \"descr\": \"Power supply failed. (serial number DTW2220V10W)\",\n                \"dn\": \"topology/pod-2/node-204/sys/ch/psuslot-1/psu/fault-F0411\",\n                \"domain\": \"infra\",\n                \"extMngdBy\": \"\",\n                \"highestSeverity\": \"minor\",\n                \"lastTransition\": \"2019-03-12T02:45:08.633+00:00\",\n                \"lc\": \"raised\",\n                \"modTs\": \"never\",\n                \"occur\": \"1\",\n                \"origSeverity\": \"minor\",\n                \"prevSeverity\": \"minor\",\n                \"rule\": \"eqpt-psu-failed\",\n                \"severity\": \"minor\",\n                \"status\": \"\",\n                \"subject\": \"psu-fail\",\n                \"type\": \"environmental\",\n                \"uid\": \"0\"\n            }\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\r\\nBegin Declare Variable\\r\\n[\\r\\n    {\\\"name\\\": \\\"number_of_faults\\\", \\\"type\\\": \\\"int\\\"},\\r\\n    {\\\"name\\\": \\\"fault_details\\\", \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\r\\n        {\\\"name\\\": \\\"ack\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"code\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"cause\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"created\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"domain\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"lastTransition\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"severity\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"subject\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"type\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"descr\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"cisco_fault_url\\\", \\\"type\\\": \\\"string\\\"}\\r\\n    ]}\\r\\n]\\r\\nEnd Declare\\r\\n'''\\r\\nimport json\\r\\n\\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    result = json.loads(_original_result)\\r\\n    value = {}\\r\\n    value['number_of_faults'] = len(result)\\r\\n    ack = []\\r\\n    code = []\\r\\n    cause = []\\r\\n    created = []\\r\\n    domain = []\\r\\n    severity = []\\r\\n    lasttransition = []\\r\\n    subject = []\\r\\n    type1 = []\\r\\n    descr = []\\r\\n    url = []\\r\\n    \\r\\n    beginUrl = 'https://pubhub.devnetcloud.com/media/apic-mim-ref-231/docs/FAULT-'\\r\\n    endUrl = '.html'\\r\\n \\r\\n    try:\\r\\n        for m in range(len(result)):\\r\\n            tempUrl = ''\\r\\n            temp_code = result[m]['faultInst']['attributes']['code']\\r\\n            temp_ack = result[m]['faultInst']['attributes']['ack']\\r\\n            temp_cause = result[m]['faultInst']['attributes']['cause']\\r\\n            temp_created = result[m]['faultInst']['attributes']['created']\\r\\n            temp_domain = result[m]['faultInst']['attributes']['domain']\\r\\n            temp_severity = result[m]['faultInst']['attributes']['severity']\\r\\n            temp_lasttransition = result[m]['faultInst']['attributes']['lastTransition']\\r\\n            temp_subject = result[m]['faultInst']['attributes']['subject']\\r\\n            temp_type1 = result[m]['faultInst']['attributes']['type']\\r\\n            temp_descr = result[m]['faultInst']['attributes']['descr']\\r\\n\\r\\n            code.append(temp_code)\\r\\n            tempUrl = beginUrl + temp_code + endUrl\\r\\n            url.append(tempUrl)\\r\\n            ack.append(temp_ack)\\r\\n            cause.append(temp_cause)\\r\\n            created.append(temp_created)\\r\\n            domain.append(temp_domain)\\r\\n            severity.append(temp_severity)\\r\\n            lasttransition.append(temp_lasttransition)\\r\\n            subject.append(temp_subject)\\r\\n            type1.append(temp_type1)\\r\\n            descr.append(temp_descr)\\r\\n\\r\\n    except Exception as ex:\\r\\n        print(str(ex))\\r\\n    value['fault_details'] = {'code': code, 'ack': ack, 'cause': cause, 'created': created ,'domain': domain, 'severity': severity,'lastTransition': lasttransition, 'subject': subject, 'type': type1, 'descr': descr, \\\"cisco_fault_url\\\": url}\\r\\n    return value\\r\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$number_of_faults\",\"type\":\"int\"}]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$fault_details\",\"variableTypes\":{\"variableType\":[{\"name\":\"$ack\",\"type\":\"string\"},{\"name\":\"$code\",\"type\":\"string\"},{\"name\":\"$cause\",\"type\":\"string\"},{\"name\":\"$created\",\"type\":\"string\"},{\"name\":\"$domain\",\"type\":\"string\"},{\"name\":\"$lastTransition\",\"type\":\"string\"},{\"name\":\"$severity\",\"type\":\"string\"},{\"name\":\"$subject\",\"type\":\"string\"},{\"name\":\"$type\",\"type\":\"string\"},{\"name\":\"$descr\",\"type\":\"string\"},{\"name\":\"$cisco_fault_url\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"9f11cc30-3eee-45fa-5a88-ef111a4130e7\",\"hashColumns\":{\"fault_details\":[\"$code\"]},\"tableKeys\":{\"fault_details\":[\"$code\"]},\"hashSort\":{\"fault_details\":false}}]}",
+            "tableKeys": [
+                "_original_result.$fault_details.$code"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "number_of_faults",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ack",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "cause",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "cisco_fault_url",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "code",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "created",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "descr",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "domain",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "lastTransition",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "severity",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "subject",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "code"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "fault_details",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fc597ad321ca42cdac781fd441f485da",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$fault_details.$ack",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$ack",
+            "intfKey": false,
+            "name": "$ack",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$cause",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$cause",
+            "intfKey": false,
+            "name": "$cause",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$cisco_fault_url",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$cisco_fault_url",
+            "intfKey": false,
+            "name": "$cisco_fault_url",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$code",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$code",
+            "intfKey": false,
+            "name": "$code",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$created",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$created",
+            "intfKey": false,
+            "name": "$created",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$descr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$descr",
+            "intfKey": false,
+            "name": "$descr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$domain",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$domain",
+            "intfKey": false,
+            "name": "$domain",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$code"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$fault_details",
+            "intfKey": false,
+            "name": "$fault_details",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$fault_details.$lastTransition",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$lastTransition",
+            "intfKey": false,
+            "name": "$lastTransition",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$number_of_faults",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$number_of_faults",
+            "intfKey": false,
+            "name": "$number_of_faults",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$severity",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$severity",
+            "intfKey": false,
+            "name": "$severity",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$subject",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$subject",
+            "intfKey": false,
+            "name": "$subject",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_details.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fault_details.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

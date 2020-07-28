@@ -1,0 +1,225 @@
+{
+    "_id": "ee1f1ef2-8164-1870-d613-5ed98530da35",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show health all cpu",
+    "createTime": {
+        "$date": 1590758778153
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow health all cpu",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "> show health all cpu\r\n* - current value exceeds threshold\r\n\r\n                                1 Min  1 Hr  1 Hr\r\nCpu                Limit   Curr   Avg    Avg   Max\r\n-----------------+-------+------+------+-----+----\r\n01                   80     24     21    22    61\r\n02                   80    100*   100    88   100",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"process_cpu_filter\",\"startLine\":\"Cpu                Limit   Curr   Avg    Avg   Max\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":{\"excludeLine\":\"-----------------+-------+------+------+-----+----\"},\"filterLoop\":\"1\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"1076c2dd-a960-4303-5066-6f030b49d5ed\"},{\"type\":\"4\",\"name\":\"process_cpu_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:cpu]:^[\\\\W]*([\\\\d\\\\.]+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:limit]:^\\\\S+\\\\s+[\\\\W]*([\\\\d\\\\.]+)\",\"regex[$double:curr]:^\\\\S+\\\\s+\\\\S+\\\\s+[\\\\W]*([\\\\d\\\\.]+)[\\\\W]*\",\"regex[$double:avg_1min]:^\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+[\\\\W]*([\\\\d\\\\.]+)[\\\\W]*\",\"regex[$double:avg_1hr]:^\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+[\\\\W]*([\\\\d\\\\.]+)[\\\\W]*\",\"regex[$double:max_1hr]:^\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+[\\\\W]*([\\\\d\\\\.]+)[\\\\W]*\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cpu:int\",\"$limit:int\",\"$curr:double\",\"$avg_1min:double\",\"$avg_1hr:double\",\"$max_1hr:double\"]},\"xxid\":\"fd97b14e-75b0-e8d6-f3b0-1c42e8dfacbe\"}]},\"xxid\":\"ec7db79d-2500-7926-fe45-0b33ec9546ec\",\"hashColumns\":[\"$cpu\"]}]},\"xxid\":\"a5160709-6281-fd23-0720-ee298fbf7550\"}]}",
+            "tableKeys": [
+                "_original_result.process_cpu_filter.process_cpu_table.$cpu"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "process_cpu_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "cpu",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "limit",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "curr",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "avg_1min",
+                        "type": 2
+                    },
+                    {
+                        "index": 4,
+                        "name": "avg_1hr",
+                        "type": 2
+                    },
+                    {
+                        "index": 5,
+                        "name": "max_1hr",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": [
+                    "$cpu"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "process_cpu_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a0a577edfb994a6456f1ecc4b0663261",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "process_cpu_filter",
+            "dataType": "filter",
+            "desc": "CPU process filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter",
+            "intfKey": false,
+            "name": "process_cpu_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu_table",
+            "dataType": "paragraph",
+            "desc": "CPU process table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$cpu"
+                ],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter.process_cpu_table",
+            "intfKey": false,
+            "name": "process_cpu_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "process_cpu_table.$cpu",
+            "dataType": "int",
+            "desc": "A list of all currently-active NI modules (i.e., active slots) on the switch.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter.process_cpu_table.$cpu",
+            "intfKey": false,
+            "name": "$cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu_table.$limit",
+            "dataType": "int",
+            "desc": "Current usage threshold for the specified resource type, on the corresponding slot (in percent).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter.process_cpu_table.$limit",
+            "intfKey": false,
+            "name": "$limit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu_table.$curr",
+            "dataType": "double",
+            "desc": "Current usage of the resource on the corresponding slot",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter.process_cpu_table.$curr",
+            "intfKey": false,
+            "name": "$curr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu_table.$avg_1min",
+            "dataType": "double",
+            "desc": "Average usage of the resource on the corresponding slot over a one minute period.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter.process_cpu_table.$avg_1min",
+            "intfKey": false,
+            "name": "$avg_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu_table.$avg_1hr",
+            "dataType": "double",
+            "desc": "\"Average usage of the resource on the corresponding slot over a one hour period.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter.process_cpu_table.$avg_1hr",
+            "intfKey": false,
+            "name": "$avg_1hr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu_table.$max_1hr",
+            "dataType": "double",
+            "desc": "\"The highest average hourly usage for the resource on the corresponding slot.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu_filter.process_cpu_table.$max_1hr",
+            "intfKey": false,
+            "name": "$max_1hr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

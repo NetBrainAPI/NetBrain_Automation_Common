@@ -1,0 +1,578 @@
+{
+    "_id": "30cf6017-eb70-9e87-c8e8-7a8bbd7ca2e4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis overview",
+    "createTime": {
+        "$date": 1580700103617
+    },
+    "description": "Device Type:\nJuniper EX Switch\nJuniper Router\nJuniper SRX Firewall\nCommand:\nshow isis overview",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "netbrain@junr1>show isis overview \nInstance: master\n  Router ID: 163.0.0.1\n  Adjacency holddown: enabled\n  Maximum Areas: 3\n  LSP life time: 1200\n  Attached bit evaluation: enabled\n  SPF delay: 200 msec, SPF holddown: 5000 msec, SPF rapid runs: 3\n  IPv4 is enabled, IPv6 is enabled\n  Traffic engineering: enabled\n  Restart: Enabled\n    Restart duration: 210 sec\n    Helper mode: Enabled\n  Level 1\n    Internal route preference: 15\n    External route preference: 160\n    Wide metrics are enabled, Narrow metrics are enabled\n  Level 2\n    Internal route preference: 18\n    External route preference: 165\n    Wide metrics are enabled",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"instances\",\"keyVariables\":null,\"startLine\":\"regex[$instance]:Instance: (\\\\S+(?:\\\\s+\\\\S+)*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Router ID: $router_id\",\"Adjacency holddown: $adjacency_holddown\",\"Maximum Areas: $int:maximum_areas\",\"LSP life time: $int:lsp_life_time\",\"Attached bit evaluation: $attached_bit_evaluation\",\"SPF delay: $int:spf_delay msec, SPF holddown: $int:spf_holddown msec, SPF rapid runs: $int:spf_rapid_runs\",\"IPv4 is $ipv4_state, IPv6 is $ipv6_state\",\"Traffic engineering: $traffic_enigneering_state\",\"Restart: $restart_state\",\"Restart duration: $int:restart_duration_time sec\",\"Helper mode: $helper_mode\",\"mregex[$int:level_1_internal_route_preference,$int:level_1_external_route_preference,$level_1_metric_style]:Level 1\\\\s+Internal route preference: (\\\\d+)\\\\s+External route preference: (\\\\d+)\\\\s+(\\\\S+(?: \\\\S+)*)\",\"mregex[$int:level_2_internal_route_preference,$int:level_2_external_route_preference,$level_2_metric_style]:Level 2\\\\s+Internal route preference: (\\\\d+)\\\\s+External route preference: (\\\\d+)\\\\s+(\\\\S+(?: \\\\S+)*)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$instance:string\",\"$router_id:string\",\"$adjacency_holddown:string\",\"$maximum_areas:int\",\"$lsp_life_time:int\",\"$attached_bit_evaluation:string\",\"$spf_delay:int\",\"$spf_holddown:int\",\"$spf_rapid_runs:int\",\"$ipv4_state:string\",\"$ipv6_state:string\",\"$traffic_enigneering_state:string\",\"$restart_state:string\",\"$restart_duration_time:int\",\"$helper_mode:string\",\"$level_1_internal_route_preference:int\",\"$level_1_external_route_preference:int\",\"$level_1_metric_style:string\",\"$level_2_internal_route_preference:int\",\"$level_2_external_route_preference:int\",\"$level_2_metric_style:string\"]},\"xxid\":\"3e54cf74-0d33-6180-d172-ef205cd37754\"}]},\"xxid\":\"f9682f39-9533-7b95-b422-0becf1539f00\",\"hashColumns\":[\"$instance\",\"$router_id\",\"$adjacency_holddown\",\"$maximum_areas\",\"$lsp_life_time\",\"$attached_bit_evaluation\",\"$spf_delay\",\"$spf_holddown\",\"$spf_rapid_runs\",\"$ipv4_state\",\"$ipv6_state\",\"$traffic_enigneering_state\",\"$restart_state\",\"$restart_duration_time\",\"$helper_mode\",\"$level_1_internal_route_preference\",\"$level_1_external_route_preference\",\"$level_1_metric_style\",\"$level_2_internal_route_preference\",\"$level_2_external_route_preference\",\"$level_2_metric_style\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"4d35a05b-cb79-abd7-9c8a-8e2d888eca63\"}]}",
+            "tableKeys": [
+                "_original_result.instances.$instance"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 21,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "adjacency_holddown",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "maximum_areas",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "lsp_life_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "attached_bit_evaluation",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "spf_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "spf_holddown",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "spf_rapid_runs",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "ipv4_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "ipv6_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "traffic_enigneering_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "restart_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "restart_duration_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "helper_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "level_1_internal_route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "level_1_external_route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "level_1_metric_style",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "level_2_internal_route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "level_2_external_route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "level_2_metric_style",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$adjacency_holddown",
+                    "$attached_bit_evaluation",
+                    "$helper_mode",
+                    "$instance",
+                    "$ipv4_state",
+                    "$ipv6_state",
+                    "$level_1_external_route_preference",
+                    "$level_1_internal_route_preference",
+                    "$level_1_metric_style",
+                    "$level_2_external_route_preference",
+                    "$level_2_internal_route_preference",
+                    "$level_2_metric_style",
+                    "$lsp_life_time",
+                    "$maximum_areas",
+                    "$restart_duration_time",
+                    "$restart_state",
+                    "$router_id",
+                    "$spf_delay",
+                    "$spf_holddown",
+                    "$spf_rapid_runs",
+                    "$traffic_enigneering_state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "instances",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "cbb9c8a9730725924034347fbb0fbbfa",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "instances",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$instance",
+                    "$router_id",
+                    "$adjacency_holddown",
+                    "$maximum_areas",
+                    "$lsp_life_time",
+                    "$attached_bit_evaluation",
+                    "$spf_delay",
+                    "$spf_holddown",
+                    "$spf_rapid_runs",
+                    "$ipv4_state",
+                    "$ipv6_state",
+                    "$traffic_enigneering_state",
+                    "$restart_state",
+                    "$restart_duration_time",
+                    "$helper_mode",
+                    "$level_1_internal_route_preference",
+                    "$level_1_external_route_preference",
+                    "$level_1_metric_style",
+                    "$level_2_internal_route_preference",
+                    "$level_2_external_route_preference",
+                    "$level_2_metric_style"
+                ],
+                "hashSort": false
+            },
+            "fullName": "instances",
+            "intfKey": false,
+            "name": "instances",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "instances.$instance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$adjacency_holddown",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$adjacency_holddown",
+            "intfKey": false,
+            "name": "$adjacency_holddown",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$maximum_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$maximum_areas",
+            "intfKey": false,
+            "name": "$maximum_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$lsp_life_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$lsp_life_time",
+            "intfKey": false,
+            "name": "$lsp_life_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$attached_bit_evaluation",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$attached_bit_evaluation",
+            "intfKey": false,
+            "name": "$attached_bit_evaluation",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$spf_delay",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$spf_delay",
+            "intfKey": false,
+            "name": "$spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$spf_holddown",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$spf_holddown",
+            "intfKey": false,
+            "name": "$spf_holddown",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$spf_rapid_runs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$spf_rapid_runs",
+            "intfKey": false,
+            "name": "$spf_rapid_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$ipv4_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$ipv4_state",
+            "intfKey": false,
+            "name": "$ipv4_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$ipv6_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$ipv6_state",
+            "intfKey": false,
+            "name": "$ipv6_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$traffic_enigneering_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$traffic_enigneering_state",
+            "intfKey": false,
+            "name": "$traffic_enigneering_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$restart_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$restart_state",
+            "intfKey": false,
+            "name": "$restart_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$restart_duration_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$restart_duration_time",
+            "intfKey": false,
+            "name": "$restart_duration_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$helper_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$helper_mode",
+            "intfKey": false,
+            "name": "$helper_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$level_1_internal_route_preference",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$level_1_internal_route_preference",
+            "intfKey": false,
+            "name": "$level_1_internal_route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$level_1_external_route_preference",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$level_1_external_route_preference",
+            "intfKey": false,
+            "name": "$level_1_external_route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$level_1_metric_style",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$level_1_metric_style",
+            "intfKey": false,
+            "name": "$level_1_metric_style",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$level_2_internal_route_preference",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$level_2_internal_route_preference",
+            "intfKey": false,
+            "name": "$level_2_internal_route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$level_2_external_route_preference",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$level_2_external_route_preference",
+            "intfKey": false,
+            "name": "$level_2_external_route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "instances.$level_2_metric_style",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "instances.$level_2_metric_style",
+            "intfKey": false,
+            "name": "$level_2_metric_style",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

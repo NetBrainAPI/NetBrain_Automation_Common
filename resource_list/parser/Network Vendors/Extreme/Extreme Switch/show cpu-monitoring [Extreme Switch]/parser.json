@@ -1,0 +1,285 @@
+{
+    "_id": "e73a4d22-9e15-4509-c6ae-01183ad3a573",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show cpu-monitoring",
+    "createTime": {
+        "$date": 1591076355611
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow cpu-monitoring",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "show cpu-monitoring\nCPU Utilization Statistics - Monitored every 25 seconds \n----------------------------------------------------------------------- \nProcess      5    10   30   1    5    30   1     Max         Total \n             secs secs secs min  mins mins hour  User/System \n             util util util util util util util  util        CPU Usage \n             (%)  (%)  (%)  (%)  (%)  (%)  (%)   (%)         (secs) \n----------------------------------------------------------------------- \nSystem       n/a  n/a  0.0  0.9  0.1  0.2  0.5   34.6 \naaa          n/a  n/a  0.0  0.0  0.0  0.0  0.0   1.8 1.72    0.78 \nacl          n/a  n/a  0.0  0.0  0.0  0.0  0.0   0.0 0.40    0.24 \nbgp          n/a  n/a  0.0  0.0  0.0  0.0  0.0   12.6 11.18  2.21 ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"process_cpu\",\"keyVariables\":\"\",\"startLine\":\"regex[$process, $double:sec5, $double:sec10, $double:sec30, $double:min1, $double:min5, $double:min30, $double:hour1, $max, $double:total]:^(\\\\S+)\\\\s+([\\\\d\\\\.]+|\\\\S+)\\\\s+([\\\\d\\\\.]+|\\\\S+)\\\\s+([\\\\d.]+)\\\\s+([\\\\d.]+)\\\\s+([\\\\d.]+)\\\\s+([\\\\d.]+)\\\\s+([\\\\d.]+)\\\\s+([\\\\d.]+(?: [\\\\d.]+)?)\\\\s+([\\\\d.]+)?\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process:string\",\"$sec5:double\",\"$sec10:double\",\"$sec30:double\",\"$min1:double\",\"$min5:double\",\"$min30:double\",\"$hour1:double\",\"$max:string\",\"$total:double\"]},\"xxid\":\"fd333e40-68d7-4c19-c26c-c338f686e118\"}]},\"xxid\":\"06d64e35-3bc3-1c86-00fe-36e9ee72c596\",\"hashColumns\":[\"$process\"]}]}",
+            "tableKeys": [
+                "_original_result.process_cpu.$process"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "sec5",
+                        "type": 2
+                    },
+                    {
+                        "index": 2,
+                        "name": "sec10",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "sec30",
+                        "type": 2
+                    },
+                    {
+                        "index": 4,
+                        "name": "min1",
+                        "type": 2
+                    },
+                    {
+                        "index": 5,
+                        "name": "min5",
+                        "type": 2
+                    },
+                    {
+                        "index": 6,
+                        "name": "min30",
+                        "type": 2
+                    },
+                    {
+                        "index": 7,
+                        "name": "hour1",
+                        "type": 2
+                    },
+                    {
+                        "index": 8,
+                        "name": "max",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "total",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "process_cpu",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "caaf97e6edc681aa7fc325e5911203ca",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "process_cpu",
+            "dataType": "paragraph",
+            "desc": "CPU utilization table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false
+            },
+            "fullName": "process_cpu",
+            "intfKey": false,
+            "name": "process_cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "process_cpu.$process",
+            "dataType": "string",
+            "desc": "The process or protocol name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$sec5",
+            "dataType": "double",
+            "desc": "Average CPU utilization in 5 secs (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$sec5",
+            "intfKey": false,
+            "name": "$sec5",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$sec10",
+            "dataType": "double",
+            "desc": "Average CPU utilization in 10 secs (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$sec10",
+            "intfKey": false,
+            "name": "$sec10",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$sec30",
+            "dataType": "double",
+            "desc": "Average CPU utilization in 30 secs (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$sec30",
+            "intfKey": false,
+            "name": "$sec30",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$min1",
+            "dataType": "double",
+            "desc": "Average CPU utilization in 1 min (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$min1",
+            "intfKey": false,
+            "name": "$min1",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$min5",
+            "dataType": "double",
+            "desc": "Average CPU utilization in 5 min (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$min5",
+            "intfKey": false,
+            "name": "$min5",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$min30",
+            "dataType": "double",
+            "desc": "Average CPU utilization in 30 min (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$min30",
+            "intfKey": false,
+            "name": "$min30",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$hour1",
+            "dataType": "double",
+            "desc": "Average CPU utilization in 1 hour (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$hour1",
+            "intfKey": false,
+            "name": "$hour1",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$max",
+            "dataType": "string",
+            "desc": "Max CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$max",
+            "intfKey": false,
+            "name": "$max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_cpu.$total",
+            "dataType": "double",
+            "desc": "Total CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_cpu.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

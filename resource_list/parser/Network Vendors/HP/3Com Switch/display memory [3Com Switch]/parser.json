@@ -1,0 +1,507 @@
+{
+    "_id": "aa3aa7b3-109e-d77c-265c-bdc8302c504a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display memory",
+    "createTime": {
+        "$date": 1590769445537
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay memory",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<H3C>display memory\r\nThe statistics about memory is measured in KB:\r\nSlot 0:\r\n             Total      Used      Free    Shared   Buffers    Cached   FreeRatio\r\nMem:        512252    241912    270340         0        48    114492       52.8%\r\n-/+ Buffers/Cache:    127372    384880\r\nSwap:           0         0         0\r\nSlot 1:\r\n             Total      Used      Free    Shared   Buffers    Cached   FreeRatio\r\nMem:        512252    241912    270340         0        48    114492       52.8%\r\n-/+ Buffers/Cache:    127372    384880\r\nSwap:           0         0         0",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"slot_para\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:slot_num]:^Slot (\\\\d+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$slot_num:int\"]},\"xxid\":\"8c32f9e6-23bc-9dc5-871a-cb466d1e78fd\"},{\"type\":\"4\",\"name\":\"memory_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:total, $int:used, $int:free, $int:shared, $int:buffers, $int:cached, $int:free_ratio]:Mem:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$used:int\",\"$free:int\",\"$shared:int\",\"$buffers:int\",\"$cached:int\",\"$free_ratio:int\"]},\"xxid\":\"ccb5040e-0e13-a935-439a-8be7d7b30d25\"}]},\"xxid\":\"1a1e307f-a40f-20f8-c85f-afc08e371c40\"},{\"type\":\"4\",\"name\":\"app_memory_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:used, $int:free]:-/\\\\+ Buffers/Cache:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$used:int\",\"$free:int\"]},\"xxid\":\"c4337c88-860b-0ea3-91e9-b2fc0d799a1d\"}]},\"xxid\":\"f642ad49-1641-4e93-1f88-f5fcd71dac92\"},{\"type\":\"4\",\"name\":\"swap_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:total, $int:used, $int:free]:Swap:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$used:int\",\"$free:int\"]},\"xxid\":\"d95628e6-e31b-ff09-2239-be7ac429d673\"}]},\"xxid\":\"e01a6919-87f9-34e7-2111-576559e957e5\"}]},\"xxid\":\"48441101-fe4d-c429-3b5f-8fd53c316922\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "slot_num",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "slot_para",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "total",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "used",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "free",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "shared",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "buffers",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "cached",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "free_ratio",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "slot_num",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "memory_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "used",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "free",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "slot_num",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "app_memory_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "total",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "used",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "free",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "slot_num",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "swap_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "9bba9ec0793996b4afe4b684f0897f1e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "slot_para",
+            "dataType": "paragraph",
+            "desc": "The numory usage of device.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "slot_para",
+            "intfKey": false,
+            "name": "slot_para",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "slot_para.$slot_num",
+            "dataType": "int",
+            "desc": "Slot number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.$slot_num",
+            "intfKey": false,
+            "name": "$slot_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table",
+            "dataType": "paragraph",
+            "desc": "The memory status table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table",
+            "intfKey": false,
+            "name": "memory_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "memory_table.$total",
+            "dataType": "int",
+            "desc": "The total memory of device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table.$used",
+            "dataType": "int",
+            "desc": "The used memory of device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$used",
+            "intfKey": false,
+            "name": "$used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table.$free",
+            "dataType": "int",
+            "desc": "The free memory of device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table.$shared",
+            "dataType": "int",
+            "desc": "The shared memory of device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$shared",
+            "intfKey": false,
+            "name": "$shared",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table.$buffers",
+            "dataType": "int",
+            "desc": "The buffered memory of device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$buffers",
+            "intfKey": false,
+            "name": "$buffers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table.$cached",
+            "dataType": "int",
+            "desc": "The cached memory of device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$cached",
+            "intfKey": false,
+            "name": "$cached",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table.$free_ratio",
+            "dataType": "int",
+            "desc": "The percent of free ratio.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$free_ratio",
+            "intfKey": false,
+            "name": "$free_ratio",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_table.$slot_num",
+            "dataType": "int",
+            "desc": "Slot number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.memory_table.$slot_num",
+            "intfKey": false,
+            "name": "$slot_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "app_memory_table",
+            "dataType": "paragraph",
+            "desc": "The application memory table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "slot_para.app_memory_table",
+            "intfKey": false,
+            "name": "app_memory_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "app_memory_table.$used",
+            "dataType": "int",
+            "desc": "The used memory of application.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.app_memory_table.$used",
+            "intfKey": false,
+            "name": "$used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "app_memory_table.$free",
+            "dataType": "int",
+            "desc": "The free memory for application.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.app_memory_table.$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "app_memory_table.$slot_num",
+            "dataType": "int",
+            "desc": "Slot number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.app_memory_table.$slot_num",
+            "intfKey": false,
+            "name": "$slot_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "swap_table",
+            "dataType": "paragraph",
+            "desc": "The swap memory table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "slot_para.swap_table",
+            "intfKey": false,
+            "name": "swap_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "swap_table.$total",
+            "dataType": "int",
+            "desc": "The total swap memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.swap_table.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "swap_table.$used",
+            "dataType": "int",
+            "desc": "The used swap memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.swap_table.$used",
+            "intfKey": false,
+            "name": "$used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "swap_table.$free",
+            "dataType": "int",
+            "desc": "The free swap memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.swap_table.$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "swap_table.$slot_num",
+            "dataType": "int",
+            "desc": "Slot number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slot_para.swap_table.$slot_num",
+            "intfKey": false,
+            "name": "$slot_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

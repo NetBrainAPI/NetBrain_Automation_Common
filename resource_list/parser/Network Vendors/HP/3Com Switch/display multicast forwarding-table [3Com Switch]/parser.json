@@ -1,0 +1,792 @@
+{
+    "_id": "358bcecd-7ba0-42e6-1652-e9b5cbfde451",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display multicast forwarding-table",
+    "createTime": {
+        "$date": 1590782123008
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay multicast forwarding-table",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<H3C> display multicast forwarding-table\r\nMulticast Forwarding Table\r\nTotal 1 entry 1 matched\r\n \r\n00001. (172.168.0.2, 227.0.0.1)\r\n     MID: 0, Flags: 0x0:0\r\n     Uptime: 00:08:32, Timeout in: 00:03:26\r\n     Incoming interface: Vlan-interface1\r\n     List of 1 outgoing interfaces:\r\n       1: Vlan-interface2\r\n     Matched 19648 packets(20512512 bytes), Wrong If 0 packets\r\n     Forwarded 19648 packets(20512512 bytes)\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total $int:total entry $int:matched matched\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$matched:int\"]},\"xxid\":\"85d7f1be-96f0-6d19-730f-d67dd6e4bcd8\"},{\"type\":\"4\",\"name\":\"muticast\",\"keyVariables\":\"\",\"startLine\":\"regex[$num,$s,$g]:(\\\\d+)\\\\.\\\\s+\\\\((\\\\S+),\\\\s+(\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"MID: $mid, Flags: $flags\",\"Uptime: $uptime, Timeout in: $timeout\",\"Incoming interface: $incoming\",\"List of $outgo_count outgoing interfaces:\",\"Matched $matched packets($mbytes bytes), Wrong If $wrong packets\",\"Forwarded $forwarded packets($fbytes bytes)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num:string\",\"$s:string\",\"$g:string\",\"$mid:string\",\"$flags:string\",\"$uptime:string\",\"$timeout:string\",\"$incoming:string\",\"$outgo_count:string\",\"$matched:string\",\"$mbytes:string\",\"$wrong:string\",\"$forwarded:string\",\"$fbytes:string\"]},\"xxid\":\"03d85aa6-b947-3a83-dc72-300b6141a976\"},{\"type\":\"4\",\"name\":\"outgo_intf\",\"keyVariables\":\"\",\"startLine\":\"regex[$out_num,$out_intf]:\\\\s+(\\\\d+):\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$out_num:string\",\"$out_intf:string\"]},\"xxid\":\"f0599634-5237-7c3b-580e-fca42d60284f\"}]},\"xxid\":\"e863bf5f-97d0-db6f-7d5e-90c134a09970\",\"hashColumns\":[\"$s\",\"$g\",\"$incoming\",\"$out_intf\"]}]},\"xxid\":\"2de41c9e-17d6-7644-2501-c4e6db28e465\",\"hashColumns\":[\"$s\",\"$g\",\"$incoming\"]}]}",
+            "tableKeys": [
+                "_original_result.muticast.$s",
+                "_original_result.muticast.$g",
+                "_original_result.muticast.outgo_intf.$s",
+                "_original_result.muticast.outgo_intf.$g",
+                "_original_result.muticast.$incoming",
+                "_original_result.muticast.outgo_intf.$incoming",
+                "_original_result.muticast.outgo_intf.$out_intf"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "matched",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "num",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "s",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "g",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mid",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "timeout",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "incoming",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "outgo_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "matched",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "mbytes",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "wrong",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "forwarded",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "fbytes",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$g",
+                    "$incoming",
+                    "$s"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "muticast",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 16,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "out_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "out_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "num",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "s",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "g",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "mid",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "timeout",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "incoming",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "outgo_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "matched",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "mbytes",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "wrong",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "forwarded",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "fbytes",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$g",
+                    "$incoming",
+                    "$out_intf",
+                    "$s"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "outgo_intf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "124ddc17070aa3fb7f0467205df7a258",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Total number of (S, G) entries",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$matched",
+            "dataType": "int",
+            "desc": "Total matched number of (S, G) entries",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$matched",
+            "intfKey": false,
+            "name": "$matched",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$s",
+                    "$g",
+                    "$incoming"
+                ],
+                "hashSort": false
+            },
+            "fullName": "muticast",
+            "intfKey": false,
+            "name": "muticast",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "muticast.$num",
+            "dataType": "string",
+            "desc": "Sequence number of the (S, G) entry",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$num",
+            "intfKey": false,
+            "name": "$num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$s",
+            "dataType": "string",
+            "desc": "(S, G) entry of the multicast forwarding table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$s",
+            "intfKey": false,
+            "name": "$s",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$g",
+            "dataType": "string",
+            "desc": "(S, G) entry of the multicast forwarding table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$g",
+            "intfKey": false,
+            "name": "$g",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$mid",
+            "dataType": "string",
+            "desc": "(S, G) entry ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$mid",
+            "intfKey": false,
+            "name": "$mid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$flags",
+            "dataType": "string",
+            "desc": "Current state of the (S, G) entry",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$uptime",
+            "dataType": "string",
+            "desc": "Length of time for which the (S, G) entry has been up",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$timeout",
+            "dataType": "string",
+            "desc": "Length of time in which the (S, G) entry will expire",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$timeout",
+            "intfKey": false,
+            "name": "$timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$incoming",
+            "dataType": "string",
+            "desc": "Incoming interface of the (S, G) entry",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$incoming",
+            "intfKey": false,
+            "name": "$incoming",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$outgo_count",
+            "dataType": "string",
+            "desc": "Outgoing interface count",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$outgo_count",
+            "intfKey": false,
+            "name": "$outgo_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$matched",
+            "dataType": "string",
+            "desc": "(S, G)-matched packets (bytes), packets with incoming interface errors",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$matched",
+            "intfKey": false,
+            "name": "$matched",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$mbytes",
+            "dataType": "string",
+            "desc": "(S, G)-matched packets (bytes), packets with incoming interface errors",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$mbytes",
+            "intfKey": false,
+            "name": "$mbytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$wrong",
+            "dataType": "string",
+            "desc": "(S, G)-matched packets (bytes), packets with incoming interface errors",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$wrong",
+            "intfKey": false,
+            "name": "$wrong",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$forwarded",
+            "dataType": "string",
+            "desc": "(S, G)-forwarded packets (bytes)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$forwarded",
+            "intfKey": false,
+            "name": "$forwarded",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$fbytes",
+            "dataType": "string",
+            "desc": "(S, G)-forwarded packets (bytes)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$fbytes",
+            "intfKey": false,
+            "name": "$fbytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$s",
+                    "$g",
+                    "$incoming",
+                    "$out_intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf",
+            "intfKey": false,
+            "name": "outgo_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "outgo_intf.$out_num",
+            "dataType": "string",
+            "desc": "Outgoing id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$out_num",
+            "intfKey": false,
+            "name": "$out_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$out_intf",
+            "dataType": "string",
+            "desc": "Outgoing interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$out_intf",
+            "intfKey": false,
+            "name": "$out_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$num",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$num",
+            "intfKey": false,
+            "name": "$num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$s",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$s",
+            "intfKey": false,
+            "name": "$s",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$g",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$g",
+            "intfKey": false,
+            "name": "$g",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$mid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$mid",
+            "intfKey": false,
+            "name": "$mid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$timeout",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$timeout",
+            "intfKey": false,
+            "name": "$timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$incoming",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$incoming",
+            "intfKey": false,
+            "name": "$incoming",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$outgo_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$outgo_count",
+            "intfKey": false,
+            "name": "$outgo_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$matched",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$matched",
+            "intfKey": false,
+            "name": "$matched",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$mbytes",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$mbytes",
+            "intfKey": false,
+            "name": "$mbytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$wrong",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$wrong",
+            "intfKey": false,
+            "name": "$wrong",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$forwarded",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$forwarded",
+            "intfKey": false,
+            "name": "$forwarded",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgo_intf.$fbytes",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.outgo_intf.$fbytes",
+            "intfKey": false,
+            "name": "$fbytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

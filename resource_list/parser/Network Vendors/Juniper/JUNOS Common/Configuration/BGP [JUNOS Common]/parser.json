@@ -1,0 +1,76 @@
+{
+    "_id": "90c506cc-2511-d8bd-3bc5-e78354a55601",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585581705775
+    },
+    "description": "Device Type:\nJuniper EX Switch\nJuniper Router \nJuniper SRX Firewall\nCommand:\n    <Configuration>",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": null,
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@QappTest> show configuration \n## Last commit: 2016-06-06 14:27:06 UTC by root\nversion 15.1F4.15;\nsystem {\n    host-name QappTest;\n    root-authentication {\n        encrypted-password \"$5$MhDU0kxe$glWFOaYtWfkyJy0LyhU44PeaP31GRKoC46rVO1NIWS8\"; ## SECRET-DATA\n    }\n    syslog {\n        user * {\n            any emergency;\n        }\n        file messages {\n            any notice;\n            authorization info;\n        }\n        file interactive-commands {\n            interactive-commands any;\n        }\n    }\n}\nrouting-options {\n    autonomous-system 12346;\n}                                       \nprotocols {\n    bgp {\n        family inet {\n            unicast;\n        }\n        export aggregate_to_bgp;\n        local-as 101;\n        group ibgp {\n            type internal;\n\t\t\tdescription qapppaser;\n\t\t\tauthentication-key-chain instan;\n            metric-out minimum-igp 40;\n            preference 99;\n            local-preference 20;\n            hold-time 15;\n            out-delay 20;\n            log-updown;\n            authentication-algorithm hmac-sha-1-96;\n            export [ ebgp-aggregate-ibgp 1 ];\n            cluster 9.9.0.4;\n            peer-as 64740;\n\t\t\timport [ 2 POLICY1 ];\n\t\t\tlocal-address 10.1.1.2;\n\t\t\tauthentication-key \"$9$mTQnOBEyeWz3Ey\";\n            local-as 64740;\n            tcp-mss 1666;\n            neighbor 202.96.117.250;\n            neighbor 202.96.117.206;    \n            neighbor 192.168.1.1;\n            neighbor 192.168.2.1;\n            neighbor 192.168.3.1;\n        }\n        group ebgp {\n            type external;\n            description AStoas;\n            metric-out 20;\n            multihop;\n            local-preference 100;\n            local-address 10.1.1.1;\n            hold-time 10;\n            out-delay 20;\n            log-updown;\n            import [ 2 POLICY1 ];\n            family inet {\n                unicast;\n                multicast;\n            }\n            family route-target;\n            authentication-key \"$9$mTQnOBEyeWz3Ey\"; ## SECRET-DATA\n            export [ name-r-exroutes POLICY2 ];\n            cluster 100.1.1.1;          \n            local-as 10001;\n            tcp-mss 2046;\n            as-override;\n            neighbor 202.1.1.1 {\n                peer-as 20001;\n            }\n            neighbor 203.1.1.1 {\n                peer-as 20003;\n            }\n            neighbor 204.1.1.1 {\n                peer-as 20004;\n            }\n        }\n        group default {\n            family inet-vpn {\n                unicast;\n            }\n            authentication-key \"$9$wng4ZmPQn9poJQn\"; ## SECRET-DATA\n            peer-as 200;\n            local-as 100;\n            neighbor 10.1.1.1;\n        }\n    }                                   \n}\npolicy-options {\n    policy-statement 1 {\n        then accept;\n    }\n    policy-statement 2 {\n        then accept;\n    }\n    policy-statement POLICY1 {\n        then accept;\n    }\n    policy-statement POLICY2 {\n        then accept;\n    }\n    policy-statement POLICY3 {\n        then accept;\n    }\n    policy-statement POLICY4 {\n        then accept;\n    }\n    policy-statement aggregate_to_bgp {\n        from protocol aggregate;\n        then accept;                    \n    }\n    policy-statement cisco {\n        from protocol bgp;\n    }\n    policy-statement ebgp-aggregate-ibgp {\n        term term1 {\n            from {\n                protocol bgp;\n                neighbor 202.107.253.1;\n            }\n            then next term;\n        }\n        term term2 {\n            from protocol aggregate;\n            then accept;\n        }\n    }\n    policy-statement name-r-exroutes {\n        term 1 {\n            from protocol [ direct bgp ];\n        }\n        term 2 {\n            from protocol rip;          \n        }\n    }\n}\nrouting-instances {\n    vrf1 {\n        description BGP;\n        instance-type vrf;\n        route-distinguisher 1:10;\n        vrf-target target:1:1;\n        routing-options {\n            autonomous-system 12345;\n        }\n        protocols {\n            bgp {\n                group internal {\n                    type internal;\n                    metric-out 100;\n                    multihop {\n                        ttl 250;\n                    }\n                    hold-time 1;\n                    family inet {\n                        unicast;        \n                    }\n                    peer-as 10000;\n                }\n                group 1 {\n                    type internal;\n                    metric-out 100;\n                    multihop {\n                        ttl 250;\n                    }\n                    hold-time 1;\n                    family inet {\n                        unicast;        \n                    }\n                    peer-as 10000;\n                }\n            }\n        }\n    }\n    2 {\n        instance-type vrf;\n        route-distinguisher 1:100;\n        vrf-target target:1:100;\n        protocols {\n            bgp {\n                group 1 {\n                    type external;\n                }\n                group 2 {\n                    type internal;\n                }\n            }\n        }\n    }\n    vr1 {\n        instance-type virtual-router;   \n        protocols {\n            bgp {\n                group test {\n                    type internal;\n                }\n            }\n        }\n    }\n}",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"bgp_config\",\"startLine\":\"    bgp {\",\"endLine\":\"    }                                   \",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"cb820f42-7078-f229-00c7-123dfdc75e6c\"}]},\"xxid\":\"707e688c-8384-33e8-e9b6-7016f0164647\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bgp_config",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "e5b202e20646ff788a0f72f6eb047d88",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "bgp_config",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_config",
+            "intfKey": false,
+            "name": "bgp_config",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

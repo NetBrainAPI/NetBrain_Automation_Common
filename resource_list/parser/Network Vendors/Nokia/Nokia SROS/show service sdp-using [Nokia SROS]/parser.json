@@ -1,0 +1,257 @@
+{
+    "_id": "173a703a-18c5-d5f5-8cf5-f8c6d18ba5d8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show service sdp-using",
+    "createTime": {
+        "$date": 1587666886278
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "ALU-01#show service sdp-using \n\n===============================================================================\nSDP Using\n===============================================================================\nSvcId      SdpId              Type Far End              Opr   I.Label  E.Label\n                                                        State          \n-------------------------------------------------------------------------------\n10312401   1:10312401         Spok 51.253.255.1         Down  131064   0\n10312401   2:10312401         Spok 51.253.255.2         Down  131068   0\n10312402   1:10312402         Spok 51.253.255.1         Down  131063   0\n10312402   2:10312402         Spok 51.253.255.2         Down  131067   0\n10312403   1:10312403         Spok 51.253.255.1         Down  131062   0\n10312403   2:10312403         Spok 51.253.255.2         Down  131066   0\n10312404   1:10312404         Spok 51.253.255.1         Down  131061   0\n10312404   2:10312404         Spok 51.253.255.2         Down  131065   0\n-------------------------------------------------------------------------------\nNumber of SDPs : 8\n-------------------------------------------------------------------------------\n===============================================================================\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Number of SDPs : $int:number_of_sdps$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$number_of_sdps:int\"]},\"xxid\":\"08572bf7-9949-f190-c58b-d9ac92df4b66\"},{\"type\":\"4\",\"name\":\"sdp_services\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:svc_id,$sdp_id,$type,$far_end,$opr_state,$i_label,$e_label]:(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$svc_id:int\",\"$sdp_id:string\",\"$type:string\",\"$far_end:string\",\"$opr_state:string\",\"$i_label:string\",\"$e_label:string\"]},\"xxid\":\"1cbc2c06-68c0-53cd-422d-645bf98ef641\"}]},\"xxid\":\"0a9df4ba-0158-12e0-2eb1-0c8b0ec2dbb3\",\"hashColumns\":[\"$svc_id\",\"$sdp_id\",\"$type\",\"$far_end\",\"$opr_state\",\"$i_label\",\"$e_label\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.sdp_services.$svc_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "number_of_sdps",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "svc_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "sdp_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "far_end",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "opr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "i_label",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "e_label",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$e_label",
+                    "$far_end",
+                    "$i_label",
+                    "$opr_state",
+                    "$sdp_id",
+                    "$svc_id",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "sdp_services",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "46bf0c0fa303da7d0314ad8f5ffbdc07",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$number_of_sdps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$number_of_sdps",
+            "intfKey": false,
+            "name": "$number_of_sdps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sdp_services",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$svc_id",
+                    "$sdp_id",
+                    "$type",
+                    "$far_end",
+                    "$opr_state",
+                    "$i_label",
+                    "$e_label"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sdp_services",
+            "intfKey": false,
+            "name": "sdp_services",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sdp_services.$svc_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sdp_services.$svc_id",
+            "intfKey": false,
+            "name": "$svc_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sdp_services.$sdp_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sdp_services.$sdp_id",
+            "intfKey": false,
+            "name": "$sdp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sdp_services.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sdp_services.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sdp_services.$far_end",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sdp_services.$far_end",
+            "intfKey": false,
+            "name": "$far_end",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sdp_services.$opr_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sdp_services.$opr_state",
+            "intfKey": false,
+            "name": "$opr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sdp_services.$i_label",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sdp_services.$i_label",
+            "intfKey": false,
+            "name": "$i_label",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sdp_services.$e_label",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sdp_services.$e_label",
+            "intfKey": false,
+            "name": "$e_label",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

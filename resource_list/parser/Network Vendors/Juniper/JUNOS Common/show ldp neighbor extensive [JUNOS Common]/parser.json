@@ -1,0 +1,383 @@
+{
+    "_id": "f736d097-a228-0055-a03a-6f1bf8bdad86",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ldp neighbor extensive",
+    "createTime": {
+        "$date": 1580695805404
+    },
+    "description": "Device Type:\nJuniper Router\nJuniper EX Switch \nJuniper SRX Firewall\nCommand:\nshow ldp neighbor extensive",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "netbrain@Juniper_Router_1>show ldp neighbor extensive \nAddress            Interface          Label space ID         Hold time\n3.255.255.12       em2.0              2.2.2.2:0                12\n  Transport address: 2.2.2.2, Configuration sequence: 7\n  Up for 01:00:36\n  Reference count: 1\n  Hold time: 15, Proposed local/peer: 15/15\n  Hello flags: none\n  Neighbor types: discovered\nAddress            Interface          Label space ID         Hold time\n4.255.255.12       em3.0              2.2.2.2:0                14\n  Transport address: 2.2.2.2, Configuration sequence: 7\n  Up for 00:58:10\n  Reference count: 1\n  Hold time: 15, Proposed local/peer: 15/15\n  Hello flags: none\n  Neighbor types: discovered\n\nAddress            Interface          Label space ID         Hold time\n10.10.2.1          ge-0/0/0.0         10.100.100.2:0           11\n  Transport address: 10.100.100.2, Configuration sequence: 22\n  Up for 9w6d 07:19:27\n  Reference count: 1\n  Hold time: 15, Proposed local/peer: 15/15\n  Hello flags: none\n  Neighbor types: discovered\nAddress            Interface          Label space ID         Hold time\n10.10.10.1         ge-0/0/2.0         10.100.100.14:0          11\n  Transport address: 10.100.100.14, Configuration sequence: 2\n  Up for 9w6d 07:10:50\n  Reference count: 1\n  Hold time: 15, Proposed local/peer: 15/15\n  Hello flags: none\n  Neighbor types: discovered\nAddress            Interface          Label space ID         Hold time\n10.10.3.1          ge-0/0/3.0         10.100.100.1:0           10\n  Transport address: 10.100.100.1, Configuration sequence: 2\n  Up for 9w6d 07:19:27\n  Reference count: 1\n  Hold time: 15, Proposed local/peer: 15/15\n  Hello flags: none\n  Neighbor types: discovered\nAddress            Interface          Label space ID         Hold time\n10.10.9.1          ge-0/0/4.0         10.100.100.13:0          14\n  Transport address: 10.100.100.13, Configuration sequence: 2\n  Up for 9w6d 07:19:27\n  Reference count: 1\n  Hold time: 15, Proposed local/peer: 15/15\n  Hello flags: none\n  Neighbor types: discovered\n\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ldp_neighbors.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ldp_neighbors\",\"keyVariables\":null,\"startLine\":\"regex:^Address\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$neighbor_address,$interface,$label_space_id,$int:neighbor_hold_time]:^(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\",\"Transport address: $transport_address, Configuration sequence: $int:configuration_sequence\",\"Up for $uptime\",\"Reference count: $int:reference_count\",\"Hold time: $int:hold_time, Proposed local/peer: $int:proposed_local/$int:proposed_peer\",\"regex[$hello_flags]:Hello flags: (\\\\S+(?: \\\\S+)*)\",\"Neighbor types: $neighbor_types\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$neighbor_address:string\",\"$interface:string\",\"$label_space_id:string\",\"$neighbor_hold_time:int\",\"$transport_address:string\",\"$configuration_sequence:int\",\"$uptime:string\",\"$reference_count:int\",\"$hold_time:int\",\"$proposed_local:int\",\"$proposed_peer:int\",\"$hello_flags:string\",\"$neighbor_types:string\"]},\"xxid\":\"bb1d743f-e692-7f93-acec-04b2ded63c0b\"}]},\"xxid\":\"134615e9-9bc9-52a7-eb08-232aa422e919\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$neighbor_address\",\"$interface\",\"$label_space_id\",\"$transport_address\",\"$hold_time\",\"$proposed_local\",\"$proposed_peer\",\"$hello_flags\",\"$neighbor_types\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"cb09d1a0-81a7-af69-315e-39b509c5efd5\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "label_space_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "neighbor_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "transport_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "configuration_sequence",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "reference_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "proposed_local",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "proposed_peer",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "hello_flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "neighbor_types",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$hello_flags",
+                    "$hold_time",
+                    "$interface",
+                    "$label_space_id",
+                    "$neighbor_address",
+                    "$neighbor_types",
+                    "$proposed_local",
+                    "$proposed_peer",
+                    "$transport_address"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ldp_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "65e62e461249253717d31068a060e080",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ldp_neighbors",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor_address",
+                    "$interface",
+                    "$label_space_id",
+                    "$transport_address",
+                    "$hold_time",
+                    "$proposed_local",
+                    "$proposed_peer",
+                    "$hello_flags",
+                    "$neighbor_types"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors",
+            "intfKey": false,
+            "name": "ldp_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ldp_neighbors.$neighbor_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$neighbor_address",
+            "intfKey": false,
+            "name": "$neighbor_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ldp_neighbors.$label_space_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$label_space_id",
+            "intfKey": false,
+            "name": "$label_space_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$neighbor_hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$neighbor_hold_time",
+            "intfKey": false,
+            "name": "$neighbor_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$transport_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$transport_address",
+            "intfKey": false,
+            "name": "$transport_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$configuration_sequence",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$configuration_sequence",
+            "intfKey": false,
+            "name": "$configuration_sequence",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$reference_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$reference_count",
+            "intfKey": false,
+            "name": "$reference_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$proposed_local",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$proposed_local",
+            "intfKey": false,
+            "name": "$proposed_local",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$proposed_peer",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$proposed_peer",
+            "intfKey": false,
+            "name": "$proposed_peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$hello_flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$hello_flags",
+            "intfKey": false,
+            "name": "$hello_flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_neighbors.$neighbor_types",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_neighbors.$neighbor_types",
+            "intfKey": false,
+            "name": "$neighbor_types",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

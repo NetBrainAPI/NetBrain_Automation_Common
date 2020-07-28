@@ -1,0 +1,598 @@
+{
+    "_id": "acd6bb28-9c9b-7424-9501-5900c90681e8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf",
+    "createTime": {
+        "$date": 1579121622232
+    },
+    "description": "Device Type:\nCisco IOS XR\nCommand: \nshow ospf",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:xrv10#show ospf\r\n\r\nTue Jan 21 19:40:52.188 UTC\r\n\r\n Routing Process \"ospf 100\" with ID 75.75.75.7\r\n Role: Primary Active\r\n NSR (Non-stop routing) is Enabled\r\n Supports only single TOS(TOS0) routes\r\n Supports opaque LSA\r\n Router is not originating router-LSAs with maximum metric\r\n Initial SPF schedule delay 50 msecs\r\n Minimum hold time between two consecutive SPFs 200 msecs\r\n Maximum wait time between two consecutive SPFs 5000 msecs\r\n Initial LSA throttle delay 50 msecs\r\n Minimum hold time for LSA throttle 200 msecs\r\n Maximum wait time for LSA throttle 5000 msecs\r\n Minimum LSA interval 200 msecs. Minimum LSA arrival 100 msecs\r\n LSA refresh interval 1800 seconds\r\n Flood pacing interval 33 msecs. Retransmission pacing interval 66 msecs\r\n Adjacency stagger enabled; initial (per area): 2, maximum: 64\r\n    Number of neighbors forming: 0, 2 full\r\n Maximum number of configured interfaces 1024\r\n Number of external LSA 1. Checksum Sum 0x008d44\r\n Number of opaque AS LSA 0. Checksum Sum 00000000\r\n Number of DCbitless external and opaque AS LSA 0\r\n Number of DoNotAge external and opaque AS LSA 0\r\n Number of areas in this router is 1. 1 normal 0 stub 0 nssa\r\n External flood list length 0\r\n SNMP trap is enabled\r\n LSD connected, registered, bound, revision 1\r\n Segment Routing Global Block default (16000-23999), not allocated\r\n    Area BACKBONE(0)\r\n\tNumber of interfaces in this area is 3\r\n\tArea has RRR enabled, topology version 272\r\n\tSPF algorithm executed 220 times\r\n\tNumber of LSA 32.  Checksum Sum 0x0ca84c\r\n\tNumber of opaque link LSA 0.  Checksum Sum 00000000\r\n\tNumber of DCbitless LSA 0\r\n\tNumber of indication LSA 0\r\n\tNumber of DoNotAge LSA 0\r\n\tFlood list length 0\r\n\tNumber of LFA enabled interfaces 0, LFA revision 0\r\n\tNumber of Per Prefix LFA enabled interfaces 0\r\n\tNumber of neighbors forming in staggered mode 0, 2 full\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf\",\"keyVariables\":null,\"startLine\":\"Routing Process \\\"ospf $process\\\" with ID $router_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"NSR (Non-stop routing) is $nsr_state\",\"Number of neighbors forming: $int:number_nbrs_forming, $int:number_nbrs_forming_full full\",\"Number of areas in this router is $int:number_of_area\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process:string\",\"$router_id:string\",\"$nsr_state:string\",\"$number_nbrs_forming:int\",\"$number_nbrs_forming_full:int\",\"$number_of_area:int\"]},\"xxid\":\"034c2645-b479-269d-994b-88a17060dd66\"},{\"type\":\"4\",\"name\":\"area\",\"keyVariables\":null,\"startLine\":\"regex[$area_id]:Area\\\\s+(?:\\\\S+)?(\\\\d)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"SPF algorithm executed $spf_algorithm_executed times\",\"Number of LSA $int:num_lsa.  Checksum Sum $ksa_checksum\",\"Number of neighbors forming in staggered mode $int:num_nbrs_forming_staggered_mode, $int:num_nbrs_forming_staggered_mode_full full\",\"regex[$number_of_intf]:Number of interfaces in this area is (\\\\d+)\",\"regex[$area_auth_text]:(Area\\\\s+.*authentication)\",\"topology version $int:topology_version\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$spf_algorithm_executed:string\",\"$num_lsa:int\",\"$ksa_checksum:string\",\"$num_nbrs_forming_staggered_mode:int\",\"$num_nbrs_forming_staggered_mode_full:int\",\"$number_of_intf:string\",\"$area_auth_text:string\",\"$topology_version:int\"]},\"xxid\":\"e142397a-0726-9a8d-fcc8-349e547c91a5\"}]},\"xxid\":\"b3317eaa-60ec-27ce-2437-7751cfdda3ee\",\"hashColumns\":[\"$area_id\",\"$num_nbrs_forming_staggered_mode_full\",\"$number_of_intf\",\"$area_auth_text\",\"$router_id\",\"$number_nbrs_forming_full\",\"$number_of_area\",\"$num_lsa\",\"$nsr_state\",\"$process\"],\"hashSort\":false}]},\"xxid\":\"7919588c-dbb6-d76f-63b4-faff9489cbf0\",\"hashColumns\":[\"$process\",\"$router_id\",\"$number_nbrs_forming_full\",\"$number_of_area\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.ospf.$process",
+                "_original_result.ospf.area.$area_id",
+                "_original_result.ospf.area.$num_lsa",
+                "_original_result.ospf.area.$number_of_area",
+                "_original_result.ospf.area.$nsr_state",
+                "_original_result.ospf.area.$router_id",
+                "_original_result.ospf.area.$process"
+            ]
+        },
+        {
+            "content": "RP/0/0/CPU0:xrv10#show ospf\r\n\r\nTue Jan 21 19:40:52.188 UTC\r\n\r\n Routing Process \"ospf 100\" with ID 75.75.75.7\r\n Role: Primary Active\r\n NSR (Non-stop routing) is Enabled\r\n Supports only single TOS(TOS0) routes\r\n Supports opaque LSA\r\n Router is not originating router-LSAs with maximum metric\r\n Initial SPF schedule delay 50 msecs\r\n Minimum hold time between two consecutive SPFs 200 msecs\r\n Maximum wait time between two consecutive SPFs 5000 msecs\r\n Initial LSA throttle delay 50 msecs\r\n Minimum hold time for LSA throttle 200 msecs\r\n Maximum wait time for LSA throttle 5000 msecs\r\n Minimum LSA interval 200 msecs. Minimum LSA arrival 100 msecs\r\n LSA refresh interval 1800 seconds\r\n Flood pacing interval 33 msecs. Retransmission pacing interval 66 msecs\r\n Adjacency stagger enabled; initial (per area): 2, maximum: 64\r\n    Number of neighbors forming: 0, 2 full\r\n Maximum number of configured interfaces 1024\r\n Number of external LSA 1. Checksum Sum 0x008d44\r\n Number of opaque AS LSA 0. Checksum Sum 00000000\r\n Number of DCbitless external and opaque AS LSA 0\r\n Number of DoNotAge external and opaque AS LSA 0\r\n Number of areas in this router is 1. 1 normal 0 stub 0 nssa\r\n External flood list length 0\r\n SNMP trap is enabled\r\n LSD connected, registered, bound, revision 1\r\n Segment Routing Global Block default (16000-23999), not allocated\r\n    Area BACKBONE(0)\r\n\tNumber of interfaces in this area is 3\r\n\tArea has RRR enabled, topology version 272\r\n\tSPF algorithm executed 220 times\r\n\tNumber of LSA 32.  Checksum Sum 0x0ca84c\r\n\tNumber of opaque link LSA 0.  Checksum Sum 00000000\r\n\tNumber of DCbitless LSA 0\r\n\tNumber of indication LSA 0\r\n\tNumber of DoNotAge LSA 0\r\n\tFlood list length 0\r\n\tNumber of LFA enabled interfaces 0, LFA revision 0\r\n\tNumber of Per Prefix LFA enabled interfaces 0\r\n\tNumber of neighbors forming in staggered mode 0, 2 full\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 2,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample2",
+            "parserRules": "{\"parseRule\":[]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1,
+        2
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "nsr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "number_nbrs_forming",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "number_nbrs_forming_full",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "number_of_area",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$number_nbrs_forming_full",
+                    "$number_of_area",
+                    "$process",
+                    "$router_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 15,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "spf_algorithm_executed",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "num_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "ksa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "num_nbrs_forming_staggered_mode",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "num_nbrs_forming_staggered_mode_full",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "number_of_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "area_auth_text",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "topology_version",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "nsr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "number_nbrs_forming",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "number_nbrs_forming_full",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "number_of_area",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_auth_text",
+                    "$area_id",
+                    "$nsr_state",
+                    "$num_lsa",
+                    "$num_nbrs_forming_staggered_mode_full",
+                    "$number_nbrs_forming_full",
+                    "$number_of_area",
+                    "$number_of_intf",
+                    "$process",
+                    "$router_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "area",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bd1c651c29a28074335ca2decb75fdeb",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on process id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process",
+                    "$router_id",
+                    "$number_nbrs_forming_full",
+                    "$number_of_area"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf",
+            "intfKey": false,
+            "name": "ospf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf.$process",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$nsr_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$nsr_state",
+            "intfKey": false,
+            "name": "$nsr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$number_nbrs_forming",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$number_nbrs_forming",
+            "intfKey": false,
+            "name": "$number_nbrs_forming",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$number_nbrs_forming_full",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$number_nbrs_forming_full",
+            "intfKey": false,
+            "name": "$number_nbrs_forming_full",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$number_of_area",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$number_of_area",
+            "intfKey": false,
+            "name": "$number_of_area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on area id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id",
+                    "$num_nbrs_forming_staggered_mode_full",
+                    "$number_of_intf",
+                    "$area_auth_text",
+                    "$router_id",
+                    "$number_nbrs_forming_full",
+                    "$number_of_area",
+                    "$num_lsa",
+                    "$nsr_state",
+                    "$process"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf.area",
+            "intfKey": false,
+            "name": "area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$spf_algorithm_executed",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$spf_algorithm_executed",
+            "intfKey": false,
+            "name": "$spf_algorithm_executed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_lsa",
+            "intfKey": false,
+            "name": "$num_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$ksa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$ksa_checksum",
+            "intfKey": false,
+            "name": "$ksa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_nbrs_forming_staggered_mode",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_nbrs_forming_staggered_mode",
+            "intfKey": false,
+            "name": "$num_nbrs_forming_staggered_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_nbrs_forming_staggered_mode_full",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_nbrs_forming_staggered_mode_full",
+            "intfKey": false,
+            "name": "$num_nbrs_forming_staggered_mode_full",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$number_of_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$number_of_intf",
+            "intfKey": false,
+            "name": "$number_of_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$area_auth_text",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$area_auth_text",
+            "intfKey": false,
+            "name": "$area_auth_text",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$topology_version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$topology_version",
+            "intfKey": false,
+            "name": "$topology_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$process",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$nsr_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$nsr_state",
+            "intfKey": false,
+            "name": "$nsr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$number_nbrs_forming",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$number_nbrs_forming",
+            "intfKey": false,
+            "name": "$number_nbrs_forming",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$number_nbrs_forming_full",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$number_nbrs_forming_full",
+            "intfKey": false,
+            "name": "$number_nbrs_forming_full",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$number_of_area",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$number_of_area",
+            "intfKey": false,
+            "name": "$number_of_area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

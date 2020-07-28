@@ -1,0 +1,435 @@
+{
+    "_id": "1662104f-a8bb-2058-e5eb-ac927ad5c130",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis neighbors detail",
+    "createTime": {
+        "$date": 1579116429767
+    },
+    "description": "Device Type:\nCisco IOS XR \nCommand:\nshow isis neighbors detail",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:XR5#show isis neighbors detail\r\n\r\nTue Jun 16 22:45:41.928 UTC\r\n\r\nIS-IS abc neighbors:\r\nSystem Id      Interface        SNPA           State Holdtime Type IETF-NSF\r\nR1             Gi0/0/0/0        ca01.1d40.001f Up    7        L2   Capable \r\n  Area Address(es): 47.0001\r\n  IPv4 Address(es): 9.9.15.1*\r\n  Topologies: 'IPv4 Unicast'\r\n  Uptime: 1d21h\r\n \r\nTotal neighbor count: 1",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_tags.isis_neighbors_detail.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_tags\",\"keyVariables\":\"\",\"startLine\":\"IS-IS $process_id neighbors:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process_id:string\"]},\"xxid\":\"12ac096d-0c26-f6f1-e80c-fd1e5431f3d6\"},{\"type\":\"4\",\"name\":\"isis_neighbors_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$system_id,$interface,$snpa,$state,$int:holdtime,$type,$ietf_nsf]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Area Address(es): $area_address\",\"regex[$ipv4_address]:IPv4 Address\\\\(es\\\\): (\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"regex[$topologies]:Topologies:\\\\s+'(.*)'\",\"Uptime: $uptime\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$system_id:string\",\"$interface:string\",\"$snpa:string\",\"$state:string\",\"$holdtime:int\",\"$type:string\",\"$ietf_nsf:string\",\"$area_address:string\",\"$ipv4_address:string\",\"$topologies:string\",\"$uptime:string\"]},\"xxid\":\"a71bf7ae-3321-f0bd-b7ae-93d89aa3be2f\"}]},\"xxid\":\"b4791bd5-8313-f97c-ba61-e113197a019a\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$system_id\",\"$interface\",\"$state\",\"$type\",\"$area_address\",\"$ipv4_address\",\"$topologies\",\"$process_id\"],\"hashSort\":false}]},\"xxid\":\"88746202-9cb8-03f7-d136-afb9d93473ec\",\"hashColumns\":[\"$process_id\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_nbr_count]:Total neighbor count:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_nbr_count:int\"]},\"xxid\":\"fe3f70ae-f53d-501c-aebe-47c12b4e3447\"}]}",
+            "tableKeys": [
+                "_original_result.isis_tags.$process_id",
+                "_original_result.isis_tags.isis_neighbors_detail.$state",
+                "_original_result.isis_tags.isis_neighbors_detail.$type",
+                "_original_result.isis_tags.isis_neighbors_detail.$system_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_nbr_count",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_tags",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "holdtime",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ietf_nsf",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "area_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "ipv4_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "topologies",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_address",
+                    "$interface",
+                    "$ipv4_address",
+                    "$process_id",
+                    "$state",
+                    "$system_id",
+                    "$topologies",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_neighbors_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ff8f2c590d34ae0718f2b4c7c2bca955",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_tags",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_tags",
+            "intfKey": false,
+            "name": "isis_tags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_tags.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$system_id",
+                    "$interface",
+                    "$state",
+                    "$type",
+                    "$area_address",
+                    "$ipv4_address",
+                    "$topologies",
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail",
+            "intfKey": false,
+            "name": "isis_neighbors_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_neighbors_detail.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_neighbors_detail.$snpa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$holdtime",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$holdtime",
+            "intfKey": false,
+            "name": "$holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$ietf_nsf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$ietf_nsf",
+            "intfKey": false,
+            "name": "$ietf_nsf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$area_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$area_address",
+            "intfKey": false,
+            "name": "$area_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$ipv4_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$ipv4_address",
+            "intfKey": false,
+            "name": "$ipv4_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$topologies",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$topologies",
+            "intfKey": false,
+            "name": "$topologies",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors_detail.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_tags.isis_neighbors_detail.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_nbr_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_nbr_count",
+            "intfKey": false,
+            "name": "$total_nbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

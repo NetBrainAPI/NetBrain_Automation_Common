@@ -1,0 +1,170 @@
+{
+    "_id": "c87b33ea-127f-ff3b-87a3-2561b4eb8935",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "cplic print",
+    "createTime": {
+        "$date": 1579140970653
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\ncplic print",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-checkpoint-1> cplic print\r\n Warning: Can't find ::CPSB-CTNT in cp.macro. License version might be not compatible\r\nHost             Expiration  Features            \r\n172.27.129.50    24Jun2017   CPSG-C-8-U CPSB-FW CPSB-VPN CPSB-IPSA CPSB-DLP CPSB-SSLVPN-U CPSB-IA CPSB-ADNC CPSG-VSX-25S CPSB-SWB CPSB-IPS CPSB-AV CPSB-URLF CPSB-ASPM CPSB-APCL CPSB-ABOT CPSB-CTNT CK-30CECD96BBFA",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"license_table\",\"headers\":\"Host;Expiration;Features\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Host:$string:host;Expiration:$string:expiration;Features:$string:features\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$host:string\",\"$expiration:string\",\"$features:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"2b82abc1-dcd7-a1da-046a-12a222302f65\",\"hashColumns\":[\"$host\",\"$expiration\",\"$features\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"4bbc2e26-d476-4747-627b-50dff00cc423\"}]}",
+            "tableKeys": [
+                "_original_result.license_table.$host"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "host",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "expiration",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "features",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$expiration",
+                    "$features",
+                    "$host"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "license_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "29d1bea45c28f807ded297591643cee0",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "license_table",
+            "dataType": "table",
+            "desc": "License table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$host",
+                    "$expiration",
+                    "$features"
+                ],
+                "hashSort": false
+            },
+            "fullName": "license_table",
+            "intfKey": false,
+            "name": "license_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "license_table.$host",
+            "dataType": "string",
+            "desc": "Host IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$host",
+            "intfKey": false,
+            "name": "$host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$expiration",
+            "dataType": "string",
+            "desc": "Expiration time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$expiration",
+            "intfKey": false,
+            "name": "$expiration",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$features",
+            "dataType": "string",
+            "desc": "Features.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$features",
+            "intfKey": false,
+            "name": "$features",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,224 @@
+{
+    "_id": "53db2db1-522b-40f7-b431-3be165bf1637",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip pim rp mapping",
+    "createTime": {
+        "$date": 1561130869259
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch \nCommand:\nshow ip pim rp mapping",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "Sjc-Dist-3750-01#show ip pim rp mapping\r\nPIM Group-to-RP Mappings\r\n\r\nGroup(s) 224.0.0.0/4\r\n  RP 10.88.255.21 (?), v2\r\n    Info source: 10.88.255.71 (?), via bootstrap, priority 10, holdtime 150\r\n         Uptime: 4w3d, expires: 00:01:45\r\n  RP 10.88.11.25 (?), v2\r\n    Info source: 10.88.255.71 (?), via bootstrap, priority 15, holdtime 150\r\n         Uptime: 43w3d, expires: 00:01:44\r\n  RP 10.88.255.71 (?), v2\r\n    Info source: 10.88.255.71 (?), via bootstrap, priority 20, holdtime 150\r\n         Uptime: 4w3d, expires: 00:01:46\r\n  RP 10.88.255.51 (?), v2\r\n    Info source: 10.88.255.71 (?), via bootstrap, priority 20, holdtime 150\r\n         Uptime: 4w3d, expires: 00:01:45\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.pim_rp_mapping.rp_mapping.$mcast_group"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"pim_rp_mapping\",\"keyVariables\":\"\",\"startLine\":\"regex[$mcast_group]:Group\\\\(s\\\\)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\/\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mcast_group:string\"]},\"xxid\":\"99155f15-9509-9d48-e773-e01b335add13\"},{\"type\":\"4\",\"name\":\"rp_mapping\",\"keyVariables\":\"\",\"startLine\":\"regex[$RP]:RP\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$uptime]:Uptime: (\\\\S+),\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$RP:string\",\"$uptime:string\"]},\"xxid\":\"15573464-239c-1ab3-22ce-b6c7d6de4305\"}]},\"xxid\":\"30d0314f-e8ad-b256-6b3a-59dec64900f6\",\"hashColumns\":[\"$RP\",\"$mcast_group\"],\"interfaceKey\":\"$mcast_group\",\"hashSort\":false}]},\"xxid\":\"5a195b63-c376-6a0d-85ce-201a38b5505e\"},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"a2c49851-88cb-f8b9-02f0-61ac3029f0e7\"}]},\"xxid\":\"db9c0606-5218-0183-ac36-210e0c77f7d2\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mcast_group",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_rp_mapping",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "RP",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "mcast_group",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$RP",
+                    "$mcast_group"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "rp_mapping",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a6ff24bf79729371bd314cf73f5bd0e6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "rp_mapping.$RP",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_rp_mapping.rp_mapping.$RP",
+            "intfKey": false,
+            "name": "$RP",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_rp_mapping.$mcast_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_rp_mapping.$mcast_group",
+            "intfKey": false,
+            "name": "$mcast_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rp_mapping.$mcast_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_rp_mapping.rp_mapping.$mcast_group",
+            "intfKey": false,
+            "name": "$mcast_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "rp_mapping.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_rp_mapping.rp_mapping.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_rp_mapping",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "pim_rp_mapping",
+            "intfKey": false,
+            "name": "pim_rp_mapping",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "rp_mapping",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$RP",
+                    "$mcast_group"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_rp_mapping.rp_mapping",
+            "intfKey": false,
+            "name": "rp_mapping",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        }
+    ],
+    "version": "7.1"
+}

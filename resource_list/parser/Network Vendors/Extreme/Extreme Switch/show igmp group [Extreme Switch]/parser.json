@@ -1,0 +1,236 @@
+{
+    "_id": "46d199ba-a2e4-688f-b1e0-ef7a909cb030",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show igmp group",
+    "createTime": {
+        "$date": 1591074777571
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow igmp group",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB#show igmp group\r\n\r\nGroup Address     Ver Vlan                 Port      Age\r\n239.2.4.70        2   banana               7         101\r\n224.0.1.24        2   banana               7         107\r\n239.255.255.254   2   banana               7         103\r\nTotal: 3",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"igmp_filter\",\"startLine\":\"regex:^\\\\s*group address\",\"endLine\":\"regex:total\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"7eebf9e5-2920-981c-26bd-2ee13fba4191\"},{\"type\":\"3\",\"name\":\"igmp_table\",\"headers\":\"Group Address;Ver;Vlan;Port;Age\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Group Address:$string:group_address;Ver:$string:igmp_version;Vlan:$string:vlan;Port:$string:port;Age:$string:age\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$group_address:string\",\"$igmp_version:string\",\"$vlan:string\",\"$port:string\",\"$age:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"d7df4e69-eb9c-05b7-758d-eb81c16f7dd7\",\"hashColumns\":[\"$group_address\"]}]},\"xxid\":\"d13b2c07-56b7-3d53-4352-57a2d9ee5cb0\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total]:total:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\"]},\"xxid\":\"166027d8-ffac-c049-4dec-a8af011f623d\"}]}",
+            "tableKeys": [
+                "_original_result.igmp_filter.igmp_table.$group_address"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "igmp_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "igmp_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "age",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group_address"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "igmp_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "adcdeac8d5e4dc1fbac0f254dcc66821",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_filter",
+            "dataType": "filter",
+            "desc": "IGMP FIlter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_filter",
+            "intfKey": false,
+            "name": "igmp_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_table",
+            "dataType": "table",
+            "desc": "IGMP table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group_address"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_filter.igmp_table",
+            "intfKey": false,
+            "name": "igmp_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "igmp_table.$group_address",
+            "dataType": "string",
+            "desc": "Group address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_filter.igmp_table.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_table.$igmp_version",
+            "dataType": "string",
+            "desc": "IGMP version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_filter.igmp_table.$igmp_version",
+            "intfKey": false,
+            "name": "$igmp_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_table.$vlan",
+            "dataType": "string",
+            "desc": "Vlan.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_filter.igmp_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_table.$port",
+            "dataType": "string",
+            "desc": "Port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_filter.igmp_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_table.$age",
+            "dataType": "string",
+            "desc": "Age.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_filter.igmp_table.$age",
+            "intfKey": false,
+            "name": "$age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Total.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

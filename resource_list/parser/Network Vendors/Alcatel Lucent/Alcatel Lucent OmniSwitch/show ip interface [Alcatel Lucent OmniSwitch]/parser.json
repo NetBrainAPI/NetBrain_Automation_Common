@@ -1,0 +1,229 @@
+{
+    "_id": "a1ab8eeb-bdf5-5b56-fb01-31b925009e7d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip interface",
+    "createTime": {
+        "$date": 1590609513502
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip interface",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip interface\nTotal 13 interfaces\n         Name          IP Address     Subnet Mask    Status Forward Device\n--------------------+---------------+---------------+------+-------+--------\nEMP                  172.22.16.115   255.255.255.0       UP      NO EMP\nGMRULE               40.1.1.1        255.255.255.0     DOWN      NO vlan 40\nLoopback             127.0.0.1       255.0.0.0           UP      NO Loopback\nclient               60.1.1.1        255.255.255.0     DOWN      NO vlan 60\ngbps                 5.5.5.5         255.255.255.0     DOWN      NO vlan 7\nif222                30.1.5.1        255.0.0.0           UP     YES vlan 222\nldap_client1         173.22.16.115   255.255.255.0       UP     YES vlan 173\nldap_server1         174.22.16.115   255.255.255.0       UP     YES vlan 174\nradius_client3       110.1.1.101     255.255.255.0       UP     YES vlan 30\nvlan-2               0.0.0.0         0.0.0.0           DOWN      NO unbound\ngre-1                24.24.24.1      255.255.255.0       UP     YES GRE tunnel\nipip-1               25.25.25.1      255.255.255.0       UP     YES IPIP tunnel\nvlan-23              23.23.23.1      255.255.255.0       UP     YES vlan 23\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intfs.$name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total $int:total interfaces\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\"]},\"xxid\":\"a61fc38e-068b-f6d0-f275-f64c3ba9b84b\"},{\"type\":\"4\",\"name\":\"intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$name,$ip_address,$subnet_mask,$status,$forward,$device]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(YES|NO)\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$name:string\",\"$ip_address:string\",\"$subnet_mask:string\",\"$status:string\",\"$forward:string\",\"$device:string\"]},\"xxid\":\"bf2ba245-96ec-ce2c-80d1-ce846566dcba\"}]},\"xxid\":\"77ecaec9-5c3f-8e8f-9545-bba3212adde3\",\"interfaceKey\":\"$name\",\"hashColumns\":[\"$name\",\"$status\"]}]}",
+            "tableKeys": [
+                "_original_result.intfs.$status"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "subnet_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "forward",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "device",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$name",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f8d0a40e89ad2f44e6fc6dfbef88b841",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Total of interfaces",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs",
+            "dataType": "paragraph",
+            "desc": "Interface table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name",
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intfs",
+            "intfKey": false,
+            "name": "intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intfs.$name",
+            "dataType": "string",
+            "desc": "Interface name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intfs.$ip_address",
+            "dataType": "string",
+            "desc": "IP address of the interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$subnet_mask",
+            "dataType": "string",
+            "desc": "IP subnet mask for the interface IP address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$subnet_mask",
+            "intfKey": false,
+            "name": "$subnet_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$status",
+            "dataType": "string",
+            "desc": "Interface status up or down",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$forward",
+            "dataType": "string",
+            "desc": "Indicates whether the interface is actively forwarding packets",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$forward",
+            "intfKey": false,
+            "name": "$forward",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$device",
+            "dataType": "string",
+            "desc": "The type of device bound to the interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$device",
+            "intfKey": false,
+            "name": "$device",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

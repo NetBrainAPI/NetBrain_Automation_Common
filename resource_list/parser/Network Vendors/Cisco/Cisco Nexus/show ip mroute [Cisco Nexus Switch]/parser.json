@@ -1,0 +1,466 @@
+{
+    "_id": "49d6d2ee-ff06-4357-2725-0caa9e15d6ea",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mroute",
+    "createTime": {
+        "$date": 1579708370906
+    },
+    "description": "Device Type:\nCisco Nexus Switch \nCommand:\nshow ip mroute",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Nexus# show ip mroute\nIP Multicast Routing Table for VRF \"default\"\n\n(1.1.223.2/32, 224.1.1.1/32), uptime: 00:16:32, pim ip \n  Incoming interface: Ethernet2/2, RPF nbr: 1.1.223.2\n  Outgoing interface list: (count: 1)\n    Ethernet2/3, uptime: 00:16:32, pim\n\n(1.1.33.2/32, 224.1.1.2/32), uptime: 00:16:28, ip pim \n  Incoming interface: Ethernet2/3, RPF nbr: 1.1.33.2\n  Outgoing interface list: (count: 1)\n    Ethernet2/1, uptime: 00:16:28, pim\n\n(1.1.223.2/32, 224.1.1.3/32), uptime: 00:23:43, pim ip \n  Incoming interface: Ethernet2/2, RPF nbr: 1.1.223.2\n  Outgoing interface list: (count: 1)\n    Ethernet2/3, uptime: 00:23:43, pim\n\n(1.1.223.2/32, 224.1.1.4/32), uptime: 00:16:21, pim ip \n  Incoming interface: Ethernet2/2, RPF nbr: 1.1.223.2\n  Outgoing interface list: (count: 1)\n    Ethernet2/3, uptime: 00:16:21, pim\n\n(1.1.223.2/32, 224.1.1.5/32), uptime: 00:23:43, pim ip \n  Incoming interface: Ethernet2/2, RPF nbr: 1.1.223.2\n  Outgoing interface list: (count: 1)\n    Ethernet2/3, uptime: 00:23:43, pim\n\n(1.1.33.2/32, 224.1.1.7/32), uptime: 00:04:43, pim ip \n  Incoming interface: Ethernet2/3, RPF nbr: 1.1.33.2\n  Outgoing interface list: (count: 1)\n    Ethernet2/1, uptime: 00:04:43, pim\n\n(1.1.223.2/32, 224.1.1.7/32), uptime: 00:16:14, pim ip \n  Incoming interface: Ethernet2/2, RPF nbr: 1.1.223.2\n  Outgoing interface list: (count: 2)\n    Ethernet2/1, uptime: 00:04:13, pim\n    Ethernet2/3, uptime: 00:16:14, pim\n\n(*, 224.1.1.8/32), uptime: 00:23:43, pim ip \n  Incoming interface: Ethernet2/1, RPF nbr: 1.1.123.111\n  Outgoing interface list: (count: 1)\n    Ethernet2/2, uptime: 00:23:43, pim\n\n(1.1.223.2/32, 224.1.1.8/32), uptime: 00:16:16, pim mrib ip \n  Incoming interface: Ethernet2/2, RPF nbr: 1.1.223.2\n  Outgoing interface list: (count: 1)\n    Ethernet2/2, uptime: 00:00:11, mrib, (RPF)\n\n(*, 232.0.0.0/8), uptime: 00:24:12, pim ip \n  Incoming interface: Null, RPF nbr: 0.0.0.0\n  Outgoing interface list: (count: 0)\n\n(*, 239.255.255.250/32), uptime: 00:23:43, pim ip \n  Incoming interface: Ethernet2/1, RPF nbr: 1.1.123.111\n  Outgoing interface list: (count: 1)\n    Ethernet2/2, uptime: 00:23:43, pim\n\n(1.1.123.253/32, 239.255.255.250/32), uptime: 00:03:01, ip mrib pim \n  Incoming interface: Ethernet2/1, RPF nbr: 1.1.123.253\n  Outgoing interface list: (count: 1)\n    Ethernet2/2, uptime: 00:03:01, mrib, pim",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"groups\",\"keyVariables\":null,\"startLine\":\"regex[$source_address,$source_mask,$group_address,$group_mask]:\\\\((\\\\S+?)(?:/(\\\\d+))?, (\\\\S+?)(?:/(\\\\d+))?\\\\),\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"uptime: $uptime,\",\"Incoming interface: $incoming_interface,\",\"regex[$rpf_nbr]:RPF nbr: ([^\\\\s,]+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$source_address:string\",\"$source_mask:string\",\"$group_address:string\",\"$group_mask:string\",\"$uptime:string\",\"$incoming_interface:string\",\"$rpf_nbr:string\"]},\"xxid\":\"78089c82-e9d2-89c3-4314-fb4a6ae131b8\"},{\"type\":\"4\",\"name\":\"outgoing_interface_list\",\"keyVariables\":null,\"startLine\":\"regex[$outgoing_interface,$outgoing_intferface_uptime]:[ ]{4}(.+?), uptime: (\\\\S+),\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$outgoing_interface:string\",\"$outgoing_intferface_uptime:string\"]},\"xxid\":\"fe57db77-c95e-411f-4750-d9aff7e49ba4\"}]},\"xxid\":\"01947fe8-4f6c-ab98-7b80-5904af14a670\"}]},\"xxid\":\"a1fb1fde-e1c8-3316-02b8-34c8af104cbf\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"09cc1790-19c0-ab96-d57a-62ded36fa9c1\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "source_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "group_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "incoming_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "rpf_nbr",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "groups",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "outgoing_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "outgoing_intferface_uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "source_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "source_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "group_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "incoming_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "rpf_nbr",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "outgoing_interface_list",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f20aab7bd5ce6ccdfc5308574356b907",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "groups",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "groups",
+            "intfKey": false,
+            "name": "groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "groups.$source_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$source_address",
+            "intfKey": false,
+            "name": "$source_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$source_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$source_mask",
+            "intfKey": false,
+            "name": "$source_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$group_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$group_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group_mask",
+            "intfKey": false,
+            "name": "$group_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$incoming_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$incoming_interface",
+            "intfKey": false,
+            "name": "$incoming_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$rpf_nbr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$rpf_nbr",
+            "intfKey": false,
+            "name": "$rpf_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list",
+            "intfKey": false,
+            "name": "outgoing_interface_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "outgoing_interface_list.$outgoing_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$outgoing_interface",
+            "intfKey": false,
+            "name": "$outgoing_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$outgoing_intferface_uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$outgoing_intferface_uptime",
+            "intfKey": false,
+            "name": "$outgoing_intferface_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$source_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$source_address",
+            "intfKey": false,
+            "name": "$source_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$source_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$source_mask",
+            "intfKey": false,
+            "name": "$source_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$group_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$group_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$group_mask",
+            "intfKey": false,
+            "name": "$group_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$incoming_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$incoming_interface",
+            "intfKey": false,
+            "name": "$incoming_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface_list.$rpf_nbr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.outgoing_interface_list.$rpf_nbr",
+            "intfKey": false,
+            "name": "$rpf_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

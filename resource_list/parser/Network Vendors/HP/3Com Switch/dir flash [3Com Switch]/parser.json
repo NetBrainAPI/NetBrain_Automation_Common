@@ -1,0 +1,225 @@
+{
+    "_id": "085575c6-90b2-c104-4fe6-8fc2195d4b07",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "dir flash",
+    "createTime": {
+        "$date": 1590768109337
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndir flash",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<SW2>dir flash:\r\nDirectory of flash:\r\n   0 drw-           - Jun 07 2017 04:59:06   diagfile\r\n   1 -rw-        1554 Jun 07 2017 05:27:52   ifindex.dat\r\n   2 -rw-       21632 Jun 07 2017 04:59:06   licbackup\r\n   3 drw-           - Jun 07 2017 04:59:06   license\r\n   4 -rw-       21632 Jun 07 2017 04:59:06   licnormal\r\n   5 drw-           - Jun 07 2017 04:59:06   logfile\r\n   6 -rw-           0 Jun 07 2017 04:59:06   s5820v2_5830v2-cmw710-boot-a5901.bin\r\n   7 -rw-           0 Jun 07 2017 04:59:06   s5820v2_5830v2-cmw710-system-a5901.bin\r\n   8 drw-           - Jun 07 2017 04:59:06   seclog\r\n   9 -rw-        6091 Jun 07 2017 05:27:52   startup.cfg\r\n  10 -rw-      101632 Jun 07 2017 05:27:52   startup.mdb\r\n\r\n1046512 KB total (1046320 KB free)\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"flash_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$id,$status,$size,$time,$file_name]:^\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+|-)\\\\s+(.*)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$id:string\",\"$status:string\",\"$size:string\",\"$time:string\",\"$file_name:string\"]},\"xxid\":\"eff7b4f5-3fe8-5cd9-42b9-5d10e72f3f48\"}]},\"xxid\":\"00a491d2-b088-481e-d8c3-539a8c8a3c42\",\"hashColumns\":[\"$size\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"$int:flash_total KB total ($int:flash_free KB free)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$flash_total:int\",\"$flash_free:int\"]},\"xxid\":\"2d0f2596-6f69-f9d8-c766-48ae22f6d35d\"}]}",
+            "tableKeys": [
+                "_original_result.flash_table.$size"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "flash_total",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "flash_free",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "size",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "file_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$size"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "flash_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bee462ba9ae214d038910b7d88ca7a4d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "flash_table",
+            "dataType": "paragraph",
+            "desc": "Flash Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$size"
+                ],
+                "hashSort": false
+            },
+            "fullName": "flash_table",
+            "intfKey": false,
+            "name": "flash_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "flash_table.$id",
+            "dataType": "string",
+            "desc": "Number of files??? ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$id",
+            "intfKey": false,
+            "name": "$id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$status",
+            "dataType": "string",
+            "desc": "The status of memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$size",
+            "dataType": "string",
+            "desc": "Number of files size.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$size",
+            "intfKey": false,
+            "name": "$size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$time",
+            "dataType": "string",
+            "desc": "Time of last modify.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$file_name",
+            "dataType": "string",
+            "desc": "File???s name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$file_name",
+            "intfKey": false,
+            "name": "$file_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$flash_total",
+            "dataType": "int",
+            "desc": "Flash bytes total.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash_total",
+            "intfKey": false,
+            "name": "$flash_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$flash_free",
+            "dataType": "int",
+            "desc": "Flash bytes free.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash_free",
+            "intfKey": false,
+            "name": "$flash_free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

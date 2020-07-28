@@ -1,0 +1,618 @@
+{
+    "_id": "9ac26552-74c5-87fa-7670-3c3de81a837f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf lsdb",
+    "createTime": {
+        "$date": 1591075633822
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow ospf lsdb",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "# show ospf lsdb\r\n\r\n           Router LSAs for area 0.0.0.0\r\nLink State ID  Adv Router    Seq#       Age  Chksum #Links\r\n---------------------------------------------\r\n10.10.10.10    10.10.10.10   0x8000011d 1227 0Xafc6 1\r\n20.20.20.20    20.20.20.20   0x8000075d 1257 0X8566 3\r\n\r\n           Network LSAs for area 0.0.0.0\r\nLink State ID  Adv Router    Seq#       Age  Chksum #Links\r\n---------------------------------------------\r\n10.10.10.10    10.10.10.10   0x8000011d 1227 0Xafc6 1\r\n20.20.20.20    20.20.20.20   0x8000075d 1257 0X8566 3\r\n\r\n           Summary LSAs for area 0.0.0.0\r\nLink State ID  Adv Router    Seq#       Age  Chksum #Links\r\n---------------------------------------------\r\n10.10.10.10    10.10.10.10   0x8000011d 1227 0Xafc6 1\r\n20.20.20.20    20.20.20.20   0x8000075d 1257 0X8566 3\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"router_lsa_filter\",\"startLine\":\"regex:^\\\\s+router lsa.+?for area \\\\S+\",\"endLine\":\"regex:^\\\\s+\\\\S+\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"c6c38fbd-fbb3-ec18-636f-c904be118aa7\"},{\"type\":\"3\",\"name\":\"router_lsa_table\",\"headers\":\"Link State ID;Adv Router;Seq#;Age;Chksum;#Links\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Link State ID:$string:link_state_id;Adv Router:$string:adv_router;Seq#:$string:seq;Age:$string:age;Chksum:$string:chksum;#Links:$string:links\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$link_state_id:string\",\"$adv_router:string\",\"$seq:string\",\"$age:string\",\"$chksum:string\",\"$links:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"303dbcc6-fc45-377c-fd48-3fa25b20eb1d\",\"hashColumns\":[\"$link_state_id\"],\"HashSort\":false}]},\"xxid\":\"bf2226d0-cb31-44fb-89e0-774634f47283\"},{\"type\":\"1\",\"name\":\"ntwk_lsa_filter\",\"startLine\":\"regex:^\\\\s+network lsas.+?for area\",\"endLine\":\"regex:^\\\\s+\\\\S+\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"9db1bb9c-7e47-169c-8c56-1d7075557fa3\"},{\"type\":\"3\",\"name\":\"network_lsa_table\",\"headers\":\"Link State ID;Adv Router;Seq#;Age;Chksum;#Links\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Link State ID:$string:link_state_id;Adv Router:$string:adv_router;Seq#:$string:seq;Age:$string:age;Chksum:$string:chksum;#Links:$string:links\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$link_state_id:string\",\"$adv_router:string\",\"$seq:string\",\"$age:string\",\"$chksum:string\",\"$links:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"0c7b960e-2ac9-52d1-82a7-e18f080ab513\",\"hashColumns\":[\"$link_state_id\"]}]},\"xxid\":\"c5f41656-9d3e-b9f2-0828-5cfde02a4ff7\"},{\"type\":\"1\",\"name\":\"summary_lsa_filter\",\"startLine\":\"regex:^\\\\s+summary lsa.+?for area\",\"endLine\":\"regex:^\\\\s+\\\\S+\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"9d0a7247-6c6e-7a9f-4d1a-423b379dd30f\"},{\"type\":\"3\",\"name\":\"summary_lsa_table\",\"headers\":\"Link State ID;Adv Router;Seq#;Age;Chksum;#Links\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Link State ID:$string:link_state_id;Adv Router:$string:adv_router;Seq#:$string:seq;Age:$string:age;Chksum:$string:chksum;#Links:$string:links\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$link_state_id:string\",\"$adv_router:string\",\"$seq:string\",\"$age:string\",\"$chksum:string\",\"$links:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"ddc62782-0c5f-4ede-955b-8c9d1a9d5fee\",\"hashColumns\":[\"$link_state_id\"]}]},\"xxid\":\"b9759e28-48ee-afd9-e159-9609c4e3d4e6\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$area_id]:for area\\\\s*(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\"]},\"xxid\":\"2a5f30c8-597f-61b2-a9f0-1c9e109b8294\"}]}",
+            "tableKeys": [
+                "_original_result.router_lsa_filter.router_lsa_table.$link_state_id",
+                "_original_result.ntwk_lsa_filter.network_lsa_table.$link_state_id",
+                "_original_result.summary_lsa_filter.summary_lsa_table.$link_state_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "router_lsa_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "ntwk_lsa_filter",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "summary_lsa_filter",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "area_id",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "link_state_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "adv_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "seq",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "age",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "chksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "links",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "router_lsa_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "link_state_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "adv_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "seq",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "age",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "chksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "links",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false,
+                "index": 5,
+                "name": "network_lsa_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "link_state_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "adv_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "seq",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "age",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "chksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "links",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "summary_lsa_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "83c8f7f510301e4e1ca92628ef692d68",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "router_lsa_filter",
+            "dataType": "filter",
+            "desc": "Router lsa filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter",
+            "intfKey": false,
+            "name": "router_lsa_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_lsa_table",
+            "dataType": "table",
+            "desc": "Router LSAs table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter.router_lsa_table",
+            "intfKey": false,
+            "name": "router_lsa_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "router_lsa_table.$link_state_id",
+            "dataType": "string",
+            "desc": "Link state ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter.router_lsa_table.$link_state_id",
+            "intfKey": false,
+            "name": "$link_state_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_lsa_table.$adv_router",
+            "dataType": "string",
+            "desc": "Advocate router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter.router_lsa_table.$adv_router",
+            "intfKey": false,
+            "name": "$adv_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_lsa_table.$seq",
+            "dataType": "string",
+            "desc": "Sequence.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter.router_lsa_table.$seq",
+            "intfKey": false,
+            "name": "$seq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_lsa_table.$age",
+            "dataType": "string",
+            "desc": "Age.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter.router_lsa_table.$age",
+            "intfKey": false,
+            "name": "$age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_lsa_table.$chksum",
+            "dataType": "string",
+            "desc": "Check summary.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter.router_lsa_table.$chksum",
+            "intfKey": false,
+            "name": "$chksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_lsa_table.$links",
+            "dataType": "string",
+            "desc": "Link numbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_lsa_filter.router_lsa_table.$links",
+            "intfKey": false,
+            "name": "$links",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntwk_lsa_filter",
+            "dataType": "filter",
+            "desc": "Network lsa filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter",
+            "intfKey": false,
+            "name": "ntwk_lsa_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "network_lsa_table",
+            "dataType": "table",
+            "desc": "Network LSA table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter.network_lsa_table",
+            "intfKey": false,
+            "name": "network_lsa_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "network_lsa_table.$link_state_id",
+            "dataType": "string",
+            "desc": "Link state ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter.network_lsa_table.$link_state_id",
+            "intfKey": false,
+            "name": "$link_state_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "network_lsa_table.$adv_router",
+            "dataType": "string",
+            "desc": "Advocate router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter.network_lsa_table.$adv_router",
+            "intfKey": false,
+            "name": "$adv_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "network_lsa_table.$seq",
+            "dataType": "string",
+            "desc": "Sequence.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter.network_lsa_table.$seq",
+            "intfKey": false,
+            "name": "$seq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "network_lsa_table.$age",
+            "dataType": "string",
+            "desc": "Age.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter.network_lsa_table.$age",
+            "intfKey": false,
+            "name": "$age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "network_lsa_table.$chksum",
+            "dataType": "string",
+            "desc": "Check summary.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter.network_lsa_table.$chksum",
+            "intfKey": false,
+            "name": "$chksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "network_lsa_table.$links",
+            "dataType": "string",
+            "desc": "Link numbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntwk_lsa_filter.network_lsa_table.$links",
+            "intfKey": false,
+            "name": "$links",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "summary_lsa_filter",
+            "dataType": "filter",
+            "desc": "Summary lsa filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter",
+            "intfKey": false,
+            "name": "summary_lsa_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "summary_lsa_table",
+            "dataType": "table",
+            "desc": "Summary LSA table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter.summary_lsa_table",
+            "intfKey": false,
+            "name": "summary_lsa_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "summary_lsa_table.$link_state_id",
+            "dataType": "string",
+            "desc": "Link state ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter.summary_lsa_table.$link_state_id",
+            "intfKey": false,
+            "name": "$link_state_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "summary_lsa_table.$adv_router",
+            "dataType": "string",
+            "desc": "Advocate router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter.summary_lsa_table.$adv_router",
+            "intfKey": false,
+            "name": "$adv_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "summary_lsa_table.$seq",
+            "dataType": "string",
+            "desc": "Sequence.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter.summary_lsa_table.$seq",
+            "intfKey": false,
+            "name": "$seq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "summary_lsa_table.$age",
+            "dataType": "string",
+            "desc": "Age.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter.summary_lsa_table.$age",
+            "intfKey": false,
+            "name": "$age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "summary_lsa_table.$chksum",
+            "dataType": "string",
+            "desc": "Check summary.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter.summary_lsa_table.$chksum",
+            "intfKey": false,
+            "name": "$chksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "summary_lsa_table.$links",
+            "dataType": "string",
+            "desc": "Link numbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "summary_lsa_filter.summary_lsa_table.$links",
+            "intfKey": false,
+            "name": "$links",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$area_id",
+            "dataType": "string",
+            "desc": "Area ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,436 @@
+{
+    "_id": "c75efee9-6a98-b874-f295-f7207d17226c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show file-systems",
+    "createTime": {
+        "$date": 1590598423148
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow file-systems",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell#show file-systems\r\n      Size(b)     Free(b)      Feature       Type   Flags    Prefixes\r\n   4286574592  4170424320        FAT32  USERFLASH      rw    flash:\r\n            -           -  unformatted  USERFLASH      rw    fcmfs:\r\n   2032525312   590807040      Unknown   NFSMOUNT      rw\r\n\r\nnfsmount:\r\n            -           -            -    network      rw    ftp:\r\n            -           -            -    network      rw    tftp:\r\n            -           -            -    network      rw    scp:\r\n            -           -            -    network      rw    http:",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"sys_file\",\"keyVariables\":\"\",\"startLine\":\"regex[]:\\\\s+Size\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"6beabd87-6bb3-f737-7747-f3c48edea098\"},{\"type\":\"4\",\"name\":\"sys_file_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$size,$free,$feature,$type,$flag]:\\\\s+(\\\\d+|-)\\\\s+(\\\\d+|-)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$prefix]:\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+([^\\\\s]+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$size:string\",\"$free:string\",\"$feature:string\",\"$type:string\",\"$flag:string\",\"$prefix:string\"]},\"xxid\":\"2bb254c5-2819-d899-6ffa-b5c2ea59e354\"}]},\"xxid\":\"f212d138-becd-7afe-887c-10a8d021c6a3\",\"hashColumns\":[\"$prefix\"]}]},\"xxid\":\"83da8a5d-e169-4c55-2192-b6e390fcb4cd\"},{\"type\":\"4\",\"name\":\"nfsmount_sys_file\",\"keyVariables\":\"\",\"startLine\":\"regex[]:nfsmount:\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"7a8b07a2-6fe9-458b-2b1d-7ee200474a15\"},{\"type\":\"4\",\"name\":\"nfsmount_sys_file_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$size,$free,$feature,$type,$flag,$prefix]:\\\\s+(\\\\d+|-)\\\\s+(\\\\d+|-)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$size:string\",\"$free:string\",\"$feature:string\",\"$type:string\",\"$flag:string\",\"$prefix:string\"]},\"xxid\":\"ff8c64ef-9d34-6ed7-46f5-04c6b5927d23\"}]},\"xxid\":\"8a47644f-c5ab-1182-65ff-d3c9c9f1d839\",\"hashColumns\":[\"$prefix\"]}]},\"xxid\":\"9d77c2c7-027f-9de8-e3a3-3badbc5241db\"}]}",
+            "tableKeys": [
+                "_original_result.sys_file.sys_file_table.$prefix",
+                "_original_result.nfsmount_sys_file.nfsmount_sys_file_table.$prefix"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "sys_file",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "size",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "free",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "feature",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "prefix",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$prefix"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "sys_file_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "nfsmount_sys_file",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "size",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "free",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "feature",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "prefix",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$prefix"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "nfsmount_sys_file_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5200e3c161d34bb6baddb85cb7fca322",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "sys_file",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "sys_file",
+            "intfKey": false,
+            "name": "sys_file",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sys_file_table",
+            "dataType": "paragraph",
+            "desc": "Systems File Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$prefix"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sys_file.sys_file_table",
+            "intfKey": false,
+            "name": "sys_file_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sys_file_table.$size",
+            "dataType": "string",
+            "desc": "Size (in bytes) of the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_file.sys_file_table.$size",
+            "intfKey": false,
+            "name": "$size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_file_table.$free",
+            "dataType": "string",
+            "desc": "Vailable size (in bytes) of the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_file.sys_file_table.$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_file_table.$feature",
+            "dataType": "string",
+            "desc": "Formatted DOS version of the device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_file.sys_file_table.$feature",
+            "intfKey": false,
+            "name": "$feature",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_file_table.$type",
+            "dataType": "string",
+            "desc": "Type of storage.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_file.sys_file_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_file_table.$flag",
+            "dataType": "string",
+            "desc": "Access available to the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_file.sys_file_table.$flag",
+            "intfKey": false,
+            "name": "$flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_file_table.$prefix",
+            "dataType": "string",
+            "desc": "Name of the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_file.sys_file_table.$prefix",
+            "intfKey": false,
+            "name": "$prefix",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nfsmount_sys_file",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file",
+            "intfKey": false,
+            "name": "nfsmount_sys_file",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "nfsmount_sys_file_table",
+            "dataType": "paragraph",
+            "desc": "Nfsmount Systems File Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$prefix"
+                ],
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file.nfsmount_sys_file_table",
+            "intfKey": false,
+            "name": "nfsmount_sys_file_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "nfsmount_sys_file_table.$size",
+            "dataType": "string",
+            "desc": "Size (in bytes) of the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file.nfsmount_sys_file_table.$size",
+            "intfKey": false,
+            "name": "$size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nfsmount_sys_file_table.$free",
+            "dataType": "string",
+            "desc": "Vailable size (in bytes) of the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file.nfsmount_sys_file_table.$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nfsmount_sys_file_table.$feature",
+            "dataType": "string",
+            "desc": "Formatted DOS version of the device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file.nfsmount_sys_file_table.$feature",
+            "intfKey": false,
+            "name": "$feature",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nfsmount_sys_file_table.$type",
+            "dataType": "string",
+            "desc": "Type of storage.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file.nfsmount_sys_file_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nfsmount_sys_file_table.$flag",
+            "dataType": "string",
+            "desc": "Access available to the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file.nfsmount_sys_file_table.$flag",
+            "intfKey": false,
+            "name": "$flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nfsmount_sys_file_table.$prefix",
+            "dataType": "string",
+            "desc": "Name of the storage location.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nfsmount_sys_file.nfsmount_sys_file_table.$prefix",
+            "intfKey": false,
+            "name": "$prefix",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

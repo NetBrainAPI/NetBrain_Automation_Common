@@ -1,0 +1,316 @@
+{
+    "_id": "99b19585-abb4-88f6-a7a3-fe5e852572df",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display isis peer",
+    "createTime": {
+        "$date": 1590769356047
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay isis peer",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<R1>display isis peer\r\n\r\n                         Peer information for IS-IS(80)\r\n                         ------------------------------\r\n\r\n System ID: 0000.0000.0001\r\n Interface: GE0/0                   Circuit Id:  0000.0000.0001.01\r\n State: Up     HoldTime: 8s         Type: L1           PRI: 64",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_id.peer_info.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_id\",\"keyVariables\":\"\",\"startLine\":\"Peer information for IS-IS\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$isis_id]:Peer information for IS-IS\\\\((\\\\d+)\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_id:string\"]},\"xxid\":\"9db5aff8-6449-9d97-3c7e-eddc4b30e1bf\"},{\"type\":\"4\",\"name\":\"peer_info\",\"keyVariables\":\"\",\"startLine\":\"System ID:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$sys_id]: System ID: +(\\\\S+)\",\"regex[$intf]: Interface: +(\\\\S+)\",\"regex[$circ_id]:Circuit Id: +(\\\\S+)\",\"regex[$state]:State: +(\\\\S+)\",\"regex[$type]:Type: +(\\\\S+)\",\"regex[$pri]:PRI: +(\\\\S+)\",\"regex[$hold_time]:HoldTime: +(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sys_id:string\",\"$intf:string\",\"$circ_id:string\",\"$state:string\",\"$type:string\",\"$pri:string\",\"$hold_time:string\"]},\"xxid\":\"2e2b0c32-110b-5339-02f2-3e664d9bd215\"}]},\"xxid\":\"158c1a05-c3cc-3879-4915-c98757db43bf\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$state\"]}]},\"xxid\":\"c4fef6de-abba-7ee6-698a-10e1b58bb81a\"}]}",
+            "tableKeys": [
+                "_original_result.isis_id.peer_info.$state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "isis_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_id",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sys_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "circ_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "pri",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "hold_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "isis_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "peer_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "afa7ecd40461f9b672394a70b79f4452",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_id",
+            "dataType": "paragraph",
+            "desc": "IS-IS processed ID.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_id",
+            "intfKey": false,
+            "name": "isis_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_id.$isis_id",
+            "dataType": "string",
+            "desc": "IS-IS processed ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.$isis_id",
+            "intfKey": false,
+            "name": "$isis_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_info",
+            "dataType": "paragraph",
+            "desc": "ISIS neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info",
+            "intfKey": false,
+            "name": "peer_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "peer_info.$sys_id",
+            "dataType": "string",
+            "desc": "Six-byte value that identifies a system in an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$sys_id",
+            "intfKey": false,
+            "name": "$sys_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_info.$intf",
+            "dataType": "string",
+            "desc": "Interface from which the system was learned.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "peer_info.$circ_id",
+            "dataType": "string",
+            "desc": "Port location for the IS-IS neighbor router that indicates how it is connected to the local router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$circ_id",
+            "intfKey": false,
+            "name": "$circ_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_info.$state",
+            "dataType": "string",
+            "desc": "Indicates whether the state of the IS-IS neighbor is up or down or init.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_info.$type",
+            "dataType": "string",
+            "desc": "Level type. Indicates whether the IS-IS neighbor is a Level 1, Level-1-2, or Level 2 router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_info.$pri",
+            "dataType": "string",
+            "desc": "The priority of select DSI.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$pri",
+            "intfKey": false,
+            "name": "$pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_info.$hold_time",
+            "dataType": "string",
+            "desc": "Link-state packet (LSP) holdtime. Amount of time that the LSP remains valid (in seconds).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_info.$isis_id",
+            "dataType": "string",
+            "desc": "IS-IS processed ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.peer_info.$isis_id",
+            "intfKey": false,
+            "name": "$isis_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

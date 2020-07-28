@@ -1,0 +1,312 @@
+{
+    "_id": "d134edeb-c750-c85d-c6b4-aa711930ac7d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip isis database",
+    "createTime": {
+        "$date": 1590695487138
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip isis database",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip isis database\nLegends : P = The Partition repair bit is set\nOV = The overload bit is set\nATT = The Attach bit is set\nL1 = Specifies a Level 1 IS type\nL2 = Specifies a Level 2 IS type\n=================================================================\nISIS Database\n=================================================================\nLSP ID                  Sequence Checksum Lifetime Attributes\n------------------------------------------------------------------\nDisplaying level-1 database\n------------------------------------------------------------------\n1720.2116.0051.00-00    0x44     0xb664   919      L1L2\nlevel-1 LSP count : 1\n\nDisplaying level-2 database\n------------------------------------------------------------------\n1720.2116.0051.00-00    0x45     0xb465   1083     L1L2\nlevel-2 LSP count : 1\n=====================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"data_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$level]:Displaying level-(\\\\d+) database\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:lsp_count]:level-\\\\d LSP count : (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level:string\",\"$lsp_count:int\"]},\"xxid\":\"cf71231c-2304-7744-d525-841765dcb607\"},{\"type\":\"4\",\"name\":\"database\",\"keyVariables\":\"\",\"startLine\":\"regex[$lsp_id, $sequence, $checksum, $int:lifetime, $attribute]:([\\\\d.\\\\-]+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$lsp_id:string\",\"$sequence:string\",\"$checksum:string\",\"$lifetime:int\",\"$attribute:string\"]},\"xxid\":\"18df51b8-064a-f1c4-15f8-08aef144c1ff\"}]},\"xxid\":\"1702b87e-b73f-f6a8-89e6-c11a3c09cbbd\",\"hashColumns\":[\"$lsp_id\"]}]},\"xxid\":\"357f23ea-21ec-684d-b392-f7b1959f879b\"}]}",
+            "tableKeys": [
+                "_original_result.data_table.database.$lsp_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "lsp_count",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "data_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "lsp_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "sequence",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "lifetime",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "attribute",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "level",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "lsp_count",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$lsp_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "database",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1558f0497311b811d33b870c6463cba5",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "data_table",
+            "dataType": "paragraph",
+            "desc": "ISIS database",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "data_table",
+            "intfKey": false,
+            "name": "data_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "data_table.$level",
+            "dataType": "string",
+            "desc": "Level type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "data_table.$lsp_count",
+            "dataType": "int",
+            "desc": "The number of LSPs in the Link State Database.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.$lsp_count",
+            "intfKey": false,
+            "name": "$lsp_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database",
+            "dataType": "paragraph",
+            "desc": "LSP info table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$lsp_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "data_table.database",
+            "intfKey": false,
+            "name": "database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "database.$lsp_id",
+            "dataType": "string",
+            "desc": "The LSP ID. Indicates the system ID and the pseudo-node ID of the originating router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.database.$lsp_id",
+            "intfKey": false,
+            "name": "$lsp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$sequence",
+            "dataType": "string",
+            "desc": "The sequence number of the LSP. The sequence number is a value used to identify old and duplicate LSPs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.database.$sequence",
+            "intfKey": false,
+            "name": "$sequence",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$checksum",
+            "dataType": "string",
+            "desc": "The checksum value of the LSP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.database.$checksum",
+            "intfKey": false,
+            "name": "$checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$lifetime",
+            "dataType": "int",
+            "desc": "The number of seconds the LSP remains valid. The LSP lifetime value of zero indicates that this LSP is being removed from the Link State Database of all the routers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.database.$lifetime",
+            "intfKey": false,
+            "name": "$lifetime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$attribute",
+            "dataType": "string",
+            "desc": "The level capability of the router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.database.$attribute",
+            "intfKey": false,
+            "name": "$attribute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$level",
+            "dataType": "string",
+            "desc": "Level type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.database.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$lsp_count",
+            "dataType": "int",
+            "desc": "The number of LSPs in the Link State Database.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "data_table.database.$lsp_count",
+            "intfKey": false,
+            "name": "$lsp_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

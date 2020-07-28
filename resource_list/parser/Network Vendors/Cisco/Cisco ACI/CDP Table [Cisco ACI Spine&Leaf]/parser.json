@@ -1,0 +1,216 @@
+{
+    "_id": "8537f27f-b538-1250-0573-871452fb03de",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560794467154
+    },
+    "description": "",
+    "devTypes": [
+        30003,
+        30002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n[\n]\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\ndef BuildParameters(context, device_name, params):\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'SDN', 'params' : ['dn','role'] })\n    dn = get_dn['params']['dn']\n    role = get_dn['params']['role']\n    rtn_params = [{ 'devName' : device_name, 'dn' : dn, 'role': role }]\n    return rtn_params\n\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    role = rtn_params['role']\n    qry = '?query-target=subtree&target-subtree-class=cdpAdjEp'\n    url = '/api/node/mo/' + dn + '/sys/cdp/inst.json' +qry\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    data = json.loads(data)\n\n    return json.dumps(data)",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"cdpAdjEp\": {\n            \"attributes\": {\n                \"cap\": \"igmp-filter,router,switch\",\n                \"childAction\": \"\",\n                \"devId\": \"ACI-L3-OUT.netbraintech.local\",\n                \"dn\": \"topology/pod-1/node-101/sys/cdp/inst/if-[eth1/9]/adj-1\",\n                \"duplex\": \"full\",\n                \"index\": \"1\",\n                \"modTs\": \"never\",\n                \"monPolDn\": \"uni/infra/moninfra-default\",\n                \"mtu\": \"0\",\n                \"name\": \"\",\n                \"nativeVlan\": \"unspecified\",\n                \"platId\": \"Cisco 3825\",\n                \"portId\": \"GigabitEthernet0/0\",\n                \"stQual\": \"nativevlan-mismatch\",\n                \"status\": \"\",\n                \"sysLoc\": \"\",\n                \"sysName\": \"\",\n                \"sysObjIdL\": \"0\",\n                \"sysObjIdV\": \"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\",\n                \"ver\": \"Cisco IOS Software, 3800 Software (C3825-ADVIPSERVICESK9-M), Version 12.4(3g), RELEASE SOFTWARE (fc2)\\nTechnical Support: http://www.cisco.com/techsupport\\nCopyright (c) 1986-2006 by Cisco Systems, Inc.\\nCompiled Mon 06-Nov-06 05:10 by alnguyen\"\n            }\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.CDP_Detail.$local_port"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"Num_of_CDP\\\", \\\"type\\\": \\\"int\\\"},\\n    {\\\"name\\\": \\\"CDP_Detail\\\", \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\n        {\\\"name\\\": \\\"local_device_id\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"local_port\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"remote_device\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"remote_ip\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"remote_port\\\", \\\"type\\\": \\\"string\\\"}\\n    ]}\\n]\\nEnd Declare\\n'''\\n\\nimport json \\nimport re\\n\\ndef intf_filter(string):\\n    ifname = 'string'\\n    if \\\"if\\\" in string:\\n        ifname = re.findall('if-\\\\[(\\\\S+)\\\\]',string)\\n        ifname = ifname[0]\\n    return ifname\\n\\ndef ParseText(_original_result):\\n    result = json.loads(_original_result)\\n    value ={}\\n    value['Num_of_CDP'] = len(result)\\n    local_device_id = []\\n    local_port = []\\n    remote_device = []\\n    remote_ip = []\\n    remote_port = []\\n    remote_port_descpt = []\\n\\n    try:       \\n        for m in range(len(result)):\\n            s_local_device_id = result[m]['cdpAdjEp']['attributes']['devId']\\n            s_local_port = result[m]['cdpAdjEp']['attributes']['dn']\\n            s_remote_device = result[m]['cdpAdjEp']['attributes']['platId']\\n            # s_remote_ip = result[m]['cdpAdjEp']['children'][0]['lldpAdjEp']['attributes']['mgmtIp']\\n            s_remote_port = result[m]['cdpAdjEp']['attributes']['portId']\\n\\n            s_local_port = intf_filter(s_local_port)\\n\\n            local_device_id.append(s_local_device_id)\\n            local_port.append(s_local_port)\\n            remote_device.append(s_remote_device)\\n            # remote_ip.append(s_remote_ip)\\n            remote_port.append(s_remote_port)\\n\\n    except Exception as ex:\\n        print(str(ex))\\n        \\n    value['CDP_Detail']= {'local_device_id': local_device_id, 'local_port': local_port, 'remote_device':remote_device, 'remote_ip':remote_ip, 'remote_port':remote_port}\\n    return value\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$Num_of_CDP\",\"type\":\"int\"}]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$CDP_Detail\",\"variableTypes\":{\"variableType\":[{\"name\":\"$local_device_id\",\"type\":\"string\"},{\"name\":\"$local_port\",\"type\":\"string\"},{\"name\":\"$remote_device\",\"type\":\"string\"},{\"name\":\"$remote_ip\",\"type\":\"string\"},{\"name\":\"$remote_port\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"de488e81-0b09-46cb-66f5-e9ef6af851ef\",\"hashColumns\":{\"CDP_Detail\":[\"$local_device_id\",\"$local_port\",\"$remote_device\",\"$remote_ip\",\"$remote_port\"]},\"tableKeys\":{\"CDP_Detail\":[\"$local_device_id\"]},\"hashSort\":{\"CDP_Detail\":false},\"interfaceKey\":{\"CDP_Detail\":\"$local_port\"}}]}",
+            "tableKeys": [
+                "_original_result.$CDP_Detail.$local_device_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "Num_of_CDP",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "local_device_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "local_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "remote_device",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "remote_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "remote_port",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "local_device_id",
+                    "local_port",
+                    "remote_device",
+                    "remote_ip",
+                    "remote_port"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "CDP_Detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a78978602e343a2b517921f6ab8fd431",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$CDP_Detail",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$local_device_id",
+                    "$local_port",
+                    "$remote_device",
+                    "$remote_ip",
+                    "$remote_port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$CDP_Detail",
+            "intfKey": false,
+            "name": "$CDP_Detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$Num_of_CDP",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$Num_of_CDP",
+            "intfKey": false,
+            "name": "$Num_of_CDP",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$CDP_Detail.$local_device_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$CDP_Detail.$local_device_id",
+            "intfKey": false,
+            "name": "$local_device_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$CDP_Detail.$local_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$CDP_Detail.$local_port",
+            "intfKey": false,
+            "name": "$local_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$CDP_Detail.$remote_device",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$CDP_Detail.$remote_device",
+            "intfKey": false,
+            "name": "$remote_device",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$CDP_Detail.$remote_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$CDP_Detail.$remote_ip",
+            "intfKey": false,
+            "name": "$remote_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$CDP_Detail.$remote_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$CDP_Detail.$remote_port",
+            "intfKey": false,
+            "name": "$remote_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,237 @@
+{
+    "_id": "5781203e-7054-52de-ef1e-017cfae74831",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vrf detail",
+    "createTime": {
+        "$date": 1590764441097
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand: \nshow vrf detail",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K-Core7#show vrf detail\r\rVRF-Name: default, VRF-ID: 1, State: Up\r    VPNID: unknown\r    RD: 0:0\r    Max Routes: 0  Mid-Threshold: 0\r    Table-ID: 0x80000001, AF: IPv6, Fwd-ID: 0x80000001, State: Up\r    Table-ID: 0x00000001, AF: IPv4, Fwd-ID: 0x00000001, State: Up\r\rVRF-Name: management, VRF-ID: 2, State: Up\r    VPNID: unknown\r    RD: 0:0\r    Max Routes: 0  Mid-Threshold: 0\r    Table-ID: 0x80000002, AF: IPv6, Fwd-ID: 0x80000002, State: Up\r    Table-ID: 0x00000002, AF: IPv4, Fwd-ID: 0x00000002, State: Up\r\rVRF-Name: v1, VRF-ID: 3, State: Up\r    VPNID: unknown\r    RD: 0:0\r    Max Routes: 0  Mid-Threshold: 0\r    Table-ID: 0x80000003, AF: IPv6, Fwd-ID: 0x80000003, State: Up\r    Table-ID: 0x00000003, AF: IPv4, Fwd-ID: 0x00000003, State: Up\r\r",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vrfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$vrf_name,$int:vrf_id,$state]:VRF-Name\\\\: (\\\\S+), VRF-ID\\\\: (\\\\d+), State\\\\: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vpn_id]:\\\\s+VPNID\\\\: (\\\\S+)\",\"regex[$rd]:\\\\s+RD\\\\: (\\\\S+)\",\"regex[$int:max_routes,$int:min_threshold]:\\\\s+Max Routes: (\\\\d+)\\\\s+Mid-Threshold: (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vrf_name:string\",\"$vrf_id:int\",\"$state:string\",\"$vpn_id:string\",\"$rd:string\",\"$max_routes:int\",\"$min_threshold:int\"]},\"xxid\":\"7a0c58b0-b0af-53f7-9666-c73ce84a738b\"}]},\"xxid\":\"fc6591ef-536b-aedb-4382-aa7dfdcf44b0\",\"hashColumns\":[\"$vrf_name\",\"$state\",\"$rd\",\"$max_routes\",\"$min_threshold\"]}]}",
+            "tableKeys": [
+                "_original_result.vrfs.$vrf_name",
+                "_original_result.vrfs.$state",
+                "_original_result.vrfs.$rd",
+                "_original_result.vrfs.$max_routes",
+                "_original_result.vrfs.$min_threshold"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vrf_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vpn_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rd",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "max_routes",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "min_threshold",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$max_routes",
+                    "$min_threshold",
+                    "$rd",
+                    "$state",
+                    "$vrf_name"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vrfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "6a854cab513110d0a6f5ddb5aeb04b7e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vrfs",
+            "dataType": "paragraph",
+            "desc": "VRF detail table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vrf_name",
+                    "$state",
+                    "$rd",
+                    "$max_routes",
+                    "$min_threshold"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vrfs",
+            "intfKey": false,
+            "name": "vrfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vrfs.$vrf_name",
+            "dataType": "string",
+            "desc": "VRF name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrfs.$vrf_name",
+            "intfKey": false,
+            "name": "$vrf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrfs.$vrf_id",
+            "dataType": "int",
+            "desc": "VRF id number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrfs.$vrf_id",
+            "intfKey": false,
+            "name": "$vrf_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrfs.$state",
+            "dataType": "string",
+            "desc": "VRF state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrfs.$vpn_id",
+            "dataType": "string",
+            "desc": "VPN id number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrfs.$vpn_id",
+            "intfKey": false,
+            "name": "$vpn_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrfs.$rd",
+            "dataType": "string",
+            "desc": "RD number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrfs.$rd",
+            "intfKey": false,
+            "name": "$rd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrfs.$max_routes",
+            "dataType": "int",
+            "desc": "VRF max routes count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrfs.$max_routes",
+            "intfKey": false,
+            "name": "$max_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrfs.$min_threshold",
+            "dataType": "int",
+            "desc": "VRF min threshold count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrfs.$min_threshold",
+            "intfKey": false,
+            "name": "$min_threshold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

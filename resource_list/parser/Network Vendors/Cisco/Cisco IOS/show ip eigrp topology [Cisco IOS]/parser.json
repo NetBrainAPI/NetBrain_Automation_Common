@@ -1,0 +1,449 @@
+{
+    "_id": "67a62655-6382-0bd3-3398-246a432d71f3",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip eigrp topology",
+    "createTime": {
+        "$date": 1579773202206
+    },
+    "description": "Device Type:\nCisco IOS Switch \nCisco IOS Router\nCommand: \nshow ip eigrp topology",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasEIGRPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R7>show ip eigrp topology\nEIGRP-IPv4 Topology Table for AS(1)/ID(10.1.77.77)\n\nEIGRP-IPv4 Topology Table for AS(321)/ID(6.6.6.6)\n\nEIGRP-IPv4 Topology Table for AS(199)/ID(10.1.77.77)\n\nEIGRP-IPv4 Topology Table for AS(100)/ID(10.1.77.77)\n\nEIGRP-IPv4 Topology Table for AS(20)/ID(10.1.77.77)\nCodes: P - Passive, A - Active, U - Update, Q - Query, R - Reply,\n       r - reply Status, s - sia Status \n\nP 10.1.1.11/32, 1 successors, FD is 435200\n        via 10.1.78.8 (435200/409600), Ethernet1/1\nP 200.200.104.0/24, 1 successors, FD is 281600\n        via Connected, Ethernet1/0\nP 192.168.8.0/24, 0 successors, FD is Inaccessible\n        via 10.1.78.8 (284160/28160), Ethernet1/1\nP 148.1.1.0/24, 1 successors, FD is 284160\n        via 10.1.78.8 (284160/28160), Ethernet1/1\nP 10.1.89.0/24, 1 successors, FD is 307200\n        via 10.1.78.8 (307200/281600), Ethernet1/1\nP 10.1.128.0/24, 1 successors, FD is 307200\n        via 10.1.78.8 (307200/281600), Ethernet1/1\nP 10.1.118.0/24, 1 successors, FD is 307200\n        via 10.1.78.8 (307200/281600), Ethernet1/1\nP 100.1.1.1/32, 1 successors, FD is 409600\n        via 10.1.78.8 (409600/128256), Ethernet1/1\nP 10.1.127.0/24, 1 successors, FD is 332800\n        via 10.1.78.8 (332800/307200), Ethernet1/1\nP 10.1.78.0/24, 1 successors, FD is 281600\n        via Connected, Ethernet1/1\nP 10.1.1.0/24, 1 successors, FD is 435200\n        via 10.1.78.8 (435200/409600), Ethernet1/1\nP 10.1.8.0/24, 1 successors, FD is 409600\n        via 10.1.78.8 (409600/128256), Ethernet1/1\n\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"process\",\"keyVariables\":\"\",\"startLine\":\"regex[$as]:Topology Table for AS\\\\((\\\\S+?)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$as:string\"]},\"xxid\":\"a09495da-ef17-f8ea-7efc-0152adef013c\"},{\"type\":\"4\",\"name\":\"state\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^\\\\S+\\\\s+\\\\d+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$code]:^(\\\\S+)\",\"regex[$network]:^\\\\S+\\\\s+(\\\\S+),\",\"regex[$fd]:FD is\\\\s+(\\\\S+?)($|,)\",\"regex[$ad]:\\\\(\\\\d+/(\\\\d+)\\\\)\",\"regex[$out_interface]:\\\\(\\\\d+/\\\\d+\\\\),\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$code:string\",\"$network:string\",\"$fd:string\",\"$ad:string\",\"$out_interface:string\"]},\"xxid\":\"0fcf670b-ae7d-3fab-dba4-c9b3c175d0d6\"}]},\"xxid\":\"917cd1aa-372a-5c05-bb4d-a613ee818bf3\"}]},\"xxid\":\"a829eabf-0bf7-63e2-d756-a7bca0c7a7e4\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"cbba6248-7d57-b8b2-bf76-5eb4cdf2fd6f\"}]}",
+            "tableKeys": []
+        },
+        {
+            "content": "NB_CE13#show ip eigrp topology\r\nEIGRP-IPv4 Topology Table for AS(1)/ID(20.13.13.13)\r\nCodes: P - Passive, A - Active, U - Update, Q - Query, R - Reply,\r\n       r - reply Status, s - sia Status \r\n\r\nP 20.0.32.0/24, 1 successors, FD is 281600\r\n        via Connected, Ethernet0/0\r\nP 20.13.13.13/32, 1 successors, FD is 128256\r\n        via Connected, Loopback0\r\nP 20.12.12.12/32, 1 successors, FD is 409600\r\n        via 20.0.32.12 (409600/128256), Ethernet0/0\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 2,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample2",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"process\",\"keyVariables\":\"\",\"startLine\":\"regex[$as]:Topology Table for AS\\\\((\\\\S+?)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$as:string\"]},\"xxid\":\"a09495da-ef17-f8ea-7efc-0152adef013c\"},{\"type\":\"4\",\"name\":\"state\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^\\\\S+\\\\s+\\\\d+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$code]:^(\\\\S+)\",\"regex[$network]:^\\\\S+\\\\s+(\\\\S+),\",\"regex[$fd]:FD is\\\\s+(\\\\S+?)($|,)\",\"regex[$ad]:\\\\(\\\\d+/(\\\\d+)\\\\)\",\"regex[$out_interface]:\\\\(\\\\d+/\\\\d+\\\\),\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$code:string\",\"$network:string\",\"$fd:string\",\"$ad:string\",\"$out_interface:string\"]},\"xxid\":\"0fcf670b-ae7d-3fab-dba4-c9b3c175d0d6\"}]},\"xxid\":\"917cd1aa-372a-5c05-bb4d-a613ee818bf3\"}]},\"xxid\":\"a829eabf-0bf7-63e2-d756-a7bca0c7a7e4\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"cbba6248-7d57-b8b2-bf76-5eb4cdf2fd6f\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1,
+        2
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "as",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "process",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "code",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "network",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "fd",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ad",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "out_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "as",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "state",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "b6a031a41323b7278ed8ee7bef368bd7",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "process",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "process",
+            "intfKey": false,
+            "name": "process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "process.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "process.state",
+            "intfKey": false,
+            "name": "state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "state.$code",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$code",
+            "intfKey": false,
+            "name": "$code",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state.$network",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$network",
+            "intfKey": false,
+            "name": "$network",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state.$fd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$fd",
+            "intfKey": false,
+            "name": "$fd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state.$ad",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$ad",
+            "intfKey": false,
+            "name": "$ad",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state.$out_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$out_interface",
+            "intfKey": false,
+            "name": "$out_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "process",
+            "intfKey": false,
+            "name": "process",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 3
+        },
+        {
+            "capName": "process.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "state",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "process.state",
+            "intfKey": false,
+            "name": "state",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 3
+        },
+        {
+            "capName": "state.$code",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$code",
+            "intfKey": false,
+            "name": "$code",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "state.$network",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$network",
+            "intfKey": false,
+            "name": "$network",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "state.$fd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$fd",
+            "intfKey": false,
+            "name": "$fd",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "state.$ad",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$ad",
+            "intfKey": false,
+            "name": "$ad",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "state.$out_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$out_interface",
+            "intfKey": false,
+            "name": "$out_interface",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "state.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process.state.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

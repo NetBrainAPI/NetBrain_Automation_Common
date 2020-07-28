@@ -1,0 +1,232 @@
+{
+    "_id": "3c9538c0-04a2-beaa-4bec-fd9ae0485d14",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis topology",
+    "createTime": {
+        "$date": 1591075432541
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow isis topology",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "System(rw)->show isis topology\r\nIS-IS paths to level-1 routers:\r\nSystemId           Hostname         RouterID\r\n4444.4444.4444     44.44.44.44\r\nAAAA.AAAA.AAAA     7.7.7.7\r\nAAAA.AABB.BBBB     77.77.77.77\r\nBBBB.BBAA.AAAA     88.88.88.88\r\nBBBB.BBBB.BBBB     8.8.8.8\r\nDDCC.DDCC.DDCC     177.177.177.177\r\nDDDD.DDDD.DDDD     188.188.188.188",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"level_paragraph\",\"keyVariables\":\"\",\"startLine\":\"regex[$level]:IS-IS paths to level\\\\-(\\\\d+) +routers\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level:string\"]},\"xxid\":\"9a1e3a37-2c90-5fb7-e9a2-183bee0aab3d\"},{\"type\":\"3\",\"name\":\"routers_info\",\"headers\":\"SystemId;Hostname;RouterID\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"SystemId:$string:systemid;Hostname:$string:hostname;RouterID:$string:routerid\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$systemid:string\",\"$hostname:string\",\"$routerid:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"9c4dc757-ddbe-bdab-a5ff-48ebf58b959c\",\"hashColumns\":[\"$systemid\"]}]},\"xxid\":\"e801361c-6b1d-2600-1efc-4d982df2976d\"}]}",
+            "tableKeys": [
+                "_original_result.level_paragraph.routers_info.$systemid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "level_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "systemid",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "hostname",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "routerid",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "level",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$systemid"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "routers_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e3826b73c4152785044914cdc5388a92",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "level_paragraph",
+            "dataType": "paragraph",
+            "desc": "ISIS Topology table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "level_paragraph",
+            "intfKey": false,
+            "name": "level_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "level_paragraph.$level",
+            "dataType": "string",
+            "desc": "Assigns the routing level for the IS-IS routing process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "level_paragraph.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routers_info",
+            "dataType": "table",
+            "desc": "Router info.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$systemid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "level_paragraph.routers_info",
+            "intfKey": false,
+            "name": "routers_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "routers_info.$systemid",
+            "dataType": "string",
+            "desc": "Six-byte value that identifies a system in an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "level_paragraph.routers_info.$systemid",
+            "intfKey": false,
+            "name": "$systemid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routers_info.$hostname",
+            "dataType": "string",
+            "desc": "Hostname.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "level_paragraph.routers_info.$hostname",
+            "intfKey": false,
+            "name": "$hostname",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routers_info.$routerid",
+            "dataType": "string",
+            "desc": "Router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "level_paragraph.routers_info.$routerid",
+            "intfKey": false,
+            "name": "$routerid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routers_info.$level",
+            "dataType": "string",
+            "desc": "Assigns the routing level for the IS-IS routing process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "level_paragraph.routers_info.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

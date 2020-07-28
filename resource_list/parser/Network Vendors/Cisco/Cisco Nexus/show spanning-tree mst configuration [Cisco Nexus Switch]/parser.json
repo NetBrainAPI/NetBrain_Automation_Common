@@ -1,0 +1,207 @@
+{
+    "_id": "fef76b14-e0bd-000e-e141-4749fa3aeb6c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree mst configuration",
+    "createTime": {
+        "$date": 1579718345515
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand: \nshow spanning-tree mst configuration",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Netbrain_N7K(config)# show spanning-tree mst configuration \n% Switch is not in mst mode\nName      []\nRevision  0     Instances configured 1\nInstance  Vlans mapped\n--------  ---------------------------------------------------------------------\n0         1-4094\n-------------------------------------------------------------------------------",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$mst_name]:Name\\\\s+\\\\[(\\\\S+)\\\\]\",\"regex[$revision,$instances_configured]:Revision\\\\s+(\\\\d+)\\\\s+Instances\\\\s+configured\\\\s+(\\\\d+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$instances_configured:string\",\"$mst_name:string\",\"$revision:string\"]},\"xxid\":\"2d4615a4-fbb8-d3e3-d3a8-f9a2b0808820\"},{\"type\":\"3\",\"name\":\"mst_instances\",\"headers\":\"Instance;Vlans mapped\",\"endLine\":\"--------------------\",\"isSkipLine\":\"1\",\"skipLine\":\"1\",\"headerToVariables\":\"Instance:$string:instance;Vlans mapped:$string:vlans_mapped\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$instance:string\",\"$vlans_mapped:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"526b082c-516b-e174-1daf-3ae43074c022\",\"hashColumns\":[\"$instance\",\"$vlans_mapped\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"6ace7a76-3ab8-bf2b-ad60-82032eb814c1\"}]}",
+            "tableKeys": [
+                "_original_result.mst_instances.$instance"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "mst_name",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "revision",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "instances_configured",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlans_mapped",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$instance",
+                    "$vlans_mapped"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "mst_instances",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "eaedc226f7279faa1e7f720fe13a6710",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$instances_configured",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$instances_configured",
+            "intfKey": false,
+            "name": "$instances_configured",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$mst_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mst_name",
+            "intfKey": false,
+            "name": "$mst_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$revision",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$revision",
+            "intfKey": false,
+            "name": "$revision",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mst_instances",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$instance",
+                    "$vlans_mapped"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mst_instances",
+            "intfKey": false,
+            "name": "mst_instances",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mst_instances.$instance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mst_instances.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mst_instances.$vlans_mapped",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mst_instances.$vlans_mapped",
+            "intfKey": false,
+            "name": "$vlans_mapped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,488 @@
+{
+    "_id": "e78c82e4-a9c4-70a0-65a5-9df3adb1171a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show bgp summary",
+    "createTime": {
+        "$date": 1579114191803
+    },
+    "description": "Device Type:\nCisco IOS XR \nCommand:\nshow bgp summary",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:IOS-XR6#show bgp summary\n\nTue Jul 15 15:02:03.737 UTC\nBGP router identifier 6.6.6.6, local AS number 3\nBGP generic scan interval 60 secs\nBGP table state: Active\nTable ID: 0xe0000000   RD version: 69\nBGP main routing table version 69\nBGP scan interval 60 secs\n\nBGP is operating in STANDALONE mode.\n\n\nProcess       RcvTblVer   bRIB/RIB   LabelVer  ImportVer  SendTblVer  StandbyVer\nSpeaker              69         69         69         69          69          69\n\nNeighbor        Spk    AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down  St/PfxRcd\n192.168.36.3      0     3    7108    7097       69    0    0    4d21h         45\n192.168.67.7      0     3   15703   14154       69    0    0    4d21h          0\n192.168.156.15    0     3    8247    9743       69    0    0 01:04:28          0\n192.168.166.16    0     3   15690   14157       69    0    0    4d21h          0\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"BGP router identifier $router_id, local AS number $int:local_as\",\"BGP generic scan interval $int:generic_scan_interval secs\",\"BGP table state: $table_state\",\"Table ID: $table_id   RD version: $int:rd_version\",\"BGP main routing table version $int:main_routing_table_version\",\"BGP scan interval $int:scan_interval secs\",\"BGP is operating in $operating_mode mode.\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$local_as:int\",\"$generic_scan_interval:int\",\"$table_state:string\",\"$table_id:string\",\"$rd_version:int\",\"$main_routing_table_version:int\",\"$scan_interval:int\",\"$operating_mode:string\"]},\"xxid\":\"92740223-7bf7-30d8-354d-c4355bceac08\"},{\"type\":\"3\",\"name\":\"bgp_nbrs\",\"headers\":\"Neighbor;Spk;AS;MsgRcvd;MsgSent;TblVer;InQ;OutQ;Up/Down;St/PfxRcd\",\"endLine\":null,\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Neighbor:$string:neighbor;Spk:$int:spk;AS:$int:as;MsgRcvd:$int:msg_rcvd;MsgSent:$int:msg_sent;TblVer:$int:tbl_ver;InQ:$int:in_q;OutQ:$int:out_q;Up/Down:$string:up_down;St/PfxRcd:$string:st_pfxrcd\",\"leftAlign\":\"0\",\"alignType\":\"3\",\"alignRange\":\"1;1;1;1;1;1;1;1;1;1\",\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$neighbor:string\",\"$spk:int\",\"$as:int\",\"$msg_rcvd:int\",\"$msg_sent:int\",\"$tbl_ver:int\",\"$in_q:int\",\"$out_q:int\",\"$up_down:string\",\"$st_pfxrcd:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"22a7c815-332f-e52c-7ad9-6bfe900e92d3\",\"hashColumns\":[\"$neighbor\",\"$as\",\"$st_pfxrcd\",\"$in_q\",\"$out_q\"],\"HashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.bgp_nbrs.$neighbor",
+                "_original_result.bgp_nbrs.$as",
+                "_original_result.bgp_nbrs.$in_q",
+                "_original_result.bgp_nbrs.$out_q",
+                "_original_result.bgp_nbrs.$st_pfxrcd"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "router_id",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_as",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "generic_scan_interval",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "table_state",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "table_id",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "rd_version",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "main_routing_table_version",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "scan_interval",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "operating_mode",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "spk",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "as",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "msg_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "msg_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "tbl_ver",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "in_q",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "out_q",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "st_pfxrcd",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$as",
+                    "$in_q",
+                    "$neighbor",
+                    "$out_q",
+                    "$st_pfxrcd"
+                ],
+                "hashSort": false,
+                "index": 9,
+                "name": "bgp_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "33fcc4c3237d8366f135114fc9c461f2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "int",
+            "desc": "Autonomous system number set by the router bgp command.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$generic_scan_interval",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$generic_scan_interval",
+            "intfKey": false,
+            "name": "$generic_scan_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$table_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$table_state",
+            "intfKey": false,
+            "name": "$table_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$table_id",
+            "dataType": "string",
+            "desc": "BGP database identifier.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$table_id",
+            "intfKey": false,
+            "name": "$table_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rd_version",
+            "dataType": "int",
+            "desc": "RD version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rd_version",
+            "intfKey": false,
+            "name": "$rd_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$main_routing_table_version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$main_routing_table_version",
+            "intfKey": false,
+            "name": "$main_routing_table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$scan_interval",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$scan_interval",
+            "intfKey": false,
+            "name": "$scan_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$operating_mode",
+            "dataType": "string",
+            "desc": "Specifies BGP is operating in standalone mode.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$operating_mode",
+            "intfKey": false,
+            "name": "$operating_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs",
+            "dataType": "table",
+            "desc": "BGP Nbrs Table\n",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor",
+                    "$as",
+                    "$st_pfxrcd",
+                    "$in_q",
+                    "$out_q"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs",
+            "intfKey": false,
+            "name": "bgp_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_nbrs.$neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$neighbor",
+            "intfKey": false,
+            "name": "$neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$spk",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$spk",
+            "intfKey": false,
+            "name": "$spk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$as",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$msg_rcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$msg_rcvd",
+            "intfKey": false,
+            "name": "$msg_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$msg_sent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$msg_sent",
+            "intfKey": false,
+            "name": "$msg_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$tbl_ver",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$tbl_ver",
+            "intfKey": false,
+            "name": "$tbl_ver",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$in_q",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$in_q",
+            "intfKey": false,
+            "name": "$in_q",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$out_q",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$out_q",
+            "intfKey": false,
+            "name": "$out_q",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$up_down",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$st_pfxrcd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$st_pfxrcd",
+            "intfKey": false,
+            "name": "$st_pfxrcd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

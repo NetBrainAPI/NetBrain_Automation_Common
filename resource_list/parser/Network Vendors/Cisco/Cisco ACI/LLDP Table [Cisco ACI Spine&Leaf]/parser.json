@@ -1,0 +1,217 @@
+{
+    "_id": "0f0f2ec2-844e-ac5f-1b40-32332aa5e898",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560796215471
+    },
+    "description": "",
+    "devTypes": [
+        30001,
+        30003,
+        30002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n[\n]\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\ndef BuildParameters(context, device_name, params):\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'SDN', 'params' : ['dn','role'] })\n    dn = get_dn['params']['dn']\n    role = get_dn['params']['role']\n    rtn_params = [{ 'devName' : device_name, 'dn' : dn, 'role': role }]\n    return rtn_params\n\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    role = rtn_params['role']\n    qry = '?rsp-subtree=children&rsp-subtree-class=lldpIf,lldpAdjEp&rsp-subtree-include=required'\n    url = '/api/node/class/' + dn + '/lldpIf.json' +qry\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    data = json.loads(data)\n\n    return json.dumps(data)",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"lldpIf\": {\n            \"attributes\": {\n                \"adminRxSt\": \"enabled\",\n                \"adminSt\": \"enabled\",\n                \"adminTxSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"topology/pod-1/node-101/sys/lldp/inst/if-[eth1/45]\",\n                \"id\": \"eth1/45\",\n                \"lcOwn\": \"local\",\n                \"mac\": \"70:7D:B9:26:5C:B3\",\n                \"modTs\": \"2018-11-19T12:50:29.778+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operRxSt\": \"enabled\",\n                \"operTxSt\": \"enabled\",\n                \"portDesc\": \"topology/pod-1/protpaths-101-102/pathep-[Switch101-102_1-ports-45_PolGrp]\",\n                \"portMode\": \"normal\",\n                \"portVlan\": \"unspecified\",\n                \"status\": \"\",\n                \"sysDesc\": \"topology/pod-1/node-101\",\n                \"wiringIssues\": \"\"\n            },\n            \"children\": [\n                {\n                    \"lldpAdjEp\": {\n                        \"attributes\": {\n                            \"capability\": \"bridge\",\n                            \"chassisIdT\": \"if-name\",\n                            \"chassisIdV\": \"vmnic3\",\n                            \"childAction\": \"\",\n                            \"enCap\": \"bridge\",\n                            \"id\": \"1\",\n                            \"mgmtId\": \"0\",\n                            \"mgmtIp\": \"unspecified\",\n                            \"mgmtPortMac\": \"unspecified\",\n                            \"modTs\": \"2019-04-23T18:49:45.376+00:00\",\n                            \"monPolDn\": \"uni/fabric/monfab-default\",\n                            \"name\": \"\",\n                            \"portDesc\": \"port 10 on dvSwitch MPOD-VCENTER (etherswitch)\",\n                            \"portIdT\": \"mac\",\n                            \"portIdV\": \"00:50:56:1e:90:ef\",\n                            \"portVlan\": \"unspecified\",\n                            \"rn\": \"adj-1\",\n                            \"stQual\": \"\",\n                            \"status\": \"\",\n                            \"sysDesc\": \"VMware ESX Releasebuild-3620759\",\n                            \"sysName\": \"ESXI-ACI-102\",\n                            \"ttl\": \"180\"\n                        }\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"lldpIf\": {\n            \"attributes\": {\n                \"adminRxSt\": \"enabled\",\n                \"adminSt\": \"enabled\",\n                \"adminTxSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"topology/pod-1/node-101/sys/lldp/inst/if-[eth1/48]\",\n                \"id\": \"eth1/48\",\n                \"lcOwn\": \"local\",\n                \"mac\": \"70:7D:B9:26:5C:B6\",\n                \"modTs\": \"2018-11-13T19:57:46.941+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operRxSt\": \"enabled\",\n                \"operTxSt\": \"enabled\",\n                \"portDesc\": \"topology/pod-1/paths-101/pathep-[eth1/48]\",\n                \"portMode\": \"normal\",\n                \"portVlan\": \"unspecified\",\n                \"status\": \"\",\n                \"sysDesc\": \"topology/pod-1/node-101\",\n                \"wiringIssues\": \"\"\n            },\n            \"children\": [\n                {\n                    \"lldpAdjEp\": {\n                        \"attributes\": {\n                            \"capability\": \"bridge,router\",\n                            \"chassisIdT\": \"mac\",\n                            \"chassisIdV\": \"00:27:90:ad:d2:80\",\n                            \"childAction\": \"\",\n                            \"enCap\": \"bridge,router\",\n                            \"id\": \"1\",\n                            \"mgmtId\": \"0\",\n                            \"mgmtIp\": \"10.10.6.254\",\n                            \"mgmtPortMac\": \"unspecified\",\n                            \"modTs\": \"2018-11-19T18:56:42.879+00:00\",\n                            \"monPolDn\": \"uni/fabric/monfab-default\",\n                            \"name\": \"\",\n                            \"portDesc\": \"GigabitEthernet1/0/2\",\n                            \"portIdT\": \"if-name\",\n                            \"portIdV\": \"Gi1/0/2\",\n                            \"portVlan\": \"unspecified\",\n                            \"rn\": \"adj-1\",\n                            \"stQual\": \"\",\n                            \"status\": \"\",\n                            \"sysDesc\": \"Cisco IOS Software, IOS-XE Software, Catalyst L3 Switch Software (CAT3K_CAA-UNIVERSALK9-M), Version 03.06.06E RELEASE SOFTWARE (fc1)\\nTechnical Support: http://www.cisco.com/techsupport\\nCopyright (c) 1986-2016 by Cisco Systems, Inc.\\nCompiled Sat 17-Dec-16 \",\n                            \"sysName\": \"Multi_POD_L3OUT_3850.netbraintech.local\",\n                            \"ttl\": \"120\"\n                        }\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"lldpIf\": {\n            \"attributes\": {\n                \"adminRxSt\": \"enabled\",\n                \"adminSt\": \"enabled\",\n                \"adminTxSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"topology/pod-1/node-101/sys/lldp/inst/if-[eth1/54]\",\n                \"id\": \"eth1/54\",\n                \"lcOwn\": \"local\",\n                \"mac\": \"70:7D:B9:26:5C:BC\",\n                \"modTs\": \"2018-11-13T14:49:17.839+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operRxSt\": \"enabled\",\n                \"operTxSt\": \"enabled\",\n                \"portDesc\": \"topology/pod-1/paths-101/pathep-[eth1/54]\",\n                \"portMode\": \"normal\",\n                \"portVlan\": \"unspecified\",\n                \"status\": \"\",\n                \"sysDesc\": \"topology/pod-1/node-101\",\n                \"wiringIssues\": \"\"\n            },\n            \"children\": [\n                {\n                    \"lldpAdjEp\": {\n                        \"attributes\": {\n                            \"capability\": \"bridge,router\",\n                            \"chassisIdT\": \"mac\",\n                            \"chassisIdV\": \"84:3d:c6:a4:a7:73\",\n                            \"childAction\": \"\",\n                            \"enCap\": \"bridge,router\",\n                            \"id\": \"1\",\n                            \"mgmtId\": \"83886080\",\n                            \"mgmtIp\": \"192.168.48.139\",\n                            \"mgmtPortMac\": \"unspecified\",\n                            \"modTs\": \"2018-11-13T21:38:36.157+00:00\",\n                            \"monPolDn\": \"uni/fabric/monfab-default\",\n                            \"name\": \"\",\n                            \"portDesc\": \"topology/pod-1/paths-201/pathep-[eth1/36]\",\n                            \"portIdT\": \"local\",\n                            \"portIdV\": \"Eth1/36\",\n                            \"portVlan\": \"unspecified\",\n                            \"rn\": \"adj-1\",\n                            \"stQual\": \"\",\n                            \"status\": \"\",\n                            \"sysDesc\": \"topology/pod-1/node-201\",\n                            \"sysName\": \"NBSPINE-1\",\n                            \"ttl\": \"120\"\n                        }\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"lldpIf\": {\n            \"attributes\": {\n                \"adminRxSt\": \"enabled\",\n                \"adminSt\": \"enabled\",\n                \"adminTxSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"topology/pod-1/node-101/sys/lldp/inst/if-[eth1/53]\",\n                \"id\": \"eth1/53\",\n                \"lcOwn\": \"local\",\n                \"mac\": \"70:7D:B9:26:5C:BB\",\n                \"modTs\": \"2018-11-13T14:46:51.485+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operRxSt\": \"enabled\",\n                \"operTxSt\": \"enabled\",\n                \"portDesc\": \"topology/pod-1/paths-101/pathep-[eth1/53]\",\n                \"portMode\": \"normal\",\n                \"portVlan\": \"unspecified\",\n                \"status\": \"\",\n                \"sysDesc\": \"topology/pod-1/node-101\",\n                \"wiringIssues\": \"\"\n            },\n            \"children\": [\n                {\n                    \"lldpAdjEp\": {\n                        \"attributes\": {\n                            \"capability\": \"bridge,router\",\n                            \"chassisIdT\": \"mac\",\n                            \"chassisIdV\": \"84:3d:c6:a4:c9:9b\",\n                            \"childAction\": \"\",\n                            \"enCap\": \"bridge,router\",\n                            \"id\": \"1\",\n                            \"mgmtId\": \"83886080\",\n                            \"mgmtIp\": \"192.168.48.138\",\n                            \"mgmtPortMac\": \"unspecified\",\n                            \"modTs\": \"2018-11-13T21:36:09.805+00:00\",\n                            \"monPolDn\": \"uni/fabric/monfab-default\",\n                            \"name\": \"\",\n                            \"portDesc\": \"topology/pod-1/paths-202/pathep-[eth1/36]\",\n                            \"portIdT\": \"local\",\n                            \"portIdV\": \"Eth1/36\",\n                            \"portVlan\": \"unspecified\",\n                            \"rn\": \"adj-1\",\n                            \"stQual\": \"\",\n                            \"status\": \"\",\n                            \"sysDesc\": \"topology/pod-1/node-202\",\n                            \"sysName\": \"NBSPINE-2\",\n                            \"ttl\": \"120\"\n                        }\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"lldpIf\": {\n            \"attributes\": {\n                \"adminRxSt\": \"enabled\",\n                \"adminSt\": \"enabled\",\n                \"adminTxSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"topology/pod-1/node-101/sys/lldp/inst/if-[eth1/1]\",\n                \"id\": \"eth1/1\",\n                \"lcOwn\": \"local\",\n                \"mac\": \"70:7D:B9:26:5C:87\",\n                \"modTs\": \"2019-01-24T07:53:51.667+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operRxSt\": \"enabled\",\n                \"operTxSt\": \"enabled\",\n                \"portDesc\": \"topology/pod-1/paths-101/pathep-[eth1/1]\",\n                \"portMode\": \"normal\",\n                \"portVlan\": \"unspecified\",\n                \"status\": \"\",\n                \"sysDesc\": \"topology/pod-1/node-101\",\n                \"wiringIssues\": \"\"\n            },\n            \"children\": [\n                {\n                    \"lldpAdjEp\": {\n                        \"attributes\": {\n                            \"capability\": \"\",\n                            \"chassisIdT\": \"mac\",\n                            \"chassisIdV\": \"38:0e:4d:17:80:c0\",\n                            \"childAction\": \"\",\n                            \"enCap\": \"\",\n                            \"id\": \"1\",\n                            \"mgmtId\": \"5\",\n                            \"mgmtIp\": \"10.0.0.1\",\n                            \"mgmtPortMac\": \"unspecified\",\n                            \"modTs\": \"2019-01-23T18:10:42.128+00:00\",\n                            \"monPolDn\": \"uni/fabric/monfab-default\",\n                            \"name\": \"\",\n                            \"portDesc\": \"eth2-2\",\n                            \"portIdT\": \"mac\",\n                            \"portIdV\": \"38:0e:4d:17:80:c0\",\n                            \"portVlan\": \"unspecified\",\n                            \"rn\": \"adj-1\",\n                            \"stQual\": \"\",\n                            \"status\": \"\",\n                            \"sysDesc\": \"topology/pod-1/node-1\",\n                            \"sysName\": \"apic1\",\n                            \"ttl\": \"120\"\n                        }\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"lldpIf\": {\n            \"attributes\": {\n                \"adminRxSt\": \"enabled\",\n                \"adminSt\": \"enabled\",\n                \"adminTxSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"topology/pod-1/node-101/sys/lldp/inst/if-[eth1/2]\",\n                \"id\": \"eth1/2\",\n                \"lcOwn\": \"local\",\n                \"mac\": \"70:7D:B9:26:5C:88\",\n                \"modTs\": \"2018-11-13T19:57:46.941+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operRxSt\": \"enabled\",\n                \"operTxSt\": \"enabled\",\n                \"portDesc\": \"topology/pod-1/paths-101/pathep-[eth1/2]\",\n                \"portMode\": \"normal\",\n                \"portVlan\": \"unspecified\",\n                \"status\": \"\",\n                \"sysDesc\": \"topology/pod-1/node-101\",\n                \"wiringIssues\": \"\"\n            },\n            \"children\": [\n                {\n                    \"lldpAdjEp\": {\n                        \"attributes\": {\n                            \"capability\": \"\",\n                            \"chassisIdT\": \"mac\",\n                            \"chassisIdV\": \"a0:93:51:ff:4a:84\",\n                            \"childAction\": \"\",\n                            \"enCap\": \"\",\n                            \"id\": \"1\",\n                            \"mgmtId\": \"5\",\n                            \"mgmtIp\": \"10.0.0.3\",\n                            \"mgmtPortMac\": \"unspecified\",\n                            \"modTs\": \"2018-11-13T19:47:17.021+00:00\",\n                            \"monPolDn\": \"uni/fabric/monfab-default\",\n                            \"name\": \"\",\n                            \"portDesc\": \"eth2-2\",\n                            \"portIdT\": \"mac\",\n                            \"portIdV\": \"a0:93:51:ff:4a:84\",\n                            \"portVlan\": \"unspecified\",\n                            \"rn\": \"adj-1\",\n                            \"stQual\": \"\",\n                            \"status\": \"\",\n                            \"sysDesc\": \"topology/pod-1/node-3\",\n                            \"sysName\": \"apic3\",\n                            \"ttl\": \"120\"\n                        }\n                    }\n                }\n            ]\n        }\n    },\n    {\n        \"lldpIf\": {\n            \"attributes\": {\n                \"adminRxSt\": \"enabled\",\n                \"adminSt\": \"enabled\",\n                \"adminTxSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"topology/pod-1/node-101/sys/lldp/inst/if-[eth1/3]\",\n                \"id\": \"eth1/3\",\n                \"lcOwn\": \"local\",\n                \"mac\": \"70:7D:B9:26:5C:89\",\n                \"modTs\": \"2018-11-13T19:57:46.941+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operRxSt\": \"enabled\",\n                \"operTxSt\": \"enabled\",\n                \"portDesc\": \"topology/pod-1/paths-101/pathep-[eth1/3]\",\n                \"portMode\": \"normal\",\n                \"portVlan\": \"unspecified\",\n                \"status\": \"\",\n                \"sysDesc\": \"topology/pod-1/node-101\",\n                \"wiringIssues\": \"\"\n            },\n            \"children\": [\n                {\n                    \"lldpAdjEp\": {\n                        \"attributes\": {\n                            \"capability\": \"\",\n                            \"chassisIdT\": \"mac\",\n                            \"chassisIdV\": \"a0:93:51:ff:86:32\",\n                            \"childAction\": \"\",\n                            \"enCap\": \"\",\n                            \"id\": \"1\",\n                            \"mgmtId\": \"4\",\n                            \"mgmtIp\": \"10.0.0.2\",\n                            \"mgmtPortMac\": \"unspecified\",\n                            \"modTs\": \"2019-01-22T19:43:06.341+00:00\",\n                            \"monPolDn\": \"uni/fabric/monfab-default\",\n                            \"name\": \"\",\n                            \"portDesc\": \"eth2-1\",\n                            \"portIdT\": \"mac\",\n                            \"portIdV\": \"a0:93:51:ff:86:32\",\n                            \"portVlan\": \"unspecified\",\n                            \"rn\": \"adj-1\",\n                            \"stQual\": \"\",\n                            \"status\": \"\",\n                            \"sysDesc\": \"topology/pod-1/node-2\",\n                            \"sysName\": \"apic2\",\n                            \"ttl\": \"120\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.LLDP_Detail.$local_port"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\r\\nBegin Declare Variable\\r\\n[\\r\\n    {\\\"name\\\": \\\"Num_of_LLDP\\\", \\\"type\\\": \\\"int\\\"},\\r\\n    {\\\"name\\\": \\\"LLDP_Detail\\\", \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\r\\n        {\\\"name\\\": \\\"local_port\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"remote_device\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"remote_ip\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"remote_port\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"remote_port_descpt\\\", \\\"type\\\": \\\"string\\\"}\\r\\n    ]}\\r\\n]\\r\\nEnd Declare\\r\\n'''\\r\\nimport json \\r\\nimport re\\r\\n\\r\\ndef intf_filter(string):\\r\\n    ifname = 'string'\\r\\n    if \\\"if\\\" in string:\\r\\n        ifname = re.findall('if-\\\\[(\\\\S+)\\\\]',string)\\r\\n        ifname = ifname[0]\\r\\n    return ifname\\r\\n\\r\\n\\r\\ndef ParseText(_original_result) :\\r\\n    result = json.loads(_original_result)\\r\\n    value ={}\\r\\n    value['Num_of_LLDP'] = len(result)\\r\\n    local_port = []\\r\\n    remote_device = []\\r\\n    remote_ip = []\\r\\n    remote_port = []\\r\\n    remote_port_descpt = []\\r\\n\\r\\n    try:       \\r\\n        for m in range(len(result)):\\r\\n            s_local_port = result[m]['lldpIf']['attributes']['dn']\\r\\n            s_remote_device = result[m]['lldpIf']['children'][0]['lldpAdjEp']['attributes']['sysName']\\r\\n            s_remote_ip = result[m]['lldpIf']['children'][0]['lldpAdjEp']['attributes']['mgmtIp']\\r\\n            s_remote_port = result[m]['lldpIf']['children'][0]['lldpAdjEp']['attributes']['portIdV']\\r\\n            s_remote_port_descpt = result[m]['lldpIf']['children'][0]['lldpAdjEp']['attributes']['portDesc']\\r\\n\\r\\n            s_local_port = intf_filter(s_local_port)\\r\\n\\r\\n            local_port.append(s_local_port)\\r\\n            remote_device.append(s_remote_device)\\r\\n            remote_ip.append(s_remote_ip)\\r\\n            remote_port.append(s_remote_port)\\r\\n            remote_port_descpt.append(s_remote_port_descpt)\\r\\n    except Exception as ex:\\r\\n        print(str(ex))\\r\\n    value['LLDP_Detail']= {'local_port': local_port, 'remote_device':remote_device, 'remote_ip':remote_ip, 'remote_port':remote_port, 'remote_port_descpt':remote_port_descpt}\\r\\n    return value\\r\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$Num_of_LLDP\",\"type\":\"int\"}]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$LLDP_Detail\",\"variableTypes\":{\"variableType\":[{\"name\":\"$local_port\",\"type\":\"string\"},{\"name\":\"$remote_device\",\"type\":\"string\"},{\"name\":\"$remote_ip\",\"type\":\"string\"},{\"name\":\"$remote_port\",\"type\":\"string\"},{\"name\":\"$remote_port_descpt\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"de488e81-0b09-46cb-66f5-e9ef6af851ef\",\"hashColumns\":{\"LLDP_Detail\":[\"$local_port\",\"$remote_device\",\"$remote_ip\",\"$remote_port\",\"$remote_port_descpt\"]},\"tableKeys\":{\"LLDP_Detail\":[\"$remote_device\"]},\"hashSort\":{\"LLDP_Detail\":false},\"interfaceKey\":{\"LLDP_Detail\":\"$local_port\"}}]}",
+            "tableKeys": [
+                "_original_result.$LLDP_Detail.$remote_device"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "Num_of_LLDP",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "local_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "remote_device",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "remote_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "remote_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "remote_port_descpt",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "local_port",
+                    "remote_device",
+                    "remote_ip",
+                    "remote_port",
+                    "remote_port_descpt"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "LLDP_Detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4eea1a5fe95cee74ba516e73a368f00a",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$LLDP_Detail",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$local_port",
+                    "$remote_device",
+                    "$remote_ip",
+                    "$remote_port",
+                    "$remote_port_descpt"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$LLDP_Detail",
+            "intfKey": false,
+            "name": "$LLDP_Detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$Num_of_LLDP",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$Num_of_LLDP",
+            "intfKey": false,
+            "name": "$Num_of_LLDP",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$LLDP_Detail.$local_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$LLDP_Detail.$local_port",
+            "intfKey": false,
+            "name": "$local_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$LLDP_Detail.$remote_device",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$LLDP_Detail.$remote_device",
+            "intfKey": false,
+            "name": "$remote_device",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$LLDP_Detail.$remote_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$LLDP_Detail.$remote_ip",
+            "intfKey": false,
+            "name": "$remote_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$LLDP_Detail.$remote_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$LLDP_Detail.$remote_port",
+            "intfKey": false,
+            "name": "$remote_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$LLDP_Detail.$remote_port_descpt",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$LLDP_Detail.$remote_port_descpt",
+            "intfKey": false,
+            "name": "$remote_port_descpt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

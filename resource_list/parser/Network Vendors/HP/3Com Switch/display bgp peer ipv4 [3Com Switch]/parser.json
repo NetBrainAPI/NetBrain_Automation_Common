@@ -1,0 +1,345 @@
+{
+    "_id": "9cda0133-f0ce-552a-efdf-d3ae6b051cc4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display bgp peer ipv4",
+    "createTime": {
+        "$date": 1590768033197
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay bgp peer ipv4",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<R2>display bgp peer ipv4\n\n BGP local router ID: 10.10.10.2\n Local AS number: 100\n Total number of peers: 1                 Peers in established state: 1\n\n  * - Dynamically created peer\n  Peer                    AS  MsgRcvd  MsgSent OutQ PrefRcv Up/Down  State\n\n  10.10.10.1             100        3        3    0       0 00:00:14 Established\n  10.10.10.1             100        3        3    0       0 00:00:14 Established\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$bgp_router_id]:BGP local router ID:\\\\s+([\\\\d.]+)\",\"regex[$local_as]:Local AS number:\\\\s+(\\\\d+)\",\"regex[$int:total_peer,$int:peer_established]:Total number of peers:\\\\s+(\\\\d+)\\\\s+Peers in established state:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$bgp_router_id:string\",\"$local_as:string\",\"$total_peer:int\",\"$peer_established:int\"]},\"xxid\":\"1605d716-a786-57bd-e56c-490835015899\"},{\"type\":\"4\",\"name\":\"peer_table\",\"keyVariables\":\"\",\"startLine\":\"mregex[$peer,$as,$int:msgrcvd,$int:msgsent,$int:outq,$int:prefrcv,$up_down,$state]:([\\\\d.]+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(.+?)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$peer:string\",\"$as:string\",\"$msgrcvd:int\",\"$msgsent:int\",\"$outq:int\",\"$prefrcv:int\",\"$up_down:string\",\"$state:string\"]},\"xxid\":\"6dd9a2c7-49af-034e-d49b-5a4c9513fbaf\"}]},\"xxid\":\"3f3e4952-6a8a-ebd3-70e4-cfa43cdf7fdd\",\"hashColumns\":[\"$as\",\"$outq\",\"$up_down\",\"$state\"]}]}",
+            "tableKeys": [
+                "_original_result.peer_table.$as",
+                "_original_result.peer_table.$outq",
+                "_original_result.peer_table.$up_down",
+                "_original_result.peer_table.$state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bgp_router_id",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_as",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "total_peer",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "peer_established",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "peer",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "as",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "msgrcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "msgsent",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "outq",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "prefrcv",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$as",
+                    "$outq",
+                    "$state",
+                    "$up_down"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "peer_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "55603e6b9ec2164fcc914511e37ce15c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$bgp_router_id",
+            "dataType": "string",
+            "desc": "BGP neighbor table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_router_id",
+            "intfKey": false,
+            "name": "$bgp_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "string",
+            "desc": "Autonomous system number of own.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_peer",
+            "dataType": "int",
+            "desc": "The number of total peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_peer",
+            "intfKey": false,
+            "name": "$total_peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$peer_established",
+            "dataType": "int",
+            "desc": "The number of established peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$peer_established",
+            "intfKey": false,
+            "name": "$peer_established",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table",
+            "dataType": "paragraph",
+            "desc": "The bgp peer table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$as",
+                    "$outq",
+                    "$up_down",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "peer_table",
+            "intfKey": false,
+            "name": "peer_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "peer_table.$peer",
+            "dataType": "string",
+            "desc": "IP address of the BGP neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$peer",
+            "intfKey": false,
+            "name": "$peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table.$as",
+            "dataType": "string",
+            "desc": "Autonomous system number of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table.$msgrcvd",
+            "dataType": "int",
+            "desc": "Number of update messages receviced.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$msgrcvd",
+            "intfKey": false,
+            "name": "$msgrcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table.$msgsent",
+            "dataType": "int",
+            "desc": "Number of update messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$msgsent",
+            "intfKey": false,
+            "name": "$msgsent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table.$outq",
+            "dataType": "int",
+            "desc": "Number of messages in the output queue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$outq",
+            "intfKey": false,
+            "name": "$outq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table.$prefrcv",
+            "dataType": "int",
+            "desc": "Accepted incoming prefix.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$prefrcv",
+            "intfKey": false,
+            "name": "$prefrcv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table.$up_down",
+            "dataType": "string",
+            "desc": "Time, in hh:mm:ss, since BGP last received a message from this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_table.$state",
+            "dataType": "string",
+            "desc": "The state of this peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "peer_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,170 @@
+{
+    "_id": "c3294906-ca8e-7a2d-09a1-3493f0b4a03b",
+    "author": "NetBrain",
+    "bizType": "81134e79-841f-4e59-b72b-0e41da2035a5",
+    "command": "",
+    "createTime": {
+        "$date": 1560793236233
+    },
+    "description": "",
+    "devTypes": [
+        21007,
+        21008
+    ],
+    "params": [
+        {
+            "name": "$intf_name"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n    {\"name\": \"$intf_name\"}\r\n ]\r\n End Declare\r\n '''\r\nimport time\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    intf_name = params['intf_name']\r\n    node_dn = GetDeviceProperties(context, device_name, {'techName': 'NSX', 'paramType': 'SDN', 'params':['edgeId', 'nbPathSchema']})\r\n    intf_dn = GetInterfaceProperties(context, device_name, intf_name, {'techName': 'NSX', 'paramType': 'SDN', 'params' : ['label', 'index', 'nbPathSchema'] })\r\n    intf_label = intf_dn['params'].get('label', '')\r\n    intf_index = intf_dn['params'].get('index', '')\r\n    edge_id = node_dn['params'].get('edgeId')\r\n    dev_schema = node_dn['params'].get('nbPathSchema')\r\n    vnic_name = 'vnic_' + str(intf_index)\r\n    rtn_params = { 'name':device_name, 'edge_id' : edge_id, 'intf_name':intf_name, 'vnic_name': vnic_name, 'intf_index':intf_index, 'dev_schema': dev_schema}\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    edge_id = rtn_params['edge_id']\r\n    dev_schema = rtn_params['dev_schema']\r\n    intf_name = rtn_params['intf_name']\r\n    vnic_name = rtn_params['vnic_name'].lower()\r\n    intf_index = rtn_params['intf_index']\r\n    current_time = int(time.time())\r\n    end_time = int(current_time/300) * 300 + 1\r\n    start_time = int(current_time/300) * 300 -301\r\n    if not (edge_id and intf_index and vnic_name):\r\n        return {'error:':'params not correct', 'rtn_params':rtn_params}\r\n    url = 'api/4.0/edges/%s/statistics/interfaces?startTime=%s&endTime=%s'%(edge_id, start_time, end_time)\r\n    rtn_params['url'] = url\r\n    resp = getData(rtn_params)\r\n    rtn_data = json.loads(getData(rtn_params))\r\n    rtn_dict = json.loads(rtn_data)\r\n    vnic_traffic_data =  rtn_dict['dataDto'].get(vnic_name,'')\r\n    traffic_data = {}\r\n    traffic_data['intf'] = intf_name\r\n    traffic_data['index'] = intf_index\r\n    if vnic_traffic_data:\r\n        # kbps *125 = byte ps\r\n        traffic_data['traffic_in_byte'] = vnic_traffic_data[0]['in'] * 125\r\n        traffic_data['traffic_out_byte'] = vnic_traffic_data[0]['out'] * 125\r\n    # dlr /api/4.0/edges/edge-41/interfaces/2\r\n    # esg /api/4.0/edges/edge-34/vnics/2\r\n    if '.dlr.' in dev_schema:\r\n        url = '/api/4.0/edges/%s/interfaces/%s' %(edge_id, intf_index)\r\n    else:\r\n        url = '/api/4.0/edges/%s/vnics/%s' %(edge_id, intf_index)\r\n    rtn_params['url'] = url\r\n    rtn_data = json.loads(getData(rtn_params))\r\n    rtn_dict = json.loads(rtn_data)\r\n    intf_status = 'Up' if rtn_dict.get('isConnected', '') else 'Down'\r\n    traffic_data['intf_status'] = intf_status\r\n    return traffic_data",
+    "samples": [
+        {
+            "content": "{\n    \"index\": \"0\",\n    \"intf\": \"mgmtInterface\",\n    \"intf_status\": \"Up\",\n    \"traffic_in_byte\": 869.1301629875001,\n    \"traffic_out_byte\": 830.6361569375\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"intf_table\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"intf\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"intf_status\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"traffic_in_byte\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"traffic_out_byte\\\", \\\"type\\\": \\\"int\\\"}\\n        \\n    ]}\\n]\\nEnd Declare\\n\\n'''\\nimport re \\nimport json\\ndef ParseText(_original_result):\\n    original_result = json.loads(_original_result)\\n    value = {}\\n    value['intf_table']= original_result\\n    return value\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$intf_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$intf\",\"type\":\"string\"},{\"name\":\"$intf_status\",\"type\":\"string\"},{\"name\":\"$traffic_in_byte\",\"type\":\"int\"},{\"name\":\"$traffic_out_byte\",\"type\":\"int\"}]}}]},\"name\":\"\",\"xxid\":\"de38efb6-6fc9-e7e7-2f08-e898f73017f2\",\"interfaceKey\":{\"intf_table\":\"$intf\"},\"hashColumns\":{\"intf_table\":[\"$intf\"]}}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "traffic_in_byte",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "traffic_out_byte",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f56772b8334dace511e1dc87fb5ff542",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$intf_table.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$intf_table.$intf_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf_status",
+            "intfKey": false,
+            "name": "$intf_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$intf_table",
+            "intfKey": false,
+            "name": "$intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$intf_table.$traffic_in_byte",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$traffic_in_byte",
+            "intfKey": false,
+            "name": "$traffic_in_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$traffic_out_byte",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$traffic_out_byte",
+            "intfKey": false,
+            "name": "$traffic_out_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

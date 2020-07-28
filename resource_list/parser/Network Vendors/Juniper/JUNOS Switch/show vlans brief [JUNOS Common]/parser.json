@@ -1,0 +1,233 @@
+{
+    "_id": "b67cde97-6680-2cb8-95aa-6e6b33e2bb1f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vlans brief",
+    "createTime": {
+        "$date": 1580762919133
+    },
+    "description": "Device Type:\nJuniper EX Switch\nCommand:\nshow vlans brief",
+    "devTypes": [
+        2012
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@EX2200-1>show vlans brief \n                                                        Ports            \nName           Tag       Primary Address             Active/Total\nabc            16                                       1/3\nadmin          1                                        2/2\ndefault                                                 0/18\nvlan10         10        172.24.101.32/24               1/1\nvlan100        100                                      2/2\nvlan2          2         172.16.20.1/24                 1/2\nvlan3         \n\n{master:0}\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"filter_vlan_intfs\",\"startLine\":\"Name           Tag       Primary Address             Active/Total\",\"endLine\":\"regex:^$\",\"skipLines\":null,\"includeLines\":null,\"excludeLines\":null,\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"b2593b17-5f8f-2bba-be44-a692a022c950\"},{\"type\":\"4\",\"name\":\"vlan_interfaces\",\"keyVariables\":null,\"startLine\":\"regex[$vlan_name]:^(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$tag]:^\\\\S+\\\\s+(\\\\d+)\\\\s+\",\"regex[$primary_address]:^\\\\S+.*?(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+.*?)\\\\s+\",\"mregex[$int:active_ports,$int:total_ports]:^\\\\S+.*?\\\\s+(\\\\d+)/(\\\\d+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$vlan_name:string\",\"$tag:string\",\"$primary_address:string\",\"$active_ports:int\",\"$total_ports:int\"]},\"xxid\":\"5d6c41fa-59cd-1db9-f312-198a39563362\"}]},\"xxid\":\"47237ef1-672e-1fd3-625a-aa2c3f5d1472\",\"hashColumns\":[\"$vlan_name\",\"$tag\",\"$primary_address\",\"$active_ports\",\"$total_ports\"],\"hashSort\":false}]},\"xxid\":\"03f639d6-1697-e79a-2cf7-288012a48128\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"46368598-ae18-9d73-cfb3-6e8b24a73b1c\"}]}",
+            "tableKeys": [
+                "_original_result.filter_vlan_intfs.vlan_interfaces.$vlan_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "filter_vlan_intfs",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "primary_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "active_ports",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "total_ports",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$active_ports",
+                    "$primary_address",
+                    "$tag",
+                    "$total_ports",
+                    "$vlan_name"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "vlan_interfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "626f6cc529f26363cccc1df043d62193",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "filter_vlan_intfs",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_vlan_intfs",
+            "intfKey": false,
+            "name": "filter_vlan_intfs",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_interfaces",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan_name",
+                    "$tag",
+                    "$primary_address",
+                    "$active_ports",
+                    "$total_ports"
+                ],
+                "hashSort": false
+            },
+            "fullName": "filter_vlan_intfs.vlan_interfaces",
+            "intfKey": false,
+            "name": "vlan_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vlan_interfaces.$vlan_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_vlan_intfs.vlan_interfaces.$vlan_name",
+            "intfKey": false,
+            "name": "$vlan_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_interfaces.$tag",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_vlan_intfs.vlan_interfaces.$tag",
+            "intfKey": false,
+            "name": "$tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_interfaces.$primary_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_vlan_intfs.vlan_interfaces.$primary_address",
+            "intfKey": false,
+            "name": "$primary_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_interfaces.$active_ports",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_vlan_intfs.vlan_interfaces.$active_ports",
+            "intfKey": false,
+            "name": "$active_ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_interfaces.$total_ports",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_vlan_intfs.vlan_interfaces.$total_ports",
+            "intfKey": false,
+            "name": "$total_ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

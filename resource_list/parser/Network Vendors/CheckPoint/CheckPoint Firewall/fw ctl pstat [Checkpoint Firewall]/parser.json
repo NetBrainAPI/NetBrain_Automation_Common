@@ -1,0 +1,2148 @@
+{
+    "_id": "ba56659c-8899-773b-451f-d1efd5b47f70",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "fw ctl pstat",
+    "createTime": {
+        "$date": 1579141030241
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nfw ctl pstat",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-checkpoint-1> fw ctl pstat\r\n\r\nSystem Capacity Summary:\r\n  Memory used: 4% (65 MB out of 1516 MB) - below watermark\r\n  Concurrent Connections: 0% (19 out of 24900) - below watermark\r\n  Aggressive Aging is disabled\r\n\r\nHash kernel memory (hmem) statistics:\r\n  Total memory allocated: 155189248 bytes in 37888 (4096 bytes) blocks using 37 pools\r\n  Total memory bytes  used:  3736236   unused: 151453012 (97.59%)   peak:  5313356\r\n  Total memory blocks used:     1084   unused:    36804 (97%)   peak:     1392\r\n  Allocations: 323100 alloc, 0 failed alloc, 285859 free\r\n\r\nSystem kernel memory (smem) statistics:\r\n  Total memory  bytes  used: 201842056   peak: 201967272\r\n  Total memory bytes wasted:  1984539\r\n    Blocking  memory  bytes   used:  2599116   peak:  2689868\r\n    Non-Blocking memory bytes used: 199242940   peak: 199277404\r\n  Allocations: 909 alloc, 0 failed alloc, 120 free, 0 failed free\r\n  vmalloc bytes  used: 12563744 expensive: yes\r\n\r\nKernel memory (kmem) statistics:\r\n  Total memory  bytes  used: 50359572   peak: 50449940\r\n  Allocations: 323504 alloc, 0 failed alloc\r\n               285975 free, 0 failed free\r\n  External Allocations: 0 for packets, 29271 for SXL\r\n\r\nCookies:\r\n\t59329 total, 0 alloc, 0 free,\r\n\t320 dup, 12664 get, 790 put,\r\n\t60043 len, 0 cached len, 0 chain alloc,\r\n\t0 chain free\r\n\r\nConnections:\r\n\t411 total, 179 TCP, 192 UDP, 2 ICMP,\r\n\t38 other, 0 anticipated, 1 recovered, 19 concurrent,\r\n\t64 peak concurrent\r\n\r\nFragments:\r\n\t0 fragments, 0 packets, 0 expired, 0 short,\r\n\t0 large, 0 duplicates, 0 failures\r\n\r\nNAT:\r\n\t210/0 forw, 0/0 bckw, 0 tcpudp,\r\n\t0 icmp, 98-130 alloc\r\n\r\nSync:\r\n\tVersion: new\r\n\tStatus: Able to Send/Receive sync packets\r\n\tSync packets sent:\r\n\t total : 1042,  retransmitted : 0, retrans reqs : 0,  acks : 3\r\n\tSync packets received:\r\n\t total : 515,  were queued : 0, dropped by net : 0\r\n\t retrans reqs : 0, received 97 acks\r\n\t retrans reqs for illegal seq : 0\r\n\t dropped updates as a result of sync overload: 0\r\n\tCallback statistics: handled 92 cb, average delay : 1,  max delay : 1\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"system_capacity_table\",\"keyVariables\":\"\",\"startLine\":\"System Capacity Summary:\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$memory_used_percent, $used_memory, $total_memory]:Memory used: (.+) \\\\((.+) out of (.+)\\\\) - below watermark\",\"regex[$connection_used_percent, $used_connections, $total_connections]:Concurrent Connections: (.+) \\\\((.+) out of (.+)\\\\) - below watermark\",\"regex[$aggressive_status]:Aggressive Aging is (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$memory_used_percent:string\",\"$used_memory:string\",\"$total_memory:string\",\"$connection_used_percent:string\",\"$used_connections:string\",\"$total_connections:string\",\"$aggressive_status:string\"]},\"xxid\":\"1e4c62a9-1eed-f8dd-be0c-b7954cc99043\"}]},\"xxid\":\"abd28442-2711-709d-9252-5f13626d9b22\"},{\"type\":\"4\",\"name\":\"hash_kernel_table\",\"keyVariables\":\"\",\"startLine\":\"Hash kernel memory (hmem) statistics:\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:allocated_memory, $int:blocks, $int:block_bytes, $int:pools]:Total memory allocated:\\\\s*(\\\\d+) bytes in (\\\\d+) \\\\((\\\\d+) bytes\\\\) blocks using (\\\\d+) pools\",\"regex[$int:used_memory_bytes, $int:unused_memory_bytes, $unsed_memory_persent, $int:peak_bytes]:Total memory bytes  used:\\\\s*(\\\\d+)\\\\s*unused:\\\\s*(\\\\d+) \\\\((.+)\\\\)\\\\s*peak:\\\\s*(.+)\",\"regex[$int:used_memory_blocks, $int:unused_memory_blocks, $unsed_blocks_persent, $int:peak_blocks]:Total memory blocks used:\\\\s*(\\\\d+)\\\\s*unused:\\\\s*(\\\\d+) \\\\((.+)\\\\)\\\\s*peak:\\\\s*(.+)\",\"regex[$int:allocs, $int:failed_allocs,$int:free_allocs]:Allocations: (\\\\d+) alloc, (\\\\d+) failed alloc, (\\\\d+) free\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$allocated_memory:int\",\"$blocks:int\",\"$block_bytes:int\",\"$pools:int\",\"$used_memory_bytes:int\",\"$unused_memory_bytes:int\",\"$unsed_memory_persent:string\",\"$peak_bytes:int\",\"$used_memory_blocks:int\",\"$unused_memory_blocks:int\",\"$unsed_blocks_persent:string\",\"$peak_blocks:int\",\"$allocs:int\",\"$failed_allocs:int\",\"$free_allocs:int\"]},\"xxid\":\"57642910-30cd-c337-9618-8ea0fb826c15\"}]},\"xxid\":\"fad1d6bd-7896-afd5-7c28-e97677cc537e\"},{\"type\":\"4\",\"name\":\"system_kernel_table\",\"keyVariables\":\"\",\"startLine\":\"System kernel memory (smem) statistics:\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:memory_used_bytes, $int:peak_bytes]:Total memory  bytes  used:\\\\s*(\\\\d+)\\\\s*peak:\\\\s*(\\\\d+)\",\"regex[$int:memory_wasted_bytes]:Total memory bytes wasted:\\\\s*(\\\\d+)\",\"regex[$int:block_memory_used_bytes, $int:block_memory_peak_bytes]:Blocking  memory  bytes   used:\\\\s*(\\\\d+)\\\\s*peak:\\\\s*(\\\\d+)\",\"regex[$int:non_block_memory_used_bytes, $int:non_block_memory_peak_bytes]:Non-Blocking memory bytes used:\\\\s*(\\\\d+)\\\\s*peak:\\\\s*(\\\\d+)\",\"regex[$int:allocs, $int:failed_allocs,$int:free_allocs, $int:failed_free_allocs]:Allocations: (\\\\d+) alloc, (\\\\d+) failed alloc, (\\\\d+) free, (\\\\d+) failed free\",\"regex[$int:vmalloc_bytes, $expensive_status]:vmalloc bytes\\\\s*used: (\\\\d+) expensive: (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$memory_used_bytes:int\",\"$peak_bytes:int\",\"$memory_wasted_bytes:int\",\"$block_memory_used_bytes:int\",\"$block_memory_peak_bytes:int\",\"$non_block_memory_used_bytes:int\",\"$non_block_memory_peak_bytes:int\",\"$allocs:int\",\"$failed_allocs:int\",\"$free_allocs:int\",\"$failed_free_allocs:int\",\"$vmalloc_bytes:int\",\"$expensive_status:string\"]},\"xxid\":\"efe30990-be0c-1b1c-3b70-58af9a4f94af\"}]},\"xxid\":\"74a9cf9c-ec94-5e25-e972-6f1ded6ba96b\"},{\"type\":\"4\",\"name\":\"kernel_memory_table\",\"keyVariables\":\"\",\"startLine\":\"Kernel memory (kmem) statistics:\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:memory_bytes, $int:peak_bytes]:Total memory\\\\s*bytes\\\\s*used: (\\\\d+)\\\\s*peak:\\\\s*(\\\\d+)\",\"regex[$int:allocs, $int:failed_allocs]:Allocations:\\\\s*(\\\\d+)\\\\s*alloc,\\\\s*(\\\\d+)\\\\s*failed alloc\",\"regex[$int:free_allocs, $int:failed_free_allocs]:(\\\\d+) free, (\\\\d+) failed free\",\"regex[$int:external_alloc_packets, $int:sxl_alloc_packets]:External Allocations: (\\\\d+) for packets, (\\\\d+) for SXL\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$memory_bytes:int\",\"$peak_bytes:int\",\"$allocs:int\",\"$failed_allocs:int\",\"$free_allocs:int\",\"$failed_free_allocs:int\",\"$external_alloc_packets:int\",\"$sxl_alloc_packets:int\"]},\"xxid\":\"90c3df5f-15a6-62c9-eeee-8c49d27d3f88\"}]},\"xxid\":\"1aebb6eb-49f9-6a04-4692-a6374d940844\"},{\"type\":\"4\",\"name\":\"cookies_table\",\"keyVariables\":\"\",\"startLine\":\"Cookies:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total, $int:alloc, $int:free]:(\\\\d+) total, (\\\\d+) alloc, (\\\\d+) free,\",\"regex[$int:dup, $int:get, $int:put]:(\\\\d+) dup, (\\\\d+) get, (\\\\d+) put,\",\"regex[$int:len, $int:cached_len, $int:chain_alloc]:(\\\\d+) len, (\\\\d+) cached len, (\\\\d+) chain alloc,\",\"regex[$int:chain_free]:(\\\\d+) chain free\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$alloc:int\",\"$free:int\",\"$dup:int\",\"$get:int\",\"$put:int\",\"$len:int\",\"$cached_len:int\",\"$chain_alloc:int\",\"$chain_free:int\"]},\"xxid\":\"44a31d16-8080-8247-6c68-005ecae6a445\"}]},\"xxid\":\"5f4b3590-be06-d3c4-beea-16b6ef09ffb5\"},{\"type\":\"4\",\"name\":\"connection_table\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^Connections:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total, $int:tcp, $int:udp, $int:icmp]:(\\\\d+) total, (\\\\d+) TCP, (\\\\d+) UDP, (\\\\d+) ICMP\",\"regex[$int:other, $int:anticipated, $int:recovered, $int:concurrent]:(\\\\d+) other, (\\\\d+) anticipated, (\\\\d+) recovered, (\\\\d+) concurrent\",\"regex[$int:peak_concurrent]:(\\\\d+) peak concurrent\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$tcp:int\",\"$udp:int\",\"$icmp:int\",\"$other:int\",\"$anticipated:int\",\"$recovered:int\",\"$concurrent:int\",\"$peak_concurrent:int\"]},\"xxid\":\"adf767be-0397-6477-669a-ec6507fe4d4c\"}]},\"xxid\":\"625001cb-8bd5-137f-f2a5-ce95c18db7b9\"},{\"type\":\"4\",\"name\":\"fragments_table\",\"keyVariables\":\"\",\"startLine\":\"Fragments:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:fragments, $int:packets, $int:expired, $int:short]:(\\\\d+) fragments, (\\\\d+) packets, (\\\\d+) expired, (\\\\d+) short\",\"regex[$int:large, $int:duplicates, $int:failures]:(\\\\d+) large, (\\\\d+) duplicates, (\\\\d+) failures\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$fragments:int\",\"$packets:int\",\"$expired:int\",\"$short:int\",\"$large:int\",\"$duplicates:int\",\"$failures:int\"]},\"xxid\":\"90b8c9b1-a072-14e8-021d-4db531656a5b\"}]},\"xxid\":\"0e68de2f-2f4f-d2c6-92d1-5528eb09dc32\"},{\"type\":\"4\",\"name\":\"nat_table\",\"keyVariables\":\"\",\"startLine\":\"NAT:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$forw, $bckw, $tcpudp]:(.+) forw, (.+) bckw, (.+) tcpudp\",\"regex[$icmp, $alloc]:(.+) icmp, (.+) alloc\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$forw:string\",\"$bckw:string\",\"$tcpudp:string\",\"$icmp:string\",\"$alloc:string\"]},\"xxid\":\"d868a993-18f4-1dc1-fd71-282080b065d4\"}]},\"xxid\":\"0ad0cae2-cbd4-e6f6-208d-83bd47851abb\"},{\"type\":\"4\",\"name\":\"sync_atable\",\"keyVariables\":\"\",\"startLine\":\"Sync:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_sent, $int:retransmitted, $int:retrans_req_sent, $int:sync_acks_sent]:total : (\\\\d+),\\\\s*retransmitted : (\\\\d+),\\\\s*retrans reqs : (\\\\d+),\\\\s*acks : (\\\\d+)\",\"regex[$int:total_recv, $int:queued, $int:dropped]:total : (\\\\d+),  were queued : (\\\\d+), dropped by net : (\\\\d+)\",\"regex[$int:retrans_req_recv, $int:acks_recv]:retrans reqs : (\\\\d+), received (\\\\d+) acks\",\"regex[$int:retran_or_illegal_req_recv]:retrans reqs for illegal seq : (\\\\d+)\",\"regex[$int:sync_overload]:dropped updates as a result of sync overload: (\\\\d+)\",\"regex[$int:handled_cb, $int:average_delay, $int:max_delay]:Callback statistics: handled (\\\\d+) cb, average delay : (\\\\d+),  max delay : (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_sent:int\",\"$retransmitted:int\",\"$retrans_req_sent:int\",\"$sync_acks_sent:int\",\"$total_recv:int\",\"$queued:int\",\"$dropped:int\",\"$retrans_req_recv:int\",\"$acks_recv:int\",\"$retran_or_illegal_req_recv:int\",\"$sync_overload:int\",\"$handled_cb:int\",\"$average_delay:int\",\"$max_delay:int\"]},\"xxid\":\"9754e77b-5645-0247-ad3c-02d0f8704daf\"}]},\"xxid\":\"f927bb18-d474-1a36-576f-0616e9031807\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"34e856a8-9558-6811-6d57-97fa65e54cc5\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "memory_used_percent",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "used_memory",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "total_memory",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "connection_used_percent",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "used_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "total_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "aggressive_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "system_capacity_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 15,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "allocated_memory",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "blocks",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "block_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "pools",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "used_memory_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "unused_memory_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "unsed_memory_persent",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "peak_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "used_memory_blocks",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "unused_memory_blocks",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "unsed_blocks_persent",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "peak_blocks",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "failed_allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "free_allocs",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "hash_kernel_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "memory_used_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "peak_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "memory_wasted_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "block_memory_used_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "block_memory_peak_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "non_block_memory_used_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "non_block_memory_peak_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "failed_allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "free_allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "failed_free_allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "vmalloc_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "expensive_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "system_kernel_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "memory_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "peak_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "failed_allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "free_allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "failed_free_allocs",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "external_alloc_packets",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "sxl_alloc_packets",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "kernel_memory_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "total",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "alloc",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "free",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "dup",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "get",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "put",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "len",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "cached_len",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "chain_alloc",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "chain_free",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 5,
+                "name": "cookies_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "total",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "tcp",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "udp",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "icmp",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "other",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "anticipated",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "recovered",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "concurrent",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "peak_concurrent",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 6,
+                "name": "connection_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "fragments",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "packets",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "expired",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "short",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "large",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "duplicates",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "failures",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 7,
+                "name": "fragments_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "forw",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "bckw",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "tcpudp",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "icmp",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "alloc",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 8,
+                "name": "nat_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "total_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "retransmitted",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "retrans_req_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "sync_acks_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "total_recv",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "queued",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "dropped",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "retrans_req_recv",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "acks_recv",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "retran_or_illegal_req_recv",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "sync_overload",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "handled_cb",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "average_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "max_delay",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 9,
+                "name": "sync_atable",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4be79babf63082e3148c09b87e1d4cd7",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "system_capacity_table",
+            "dataType": "paragraph",
+            "desc": "System capacity table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table",
+            "intfKey": false,
+            "name": "system_capacity_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "system_capacity_table.$memory_used_percent",
+            "dataType": "string",
+            "desc": "The percent of memory used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table.$memory_used_percent",
+            "intfKey": false,
+            "name": "$memory_used_percent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_capacity_table.$used_memory",
+            "dataType": "string",
+            "desc": "The bytes of used memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table.$used_memory",
+            "intfKey": false,
+            "name": "$used_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_capacity_table.$total_memory",
+            "dataType": "string",
+            "desc": "The bytes of total memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table.$total_memory",
+            "intfKey": false,
+            "name": "$total_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_capacity_table.$connection_used_percent",
+            "dataType": "string",
+            "desc": "The percent of concurrent connections used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table.$connection_used_percent",
+            "intfKey": false,
+            "name": "$connection_used_percent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_capacity_table.$used_connections",
+            "dataType": "string",
+            "desc": "The number of used connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table.$used_connections",
+            "intfKey": false,
+            "name": "$used_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_capacity_table.$total_connections",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table.$total_connections",
+            "intfKey": false,
+            "name": "$total_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_capacity_table.$aggressive_status",
+            "dataType": "string",
+            "desc": "The status of aggressive aging.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_capacity_table.$aggressive_status",
+            "intfKey": false,
+            "name": "$aggressive_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table",
+            "dataType": "paragraph",
+            "desc": "The hash kernel table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table",
+            "intfKey": false,
+            "name": "hash_kernel_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "hash_kernel_table.$allocated_memory",
+            "dataType": "int",
+            "desc": "The bytes of total allocated memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$allocated_memory",
+            "intfKey": false,
+            "name": "$allocated_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$blocks",
+            "dataType": "int",
+            "desc": "The number of blocks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$blocks",
+            "intfKey": false,
+            "name": "$blocks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$block_bytes",
+            "dataType": "int",
+            "desc": "The bytes of blocks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$block_bytes",
+            "intfKey": false,
+            "name": "$block_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$pools",
+            "dataType": "int",
+            "desc": "The number of pools.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$pools",
+            "intfKey": false,
+            "name": "$pools",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$used_memory_bytes",
+            "dataType": "int",
+            "desc": "The bytes of used memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$used_memory_bytes",
+            "intfKey": false,
+            "name": "$used_memory_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$unused_memory_bytes",
+            "dataType": "int",
+            "desc": "The bytes of unused memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$unused_memory_bytes",
+            "intfKey": false,
+            "name": "$unused_memory_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$unsed_memory_persent",
+            "dataType": "string",
+            "desc": "The percent of unused memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$unsed_memory_persent",
+            "intfKey": false,
+            "name": "$unsed_memory_persent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$peak_bytes",
+            "dataType": "int",
+            "desc": "The peak bytes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$peak_bytes",
+            "intfKey": false,
+            "name": "$peak_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$used_memory_blocks",
+            "dataType": "int",
+            "desc": "The number of unused blocks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$used_memory_blocks",
+            "intfKey": false,
+            "name": "$used_memory_blocks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$unused_memory_blocks",
+            "dataType": "int",
+            "desc": "The number of used blaocks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$unused_memory_blocks",
+            "intfKey": false,
+            "name": "$unused_memory_blocks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$unsed_blocks_persent",
+            "dataType": "string",
+            "desc": "The percent of unused blocks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$unsed_blocks_persent",
+            "intfKey": false,
+            "name": "$unsed_blocks_persent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$peak_blocks",
+            "dataType": "int",
+            "desc": "The number of peak blocks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$peak_blocks",
+            "intfKey": false,
+            "name": "$peak_blocks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$allocs",
+            "dataType": "int",
+            "desc": "The number of allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$allocs",
+            "intfKey": false,
+            "name": "$allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$failed_allocs",
+            "dataType": "int",
+            "desc": "The number of failed allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$failed_allocs",
+            "intfKey": false,
+            "name": "$failed_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hash_kernel_table.$free_allocs",
+            "dataType": "int",
+            "desc": "The number of free allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hash_kernel_table.$free_allocs",
+            "intfKey": false,
+            "name": "$free_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table",
+            "dataType": "paragraph",
+            "desc": "Sysrem kernel table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table",
+            "intfKey": false,
+            "name": "system_kernel_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "system_kernel_table.$memory_used_bytes",
+            "dataType": "int",
+            "desc": "Toal bytes of memory used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$memory_used_bytes",
+            "intfKey": false,
+            "name": "$memory_used_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$peak_bytes",
+            "dataType": "int",
+            "desc": "The peak bytes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$peak_bytes",
+            "intfKey": false,
+            "name": "$peak_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$memory_wasted_bytes",
+            "dataType": "int",
+            "desc": "Total number of wated bytes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$memory_wasted_bytes",
+            "intfKey": false,
+            "name": "$memory_wasted_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$block_memory_used_bytes",
+            "dataType": "int",
+            "desc": "The bytes of blaoking memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$block_memory_used_bytes",
+            "intfKey": false,
+            "name": "$block_memory_used_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$block_memory_peak_bytes",
+            "dataType": "int",
+            "desc": "The peak number of blocking memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$block_memory_peak_bytes",
+            "intfKey": false,
+            "name": "$block_memory_peak_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$non_block_memory_used_bytes",
+            "dataType": "int",
+            "desc": "The bytes of non-blocking memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$non_block_memory_used_bytes",
+            "intfKey": false,
+            "name": "$non_block_memory_used_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$non_block_memory_peak_bytes",
+            "dataType": "int",
+            "desc": "Th peak bytes of non-blocking memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$non_block_memory_peak_bytes",
+            "intfKey": false,
+            "name": "$non_block_memory_peak_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$allocs",
+            "dataType": "int",
+            "desc": "The number of allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$allocs",
+            "intfKey": false,
+            "name": "$allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$failed_allocs",
+            "dataType": "int",
+            "desc": "The number of failed allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$failed_allocs",
+            "intfKey": false,
+            "name": "$failed_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$free_allocs",
+            "dataType": "int",
+            "desc": "The number of free allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$free_allocs",
+            "intfKey": false,
+            "name": "$free_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$failed_free_allocs",
+            "dataType": "int",
+            "desc": "The number of failed free allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$failed_free_allocs",
+            "intfKey": false,
+            "name": "$failed_free_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$vmalloc_bytes",
+            "dataType": "int",
+            "desc": "The bytes of vmalloc.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$vmalloc_bytes",
+            "intfKey": false,
+            "name": "$vmalloc_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_kernel_table.$expensive_status",
+            "dataType": "string",
+            "desc": "Th status of expensive.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_kernel_table.$expensive_status",
+            "intfKey": false,
+            "name": "$expensive_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table",
+            "dataType": "paragraph",
+            "desc": "The kernel memory table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table",
+            "intfKey": false,
+            "name": "kernel_memory_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "kernel_memory_table.$memory_bytes",
+            "dataType": "int",
+            "desc": "The bytes of total memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$memory_bytes",
+            "intfKey": false,
+            "name": "$memory_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table.$peak_bytes",
+            "dataType": "int",
+            "desc": "The peak bytes of tota lmemory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$peak_bytes",
+            "intfKey": false,
+            "name": "$peak_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table.$allocs",
+            "dataType": "int",
+            "desc": "The number of allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$allocs",
+            "intfKey": false,
+            "name": "$allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table.$failed_allocs",
+            "dataType": "int",
+            "desc": "The numnber of failed allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$failed_allocs",
+            "intfKey": false,
+            "name": "$failed_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table.$free_allocs",
+            "dataType": "int",
+            "desc": "The number of  free allcoations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$free_allocs",
+            "intfKey": false,
+            "name": "$free_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table.$failed_free_allocs",
+            "dataType": "int",
+            "desc": "The number of fialed free allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$failed_free_allocs",
+            "intfKey": false,
+            "name": "$failed_free_allocs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table.$external_alloc_packets",
+            "dataType": "int",
+            "desc": "The number of external allocations packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$external_alloc_packets",
+            "intfKey": false,
+            "name": "$external_alloc_packets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "kernel_memory_table.$sxl_alloc_packets",
+            "dataType": "int",
+            "desc": "The number of SXL external allocations packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "kernel_memory_table.$sxl_alloc_packets",
+            "intfKey": false,
+            "name": "$sxl_alloc_packets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table",
+            "dataType": "paragraph",
+            "desc": "The table of cookies.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "cookies_table",
+            "intfKey": false,
+            "name": "cookies_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "cookies_table.$total",
+            "dataType": "int",
+            "desc": "Total number of cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$alloc",
+            "dataType": "int",
+            "desc": "The allocations number of cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$alloc",
+            "intfKey": false,
+            "name": "$alloc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$free",
+            "dataType": "int",
+            "desc": "The free number of cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$dup",
+            "dataType": "int",
+            "desc": "The numnber of dup cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$dup",
+            "intfKey": false,
+            "name": "$dup",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$get",
+            "dataType": "int",
+            "desc": "The number of get cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$get",
+            "intfKey": false,
+            "name": "$get",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$put",
+            "dataType": "int",
+            "desc": "The number of put cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$put",
+            "intfKey": false,
+            "name": "$put",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$len",
+            "dataType": "int",
+            "desc": "The number of len.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$len",
+            "intfKey": false,
+            "name": "$len",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$cached_len",
+            "dataType": "int",
+            "desc": "The number of cached len.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$cached_len",
+            "intfKey": false,
+            "name": "$cached_len",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$chain_alloc",
+            "dataType": "int",
+            "desc": "The numbe of chain allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$chain_alloc",
+            "intfKey": false,
+            "name": "$chain_alloc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cookies_table.$chain_free",
+            "dataType": "int",
+            "desc": "The number of free chain.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cookies_table.$chain_free",
+            "intfKey": false,
+            "name": "$chain_free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table",
+            "dataType": "paragraph",
+            "desc": "The table of connections.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "connection_table",
+            "intfKey": false,
+            "name": "connection_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "connection_table.$total",
+            "dataType": "int",
+            "desc": "The number of connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$tcp",
+            "dataType": "int",
+            "desc": "The number of tcp connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$tcp",
+            "intfKey": false,
+            "name": "$tcp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$udp",
+            "dataType": "int",
+            "desc": "The number of udp connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$udp",
+            "intfKey": false,
+            "name": "$udp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$icmp",
+            "dataType": "int",
+            "desc": "The number of icmp connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$icmp",
+            "intfKey": false,
+            "name": "$icmp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$other",
+            "dataType": "int",
+            "desc": "The number of other connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$other",
+            "intfKey": false,
+            "name": "$other",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$anticipated",
+            "dataType": "int",
+            "desc": "The number of anticipated connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$anticipated",
+            "intfKey": false,
+            "name": "$anticipated",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$recovered",
+            "dataType": "int",
+            "desc": "The number of recovered connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$recovered",
+            "intfKey": false,
+            "name": "$recovered",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$concurrent",
+            "dataType": "int",
+            "desc": "The number of  concurrent connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$concurrent",
+            "intfKey": false,
+            "name": "$concurrent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connection_table.$peak_concurrent",
+            "dataType": "int",
+            "desc": "The peak of concurrent connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connection_table.$peak_concurrent",
+            "intfKey": false,
+            "name": "$peak_concurrent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "fragments_table",
+            "dataType": "paragraph",
+            "desc": "The table of fragments.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "fragments_table",
+            "intfKey": false,
+            "name": "fragments_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "fragments_table.$fragments",
+            "dataType": "int",
+            "desc": "Total number of fragments.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "fragments_table.$fragments",
+            "intfKey": false,
+            "name": "$fragments",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "fragments_table.$packets",
+            "dataType": "int",
+            "desc": "The number of fragments packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "fragments_table.$packets",
+            "intfKey": false,
+            "name": "$packets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "fragments_table.$expired",
+            "dataType": "int",
+            "desc": "The number of expired fragments.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "fragments_table.$expired",
+            "intfKey": false,
+            "name": "$expired",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "fragments_table.$short",
+            "dataType": "int",
+            "desc": "The number of short connection.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "fragments_table.$short",
+            "intfKey": false,
+            "name": "$short",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "fragments_table.$large",
+            "dataType": "int",
+            "desc": "The number of large fragments.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "fragments_table.$large",
+            "intfKey": false,
+            "name": "$large",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "fragments_table.$duplicates",
+            "dataType": "int",
+            "desc": "The number of duplicate fragments.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "fragments_table.$duplicates",
+            "intfKey": false,
+            "name": "$duplicates",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "fragments_table.$failures",
+            "dataType": "int",
+            "desc": "The number of failed fragments.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "fragments_table.$failures",
+            "intfKey": false,
+            "name": "$failures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nat_table",
+            "dataType": "paragraph",
+            "desc": "The table of nat.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "nat_table",
+            "intfKey": false,
+            "name": "nat_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "nat_table.$forw",
+            "dataType": "string",
+            "desc": "The number of forw.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nat_table.$forw",
+            "intfKey": false,
+            "name": "$forw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nat_table.$bckw",
+            "dataType": "string",
+            "desc": "The number of bckw.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nat_table.$bckw",
+            "intfKey": false,
+            "name": "$bckw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nat_table.$tcpudp",
+            "dataType": "string",
+            "desc": "The number of tcpudp.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nat_table.$tcpudp",
+            "intfKey": false,
+            "name": "$tcpudp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nat_table.$icmp",
+            "dataType": "string",
+            "desc": "The number of icmp.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nat_table.$icmp",
+            "intfKey": false,
+            "name": "$icmp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "nat_table.$alloc",
+            "dataType": "string",
+            "desc": "The number of allocations.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nat_table.$alloc",
+            "intfKey": false,
+            "name": "$alloc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable",
+            "dataType": "paragraph",
+            "desc": "The sync table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "sync_atable",
+            "intfKey": false,
+            "name": "sync_atable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sync_atable.$total_sent",
+            "dataType": "int",
+            "desc": "The total number of packets sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$total_sent",
+            "intfKey": false,
+            "name": "$total_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$retransmitted",
+            "dataType": "int",
+            "desc": "The number of retransmitted  packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$retransmitted",
+            "intfKey": false,
+            "name": "$retransmitted",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$retrans_req_sent",
+            "dataType": "int",
+            "desc": "The number of sent retrans reqs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$retrans_req_sent",
+            "intfKey": false,
+            "name": "$retrans_req_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$sync_acks_sent",
+            "dataType": "int",
+            "desc": "The number of sent acks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$sync_acks_sent",
+            "intfKey": false,
+            "name": "$sync_acks_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$total_recv",
+            "dataType": "int",
+            "desc": "The total number of packets recived.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$total_recv",
+            "intfKey": false,
+            "name": "$total_recv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$queued",
+            "dataType": "int",
+            "desc": "The number of packets recived in queued.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$queued",
+            "intfKey": false,
+            "name": "$queued",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$dropped",
+            "dataType": "int",
+            "desc": "The number of packets recived dropped.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$dropped",
+            "intfKey": false,
+            "name": "$dropped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$retrans_req_recv",
+            "dataType": "int",
+            "desc": "The total number of retrans reqs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$retrans_req_recv",
+            "intfKey": false,
+            "name": "$retrans_req_recv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$acks_recv",
+            "dataType": "int",
+            "desc": "The number of recived acks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$acks_recv",
+            "intfKey": false,
+            "name": "$acks_recv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$retran_or_illegal_req_recv",
+            "dataType": "int",
+            "desc": "The number of retrans reqs for illegal seq.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$retran_or_illegal_req_recv",
+            "intfKey": false,
+            "name": "$retran_or_illegal_req_recv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$sync_overload",
+            "dataType": "int",
+            "desc": "The number of dropped updates as a result of sync overload.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$sync_overload",
+            "intfKey": false,
+            "name": "$sync_overload",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$handled_cb",
+            "dataType": "int",
+            "desc": "The number of handled cb.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$handled_cb",
+            "intfKey": false,
+            "name": "$handled_cb",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$average_delay",
+            "dataType": "int",
+            "desc": "The number of average delay.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$average_delay",
+            "intfKey": false,
+            "name": "$average_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sync_atable.$max_delay",
+            "dataType": "int",
+            "desc": "The number of max delay.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sync_atable.$max_delay",
+            "intfKey": false,
+            "name": "$max_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

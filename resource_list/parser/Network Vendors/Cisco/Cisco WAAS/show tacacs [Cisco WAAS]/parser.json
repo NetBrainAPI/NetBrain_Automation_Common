@@ -1,0 +1,248 @@
+{
+    "_id": "57e11440-348f-6be0-68ae-65445454644d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show tacacs",
+    "createTime": {
+        "$date": 1591100202218
+    },
+    "description": "Device Type:\nCisco WAAS\nCommand:\nshow tacacs",
+    "devTypes": [
+        10532
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "WAE# show tacacs\r\nLogin Authentication for Console/Telnet Session: enabled (secondary)\r\nConfiguration Authentication for Console/Telnet Session: enabled (secondary)\r\nTACACS+ Configuration:\r\n---------------------\r\nTACACS+ Authentication is off\r\nKey = *****\r\nTimeout = 5\r\nRetransmit = 2\r\nPassword type: pap\r\nServer Status\r\n---------------------------- ------\r\n10.107.192.148 primary\r\n10.107.192.168\r\n10.77.140.77",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$login_auth_session]:Login Authentication for Console/Telnet Session:\\\\s*(\\\\S+)\",\"regex[$cfg_auth]:Configuration Authentication for Console/Telnet Session:\\\\s*(\\\\S+)\",\"regex[$tacacs_auth]:TACACS\\\\+ Authentication is\\\\s*(\\\\S+)\",\"regex[$int:timeout]:timeout\\\\s*\\\\=\\\\s*(\\\\S+)\",\"regex[$int:retransmit]:retransmit\\\\s*\\\\=\\\\s*(\\\\S+)\",\"regex[$pwd_type]:password type:\\\\s*(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$login_auth_session:string\",\"$cfg_auth:string\",\"$tacacs_auth:string\",\"$timeout:int\",\"$retransmit:int\",\"$pwd_type:string\"]},\"xxid\":\"daf5bc9c-7f93-5b10-e303-db958957c4ca\"},{\"type\":\"4\",\"name\":\"server_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$server_host, $server_status]:^(\\\\d+\\\\S+)(?:\\\\s+(\\\\S+))?\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$server_host:string\",\"$server_status:string\"]},\"xxid\":\"4a10c15c-296e-1f08-b61f-5fccd399f9a4\"}]},\"xxid\":\"04447e67-eeb5-e44d-0c1c-f7e1be9a22f6\",\"hashColumns\":[\"$server_host\",\"$server_status\"]}]}",
+            "tableKeys": [
+                "_original_result.server_table.$server_host",
+                "_original_result.server_table.$server_status"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "login_auth_session",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cfg_auth",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "tacacs_auth",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "timeout",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "retransmit",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "pwd_type",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "server_host",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "server_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$server_host",
+                    "$server_status"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "server_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "257dd4f6382cd08b2d64c9329272cc27",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$login_auth_session",
+            "dataType": "string",
+            "desc": "Indicates whether TACACS+ server is enabled for login authentication.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$login_auth_session",
+            "intfKey": false,
+            "name": "$login_auth_session",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cfg_auth",
+            "dataType": "string",
+            "desc": "Indicates whether TACACS+ server is enabled for authorization or configuration authentication.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cfg_auth",
+            "intfKey": false,
+            "name": "$cfg_auth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tacacs_auth",
+            "dataType": "string",
+            "desc": "Indicates whether TACACS+ authentication is enabled on the the WAAS device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tacacs_auth",
+            "intfKey": false,
+            "name": "$tacacs_auth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$timeout",
+            "dataType": "int",
+            "desc": "Number of seconds that the WAAS device waits for a response from the specified TACACS+ authentication server before declaring a timeout.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$timeout",
+            "intfKey": false,
+            "name": "$timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$retransmit",
+            "dataType": "int",
+            "desc": "Number of times that the WAAS device is to retransmit its connection to the TACACS+ if the TACACS+ timeout interval is exceeded.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$retransmit",
+            "intfKey": false,
+            "name": "$retransmit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pwd_type",
+            "dataType": "string",
+            "desc": "Mechanism for password authentication. By default, the Password Authentication Protocol (PAP) is the mechanism for password authentication.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pwd_type",
+            "intfKey": false,
+            "name": "$pwd_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_table",
+            "dataType": "paragraph",
+            "desc": "Server table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$server_host",
+                    "$server_status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "server_table",
+            "intfKey": false,
+            "name": "server_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "server_table.$server_host",
+            "dataType": "string",
+            "desc": "Hostname or IP address of the TACACS+ server.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_table.$server_host",
+            "intfKey": false,
+            "name": "$server_host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_table.$server_status",
+            "dataType": "string",
+            "desc": "Indicates whether server is the primary or secondary host.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_table.$server_status",
+            "intfKey": false,
+            "name": "$server_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,276 @@
+{
+    "_id": "5a5a129d-7ea2-ad7c-547f-a13ebea4103e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf interfaces",
+    "createTime": {
+        "$date": 1591075698273
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow ospf interface",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "# show ospf interfaces       \r\n\r\nVLAN       IP Address         AREA ID        Flags      Cost  State     Neighbors   \r\nHQ_10_0_2  10.0.2.2   /24     0.0.0.0        -rifb--    4/A   DR        1   \r\nHQ_10_0_5  10.0.5.2   /24     0.0.0.0        -rif---    4/A   BDR       1       \r\n\r\nFlags:  b ??? BFD protection configured, D - Duplicate address detected on VLAN,           \r\n        f - Interface Forwarding Enabled, i - Interface OSPF Enabled,           \r\n        n - Multinetted VLAN, p - Passive Interface, r - Router OSPF Enable,           \r\n        T - Tentative address.   \r\nCost:   A - Automatic Cost, C - Configured Cost.   \r\nTotal number of interfaces: 2\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_intf_filter.ospf_intf_table.$vlan"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"ospf_intf_filter\",\"startLine\":\"regex:vlan\",\"endLine\":\"regex:flags\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"dc8ba29c-38a5-f402-a00f-be9f739ebea4\"},{\"type\":\"3\",\"name\":\"ospf_intf_table\",\"headers\":\"VLAN;IP Address;AREA ID;Flags;Cost;State;Neighbors\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"VLAN:$string:vlan;IP Address:$string:ip_addr;AREA ID:$string:area_id;Flags:$string:flags;Cost:$string:cost;State:$string:state;Neighbors:$string:nbrs\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$vlan:string\",\"$ip_addr:string\",\"$area_id:string\",\"$flags:string\",\"$cost:string\",\"$state:string\",\"$nbrs:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"5cc96dee-02d7-f244-5bf9-ca5e5a0f26db\",\"interfaceKey\":\"$vlan\",\"hashColumns\":[\"$vlan\"]}]},\"xxid\":\"dc5bb5c1-4216-fef9-6946-b79376a5975f\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_number_intfs]:total number of interfaces\\\\s*:\\\\s*(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_number_intfs:int\"]},\"xxid\":\"1a466cab-b0fa-0389-9a1d-a90b830afc15\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ospf_intf_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "total_number_intfs",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "cost",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "nbrs",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "ospf_intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "11da6147082e1161e32a9dbd812abc35",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_intf_filter",
+            "dataType": "filter",
+            "desc": "OSPF interface filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter",
+            "intfKey": false,
+            "name": "ospf_intf_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table",
+            "dataType": "table",
+            "desc": "OSPF Interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table",
+            "intfKey": false,
+            "name": "ospf_intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_intf_table.$vlan",
+            "dataType": "string",
+            "desc": "VLAN Name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_intf_table.$ip_addr",
+            "dataType": "string",
+            "desc": "IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$area_id",
+            "dataType": "string",
+            "desc": "Area ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$flags",
+            "dataType": "string",
+            "desc": "Flags:  b ??? BFD protection configured, D - Duplicate address detected on VLAN,           \n        f - Interface Forwarding Enabled, i - Interface OSPF Enabled,           \n        n - Multinetted VLAN, p - Passive Interface, r - Router OSPF Enable,           \n        T - Tentative address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$cost",
+            "dataType": "string",
+            "desc": "Cost:   A - Automatic Cost, C - Configured Cost.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$state",
+            "dataType": "string",
+            "desc": "OSPF State.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$nbrs",
+            "dataType": "string",
+            "desc": "OSPF Neighbor numbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_filter.ospf_intf_table.$nbrs",
+            "intfKey": false,
+            "name": "$nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_number_intfs",
+            "dataType": "int",
+            "desc": "Total number of interfaces.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_number_intfs",
+            "intfKey": false,
+            "name": "$total_number_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

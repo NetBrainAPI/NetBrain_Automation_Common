@@ -1,0 +1,398 @@
+{
+    "_id": "4dc8fb88-de8e-b187-0248-5ea6a6876db4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interface $intf_name",
+    "createTime": {
+        "$date": 1580980020383
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow interface $intf_name",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [
+        {
+            "name": "$intf_name"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R5>show interface F0/0\nFastEthernet0/0 is up, line protocol is up \n  Hardware is i82543 (Livengood), address is ca05.1e78.0008 (bia ca05.1e78.0008)\n  Internet address is 123.10.45.5/24\n  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive set (10 sec)\n  Full-duplex, 100Mb/s, 100BaseTX/FX\n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input 00:00:03, output 00:00:01, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy: Class-based queueing\n  Output queue: 0/1000/0 (size/max total/drops)\n  5 minute input rate 0 bits/sec, 1 packets/sec\n  5 minute output rate 0 bits/sec, 0 packets/sec\n     3843046 packets input, 321344772 bytes\n     Received 2485320 broadcasts, 0 runts, 0 giants, 0 throttles\n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog\n     0 input packets with dribble condition detected\n     4174956 packets output, 340743682 bytes, 0 underruns\n     0 output errors, 0 collisions, 1 interface resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     0 lost carrier, 0 no carrier\n     0 output buffer failures, 0 output buffers swapped out\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.interface.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"interface\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface,$status_]:^(\\\\S+) is (\\\\S+,.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Input queue: $int:input_size/$int:input_max/$int:input_drop/$int:input_flush (size/max/drops/flushes);\",\"Total output drops: $int:tol_output_drops\",\"regex[$QoStype]:Queueing strategy: (.*)\",\"regex[$int:input_error]:(\\\\d+)\\\\s+input error\",\"regex[$int:output_error]:(\\\\d+)\\\\s+output error\",\"regex[$bw]:BW\\\\s+([^,]+)\",\"regex[$int:input_rate, $rate_unit]:input rate\\\\s+(\\\\d+) ([^,]+)\",\"regex[$int:output_rate]:output rate\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$status_:string\",\"$input_size:int\",\"$input_max:int\",\"$input_drop:int\",\"$input_flush:int\",\"$tol_output_drops:int\",\"$QoStype:string\",\"$input_error:int\",\"$output_error:int\",\"$bw:string\",\"$input_rate:int\",\"$rate_unit:string\",\"$output_rate:int\"]},\"xxid\":\"07d7fc9b-d275-31a4-485f-2f5dcc221832\"}]},\"xxid\":\"3d406d02-39b2-4868-b6a0-1a11816e686b\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$input_drop\",\"$tol_output_drops\",\"$input_error\",\"$output_error\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"6a00842a-5a70-55c1-5684-9ecf824c9868\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status_",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "input_size",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "input_max",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "input_drop",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "input_flush",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "tol_output_drops",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "QoStype",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "input_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "output_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "bw",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "input_rate",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "rate_unit",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "output_rate",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$input_drop",
+                    "$input_error",
+                    "$interface",
+                    "$output_error",
+                    "$tol_output_drops"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e67b3a7f9ad1a97d15c15790eba9fb01",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "interface",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$input_drop",
+                    "$tol_output_drops",
+                    "$input_error",
+                    "$output_error"
+                ],
+                "hashSort": false
+            },
+            "fullName": "interface",
+            "intfKey": false,
+            "name": "interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "interface.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interface.$status_",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$status_",
+            "intfKey": false,
+            "name": "$status_",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$input_size",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$input_size",
+            "intfKey": false,
+            "name": "$input_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$input_max",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$input_max",
+            "intfKey": false,
+            "name": "$input_max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$input_drop",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$input_drop",
+            "intfKey": false,
+            "name": "$input_drop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$input_flush",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$input_flush",
+            "intfKey": false,
+            "name": "$input_flush",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$tol_output_drops",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$tol_output_drops",
+            "intfKey": false,
+            "name": "$tol_output_drops",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$QoStype",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$QoStype",
+            "intfKey": false,
+            "name": "$QoStype",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$input_error",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$input_error",
+            "intfKey": false,
+            "name": "$input_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$output_error",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$output_error",
+            "intfKey": false,
+            "name": "$output_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$bw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$bw",
+            "intfKey": false,
+            "name": "$bw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$input_rate",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$input_rate",
+            "intfKey": false,
+            "name": "$input_rate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$rate_unit",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$rate_unit",
+            "intfKey": false,
+            "name": "$rate_unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$output_rate",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$output_rate",
+            "intfKey": false,
+            "name": "$output_rate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,131 @@
+{
+    "_id": "5b04f4cc-e88c-c2a4-e036-61076fda4194",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585581446291
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\n       <Configuration>",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": null,
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasEIGRPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "! Info via SNMP: sysoid=1.3.6.1.4.1.9.1.1,vendor=Cisco,model=ciscoGatewayServer,hostname=Core-SW1\nCore-SW1#show run\nBuilding configuration...\n\nCurrent configuration : 4428 bytes\n!\n! Last configuration change at 09:56:22 UTC Tue Jan 19 2016\n!\nversion 15.1\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\nservice compress-config\n!\nhostname Core-SW1\n!\nboot-start-marker\nboot-end-marker\n!\n!\nlogging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL \nlogging buffered 50000\nlogging console discriminator EXCESS\nenable password nb\n!\nno aaa new-model\nno ip icmp rate-limit unreachable\n!\nip vrf site1\n rd 1:1\n route-target export 100:1\n route-target import 100:1\n!\nip cef\n!\n!\nno ip domain-lookup\nno ipv6 cef\nipv6 multicast rpf use-bgp\nmpls label range 16 100\nmpls label protocol ldp\nspanning-tree mode pvst\nspanning-tree extend system-id\n!\n!\n!\n!\n!\n!\nvlan internal allocation policy ascending\n!\nip tcp synwait-time 5\n!\n!\n!\n!\ninterface Loopback1\n ip address 1.1.1.1 255.255.255.255\n!\ninterface Loopback100\n ip address 100.1.1.1 255.255.255.255\n!\ninterface Loopback111\n ip address 111.1.1.1 255.255.255.255\n!\ninterface Ethernet0/0\n no switchport\n ip address 192.168.9.101 255.255.255.0\n!\ninterface Ethernet0/1\n no switchport\n ip address 3.3.3.3 255.255.255.0\n ip access-group acava32afaf in\n ip access-group asdcasdfa123aqdfa out\n ip mtu 1490\n ip router isis 4701\n ip pim sparse-mode\n ip igmp join-group 239.2.2.2\n mpls label protocol ldp\n mpls ip\n isis network point-to-point \n isis metric 1 level-1\n isis metric 2 level-2\n isis authentication mode text\n isis authentication key-chain 123\n isis authentication send-only\n isis priority 1 level-1\n isis priority 2 level-2\n isis hello-interval 2\n isis retransmit-throttle-interval 23\n isis retransmit-interval 412\n!\ninterface Ethernet0/2\n switchport trunk encapsulation dot1q\n switchport mode trunk\n duplex auto\n!\ninterface Ethernet0/3\n no switchport\n ip address 4.4.4.1 255.255.255.0\n ip router isis \n!\ninterface Ethernet1/0\n duplex auto\n!\ninterface Ethernet1/1\n duplex auto\n!\ninterface Ethernet1/2\n duplex auto\n!\ninterface Ethernet1/3\n duplex auto\n!\ninterface Ethernet2/0\n duplex auto\n!\ninterface Ethernet2/1\n duplex auto\n!\ninterface Ethernet2/2\n duplex auto\n!\ninterface Ethernet2/3\n duplex auto\n!\ninterface Ethernet3/0\n duplex auto\n!\ninterface Ethernet3/1\n duplex auto\n!\ninterface Ethernet3/2\n duplex auto\n!\ninterface Ethernet3/3\n duplex auto\n!\ninterface Ethernet4/0\n duplex auto\n!\ninterface Ethernet4/1\n duplex auto\n!\ninterface Ethernet4/2\n duplex auto\n!\ninterface Ethernet4/3\n duplex auto\n!\ninterface Ethernet5/0\n duplex auto\n!\ninterface Ethernet5/1\n duplex auto\n!\ninterface Ethernet5/2\n duplex auto\n!\ninterface Ethernet5/3\n duplex auto\n!\ninterface Ethernet6/0\n duplex auto\n!\ninterface Ethernet6/1\n duplex auto\n!\ninterface Ethernet6/2\n duplex auto\n!\ninterface Ethernet6/3\n duplex auto\n!\ninterface Ethernet7/0\n duplex auto\n!\ninterface Ethernet7/1\n duplex auto\n!\ninterface Ethernet7/2\n duplex auto\n!\ninterface Ethernet7/3\n duplex auto\n!\ninterface Vlan1\n no ip address\n shutdown\n!\n!\nrouter eigrp 1\n network 3.3.3.0 0.0.0.255\n redistribute ospf 1 metric 10000 100 255 1 1500 route-map rm\n redistribute eigrp 100\n passive-interface Loopback1\n passive-interface Loopback100\n!\n!\nrouter eigrp 321\n network 3.3.3.3 0.0.0.0\n redistribute isis level-2 route-map rmm\n passive-interface Loopback100\n eigrp router-id 6.6.6.6\n!\n!\nrouter eigrp 199\n passive-interface Ethernet0/1\n!\n!\nrouter eigrp 100\n network 100.1.1.0 0.0.0.255\n!\n!\nrouter eigrp 111\n!\nrouter ospf 1\n passive-interface Loopback1\n!\nrouter ospf 2\n!\nrouter ospf 100\n passive-interface Loopback100\n!\nrouter isis\n authentication mode text level-1\n authentication mode md5 level-2\n authentication key-chain 1123\n authentication send-only\n summary-address 192.168.1.0 255.255.255.0 metric 2\n passive-interface Loopback1\n!\nrouter isis 321\n passive-interface Loopback100\n!\nrouter isis 4701\n!\nrouter isis 47.0001\n!\nrouter isis 654\n net 47.0000.0000.0001.00\n!\nrouter rip\n version 2\n network 1.0.0.0\n!\nrouter bgp 1\n bgp log-neighbor-changes\n !\n address-family ipv4\n  redistribute ospf 1 route-map rm\n exit-address-family\n!\n!\n!\nno ip http server\n!\naccess-list 100 permit ip 100.1.1.0 0.0.0.255 host 1.1.1.1\n!\nroute-map ac permit 10\n match ip address 123\n set ip next-hop 2.2.2.2\n!\nroute-map rmm permit 10\n match ip address 100\n!\n!\nsnmp-server community nb RO\n!\ncontrol-plane\n!\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n password nb\n login\n!\nend\n\n",
+            "devName": "Core-SW1",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"eigrp\",\"keyVariables\":\"\",\"startLine\":\"mregex[$eigrp_config,$eigrp_as]:(^router eigrp\\\\s+(\\\\S+).+?)(?:^\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$eigrp_config:string\",\"$eigrp_as:string\"]},\"xxid\":\"79c8b374-5d88-2741-dd89-93514e1ad687\"}]},\"xxid\":\"46106691-8172-2538-2ffd-01f1a1c3598f\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "eigrp_config",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "eigrp_as",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "eigrp",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "73d7d8a7bac8c25118bc17153f70d690",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "eigrp",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "eigrp",
+            "intfKey": false,
+            "name": "eigrp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "eigrp.$eigrp_config",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp.$eigrp_config",
+            "intfKey": false,
+            "name": "$eigrp_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp.$eigrp_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp.$eigrp_as",
+            "intfKey": false,
+            "name": "$eigrp_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

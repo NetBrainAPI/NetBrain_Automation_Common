@@ -1,0 +1,648 @@
+{
+    "_id": "65dbc961-ff30-e88f-8931-3e041e460dfa",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show net self",
+    "createTime": {
+        "$date": 1579626365350
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow net self",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip1)(cfg-sync In Sync)(Standby)(/Common)(tmos)# show net self\r\n\r\n---------------------------\r\nNet::Self IP: 172.27.129.17\r\n---------------------------\r\n\r\n  ---------------------------------------\r\n  | Net::Vlan: internal\r\n  ---------------------------------------\r\n  | Interface Name      internal\r\n  | Mac Address (True)  00:50:00:00:10:03\r\n  | MTU                 1500\r\n  | Tag                 100\r\n\r\n     -----------------------\r\n     | Net::Vlan-Member: 1.3\r\n     -----------------------\r\n     | Tagged  no\r\n\r\n        ------------------------------------------------------------------\r\n        | Net::Interface\r\n        | Name  Status    Bits    Bits    Pkts    Pkts  Drops  Errs  Media\r\n        |                   In     Out      In     Out                    \r\n        ------------------------------------------------------------------\r\n        | 1.3       up  304.2M  115.3M  616.7K  302.2K      0     0   none\r\n\r\n---------------------------\r\nNet::Self IP: 172.27.129.30\r\n---------------------------\r\n\r\n  ---------------------------------------\r\n  | Net::Vlan: internal\r\n  ---------------------------------------\r\n  | Interface Name      internal\r\n  | Mac Address (True)  00:50:00:00:10:03\r\n  | MTU                 1500\r\n  | Tag                 100\r\n\r\n     -----------------------\r\n     | Net::Vlan-Member: 1.3\r\n     -----------------------\r\n     | Tagged  no\r\n\r\n        ------------------------------------------------------------------\r\n        | Net::Interface\r\n        | Name  Status    Bits    Bits    Pkts    Pkts  Drops  Errs  Media\r\n        |                   In     Out      In     Out                    \r\n        ------------------------------------------------------------------\r\n        | 1.3       up  304.2M  115.3M  616.7K  302.2K      0     0   none\r\n\r\n---------------------------\r\nNet::Self IP: 172.27.129.34\r\n---------------------------\r\n\r\n  ---------------------------------------\r\n  | Net::Vlan: external\r\n  ---------------------------------------\r\n  | Interface Name      external\r\n  | Mac Address (True)  00:50:00:00:10:01\r\n  | MTU                 1500\r\n  | Tag                 200\r\n\r\n     -----------------------\r\n     | Net::Vlan-Member: 1.1\r\n     -----------------------\r\n     | Tagged  no\r\n\r\n        ------------------------------------------------------------\r\n        | Net::Interface\r\n        | Name  Status  Bits    Bits  Pkts  Pkts  Drops  Errs  Media\r\n        |                 In     Out    In   Out                    \r\n        ------------------------------------------------------------\r\n        | 1.1       up  6.7G  434.5K  3.7M   739      0     0   none\r\n\r\n---------------------------\r\nNet::Self IP: 172.27.129.36\r\n---------------------------\r\n\r\n  ---------------------------------------\r\n  | Net::Vlan: external\r\n  ---------------------------------------\r\n  | Interface Name      external\r\n  | Mac Address (True)  00:50:00:00:10:01\r\n  | MTU                 1500\r\n  | Tag                 200\r\n\r\n     -----------------------\r\n     | Net::Vlan-Member: 1.1\r\n     -----------------------\r\n     | Tagged  no\r\n\r\n        ------------------------------------------------------------\r\n        | Net::Interface\r\n        | Name  Status  Bits    Bits  Pkts  Pkts  Drops  Errs  Media\r\n        |                 In     Out    In   Out                    \r\n        ------------------------------------------------------------\r\n        | 1.1       up  6.7G  434.5K  3.7M   739      0     0   none\r\n\r\n-------------------------\r\nNet::Self IP: 192.168.1.1\r\n-------------------------\r\n\r\n  ---------------------------------------\r\n  | Net::Vlan: HA\r\n  ---------------------------------------\r\n  | Interface Name      HA\r\n  | Mac Address (True)  00:50:00:00:10:07\r\n  | MTU                 1500\r\n  | Tag                 4094\r\n\r\n     -----------------------\r\n     | Net::Vlan-Member: 1.7\r\n     -----------------------\r\n     | Tagged  no\r\n\r\n        ----------------------------------------------------------\r\n        | Net::Interface\r\n        | Name  Status  Bits  Bits  Pkts  Pkts  Drops  Errs  Media\r\n        |                 In   Out    In   Out                    \r\n        ----------------------------------------------------------\r\n        | 1.7       up  3.7G  3.7G  2.5M  2.5M      0     0   none",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.net_self.$intf_name",
+                "_original_result.net_self.intf_table.$intf_name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"net_self\",\"keyVariables\":\"\",\"startLine\":\"regex[$self_ip]:net::self ip:\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vlan_type]:net::vlan:\\\\s+(\\\\S+)\",\"regex[$intf_name]:interface name\\\\s+(\\\\S+)\",\"regex[$mac_addr]:mac address.+?(\\\\d+\\\\:\\\\d+\\\\:\\\\d+\\\\:\\\\d+\\\\:\\\\d+\\\\:\\\\d+)\",\"regex[$mtu]:mtu\\\\s+(\\\\d+)\",\"regex[$tag]:tag\\\\s+(\\\\S+)\",\"regex[$vlan_member]:net::vlan-member:\\\\s+(\\\\S+)\",\"regex[$member_tag]:tagged\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$self_ip:string\",\"$vlan_type:string\",\"$intf_name:string\",\"$mac_addr:string\",\"$mtu:string\",\"$tag:string\",\"$vlan_member:string\",\"$member_tag:string\"]},\"xxid\":\"fbacc44c-18b9-dbde-055f-c61085ce77f6\"},{\"type\":\"4\",\"name\":\"intf_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$port_name, $status, $in_bits, $out_bits, $in_pkts, $out_pkts, $drops, $errs, $media]:^\\\\s+\\\\|\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\S*)\\\\s+(\\\\d+\\\\S*)\\\\s+(\\\\d+\\\\S*)\\\\s+(\\\\d+\\\\S*)\\\\s+(\\\\d+\\\\S*)\\\\s+(\\\\d+\\\\S*)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$port_name:string\",\"$status:string\",\"$in_bits:string\",\"$out_bits:string\",\"$in_pkts:string\",\"$out_pkts:string\",\"$drops:string\",\"$errs:string\",\"$media:string\"]},\"xxid\":\"5c35fd06-244b-cb08-da02-26abc88e5d52\"}]},\"xxid\":\"35acff86-377b-1d1f-1ce0-52a5793f2bd2\",\"interfaceKey\":\"$intf_name\",\"hashColumns\":[\"$intf_name\"]}]},\"xxid\":\"4e003dcc-5a63-b905-1623-a30a7a22cbd9\",\"interfaceKey\":\"$intf_name\",\"hashColumns\":[\"$intf_name\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"97d2585d-5f5b-139f-a69b-89d6e0b54b43\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "self_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "vlan_member",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "member_tag",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf_name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "net_self",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 17,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "in_bits",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "out_bits",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "in_pkts",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "out_pkts",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "drops",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "errs",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "media",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "self_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "vlan_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "intf_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "vlan_member",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "member_tag",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf_name"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fae44cfe454769548f3ff649dde054be",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "net_self",
+            "dataType": "paragraph",
+            "desc": "Self-IP address configuration.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "net_self",
+            "intfKey": false,
+            "name": "net_self",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "net_self.$self_ip",
+            "dataType": "string",
+            "desc": "Self-IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$self_ip",
+            "intfKey": false,
+            "name": "$self_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "net_self.$vlan_type",
+            "dataType": "string",
+            "desc": "Vlan type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$vlan_type",
+            "intfKey": false,
+            "name": "$vlan_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "net_self.$intf_name",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$intf_name",
+            "intfKey": false,
+            "name": "$intf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "net_self.$mac_addr",
+            "dataType": "string",
+            "desc": "Mac address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$mac_addr",
+            "intfKey": false,
+            "name": "$mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "net_self.$mtu",
+            "dataType": "string",
+            "desc": "MTU.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "net_self.$tag",
+            "dataType": "string",
+            "desc": "Tag.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$tag",
+            "intfKey": false,
+            "name": "$tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "net_self.$vlan_member",
+            "dataType": "string",
+            "desc": "Vlan-Member.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$vlan_member",
+            "intfKey": false,
+            "name": "$vlan_member",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "net_self.$member_tag",
+            "dataType": "string",
+            "desc": "Tagged of Vlan-Member.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.$member_tag",
+            "intfKey": false,
+            "name": "$member_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table",
+            "dataType": "paragraph",
+            "desc": "Interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table",
+            "intfKey": false,
+            "name": "intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intf_table.$port_name",
+            "dataType": "string",
+            "desc": "Port name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$port_name",
+            "intfKey": false,
+            "name": "$port_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$status",
+            "dataType": "string",
+            "desc": "Status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$in_bits",
+            "dataType": "string",
+            "desc": "Input bits.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$in_bits",
+            "intfKey": false,
+            "name": "$in_bits",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$out_bits",
+            "dataType": "string",
+            "desc": "Output bits.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$out_bits",
+            "intfKey": false,
+            "name": "$out_bits",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$in_pkts",
+            "dataType": "string",
+            "desc": "Input Packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$in_pkts",
+            "intfKey": false,
+            "name": "$in_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$out_pkts",
+            "dataType": "string",
+            "desc": "Output Packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$out_pkts",
+            "intfKey": false,
+            "name": "$out_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$drops",
+            "dataType": "string",
+            "desc": "Drops.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$drops",
+            "intfKey": false,
+            "name": "$drops",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$errs",
+            "dataType": "string",
+            "desc": "Errors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$errs",
+            "intfKey": false,
+            "name": "$errs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$media",
+            "dataType": "string",
+            "desc": "Media.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$media",
+            "intfKey": false,
+            "name": "$media",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$self_ip",
+            "dataType": "string",
+            "desc": "Self-IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$self_ip",
+            "intfKey": false,
+            "name": "$self_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$vlan_type",
+            "dataType": "string",
+            "desc": "Vlan type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$vlan_type",
+            "intfKey": false,
+            "name": "$vlan_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$intf_name",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$intf_name",
+            "intfKey": false,
+            "name": "$intf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intf_table.$mac_addr",
+            "dataType": "string",
+            "desc": "Mac address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$mac_addr",
+            "intfKey": false,
+            "name": "$mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$mtu",
+            "dataType": "string",
+            "desc": "MTU.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tag",
+            "dataType": "string",
+            "desc": "Tag.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$tag",
+            "intfKey": false,
+            "name": "$tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$vlan_member",
+            "dataType": "string",
+            "desc": "Vlan-Member.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$vlan_member",
+            "intfKey": false,
+            "name": "$vlan_member",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$member_tag",
+            "dataType": "string",
+            "desc": "Tagged of Vlan-Member.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "net_self.intf_table.$member_tag",
+            "intfKey": false,
+            "name": "$member_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,341 @@
+{
+    "_id": "61410f14-cdd1-fe91-15ba-88a058dfc023",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show pim interfaces",
+    "createTime": {
+        "$date": 1580543523854
+    },
+    "description": "",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "admin@P1-MX>show pim interfaces \r\n\r\nStat = Status, V = Version, NbrCnt = Neighbor Count,\r\nS = Sparse, D = Dense, B = Bidirectional,\r\nDR = Designated Router, P2P = Point-to-point link,\r\nActive = Bidirectional is active, NotCap = Not Bidirectional Capable\r\n\r\nName               Stat Mode IP V State        NbrCnt JoinCnt(sg/*g) DR address\r\nge-0/0/0.0         Up   S     4 2 DR,NotCap           1 1/0            10.10.6.2\r\nge-0/0/1.0         Up   S     4 2 NotDR,NotCap        1 0/0            10.10.1.2\r\nge-0/0/2.0         Up   S     4 2 DR,NotCap           1 0/0            10.10.7.2\r\nge-0/0/3.0         Up   S     4 2 NotDR,NotCap        1 0/0            10.10.3.2\r\nlo0.0              Up   S     4 2 DR,NotCap           0 0/0            10.100.100.1\r\npe-0/0/10.32769    Up   S     4 2   P2P,NotCap        0 0/0\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.pim_interfaces_filter.pim_intfs.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"pim_interfaces_filter\",\"startLine\":\"Name               Stat Mode IP V State        NbrCnt JoinCnt(sg/*g) DR address\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"e9c699b8-21e4-f259-1d2a-26c0f2b38900\"},{\"type\":\"4\",\"name\":\"pim_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface,$status,$mode,$ip_version,$pim_version,$state,$int:neighbor_count,$int:sg_join_count,$int:starg_join_count,$dr_address]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\/(\\\\d+)\\\\s*(\\\\S+){0,1}\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$status:string\",\"$mode:string\",\"$ip_version:string\",\"$pim_version:string\",\"$state:string\",\"$neighbor_count:int\",\"$sg_join_count:int\",\"$starg_join_count:int\",\"$dr_address:string\"]},\"xxid\":\"e187b7c4-ec60-daba-f768-7ef77a10f9be\"}]},\"xxid\":\"3a2109c5-bfe3-08ae-5920-09cf18d572db\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$status\",\"$mode\",\"$ip_version\",\"$pim_version\",\"$state\",\"$neighbor_count\",\"$dr_address\"],\"hashSort\":false}]},\"xxid\":\"980ade23-273d-516c-c069-222e4f0559d5\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"3db1c93f-967b-de84-47df-f927de40c227\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "pim_interfaces_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "pim_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "neighbor_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "sg_join_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "starg_join_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "dr_address",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$dr_address",
+                    "$interface",
+                    "$ip_version",
+                    "$mode",
+                    "$neighbor_count",
+                    "$pim_version",
+                    "$state",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "pim_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "327922c212b8c8b899d9d2c50adf2214",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_interfaces_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter",
+            "intfKey": false,
+            "name": "pim_interfaces_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$status",
+                    "$mode",
+                    "$ip_version",
+                    "$pim_version",
+                    "$state",
+                    "$neighbor_count",
+                    "$dr_address"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs",
+            "intfKey": false,
+            "name": "pim_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "pim_intfs.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "pim_intfs.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$ip_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$ip_version",
+            "intfKey": false,
+            "name": "$ip_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$pim_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$pim_version",
+            "intfKey": false,
+            "name": "$pim_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$neighbor_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$neighbor_count",
+            "intfKey": false,
+            "name": "$neighbor_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$sg_join_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$sg_join_count",
+            "intfKey": false,
+            "name": "$sg_join_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$starg_join_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$starg_join_count",
+            "intfKey": false,
+            "name": "$starg_join_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intfs.$dr_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_interfaces_filter.pim_intfs.$dr_address",
+            "intfKey": false,
+            "name": "$dr_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

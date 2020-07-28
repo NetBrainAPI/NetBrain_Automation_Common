@@ -1,0 +1,376 @@
+{
+    "_id": "337500f1-e1c5-048a-a423-8e8de0e5e401",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip isis statistics",
+    "createTime": {
+        "$date": 1590696064673
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip isis statistics",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip isis statistics\n=========================================================================\nISIS Statistics\n==============================================================================\nISIS Instance           : 1                 SPF Runs :      44\nPurge Initiated         : 0                 LSP Regens :    54\nCSPF Statistics\nRequests                : 0                 Request Drops : 0\nPaths Found             : 0                 Paths Not Found : 0\n-------------------------------------------------------------------------------\nPDU Type Received  Processed Dropped Sent    Retransmitted\n-------------------------------------------------------------------------------\nLSP      185       184       1       54      0\nIIH      8382      8382      0       2796    0\nCSNP     3352      352       0       0       0\nPSNP     0         0         0       4       0\nUnknown  0         0         0       0       0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:isis_instance, $int:spf_runs]:ISIS Instance\\\\s+:\\\\s+(\\\\d+)\\\\s+SPF Runs\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:purge_init, $int:lsp_regens]:Purge Initiated\\\\s+:\\\\s+(\\\\d+)\\\\s+LSP Regens\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:request, $int:request_drop]:Requests\\\\s+:\\\\s+(\\\\d+)\\\\s+Request Drops\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:path_found, $int:path_not_found]:Paths Found\\\\s+:\\\\s+(\\\\d+)\\\\s+Paths Not Found\\\\s+:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_instance:int\",\"$spf_runs:int\",\"$purge_init:int\",\"$lsp_regens:int\",\"$request:int\",\"$request_drop:int\",\"$path_found:int\",\"$path_not_found:int\"]},\"xxid\":\"f1f0c104-a8c7-0995-9078-245ea321763a\"},{\"type\":\"3\",\"name\":\"statis_table\",\"headers\":\"PDU Type;Received;Processed;Dropped;Sent;Retransmitted\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"PDU Type:$string:pdu_type;Received:$int:received;Processed:$int:processed;Dropped:$int:dropped;Sent:$int:sent;Retransmitted:$int:retransmitted\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$pdu_type:string\",\"$received:int\",\"$processed:int\",\"$dropped:int\",\"$sent:int\",\"$retransmitted:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"f9e54063-5676-6677-f2cc-e8ce9e956a4e\",\"hashColumns\":[\"$pdu_type\"]}]}",
+            "tableKeys": [
+                "_original_result.statis_table.$pdu_type"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "isis_instance",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "spf_runs",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "purge_init",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "lsp_regens",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "request",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "request_drop",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "path_found",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "path_not_found",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "pdu_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "received",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "processed",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "dropped",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "retransmitted",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$pdu_type"
+                ],
+                "hashSort": false,
+                "index": 8,
+                "name": "statis_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "efde9e731bc740c323f5a390fc89dabd",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$isis_instance",
+            "dataType": "int",
+            "desc": "The number of IS-IS instances.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$spf_runs",
+            "dataType": "int",
+            "desc": "The number of SPF calculations that have been performed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$spf_runs",
+            "intfKey": false,
+            "name": "$spf_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$purge_init",
+            "dataType": "int",
+            "desc": "The number of purges that the system initiated. A purge is initiated if the router decides that a link-state PDU must be removed from the database.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$purge_init",
+            "intfKey": false,
+            "name": "$purge_init",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$lsp_regens",
+            "dataType": "int",
+            "desc": "The number of LSPs that have been regenerated. An LSP is regenerated when it nears the end of its lifetime and has not changed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$lsp_regens",
+            "intfKey": false,
+            "name": "$lsp_regens",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$request",
+            "dataType": "int",
+            "desc": "The number of CSNP requests received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$request",
+            "intfKey": false,
+            "name": "$request",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$request_drop",
+            "dataType": "int",
+            "desc": "The number of CSNP requests that are dropped.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$request_drop",
+            "intfKey": false,
+            "name": "$request_drop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_found",
+            "dataType": "int",
+            "desc": "The number of paths found.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_found",
+            "intfKey": false,
+            "name": "$path_found",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_not_found",
+            "dataType": "int",
+            "desc": "The number of paths not found.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_not_found",
+            "intfKey": false,
+            "name": "$path_not_found",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "statis_table",
+            "dataType": "table",
+            "desc": "The statistics table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$pdu_type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "statis_table",
+            "intfKey": false,
+            "name": "statis_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "statis_table.$pdu_type",
+            "dataType": "string",
+            "desc": "The type of PDU.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "statis_table.$pdu_type",
+            "intfKey": false,
+            "name": "$pdu_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "statis_table.$received",
+            "dataType": "int",
+            "desc": "The number of PDUs received since IS-IS started or since the statistics were set to zero.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "statis_table.$received",
+            "intfKey": false,
+            "name": "$received",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "statis_table.$processed",
+            "dataType": "int",
+            "desc": "The number of PDUs that are processed (number of PDUs received less the number dropped).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "statis_table.$processed",
+            "intfKey": false,
+            "name": "$processed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "statis_table.$dropped",
+            "dataType": "int",
+            "desc": "The number of PDUs that are dropped.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "statis_table.$dropped",
+            "intfKey": false,
+            "name": "$dropped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "statis_table.$sent",
+            "dataType": "int",
+            "desc": "The number of PDUs transmitted since IS-IS started or since the statistics were set to zero.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "statis_table.$sent",
+            "intfKey": false,
+            "name": "$sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "statis_table.$retransmitted",
+            "dataType": "int",
+            "desc": "The number of PDUs that are retransmitted.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "statis_table.$retransmitted",
+            "intfKey": false,
+            "name": "$retransmitted",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

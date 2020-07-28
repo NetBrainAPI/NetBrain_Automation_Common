@@ -1,0 +1,377 @@
+{
+    "_id": "04519a94-2d2c-4594-73d5-c520044d540c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show standby",
+    "createTime": {
+        "$date": 1561122560462
+    },
+    "description": "",
+    "devTypes": [
+        2001
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "sw10#show standby vlan217\r\nVlan217 - Group 0\r\n  State is Speak\r\n  Virtual IP address is 10.4.40.129\r\n  Active virtual MAC address is 0000.0c07.ac00 (MAC Not In Use)\r\n    Local virtual MAC address is 0000.0c07.ac00 (v1 default)\r\n  Hello time 3 sec, hold time 10 sec\r\n    Next hello sent in 2.544 secs\r\n  Preemption enabled\r\n  Active router is 10.4.40.130, priority 110 (expires in 10.304 sec)\r\n  Standby router is unknown\r\n  Priority 90 (configured 90)\r\n  Group name is \"hsrp-Vl217-0\" (default)\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.hsrp_groups.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"hsrp_groups\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface,$int:group]:^(\\\\S+) - Group (\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"State is $state\",\"Virtual IP address is $virtual_ip\",\"Active router is  $active_router,\",\"Standby router is $standby_router\",\"Priority $priority (configured $configured_priority)\",\"regex[$track]:(.+Track object.+)\",\"Preemption $preemption\",\"regex[$authentication]:^.+Authentication(.+)\",\"Hello time $hello_time\",\"hold time $hold_time\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$group:int\",\"$state:string\",\"$virtual_ip:string\",\"$active_router:string\",\"$standby_router:string\",\"$priority:string\",\"$configured_priority:string\",\"$track:string\",\"$preemption:string\",\"$authentication:string\",\"$hello_time:string\",\"$hold_time:string\"]},\"xxid\":\"c83ea71f-8d25-7e6e-0f1c-f5df1dd09021\"}]},\"xxid\":\"fa68bcc2-d89a-81db-e46f-96093db3fc4c\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$group\",\"$state\",\"$virtual_ip\",\"$active_router\",\"$priority\"],\"hashSort\":false},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"ef3992f0-50cb-155e-464f-fc5175401a43\"}]},\"xxid\":\"fd0fe92c-b6d5-1d4a-832a-de0c94179e66\"}]}",
+            "tableKeys": [
+                "_original_result.hsrp_groups.$virtual_ip"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "virtual_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "active_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "standby_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "configured_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "track",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "preemption",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "authentication",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "hello_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "hold_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$active_router",
+                    "$group",
+                    "$interface",
+                    "$priority",
+                    "$state",
+                    "$virtual_ip"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "hsrp_groups",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "aaac10f202a52d1318745e17bfb739fc",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "hsrp_groups.$active_router",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$active_router",
+            "intfKey": false,
+            "name": "$active_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$authentication",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$authentication",
+            "intfKey": false,
+            "name": "$authentication",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$configured_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$configured_priority",
+            "intfKey": false,
+            "name": "$configured_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$group",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$hello_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$hello_time",
+            "intfKey": false,
+            "name": "$hello_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$hold_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "hsrp_groups.$preemption",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$preemption",
+            "intfKey": false,
+            "name": "$preemption",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$standby_router",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$standby_router",
+            "intfKey": false,
+            "name": "$standby_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$track",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$track",
+            "intfKey": false,
+            "name": "$track",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups.$virtual_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups.$virtual_ip",
+            "intfKey": false,
+            "name": "$virtual_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hsrp_groups",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$group",
+                    "$state",
+                    "$virtual_ip",
+                    "$active_router",
+                    "$priority"
+                ],
+                "hashSort": false
+            },
+            "fullName": "hsrp_groups",
+            "intfKey": false,
+            "name": "hsrp_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        }
+    ],
+    "version": "7.1"
+}

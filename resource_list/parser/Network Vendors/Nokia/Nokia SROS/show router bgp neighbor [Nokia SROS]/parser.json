@@ -1,0 +1,587 @@
+{
+    "_id": "3f71cded-c588-8586-988d-2a57b6c0f05a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router bgp neighbor",
+    "createTime": {
+        "$date": 1582231803348
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:ALA-48# show router bgp neighbor\r\n===============================================================================\r\nBGP Neighbor\r\n-------------------------------------------------------------------------------\r\nPeer : 10.0.0.5          Group : headquarters1\r\n-------------------------------------------------------------------------------\r\nPeer AS          : 300\t\t\t\t\t\t\t\tPeer Port        : 0\r\nPeer Address     : 10.0.0.5 \r\nLocal AS         : 200\t\t\t\t\t\t\t\tLocal Port       : 0\r\nLocal Address    : 10.0.0.104 \r\nPeer Type        : External\r\nState            : Active               Last State       : Idle\r\nLast Event       : stop\r\nLast Error       : Cease\r\nLocal Family     : IPv4                 Remote Family    : Unused\r\nHold Time        : 90                   Keep Alive       : 30\r\nActive Hold Time : 0                    Active Keep Alive: 0\r\nCluster Id       : 0.0.0.100\r\nPreference       : 170                  Num of Flaps     : 0\r\nRecd. Prefixes   : 0                    Active Prefixes  : 0\r\nRecd. Paths      : 0                    Suppressed Paths : 0\r\nInput Queue      : 0                    Output Queue     : 0\r\ni/p Messages     : 0                    o/p Messages     : 0\r\ni/p Octets       : 0                    o/p Octets       : 0\r\ni/p Updates      : 0                    o/p Updates      : 0\r\nTTL Security     : Enabled              Min TTL Value    : 255\r\nGraceful Restart : Disabled             Stale Routes Time: n/a\r\nLocal Capability : RouteRefresh MP-BGP\r\nRemote Capability:\r\nImport Policy    : None Specified / Inherited\r\nExport Policy    : None Specified / Inherited\r\n-------------------------------------------------------------------------------\r\nPeer : 10.0.0.91         Group : Santa Clara\r\n-------------------------------------------------------------------------------\r\nPeer AS          : 100\tPeer Port        : 0\r\nPeer Address     : 10.0.0.91 \r\nLocal AS         : 200\tLocal Port       : 0\r\nLocal Address    : 10.0.0.103 \r\nPeer Type        : External\r\nState            : Connect              Last State       : Active\r\nLast Event       : openFail\r\nLast Error       : Cease\r\nLocal Family     : IPv4                 Remote Family    : Unused\r\nHold Time        : 90                   Keep Alive       : 30\r\nActive Hold Time : 0                    Active Keep Alive: 0\r\nCluster Id       : 0.0.0.100\r\nPreference       : 170                  Num of Flaps     : 0\r\nRecd. Prefixes   : 0                    Active Prefixes  : 0\r\nRecd. Paths      : 0                    Suppressed Paths : 0\r\nInput Queue      : 0                    Output Queue     : 0\r\ni/p Messages     : 0                    o/p Messages     : 1\r\ni/p Octets       : 0                    o/p Octets       : 0\r\ni/p Updates      : 0                    o/p Updates      : 0\r\nTTL Security     : Disabled             Min TTL Value    : n/a\r\nGraceful Restart : Disabled             Stale Routes Time: n/a\r\nLocal Capability : RouteRefresh MP-BGP\r\nRemote Capability:\r\nImport Policy    : None Specified / Inherited\r\nExport Policy    : None Specified / Inherited",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"bgp_neighbors\",\"keyVariables\":\"\",\"startLine\":\"regex[$bgp_peer,$bgp_group]:Peer : (\\\\S+)\\\\s+Group : (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Peer AS          : $peer_as\",\"Peer Address     : $peer_address\",\"Local AS         : $local_as\",\"Local Address    : $local_address\",\"Peer Type        : $peer_type\",\"State            : $state\",\"regex[$local_family,$remote_family]:Local Family     : (\\\\S+)\\\\s+Remote Family    : (.+)\",\"regex[$int:hold_time,$int:keep_alive]:Hold Time        : (\\\\S+)\\\\s+Keep Alive       : (\\\\d+)\",\"Cluster Id       : $cluster_id\",\"Preference       : $int:preference\",\"regex[$int:recd_prefixes,$int:active_prefixes]:Recd. Prefixes   : (\\\\S+)\\\\s+Active Prefixes  : (\\\\d+)\",\"regex[$int:recd_paths,$int:suppressed_paths]:Recd. Paths      : (\\\\S+)\\\\s+Suppressed Paths : (\\\\d+)\",\"regex[$local_capability]:Local Capability : (.+)\",\"regex[$remote_capability]:Remote Capability: (.+)\",\"regex[$import_policy]:Import Policy    : (.+)\",\"regex[$export_policy]:Export Policy    : (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$bgp_peer:string\",\"$bgp_group:string\",\"$peer_as:string\",\"$peer_address:string\",\"$local_as:string\",\"$local_address:string\",\"$peer_type:string\",\"$state:string\",\"$local_family:string\",\"$remote_family:string\",\"$hold_time:int\",\"$keep_alive:int\",\"$cluster_id:string\",\"$preference:int\",\"$recd_prefixes:int\",\"$active_prefixes:int\",\"$recd_paths:int\",\"$suppressed_paths:int\",\"$local_capability:string\",\"$remote_capability:string\",\"$import_policy:string\",\"$export_policy:string\"]},\"xxid\":\"aaa36e4d-aa0a-b046-6f3f-e6b9effc4161\"}]},\"xxid\":\"c01c54ea-5ba8-d2a3-2066-cf48f62271f8\",\"hashColumns\":[\"$bgp_peer\",\"$bgp_group\",\"$peer_as\",\"$peer_address\",\"$local_as\",\"$local_address\",\"$peer_type\",\"$state\",\"$local_family\",\"$remote_family\",\"$hold_time\",\"$keep_alive\",\"$cluster_id\",\"$preference\",\"$recd_prefixes\",\"$active_prefixes\",\"$recd_paths\",\"$suppressed_paths\",\"$local_capability\",\"$remote_capability\",\"$import_policy\",\"$export_policy\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"12af08e5-84cb-ee2a-e681-3820f3a8771c\"}]}",
+            "tableKeys": [
+                "_original_result.bgp_neighbors.$bgp_peer"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 22,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "bgp_peer",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "bgp_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "peer_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "peer_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "local_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "local_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "peer_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "local_family",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "remote_family",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "keep_alive",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "cluster_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "recd_prefixes",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "active_prefixes",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "recd_paths",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "suppressed_paths",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "local_capability",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "remote_capability",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "import_policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "export_policy",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$active_prefixes",
+                    "$bgp_group",
+                    "$bgp_peer",
+                    "$cluster_id",
+                    "$export_policy",
+                    "$hold_time",
+                    "$import_policy",
+                    "$keep_alive",
+                    "$local_address",
+                    "$local_as",
+                    "$local_capability",
+                    "$local_family",
+                    "$peer_address",
+                    "$peer_as",
+                    "$peer_type",
+                    "$preference",
+                    "$recd_paths",
+                    "$recd_prefixes",
+                    "$remote_capability",
+                    "$remote_family",
+                    "$state",
+                    "$suppressed_paths"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "bgp_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0202589d3d0b689cffb5dca6c2d09bc0",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "bgp_neighbors",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$bgp_peer",
+                    "$bgp_group",
+                    "$peer_as",
+                    "$peer_address",
+                    "$local_as",
+                    "$local_address",
+                    "$peer_type",
+                    "$state",
+                    "$local_family",
+                    "$remote_family",
+                    "$hold_time",
+                    "$keep_alive",
+                    "$cluster_id",
+                    "$preference",
+                    "$recd_prefixes",
+                    "$active_prefixes",
+                    "$recd_paths",
+                    "$suppressed_paths",
+                    "$local_capability",
+                    "$remote_capability",
+                    "$import_policy",
+                    "$export_policy"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors",
+            "intfKey": false,
+            "name": "bgp_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_neighbors.$bgp_peer",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$bgp_peer",
+            "intfKey": false,
+            "name": "$bgp_peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$bgp_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$bgp_group",
+            "intfKey": false,
+            "name": "$bgp_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$peer_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$peer_as",
+            "intfKey": false,
+            "name": "$peer_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$peer_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$peer_address",
+            "intfKey": false,
+            "name": "$peer_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$local_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$local_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$local_address",
+            "intfKey": false,
+            "name": "$local_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$peer_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$peer_type",
+            "intfKey": false,
+            "name": "$peer_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$local_family",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$local_family",
+            "intfKey": false,
+            "name": "$local_family",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$remote_family",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$remote_family",
+            "intfKey": false,
+            "name": "$remote_family",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$keep_alive",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$keep_alive",
+            "intfKey": false,
+            "name": "$keep_alive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$cluster_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$cluster_id",
+            "intfKey": false,
+            "name": "$cluster_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$preference",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$preference",
+            "intfKey": false,
+            "name": "$preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$recd_prefixes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$recd_prefixes",
+            "intfKey": false,
+            "name": "$recd_prefixes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$active_prefixes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$active_prefixes",
+            "intfKey": false,
+            "name": "$active_prefixes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$recd_paths",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$recd_paths",
+            "intfKey": false,
+            "name": "$recd_paths",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$suppressed_paths",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$suppressed_paths",
+            "intfKey": false,
+            "name": "$suppressed_paths",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$local_capability",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$local_capability",
+            "intfKey": false,
+            "name": "$local_capability",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$remote_capability",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$remote_capability",
+            "intfKey": false,
+            "name": "$remote_capability",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$import_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$import_policy",
+            "intfKey": false,
+            "name": "$import_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$export_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbors.$export_policy",
+            "intfKey": false,
+            "name": "$export_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

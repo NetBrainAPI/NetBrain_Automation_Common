@@ -1,0 +1,246 @@
+{
+    "_id": "0e2531b8-f405-fb63-701b-c60ee7ff9fd1",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display pim neighbor",
+    "createTime": {
+        "$date": 1590773332608
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay pim neighbor",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<H3C>display pim neighbor\r\n Total Number of Neighbors = 2\r\n\r\n Neighbor        Interface           Uptime   Expires  DR-Priority Mode\r\n 10.10.12.2      GE0/0               00:01:30 00:01:12 1           P\r\n 10.10.13.3      GE0/1               00:01:01 00:01:25 1           P\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.pim_nbr.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total Number of Neighbors = $int:nbr_cnt\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_cnt:int\"]},\"xxid\":\"fabf98f3-437e-2f87-0468-86a0b9cf34e8\"},{\"type\":\"3\",\"name\":\"pim_nbr\",\"headers\":\"Neighbor;Interface;Uptime;Expires;DR-Priority;Mode\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Neighbor:$string:nbr;Interface:$string:intf;Uptime:$string:uptime;Expires:$string:expires;DR-Priority:$string:dr_priority;Mode:$string:mode\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$nbr:string\",\"$intf:string\",\"$uptime:string\",\"$expires:string\",\"$dr_priority:string\",\"$mode:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"baadb390-d0bb-de5e-8864-452635d9c20a\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$nbr\",\"$dr_priority\",\"$mode\"]}]}",
+            "tableKeys": [
+                "_original_result.pim_nbr.$nbr",
+                "_original_result.pim_nbr.$dr_priority",
+                "_original_result.pim_nbr.$mode"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "nbr_cnt",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "dr_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "mode",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$dr_priority",
+                    "$intf",
+                    "$mode",
+                    "$nbr"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_nbr",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e993621d8d0a62b9f7b5defce735199f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$nbr_cnt",
+            "dataType": "int",
+            "desc": "Total number of neighbors",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$nbr_cnt",
+            "intfKey": false,
+            "name": "$nbr_cnt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbr",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$nbr",
+                    "$dr_priority",
+                    "$mode"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_nbr",
+            "intfKey": false,
+            "name": "pim_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "pim_nbr.$nbr",
+            "dataType": "string",
+            "desc": "Neighbor address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbr.$nbr",
+            "intfKey": false,
+            "name": "$nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbr.$intf",
+            "dataType": "string",
+            "desc": "Interface where the neighbor has been discovered",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbr.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "pim_nbr.$uptime",
+            "dataType": "string",
+            "desc": "Time passed since the multicast group has been discovered",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbr.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbr.$expires",
+            "dataType": "string",
+            "desc": "Length of time in which the PIM neighbor will expire",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbr.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbr.$dr_priority",
+            "dataType": "string",
+            "desc": "PIM neighbor DR priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbr.$dr_priority",
+            "intfKey": false,
+            "name": "$dr_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbr.$mode",
+            "dataType": "string",
+            "desc": "PIM neighbor mode",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbr.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

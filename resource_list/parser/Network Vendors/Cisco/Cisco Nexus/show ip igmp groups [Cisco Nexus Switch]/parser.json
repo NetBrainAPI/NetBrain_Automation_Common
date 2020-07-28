@@ -1,0 +1,244 @@
+{
+    "_id": "42084dd3-ba60-2396-496f-7cc03f9ea32f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip igmp groups",
+    "createTime": {
+        "$date": 1579796895014
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:\nshow ip igmp groups",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Nexus# show ip igmp groups\nIGMP Connected Group Membership for VRF \"default\" - 5 total entries\nType: S - Static, D - Dynamic, L - Local, T - SSM Translated\nGroup Address      Type Interface           Uptime    Expires   Last Reporter\n224.0.1.60         D    Ethernet2/1         03:02:15  00:03:26  10.10.10.4\n226.1.1.2          L    Ethernet2/1         01:15:20  00:03:21  1.1.12.2\n230.230.230.230    D    Ethernet2/1         03:02:22  00:04:19  10.10.10.671\n239.255.255.250    D    Ethernet2/1         03:02:22  00:04:18  10.10.10.171\n239.255.255.253    D    Ethernet2/1         03:02:17  00:03:19  10.10.10.130",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.igmp_groups.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"igmp_groups\",\"headers\":\"Group Address;Type;Interface;Uptime;Expires;Last Reporter\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Expires:$string:expires;Group Address:$string:group_addr;Interface:$string:intf;Last Reporter:$string:reporter;Type:$string:type;Uptime:$string:uptime\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$expires:string\",\"$group_addr:string\",\"$intf:string\",\"$reporter:string\",\"$type:string\",\"$uptime:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"a4a9e211-84bc-07f0-d2ec-af86e8512722\",\"hashColumns\":[\"$group_addr\",\"$intf\",\"$reporter\",\"$type\"],\"interfaceKey\":\"$intf\",\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"7f92f524-c91a-3d8e-67ed-ca59a2d89977\"}]}",
+            "tableKeys": [
+                "_original_result.igmp_groups.$group_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "reporter",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group_addr",
+                    "$intf",
+                    "$reporter",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "igmp_groups",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4f6e68c065f6cac548db5da673a1a0aa",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_groups",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group_addr",
+                    "$intf",
+                    "$reporter",
+                    "$type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups",
+            "intfKey": false,
+            "name": "igmp_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_groups.$expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$group_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$group_addr",
+            "intfKey": false,
+            "name": "$group_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_groups.$reporter",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$reporter",
+            "intfKey": false,
+            "name": "$reporter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

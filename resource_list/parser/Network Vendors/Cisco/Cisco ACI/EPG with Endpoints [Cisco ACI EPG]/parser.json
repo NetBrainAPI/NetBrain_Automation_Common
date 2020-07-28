@@ -1,0 +1,254 @@
+{
+    "_id": "b3995f13-af01-e42f-1813-f0b0d4177062",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560795206029
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n[\r\n]\r\nEnd Declare\r\n\r\nFor sample\r\n[\r\n    {\"name\": \"$param1\"},\r\n    {\"name\": \"$param2\"}\r\n]\r\n'''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    res = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'Logical', 'params' : ['_id'] })\r\n    apiServerId = res['params']['_id']\r\n    rtn_params = {}\r\n    rtn_params['apiServerId'] = apiServerId\r\n    temp = device_name.split('/uni/')\r\n    temp1 ='/uni/'+temp[1]\r\n    rtn_params['dn'] = temp1\r\n    return rtn_params\r\n\r\n\t\r\ndef RetrieveData(rtn_params):\r\n    dn = rtn_params['dn']\r\n    qry = \"rsp-subtree=children&rsp-subtree-class=fvCEp\"\r\n    url = '/api/mo/' + dn + '.json?' + qry\r\n    rtn_params['url'] = url\r\n    data = getData(rtn_params)\r\n    return data\r\n    \r\n    \r\n",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"fvAEPg\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"configIssues\": \"\",\n                \"configSt\": \"applied\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/ap-APP.DEV-AP/epg-APP-EPG\",\n                \"exceptionTag\": \"\",\n                \"extMngdBy\": \"\",\n                \"floodOnEncap\": \"disabled\",\n                \"fwdCtrl\": \"\",\n                \"isAttrBasedEPg\": \"no\",\n                \"isSharedSrvMsiteEPg\": \"no\",\n                \"lcOwn\": \"local\",\n                \"matchT\": \"AtleastOne\",\n                \"modTs\": \"2018-11-16T09:29:28.089+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"APP-EPG\",\n                \"nameAlias\": \"\",\n                \"pcEnfPref\": \"unenforced\",\n                \"pcTag\": \"32772\",\n                \"prefGrMemb\": \"exclude\",\n                \"prio\": \"unspecified\",\n                \"scope\": \"3112960\",\n                \"status\": \"\",\n                \"triggerSt\": \"triggerable\",\n                \"txId\": \"576460752303530744\",\n                \"uid\": \"15374\"\n            },\n            \"children\": [\n                {\n                    \"fvCEp\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"deleteNonPresent\",\n                            \"contName\": \"\",\n                            \"encap\": \"vlan-100\",\n                            \"extMngdBy\": \"\",\n                            \"id\": \"0\",\n                            \"idepdn\": \"\",\n                            \"ip\": \"20.0.1.10\",\n                            \"lcC\": \"learned,vmm\",\n                            \"lcOwn\": \"local\",\n                            \"mac\": \"00:50:56:BE:38:D8\",\n                            \"mcastAddr\": \"not-applicable\",\n                            \"modTs\": \"2019-05-06T10:44:20.470+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"00:50:56:BE:38:D8\",\n                            \"nameAlias\": \"\",\n                            \"rn\": \"cep-00:50:56:BE:38:D8\",\n                            \"status\": \"\",\n                            \"uid\": \"0\",\n                            \"uuid\": \"\",\n                            \"vmmSrc\": \"dvs\"\n                        }\n                    }\n                },\n                {\n                    \"fvCEp\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"deleteNonPresent\",\n                            \"contName\": \"\",\n                            \"encap\": \"vlan-100\",\n                            \"extMngdBy\": \"\",\n                            \"id\": \"0\",\n                            \"idepdn\": \"\",\n                            \"ip\": \"20.0.1.11\",\n                            \"lcC\": \"learned,vmm\",\n                            \"lcOwn\": \"local\",\n                            \"mac\": \"00:50:56:BE:3B:67\",\n                            \"mcastAddr\": \"not-applicable\",\n                            \"modTs\": \"2019-05-06T10:44:20.470+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"00:50:56:BE:3B:67\",\n                            \"nameAlias\": \"\",\n                            \"rn\": \"cep-00:50:56:BE:3B:67\",\n                            \"status\": \"\",\n                            \"uid\": \"0\",\n                            \"uuid\": \"\",\n                            \"vmmSrc\": \"dvs\"\n                        }\n                    }\n                },\n                {\n                    \"fvCEp\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"deleteNonPresent\",\n                            \"contName\": \"\",\n                            \"encap\": \"vlan-100\",\n                            \"extMngdBy\": \"\",\n                            \"id\": \"0\",\n                            \"idepdn\": \"\",\n                            \"ip\": \"20.0.1.20\",\n                            \"lcC\": \"learned,vmm\",\n                            \"lcOwn\": \"local\",\n                            \"mac\": \"00:50:56:BE:19:55\",\n                            \"mcastAddr\": \"not-applicable\",\n                            \"modTs\": \"2018-11-19T12:52:46.622+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"00:50:56:BE:19:55\",\n                            \"nameAlias\": \"\",\n                            \"rn\": \"cep-00:50:56:BE:19:55\",\n                            \"status\": \"\",\n                            \"uid\": \"0\",\n                            \"uuid\": \"\",\n                            \"vmmSrc\": \"dvs\"\n                        }\n                    }\n                },\n                {\n                    \"fvCEp\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"deleteNonPresent\",\n                            \"contName\": \"\",\n                            \"encap\": \"vlan-100\",\n                            \"extMngdBy\": \"\",\n                            \"id\": \"0\",\n                            \"idepdn\": \"\",\n                            \"ip\": \"20.0.1.21\",\n                            \"lcC\": \"learned,vmm\",\n                            \"lcOwn\": \"local\",\n                            \"mac\": \"00:50:56:BE:60:F6\",\n                            \"mcastAddr\": \"not-applicable\",\n                            \"modTs\": \"2018-11-19T12:52:46.622+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"00:50:56:BE:60:F6\",\n                            \"nameAlias\": \"\",\n                            \"rn\": \"cep-00:50:56:BE:60:F6\",\n                            \"status\": \"\",\n                            \"uid\": \"0\",\n                            \"uuid\": \"\",\n                            \"vmmSrc\": \"dvs\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"# Declare variable struture, type and name.\\r\\n'''\\r\\nBegin Declare Variable\\r\\n[\\r\\n    {\\\"name\\\": \\\"epg_name\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"ap_name\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"tn_name\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"ep_detail\\\", \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\r\\n    {\\\"name\\\": \\\"ep_name\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"mac\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"vlan\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"ip\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"vmmSrc\\\", \\\"type\\\": \\\"string\\\"}\\r\\n    ]}\\r\\n]\\r\\nEnd Declare\\r\\n'''\\r\\n\\r\\nimport json \\r\\nimport re\\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    result = json.loads(_original_result)\\r\\n    value ={}\\r\\n    temp = result[0]['fvAEPg']['attributes']['dn'].split('/')\\r\\n    value['epg_name'] = temp[3].replace('epg-','')\\r\\n    value['ap_name'] = temp[2].replace('ap-','')\\r\\n    value['tn_name'] = temp[1].replace('tn-','')\\r\\n    \\r\\n    ep_name = []\\r\\n    mac = []\\r\\n    vlan = []\\r\\n    ip = []\\r\\n    vmmSrc = []\\r\\n    \\r\\n    try:\\r\\n        for m in range(len(result[0]['fvAEPg']['children'])):\\r\\n            ep_name.append(result[0]['fvAEPg']['children'][m]['fvCEp']['attributes']['name'])\\r\\n            mac.append(result[0]['fvAEPg']['children'][m]['fvCEp']['attributes']['mac'])\\r\\n            vlan.append(result[0]['fvAEPg']['children'][m]['fvCEp']['attributes']['encap'])\\r\\n            ip.append(result[0]['fvAEPg']['children'][m]['fvCEp']['attributes']['ip'])\\r\\n            vmmSrc.append(result[0]['fvAEPg']['children'][m]['fvCEp']['attributes']['vmmSrc'])\\r\\n    except Exception as ex:\\r\\n        print(str(ex))\\r\\n    # raise NameError(m)\\r\\n        \\r\\n    value['ep_detail'] = {'ep_name':ep_name, 'mac':mac, 'vlan':vlan, 'ip':ip, 'vmmSrc':vmmSrc} \\r\\n    return value\\r\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$ap_name\",\"type\":\"string\"},{\"name\":\"$epg_name\",\"type\":\"string\"},{\"name\":\"$tn_name\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$ep_detail\",\"variableTypes\":{\"variableType\":[{\"name\":\"$ep_name\",\"type\":\"string\"},{\"name\":\"$mac\",\"type\":\"string\"},{\"name\":\"$vlan\",\"type\":\"string\"},{\"name\":\"$ip\",\"type\":\"string\"},{\"name\":\"$vmmSrc\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"f561b4fc-908d-a3b7-f6fd-5f9a8fbfe0ab\",\"hashColumns\":{\"ep_detail\":[\"$ep_name\",\"$mac\",\"$vlan\",\"$ip\"]},\"tableKeys\":{\"ep_detail\":[\"$ep_name\",\"$mac\"]},\"hashSort\":{\"ep_detail\":false}}]}",
+            "tableKeys": [
+                "_original_result.$ep_detail.$ep_name",
+                "_original_result.$ep_detail.$mac"
+            ]
+        }
+    ],
+    "schemaList": [
+        "ACI.topRoot.children.polUni.children.fvTenant.children.fvAp.children.fvAEPg"
+    ],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ap_name",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "epg_name",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "tn_name",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ep_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "mac",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "vmmSrc",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "ep_name",
+                    "ip",
+                    "mac",
+                    "vlan"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "ep_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4caa5ad6fb68d998cf8e988f43fbded4",
+    "supportNodeType": 1,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$ap_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ap_name",
+            "intfKey": false,
+            "name": "$ap_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ep_detail",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ep_name",
+                    "$mac",
+                    "$vlan",
+                    "$ip"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$ep_detail",
+            "intfKey": false,
+            "name": "$ep_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$ep_detail.$ep_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ep_detail.$ep_name",
+            "intfKey": false,
+            "name": "$ep_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$epg_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$epg_name",
+            "intfKey": false,
+            "name": "$epg_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ep_detail.$ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ep_detail.$ip",
+            "intfKey": false,
+            "name": "$ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ep_detail.$mac",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ep_detail.$mac",
+            "intfKey": false,
+            "name": "$mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tn_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tn_name",
+            "intfKey": false,
+            "name": "$tn_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ep_detail.$vlan",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ep_detail.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ep_detail.$vmmSrc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ep_detail.$vmmSrc",
+            "intfKey": false,
+            "name": "$vmmSrc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

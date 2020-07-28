@@ -1,0 +1,389 @@
+{
+    "_id": "83eb8182-f958-6076-1621-0db6ff5b74d6",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show snmp",
+    "createTime": {
+        "$date": 1580149971728
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco IOS Router\nCommand: \nshow snmp",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "DC-MCAST-RTR2#show snmp\r\nChassis: 69216261\r\nContact: TESTING\r\n335 SNMP packets input\r\n    0 Bad SNMP version errors\r\n    178 Unknown community name\r\n    0 Illegal operation for community name supplied\r\n    0 Encoding errors\r\n    134 Number of requested variables\r\n    0 Number of altered variables\r\n    85 Get-request PDUs\r\n    0 Get-next PDUs\r\n    0 Set-request PDUs\r\n    0 Input queue packet drops (Maximum queue size 1000)\r\n157 SNMP packets output\r\n    0 Too big errors (Maximum packet size 1500)\r\n    0 No such name errors\r\n    0 Bad values errors\r\n    0 General errors\r\n    157 Response PDUs\r\n    0 Trap PDUs\r\nSNMP Dispatcher:\r\n   queue 0/75 (current/max), 0 dropped\r\nSNMP Engine:\r\n   queue 0/1000 (current/max), 0 dropped\r\n\r\nSNMP logging: disabled\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"snmp\",\"keyVariables\":\"\",\"startLine\":\"Chassis: $chassis\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$chassis:string\"]},\"xxid\":\"830395d7-afaf-cc61-5265-8e6a3ca7185c\"},{\"type\":\"4\",\"name\":\"snmp_packets_input\",\"keyVariables\":\"\",\"startLine\":\"SNMP packets input\",\"endLine\":\"regex[]:^\\\\S+\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:input_pkts]:^(\\\\d+)\\\\s+SNMP packets\\\\s\",\"regex[$int:bad_snmp_version_error]:(\\\\S+)\\\\s+Bad SNMP version errors\",\"regex[$int:request]:(\\\\S+)\\\\s+Number of requested variables\",\"regex[$int:altered]:(\\\\S+)\\\\s+Number of altered variables\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$input_pkts:int\",\"$bad_snmp_version_error:int\",\"$request:int\",\"$altered:int\"]},\"xxid\":\"cf3acddf-b7a6-aebf-4b70-4aa23d8c18e1\"}]},\"xxid\":\"d4719949-a3ec-0178-fac9-82ef5af120fc\",\"hashColumns\":[\"$input_pkts\",\"$request\",\"$altered\",\"$chassis\"]},{\"type\":\"4\",\"name\":\"snmp_packets_output\",\"keyVariables\":\"\",\"startLine\":\"SNMP packets output\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:output_pkts]:^(\\\\d+)\\\\s+SNMP packets\\\\s+\",\"regex[$int:big_errors]:(\\\\S+)\\\\s+Too big errors\",\"regex[$int:general_errors]:(\\\\S+)\\\\s+General errors\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$output_pkts:int\",\"$big_errors:int\",\"$general_errors:int\"]},\"xxid\":\"c1b76deb-fd36-b581-385b-32e81a6e8af8\"}]},\"xxid\":\"9c76e0ea-3f32-d9ba-15e2-c155383fe7ff\",\"hashColumns\":[\"$chassis\"]}]},\"xxid\":\"7378a42f-e51d-5245-acc3-888d6942a9ac\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"98365bd5-dd3c-ee2b-c0ba-8dc06f478a6b\"}]}",
+            "tableKeys": [
+                "_original_result.snmp.snmp_packets_input.$chassis",
+                "_original_result.snmp.snmp_packets_output.$chassis"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "chassis",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "snmp",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "input_pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "bad_snmp_version_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "request",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "altered",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "chassis",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$altered",
+                    "$chassis",
+                    "$input_pkts",
+                    "$request"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "snmp_packets_input",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "output_pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "big_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "general_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "chassis",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$chassis"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "snmp_packets_output",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e5ac40a099f9be67a3da757f63e31dc6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "snmp",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "snmp",
+            "intfKey": false,
+            "name": "snmp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "snmp.$chassis",
+            "dataType": "string",
+            "desc": "Chassis",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.$chassis",
+            "intfKey": false,
+            "name": "$chassis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_input",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$input_pkts",
+                    "$request",
+                    "$altered",
+                    "$chassis"
+                ],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_input",
+            "intfKey": false,
+            "name": "snmp_packets_input",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "snmp_packets_input.$input_pkts",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_input.$input_pkts",
+            "intfKey": false,
+            "name": "$input_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_input.$bad_snmp_version_error",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_input.$bad_snmp_version_error",
+            "intfKey": false,
+            "name": "$bad_snmp_version_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_input.$request",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_input.$request",
+            "intfKey": false,
+            "name": "$request",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_input.$altered",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_input.$altered",
+            "intfKey": false,
+            "name": "$altered",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_input.$chassis",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_input.$chassis",
+            "intfKey": false,
+            "name": "$chassis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_output",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$chassis"
+                ],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_output",
+            "intfKey": false,
+            "name": "snmp_packets_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "snmp_packets_output.$output_pkts",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_output.$output_pkts",
+            "intfKey": false,
+            "name": "$output_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_output.$big_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_output.$big_errors",
+            "intfKey": false,
+            "name": "$big_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_output.$general_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_output.$general_errors",
+            "intfKey": false,
+            "name": "$general_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_packets_output.$chassis",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp.snmp_packets_output.$chassis",
+            "intfKey": false,
+            "name": "$chassis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

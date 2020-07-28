@@ -1,0 +1,836 @@
+{
+    "_id": "783f9ef6-8a45-b52e-eef6-aa06d89fd5d8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf interface detail",
+    "createTime": {
+        "$date": 1591075934315
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow ospf interface detail",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": " # show ospf interface detail\r\n\r\nInterface(rif1000027): 10.0.2.2/24 Vlan: HQ_10_0_2 OSPF: ENABLED Router: ENABLED   \r\nAreaId: 0.0.0.0  RtId: 10.0.2.2  Link Type: broadcast(auto)  Passive: No   \r\nCost: 4/A  Priority: 10 Transit Delay: 1   DAD State:Valid   \r\nHello Interval: 10s  Rtr Dead Time: 40s Retransmit Interval: 5s   \r\nWait Timer: 40s   \r\nAuthentication: NONE   \r\nState: DR   Number of events: 1   \r\nDR RtId: 10.0.2.2  DR IP addr: 10.0.2.2 BDR IP addr: 10.0.2.1   \r\nNum Neighbor State Change to FULL : 1   \r\nBFD Protection: On       \r\n\r\nNeighbors:  \r\n    RtrId: 10.0.3.1 IpAddr: 10.0.2.1  Pri: 5  Type: Auto      \r\n    State: FULL Dr: 10.0.2.2  BDR: 10.0.2.1  Dead Time: 00:00:00:03      \r\n    Options (0x42): Opaque LSA: Yes      \r\n    BFD Session State: Active",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_intfs.$vlan_name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf_id, $intf_addr, $vlan_name, $ospf_state, $router_state]:^\\\\s*interface\\\\((\\\\S+)\\\\)\\\\s*:\\\\s*(\\\\S+)\\\\s*vlan\\\\s*:\\\\s*(\\\\S+)\\\\s*ospf\\\\s*:\\\\s*(\\\\S+)\\\\s*router\\\\s*:\\\\s*(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$area_id, $rt_id, $link_type, $passive]:areaid:\\\\s+(\\\\S+)\\\\s+rtid:\\\\s+(\\\\S+)\\\\s+link type:\\\\s+(\\\\S+)\\\\s+passive:\\\\s+(\\\\S+)\",\"regex[$cost, $priority, $transit_delay, $dad_state]:cost:\\\\s+(\\\\S+)\\\\s+priority:\\\\s+(\\\\S+)\\\\s+transit delay:\\\\s+(\\\\S+)\\\\s+dad state:\\\\s*(\\\\S+)\",\"regex[$hello_interval, $rtr_dead_time, $retransmit_interval]:hello interval:\\\\s+(\\\\S+)\\\\s+rtr dead time:\\\\s+(\\\\S+)\\\\s+retransmit interval:\\\\s+(\\\\S+)\",\"regex[$wait_timer]:wait timer:\\\\s+(\\\\S+)\",\"regex[$auth]:authentication:\\\\s+(.+?)$\",\"regex[$state, $events]:state:\\\\s+(\\\\S+)\\\\s+number of events:\\\\s+(\\\\S+)\",\"regex[$dr_rtid, $dr_ipaddr, $bdr_ipaddr]:dr rtid:\\\\s+(\\\\S+)\\\\s+dr ip addr:\\\\s+(\\\\S+)\\\\s+bdr ip addr:\\\\s+(\\\\S+)\",\"regex[$full_neighbors]:num neighbor state change to full\\\\s*:\\\\s*(\\\\S+)\",\"regex[$bfd_protection]:bfd protection\\\\s*:\\\\s*(\\\\S+)\",\"regex[$neighbor_rt_id, $neighbor_ipaddr, $neighbor_pri, $neighbor_type]:rtrid:\\\\s+(\\\\S+)\\\\s+ipaddr:\\\\s+(\\\\S+)\\\\s+pri:\\\\s+(\\\\S+)\\\\s+type:\\\\s+(\\\\S+)\",\"regex[$neighbor_state, $neighbor_br, $neighbor_bdr, $neighbor_dead_time]:state:\\\\s*(\\\\S+)\\\\s+dr:\\\\s+(\\\\S+)\\\\s+bdr:\\\\s+(\\\\S+)\\\\s+dead time:\\\\s+(\\\\S+)\",\"regex[$neighbor_options_id, $neighbor_options, $neighbor_lsa]:options\\\\s+\\\\((\\\\S+)\\\\):\\\\s+(\\\\S+)\\\\s+lsa:\\\\s+(\\\\S+)\",\"regex[$neighbor_bfd_session_state]:bfd session state:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf_id:string\",\"$intf_addr:string\",\"$vlan_name:string\",\"$ospf_state:string\",\"$router_state:string\",\"$area_id:string\",\"$rt_id:string\",\"$link_type:string\",\"$passive:string\",\"$cost:string\",\"$priority:string\",\"$transit_delay:string\",\"$dad_state:string\",\"$hello_interval:string\",\"$rtr_dead_time:string\",\"$retransmit_interval:string\",\"$wait_timer:string\",\"$auth:string\",\"$state:string\",\"$events:string\",\"$dr_rtid:string\",\"$dr_ipaddr:string\",\"$bdr_ipaddr:string\",\"$full_neighbors:string\",\"$bfd_protection:string\",\"$neighbor_rt_id:string\",\"$neighbor_ipaddr:string\",\"$neighbor_pri:string\",\"$neighbor_type:string\",\"$neighbor_state:string\",\"$neighbor_br:string\",\"$neighbor_bdr:string\",\"$neighbor_dead_time:string\",\"$neighbor_options_id:string\",\"$neighbor_options:string\",\"$neighbor_lsa:string\",\"$neighbor_bfd_session_state:string\"]},\"xxid\":\"553b6ba4-1f46-5bef-713a-3eff5d9741ff\"}]},\"xxid\":\"be48cc94-2f62-5524-c8f9-66a025a27e58\",\"interfaceKey\":\"$vlan_name\",\"hashColumns\":[\"$vlan_name\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 37,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 38,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vlan_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ospf_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "router_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "rt_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "link_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "passive",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "cost",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "transit_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "dad_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "hello_interval",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "rtr_dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "retransmit_interval",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "wait_timer",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "auth",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "events",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "dr_rtid",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "dr_ipaddr",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "bdr_ipaddr",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "full_neighbors",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "bfd_protection",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "neighbor_rt_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 26,
+                        "name": "neighbor_ipaddr",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "neighbor_pri",
+                        "type": 4
+                    },
+                    {
+                        "index": 28,
+                        "name": "neighbor_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 29,
+                        "name": "neighbor_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 30,
+                        "name": "neighbor_br",
+                        "type": 4
+                    },
+                    {
+                        "index": 31,
+                        "name": "neighbor_bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 32,
+                        "name": "neighbor_dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 33,
+                        "name": "neighbor_options_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 34,
+                        "name": "neighbor_options",
+                        "type": 4
+                    },
+                    {
+                        "index": 35,
+                        "name": "neighbor_lsa",
+                        "type": 4
+                    },
+                    {
+                        "index": 36,
+                        "name": "neighbor_bfd_session_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan_name"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "225eb485c872a8dbf1f1d6b70efed0e5",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_intfs",
+            "dataType": "paragraph",
+            "desc": "Interface detail table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs",
+            "intfKey": false,
+            "name": "ospf_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_intfs.$intf_id",
+            "dataType": "string",
+            "desc": "Interface ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$intf_id",
+            "intfKey": false,
+            "name": "$intf_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$intf_addr",
+            "dataType": "string",
+            "desc": "Interface address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$intf_addr",
+            "intfKey": false,
+            "name": "$intf_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$vlan_name",
+            "dataType": "string",
+            "desc": "Vlan name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$vlan_name",
+            "intfKey": false,
+            "name": "$vlan_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_intfs.$ospf_state",
+            "dataType": "string",
+            "desc": "OSPF state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$ospf_state",
+            "intfKey": false,
+            "name": "$ospf_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$router_state",
+            "dataType": "string",
+            "desc": "Router state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$router_state",
+            "intfKey": false,
+            "name": "$router_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$area_id",
+            "dataType": "string",
+            "desc": "Area ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rt_id",
+            "dataType": "string",
+            "desc": "Router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rt_id",
+            "intfKey": false,
+            "name": "$rt_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$link_type",
+            "dataType": "string",
+            "desc": "Link type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$link_type",
+            "intfKey": false,
+            "name": "$link_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$passive",
+            "dataType": "string",
+            "desc": "Passive.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$passive",
+            "intfKey": false,
+            "name": "$passive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$cost",
+            "dataType": "string",
+            "desc": "Cost.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$priority",
+            "dataType": "string",
+            "desc": "Priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$transit_delay",
+            "dataType": "string",
+            "desc": "Transit delay.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$transit_delay",
+            "intfKey": false,
+            "name": "$transit_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dad_state",
+            "dataType": "string",
+            "desc": "DAD state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dad_state",
+            "intfKey": false,
+            "name": "$dad_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$hello_interval",
+            "dataType": "string",
+            "desc": "Hello interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$hello_interval",
+            "intfKey": false,
+            "name": "$hello_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rtr_dead_time",
+            "dataType": "string",
+            "desc": "Router dead time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rtr_dead_time",
+            "intfKey": false,
+            "name": "$rtr_dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$retransmit_interval",
+            "dataType": "string",
+            "desc": "Retransmit interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$retransmit_interval",
+            "intfKey": false,
+            "name": "$retransmit_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$wait_timer",
+            "dataType": "string",
+            "desc": "Wait timer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$wait_timer",
+            "intfKey": false,
+            "name": "$wait_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$auth",
+            "dataType": "string",
+            "desc": "Authentication.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$auth",
+            "intfKey": false,
+            "name": "$auth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$state",
+            "dataType": "string",
+            "desc": "State.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$events",
+            "dataType": "string",
+            "desc": "Number of events.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$events",
+            "intfKey": false,
+            "name": "$events",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dr_rtid",
+            "dataType": "string",
+            "desc": "DR router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dr_rtid",
+            "intfKey": false,
+            "name": "$dr_rtid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dr_ipaddr",
+            "dataType": "string",
+            "desc": "DR ip address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dr_ipaddr",
+            "intfKey": false,
+            "name": "$dr_ipaddr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$bdr_ipaddr",
+            "dataType": "string",
+            "desc": "BDR ip address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$bdr_ipaddr",
+            "intfKey": false,
+            "name": "$bdr_ipaddr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$full_neighbors",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$full_neighbors",
+            "intfKey": false,
+            "name": "$full_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$bfd_protection",
+            "dataType": "string",
+            "desc": "BFD protection.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$bfd_protection",
+            "intfKey": false,
+            "name": "$bfd_protection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_rt_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_rt_id",
+            "intfKey": false,
+            "name": "$neighbor_rt_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_ipaddr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_ipaddr",
+            "intfKey": false,
+            "name": "$neighbor_ipaddr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_pri",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_pri",
+            "intfKey": false,
+            "name": "$neighbor_pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_type",
+            "intfKey": false,
+            "name": "$neighbor_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_state",
+            "intfKey": false,
+            "name": "$neighbor_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_br",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_br",
+            "intfKey": false,
+            "name": "$neighbor_br",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_bdr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_bdr",
+            "intfKey": false,
+            "name": "$neighbor_bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_dead_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_dead_time",
+            "intfKey": false,
+            "name": "$neighbor_dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_options_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_options_id",
+            "intfKey": false,
+            "name": "$neighbor_options_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_options",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_options",
+            "intfKey": false,
+            "name": "$neighbor_options",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_lsa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_lsa",
+            "intfKey": false,
+            "name": "$neighbor_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$neighbor_bfd_session_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$neighbor_bfd_session_state",
+            "intfKey": false,
+            "name": "$neighbor_bfd_session_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,65 @@
+{
+    "_id": "837ab3bf-68ec-3ed4-c233-6710711eff34",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585839812856
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCisco IOS XR\nCommand: \n       <Configuration>",
+    "devTypes": [
+        2001,
+        2999,
+        2
+    ],
+    "params": null,
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "! Info via SNMP: sysoid=1.3.6.1.4.1.9.1.1,vendor=Cisco,model=ciscoGatewayServer,hostname=ST-PE3\r\nST-PE3#show run\r\nBuilding configuration...\r\n\r\nCurrent configuration : 4750 bytes\r\n!\r\nversion 15.2\r\nservice timestamps debug datetime msec\r\nservice timestamps log datetime msec\r\nno service password-encryption\r\n!\r\nhostname ST-PE3\r\n!\r\nboot-start-marker\r\nboot-end-marker\r\n!\r\n!\r\n!enable password ********\r\n!\r\naaa new-model\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\naaa session-id common\r\nclock timezone EST -5 0\r\nmmi polling-interval 60\r\nno mmi auto-configure\r\nno mmi pvc\r\nmmi snmp-timeout 180\r\n!\r\n!\r\n!\r\nip vrf DM-INET\r\n rd 200:99\r\n route-target export 99:99\r\n route-target import 99:99\r\n!\r\n!\r\n!\r\n!\r\nno ip domain lookup\r\nip domain name netbrain.com\r\nip cef\r\nno ipv6 cef\r\n!\r\nmultilink bundle-name authenticated\r\nmpls label protocol ldp\r\nno mpls ip propagate-ttl \r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!username ********\r\n!username ********\r\n!\r\nredundancy\r\n!\r\nlldp run\r\n!\r\n!\r\nclass-map match-any PRIORITY4-REALTIME\r\n match dscp af42  af43  cs6  cs7 \r\nclass-map match-any PRIORITY2\r\n match dscp cs2  af21  af22  af23 \r\n match mpls experimental topmost 2 \r\n match precedence 2 \r\nclass-map match-any PRIORITY3\r\n match dscp cs3  af31  af32  af33 \r\n match mpls experimental topmost 3 \r\n match precedence 3 \r\nclass-map match-any PRIORITY1\r\n match dscp cs1  af11  af12  af13 \r\n match mpls experimental topmost 1 \r\n match precedence 1 \r\nclass-map match-any PRIORITY4\r\n match mpls experimental topmost 4  6 \r\n match dscp af41  35  af42  37  af43 \r\n match precedence 4 \r\nclass-map match-any PRIORITY5\r\n match dscp cs5  ef \r\n match mpls experimental topmost 5 \r\n match precedence 5 \r\nclass-map match-all ATT\r\n match mpls experimental topmost 5 \r\nclass-map match-any PRIORITY4-INTERACTIVE\r\n match dscp cs4  af41 \r\nclass-map match-any PRIORITY3-V2\r\n match mpls experimental topmost 3 \r\nclass-map match-any PRIORITY2-V2\r\n match mpls experimental topmost 2 \r\nclass-map match-any PRIORITY1-V2\r\n match mpls experimental topmost 1 \r\nclass-map match-all QoS\r\n match access-group 101\r\nclass-map match-any PRIORITY5-V2\r\n match mpls experimental topmost 5 \r\nclass-map match-any PRIORITY4-V2\r\n match mpls experimental topmost 4  6 \r\n match dscp 23  25  af32  29  af33  af42  cs6  cs7 \r\n match dscp 39  cs5  50  51  52  54  55  57 \r\n match dscp 49  53  58  59  60  61  62  63 \r\nclass-map match-all shape\r\nclass-map match-all ATT1\r\n match mpls experimental topmost 1 \r\nclass-map match-all ATT2\r\n match mpls experimental topmost 4 \r\n!\r\npolicy-map SLTEAM-POLICY-IN\r\n class QoS\r\n  set ip dscp 1\r\n class ATT\r\n  priority\r\n  police cir percent 20\r\n   conform-action transmit \r\n   exceed-action drop \r\n   violate-action drop \r\n class ATT1\r\n  police rate percent 20\r\n   conform-action transmit \r\n   exceed-action drop \r\n class ATT2\r\n  shape average percent 30\r\n class PRIORITY4\r\npolicy-map SLTEAM-POLICY\r\n class PRIORITY5\r\n  police rate percent 20\r\n   conform-action transmit \r\n   exceed-action drop \r\n  priority\r\n class PRIORITY4\r\n  bandwidth remaining percent 25 \r\n  random-detect\r\n class PRIORITY3\r\n  bandwidth remaining percent 30 \r\n class PRIORITY1\r\n  bandwidth remaining percent 5 \r\n class PRIORITY2\r\n  bandwidth remaining percent 30 \r\n class class-default\r\n  bandwidth remaining percent 10 \r\n!\r\n! \r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\ninterface Loopback0\r\n ip address 123.3.3.3 255.255.255.255\r\n!\r\ninterface Ethernet0/0\r\n ip address 123.10.23.3 255.255.255.0\r\n mpls ip\r\n!\r\ninterface Ethernet0/1\r\n ip address 123.10.35.3 255.255.255.0\r\n mpls ip\r\n service-policy output SLTEAM-POLICY-IN\r\n!\r\ninterface Ethernet0/2\r\n ip address 123.10.13.3 255.255.255.0\r\n mpls ip\r\n service-policy output SLTEAM-POLICY\r\n!\r\ninterface Ethernet0/3\r\n no ip address\r\n shutdown\r\n!\r\ninterface Ethernet1/0\r\n ip vrf forwarding DM-INET\r\n ip address 113.110.200.1 255.255.255.252\r\n!\r\ninterface Ethernet1/1\r\n no ip address\r\n shutdown\r\n!\r\ninterface Ethernet1/2\r\n no ip address\r\n shutdown\r\n!\r\ninterface Ethernet1/3\r\n ip address 172.16.16.3 255.255.255.0\r\n ip access-group 1 in\r\n!\r\nrouter ospf 1\r\n network 123.3.3.3 0.0.0.0 area 0\r\n network 123.10.0.0 0.0.255.255 area 0\r\n!\r\nrouter bgp 10000\r\n bgp router-id 123.3.3.3\r\n bgp log-neighbor-changes\r\n no bgp default ipv4-unicast\r\n neighbor 123.1.1.1 remote-as 10000\r\n neighbor 123.1.1.1 update-source Loopback0\r\n !\r\n address-family ipv4\r\n  neighbor 123.1.1.1 activate\r\n exit-address-family\r\n !\r\n address-family vpnv4\r\n  neighbor 123.1.1.1 activate\r\n  neighbor 123.1.1.1 send-community both\r\n exit-address-family\r\n !\r\n address-family ipv4 vrf DM-INET\r\n  redistribute connected route-map matchHUB2\r\n exit-address-family\r\n!\r\nip forward-protocol nd\r\n!\r\n!\r\nno ip http server\r\nno ip http secure-server\r\n!\r\nip access-list extended MatchHUB2\r\n permit ip 113.110.200.0 0.0.0.3 any\r\n!\r\naccess-list 1 deny   172.16.16.118\r\naccess-list 1 permit any\r\n!\r\nroute-map matchHUB2 permit 10\r\n match ip address MatchHUB2\r\n!\r\n!snmp-server community ********\r\n!snmp-server host ********\r\n!\r\nmpls ldp router-id Loopback0 force\r\n!\r\n!\r\n!\r\ncontrol-plane\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\nline con 0\r\n exec-timeout 0 0\r\n logging synchronous\r\nline aux 0\r\nline vty 0 4\r\n access-class 1 in\r\n transport input all\r\n!\r\n!\r\nend\r\n\r\n\r\n",
+            "devName": "R4",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$qos_config]:(^class-map.+?!\\\\n^policy-map.+?!)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$qos_config:string\"]},\"xxid\":\"415a59f5-ca13-85a7-8f4c-c5eae13b0f9f\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "qos_config",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "2df2ecfd4c188466ae7919d775a9c62f",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "$qos_config",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$qos_config",
+            "intfKey": false,
+            "name": "$qos_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

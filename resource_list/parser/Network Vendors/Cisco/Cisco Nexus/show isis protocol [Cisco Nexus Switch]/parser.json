@@ -1,0 +1,651 @@
+{
+    "_id": "421fff6a-4e1f-5b76-0ab1-ec1590b904fa",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis protocol",
+    "createTime": {
+        "$date": 1579820763905
+    },
+    "description": "Device Type:\nCisco Nexus Switch \nCommand:\nshow isis protocol",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K#show isis protocol\n\n\nISIS process : 1\nVRF: default\n  System ID : 1630.0000.0005  IS-Type : L1-L2\n  SAP : 412  Queue Handle : 10\n  Maximum LSP MTU: 1492\n  Stateful HA enabled\n  Graceful Restart enabled. State: Inactive \n  Last graceful restart status : none\n  Start-Mode Complete\n  BFD is disabled\n  Metric-style : advertise(wide), accept(narrow, wide)\n  Area address(es) :\n    47.0000.0001\n  Process is up and running\n  VRF ID: 1\n  Stale routes during non-graceful controlled restart\n  Interfaces supported by IS-IS :\n    loopback0\n    Ethernet2/1\n  Address family IPv4 unicast :\n    Number of interface : 2\n    Distance : 115\n  Address family IPv6 unicast :\n    Number of interface : 0\n    Distance : 115\n  Level1\n  No auth type and keychain\n  Auth check set\n  Level2\n  No auth type and keychain\n  Auth check set\n  L1 Next SPF: Inactive\n  L2 Next SPF: Inactive\n\nISIS process : 2\nVRF: default\n  System ID : None  IS-Type : L1-L2\n  SAP : 413  Queue Handle : 10\n  Maximum LSP MTU: 1492\n  Stateful HA enabled\n  Graceful Restart enabled. State: Inactive \n  Last graceful restart status : none\n  Start-Mode Cold\n  BFD is disabled\n  Metric-style : advertise(wide), accept(narrow, wide)\n  Area address(es) :\n    None\n  Process is disabled because :\n    NET is not specified\n  VRF ID: 1\n  Stale routes during non-graceful controlled restart\n  Interfaces supported by IS-IS :\n  Address family IPv4 unicast :\n    Number of interface : 0\n    Distance : 115\n  Address family IPv6 unicast :\n    Number of interface : 0\n    Distance : 115\n  Level1\n  No auth type and keychain\n  Auth check set\n  Level2\n  No auth type and keychain\n  Auth check set\n  L1 Next SPF: Inactive\n  L2 Next SPF: Inactive\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.processes.$isis_intfs"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"processes\",\"keyVariables\":null,\"startLine\":\"ISIS process : $process_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"System ID : $nbr_id  IS-Type : $nbr_type\",\"SAP : $sap  Queue Handle : $queue_handle\",\"Maximum LSP MTU: $int:max_lsp_mtu\",\"Stateful HA $stateful_ha_state\",\"Graceful Restart $graceful_restart_enabled. State: $graceful_restart_state\",\"Last graceful restart status : $last_graceful_restart_status\",\"BFD is $bfd_state\",\"regex[$metric_style_adevertise,$metric_type_accept]:Metric-style : advertise\\\\((.*)\\\\), accept\\\\((.*)\\\\)\",\"mregex[$area_addr]:Area address\\\\(es\\\\) :\\\\n\\\\s+(\\\\S+)\",\"mregex[$isis_intfs]:Interfaces supported by IS-IS :\\\\n(.*)\\\\n\\\\s+Address family IPv4 unicast\",\"mregex[$int:ipv4_intfs_count,$int:ipv4_distance]:Address family IPv4 unicast :\\\\n\\\\s+Number of interface :\\\\s+(\\\\S+)\\\\n\\\\s+Distance : (\\\\S+)\",\"mregex[$int:ipv6_intfs_count,$int:ipv6_distance]:Address family IPv6 unicast :\\\\n\\\\s+Number of interface :\\\\s+(\\\\S+)\\\\n\\\\s+Distance : (\\\\S+)\",\"mregex[$level_1_authen_type,$level_1_authen_keychain]:Level1\\\\n\\\\s+(.+?) and (\\\\S+)\",\"mregex[$level_2_authen_type,$level_2_authen_keychain]:Level2\\\\n\\\\s+(.+?) and (\\\\S+)\",\"L1 Next SPF: $level_1_next_spf_state\",\"L2 Next SPF: $level_2_next_spf_state\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process_id:string\",\"$nbr_id:string\",\"$nbr_type:string\",\"$sap:string\",\"$queue_handle:string\",\"$max_lsp_mtu:int\",\"$stateful_ha_state:string\",\"$graceful_restart_enabled:string\",\"$graceful_restart_state:string\",\"$last_graceful_restart_status:string\",\"$bfd_state:string\",\"$metric_style_adevertise:string\",\"$metric_type_accept:string\",\"$area_addr:string\",\"$isis_intfs:string\",\"$ipv4_intfs_count:int\",\"$ipv4_distance:int\",\"$ipv6_intfs_count:int\",\"$ipv6_distance:int\",\"$level_1_authen_type:string\",\"$level_1_authen_keychain:string\",\"$level_2_authen_type:string\",\"$level_2_authen_keychain:string\",\"$level_1_next_spf_state:string\",\"$level_2_next_spf_state:string\"]},\"child\":{\"parseRule\":{\"type\":\"1\",\"name\":\"intfs_filter\",\"startLine\":\"Interfaces supported by IS-IS :\",\"endLine\":\"Address family IPv4 unicast :\",\"skipLines\":null,\"includeLines\":null,\"excludeLines\":null,\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"child\":{\"parseRule\":{\"type\":\"0\",\"keyWords\":null,\"statements\":null,\"variableTypes\":null}}}},\"xxid\":\"4e972304-374d-d082-4a8e-5af4503a48b0\"}]},\"xxid\":\"22c84fa1-5a97-70d8-d3a9-a9990af56fce\",\"hashColumns\":[\"$process_id\",\"$nbr_id\",\"$nbr_type\",\"$stateful_ha_state\",\"$graceful_restart_enabled\",\"$graceful_restart_state\",\"$bfd_state\",\"$area_addr\",\"$isis_intfs\",\"$ipv4_intfs_count\",\"$ipv6_intfs_count\",\"$level_1_authen_type\",\"$level_1_authen_keychain\",\"$level_2_authen_type\",\"$level_2_authen_keychain\",\"$level_1_next_spf_state\",\"$level_2_next_spf_state\"],\"interfaceKey\":\"$isis_intfs\",\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"99d816d0-cde3-3b87-d19a-566868318133\"}]}",
+            "tableKeys": [
+                "_original_result.processes.$nbr_id",
+                "_original_result.processes.$process_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 25,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "nbr_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "sap",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "queue_handle",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "max_lsp_mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "stateful_ha_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "graceful_restart_enabled",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "graceful_restart_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "last_graceful_restart_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "bfd_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "metric_style_adevertise",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "metric_type_accept",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "isis_intfs",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "ipv4_intfs_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "ipv4_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "ipv6_intfs_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "ipv6_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "level_1_authen_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "level_1_authen_keychain",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "level_2_authen_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "level_2_authen_keychain",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "level_1_next_spf_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "level_2_next_spf_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_addr",
+                    "$bfd_state",
+                    "$graceful_restart_enabled",
+                    "$graceful_restart_state",
+                    "$ipv4_intfs_count",
+                    "$ipv6_intfs_count",
+                    "$isis_intfs",
+                    "$level_1_authen_keychain",
+                    "$level_1_authen_type",
+                    "$level_1_next_spf_state",
+                    "$level_2_authen_keychain",
+                    "$level_2_authen_type",
+                    "$level_2_next_spf_state",
+                    "$nbr_id",
+                    "$nbr_type",
+                    "$process_id",
+                    "$stateful_ha_state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "processes",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3ee5686f3b53e032efc3964d781d2611",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "processes",
+            "dataType": "paragraph",
+            "desc": "ISIS Process Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id",
+                    "$nbr_id",
+                    "$nbr_type",
+                    "$stateful_ha_state",
+                    "$graceful_restart_enabled",
+                    "$graceful_restart_state",
+                    "$bfd_state",
+                    "$area_addr",
+                    "$isis_intfs",
+                    "$ipv4_intfs_count",
+                    "$ipv6_intfs_count",
+                    "$level_1_authen_type",
+                    "$level_1_authen_keychain",
+                    "$level_2_authen_type",
+                    "$level_2_authen_keychain",
+                    "$level_1_next_spf_state",
+                    "$level_2_next_spf_state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes",
+            "intfKey": false,
+            "name": "processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "processes.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$nbr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$nbr_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$nbr_type",
+            "intfKey": false,
+            "name": "$nbr_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$sap",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$sap",
+            "intfKey": false,
+            "name": "$sap",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$queue_handle",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$queue_handle",
+            "intfKey": false,
+            "name": "$queue_handle",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$max_lsp_mtu",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$max_lsp_mtu",
+            "intfKey": false,
+            "name": "$max_lsp_mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$stateful_ha_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$stateful_ha_state",
+            "intfKey": false,
+            "name": "$stateful_ha_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$graceful_restart_enabled",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$graceful_restart_enabled",
+            "intfKey": false,
+            "name": "$graceful_restart_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$graceful_restart_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$graceful_restart_state",
+            "intfKey": false,
+            "name": "$graceful_restart_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$last_graceful_restart_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$last_graceful_restart_status",
+            "intfKey": false,
+            "name": "$last_graceful_restart_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$bfd_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$bfd_state",
+            "intfKey": false,
+            "name": "$bfd_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$metric_style_adevertise",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$metric_style_adevertise",
+            "intfKey": false,
+            "name": "$metric_style_adevertise",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$metric_type_accept",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$metric_type_accept",
+            "intfKey": false,
+            "name": "$metric_type_accept",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$area_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$area_addr",
+            "intfKey": false,
+            "name": "$area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$isis_intfs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$isis_intfs",
+            "intfKey": false,
+            "name": "$isis_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "processes.$ipv4_intfs_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$ipv4_intfs_count",
+            "intfKey": false,
+            "name": "$ipv4_intfs_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$ipv4_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$ipv4_distance",
+            "intfKey": false,
+            "name": "$ipv4_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$ipv6_intfs_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$ipv6_intfs_count",
+            "intfKey": false,
+            "name": "$ipv6_intfs_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$ipv6_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$ipv6_distance",
+            "intfKey": false,
+            "name": "$ipv6_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$level_1_authen_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$level_1_authen_type",
+            "intfKey": false,
+            "name": "$level_1_authen_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$level_1_authen_keychain",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$level_1_authen_keychain",
+            "intfKey": false,
+            "name": "$level_1_authen_keychain",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$level_2_authen_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$level_2_authen_type",
+            "intfKey": false,
+            "name": "$level_2_authen_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$level_2_authen_keychain",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$level_2_authen_keychain",
+            "intfKey": false,
+            "name": "$level_2_authen_keychain",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$level_1_next_spf_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$level_1_next_spf_state",
+            "intfKey": false,
+            "name": "$level_1_next_spf_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$level_2_next_spf_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$level_2_next_spf_state",
+            "intfKey": false,
+            "name": "$level_2_next_spf_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

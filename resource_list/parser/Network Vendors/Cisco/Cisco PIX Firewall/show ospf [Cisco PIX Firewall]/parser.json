@@ -1,0 +1,1037 @@
+{
+    "_id": "5f778aa6-2e49-9529-de9e-59d8dc348ecd",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf",
+    "createTime": {
+        "$date": 1591049679970
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow ospf",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "pixfirewall# show ospf \r\n\r\n Routing Process \"ospf 1\" with ID 3.3.3.3 and Domain ID 0.0.0.1\r\n Supports only single TOS(TOS0) routes\r\n Does not support opaque LSA\r\n SPF schedule delay 5 secs, Hold time between two SPFs 10 secs\r\n Minimum LSA interval 5 secs. Minimum LSA arrival 1 secs\r\n Number of external LSA 0. Checksum Sum 0x     0\r\n Number of opaque AS LSA 0. Checksum Sum 0x     0\r\n Number of DCbitless external and opaque AS LSA 0\r\n Number of DoNotAge external and opaque AS LSA 0\r\n Number of areas in this router is 1. 1 normal 0 stub 0 nssa\r\n External flood list length 0\r\n    Area BACKBONE(0)\r\n        Number of interfaces in this area is 2\r\n        Area has no authentication\r\n        SPF algorithm executed 4 times\r\n        Area ranges are\r\n        Number of LSA 5. Checksum Sum 0x 2e76d\r\n        Number of opaque link LSA 0. Checksum Sum 0x     0\r\n        Number of DCbitless LSA 0\r\n        Number of indication LSA 0\r\n        Number of DoNotAge LSA 0\r\n        Flood list length 0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_process_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$router_id,$process_id]:Routing Process \\\"ospf \\\\d+\\\" with ID (\\\\S+) and Domain ID (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:spf_schedule_delay]:SPF schedule delay\\\\s+(\\\\S+)\",\"regex[$int:spf_hold_time]:Hold time between two SPFs\\\\s+(\\\\S+)\",\"regex[$int:minimum_lsa_interval]: Minimum LSA interval\\\\s+(\\\\S+)\",\"regex[$int:minimum_lsa_arrival]: Minimum LSA arrival\\\\s+(\\\\S+)\",\"regex[$int:num_external_lsa]: Number of external LSA\\\\s+(\\\\S+)\\\\.\",\"regex[$int:num_opaque_as_lsa]: Number of opaque AS LSA\\\\s+(\\\\S+)\\\\.\",\"regex[$int:num_dcbitless_external_opaque_as_lsa]: Number of DCbitless external and opaque AS LSA\\\\s+(\\\\S+)\",\"regex[$int:num_donotage_external_opaque_as_lsa]: Number of DoNotAge external and opaque AS LSA\\\\s+(\\\\S+)\",\"regex[$int:num_areas_in_this_router]: Number of areas in this router is\\\\s+(\\\\S+)\\\\.\",\"regex[$int:num_normal]: (\\\\S+)\\\\s+normal\",\"regex[$int:num_stub]: (\\\\S+)\\\\s+stub\",\"regex[$int:num_nssa]: (\\\\S+)\\\\s+nssa\",\"regex[$int:external_flood_list_length]: External flood list length\\\\s+(\\\\S+)\",\"regex[$external_lsa_checksum]: Number of external LSA \\\\S+ Checksum Sum 0x\\\\s+(\\\\S+)\",\"regex[$opaque_as_lsa_checksum]: Number of opaque AS LSA \\\\S+ Checksum Sum 0x\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$process_id:string\",\"$spf_schedule_delay:int\",\"$spf_hold_time:int\",\"$minimum_lsa_interval:int\",\"$minimum_lsa_arrival:int\",\"$num_external_lsa:int\",\"$num_opaque_as_lsa:int\",\"$num_dcbitless_external_opaque_as_lsa:int\",\"$num_donotage_external_opaque_as_lsa:int\",\"$num_areas_in_this_router:int\",\"$num_normal:int\",\"$num_stub:int\",\"$num_nssa:int\",\"$external_flood_list_length:int\",\"$external_lsa_checksum:string\",\"$opaque_as_lsa_checksum:string\"]},\"xxid\":\"4767c0f3-632c-2d65-9b8d-56f35855b472\"},{\"type\":\"4\",\"name\":\"area_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$area_id]:Area\\\\s+(\\\\S+)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:num_of_interfaces]:Number of interfaces in this area is\\\\s+(\\\\S+)\",\"regex[$int:spf_algorithm_executed_count]:SPF algorithm executed\\\\s+(\\\\S+)\",\"regex[$int:num_of_lsa]:Number of LSA\\\\s+(\\\\S+)\\\\.\",\"regex[$lsa_checksum]:Number of LSA \\\\S+ Checksum Sum 0x\\\\s+(\\\\S+)\",\"regex[$int:num_of_opaque_link_lsa]:Number of opaque link LSA\\\\s+(\\\\S+)\\\\.\",\"regex[$opaque_link_lsa_checksum]:Number of opaque link LSA \\\\S+ Checksum Sum 0x\\\\s+(\\\\S+)\",\"regex[$int:num_of_dcbitless_lsa]:Number of DCbitless LSA\\\\s+(\\\\S+)\",\"regex[$int:num_of_indication_lsa]:Number of indication LSA\\\\s+(\\\\S+)\",\"regex[$int:num_of_donotage_lsa]:Number of DoNotAge LSA\\\\s+(\\\\S+)\",\"regex[$int:flood_list_length]:Flood list length\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$num_of_interfaces:int\",\"$spf_algorithm_executed_count:int\",\"$num_of_lsa:int\",\"$lsa_checksum:string\",\"$num_of_opaque_link_lsa:int\",\"$opaque_link_lsa_checksum:string\",\"$num_of_dcbitless_lsa:int\",\"$num_of_indication_lsa:int\",\"$num_of_donotage_lsa:int\",\"$flood_list_length:int\"]},\"xxid\":\"9e2d3293-07f5-54f2-34e5-397f7a394778\"}]},\"xxid\":\"e8be9e62-b13e-ae3b-a5f7-7add704de56c\",\"hashColumns\":[\"$area_id\"]}]},\"xxid\":\"b68f7f09-3b22-dfbb-c831-c70613675d34\",\"hashColumns\":[\"$process_id\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_process_table.$process_id",
+                "_original_result.ospf_process_table.area_table.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 17,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "spf_schedule_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "spf_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "minimum_lsa_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "minimum_lsa_arrival",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "num_external_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "num_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "num_dcbitless_external_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "num_donotage_external_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "num_areas_in_this_router",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "num_normal",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "num_stub",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "num_nssa",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "external_flood_list_length",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "external_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "opaque_as_lsa_checksum",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_process_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 28,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "num_of_interfaces",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "spf_algorithm_executed_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "num_of_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "num_of_opaque_link_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "opaque_link_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "num_of_dcbitless_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "num_of_indication_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "num_of_donotage_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "flood_list_length",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "spf_schedule_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "spf_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "minimum_lsa_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "minimum_lsa_arrival",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "num_external_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "num_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "num_dcbitless_external_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "num_donotage_external_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "num_areas_in_this_router",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "num_normal",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "num_stub",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "num_nssa",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "external_flood_list_length",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "external_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "opaque_as_lsa_checksum",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "area_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "05f92e64dc67028cee373865b8f5bf31",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_process_table",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on process id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table",
+            "intfKey": false,
+            "name": "ospf_process_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_process_table.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$process_id",
+            "dataType": "string",
+            "desc": "Process identifier (ID). The range is from 1 to 65535.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$spf_schedule_delay",
+            "dataType": "int",
+            "desc": "SPF schedule delay time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$spf_schedule_delay",
+            "intfKey": false,
+            "name": "$spf_schedule_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$spf_hold_time",
+            "dataType": "int",
+            "desc": "Hold time between two consecutive SPFs time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$spf_hold_time",
+            "intfKey": false,
+            "name": "$spf_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$minimum_lsa_interval",
+            "dataType": "int",
+            "desc": "Minimum lsa interval time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$minimum_lsa_interval",
+            "intfKey": false,
+            "name": "$minimum_lsa_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$minimum_lsa_arrival",
+            "dataType": "int",
+            "desc": "Minimum lsa arrival time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$minimum_lsa_arrival",
+            "intfKey": false,
+            "name": "$minimum_lsa_arrival",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_external_lsa",
+            "dataType": "int",
+            "desc": "Number of external LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_external_lsa",
+            "intfKey": false,
+            "name": "$num_external_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "Number of opaque AS LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_dcbitless_external_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "Number of DCbitless external and opaque AS LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_dcbitless_external_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_dcbitless_external_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_donotage_external_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "Number of Donotage external and opaque AS LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_donotage_external_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_donotage_external_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_areas_in_this_router",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_areas_in_this_router",
+            "intfKey": false,
+            "name": "$num_areas_in_this_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_normal",
+            "dataType": "int",
+            "desc": "Number of normal area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_normal",
+            "intfKey": false,
+            "name": "$num_normal",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_stub",
+            "dataType": "int",
+            "desc": "Number of stub area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_stub",
+            "intfKey": false,
+            "name": "$num_stub",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$num_nssa",
+            "dataType": "int",
+            "desc": "Number of nssa area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$num_nssa",
+            "intfKey": false,
+            "name": "$num_nssa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$external_flood_list_length",
+            "dataType": "int",
+            "desc": "External flood list length.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$external_flood_list_length",
+            "intfKey": false,
+            "name": "$external_flood_list_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$external_lsa_checksum",
+            "dataType": "string",
+            "desc": "External LSA checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$external_lsa_checksum",
+            "intfKey": false,
+            "name": "$external_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_table.$opaque_as_lsa_checksum",
+            "dataType": "string",
+            "desc": "Opaque AS LSA checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.$opaque_as_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_as_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on area id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table",
+            "intfKey": false,
+            "name": "area_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area_table.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_of_interfaces",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_of_interfaces",
+            "intfKey": false,
+            "name": "$num_of_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$spf_algorithm_executed_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$spf_algorithm_executed_count",
+            "intfKey": false,
+            "name": "$spf_algorithm_executed_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_of_lsa",
+            "dataType": "int",
+            "desc": "Number of LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_of_lsa",
+            "intfKey": false,
+            "name": "$num_of_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$lsa_checksum",
+            "dataType": "string",
+            "desc": "LSA checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$lsa_checksum",
+            "intfKey": false,
+            "name": "$lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_of_opaque_link_lsa",
+            "dataType": "int",
+            "desc": "Number of opaque link lsa.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_of_opaque_link_lsa",
+            "intfKey": false,
+            "name": "$num_of_opaque_link_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$opaque_link_lsa_checksum",
+            "dataType": "string",
+            "desc": "Opaque link lsa checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$opaque_link_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_link_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_of_dcbitless_lsa",
+            "dataType": "int",
+            "desc": "Number of dcbitless lsa.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_of_dcbitless_lsa",
+            "intfKey": false,
+            "name": "$num_of_dcbitless_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_of_indication_lsa",
+            "dataType": "int",
+            "desc": "Number of indication lsa.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_of_indication_lsa",
+            "intfKey": false,
+            "name": "$num_of_indication_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_of_donotage_lsa",
+            "dataType": "int",
+            "desc": "Number of donotage lsa.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_of_donotage_lsa",
+            "intfKey": false,
+            "name": "$num_of_donotage_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$flood_list_length",
+            "dataType": "int",
+            "desc": "Flood list length.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$flood_list_length",
+            "intfKey": false,
+            "name": "$flood_list_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$process_id",
+            "dataType": "string",
+            "desc": "Process identifier (ID). The range is from 1 to 65535.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$spf_schedule_delay",
+            "dataType": "int",
+            "desc": "SPF schedule delay time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$spf_schedule_delay",
+            "intfKey": false,
+            "name": "$spf_schedule_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$spf_hold_time",
+            "dataType": "int",
+            "desc": "Hold time between two consecutive SPFs time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$spf_hold_time",
+            "intfKey": false,
+            "name": "$spf_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$minimum_lsa_interval",
+            "dataType": "int",
+            "desc": "Minimum lsa interval time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$minimum_lsa_interval",
+            "intfKey": false,
+            "name": "$minimum_lsa_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$minimum_lsa_arrival",
+            "dataType": "int",
+            "desc": "Minimum lsa arrival time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$minimum_lsa_arrival",
+            "intfKey": false,
+            "name": "$minimum_lsa_arrival",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_external_lsa",
+            "dataType": "int",
+            "desc": "Number of external LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_external_lsa",
+            "intfKey": false,
+            "name": "$num_external_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "Number of opaque AS LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_dcbitless_external_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "Number of DCbitless external and opaque AS LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_dcbitless_external_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_dcbitless_external_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_donotage_external_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "Number of Donotage external and opaque AS LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_donotage_external_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_donotage_external_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_areas_in_this_router",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_areas_in_this_router",
+            "intfKey": false,
+            "name": "$num_areas_in_this_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_normal",
+            "dataType": "int",
+            "desc": "Number of normal area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_normal",
+            "intfKey": false,
+            "name": "$num_normal",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_stub",
+            "dataType": "int",
+            "desc": "Number of stub area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_stub",
+            "intfKey": false,
+            "name": "$num_stub",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$num_nssa",
+            "dataType": "int",
+            "desc": "Number of nssa area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$num_nssa",
+            "intfKey": false,
+            "name": "$num_nssa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$external_flood_list_length",
+            "dataType": "int",
+            "desc": "External flood list length.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$external_flood_list_length",
+            "intfKey": false,
+            "name": "$external_flood_list_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$external_lsa_checksum",
+            "dataType": "string",
+            "desc": "External LSA checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$external_lsa_checksum",
+            "intfKey": false,
+            "name": "$external_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_table.$opaque_as_lsa_checksum",
+            "dataType": "string",
+            "desc": "Opaque AS LSA checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_table.area_table.$opaque_as_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_as_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

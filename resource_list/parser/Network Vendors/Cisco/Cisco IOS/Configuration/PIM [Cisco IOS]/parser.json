@@ -1,0 +1,75 @@
+{
+    "_id": "4d79c26d-78f2-0759-3a69-6f7ce1210887",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585838451196
+    },
+    "description": "Device Type:\nCisco Router \nCisco IOS Switch\nCommand:\n       <Configuration>",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": null,
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Building configuration...\n\nCurrent configuration : 2301 bytes\n!\n! Last configuration change at 13:41:17 UTC Wed Jan 20 2016\nupgrade fpd auto\nversion 15.2\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname R1\n!\nboot-start-marker\nboot-end-marker\n!\n!\n!\nno aaa new-model\nno ip icmp rate-limit unreachable\n!\n!\n!\nip vrf A.1\n rd 100:1\n route-target export 100:1\n route-target import 100:1\n!\n!\n!\n!\nno ip domain lookup\nip multicast-routing\nip multicast heartbeat 224.1.1.1 1 1 10\nip multicast heartbeat 224.5.5.5 1 1 10\nip multicast route-limit 50\nip multicast limit cost 1 1\nip multicast limit cost 2 2\nip multicast mrinfo-filter 1\nip multicast vrf A.1 route-limit 10 5\nip multicast vrf A.1 limit cost 3 3\nip multicast vrf A.1 mrinfo-filter 2\nip multicast vrf A.1 mpls traffic-eng range te_acl\nip multicast vrf A.1 group-range range\nip cef\nip igmp limit 1\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nredundancy\n!\n!\nip tcp synwait-time 5\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface FastEthernet0/0\n no ip address\n shutdown\n duplex half\n!\ninterface FastEthernet1/0\n no ip address\n shutdown\n duplex auto\n speed auto\n!\ninterface FastEthernet1/1\n ip address 192.168.1.1 255.255.255.0\n ip pim neighbor-filter NB_filter\n ip pim dr-priority 100\n ip pim query-interval 3\n ip pim nbma-mode\n ip pim bsr-border\n ip pim state-refresh disable\n ip pim state-refresh origination-interval 3\n ip pim dense-mode\n!\ninterface GigabitEthernet2/0\n no ip address\n shutdown\n negotiation auto\n!\ninterface Ethernet3/0\n no ip address\n shutdown\n duplex half\n!\ninterface Ethernet3/1\n no ip address\n shutdown\n duplex half\n!\ninterface Ethernet3/2\n no ip address\n shutdown\n duplex half\n!\ninterface Ethernet3/3\n no ip address\n shutdown\n duplex half\n!\ninterface Ethernet3/4\n no ip address\n ip pim sparse-dense-mode\n ip igmp join-group 224.5.5.5\n shutdown\n duplex half\n!\ninterface Ethernet3/5\n no ip address\n shutdown\n duplex half\n!\ninterface Ethernet3/6\n no ip address\n shutdown\n duplex half\n!\ninterface Ethernet3/7\n no ip address\n shutdown\n duplex half\n!\nip forward-protocol nd\nno ip http server\nno ip http secure-server\n!\n!\nip pim rp-address 1.1.1.1\nip pim autorp listener\nip pim accept-rp 1.1.1.1 12\nip pim accept-rp auto-rp 12\nip pim send-rp-announce Loopback0 scope 128 group-list 12\nip pim send-rp-discovery Loopback0 scope 128 interval 3\nip pim rp-announce-filter group-list 12\nip pim rp-announce-filter rp-list 12\nip pim bsr-candidate Loopback0 16 128\nip pim rp-candidate Loopback0 group-list group_list\nip pim register-rate-limit 8000\nip pim accept-register list Acl\nip pim register-source Loopback0\nip pim ssm range 1\nip mroute 192.168.1.0 255.255.255.0 192.168.1.2 110\n!\nip access-list extended te_acl\n!\nno cdp log mismatch duplex\n!\n!\n!\ncontrol-plane\n!\n!\n!\nmgcp profile default\n!\n!\n!\ngatekeeper\n shutdown\n!\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n login\n transport input all\n!\n!\nend",
+            "devName": "RP",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$pim_config]:(^ip pim.+?!)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$pim_config:string\"]},\"xxid\":\"28f82f6e-2bf3-4464-063d-3ea6bebf83d0\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "pim_config",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "1854fb56529bb7412d7fca2b38331153",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "$pim_config",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pim_config",
+            "intfKey": false,
+            "name": "$pim_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

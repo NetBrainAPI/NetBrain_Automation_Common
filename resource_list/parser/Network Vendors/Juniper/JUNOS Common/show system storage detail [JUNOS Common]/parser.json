@@ -1,0 +1,231 @@
+{
+    "_id": "d5925009-c8b5-f43c-c6cd-a4b5db6d0227",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show system storage detail",
+    "createTime": {
+        "$date": 1580409329890
+    },
+    "description": "Device Type:\nJuniper EX Switch\nJuniper Router\nJuniper SRX Firewall\nCommand:\n       show system storage detail",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "netbrain@Juniper_SRX_NB001> show system storage detail \nFilesystem       1024-blocks       Used      Avail   Capacity   Mounted on\n/dev/ad0s1a          1650070     235424    1282642        16%  /\ndevfs                      1          1          0       100%  /dev\n/dev/md0              575632     575632          0       100%  /junos\n/cf                  1650070     235424    1282642        16%  /junos/cf\ndevfs                      1          1          0       100%  /junos/dev/\nprocfs                     4          4          0       100%  /proc\n/dev/ad0s1e           205566         22     189100         0%  /config\n/dev/md1              171860      16532     141580        10%  /mfs\n/cf/var/jail         1650070     235424    1282642        16%  /jail/var\n/cf/var/log          1650070     235424    1282642        16%  /jail/var/log\ndevfs                      1          1          0       100%  /jail/dev",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"system_storage_table\",\"keyVariables\":null,\"startLine\":\"regex:\\\\S+\\\\s+\\\\d+\\\\s+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$filesystem]:(\\\\S+)\",\"regex[$int:blocks]:\\\\S+\\\\s+(\\\\d+)\",\"regex[$int:used]:\\\\S+\\\\s+\\\\d+\\\\s+(\\\\d+)\",\"regex[$int:available]:\\\\S+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+(\\\\d+)\",\"regex[$capacity_used]:\\\\S+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+(\\\\S+)\",\"regex[$mounted_on]:\\\\S+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$filesystem:string\",\"$blocks:int\",\"$used:int\",\"$available:int\",\"$capacity_used:string\",\"$mounted_on:string\"]},\"xxid\":\"8c216320-09ae-55cf-9f0f-e03b1a52bf8a\"}]},\"xxid\":\"6141b864-7830-3348-fa9e-fee3381ab75f\",\"hashColumns\":[\"$filesystem\",\"$blocks\",\"$mounted_on\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"a2cbda18-1ce4-fae5-1246-3cc39a13f9d6\"}]}",
+            "tableKeys": [
+                "_original_result.system_storage_table.$filesystem"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "filesystem",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "blocks",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "used",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "available",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "capacity_used",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "mounted_on",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$blocks",
+                    "$filesystem",
+                    "$mounted_on"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "system_storage_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fd2b9a7567ab4080abd9a9d62c016e0a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "system_storage_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$filesystem",
+                    "$blocks",
+                    "$mounted_on"
+                ],
+                "hashSort": false
+            },
+            "fullName": "system_storage_table",
+            "intfKey": false,
+            "name": "system_storage_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "system_storage_table.$filesystem",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_storage_table.$filesystem",
+            "intfKey": false,
+            "name": "$filesystem",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_storage_table.$blocks",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_storage_table.$blocks",
+            "intfKey": false,
+            "name": "$blocks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_storage_table.$used",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_storage_table.$used",
+            "intfKey": false,
+            "name": "$used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_storage_table.$available",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_storage_table.$available",
+            "intfKey": false,
+            "name": "$available",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_storage_table.$capacity_used",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_storage_table.$capacity_used",
+            "intfKey": false,
+            "name": "$capacity_used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_storage_table.$mounted_on",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_storage_table.$mounted_on",
+            "intfKey": false,
+            "name": "$mounted_on",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

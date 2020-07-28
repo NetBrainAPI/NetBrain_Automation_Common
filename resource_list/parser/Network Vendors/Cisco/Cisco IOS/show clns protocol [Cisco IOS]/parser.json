@@ -1,0 +1,844 @@
+{
+    "_id": "04c20174-56db-6275-9a92-72dadfa23161",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show clns protocol",
+    "createTime": {
+        "$date": 1579713938107
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router \nCommand:\nshow clns protocol",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Core-SW1>show clns protocol\n\nIS-IS Router: <Null Tag>\n  System Id: 0000.0000.0000.00  IS-Type: level-1-2\n  Manual area address(es): \n  Routing for area address(es): \n  Interfaces supported by IS-IS:\n\tEthernet0/3 - IP\n\tLoopback1 - IP\n  Redistribute:\n    static (on by default)\n  Distance for L2 CLNS routes: 110\n  RRR level: none\n  Generate narrow metrics: level-1-2\n  Accept narrow metrics:   level-1-2\n  Generate wide metrics:   none\n  Accept wide metrics:     none\n\nIS-IS Router: 654\n  System Id: 0000.0000.0001.00  IS-Type: level-1-2\n  Manual area address(es): \n\t47\n  Routing for area address(es): \n\t47\n  No interfaces in domain/area.\n  Redistribute:\n    static (on by default)\n  Distance for L2 CLNS routes: 110\n  RRR level: none\n  Generate narrow metrics: level-1-2\n  Accept narrow metrics:   level-1-2\n  Generate wide metrics:   none\n  Accept wide metrics:     none\n\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.protocols.intfs_support.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"protocols\",\"keyVariables\":null,\"startLine\":\"regex[$process_id]:^IS-IS Router\\\\: (.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"System Id: $system_id  IS-Type: $is_type\",\"mregex[$manual_area_addr]:Manual area address\\\\(es\\\\)\\\\:\\\\s+\\\\n\\\\s+(\\\\S+).*Routing\",\"mregex[$routing_for_area_address]:Routing for area address\\\\(es\\\\)\\\\:\\\\s+\\\\n\\\\s+(\\\\S+)$\",\"Distance for L2 CLNS routes: $l2_routes_distance\",\"Generate narrow metrics: $generate_narrow_metric\",\"Accept narrow metrics:   $accept_narrow_metric\",\"Generate wide metrics:   $generate_wide_metric\",\"Accept wide metrics:     $accept_wide_metric\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process_id:string\",\"$system_id:string\",\"$is_type:string\",\"$manual_area_addr:string\",\"$routing_for_area_address:string\",\"$l2_routes_distance:string\",\"$generate_narrow_metric:string\",\"$accept_narrow_metric:string\",\"$generate_wide_metric:string\",\"$accept_wide_metric:string\"]},\"xxid\":\"eb78dac1-9f98-7579-4a49-8bf58138eb3f\"},{\"type\":\"4\",\"name\":\"intfs_support\",\"keyVariables\":null,\"startLine\":\"regex[$intf,$addr_family]:\\\\s+(\\\\S+)\\\\s+\\\\-\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$addr_family:string\"]},\"xxid\":\"ca98c217-15a0-7378-c5fa-6b5f18f58cc7\"}]},\"xxid\":\"3603bd4b-d453-4288-55a3-dce415719d43\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]},{\"type\":\"4\",\"name\":\"redistributes\",\"keyVariables\":null,\"startLine\":\"mregex[$protocol]:\\\\s+Redistribute\\\\:(.*)\\\\n\\\\s+Distance\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$protocol:string\"]},\"xxid\":\"859b0bde-a577-d88a-e752-7ae1f9f43e2f\"}]},\"xxid\":\"36f4e70c-bac0-a1b0-cda7-8ebc72e213cb\"}]},\"xxid\":\"02d931be-89cc-0fae-dbff-d83976a067ba\",\"hashColumns\":[\"$process_id\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"be3edf11-ac69-436e-7f73-b17b252a0e7e\"}]}",
+            "tableKeys": [
+                "_original_result.protocols.$process_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "is_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "manual_area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "routing_for_area_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "l2_routes_distance",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "generate_narrow_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "accept_narrow_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "generate_wide_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "accept_wide_metric",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "protocols",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "addr_family",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "is_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "manual_area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "routing_for_area_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "l2_routes_distance",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "generate_narrow_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "accept_narrow_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "generate_wide_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "accept_wide_metric",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "intfs_support",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "is_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "manual_area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "routing_for_area_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "l2_routes_distance",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "generate_narrow_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "accept_narrow_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "generate_wide_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "accept_wide_metric",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "redistributes",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0a573e870f3d25c03e019da10cce4dc6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "protocols",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "protocols",
+            "intfKey": false,
+            "name": "protocols",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "protocols.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$is_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$is_type",
+            "intfKey": false,
+            "name": "$is_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$manual_area_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$manual_area_addr",
+            "intfKey": false,
+            "name": "$manual_area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$routing_for_area_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$routing_for_area_address",
+            "intfKey": false,
+            "name": "$routing_for_area_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$l2_routes_distance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$l2_routes_distance",
+            "intfKey": false,
+            "name": "$l2_routes_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$generate_narrow_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$generate_narrow_metric",
+            "intfKey": false,
+            "name": "$generate_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$accept_narrow_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$accept_narrow_metric",
+            "intfKey": false,
+            "name": "$accept_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$generate_wide_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$generate_wide_metric",
+            "intfKey": false,
+            "name": "$generate_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$accept_wide_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$accept_wide_metric",
+            "intfKey": false,
+            "name": "$accept_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support",
+            "intfKey": false,
+            "name": "intfs_support",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intfs_support.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intfs_support.$addr_family",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$addr_family",
+            "intfKey": false,
+            "name": "$addr_family",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$is_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$is_type",
+            "intfKey": false,
+            "name": "$is_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$manual_area_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$manual_area_addr",
+            "intfKey": false,
+            "name": "$manual_area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$routing_for_area_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$routing_for_area_address",
+            "intfKey": false,
+            "name": "$routing_for_area_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$l2_routes_distance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$l2_routes_distance",
+            "intfKey": false,
+            "name": "$l2_routes_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$generate_narrow_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$generate_narrow_metric",
+            "intfKey": false,
+            "name": "$generate_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$accept_narrow_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$accept_narrow_metric",
+            "intfKey": false,
+            "name": "$accept_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$generate_wide_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$generate_wide_metric",
+            "intfKey": false,
+            "name": "$generate_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_support.$accept_wide_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.intfs_support.$accept_wide_metric",
+            "intfKey": false,
+            "name": "$accept_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes",
+            "intfKey": false,
+            "name": "redistributes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "redistributes.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$is_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$is_type",
+            "intfKey": false,
+            "name": "$is_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$manual_area_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$manual_area_addr",
+            "intfKey": false,
+            "name": "$manual_area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$routing_for_area_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$routing_for_area_address",
+            "intfKey": false,
+            "name": "$routing_for_area_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$l2_routes_distance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$l2_routes_distance",
+            "intfKey": false,
+            "name": "$l2_routes_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$generate_narrow_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$generate_narrow_metric",
+            "intfKey": false,
+            "name": "$generate_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$accept_narrow_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$accept_narrow_metric",
+            "intfKey": false,
+            "name": "$accept_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$generate_wide_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$generate_wide_metric",
+            "intfKey": false,
+            "name": "$generate_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redistributes.$accept_wide_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.redistributes.$accept_wide_metric",
+            "intfKey": false,
+            "name": "$accept_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,483 @@
+{
+    "_id": "ccc08a46-71a6-3599-7eb1-9ca801cf4491",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys hardware",
+    "createTime": {
+        "$date": 1579705554568
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys hardware",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip1)(cfg-sync In Sync)(Standby)(/Common)(tmos)# show sys hardware\r\n\r\nChassis Information\r\n  Maximum MAC Count  1\r\n  Registration Key   -\r\n\r\nHardware Version Information\r\n  Name        cpus\r\n  Type        base-board\r\n  Model       QEMU Virtual CPU version 1.0\r\n  Parameters  --          --\r\n              cache size  4096 KB\r\n              cores       1\r\n              cpu MHz     2300.000\r\n \r\n\r\nPlatform\r\n  Name           BIG-IP Virtual Edition\r\n  BIOS Revision  10.1.0\r\n  Base MAC       00:50:00:00:10:00\r\n\r\nSystem Information\r\n  Type                       Z100\r\n  Chassis Serial             a3cb11a0-c761-4331-b19112ee848d\r\n  Level 200/400 Part         1\r\n  Switchboard Serial         2\r\n  Switchboard Part Revision  3\r\n  Host Board Serial          4\r\n  Host Board Part Revision   5\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"platform_filter\",\"startLine\":\"Platform\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"6da68b07-8929-c28f-edb6-181413011ff9\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$platform_name]:Name\\\\s+(.*)\",\"regex[$platform_bios_revision]:BIOS Revision\\\\s+(.*)\",\"regex[$platform_base_mac]:Base MAC\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$platform_name:string\",\"$platform_bios_revision:string\",\"$platform_base_mac:string\"]},\"xxid\":\"28471f50-4fbc-a6f4-90c5-73272304f400\"}]},\"xxid\":\"6bbb37b6-333e-67d4-9c2f-fd64d5562ee2\"},{\"type\":\"1\",\"name\":\"chassis_filter\",\"startLine\":\"Chassis Information\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"7e21b8f6-a1d3-ce43-37ef-06a85cd7861f\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$chasis_maximum_mac_count]:Maximum MAC Count\\\\s+(.*)\",\"regex[$chasis_registration_key]:Registration Key\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$chasis_maximum_mac_count:string\",\"$chasis_registration_key:string\"]},\"xxid\":\"2cd6a4c8-66d1-f450-2a3b-6949e94ced0d\"}]},\"xxid\":\"be092266-658e-47cd-e5ff-57bc8141d8f7\"},{\"type\":\"1\",\"name\":\"hardware_fitler\",\"startLine\":\"Hardware Version Information\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"1002825d-bc7e-4431-a7ab-a618387a6736\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$hardware_name]:Name\\\\s+(.*)\",\"regex[$hardware_type]:Type\\\\s+(.*)\",\"regex[$hardware_model]:Model\\\\s+(.*)\",\"regex[$cpu_cache]:^\\\\s+cache size\\\\s+(.*)\",\"regex[$cpu_cores]:^\\\\s+cores\\\\s+(.*)\",\"regex[$cpu_mhz]:^\\\\s+cpu MHz\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$hardware_name:string\",\"$hardware_type:string\",\"$hardware_model:string\",\"$cpu_cache:string\",\"$cpu_cores:string\",\"$cpu_mhz:string\"]},\"xxid\":\"0327afab-a29e-cba7-f051-2db1444fbc38\"}]},\"xxid\":\"d453e97f-08ff-e8b5-e06f-4118c74ea499\"},{\"type\":\"1\",\"name\":\"sys_info_filter\",\"startLine\":\"System Information\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"c89b9f60-0be6-60d1-c4d0-917a88d83d70\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$sys_chassis_type]:Type\\\\s+(.*)\",\"regex[$sys_chassis_serial]:Chassis Serial\\\\s+(.*)\",\"regex[$sys_level_part]:Level 200/400 Part\\\\s+(.*)\",\"regex[$sys_switchboard_serial]:Switchboard Serial\\\\s+(.*)\",\"regex[$sys_switchboard_part_revision]:Switchboard Part Revision\\\\s+(.*)\",\"regex[$sys_host_board_serial]:Host Board Serial\\\\s+(.*)\",\"regex[$sys_host_board_part_revision]:Host Board Part Revision\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sys_chassis_type:string\",\"$sys_chassis_serial:string\",\"$sys_level_part:string\",\"$sys_switchboard_serial:string\",\"$sys_switchboard_part_revision:string\",\"$sys_host_board_serial:string\",\"$sys_host_board_part_revision:string\"]},\"xxid\":\"edf80e80-a7e6-3a61-bdf6-8a5b5edef97e\"}]},\"xxid\":\"4183c9e3-52c1-1f2a-5792-e3065947d1ec\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "platform_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "platform_name",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "platform_bios_revision",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "platform_base_mac",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "chassis_filter",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "chasis_maximum_mac_count",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "chasis_registration_key",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "hardware_fitler",
+                "type": 4
+            },
+            {
+                "index": 8,
+                "name": "hardware_name",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "hardware_type",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "hardware_model",
+                "type": 4
+            },
+            {
+                "index": 11,
+                "name": "cpu_cache",
+                "type": 4
+            },
+            {
+                "index": 12,
+                "name": "cpu_cores",
+                "type": 4
+            },
+            {
+                "index": 13,
+                "name": "cpu_mhz",
+                "type": 4
+            },
+            {
+                "index": 14,
+                "name": "sys_info_filter",
+                "type": 4
+            },
+            {
+                "index": 15,
+                "name": "sys_chassis_type",
+                "type": 4
+            },
+            {
+                "index": 16,
+                "name": "sys_chassis_serial",
+                "type": 4
+            },
+            {
+                "index": 17,
+                "name": "sys_level_part",
+                "type": 4
+            },
+            {
+                "index": 18,
+                "name": "sys_switchboard_serial",
+                "type": 4
+            },
+            {
+                "index": 19,
+                "name": "sys_switchboard_part_revision",
+                "type": 4
+            },
+            {
+                "index": 20,
+                "name": "sys_host_board_serial",
+                "type": 4
+            },
+            {
+                "index": 21,
+                "name": "sys_host_board_part_revision",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "390eaa098dc8606ac91fc383e319fb9c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "platform_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "platform_filter",
+            "intfKey": false,
+            "name": "platform_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$platform_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "platform_filter.$platform_name",
+            "intfKey": false,
+            "name": "$platform_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$platform_bios_revision",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "platform_filter.$platform_bios_revision",
+            "intfKey": false,
+            "name": "$platform_bios_revision",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$platform_base_mac",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "platform_filter.$platform_base_mac",
+            "intfKey": false,
+            "name": "$platform_base_mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "chassis_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "chassis_filter",
+            "intfKey": false,
+            "name": "chassis_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$chasis_maximum_mac_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "chassis_filter.$chasis_maximum_mac_count",
+            "intfKey": false,
+            "name": "$chasis_maximum_mac_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$chasis_registration_key",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "chassis_filter.$chasis_registration_key",
+            "intfKey": false,
+            "name": "$chasis_registration_key",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_fitler",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hardware_fitler",
+            "intfKey": false,
+            "name": "hardware_fitler",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hardware_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hardware_fitler.$hardware_name",
+            "intfKey": false,
+            "name": "$hardware_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hardware_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hardware_fitler.$hardware_type",
+            "intfKey": false,
+            "name": "$hardware_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hardware_model",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hardware_fitler.$hardware_model",
+            "intfKey": false,
+            "name": "$hardware_model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu_cache",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hardware_fitler.$cpu_cache",
+            "intfKey": false,
+            "name": "$cpu_cache",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu_cores",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hardware_fitler.$cpu_cores",
+            "intfKey": false,
+            "name": "$cpu_cores",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu_mhz",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "hardware_fitler.$cpu_mhz",
+            "intfKey": false,
+            "name": "$cpu_mhz",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_info_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter",
+            "intfKey": false,
+            "name": "sys_info_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_chassis_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter.$sys_chassis_type",
+            "intfKey": false,
+            "name": "$sys_chassis_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_chassis_serial",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter.$sys_chassis_serial",
+            "intfKey": false,
+            "name": "$sys_chassis_serial",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_level_part",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter.$sys_level_part",
+            "intfKey": false,
+            "name": "$sys_level_part",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_switchboard_serial",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter.$sys_switchboard_serial",
+            "intfKey": false,
+            "name": "$sys_switchboard_serial",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_switchboard_part_revision",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter.$sys_switchboard_part_revision",
+            "intfKey": false,
+            "name": "$sys_switchboard_part_revision",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_host_board_serial",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter.$sys_host_board_serial",
+            "intfKey": false,
+            "name": "$sys_host_board_serial",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_host_board_part_revision",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_info_filter.$sys_host_board_part_revision",
+            "intfKey": false,
+            "name": "$sys_host_board_part_revision",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,216 @@
+{
+    "_id": "422c6382-f930-99e8-1e02-2631c745b95f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display isis lsdb",
+    "createTime": {
+        "$date": 1590769165680
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay isis lsdp",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<R1>display isis lsdb\r\n\r\n                       Database information for IS-IS(80)\r\n                       ----------------------------------\r\n\r\n                          Level-1 Link State Database\r\n                          ---------------------------\r\n\r\nLSPID                 Seq Num      Checksum      Holdtime      Length  ATT/P/OL\r\n-------------------------------------------------------------------------------\r\n0000.0000.0001.00-00  0x00000004   0x20fb        1166          68      0/0/0\r\n0000.0000.0001.01-00  0x00000001   0xb5d7        1166          55      0/0/0\r\n0000.0000.0002.00-00* 0x00000004   0xa12         1187          68      0/0/0\r\n\r\n    *-Self LSP, +-Self LSP(Extended), ATT-Attached, P-Partition, OL-Overload\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"isis_lsdp\",\"headers\":\"LSPID;Seq Num;Checksum;Holdtime;Length;ATT/P/OL\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"LSPID:$string:lspid;Seq Num:$string:seq_num;Checksum:$string:checksum;Holdtime:$string:holdtime;Length:$string:length;ATT/P/OL:$string:att_p_ol\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$lspid:string\",\"$seq_num:string\",\"$checksum:string\",\"$holdtime:string\",\"$length:string\",\"$att_p_ol:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"cf2ec4cc-0edb-d479-4e6b-ad8c8d3c3fb0\",\"hashColumns\":[\"$lspid\"]}]}",
+            "tableKeys": [
+                "_original_result.isis_lsdp.$lspid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "lspid",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "seq_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "holdtime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "length",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "att_p_ol",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$lspid"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_lsdp",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d6d6fa5e43709642360a963aa373e7d5",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_lsdp",
+            "dataType": "table",
+            "desc": "ISIS database table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$lspid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_lsdp",
+            "intfKey": false,
+            "name": "isis_lsdp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_lsdp.$lspid",
+            "dataType": "string",
+            "desc": "\"The LSP identifier. The first six octets form the system ID of the router that originated the LSP.\nThe next octet is the pseudonode ID. When this byte is nonzero, the LSP describes links from the system. When it is zero, the LSP is a so-called nonpseudonode LSP. This mechanism is similar to a router link-state advertisement (LSA) in the Open Shortest Path First (OSPF) protocol. The LSP will describe the state of the originating router.\nFor each LAN, the designated router for that LAN will create and flood a pseudonode LSP, describing all systems attached to that LAN.\nThe last octet is the LSP number. If there is more data than can fit in a single LSP, the LSP will be divided into multiple LSP fragments. Each fragment will have a different LSP number. An asterisk (*) indicates that the LSP was originated by the system on which this command is issued.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_lsdp.$lspid",
+            "intfKey": false,
+            "name": "$lspid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_lsdp.$seq_num",
+            "dataType": "string",
+            "desc": "Sequence number for the LSP that allows other systems to determine if they have received the latest information from the source.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_lsdp.$seq_num",
+            "intfKey": false,
+            "name": "$seq_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_lsdp.$checksum",
+            "dataType": "string",
+            "desc": "Checksum of the entire LSP packet.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_lsdp.$checksum",
+            "intfKey": false,
+            "name": "$checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_lsdp.$holdtime",
+            "dataType": "string",
+            "desc": "Amount of time the LSP remains valid (in seconds). An LSP hold time of zero indicates that this LSP was purged and is being removed from the link-state database (LSDB) of all routers. The value indicates how long the purged LSP will stay in the LSDB before being completely removed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_lsdp.$holdtime",
+            "intfKey": false,
+            "name": "$holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_lsdp.$length",
+            "dataType": "string",
+            "desc": "Length of the LSP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_lsdp.$length",
+            "intfKey": false,
+            "name": "$length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_lsdp.$att_p_ol",
+            "dataType": "string",
+            "desc": "\"The Attach bit. This bit indicates that the router is also a Level 2 router, and it can reach other areas. Level 1-only routers and Level 1-2 routers that have lost connection to other Level 2 routers will use the Attach bit to find the closest Level 2 router. They will point a default route to the closest Level 2 router.\nThe P bit. Detects if the intermediate systems is area partition repair-capable. Cisco and other vendors do not support area partition repair.\nThe Overload bit. Determines if the IS is congested. If the Overload bit is set, other routers will not use this system as a transit router when calculating routers. Only packets for destinations directly connected to the overloaded router will be sent to this router.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_lsdp.$att_p_ol",
+            "intfKey": false,
+            "name": "$att_p_ol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

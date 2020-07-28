@@ -1,0 +1,269 @@
+{
+    "_id": "5b002892-453b-b887-fd67-7cdebf2da2f3",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip interface",
+    "createTime": {
+        "$date": 1581007174770
+    },
+    "description": "Device Type:\nArista Switch\nCommand: \nshow ip interface",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R1>show ip interface\r\nEthernet1 is up, line protocol is up (connected)\r\n  Internet address is 172.27.128.5/28\r\n  Broadcast address is 255.255.255.255\r\n  Address determined by manual configuration\r\n  Proxy-ARP is disabled\r\n  Local Proxy-ARP is disabled\r\n  IP MTU 1500 bytes\r\nManagement1 is up, line protocol is up (connected)\r\n  No Internet protocol address assigned\r\n  IP MTU 1500 bytes\r\n  VPN Routing/Forwarding \"vrf-aa\"\r\nVlan100 is down, line protocol is lowerlayerdown (notconnect)\r\n  Internet address is 192.168.100.1/24\r\n  Broadcast address is 255.255.255.255\r\n  Address determined by manual configuration\r\n  Proxy-ARP is disabled\r\n  Local Proxy-ARP is disabled\r\n  IP MTU 1500 bytes\r\nVlan50 is down, line protocol is lowerlayerdown (notconnect)\r\n  Internet address is 10.10.4.1/24\r\n  Broadcast address is 255.255.255.255\r\n  Address determined by manual configuration\r\n  Proxy-ARP is disabled\r\n  Local Proxy-ARP is disabled\r\n  IP MTU 1500 bytes\r\nVlan70 is down, line protocol is lowerlayerdown (notconnect)\r\n  Internet address is 10.10.5.1/24\r\n  Broadcast address is 255.255.255.255\r\n  Address determined by manual configuration\r\n  Proxy-ARP is disabled\r\n  Local Proxy-ARP is disabled\r\n  IP MTU 1500 bytes",
+            "devName": "R1",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intf_table\",\"keyVariables\":null,\"startLine\":\"regex:^\\\\S+\\\\s+is\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$intf]:^(\\\\S+)\\\\s+is\",\"regex[$ip_addr]:Internet address\\\\s+is (\\\\S+)\",\"regex[$broadcast_addr]:Broadcast address\\\\s+is (\\\\S+)\",\"regex[$int:mtu]:MTU\\\\s+(\\\\S+)\",\"regex[$admin]:\\\\S+\\\\s+is\\\\s+(\\\\S+.+?),\",\"regex[$protocol]:line protocol is\\\\s+(\\\\S+)\",\"regex[$ip_proxy_arp]:Proxy-ARP is (\\\\S+)\",\"regex[$ip_local_proxy_arp]:Local Proxy-ARP is (\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$ip_addr:string\",\"$broadcast_addr:string\",\"$mtu:int\",\"$admin:string\",\"$protocol:string\",\"$ip_proxy_arp:string\",\"$ip_local_proxy_arp:string\"]},\"xxid\":\"92228b3c-6216-34ae-bc4e-603f341b8350\"}]},\"xxid\":\"8bcef553-6531-9af2-61c5-0be8b0b5d8d5\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$admin\",\"$protocol\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"1b4f4bc3-2156-fdf2-8a1f-da7ea2e340b3\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "broadcast_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "admin",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ip_proxy_arp",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "ip_local_proxy_arp",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin",
+                    "$intf",
+                    "$protocol"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c62d57ac3522c2bd7efef4f392e2231a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intf_table",
+            "dataType": "paragraph",
+            "desc": "Interface information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$admin",
+                    "$protocol"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intf_table",
+            "intfKey": false,
+            "name": "intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intf_table.$intf",
+            "dataType": "string",
+            "desc": "Interface name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intf_table.$ip_addr",
+            "dataType": "string",
+            "desc": "Ip Address of interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$broadcast_addr",
+            "dataType": "string",
+            "desc": "Broadcast address of interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$broadcast_addr",
+            "intfKey": false,
+            "name": "$broadcast_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$mtu",
+            "dataType": "int",
+            "desc": "Maximum Transmission Unit of interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$admin",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$admin",
+            "intfKey": false,
+            "name": "$admin",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$protocol",
+            "dataType": "string",
+            "desc": "The operational status of the routing protocol on interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$ip_proxy_arp",
+            "dataType": "string",
+            "desc": "Status of whether Proxy Address Resolution Protocol (ARP) is enabled for the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$ip_proxy_arp",
+            "intfKey": false,
+            "name": "$ip_proxy_arp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$ip_local_proxy_arp",
+            "dataType": "string",
+            "desc": "Status of whether Local Proxy Address Resolution Protocol (ARP) is enabled for the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$ip_local_proxy_arp",
+            "intfKey": false,
+            "name": "$ip_local_proxy_arp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

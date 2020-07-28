@@ -1,0 +1,449 @@
+{
+    "_id": "2b7e8249-6200-9908-ffbe-327bec9ac120",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router status",
+    "createTime": {
+        "$date": 1583873642494
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router status",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:PE_SR2#show router status \r\n\r\n===============================================================================\r\nRouter Status (Router: Base)\r\n===============================================================================\r\n                         Admin State                        Oper State\r\n-------------------------------------------------------------------------------\r\nRouter                   Up                                 Up\r\nOSPFv2-0                 Up                                 Up\r\nOSPFv2-20                Up                                 Up\r\nRIP                      Not configured                     Not configured\r\nRIP-NG                   Not configured                     Not configured\r\nISIS                     Not configured                     Not configured\r\nMPLS                     Not configured                     Not configured\r\nRSVP                     Not configured                     Not configured\r\nLDP                      Up                                 Up\r\nBGP                      Up                                 Up\r\nIGMP                     Not configured                     Not configured\r\nMLD                      Not configured                     Not configured\r\nPIM                      Not configured                     Not configured\r\nPIMv4                    Not configured                     Not configured\r\nPIMv6                    Not configured                     Not configured\r\nOSPFv3                   Up                                 Up\r\nMSDP                     Not configured                     Not configured\r\nBIER                     Not configured                     Not configured\r\n \r\nMax IPv4 Routes          No Limit                            \r\nMax IPv6 Routes          No Limit                            \r\nTotal IPv4 Routes        1236                                \r\nTotal IPv6 Routes        0                                   \r\nMax Multicast Routes     No Limit                            \r\nTotal IPv4 Mcast Routes  PIM not configured                  \r\nTotal IPv6 Mcast Routes  PIM not configured                  \r\nECMP Max Routes          ECMP not configured                 \r\nWeighted ECMP            Disabled                            \r\nMcast Info Policy        default                             \r\nTriggered Policies       No                                  \r\nPolicy reference checks  Disabled                            \r\nLDP Shortcut             Disabled                            \r\nSingle SFM Overload      Disabled                            \r\nIP Fast Reroute          Disabled                            \r\nEntropy Label            Disabled                           \r\nICMP Tunneling           Disabled                            \r\nIpv6 Nbr Reachab. time   Not configured                     30\r\nIPv6 Nbr stale time (s)  14400                              \r\nStatic Route Hold Down   Disabled                           \r\nTTL Propagate                                               \r\n    VPRN Local           vc-only                            \r\n    VPRN Transit         vc-only                            \r\n    Label Route Local    none                               \r\n    Label Route Transit  none                               \r\n    LSR Label Route      none                               \r\nLSP BFD Tail Sessions    Disabled                           \r\nClass Forwarding         Disabled                           \r\nMtrace2 Tests            Disabled                           \r\nLeak Export              Disabled                           \r\nLeak Export Limit        5                                  \r\n===============================================================================\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"router_status_filter\",\"startLine\":\"Admin State                        Oper State\",\"endLine\":\"Max IPv4 Routes          No Limit\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":{\"excludeLine\":\"-------------------------------------------------------------------------------\"},\"filterLoop\":\"1\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"64dd4f80-6140-f98a-3729-bf820a072979\"},{\"type\":\"4\",\"name\":\"router_status_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$protocol]:^(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$admin_state]:^\\\\S+\\\\s+((?:\\\\S+\\\\s\\\\S+)|(?:\\\\S+))\",\"regex[$oper_state]:^\\\\S+\\\\s+(?:(?:\\\\S+\\\\s\\\\S+)|(?:\\\\S+))\\\\s+((?:\\\\S+\\\\s\\\\S+)|(?:\\\\S+))\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$protocol:string\",\"$admin_state:string\",\"$oper_state:string\"]},\"xxid\":\"b2eef360-d3c8-5826-35b3-d574d103dcac\"}]},\"xxid\":\"e03f1ce1-8a15-0510-c7ea-cbd2273802bd\",\"hashColumns\":[\"$protocol\",\"$admin_state\",\"$oper_state\"],\"hashSort\":false}]},\"xxid\":\"716266a8-3284-d31a-c995-87551a459a2d\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$max_ipv4_routes]:Max IPv4 Routes\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$max_ipv6_routes]:Max IPv6 Routes\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$total_ipv4_routes]:Total IPv4 Routes\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$total_ipv6_routes]:Total IPv6 Routes\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$max_multicast_routes]:Max Multicast Routes\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$total_ipv4_mcast_routes]:Total IPv4 Mcast Routes\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$ecmp_max_routers]:ECMP Max Routes\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$mcast_info_policy]:Mcast Info Policy\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$triggered_policies]:Triggered Policies\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$ldp_shortcut]:LDP Shortcut\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$single_sfm_overload]:Single SFM Overload\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$ip_fast_reroute]:IP Fast Reroute\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$reassembly_isa_bb_group]:Reassembly ISA-BB group\\\\s+(\\\\w[\\\\s\\\\w]+?)\\\\s\\\\s\",\"regex[$ipv6_nbr_reachab_time]:Ipv6 Nbr Reachab. time\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$max_ipv4_routes:string\",\"$max_ipv6_routes:string\",\"$total_ipv4_routes:string\",\"$total_ipv6_routes:string\",\"$max_multicast_routes:string\",\"$total_ipv4_mcast_routes:string\",\"$ecmp_max_routers:string\",\"$mcast_info_policy:string\",\"$triggered_policies:string\",\"$ldp_shortcut:string\",\"$single_sfm_overload:string\",\"$ip_fast_reroute:string\",\"$reassembly_isa_bb_group:string\",\"$ipv6_nbr_reachab_time:string\"]},\"xxid\":\"05bd149c-deb4-e800-bb48-323a7c776281\"}]}",
+            "tableKeys": [
+                "_original_result.router_status_filter.router_status_table.$protocol"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "router_status_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "max_ipv4_routes",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "max_ipv6_routes",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "total_ipv4_routes",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "total_ipv6_routes",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "max_multicast_routes",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "total_ipv4_mcast_routes",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "ecmp_max_routers",
+                "type": 4
+            },
+            {
+                "index": 8,
+                "name": "mcast_info_policy",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "triggered_policies",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "ldp_shortcut",
+                "type": 4
+            },
+            {
+                "index": 11,
+                "name": "single_sfm_overload",
+                "type": 4
+            },
+            {
+                "index": 12,
+                "name": "ip_fast_reroute",
+                "type": 4
+            },
+            {
+                "index": 13,
+                "name": "reassembly_isa_bb_group",
+                "type": 4
+            },
+            {
+                "index": 14,
+                "name": "ipv6_nbr_reachab_time",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "oper_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_state",
+                    "$oper_state",
+                    "$protocol"
+                ],
+                "hashSort": false,
+                "index": 15,
+                "name": "router_status_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1439a37f4b47d3e3564a4eb315e8dcac",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "router_status_filter",
+            "dataType": "filter",
+            "desc": "Router status filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_status_filter",
+            "intfKey": false,
+            "name": "router_status_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_status_table",
+            "dataType": "paragraph",
+            "desc": "Router status table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$protocol",
+                    "$admin_state",
+                    "$oper_state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "router_status_filter.router_status_table",
+            "intfKey": false,
+            "name": "router_status_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "router_status_table.$protocol",
+            "dataType": "string",
+            "desc": "Protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_status_filter.router_status_table.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_status_table.$admin_state",
+            "dataType": "string",
+            "desc": "Administrative state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_status_filter.router_status_table.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_status_table.$oper_state",
+            "dataType": "string",
+            "desc": "Operational state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "router_status_filter.router_status_table.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_ipv4_routes",
+            "dataType": "string",
+            "desc": "The maximum number of ipv4 routes configured for the system.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_ipv4_routes",
+            "intfKey": false,
+            "name": "$max_ipv4_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_ipv6_routes",
+            "dataType": "string",
+            "desc": "The maximum number of ipv6 routes configured for the system.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_ipv6_routes",
+            "intfKey": false,
+            "name": "$max_ipv6_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_ipv4_routes",
+            "dataType": "string",
+            "desc": "The total number of ipv4 routes in the route table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_ipv4_routes",
+            "intfKey": false,
+            "name": "$total_ipv4_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_ipv6_routes",
+            "dataType": "string",
+            "desc": "The total number of ipv6 routes in the route table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_ipv6_routes",
+            "intfKey": false,
+            "name": "$total_ipv6_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_multicast_routes",
+            "dataType": "string",
+            "desc": "The maximum number of multicast routes configured for the system.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_multicast_routes",
+            "intfKey": false,
+            "name": "$max_multicast_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_ipv4_mcast_routes",
+            "dataType": "string",
+            "desc": "The total number of multicast routes in the route table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_ipv4_mcast_routes",
+            "intfKey": false,
+            "name": "$total_ipv4_mcast_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ecmp_max_routers",
+            "dataType": "string",
+            "desc": "The number of ECMP routes configured for path sharing.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ecmp_max_routers",
+            "intfKey": false,
+            "name": "$ecmp_max_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$mcast_info_policy",
+            "dataType": "string",
+            "desc": "Multicast policy",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mcast_info_policy",
+            "intfKey": false,
+            "name": "$mcast_info_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$triggered_policies",
+            "dataType": "string",
+            "desc": "Triggered route policy re-evaluation",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$triggered_policies",
+            "intfKey": false,
+            "name": "$triggered_policies",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ldp_shortcut",
+            "dataType": "string",
+            "desc": "LDP shortcut",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ldp_shortcut",
+            "intfKey": false,
+            "name": "$ldp_shortcut",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$single_sfm_overload",
+            "dataType": "string",
+            "desc": "Single sfm overload",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$single_sfm_overload",
+            "intfKey": false,
+            "name": "$single_sfm_overload",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_fast_reroute",
+            "dataType": "string",
+            "desc": "Ip fast reroute",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_fast_reroute",
+            "intfKey": false,
+            "name": "$ip_fast_reroute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$reassembly_isa_bb_group",
+            "dataType": "string",
+            "desc": "Reassembly ISA-BB group",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$reassembly_isa_bb_group",
+            "intfKey": false,
+            "name": "$reassembly_isa_bb_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ipv6_nbr_reachab_time",
+            "dataType": "string",
+            "desc": "Ipv6 neighbor reachable time",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ipv6_nbr_reachab_time",
+            "intfKey": false,
+            "name": "$ipv6_nbr_reachab_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

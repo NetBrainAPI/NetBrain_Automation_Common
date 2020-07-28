@@ -1,0 +1,189 @@
+{
+    "_id": "11246f18-5738-3c25-401c-e78b182505aa",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys ha-status",
+    "createTime": {
+        "$date": 1579627088069
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys ha-status",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip2)(cfg-sync In Sync)(Active)(/Common)(tmos)# show sys ha-status\n\n--------------------------------------------------------------\nSys::HA Status\nFeature           Key       Action                        Fail\n--------------------------------------------------------------\nconfig-not-recvd  sod       go-offline                    no\ndaemon-heartbeat  bigd      restart                       no\ndaemon-heartbeat  cbrd      restart                       no\ndaemon-heartbeat  mcpd      restart-all                   no\ndaemon-heartbeat  scriptd   restart                       no\ndaemon-heartbeat  snmpd     restart                       no\ndaemon-heartbeat  sod       restart-all                   no\ndaemon-heartbeat  tmm       go-offline-downlinks-restart  no\ndaemon-heartbeat  tmrouted  restart                       no\ndaemon-heartbeat  vxland    restart                       no\ndaemon-heartbeat  wccpd     restart                       no\nforced-offline    sod       none                          no\nlicense-invalid   mcpd      go-offline-downlinks          no\noverdog-ctrl      watchdog  none                          no\nproc-run          bigd      go-offline-downlinks          no\nproc-run          mcpd      go-offline-downlinks          no\nproc-run          named     go-offline-downlinks          no\nproc-run          tmm       go-offline-downlinks          no\nproc-run          tmrouted  failover                      no\nready-for-world   tmm       none                          no\nreboot-request    sod       reboot                        no\nsoftware-update   lind      reboot                        no\ntmm-detect-fail   tmm       failover                      no\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"ha_status_table\",\"headers\":\"Feature;Key;Action;Fail\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Feature:$string:feature;Key:$string:key;Action:$string:action;Fail:$string:fail\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$feature:string\",\"$key:string\",\"$action:string\",\"$fail:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"61fdfb2a-fc48-81fe-c571-c056674fe750\",\"hashColumns\":[\"$feature\",\"$fail\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"49fe7efa-a390-1b5d-52e4-8e0e042214bd\"}]}",
+            "tableKeys": [
+                "_original_result.ha_status_table.$feature"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "feature",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "key",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "action",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "fail",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$fail",
+                    "$feature"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ha_status_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "63831a7ba14e505d7a440e2c80417917",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ha_status_table",
+            "dataType": "table",
+            "desc": "HA status table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$feature",
+                    "$fail"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ha_status_table",
+            "intfKey": false,
+            "name": "ha_status_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ha_status_table.$feature",
+            "dataType": "string",
+            "desc": "The HA's feature.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status_table.$feature",
+            "intfKey": false,
+            "name": "$feature",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status_table.$key",
+            "dataType": "string",
+            "desc": "The HA's key.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status_table.$key",
+            "intfKey": false,
+            "name": "$key",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status_table.$action",
+            "dataType": "string",
+            "desc": "The action of HA device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status_table.$action",
+            "intfKey": false,
+            "name": "$action",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status_table.$fail",
+            "dataType": "string",
+            "desc": "The fail status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status_table.$fail",
+            "intfKey": false,
+            "name": "$fail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

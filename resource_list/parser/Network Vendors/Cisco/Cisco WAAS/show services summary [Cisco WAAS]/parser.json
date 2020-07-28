@@ -1,0 +1,128 @@
+{
+    "_id": "7447e736-8bb0-0ebf-bf13-5748e4676c92",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show services summary",
+    "createTime": {
+        "$date": 1591100086728
+    },
+    "description": "Device Type:\nCisco WAAS\nCommand:\nshow services summary",
+    "devTypes": [
+        10532
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "WAE# show services summary\r\nService         Ports\r\n-----------------------------------------------------\r\nCMS             1100 5256\r\nNLM             4045\r\nWAFS            1099\r\nemdb            5432\r\nMOUNT           3058\r\nMgmtAgent       5252\r\nWAFS_tunnel     4050\r\nCMS_db_vacuum   5257",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"service_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$service_name, $service_ports]:(\\\\S+)\\\\s+(\\\\d+.+?)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$service_name:string\",\"$service_ports:string\"]},\"xxid\":\"12124475-b003-e088-fd92-948f89e1d432\"}]},\"xxid\":\"4b55f40a-d6b7-2a4a-d6f0-2f706bf8fbf3\",\"hashColumns\":[\"$service_name\",\"$service_ports\"]}]}",
+            "tableKeys": [
+                "_original_result.service_table.$service_name",
+                "_original_result.service_table.$service_ports"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "service_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "service_ports",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$service_name",
+                    "$service_ports"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "service_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "557e9977606263d4dc59c306df5702dc",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "service_table",
+            "dataType": "paragraph",
+            "desc": "Service table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$service_name",
+                    "$service_ports"
+                ],
+                "hashSort": false
+            },
+            "fullName": "service_table",
+            "intfKey": false,
+            "name": "service_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "service_table.$service_name",
+            "dataType": "string",
+            "desc": "Service name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "service_table.$service_name",
+            "intfKey": false,
+            "name": "$service_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "service_table.$service_ports",
+            "dataType": "string",
+            "desc": "Service ports",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "service_table.$service_ports",
+            "intfKey": false,
+            "name": "$service_ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

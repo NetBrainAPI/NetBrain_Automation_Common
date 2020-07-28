@@ -1,0 +1,617 @@
+{
+    "_id": "d27ff71e-9ff8-cdde-8dd9-8d0306afbcdc",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ltm node recursive",
+    "createTime": {
+        "$date": 1579625344633
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow ltm node recursive",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip2)(cfg-sync In Sync)(Active)(/Common)(tmos)# show ltm node recursive\n\n------------------------------------------\nLtm::Node: www-server-1 (172.27.129.19)\n------------------------------------------\nStatus               \n  Availability   : available\n  State          : enabled\n  Reason         : Node address is available\n  Monitor        : icmp\n  Monitor Status : up\n  Session Status : enabled\n                     \nTraffic                ServerSide  General\n  Bits In                    4.1K        -\n  Bits Out                   2.7K        -\n  Packets In                    6        -\n  Packets Out                   5        -\n  Current Connections           0        -\n  Maximum Connections           1        -\n  Total Connections             1        -\n  Total Requests                -        0\n  Current Sessions              -        0\n\n------------------------------------------\nLtm::Node: www-server-2 (172.27.129.20)\n------------------------------------------\nStatus               \n  Availability   : available\n  State          : enabled\n  Reason         : Node address is available\n  Monitor        : icmp\n  Monitor Status : up\n  Session Status : enabled\n                     \nTraffic                ServerSide  General\n  Bits In                   16.7K        -\n  Bits Out                  43.1K        -\n  Packets In                   24        -\n  Packets Out                  24        -\n  Current Connections           0        -\n  Maximum Connections           1        -\n  Total Connections             4        -\n  Total Requests                -        0\n  Current Sessions              -        0\n\n------------------------------------------\nLtm::Node: www-server-3 (172.27.129.21)\n------------------------------------------\nStatus               \n  Availability   : offline\n  State          : enabled\n  Reason         : icmp: Failed to succeed before deadline. @2017/05/20 11:57:01. \n  Monitor        : icmp\n  Monitor Status : down\n  Session Status : enabled\n                     \nTraffic                ServerSide  General\n  Bits In                       0        -\n  Bits Out                      0        -\n  Packets In                    0        -\n  Packets Out                   0        -\n  Current Connections           0        -\n  Maximum Connections           0        -\n  Total Connections             0        -\n  Total Requests                -        0\n  Current Sessions              -        0\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ltm_node\",\"keyVariables\":\"\",\"startLine\":\"regex[$node_name]:^Ltm::Node:\\\\s+(.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$availability]:Availability\\\\s+:\\\\s+(\\\\S+)\",\"regex[$state]:State\\\\s+:\\\\s+(\\\\S+)\",\"regex[$reason]:Reason\\\\s+:\\\\s+(.*)\",\"regex[$monitor]:Monitor\\\\s+:\\\\s+(\\\\S+)\",\"regex[$monitor_status]:Monitor Status\\\\s+:\\\\s+(\\\\S+)\",\"regex[$session_status]:Session Status\\\\s+:\\\\s+(\\\\S+)\",\"regex[$server_side_bits_in,$general_bits_in]:Bits In\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_bits_out,$general_bits_out]:Bits Out\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_packets_in,$general_packets_in]:Packets In\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_packets_out,$general_packets_out]:Packets Out\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_current_connections,$general_current_connections]:Current Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_maximum_connections,$general_maximum_connections]:Maximum Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_total_connections,$general_total_connections]:Total Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_total_requests,$general_total_requests]:Total Requests\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$server_side_current_sessions,$general_current_sessions]:Current Sessions\\\\s+(\\\\S+)\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$node_name:string\",\"$availability:string\",\"$state:string\",\"$reason:string\",\"$monitor:string\",\"$monitor_status:string\",\"$session_status:string\",\"$server_side_bits_in:string\",\"$general_bits_in:string\",\"$server_side_bits_out:string\",\"$general_bits_out:string\",\"$server_side_packets_in:string\",\"$general_packets_in:string\",\"$server_side_packets_out:string\",\"$general_packets_out:string\",\"$server_side_current_connections:string\",\"$general_current_connections:string\",\"$server_side_maximum_connections:string\",\"$general_maximum_connections:string\",\"$server_side_total_connections:string\",\"$general_total_connections:string\",\"$server_side_total_requests:string\",\"$general_total_requests:string\",\"$server_side_current_sessions:string\",\"$general_current_sessions:string\"]},\"xxid\":\"4a681599-38e0-87a3-95d6-5ea058580a38\"}]},\"xxid\":\"c0ff05d0-7a89-7945-0364-a71e45898850\",\"hashColumns\":[\"$node_name\",\"$availability\",\"$state\",\"$monitor\",\"$monitor_status\",\"$session_status\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"259b8ee8-bc7a-c432-303c-a6dcd05f8273\"}]}",
+            "tableKeys": [
+                "_original_result.ltm_node.$node_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 25,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "node_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "availability",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "reason",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "monitor",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "monitor_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "session_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "server_side_bits_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "general_bits_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "server_side_bits_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "general_bits_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "server_side_packets_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "general_packets_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "server_side_packets_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "general_packets_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "server_side_current_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "general_current_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "server_side_maximum_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "general_maximum_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "server_side_total_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "general_total_connections",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "server_side_total_requests",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "general_total_requests",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "server_side_current_sessions",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "general_current_sessions",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$availability",
+                    "$monitor",
+                    "$monitor_status",
+                    "$node_name",
+                    "$session_status",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ltm_node",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "89727fe0cfb9d17f59423b6b8266378f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ltm_node",
+            "dataType": "paragraph",
+            "desc": "The LTM node table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$node_name",
+                    "$availability",
+                    "$state",
+                    "$monitor",
+                    "$monitor_status",
+                    "$session_status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ltm_node",
+            "intfKey": false,
+            "name": "ltm_node",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ltm_node.$node_name",
+            "dataType": "string",
+            "desc": "The LTM node name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$node_name",
+            "intfKey": false,
+            "name": "$node_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$availability",
+            "dataType": "string",
+            "desc": "The LTM availability state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$availability",
+            "intfKey": false,
+            "name": "$availability",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$state",
+            "dataType": "string",
+            "desc": "The LTM status",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$reason",
+            "dataType": "string",
+            "desc": "The LTM status reason.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$reason",
+            "intfKey": false,
+            "name": "$reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$monitor",
+            "dataType": "string",
+            "desc": "The LTM monitor method.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$monitor",
+            "intfKey": false,
+            "name": "$monitor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$monitor_status",
+            "dataType": "string",
+            "desc": "The LTM monitor status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$monitor_status",
+            "intfKey": false,
+            "name": "$monitor_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$session_status",
+            "dataType": "string",
+            "desc": "The LTM session status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$session_status",
+            "intfKey": false,
+            "name": "$session_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_bits_in",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_bits_in",
+            "intfKey": false,
+            "name": "$server_side_bits_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_bits_in",
+            "dataType": "string",
+            "desc": "The number of bytes received on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_bits_in",
+            "intfKey": false,
+            "name": "$general_bits_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_bits_out",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_bits_out",
+            "intfKey": false,
+            "name": "$server_side_bits_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_bits_out",
+            "dataType": "string",
+            "desc": "The number of bytes sent on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_bits_out",
+            "intfKey": false,
+            "name": "$general_bits_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_packets_in",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_packets_in",
+            "intfKey": false,
+            "name": "$server_side_packets_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_packets_in",
+            "dataType": "string",
+            "desc": "The number of packerts received on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_packets_in",
+            "intfKey": false,
+            "name": "$general_packets_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_packets_out",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_packets_out",
+            "intfKey": false,
+            "name": "$server_side_packets_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_packets_out",
+            "dataType": "string",
+            "desc": "The number of packerts sent on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_packets_out",
+            "intfKey": false,
+            "name": "$general_packets_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_current_connections",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_current_connections",
+            "intfKey": false,
+            "name": "$server_side_current_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_current_connections",
+            "dataType": "string",
+            "desc": "The number of current connections on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_current_connections",
+            "intfKey": false,
+            "name": "$general_current_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_maximum_connections",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_maximum_connections",
+            "intfKey": false,
+            "name": "$server_side_maximum_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_maximum_connections",
+            "dataType": "string",
+            "desc": "The number of maximum connections on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_maximum_connections",
+            "intfKey": false,
+            "name": "$general_maximum_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_total_connections",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_total_connections",
+            "intfKey": false,
+            "name": "$server_side_total_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_total_connections",
+            "dataType": "string",
+            "desc": "The number of total connections on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_total_connections",
+            "intfKey": false,
+            "name": "$general_total_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_total_requests",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_total_requests",
+            "intfKey": false,
+            "name": "$server_side_total_requests",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_total_requests",
+            "dataType": "string",
+            "desc": "The number of total requests on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_total_requests",
+            "intfKey": false,
+            "name": "$general_total_requests",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$server_side_current_sessions",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$server_side_current_sessions",
+            "intfKey": false,
+            "name": "$server_side_current_sessions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_node.$general_current_sessions",
+            "dataType": "string",
+            "desc": "The number of current session on the general.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_node.$general_current_sessions",
+            "intfKey": false,
+            "name": "$general_current_sessions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,95 @@
+{
+    "_id": "511c98f2-caef-b5a6-86b4-9f625460bf9b",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560792968630
+    },
+    "description": "Device Type:\nAll Device Type\nCommand:\n       SNMP",
+    "devTypes": [
+        30003,
+        30002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'SDN', 'params' : ['dn','role'] })\r\n    dn = get_dn['params']['dn']\r\n    role = get_dn['params']['role']\r\n    rtn_params = [{ 'devName' : device_name, 'dn' : dn, 'role': role }]\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    dn = rtn_params['dn']\r\n    role = rtn_params['role']\r\n    url = '/api/mo/' + dn + '/sys/procsys/CDprocSysCPU5min.json'\r\n    rtn_params['url'] = url\r\n    data = getData(rtn_params)\r\n    if data != '' and data != '[]':\r\n        data = json.loads(data)\r\n        url = '/api/mo/' + dn + '/sys/procsys/CDprocSysMem5min.json'\r\n        rtn_params['url'] = url\r\n        memory_data = getData(rtn_params)\r\n        if memory_data != '' and memory_data != '[]':\r\n            memory_data = json.loads(memory_data)\r\n            data.extend(memory_data)\r\n        data = json.dumps(data)\r\n    return data",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"procSysCPU5min\": {\n            \"attributes\": {\n                \"childAction\": \"\",\n                \"cnt\": \"26\",\n                \"dn\": \"topology/pod-1/node-101/sys/procsys/CDprocSysCPU5min\",\n                \"idleAverage1mAvg\": \"91.370831\",\n                \"idleAverage1mLast\": \"91.855622\",\n                \"idleAverage1mMax\": \"91.911455\",\n                \"idleAverage1mMin\": \"90.558734\",\n                \"idleAverage1mSpct\": \"0\",\n                \"idleAverage1mThr\": \"\",\n                \"idleAverage1mTr\": \"0.000000\",\n                \"idleAverage1mTrBase\": \"90.706879\",\n                \"idleAverage1mTtl\": \"2375.641612\",\n                \"idleAvg\": \"91.462245\",\n                \"idleLast\": \"91.612091\",\n                \"idleMax\": \"92.329044\",\n                \"idleMin\": \"89.015152\",\n                \"idleSpct\": \"0\",\n                \"idleThr\": \"\",\n                \"idleTr\": \"0.000000\",\n                \"idleTrBase\": \"90.668581\",\n                \"idleTtl\": \"2378.018379\",\n                \"kernelAverage1mAvg\": \"3.636565\",\n                \"kernelAverage1mLast\": \"3.529511\",\n                \"kernelAverage1mMax\": \"4.013800\",\n                \"kernelAverage1mMin\": \"3.466846\",\n                \"kernelAverage1mSpct\": \"0\",\n                \"kernelAverage1mThr\": \"\",\n                \"kernelAverage1mTr\": \"0.000000\",\n                \"kernelAverage1mTrBase\": \"3.758875\",\n                \"kernelAverage1mTtl\": \"94.550698\",\n                \"kernelAvg\": \"3.605794\",\n                \"kernelLast\": \"3.652393\",\n                \"kernelMax\": \"4.848485\",\n                \"kernelMin\": \"3.128943\",\n                \"kernelSpct\": \"0\",\n                \"kernelThr\": \"\",\n                \"kernelTr\": \"0.000000\",\n                \"kernelTrBase\": \"3.798856\",\n                \"kernelTtl\": \"93.750645\",\n                \"lastCollOffset\": \"259\",\n                \"modTs\": \"never\",\n                \"repIntvEnd\": \"2018-05-07T21:09:18.010+00:00\",\n                \"repIntvStart\": \"2018-05-07T21:04:58.024+00:00\",\n                \"status\": \"\",\n                \"userAverage1mAvg\": \"4.992603\",\n                \"userAverage1mLast\": \"4.614867\",\n                \"userAverage1mMax\": \"5.430987\",\n                \"userAverage1mMin\": \"4.582948\",\n                \"userAverage1mSpct\": \"0\",\n                \"userAverage1mThr\": \"\",\n                \"userAverage1mTr\": \"0.000000\",\n                \"userAverage1mTrBase\": \"5.534246\",\n                \"userAverage1mTtl\": \"129.807690\",\n                \"userAvg\": \"4.931961\",\n                \"userLast\": \"4.735516\",\n                \"userMax\": \"6.926952\",\n                \"userMin\": \"4.245641\",\n                \"userSpct\": \"0\",\n                \"userThr\": \"\",\n                \"userTr\": \"0.000000\",\n                \"userTrBase\": \"5.532564\",\n                \"userTtl\": \"128.230976\"\n            }\n        }\n    },\n    {\n        \"procSysMem5min\": {\n            \"attributes\": {\n                \"childAction\": \"\",\n                \"cnt\": \"26\",\n                \"dn\": \"topology/pod-1/node-101/sys/procsys/CDprocSysMem5min\",\n                \"freeAvg\": \"6364338\",\n                \"freeLast\": \"6356712\",\n                \"freeMax\": \"6372196\",\n                \"freeMin\": \"6356712\",\n                \"freeSpct\": \"0\",\n                \"freeThr\": \"\",\n                \"freeTr\": \"0\",\n                \"freeTrBase\": \"6333692\",\n                \"freeTtl\": \"165472796\",\n                \"lastCollOffset\": \"259\",\n                \"modTs\": \"never\",\n                \"repIntvEnd\": \"2018-05-07T21:09:18.010+00:00\",\n                \"repIntvStart\": \"2018-05-07T21:04:58.024+00:00\",\n                \"status\": \"\",\n                \"totalAvg\": \"16399788\",\n                \"totalLast\": \"16399788\",\n                \"totalMax\": \"16399788\",\n                \"totalMin\": \"16399788\",\n                \"totalSpct\": \"0\",\n                \"totalThr\": \"\",\n                \"totalTr\": \"0\",\n                \"totalTrBase\": \"16399788\",\n                \"totalTtl\": \"426394488\",\n                \"usedAvg\": \"10035449\",\n                \"usedLast\": \"10043076\",\n                \"usedMax\": \"10043076\",\n                \"usedMin\": \"10027592\",\n                \"usedSpct\": \"0\",\n                \"usedThr\": \"\",\n                \"usedTr\": \"0\",\n                \"usedTrBase\": \"10066095\",\n                \"usedTtl\": \"260921692\"\n            }\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[    \\n    \\n    {\\\"name\\\": \\\"cpu\\\", \\\"type\\\": \\\"double\\\"},\\n    {\\\"name\\\": \\\"dev_status\\\", \\\"type\\\": \\\"string\\\"},\\n    {\\\"name\\\": \\\"memory\\\", \\\"type\\\": \\\"double\\\"}\\n\\n]\\nEnd Declare\\n'''\\n\\nimport json \\ndef ParseText(_original_result) :\\n    value ={'dev_status': 'Down'}\\n    try:\\n        node = json.loads(_original_result)\\n        if len(node) == 2:\\n            syscpu = node[0]['procSysCPU5min']['attributes']\\n            value['dev_status'] = 'Up'\\n            value['cpu'] = float('{0:.2f}'.format(100.0 - float(syscpu['idleAvg'])))\\n            sysmem = node[1]['procSysMem5min']['attributes']\\n            used_memory = int(sysmem['usedAvg'])\\n            total_memory = int(sysmem['totalAvg'])\\n            value['memory'] =  (100.0 * used_memory) / total_memory\\n    except Exception as ex:\\n        print(str(ex))\\n    return value\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$cpu\",\"type\":\"double\"},{\"name\":\"$dev_status\",\"type\":\"string\"},{\"name\":\"$memory\",\"type\":\"double\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"358eb036-4e5a-cc04-a843-2a5518eea0b0\"}]}",
+            "tableKeys": null
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cpu",
+                "type": 2
+            },
+            {
+                "index": 1,
+                "name": "dev_status",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "memory",
+                "type": 2
+            }
+        ]
+    },
+    "structureId": "80517e4b7efc3c78a2cf55b9d0f860f3",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$cpu",
+            "dataType": "double",
+            "desc": "CPU.",
+            "extraInfo": null,
+            "fullName": "$cpu",
+            "intfKey": false,
+            "name": "$cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$dev_status",
+            "dataType": "string",
+            "desc": "Device Status.",
+            "extraInfo": null,
+            "fullName": "$dev_status",
+            "intfKey": false,
+            "name": "$dev_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$memory",
+            "dataType": "double",
+            "desc": "Memory.",
+            "extraInfo": null,
+            "fullName": "$memory",
+            "intfKey": false,
+            "name": "$memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,622 @@
+{
+    "_id": "73a759c2-7531-fd1e-d33c-e6f17c7f922a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show bgp summary",
+    "createTime": {
+        "$date": 1579721728217
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow bgp summary",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ASA-1(config)# show bgp summary\r\nBGP router identifier 203.0.113.1, local AS number 100\r\nBGP table version is 7, main routing table version 7\r\n6 network entries using 1200 bytes of memory\r\n6 path entries using 480 bytes of memory\r\n2/2 BGP path/bestpath attribute entries using 416 bytes of memory\r\n1 BGP AS-PATH entries using 24 bytes of memory\r\n0 BGP route-map cache entries using 0 bytes of memory\r\n0 BGP filter-list cache entries using 0 bytes of memory\r\nBGP using 2120 total bytes of memory\r\nBGP activity 6/0 prefixes, 6/0 paths, scan interval 60 secs\r\n\r\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ  OutQ Up/Down  State/PfxRcd\r\n203.0.113.2     4          200 16      17             7    0    0 00:14:19  3\r\n202.0.113.2     4          100 17      16             7    1    0 00:15:19  2",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"BGP router identifier $rid, local AS number $int:local_as\",\"BGP table version is $int:table_version, main routing table version $int:main_table_version\",\"$int:network network entries using $int:network_memory\",\"$int:path path entries using $int:path_memory bytes of memory\",\"$int:path_attribute/$int:bestpath_attribute BGP path/bestpath attribute entries using $int:path_attribute_memory\",\"$int:as_path BGP AS-PATH entries using $int:as_path_memory\",\"$int:route_map BGP route-map cache entries using $int:route_map_memory\",\"$int:filter_list BGP filter-list cache entries using $int:filter_list_memory\",\"BGP using $int:total_memory total bytes of memory\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$rid:string\",\"$local_as:int\",\"$table_version:int\",\"$main_table_version:int\",\"$network:int\",\"$network_memory:int\",\"$path:int\",\"$path_memory:int\",\"$path_attribute:int\",\"$bestpath_attribute:int\",\"$path_attribute_memory:int\",\"$as_path:int\",\"$as_path_memory:int\",\"$route_map:int\",\"$route_map_memory:int\",\"$filter_list:int\",\"$filter_list_memory:int\",\"$total_memory:int\"]},\"xxid\":\"d4f459ad-5abc-9e4b-0592-9ad91511db30\"},{\"type\":\"4\",\"name\":\"bgp_summary_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$nbr_id_asa,$remote_as_asa,$msg_sent_asa,$msg_rcv_asa,$inq_asa,$outq_asa,$time_asa,$state_pfx_asa]:^(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+\\\\S+\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+\\\\d+\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_id_asa:string\",\"$remote_as_asa:string\",\"$msg_sent_asa:string\",\"$msg_rcv_asa:string\",\"$inq_asa:string\",\"$outq_asa:string\",\"$time_asa:string\",\"$state_pfx_asa:string\"]},\"xxid\":\"09a8abd7-5330-df35-9c21-1180393074af\"}]},\"xxid\":\"e3ad4720-b064-369c-19c7-fa3277855cd8\",\"hashColumns\":[\"$remote_as_asa\",\"$inq_asa\",\"$outq_asa\",\"$state_pfx_asa\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.bgp_summary_table.$remote_as_asa"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "rid",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_as",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "table_version",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "main_table_version",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "network",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "network_memory",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "path",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "path_memory",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "path_attribute",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "bestpath_attribute",
+                "type": 1
+            },
+            {
+                "index": 10,
+                "name": "path_attribute_memory",
+                "type": 1
+            },
+            {
+                "index": 11,
+                "name": "as_path",
+                "type": 1
+            },
+            {
+                "index": 12,
+                "name": "as_path_memory",
+                "type": 1
+            },
+            {
+                "index": 13,
+                "name": "route_map",
+                "type": 1
+            },
+            {
+                "index": 14,
+                "name": "route_map_memory",
+                "type": 1
+            },
+            {
+                "index": 15,
+                "name": "filter_list",
+                "type": 1
+            },
+            {
+                "index": 16,
+                "name": "filter_list_memory",
+                "type": 1
+            },
+            {
+                "index": 17,
+                "name": "total_memory",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "remote_as_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "msg_sent_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "msg_rcv_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "inq_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "outq_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "time_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "state_pfx_asa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$inq_asa",
+                    "$outq_asa",
+                    "$remote_as_asa",
+                    "$state_pfx_asa"
+                ],
+                "hashSort": false,
+                "index": 18,
+                "name": "bgp_summary_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "41cc33df0097b87eb476f7361d3eaf75",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$rid",
+            "dataType": "string",
+            "desc": "In order of precedence and availability, the router identifier specified by the bgp router-id command, a loopback address, or the highest IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "int",
+            "desc": "Local Autonomous system number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$table_version",
+            "dataType": "int",
+            "desc": "Internal version number of BGP database.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$table_version",
+            "intfKey": false,
+            "name": "$table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$main_table_version",
+            "dataType": "int",
+            "desc": "Last version of BGP database that was injected into the main routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$main_table_version",
+            "intfKey": false,
+            "name": "$main_table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$network",
+            "dataType": "int",
+            "desc": "Number of unique prefix entries in the BGP database.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$network",
+            "intfKey": false,
+            "name": "$network",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$network_memory",
+            "dataType": "int",
+            "desc": "Amount of memory, in bytes, that is consumed for the path, prefix, or attribute entry displayed on the same line.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$network_memory",
+            "intfKey": false,
+            "name": "$network_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path",
+            "dataType": "int",
+            "desc": "Number of path entries in the BGP database. Only a single path entry will be installed for a given destination. If multipath routes are configured, a path entry will be installed for each multipath route.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path",
+            "intfKey": false,
+            "name": "$path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_memory",
+            "dataType": "int",
+            "desc": "Amount of memory, in bytes, that is consumed for the path, prefix, or attribute entry displayed on the same line.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_memory",
+            "intfKey": false,
+            "name": "$path_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_attribute",
+            "dataType": "int",
+            "desc": "Number of unique BGP attribute combinations for which a path is selected as the bestpath.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_attribute",
+            "intfKey": false,
+            "name": "$path_attribute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bestpath_attribute",
+            "dataType": "int",
+            "desc": "Number of unique BGP attribute combinations for which a path is selected as the bestpath.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bestpath_attribute",
+            "intfKey": false,
+            "name": "$bestpath_attribute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_attribute_memory",
+            "dataType": "int",
+            "desc": "Amount of memory, in bytes, that is consumed for the path, prefix, or attribute entry displayed on the same line.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_attribute_memory",
+            "intfKey": false,
+            "name": "$path_attribute_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$as_path",
+            "dataType": "int",
+            "desc": "Number of unique AS_PATH entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$as_path",
+            "intfKey": false,
+            "name": "$as_path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$as_path_memory",
+            "dataType": "int",
+            "desc": "Amount of memory, in bytes, that is consumed for the path, prefix, or attribute entry displayed on the same line.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$as_path_memory",
+            "intfKey": false,
+            "name": "$as_path_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$route_map",
+            "dataType": "int",
+            "desc": "Number of BGP route-map match and set clause combinations. A value of 0 indicates that the route cache is empty.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$route_map",
+            "intfKey": false,
+            "name": "$route_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$route_map_memory",
+            "dataType": "int",
+            "desc": "Amount of memory, in bytes, that is consumed for the path, prefix, or attribute entry displayed on the same line.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$route_map_memory",
+            "intfKey": false,
+            "name": "$route_map_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filter_list",
+            "dataType": "int",
+            "desc": "Number of filter-list entries that match an AS-path access list permit or deny statements. A value of 0 indicates that the filter-list cache is empty.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filter_list",
+            "intfKey": false,
+            "name": "$filter_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filter_list_memory",
+            "dataType": "int",
+            "desc": "Amount of memory, in bytes, that is consumed for the path, prefix, or attribute entry displayed on the same line.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filter_list_memory",
+            "intfKey": false,
+            "name": "$filter_list_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_memory",
+            "dataType": "int",
+            "desc": "Amount of memory, in bytes, that is consumed for the path, prefix, or attribute entry displayed on the same line.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_memory",
+            "intfKey": false,
+            "name": "$total_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$remote_as_asa",
+                    "$inq_asa",
+                    "$outq_asa",
+                    "$state_pfx_asa"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table",
+            "intfKey": false,
+            "name": "bgp_summary_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_summary_table.$nbr_id_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$nbr_id_asa",
+            "intfKey": false,
+            "name": "$nbr_id_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table.$remote_as_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$remote_as_asa",
+            "intfKey": false,
+            "name": "$remote_as_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table.$msg_sent_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$msg_sent_asa",
+            "intfKey": false,
+            "name": "$msg_sent_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table.$msg_rcv_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$msg_rcv_asa",
+            "intfKey": false,
+            "name": "$msg_rcv_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table.$inq_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$inq_asa",
+            "intfKey": false,
+            "name": "$inq_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table.$outq_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$outq_asa",
+            "intfKey": false,
+            "name": "$outq_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table.$time_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$time_asa",
+            "intfKey": false,
+            "name": "$time_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary_table.$state_pfx_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary_table.$state_pfx_asa",
+            "intfKey": false,
+            "name": "$state_pfx_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

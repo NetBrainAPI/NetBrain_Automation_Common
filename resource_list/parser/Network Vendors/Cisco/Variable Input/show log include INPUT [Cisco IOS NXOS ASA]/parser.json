@@ -1,0 +1,151 @@
+{
+    "_id": "dc2bea7d-2359-1fdb-8e62-ff1ff350997e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show log | i $log",
+    "createTime": {
+        "$date": 1560808569948
+    },
+    "description": "",
+    "devTypes": [
+        2009,
+        2001,
+        2004,
+        2
+    ],
+    "params": [
+        {
+            "name": "$log"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "Nyc-rtr-2811-01#show log | i up\r\n*Feb 14 17:02:24.515: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up\r\n*Feb 14 17:02:24.515: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to up\r\n*Feb 14 17:02:25.515: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up\r\n*Feb 14 17:02:25.515: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up\r\n*Feb 14 17:02:28.015: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up\r\nTechnical Support: http://www.cisco.com/techsupport\r\n*Feb 14 17:03:23.747: %MSDP-5-PEER_UPDOWN: Session to peer 10.88.255.5 going up\r\n*Oct  5 13:59:34.497: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"logs\",\"keyVariables\":\"\",\"startLine\":\"regex[$time, $issue, $subject]:^(.+?)\\\\.\\\\d+:\\\\s+(\\\\S+):\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$time:string\",\"$issue:string\",\"$subject:string\"]},\"xxid\":\"bed93df6-0c9a-814e-b947-9b36143c7b7e\"}]},\"xxid\":\"5ae1db45-32d7-a04f-6009-5c35008648e1\"},{\"type\":\"1\",\"name\":\"log_output\",\"startLine\":\"#show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"bfd6c2f3-667c-fc14-ebb4-19b341f7c102\"}]},\"xxid\":\"a53b5ac0-4f8e-f1f7-a1e1-e20fea1a7804\"}]}",
+            "tableKeys": null
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "log_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "time",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "issue",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "subject",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "logs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "13f63fcff7176a5596678f7ad72ee07e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "logs.$issue",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "logs.$issue",
+            "intfKey": false,
+            "name": "$issue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logs.$subject",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "logs.$subject",
+            "intfKey": false,
+            "name": "$subject",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logs.$time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "logs.$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "log_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "log_output",
+            "intfKey": false,
+            "name": "log_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "logs",
+            "intfKey": false,
+            "name": "logs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

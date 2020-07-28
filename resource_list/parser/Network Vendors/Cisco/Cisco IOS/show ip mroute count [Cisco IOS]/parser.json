@@ -1,0 +1,418 @@
+{
+    "_id": "bdb253c7-5095-ebea-896c-701b66929e0d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mroute count",
+    "createTime": {
+        "$date": 1579720450863
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow ip mroute count",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP#show ip mroute count\nIP Multicast Statistics\n5 routes using 4734 bytes of memory\n2 groups, 1.50 average sources per group\nForwarding Counts: Pkt Count/Pkts(neg(-) = Drops) per second/Avg Pkt Size/Kilobits per second\nOther counts: Total/RPF failed/Other drops(OIF-null, rate-limit etc)\n\nGroup: 239.1.1.1, Source count: 3, Packets forwarded: 7220, Packets received: 7220\n  RP-tree: Forwarding: 2/0/1500/0, Other: 2/0/0\n  Source: 165.132.1.1/32, Forwarding: 3807/1/1378/16, Other: 3807/0/0\n  Source: 165.132.1.2/32, Forwarding: 12/0/1380/0, Other: 12/0/0\n  Source: 194.1.1.1/32, Forwarding: 3399/1/1380/16, Other: 3399/0/0\n\nGroup: 224.0.1.40, Source count: 0, Packets forwarded: 0, Packets received: 0",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"groups\",\"keyVariables\":null,\"startLine\":\"regex[$group,$source_count]:^\\\\s*Group: (\\\\S+), Source count: (\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$group:string\",\"$source_count:string\"]},\"xxid\":\"0a3e4d80-d523-9f81-c4f2-3fc4cff9fa0a\"},{\"type\":\"4\",\"name\":\"rpf_fails\",\"keyVariables\":null,\"startLine\":\"regex[$type,$source,$int:pkts_fwd,$int:pps,$int:avg_pkt_size,$int:kbps,$int:total,$int:rpf_failed,$int:other_drops]:^\\\\s+(RP-tree|Source): (?:(\\\\S+)/\\\\d+, )?Forwarding: (\\\\d+)/(\\\\d+)/(\\\\d+)/(\\\\d+), Other: (\\\\d+)/(\\\\d+)/(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$type:string\",\"$source:string\",\"$pkts_fwd:int\",\"$pps:int\",\"$avg_pkt_size:int\",\"$kbps:int\",\"$total:int\",\"$rpf_failed:int\",\"$other_drops:int\"]},\"xxid\":\"de27d82f-3122-be59-59f6-b3d8d59ee056\"}]},\"xxid\":\"7ba9ad17-3f97-7a16-48d1-5ce57ce9b146\",\"hashColumns\":[\"$group\"]}]},\"xxid\":\"b6f477ed-e20d-cee6-f0ac-88e4763c6372\",\"hashColumns\":[\"$group\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"7d86187d-3b82-f2e4-41fc-08fba8bdf86a\"}]}",
+            "tableKeys": [
+                "_original_result.groups.$group",
+                "_original_result.groups.rpf_fails.$group"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source_count",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "groups",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "pkts_fwd",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "pps",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "avg_pkt_size",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "kbps",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "total",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "rpf_failed",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "other_drops",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "source_count",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "rpf_fails",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4f366903a08970b265d33035a8e33b50",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "groups",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group"
+                ],
+                "hashSort": false
+            },
+            "fullName": "groups",
+            "intfKey": false,
+            "name": "groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "groups.$group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$source_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$source_count",
+            "intfKey": false,
+            "name": "$source_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group"
+                ],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails",
+            "intfKey": false,
+            "name": "rpf_fails",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "rpf_fails.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$source",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$pkts_fwd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$pkts_fwd",
+            "intfKey": false,
+            "name": "$pkts_fwd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$pps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$pps",
+            "intfKey": false,
+            "name": "$pps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$avg_pkt_size",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$avg_pkt_size",
+            "intfKey": false,
+            "name": "$avg_pkt_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$kbps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$kbps",
+            "intfKey": false,
+            "name": "$kbps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$total",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$rpf_failed",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$rpf_failed",
+            "intfKey": false,
+            "name": "$rpf_failed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$other_drops",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$other_drops",
+            "intfKey": false,
+            "name": "$other_drops",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$source_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$source_count",
+            "intfKey": false,
+            "name": "$source_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

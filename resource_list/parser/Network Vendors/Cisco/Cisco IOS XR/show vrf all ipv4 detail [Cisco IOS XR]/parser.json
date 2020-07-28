@@ -1,0 +1,242 @@
+{
+    "_id": "061c8c9c-94fb-21ba-e27c-bf305ef09ad2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vrf all ipv4 detail",
+    "createTime": {
+        "$date": 1579119096427
+    },
+    "description": "",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "\r\nVRF IOS7-BGP; RD 300:300; VPN ID not set\r\nVRF mode: Regular\r\nDescription not set\r\nInterfaces:\r\n  GigabitEthernet0/0/0/1\r\nAddress family IPV4 Unicast\r\n  Import VPN route-target communities:\r\n    RT:100:100\r\n    RT:300:300\r\n    RT:500:500\r\n  Export VPN route-target communities:\r\n    RT:300:300\r\n  No import route policy\r\n  No export route policy\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.vrf.$interfaces"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\r\\n\\r\\ndef ParseText(config):\\r\\n\\r\\n    vrf = {\\r\\n            'vrf_name'                      :[],\\r\\n            'rd'                            :[],\\r\\n            'interfaces'                    :[],\\r\\n            'import_rts'                    :[],\\r\\n            'export_rts'                    :[],\\r\\n            'import_route_policy'           :[],\\r\\n            'export_route_policy'           :[],\\r\\n            '$_columns':['vrf_name', 'rd','interfaces', 'import_rts','export_rts', 'import_route_policy', 'export_route_policy']\\r\\n          }\\r\\n\\r\\n    vrf_config =  re.findall(r'^(VRF\\\\s+(\\\\S+);\\\\s+RD\\\\s+(\\\\S+);.+?)(?=^VRF\\\\s+[^\\\\n]+;|^$|\\\\Z)', config, re.M|re.S)\\r\\n    if vrf_config:\\r\\n        for each in vrf_config:\\r\\n            each_vrf_cfg = each[0]\\r\\n            vrf_name = each[1]\\r\\n            rd = each[2]\\r\\n\\r\\n            intfs_filter = re.search(r'(^Interfaces:\\\\n(.+?)(?=^\\\\S))',each_vrf_cfg,re.M|re.S)\\r\\n            if intfs_filter:\\r\\n                intfs_config = intfs_filter.group(2)\\r\\n                intfs = re.sub(r'\\\\s+', ', ', intfs_config)\\r\\n                intfs = intfs.strip(', ')\\r\\n            else:\\r\\n                intfs  = 'None'\\r\\n\\r\\n            import_rt_filter = re.search(r'(^  Import VPN route-target communities:\\\\n(.+?)(?=^  \\\\S))',each_vrf_cfg,re.M|re.S)\\r\\n            if import_rt_filter:\\r\\n                import_rt_config = import_rt_filter.group(2)\\r\\n                import_rt = re.sub(r'\\\\s+', ', ', import_rt_config)\\r\\n                import_rt = re.sub(r'RT:', '', import_rt)\\r\\n                import_rt = import_rt.strip(', ')\\r\\n            else:\\r\\n                import_rt  = 'None'\\r\\n\\r\\n            export_rt_filter = re.search(r'(^  Export VPN route-target communities:\\\\n(.+?)(?=^  \\\\S))',each_vrf_cfg,re.M|re.S)\\r\\n            if export_rt_filter:\\r\\n                export_rt_config = export_rt_filter.group(2)\\r\\n                export_rt = re.sub(r'\\\\s+', ', ', export_rt_config)\\r\\n                export_rt = re.sub(r'RT:', '', export_rt)\\r\\n                export_rt = export_rt.strip(', ')\\r\\n            else:\\r\\n                export_rt  = 'None'\\r\\n\\r\\n            import_policy = re.search(r'Import route policy:(\\\\S+)',each_vrf_cfg)\\r\\n            export_policy = re.search(r'Export route policy:(\\\\S+)',each_vrf_cfg)\\r\\n            if import_policy:\\r\\n                import_rtpolicy = import_policy.group(1)\\r\\n            else:\\r\\n                import_rtpolicy = 'No import route-policy'\\r\\n            if export_policy:\\r\\n                export_rtpolicy = export_policy.group(1)\\r\\n            else:\\r\\n                export_rtpolicy = 'No export route-policy'\\r\\n\\r\\n            vrf['vrf_name'].append(vrf_name)\\r\\n            vrf['rd'].append(rd)\\r\\n            vrf['interfaces'].append(intfs)\\r\\n            vrf['import_rts'].append(import_rt)\\r\\n            vrf['export_rts'].append(export_rt)\\r\\n            vrf['import_route_policy'].append(import_rtpolicy)\\r\\n            vrf['export_route_policy'].append(export_rtpolicy)\\r\\n\\r\\n    dic = {\\r\\n        'vrf'       :vrf,\\r\\n    }\\r\\n\\r\\n    return dic\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$vrf\",\"variableTypes\":{\"variableType\":[{\"name\":\"$vrf_name\",\"type\":\"string\"},{\"name\":\"$rd\",\"type\":\"string\"},{\"name\":\"$interfaces\",\"type\":\"string\"},{\"name\":\"$import_rts\",\"type\":\"string\"},{\"name\":\"$export_rts\",\"type\":\"string\"},{\"name\":\"$import_route_policy\",\"type\":\"string\"},{\"name\":\"$export_route_policy\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"ddb5d542-7a76-2384-7503-0e1f457a7711\",\"hashColumns\":{\"vrf\":[\"$vrf_name\",\"$rd\",\"$interfaces\",\"$import_rts\",\"$export_rts\",\"$import_route_policy\",\"$export_route_policy\"]},\"tableKeys\":{\"vrf\":[\"$vrf_name\",\"$import_rts\",\"$export_rts\",\"$rd\"]},\"hashSort\":{\"vrf\":false},\"interfaceKey\":{\"vrf\":\"$interfaces\"}}]}",
+            "tableKeys": [
+                "_original_result.$vrf.$vrf_name",
+                "_original_result.$vrf.$import_rts",
+                "_original_result.$vrf.$export_rts",
+                "_original_result.$vrf.$rd"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "export_route_policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "export_rts",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "import_route_policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "import_rts",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "interfaces",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "rd",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "vrf_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "export_route_policy",
+                    "export_rts",
+                    "import_route_policy",
+                    "import_rts",
+                    "interfaces",
+                    "rd",
+                    "vrf_name"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vrf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "963f6c2b7f9a401cc2df10a6cccc6744",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$vrf",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vrf_name",
+                    "$rd",
+                    "$interfaces",
+                    "$import_rts",
+                    "$export_rts",
+                    "$import_route_policy",
+                    "$export_route_policy"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$vrf.$vrf_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$vrf_name",
+            "intfKey": false,
+            "name": "$vrf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrf.$rd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$rd",
+            "intfKey": false,
+            "name": "$rd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrf.$interfaces",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$interfaces",
+            "intfKey": false,
+            "name": "$interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$vrf.$import_rts",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$import_rts",
+            "intfKey": false,
+            "name": "$import_rts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrf.$export_rts",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$export_rts",
+            "intfKey": false,
+            "name": "$export_rts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrf.$import_route_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$import_route_policy",
+            "intfKey": false,
+            "name": "$import_route_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrf.$export_route_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$export_route_policy",
+            "intfKey": false,
+            "name": "$export_route_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

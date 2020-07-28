@@ -1,0 +1,165 @@
+{
+    "_id": "fdcb6262-6969-4a7c-96e3-f35af8a7e6b4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree mst configuration",
+    "createTime": {
+        "$date": 1590779916692
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow spanning-tree mst configuration",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "console # show spanning-tree mst configuration\n\nMST region name: Dell\nRevision: 0\nMSTI    VID\n   1    111\n   2    10-20",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$mst_region]:MST region name:\\\\s+(\\\\S+)\",\"regex[$int:revision]:Revision:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mst_region:string\",\"$revision:int\"]},\"xxid\":\"dd310567-aab7-e2d6-3ff8-7110d3cc42de\"},{\"type\":\"4\",\"name\":\"mst_instances\",\"keyVariables\":\"\",\"startLine\":\"regex[$msti, $vid]:\\\\s+(\\\\d+)\\\\s+(\\\\d+.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$msti:string\",\"$vid:string\"]},\"xxid\":\"105d3db3-3338-531d-036b-4d5981489c42\"}]},\"xxid\":\"0888a580-0621-5169-0a6e-73ea30723133\",\"hashColumns\":[\"$vid\"]}]}",
+            "tableKeys": [
+                "_original_result.mst_instances.$vid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "mst_region",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "revision",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "msti",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vid",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vid"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "mst_instances",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "70055d75798cc6dc8180454ef6cbc87d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$mst_region",
+            "dataType": "string",
+            "desc": "MST region name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mst_region",
+            "intfKey": false,
+            "name": "$mst_region",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$revision",
+            "dataType": "int",
+            "desc": "MST revision.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$revision",
+            "intfKey": false,
+            "name": "$revision",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mst_instances",
+            "dataType": "paragraph",
+            "desc": "MST Instances Table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mst_instances",
+            "intfKey": false,
+            "name": "mst_instances",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mst_instances.$msti",
+            "dataType": "string",
+            "desc": "Instance ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mst_instances.$msti",
+            "intfKey": false,
+            "name": "$msti",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mst_instances.$vid",
+            "dataType": "string",
+            "desc": "VLANs mapped.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mst_instances.$vid",
+            "intfKey": false,
+            "name": "$vid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

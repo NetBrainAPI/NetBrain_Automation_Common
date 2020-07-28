@@ -1,0 +1,820 @@
+{
+    "_id": "a102ce53-4c88-4209-b8f6-cee3fc046932",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip bgp neighbors",
+    "createTime": {
+        "$date": 1581006507806
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow ip bgp neighbors",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "AristaR1#show ip bgp nei\r\nBGP neighbor is 123.10.1.2, remote AS 1, external link\r\n  BGP version 4, remote router ID 123.10.1.2, VRF default\r\n  Negotiated BGP version 4\r\n  Last read never, last write never\r\n  Hold time is 180, keepalive interval is 60 seconds\r\n  Configured hold time is 180, keepalive interval is 60 seconds\r\n  Connect timer is active, time left: 00:01:52\r\n  Connection interval is 148 seconds\r\n  Failed connection attempts is 17\r\n  Restart timer is inactive\r\n  End of rib timer is inactive\r\n  BGP state is Established, up for    9d02h\r\n  Number of transitions to established: 1\r\n  Last state was OpenConfirm\r\n  Last event was RecvKeepAlive\r\n  Last error code was 0, last error subcode was 0\r\n  Neighbor Capabilities:\r\n    Multiprotocol IPv4 Unicast: advertised and received and negotiated\r\n    Route Refresh: advertised and received and negotiated\r\n  Message statistics:\r\n    InQ depth is 0\r\n    OutQ depth is 0\r\n                         Sent      Rcvd\r\n    Opens:                  1         1\r\n    Notifications:          0         0\r\n    Updates:                1       269\r\n    Keepalives:         13087     13023\r\n    Route-Refresh:          0         0\r\n    Total messages:     13089     13293\r\n  Prefix statistics:\r\n    Total prefixes received 57\r\n  Inbound route map is prod-to-alpha\r\n  Outbound route map is alpha-to-prod\r\nLocal AS is 64511, local router ID 10.0.2.23\r\nTTL is 0\r\nLocal TCP address is 10.0.2.5, local port is 59274\r\nRemote TCP address is 10.0.2.6, remote port is 179",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"bgp_nbrs\",\"keyVariables\":null,\"startLine\":\"regex[$nbr_id,$remote_as,$nbr_type]:BGP neighbor is\\\\s+(\\\\S+),\\\\s+remote\\\\s+AS\\\\s+(\\\\S+),\\\\s+(.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"BGP version $version, remote router ID $remote_rid\",\"BGP state is $state,\",\"Last read $last_read, last write $last_write\",\"$session_active active, is multisession capable\",\"regex[$route_refresh]:Route refresh: (.*)\",\"regex[$multiprotocol_ipv4_unicast]:Multiprotocol IPv4 Unicast: (.*)\",\"InQ depth is $int:inq_depth\",\"OutQ depth is $int:outq_depth\",\"regex[$int:opens_pkt_sent,$int:opens_pkt_rcvd]:Opens:\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:notifications_pkt_sent,$int:notifications_pkt_rcvd]:Notifications:\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:updates_pkt_sent,$int:updates_pkt_rcvd]:Updates:\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:keeplives_pkt_sent,$int:keeplives_pkt_rcvd]:Keepalives:\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:route_refresh_pkt_sent,$int:route_refresh_pkt_rcvd]:\\\\s+Route\\\\SRefresh:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$int:total_pkt_sent,$int:total_pkt_rcvd]:\\\\s+Total\\\\s+messages:\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$uptime]:up for\\\\s+(\\\\S+)\",\"regex[$min_incoming_ttl]:TTL is\\\\s+(\\\\S+)\",\"regex[$local_host, $local_port]:Local TCP address is\\\\s+(\\\\S+),\\\\s+local port is\\\\s+(\\\\S+)\",\"regex[$foreign_host, $foreign_port]:Remote TCP address is\\\\s+(\\\\S+),\\\\s+remote port is\\\\s+(\\\\S+)\",\"regex[$local_as, $local_router_id]:Local AS is\\\\s+(\\\\S+),\\\\s+local router ID\\\\s+(\\\\S+)\",\"regex[$inbound_route_map]:Inbound route map is\\\\s+(\\\\S+)\",\"regex[$outbound_route_map]:Outbound route map is\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$remote_as:string\",\"$nbr_type:string\",\"$version:string\",\"$remote_rid:string\",\"$state:string\",\"$last_read:string\",\"$last_write:string\",\"$session_active:string\",\"$route_refresh:string\",\"$multiprotocol_ipv4_unicast:string\",\"$inq_depth:int\",\"$outq_depth:int\",\"$opens_pkt_sent:int\",\"$opens_pkt_rcvd:int\",\"$notifications_pkt_sent:int\",\"$notifications_pkt_rcvd:int\",\"$updates_pkt_sent:int\",\"$updates_pkt_rcvd:int\",\"$keeplives_pkt_sent:int\",\"$keeplives_pkt_rcvd:int\",\"$route_refresh_pkt_sent:int\",\"$route_refresh_pkt_rcvd:int\",\"$total_pkt_sent:int\",\"$total_pkt_rcvd:int\",\"$uptime:string\",\"$min_incoming_ttl:string\",\"$local_host:string\",\"$local_port:string\",\"$foreign_host:string\",\"$foreign_port:string\",\"$local_as:string\",\"$local_router_id:string\",\"$inbound_route_map:string\",\"$outbound_route_map:string\"]},\"xxid\":\"d8831270-5862-da1c-2b82-c7793115561a\"}]},\"xxid\":\"cabf9dd4-813b-c333-a95d-121bccd07849\",\"hashColumns\":[\"$nbr_id\",\"$remote_as\",\"$state\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"db1f64a9-014b-229a-1f5f-f7caded1f4fa\"}]}",
+            "tableKeys": [
+                "_original_result.bgp_nbrs.$nbr_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 35,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 36,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "remote_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "nbr_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "version",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "remote_rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "last_read",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "last_write",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "session_active",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "route_refresh",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "multiprotocol_ipv4_unicast",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "inq_depth",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "outq_depth",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "opens_pkt_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "opens_pkt_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "notifications_pkt_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "notifications_pkt_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "updates_pkt_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "updates_pkt_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "keeplives_pkt_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "keeplives_pkt_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "route_refresh_pkt_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "route_refresh_pkt_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "total_pkt_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "total_pkt_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 26,
+                        "name": "min_incoming_ttl",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "local_host",
+                        "type": 4
+                    },
+                    {
+                        "index": 28,
+                        "name": "local_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 29,
+                        "name": "foreign_host",
+                        "type": 4
+                    },
+                    {
+                        "index": 30,
+                        "name": "foreign_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 31,
+                        "name": "local_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 32,
+                        "name": "local_router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 33,
+                        "name": "inbound_route_map",
+                        "type": 4
+                    },
+                    {
+                        "index": 34,
+                        "name": "outbound_route_map",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nbr_id",
+                    "$remote_as",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "bgp_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c02a923d0babb0074d0bb3b85003e843",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "bgp_nbrs",
+            "dataType": "paragraph",
+            "desc": "BGP neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_id",
+                    "$remote_as",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs",
+            "intfKey": false,
+            "name": "bgp_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_nbrs.$nbr_id",
+            "dataType": "string",
+            "desc": "IP address of the BGP neighbor and its autonomous system number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$remote_as",
+            "dataType": "string",
+            "desc": "Autonomous system number of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$remote_as",
+            "intfKey": false,
+            "name": "$remote_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$nbr_type",
+            "dataType": "string",
+            "desc": "'internal link'is displayed for iBGP neighbors; 'external link' is displayed for external BGP (eBGP) neighbors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$nbr_type",
+            "intfKey": false,
+            "name": "$nbr_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$version",
+            "dataType": "string",
+            "desc": "BGP version being used to communicate with the remote router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$remote_rid",
+            "dataType": "string",
+            "desc": "IP address of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$remote_rid",
+            "intfKey": false,
+            "name": "$remote_rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$state",
+            "dataType": "string",
+            "desc": "Finite state machine (FSM) stage of session negotiation.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$last_read",
+            "dataType": "string",
+            "desc": "Time, in hh:mm:ss, since BGP last received a message from this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$last_read",
+            "intfKey": false,
+            "name": "$last_read",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$last_write",
+            "dataType": "string",
+            "desc": "Time, in hh:mm:ss, since BGP last sent a message to this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$last_write",
+            "intfKey": false,
+            "name": "$last_write",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$session_active",
+            "dataType": "string",
+            "desc": "Number of active neighbor sessions.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$session_active",
+            "intfKey": false,
+            "name": "$session_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$route_refresh",
+            "dataType": "string",
+            "desc": "Status of the route refresh capability.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$route_refresh",
+            "intfKey": false,
+            "name": "$route_refresh",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$multiprotocol_ipv4_unicast",
+            "dataType": "string",
+            "desc": "Multiprotocol IPv4 Unicast",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$multiprotocol_ipv4_unicast",
+            "intfKey": false,
+            "name": "$multiprotocol_ipv4_unicast",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$inq_depth",
+            "dataType": "int",
+            "desc": "Number of messages in the input queue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$inq_depth",
+            "intfKey": false,
+            "name": "$inq_depth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$outq_depth",
+            "dataType": "int",
+            "desc": "Number of messages in the output queue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$outq_depth",
+            "intfKey": false,
+            "name": "$outq_depth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$opens_pkt_sent",
+            "dataType": "int",
+            "desc": "Number of open messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$opens_pkt_sent",
+            "intfKey": false,
+            "name": "$opens_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$opens_pkt_rcvd",
+            "dataType": "int",
+            "desc": "Number of open messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$opens_pkt_rcvd",
+            "intfKey": false,
+            "name": "$opens_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$notifications_pkt_sent",
+            "dataType": "int",
+            "desc": "Number of notification (error) messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$notifications_pkt_sent",
+            "intfKey": false,
+            "name": "$notifications_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$notifications_pkt_rcvd",
+            "dataType": "int",
+            "desc": "Number of notification (error) messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$notifications_pkt_rcvd",
+            "intfKey": false,
+            "name": "$notifications_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$updates_pkt_sent",
+            "dataType": "int",
+            "desc": "Number of update messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$updates_pkt_sent",
+            "intfKey": false,
+            "name": "$updates_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$updates_pkt_rcvd",
+            "dataType": "int",
+            "desc": "Number of update messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$updates_pkt_rcvd",
+            "intfKey": false,
+            "name": "$updates_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$keeplives_pkt_sent",
+            "dataType": "int",
+            "desc": "Number of keepalive messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$keeplives_pkt_sent",
+            "intfKey": false,
+            "name": "$keeplives_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$keeplives_pkt_rcvd",
+            "dataType": "int",
+            "desc": "Number of keepalive messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$keeplives_pkt_rcvd",
+            "intfKey": false,
+            "name": "$keeplives_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$route_refresh_pkt_sent",
+            "dataType": "int",
+            "desc": "Number of route refresh request messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$route_refresh_pkt_sent",
+            "intfKey": false,
+            "name": "$route_refresh_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$route_refresh_pkt_rcvd",
+            "dataType": "int",
+            "desc": "Number of route refresh request messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$route_refresh_pkt_rcvd",
+            "intfKey": false,
+            "name": "$route_refresh_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$total_pkt_sent",
+            "dataType": "int",
+            "desc": "Total number of messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$total_pkt_sent",
+            "intfKey": false,
+            "name": "$total_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$total_pkt_rcvd",
+            "dataType": "int",
+            "desc": "Total number of messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$total_pkt_rcvd",
+            "intfKey": false,
+            "name": "$total_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$uptime",
+            "dataType": "string",
+            "desc": "Time, in hh:mm:ss, that the underlying TCP connection has been in existence.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$min_incoming_ttl",
+            "dataType": "string",
+            "desc": "Mininum incoming TTL.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$min_incoming_ttl",
+            "intfKey": false,
+            "name": "$min_incoming_ttl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$local_host",
+            "dataType": "string",
+            "desc": "IP address of the local BGP speaker.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$local_host",
+            "intfKey": false,
+            "name": "$local_host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$local_port",
+            "dataType": "string",
+            "desc": "BGP local port number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$local_port",
+            "intfKey": false,
+            "name": "$local_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$foreign_host",
+            "dataType": "string",
+            "desc": "IP address of the local BGP Neighbor address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$foreign_host",
+            "intfKey": false,
+            "name": "$foreign_host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$foreign_port",
+            "dataType": "string",
+            "desc": "BGP destination port number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$foreign_port",
+            "intfKey": false,
+            "name": "$foreign_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$local_as",
+            "dataType": "string",
+            "desc": "Autonomous system number set by the router bgp command.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$local_router_id",
+            "dataType": "string",
+            "desc": "IP address of the router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$local_router_id",
+            "intfKey": false,
+            "name": "$local_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$inbound_route_map",
+            "dataType": "string",
+            "desc": "Inbound route map",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$inbound_route_map",
+            "intfKey": false,
+            "name": "$inbound_route_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$outbound_route_map",
+            "dataType": "string",
+            "desc": "Outbound route map",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$outbound_route_map",
+            "intfKey": false,
+            "name": "$outbound_route_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

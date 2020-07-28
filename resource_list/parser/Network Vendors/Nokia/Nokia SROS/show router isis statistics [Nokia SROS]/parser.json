@@ -1,0 +1,782 @@
+{
+    "_id": "e73f961d-b477-740e-3f1c-d5555ccc5c17",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router isis statistics",
+    "createTime": {
+        "$date": 1584023014944
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router isis statistics",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:qapp-7750sr-1# show router isis statistics \r\n\r\n===============================================================================\r\nRouter Base ISIS Instance 0 Statistics\r\n===============================================================================\r\nISIS Instance     : 0                       SPF Runs       : 5\r\nPurge Initiated   : 0                       LSP Regens.    : 9\r\n \r\nCSPF Statistics\r\nRequests          : 0                       Request Drops  : 0\r\nPaths Found       : 0                       Paths Not Found: 0\r\n \r\nLFA Statistics\r\nLFA Runs          : 0                       \r\n \r\nPartial SPF Statistics\r\nPartial SPF Runs  : 4                       \r\nLast runTimeStamp : 06/13/2017 01:35:31     \r\n \r\n-------------------------------------------------------------------------------\r\nPDU Type   Received   Processed  Dropped    Sent       Retransmitted\r\n-------------------------------------------------------------------------------\r\nLSP        4          4          0          3          0\r\nIIH        268        268        0          94         0\r\nCSNP       80         78         2          0          0\r\nPSNP       0          0          0          0          0\r\nUnknown    0          0          0          0          0\r\n===============================================================================\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_statistics\",\"keyVariables\":\"\",\"startLine\":\"Router Base ISIS Instance\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"ISIS Instance     : $int:isis_instance SPF Runs       : $int:spf_runs\",\"Purge Initiated   : $int:purge_initiated LSP Regens.    : $int:lsp_regens\",\"Requests          : $int:cspf_requests                       Request Drops  : $int:cspf_request_drops\",\"Paths Found       : $int:cspf_paths_found                       Paths Not Found: $int:cspf_paths_not_found\",\"LFA Runs          : $int:lfa_runs\",\"Partial SPF Runs  : $partial_spf_runs\",\"Last runTimeStamp : $last_run_date $last_run_time\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_instance:int\",\"$spf_runs:int\",\"$purge_initiated:int\",\"$lsp_regens:int\",\"$cspf_requests:int\",\"$cspf_request_drops:int\",\"$cspf_paths_found:int\",\"$cspf_paths_not_found:int\",\"$lfa_runs:int\",\"$partial_spf_runs:string\",\"$last_run_date:string\",\"$last_run_time:string\"]},\"xxid\":\"a4032cd4-4e78-3b4f-2b63-6ca485255ec0\"},{\"type\":\"4\",\"name\":\"isis_pdu\",\"keyVariables\":\"\",\"startLine\":\"regex[$pdu_type,$received,$processed,$dropped,$sent,$retransmitted]:(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$pdu_type:string\",\"$received:string\",\"$processed:string\",\"$dropped:string\",\"$sent:string\",\"$retransmitted:string\"]},\"xxid\":\"ba94b22d-da39-5085-1170-b03a3bae453c\"}]},\"xxid\":\"8b783426-91e8-9cf1-3fc6-701c4f465c4c\",\"hashColumns\":[\"$pdu_type\",\"$received\",\"$processed\",\"$dropped\",\"$sent\",\"$retransmitted\",\"$isis_instance\",\"$spf_runs\",\"$purge_initiated\",\"$lsp_regens\",\"$cspf_requests\",\"$cspf_request_drops\",\"$cspf_paths_found\",\"$cspf_paths_not_found\",\"$lfa_runs\",\"$partial_spf_runs\"],\"hashSort\":false}]},\"xxid\":\"6f7293cf-1a72-6a7d-3a61-e6d449d0eaae\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"87109c68-09df-2be5-a390-f5fcac87382f\"}]}",
+            "tableKeys": [
+                "_original_result.isis_statistics.isis_pdu.$isis_instance"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "isis_instance",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "spf_runs",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "purge_initiated",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "lsp_regens",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "cspf_requests",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "cspf_request_drops",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "cspf_paths_found",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "cspf_paths_not_found",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "lfa_runs",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "partial_spf_runs",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "last_run_date",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "last_run_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_statistics",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 18,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "pdu_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "received",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "processed",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dropped",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sent",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "retransmitted",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "isis_instance",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "spf_runs",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "purge_initiated",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "lsp_regens",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "cspf_requests",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "cspf_request_drops",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "cspf_paths_found",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "cspf_paths_not_found",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "lfa_runs",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "partial_spf_runs",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "last_run_date",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "last_run_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$cspf_paths_found",
+                    "$cspf_paths_not_found",
+                    "$cspf_request_drops",
+                    "$cspf_requests",
+                    "$dropped",
+                    "$isis_instance",
+                    "$lfa_runs",
+                    "$lsp_regens",
+                    "$partial_spf_runs",
+                    "$pdu_type",
+                    "$processed",
+                    "$purge_initiated",
+                    "$received",
+                    "$retransmitted",
+                    "$sent",
+                    "$spf_runs"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_pdu",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "741604d5a8020f5dea00f510278bccd5",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_statistics",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_statistics",
+            "intfKey": false,
+            "name": "isis_statistics",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_statistics.$isis_instance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$spf_runs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$spf_runs",
+            "intfKey": false,
+            "name": "$spf_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$purge_initiated",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$purge_initiated",
+            "intfKey": false,
+            "name": "$purge_initiated",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$lsp_regens",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$lsp_regens",
+            "intfKey": false,
+            "name": "$lsp_regens",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$cspf_requests",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$cspf_requests",
+            "intfKey": false,
+            "name": "$cspf_requests",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$cspf_request_drops",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$cspf_request_drops",
+            "intfKey": false,
+            "name": "$cspf_request_drops",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$cspf_paths_found",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$cspf_paths_found",
+            "intfKey": false,
+            "name": "$cspf_paths_found",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$cspf_paths_not_found",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$cspf_paths_not_found",
+            "intfKey": false,
+            "name": "$cspf_paths_not_found",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$lfa_runs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$lfa_runs",
+            "intfKey": false,
+            "name": "$lfa_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$partial_spf_runs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$partial_spf_runs",
+            "intfKey": false,
+            "name": "$partial_spf_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$last_run_date",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$last_run_date",
+            "intfKey": false,
+            "name": "$last_run_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_statistics.$last_run_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.$last_run_time",
+            "intfKey": false,
+            "name": "$last_run_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$pdu_type",
+                    "$received",
+                    "$processed",
+                    "$dropped",
+                    "$sent",
+                    "$retransmitted",
+                    "$isis_instance",
+                    "$spf_runs",
+                    "$purge_initiated",
+                    "$lsp_regens",
+                    "$cspf_requests",
+                    "$cspf_request_drops",
+                    "$cspf_paths_found",
+                    "$cspf_paths_not_found",
+                    "$lfa_runs",
+                    "$partial_spf_runs"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu",
+            "intfKey": false,
+            "name": "isis_pdu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_pdu.$pdu_type",
+            "dataType": "string",
+            "desc": "The PDU (packet) type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$pdu_type",
+            "intfKey": false,
+            "name": "$pdu_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$received",
+            "dataType": "string",
+            "desc": "The number of LSPs received by this instance of the protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$received",
+            "intfKey": false,
+            "name": "$received",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$processed",
+            "dataType": "string",
+            "desc": "The number of LSPs processed by this instance of the protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$processed",
+            "intfKey": false,
+            "name": "$processed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$dropped",
+            "dataType": "string",
+            "desc": "The number of LSPs dropped by this instance of the protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$dropped",
+            "intfKey": false,
+            "name": "$dropped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$sent",
+            "dataType": "string",
+            "desc": "The number of LSPs sent out by this instance of the protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$sent",
+            "intfKey": false,
+            "name": "$sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$retransmitted",
+            "dataType": "string",
+            "desc": "The number of LSPs that had to be retransmitted by this instance of the protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$retransmitted",
+            "intfKey": false,
+            "name": "$retransmitted",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$isis_instance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$spf_runs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$spf_runs",
+            "intfKey": false,
+            "name": "$spf_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$purge_initiated",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$purge_initiated",
+            "intfKey": false,
+            "name": "$purge_initiated",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$lsp_regens",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$lsp_regens",
+            "intfKey": false,
+            "name": "$lsp_regens",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$cspf_requests",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$cspf_requests",
+            "intfKey": false,
+            "name": "$cspf_requests",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$cspf_request_drops",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$cspf_request_drops",
+            "intfKey": false,
+            "name": "$cspf_request_drops",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$cspf_paths_found",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$cspf_paths_found",
+            "intfKey": false,
+            "name": "$cspf_paths_found",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$cspf_paths_not_found",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$cspf_paths_not_found",
+            "intfKey": false,
+            "name": "$cspf_paths_not_found",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$lfa_runs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$lfa_runs",
+            "intfKey": false,
+            "name": "$lfa_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$partial_spf_runs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$partial_spf_runs",
+            "intfKey": false,
+            "name": "$partial_spf_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$last_run_date",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$last_run_date",
+            "intfKey": false,
+            "name": "$last_run_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pdu.$last_run_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_statistics.isis_pdu.$last_run_time",
+            "intfKey": false,
+            "name": "$last_run_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

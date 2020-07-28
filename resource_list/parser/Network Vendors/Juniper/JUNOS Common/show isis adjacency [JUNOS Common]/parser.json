@@ -1,0 +1,246 @@
+{
+    "_id": "06c65d83-be8c-f310-8b8c-b9aeb2ab355c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis adjacency",
+    "createTime": {
+        "$date": 1580704069550
+    },
+    "description": "Device Type:\nJuniper Router\nJuniper EX Switch\nJuniper SRX Firewall \nCommand:\nshow isis adjacency",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "netbrain@srx>show isis adjacency \nInterface             System         L State        Hold (secs) SNPA\nge-0/0/1.0            N7K            1  Up                    6  0:50:56:9f:0:e\nge-0/0/1.0            N7K            2  Up                    7  0:50:56:9f:0:e\nge-0/0/2.0            junr2          2  Up                    8  0:c:29:85:6c:15\nge-0/0/3.0            BR1-MX2        2  Up                   20  0:5:86:71:2e:3\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_neighbors.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"isis_neighbors\",\"headers\":\"Interface;System;L;State;Hold (secs);SNPA\",\"endLine\":null,\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Interface:$string:interface;System:$string:neighbor_system_id;L:$string:level;State:$string:state;Hold (secs):$int:hold_timer_secs;SNPA:$string:snpa\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$neighbor_system_id:string\",\"$level:string\",\"$state:string\",\"$hold_timer_secs:int\",\"$snpa:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"05a584a1-5f04-8a61-4481-eb384f93bfc7\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$neighbor_system_id\",\"$level\",\"$state\",\"$snpa\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"31d62ce2-859b-f469-f73a-26f45b670a83\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "neighbor_system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "level",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hold_timer_secs",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "snpa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$level",
+                    "$neighbor_system_id",
+                    "$snpa",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8fb102a7525b865b2ce5cd55887c9fd0",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_neighbors",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$neighbor_system_id",
+                    "$level",
+                    "$state",
+                    "$snpa"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_neighbors",
+            "intfKey": false,
+            "name": "isis_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_neighbors.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_neighbors.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_neighbors.$neighbor_system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_neighbors.$neighbor_system_id",
+            "intfKey": false,
+            "name": "$neighbor_system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$level",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_neighbors.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_neighbors.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$hold_timer_secs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_neighbors.$hold_timer_secs",
+            "intfKey": false,
+            "name": "$hold_timer_secs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$snpa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_neighbors.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

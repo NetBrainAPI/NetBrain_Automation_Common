@@ -1,0 +1,373 @@
+{
+    "_id": "f0164298-dd34-1f71-7357-861741d22db5",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router ospf database",
+    "createTime": {
+        "$date": 1584025843787
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router ospf databbase",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:AS500_ASBR5# show router ospf database \r\n\r\n===============================================================================\r\nOSPFv2 (0) Link State Database (Type : All)\r\n===============================================================================\r\nType    Area Id         Link State Id   Adv Rtr Id      Age  Sequence   Cksum\r\n-------------------------------------------------------------------------------\r\nRouter  0.0.0.0         158.7.1.84      158.7.1.84      3    0x80000005 0x8ca8\r\nRouter  0.0.0.0         158.7.1.85      158.7.1.85      1    0x80000004 0x4580\r\nNetwork 0.0.0.0         158.7.3.126     158.7.1.85      1    0x80000001 0xe35f\r\n-------------------------------------------------------------------------------\r\nNo. of LSAs: 3\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_area\",\"keyVariables\":\"\",\"startLine\":\"regex[$ospf_area]:ospf\\\\S*\\\\s+\\\\((\\\\S+)\\\\) link state database\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:lsa]:lsas:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_area:string\",\"$lsa:int\"]},\"xxid\":\"11466491-b694-707f-0752-2eab7ac03a71\"},{\"type\":\"1\",\"name\":\"database_filter\",\"startLine\":\"mregex:^type\\\\s+area id.+?^---+\",\"endLine\":\"regex:^---+\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"47f4b86a-c6dc-a55d-ea1e-3aec076d1efd\"},{\"type\":\"3\",\"name\":\"database_table\",\"headers\":\"Type;Area Id;Link State Id;Adv Rtr Id;Age;Sequence;Cksum\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Type:$string:type;Area Id:$string:area_id;Link State Id:$string:link_state_id;Adv Rtr Id:$string:adv_rtr_id;Age:$string:age;Sequence:$string:sequence;Cksum:$string:cksum\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$type:string\",\"$area_id:string\",\"$link_state_id:string\",\"$adv_rtr_id:string\",\"$age:string\",\"$sequence:string\",\"$cksum:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"4ba886a8-c0ab-4597-eeee-4786b066ac65\",\"hashColumns\":[\"$type\",\"$area_id\",\"$link_state_id\",\"$adv_rtr_id\"],\"HashSort\":false}]},\"xxid\":\"36d818dd-8017-1028-045e-c313b96a8b4c\"}]},\"xxid\":\"8aecc52e-90f3-d7b6-3611-c81d1e307b34\",\"hashColumns\":[\"$ospf_area\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"8224fc24-419c-bd99-1db9-6cb5f52d1a29\"}]}",
+            "tableKeys": [
+                "_original_result.ospf_area.$ospf_area",
+                "_original_result.ospf_area.database_filter.database_table.$type"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ospf_area",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "database_filter",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ospf_area"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_area",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "link_state_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "adv_rtr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "age",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "sequence",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "cksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "ospf_area",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "lsa",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$adv_rtr_id",
+                    "$area_id",
+                    "$link_state_id",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "database_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fdac341227fc7cc070baa045479d61ac",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_area",
+            "dataType": "paragraph",
+            "desc": "OSPF area table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ospf_area"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_area",
+            "intfKey": false,
+            "name": "ospf_area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_area.$ospf_area",
+            "dataType": "string",
+            "desc": "OSPF area ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.$ospf_area",
+            "intfKey": false,
+            "name": "$ospf_area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_area.$lsa",
+            "dataType": "int",
+            "desc": "LSAs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.$lsa",
+            "intfKey": false,
+            "name": "$lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_area.database_filter",
+            "dataType": "filter",
+            "desc": "Database filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter",
+            "intfKey": false,
+            "name": "database_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database_table",
+            "dataType": "table",
+            "desc": "Database table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$type",
+                    "$area_id",
+                    "$link_state_id",
+                    "$adv_rtr_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table",
+            "intfKey": false,
+            "name": "database_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "database_table.$type",
+            "dataType": "string",
+            "desc": "The network type of OSPF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database_table.$area_id",
+            "dataType": "string",
+            "desc": "The area ID of OSPF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database_table.$link_state_id",
+            "dataType": "string",
+            "desc": "The link state ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table.$link_state_id",
+            "intfKey": false,
+            "name": "$link_state_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database_table.$adv_rtr_id",
+            "dataType": "string",
+            "desc": "The advance router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table.$adv_rtr_id",
+            "intfKey": false,
+            "name": "$adv_rtr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database_table.$age",
+            "dataType": "string",
+            "desc": "The age time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table.$age",
+            "intfKey": false,
+            "name": "$age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database_table.$sequence",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table.$sequence",
+            "intfKey": false,
+            "name": "$sequence",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database_table.$cksum",
+            "dataType": "string",
+            "desc": "Check summary.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_area.database_filter.database_table.$cksum",
+            "intfKey": false,
+            "name": "$cksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

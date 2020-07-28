@@ -1,0 +1,209 @@
+{
+    "_id": "ea4c527d-1c0f-9d4f-6100-7774c1ecf23c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mpls ldp discovery",
+    "createTime": {
+        "$date": 1580492810340
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand: \nshow mpls ldp discovery",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "PE-1#show mpls ldp discovery\n Local LDP Identifier:\n    222.2.0.3:0\n    Discovery Sources:\n    Interfaces:\n        Ethernet1/0 (ldp): xmit/recv\n            LDP Id: 222.2.0.7:0\n        Ethernet1/3 (ldp): xmit/recv\n            LDP Id: 222.2.0.8:0\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intferfaces.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$local_ldp_id]: Local LDP Identifier:\\\\s+(\\\\S+):\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$local_ldp_id:string\"]},\"xxid\":\"df245c9f-c240-5825-467f-11a434eac703\"},{\"type\":\"4\",\"name\":\"intferfaces\",\"keyVariables\":null,\"startLine\":\"regex[$interface,$protocol,$state]:^ {8}(\\\\S+) \\\\((\\\\S+)\\\\): (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"LDP Id: $ldp_id:\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$protocol:string\",\"$state:string\",\"$ldp_id:string\"]},\"xxid\":\"9337b6bf-f34a-5786-7a39-cc580934d0b3\"}]},\"xxid\":\"5b0789b3-96da-dbfe-1995-4376f3ffa83c\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"9a075092-a1f7-0c80-3d8d-1204789aad43\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "local_ldp_id",
+                "type": 4
+            },
+            {
+                "hashSort": false,
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ldp_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "intferfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8a08b03096fe49070102fbaa889f956c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$local_ldp_id",
+            "dataType": "string",
+            "desc": "LDP identifier of the LDP peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_ldp_id",
+            "intfKey": false,
+            "name": "$local_ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intferfaces",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intferfaces",
+            "intfKey": false,
+            "name": "intferfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intferfaces.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intferfaces.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intferfaces.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intferfaces.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intferfaces.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intferfaces.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intferfaces.$ldp_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intferfaces.$ldp_id",
+            "intfKey": false,
+            "name": "$ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

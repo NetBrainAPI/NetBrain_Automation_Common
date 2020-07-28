@@ -1,0 +1,241 @@
+{
+    "_id": "92002015-8188-1c5c-2ade-a4c7c306181f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf neighbor",
+    "createTime": {
+        "$date": 1560797674816
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch \nCommand:\nshow ip ospf neighbor",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ospf-R1#show ip ospf neighbor\n\nNeighbor ID     Pri   State           Dead Time   Address         Interface\n111.1.1.1         0   FULL/  -        00:00:31    10.1.1.2        OSPF_VL0\n111.1.1.1         1   FULL/DR         00:00:36    10.1.1.2        FastEthernet1/0\n4.4.4.4           1   FULL/DR         00:00:33    172.16.14.4     FastEthernet0/1\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"ospf_nbrs\",\"headers\":\"Neighbor ID;Pri;State;Dead Time;Address;Interface\",\"endLine\":null,\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Address:$string:nbr_addr;Dead Time:$string:dead;Interface:$string:intf;Neighbor ID:$string:nbr_id;Pri:$int:priority;State:$string:state\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$nbr_addr:string\",\"$dead:string\",\"$intf:string\",\"$nbr_id:string\",\"$priority:int\",\"$state:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"90d5752f-8d61-a592-c159-d3a05fce6c62\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$nbr_addr\"],\"HashSort\":false},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"f17560c3-c838-e954-a948-6c66d3953840\"}]},\"xxid\":\"3dc49aeb-802c-aa91-7d88-a8ce24e67fc5\"}]}",
+            "tableKeys": [
+                "_original_result.ospf_nbrs.$nbr_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dead",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "nbr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$nbr_addr"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "cf8ba88b9d3ade04dbd4697d5555d7e3",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_nbrs.$dead",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$dead",
+            "intfKey": false,
+            "name": "$dead",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$nbr_addr",
+            "intfKey": false,
+            "name": "$nbr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs",
+            "dataType": "table",
+            "desc": "OSPF Nbrs Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$nbr_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs",
+            "intfKey": false,
+            "name": "ospf_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,139 @@
+{
+    "_id": "b7d81d01-e659-ee7c-4af6-e6c50fd570b2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display mpls ldp discovery",
+    "createTime": {
+        "$date": 1590769597554
+    },
+    "description": "Device Type:\n3Com Switch\nCommand: \ndisplay mpls ldp discovery",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<Sysname> display mpls ldp discovery\r\n     Type: L - Link Hello, T - Targeted Hello\r\nDiscovery Source              Peer LDP ID           Hello Sent/Rcvd\r\n(L) Vlan50                    10.10.10.1:0          85/90\r\n                              20.10.10.1:0          85/60\r\n(T) 10.10.10.1                10.10.10.1:0          28/24",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"mpls_table\",\"headers\":\"Discovery Source;Peer LDP ID;Hello Sent/Rcvd\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":0,\"headerToVariables\":\"Discovery Source:$string:discv_src;Peer LDP ID:$string:peer_ldp_id;Hello Sent/Rcvd:$string:hello_sent_rcvd\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"1\",\"usePrevars\":\"$discovery_source\",\"variableTypes\":{\"variableType\":[\"$discv_src:string\",\"$peer_ldp_id:string\",\"$hello_sent_rcvd:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"5a7f31bb-caef-e569-6533-d948226bfa34\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "discv_src",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "peer_ldp_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "hello_sent_rcvd",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "mpls_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2f8b880eca256b965302f03c6982edf7",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mpls_table",
+            "dataType": "table",
+            "desc": "MPLS table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "mpls_table",
+            "intfKey": false,
+            "name": "mpls_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mpls_table.$discv_src",
+            "dataType": "string",
+            "desc": "The source of ldp peer.\nL: the interface of discovery peer.\nT: the lsr ID of peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_table.$discv_src",
+            "intfKey": false,
+            "name": "$discv_src",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_table.$peer_ldp_id",
+            "dataType": "string",
+            "desc": "The ldp ID of peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_table.$peer_ldp_id",
+            "intfKey": false,
+            "name": "$peer_ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_table.$hello_sent_rcvd",
+            "dataType": "string",
+            "desc": "The hello packets of sent and received from the peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_table.$hello_sent_rcvd",
+            "intfKey": false,
+            "name": "$hello_sent_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

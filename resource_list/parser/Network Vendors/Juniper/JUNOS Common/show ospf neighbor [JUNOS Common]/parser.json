@@ -1,0 +1,246 @@
+{
+    "_id": "0e5fb0eb-3526-a092-a44c-4730b564b56a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbor",
+    "createTime": {
+        "$date": 1580670084323
+    },
+    "description": "Device Type:\nJuniper EX Switch\nJuniper Router\nJuniper SRX Firewall \nCommand:\n       show ospf neighbor",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@P2-MX> show ospf neighbor \nAddress          Interface              State     ID               Pri  Dead\n10.10.13.2       ae3.0                  Full      10.100.100.16      0    36\n10.10.2.2        ge-0/0/0.0             Full      10.100.100.3     128    35\n10.10.1.1        ge-0/0/1.0             Full      10.100.100.1     128    33\n10.10.8.1        ge-0/0/3.0             Full      10.100.100.12    128    34\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.table_ospf_neighbors.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"table_ospf_neighbors\",\"headers\":\"Address;Interface;State;ID;Pri;Dead\",\"endLine\":null,\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Address:$string:neighbor_address;Interface:$string:interface;State:$string:state;ID:$string:neighbor_id;Pri:$int:priority;Dead:$int:dead_timer\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$neighbor_address:string\",\"$interface:string\",\"$state:string\",\"$neighbor_id:string\",\"$priority:int\",\"$dead_timer:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"17c1f0df-ac79-7e39-5cad-31b428d1d145\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$neighbor_address\",\"$interface\",\"$state\",\"$neighbor_id\",\"$priority\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"b11e9023-b19e-31bd-36a8-dfc70af93055\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "neighbor_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "dead_timer",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$neighbor_address",
+                    "$neighbor_id",
+                    "$priority",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "table_ospf_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "03cbd41fdebed69ccfba605260c74f98",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "table_ospf_neighbors",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor_address",
+                    "$interface",
+                    "$state",
+                    "$neighbor_id",
+                    "$priority"
+                ],
+                "hashSort": false
+            },
+            "fullName": "table_ospf_neighbors",
+            "intfKey": false,
+            "name": "table_ospf_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "table_ospf_neighbors.$neighbor_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table_ospf_neighbors.$neighbor_address",
+            "intfKey": false,
+            "name": "$neighbor_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table_ospf_neighbors.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table_ospf_neighbors.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "table_ospf_neighbors.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table_ospf_neighbors.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table_ospf_neighbors.$neighbor_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table_ospf_neighbors.$neighbor_id",
+            "intfKey": false,
+            "name": "$neighbor_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table_ospf_neighbors.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table_ospf_neighbors.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table_ospf_neighbors.$dead_timer",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table_ospf_neighbors.$dead_timer",
+            "intfKey": false,
+            "name": "$dead_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

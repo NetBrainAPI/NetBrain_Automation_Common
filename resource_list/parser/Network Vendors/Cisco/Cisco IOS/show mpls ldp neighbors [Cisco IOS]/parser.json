@@ -1,0 +1,724 @@
+{
+    "_id": "f87e35e7-5230-56e5-d52a-4c07beabc50a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mpls ldp neighbor",
+    "createTime": {
+        "$date": 1562009187105
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow mpls ldp neighbor",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "PE-1#show mpls ldp neighbor\n    Peer LDP Ident: 222.2.0.7:0; Local LDP Ident 222.2.0.3:0\n        TCP connection: 222.2.0.7.20153 - 222.2.0.3.646\n        State: Oper; Msgs sent/rcvd: 70/71; Downstream\n        Up time: 00:52:00\n        LDP discovery sources:\n          Ethernet1/0, Src IP addr: 202.196.3.2\n        Addresses bound to peer LDP Ident:\n          192.168.199.207 202.196.3.2     222.2.0.7       202.196.4.2\n    Peer LDP Ident: 222.2.0.8:0; Local LDP Ident 222.2.0.3:0\n        TCP connection: 222.2.0.8.44619 - 222.2.0.3.646\n        State: Oper; Msgs sent/rcvd: 70/70; Downstream\n        Up time: 00:51:43\n        LDP discovery sources:\n          Ethernet1/3, Src IP addr: 202.196.33.2\n        Addresses bound to peer LDP Ident:\n          192.168.199.208 202.196.33.2    222.2.0.8       202.196.44.2\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ldp_nbrs.sources_temp.ldp_discovery_srcs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ldp_nbrs\",\"keyVariables\":\"\",\"startLine\":\"Peer LDP Ident: $peer_id:0; Local LDP Ident $local_id:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$tcp_connection]:TCP connection: (\\\\S+ - \\\\S+)\",\"State: $state; Msgs sent/rcvd: $int:msgs_sent/$int:msgs_rcvd;\",\"Up time: $uptime\",\"mregex[$addrs_bound_to_peer_ldp_id]:Addresses bound to peer LDP Ident:\\\\s+(\\\\S+(?:\\\\s+\\\\S+)*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$peer_id:string\",\"$local_id:string\",\"$tcp_connection:string\",\"$state:string\",\"$msgs_sent:int\",\"$msgs_rcvd:int\",\"$uptime:string\",\"$addrs_bound_to_peer_ldp_id:string\"]},\"xxid\":\"eb7ef408-c4ba-bb29-9ec0-6bbd65e210e9\"},{\"type\":\"4\",\"name\":\"sources_temp\",\"keyVariables\":\"\",\"startLine\":\"LDP discovery sources:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"71d79662-e9e1-5aee-94ad-d2dde8c01b4d\"},{\"type\":\"4\",\"name\":\"ldp_discovery_srcs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$src_ip_addr]:\\\\s+(\\\\S+), Src IP addr: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$src_ip_addr:string\"]},\"xxid\":\"9121d418-4730-8cfa-4234-51635a14a8f5\"}]},\"xxid\":\"218c762a-8fcb-f12a-6633-8020b9f2ae5a\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]}]},\"xxid\":\"d547f7fc-f242-0718-672a-38b1f7ea3bf4\",\"hashColumns\":[\"$peer_id\"]}]},\"xxid\":\"ec1fc787-a818-9611-a0e7-6e60270efa83\"},{\"type\":\"1\",\"name\":\"command_output\",\"startLine\":\"\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"fa6fd032-f5da-a11a-5f01-b60e65b8f49c\"}]},\"xxid\":\"7fb4aa07-8e88-80a8-34dd-bbe5eb4f16f7\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Local LDP Ident $local_id:\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$local_id:string\"]},\"xxid\":\"10380ffa-e92e-cf98-2000-93dc2adb610f\"}]}",
+            "tableKeys": [
+                "_original_result.ldp_nbrs.sources_temp.$peer_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "command_output",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_id",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "peer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "local_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "tcp_connection",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "msgs_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "msgs_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "addrs_bound_to_peer_ldp_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "ldp_nbrs",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "peer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "local_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "tcp_connection",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "msgs_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "msgs_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "addrs_bound_to_peer_ldp_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$peer_id"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "sources_temp",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "src_ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "peer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "local_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "tcp_connection",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "msgs_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "msgs_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "addrs_bound_to_peer_ldp_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "ldp_discovery_srcs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5bca9cebf6e0cae70af15d012ad08e55",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ldp_nbrs.$addrs_bound_to_peer_ldp_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$addrs_bound_to_peer_ldp_id",
+            "intfKey": false,
+            "name": "$addrs_bound_to_peer_ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$addrs_bound_to_peer_ldp_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$addrs_bound_to_peer_ldp_id",
+            "intfKey": false,
+            "name": "$addrs_bound_to_peer_ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$addrs_bound_to_peer_ldp_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$addrs_bound_to_peer_ldp_id",
+            "intfKey": false,
+            "name": "$addrs_bound_to_peer_ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ldp_nbrs.$local_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$local_id",
+            "intfKey": false,
+            "name": "$local_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$local_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$local_id",
+            "intfKey": false,
+            "name": "$local_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$local_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$local_id",
+            "intfKey": false,
+            "name": "$local_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_id",
+            "intfKey": false,
+            "name": "$local_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$msgs_rcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$msgs_rcvd",
+            "intfKey": false,
+            "name": "$msgs_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$msgs_rcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$msgs_rcvd",
+            "intfKey": false,
+            "name": "$msgs_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$msgs_rcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$msgs_rcvd",
+            "intfKey": false,
+            "name": "$msgs_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$msgs_sent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$msgs_sent",
+            "intfKey": false,
+            "name": "$msgs_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$msgs_sent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$msgs_sent",
+            "intfKey": false,
+            "name": "$msgs_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$msgs_sent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$msgs_sent",
+            "intfKey": false,
+            "name": "$msgs_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$peer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$peer_id",
+            "intfKey": false,
+            "name": "$peer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$peer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$peer_id",
+            "intfKey": false,
+            "name": "$peer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$peer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$peer_id",
+            "intfKey": false,
+            "name": "$peer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$src_ip_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$src_ip_addr",
+            "intfKey": false,
+            "name": "$src_ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$tcp_connection",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$tcp_connection",
+            "intfKey": false,
+            "name": "$tcp_connection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$tcp_connection",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$tcp_connection",
+            "intfKey": false,
+            "name": "$tcp_connection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$tcp_connection",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$tcp_connection",
+            "intfKey": false,
+            "name": "$tcp_connection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sources_temp.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "command_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "command_output",
+            "intfKey": false,
+            "name": "command_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_srcs",
+            "dataType": "paragraph",
+            "desc": "LDP Discovery Srcs Table\n",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp.ldp_discovery_srcs",
+            "intfKey": false,
+            "name": "ldp_discovery_srcs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ldp_nbrs",
+            "dataType": "paragraph",
+            "desc": "LDP Nbrs Table",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs",
+            "intfKey": false,
+            "name": "ldp_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sources_temp",
+            "dataType": "paragraph",
+            "desc": "Sources Temp Table\n",
+            "extraInfo": {
+                "hashColumns": [
+                    "$peer_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.sources_temp",
+            "intfKey": false,
+            "name": "sources_temp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

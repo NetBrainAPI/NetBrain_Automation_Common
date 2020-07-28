@@ -1,0 +1,248 @@
+{
+    "_id": "b28fbb2b-db6b-7835-1f4c-9b0b3967980f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show top",
+    "createTime": {
+        "$date": 1591101326541
+    },
+    "description": "Device Type:\nCisco Catalyst Switch\nCommand: \nshow top",
+    "devTypes": [
+        2060
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BJ-Cat-5000> (enable) show top              \r\nStart Time:    05/09/2017,09:48:30\r\nEnd Time:       05/09/2017,09:49:01\r\nPortType:       all\r\nMetric:         util\r\nPort  Band- Uti Bytes                Pkts       Bcst       Mcst       Error Over\r\n      width  %  (Tx + Rx)            (Tx + Rx)  (Tx + Rx)  (Tx + Rx)  (Rx)  flow\r\n----- ----- --- -------------------- ---------- ---------- ---------- ----- ----\r\n 3/13  a-10   1               570416       4922          0         26     0    0\r\n 3/14  a-10   0                46469        375          0         27     0    0\r\n 3/12 a-100   0               526890       4575          0         28     0    0\r\n 3/1  a-100   0                20045        217          4         65     0    0\r\n 3/24 a-100   0                16605        194          5        186     0    0\r\n 3/20  auto   0                    0          0          0          0     0    0\r\n 3/19  auto   0                    0          0          0          0     0    0\r\n 3/18  auto   0                    0          0          0          0     0    0\r\n 3/17  auto   0                    0          0          0          0     0    0\r\n 3/16  auto   0                    0          0          0          0     0    0\r\n 3/15  auto   0                    0          0          0          0     0    0\r\n 3/2   auto   0                    0          0          0          0     0    0\r\n 3/6   auto   0                    0          0          0          0     0    0\r\n 3/5   auto   0                    0          0          0          0     0    0\r\n 1/1    100   0                    0          0          0          0     0    0\r\n 3/10  auto   0                    0          0          0          0     0    0\r\n 3/9   auto   0                    0          0          0          0     0    0\r\n 3/8   auto   0                    0          0          0          0     0    0\r\n 3/7   auto   0                    0          0          0          0     0    0\r\n 1/2    100   0                    0          0          0          0     0    0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"port_table\",\"headers\":\"Port;Band-;Uti;Bytes;Pkts;Bcst;Mcst;Error;Over\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Port:$string:port;Band-:$string:band_width;Bytes:$int:bytes;Pkts:$int:pkts;Bcst:$int:bcst;Mcst:$int:mcst;Error:$int:error;Over:$int:over_flow\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$port:string\",\"$band_width:string\",\"$bytes:int\",\"$pkts:int\",\"$bcst:int\",\"$mcst:int\",\"$error:int\",\"$over_flow:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"b17872d6-bee0-e20a-bfc8-6e6344c5f4ad\",\"hashColumns\":[\"$port\",\"$band_width\"]}]}",
+            "tableKeys": [
+                "_original_result.port_table.$port",
+                "_original_result.port_table.$band_width"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "band_width",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "bcst",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "mcst",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "error",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "over_flow",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$band_width",
+                    "$port"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "port_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7f0ba19d3ff373481215ca01c15c09ca",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "port_table",
+            "dataType": "table",
+            "desc": "Port table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port",
+                    "$band_width"
+                ],
+                "hashSort": false
+            },
+            "fullName": "port_table",
+            "intfKey": false,
+            "name": "port_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "port_table.$port",
+            "dataType": "string",
+            "desc": "Port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_table.$band_width",
+            "dataType": "string",
+            "desc": "Band-width.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$band_width",
+            "intfKey": false,
+            "name": "$band_width",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_table.$bytes",
+            "dataType": "int",
+            "desc": "Bytes (Tx + Rx).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$bytes",
+            "intfKey": false,
+            "name": "$bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_table.$pkts",
+            "dataType": "int",
+            "desc": "Packets (Tx + Rx).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$pkts",
+            "intfKey": false,
+            "name": "$pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_table.$bcst",
+            "dataType": "int",
+            "desc": "Broadcast (Tx + Rx).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$bcst",
+            "intfKey": false,
+            "name": "$bcst",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_table.$mcst",
+            "dataType": "int",
+            "desc": "Multicast (Tx + Rx).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$mcst",
+            "intfKey": false,
+            "name": "$mcst",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_table.$error",
+            "dataType": "int",
+            "desc": "Error (Rx).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$error",
+            "intfKey": false,
+            "name": "$error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_table.$over_flow",
+            "dataType": "int",
+            "desc": "Over flow.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_table.$over_flow",
+            "intfKey": false,
+            "name": "$over_flow",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

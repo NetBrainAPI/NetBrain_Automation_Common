@@ -1,0 +1,795 @@
+{
+    "_id": "ad8e8926-3c58-5f41-b522-bd822e3f5629",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf overview",
+    "createTime": {
+        "$date": 1580664289782
+    },
+    "description": "Device Type:\nJuniper Router\nJuniper EX Switch\nJuniper SRX Firewall\nCommand:\nshow ospf overview",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "liuweicai@OSPF-JR1>show ospf overview \nInstance: master\n  Router ID: 66.6.6.6\n  Route table index: 0\n  Area border router\n  LSA refresh time: 50 minutes\n  DoNotAge uncapable\n    Area scope LSAs received with no DC bit: 6\n  Area: 0.0.0.0\n    Stub type: Not Stub\n    Authentication Type: None\n    Area border routers: 4, AS boundary routers: 1\n    Neighbors\n      Up (in full state): 1\n    DoNotAge uncapable\n      Area scope LSAs received with no DC bit: 6\n  Area: 0.0.0.4\n    Stub type: Not Stub, Virtual transit\n    Authentication Type: None\n    Area border routers: 1, AS boundary routers: 1\n    Neighbors\n      Up (in full state): 1\n    DoNotAge uncapable\n      Self Indication\n  Area: 0.0.0.6\n    Stub type: Not Stub\n    Authentication Type: None\n    Area border routers: 0, AS boundary routers: 0\n    Neighbors\n      Up (in full state): 1\n    DoNotAge uncapable\n      Self Indication\n  Topology: default (ID 0)\n    Prefix export count: 0\n    Full SPF runs: 26\n    SPF delay: 0.200000 sec, SPF holddown: 5 sec, SPF rapid runs: 3\n    Backup SPF: Not Needed\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"processes\",\"keyVariables\":null,\"startLine\":\"Instance: \",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Router ID: $router_id\",\"Route table index: $int:route_table_index\",\"LSA refresh time: $int:lsa_refresh_time minutes\",\"Area scope LSAs received with no DC bit: $int:received_lsas_no_dcbit\",\"Prefix export count: $int:prefix_export_count\",\"Full SPF runs: $int:full_spf_run_count\",\"SPF delay: $double:spf_delay sec, SPF holddown: $int:spf_holddown sec, SPF rapid runs: $int:spf_rapid_run_count\",\"regex[$backup_spf_state]:Backup SPF: (.*)\",\"regex[$instance_name]:Instance:\\\\s+(\\\\S+)\",\"mregex[$instance_text]:(.+?)Area:\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$route_table_index:int\",\"$lsa_refresh_time:int\",\"$received_lsas_no_dcbit:int\",\"$prefix_export_count:int\",\"$full_spf_run_count:int\",\"$spf_delay:double\",\"$spf_holddown:int\",\"$spf_rapid_run_count:int\",\"$backup_spf_state:string\",\"$instance_name:string\",\"$instance_text:string\"]},\"xxid\":\"c3a79891-1923-c4d1-ec56-db52836880c9\"},{\"type\":\"4\",\"name\":\"area\",\"keyVariables\":null,\"startLine\":\"regex[$area_id]:Area: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$stub_type]:\\\\s+Stub type\\\\:\\\\s+(.*),?\",\"Authentication Type: $authentication_type\",\"Area border routers: $int:area_border_router_count, AS boundary routers: $int:as_boundary_router_count\",\"Up (in full state): $int:up_state_neighbor_count\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$stub_type:string\",\"$authentication_type:string\",\"$area_border_router_count:int\",\"$as_boundary_router_count:int\",\"$up_state_neighbor_count:int\"]},\"xxid\":\"e245377d-33a4-639f-9fef-581e188ea72f\"}]},\"xxid\":\"30688448-6d56-900a-600c-0a252782f1b1\",\"hashColumns\":[\"$area_id\",\"$stub_type\",\"$authentication_type\",\"$area_border_router_count\",\"$as_boundary_router_count\",\"$up_state_neighbor_count\",\"$router_id\",\"$lsa_refresh_time\",\"$spf_delay\",\"$spf_holddown\",\"$backup_spf_state\",\"$instance_name\"],\"hashSort\":false}]},\"xxid\":\"89520e12-f729-2328-d95f-4de3194bdfda\",\"hashColumns\":[\"$router_id\",\"$route_table_index\",\"$lsa_refresh_time\",\"$prefix_export_count\",\"$spf_delay\",\"$spf_holddown\",\"$backup_spf_state\",\"$instance_name\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"d9ed7d90-f338-5112-50c5-a4e6f62fc293\"}]}",
+            "tableKeys": [
+                "_original_result.processes.$router_id",
+                "_original_result.processes.area.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "route_table_index",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "lsa_refresh_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "received_lsas_no_dcbit",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "prefix_export_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "full_spf_run_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "spf_delay",
+                        "type": 2
+                    },
+                    {
+                        "index": 7,
+                        "name": "spf_holddown",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "spf_rapid_run_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "backup_spf_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "instance_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "instance_text",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$backup_spf_state",
+                    "$instance_name",
+                    "$lsa_refresh_time",
+                    "$prefix_export_count",
+                    "$route_table_index",
+                    "$router_id",
+                    "$spf_delay",
+                    "$spf_holddown"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 18,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "stub_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "authentication_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "area_border_router_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "as_boundary_router_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "up_state_neighbor_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "route_table_index",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "lsa_refresh_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "received_lsas_no_dcbit",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "prefix_export_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "full_spf_run_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "spf_delay",
+                        "type": 2
+                    },
+                    {
+                        "index": 13,
+                        "name": "spf_holddown",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "spf_rapid_run_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "backup_spf_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "instance_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "instance_text",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_border_router_count",
+                    "$area_id",
+                    "$as_boundary_router_count",
+                    "$authentication_type",
+                    "$backup_spf_state",
+                    "$instance_name",
+                    "$lsa_refresh_time",
+                    "$router_id",
+                    "$spf_delay",
+                    "$spf_holddown",
+                    "$stub_type",
+                    "$up_state_neighbor_count"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "area",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "06f6eba01b1a71e1679a52dc32ab7253",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "processes",
+            "dataType": "paragraph",
+            "desc": "Processes Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$router_id",
+                    "$route_table_index",
+                    "$lsa_refresh_time",
+                    "$prefix_export_count",
+                    "$spf_delay",
+                    "$spf_holddown",
+                    "$backup_spf_state",
+                    "$instance_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes",
+            "intfKey": false,
+            "name": "processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "processes.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$route_table_index",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$route_table_index",
+            "intfKey": false,
+            "name": "$route_table_index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$lsa_refresh_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$lsa_refresh_time",
+            "intfKey": false,
+            "name": "$lsa_refresh_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$received_lsas_no_dcbit",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$received_lsas_no_dcbit",
+            "intfKey": false,
+            "name": "$received_lsas_no_dcbit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$prefix_export_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$prefix_export_count",
+            "intfKey": false,
+            "name": "$prefix_export_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$full_spf_run_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$full_spf_run_count",
+            "intfKey": false,
+            "name": "$full_spf_run_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$spf_delay",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$spf_delay",
+            "intfKey": false,
+            "name": "$spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$spf_holddown",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$spf_holddown",
+            "intfKey": false,
+            "name": "$spf_holddown",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$spf_rapid_run_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$spf_rapid_run_count",
+            "intfKey": false,
+            "name": "$spf_rapid_run_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$backup_spf_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$backup_spf_state",
+            "intfKey": false,
+            "name": "$backup_spf_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$instance_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$instance_name",
+            "intfKey": false,
+            "name": "$instance_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$instance_text",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$instance_text",
+            "intfKey": false,
+            "name": "$instance_text",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area",
+            "dataType": "paragraph",
+            "desc": "Area Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id",
+                    "$stub_type",
+                    "$authentication_type",
+                    "$area_border_router_count",
+                    "$as_boundary_router_count",
+                    "$up_state_neighbor_count",
+                    "$router_id",
+                    "$lsa_refresh_time",
+                    "$spf_delay",
+                    "$spf_holddown",
+                    "$backup_spf_state",
+                    "$instance_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes.area",
+            "intfKey": false,
+            "name": "area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$stub_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$stub_type",
+            "intfKey": false,
+            "name": "$stub_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$authentication_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$authentication_type",
+            "intfKey": false,
+            "name": "$authentication_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$area_border_router_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$area_border_router_count",
+            "intfKey": false,
+            "name": "$area_border_router_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$as_boundary_router_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$as_boundary_router_count",
+            "intfKey": false,
+            "name": "$as_boundary_router_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$up_state_neighbor_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$up_state_neighbor_count",
+            "intfKey": false,
+            "name": "$up_state_neighbor_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$route_table_index",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$route_table_index",
+            "intfKey": false,
+            "name": "$route_table_index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$lsa_refresh_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$lsa_refresh_time",
+            "intfKey": false,
+            "name": "$lsa_refresh_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$received_lsas_no_dcbit",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$received_lsas_no_dcbit",
+            "intfKey": false,
+            "name": "$received_lsas_no_dcbit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$prefix_export_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$prefix_export_count",
+            "intfKey": false,
+            "name": "$prefix_export_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$full_spf_run_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$full_spf_run_count",
+            "intfKey": false,
+            "name": "$full_spf_run_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$spf_delay",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$spf_delay",
+            "intfKey": false,
+            "name": "$spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$spf_holddown",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$spf_holddown",
+            "intfKey": false,
+            "name": "$spf_holddown",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$spf_rapid_run_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$spf_rapid_run_count",
+            "intfKey": false,
+            "name": "$spf_rapid_run_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$backup_spf_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$backup_spf_state",
+            "intfKey": false,
+            "name": "$backup_spf_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$instance_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$instance_name",
+            "intfKey": false,
+            "name": "$instance_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$instance_text",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$instance_text",
+            "intfKey": false,
+            "name": "$instance_text",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

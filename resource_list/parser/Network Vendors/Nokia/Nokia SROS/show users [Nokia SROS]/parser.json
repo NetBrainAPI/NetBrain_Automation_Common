@@ -1,0 +1,364 @@
+{
+    "_id": "72c65358-ff9d-38fd-330e-cba1eceac57a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show users",
+    "createTime": {
+        "$date": -62135596800000
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:netbrain#show users \r\n===============================================================================\r\nUser                             Type    Login time             Idle time\r\n  From\r\n===============================================================================\r\n                                 Console       --               43d 18:39:39   \r\n  --                                                                            \r\nnetbrain7                        SSHv2   23APR2020 16:02:55     0d 00:00:00    \r\n  10.145.142.122    \r\nnetbrain8                        SSHv2   23APR2020 16:02:55     0d 00:00:00    \r\n  10.145.142.122 \r\n-------------------------------------------------------------------------------\r\nNumber of users : 1\r\n===============================================================================\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:num_users]:Number of users\\\\s+:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num_users:int\"]},\"xxid\":\"647a0898-131d-0301-dd8d-e0ea435bbfbd\"},{\"type\":\"4\",\"name\":\"User_Summary\",\"keyVariables\":\"\",\"startLine\":\"regex[$user,$console,$login_time,$idle_time]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d.+?)\\\\s\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$user_content]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$user:string\",\"$console:string\",\"$login_time:string\",\"$idle_time:string\",\"$user_content:string\"]},\"xxid\":\"8fe3dec3-dbbb-319b-5207-4070ceb6adc2\"},{\"type\":\"4\",\"name\":\"User_Table\",\"keyVariables\":\"\",\"startLine\":\"mregex[$from_ip]:(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$from_ip:string\"]},\"xxid\":\"b3fdd3cf-a473-e043-11b5-709849577c1a\"}]},\"xxid\":\"96dd972a-286d-47c0-fc65-864cccb9fa27\"}]},\"xxid\":\"522fd3a8-353a-f553-2aa3-3e56cb5978f9\",\"hashColumns\":[\"$user\",\"$user_content\"]}]}",
+            "tableKeys": [
+                "_original_result.User_Summary.$user",
+                "_original_result.User_Summary.$user_content"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "num_users",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "user",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "console",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "login_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "idle_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "user_content",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$user",
+                    "$user_content"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "User_Summary",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "from_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "user",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "console",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "login_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "idle_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "user_content",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "User_Table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d7055995b223057405b266f66456b349",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$num_users",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$num_users",
+            "intfKey": false,
+            "name": "$num_users",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Summary",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$user",
+                    "$user_content"
+                ],
+                "hashSort": false
+            },
+            "fullName": "User_Summary",
+            "intfKey": false,
+            "name": "User_Summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "User_Summary.$user",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.$user",
+            "intfKey": false,
+            "name": "$user",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Summary.$console",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.$console",
+            "intfKey": false,
+            "name": "$console",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Summary.$login_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.$login_time",
+            "intfKey": false,
+            "name": "$login_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Summary.$idle_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.$idle_time",
+            "intfKey": false,
+            "name": "$idle_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Summary.$user_content",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.$user_content",
+            "intfKey": false,
+            "name": "$user_content",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "User_Summary.User_Table",
+            "intfKey": false,
+            "name": "User_Table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "User_Table.$from_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.User_Table.$from_ip",
+            "intfKey": false,
+            "name": "$from_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Table.$user",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.User_Table.$user",
+            "intfKey": false,
+            "name": "$user",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Table.$console",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.User_Table.$console",
+            "intfKey": false,
+            "name": "$console",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Table.$login_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.User_Table.$login_time",
+            "intfKey": false,
+            "name": "$login_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Table.$idle_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.User_Table.$idle_time",
+            "intfKey": false,
+            "name": "$idle_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "User_Table.$user_content",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "User_Summary.User_Table.$user_content",
+            "intfKey": false,
+            "name": "$user_content",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

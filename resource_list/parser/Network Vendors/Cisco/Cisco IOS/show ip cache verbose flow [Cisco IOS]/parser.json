@@ -1,0 +1,1684 @@
+{
+    "_id": "ee440ec4-7e37-5295-25ee-2f309c7f1ba6",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip cache verbose flow",
+    "createTime": {
+        "$date": 1579720759051
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco IOS Router\nCommand: \nshow ip cache verbose flow",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Internet#show ip cache verbose flow\nIP packet size distribution (438835 total packets):\n   1-32   64   96  128  160  192  224  256  288  320  352  384  416  448  480\n   .000 .000 .000 1.00 .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 .000\n\n    512  544  576 1024 1536 2048 2560 3072 3584 4096 4608\n   .000 .000 .000 .000 .000 .000 .000 .000 .000 .000 .000\n\nIP Flow Switching Cache, 4456704 bytes\n  4 active, 65532 inactive, 109 added\n  25737 ager polls, 0 flow alloc failures\n  Active flows timeout in 30 minutes\n  Inactive flows timeout in 15 seconds\nIP Sub Flow Cache, 533256 bytes\n  0 active, 16384 inactive, 0 added, 0 added to flow\n  0 alloc failures, 0 force free\n  1 chunk, 1 chunk added\n  last clearing of statistics never\nProtocol         Total    Flows   Packets Bytes  Packets Active(Sec) Idle(Sec)\n--------         Flows     /Sec     /Flow  /Pkt     /Sec     /Flow     /Flow\nICMP               105      0.0      4016   100     20.7     219.7      14.9\nTotal:             105      0.0      4016   100     20.7     219.7      14.9\n\nSrcIf          SrcIPaddress    DstIf          DstIPaddress    Pr TOS Flgs  Pkts\nPort Msk AS                    Port Msk AS    NextHop              B/Pk  Active\nSe1/0          10.10.10.10     Null           172.16.10.2     01 B0  10    6551 \n0000 /0  0                     0800 /0  0     0.0.0.0               100    78.3\n\nSe1/0          10.10.10.10     Fa0/1*         172.16.10.2     01 B0  10    1407 \n0000 /0  0                     0800 /0  0     0.0.0.0               100    78.3\nFFlags: 01  \n\nFa0/1          172.16.10.2     Se1/0*         10.10.10.10     01 A0  10    7763 \n0000 /0  0                     0000 /0  0     0.0.0.0               100   807.2\nFFlags: 01  \n\nFa0/1          172.16.10.2     Se1/0          10.10.10.10     01 B0  10    1385 \n0000 /0  0                     0000 /0  0     0.0.0.0               100    77.8\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"traffic_summary_filter\",\"startLine\":\"Protocol         Total    Flows   Packets Bytes  Packets Active(Sec) Idle(Sec)\",\"endLine\":\"regex:^$\",\"skipLines\":null,\"includeLines\":null,\"excludeLines\":{\"excludeline\":\" /Sec\"},\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"5b2ebfe8-a31b-db33-41f2-f182268e54a8\"},{\"type\":\"4\",\"name\":\"traffic_summary_table\",\"keyVariables\":null,\"startLine\":null,\"endLine\":null,\"isLineAsParagraph\":\"1\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$protocol,$int:total_flows,$double:flows_per_sec,$int:packets_per_flow,$int:bytes_per_packet,$double:packets_per_sec,$double:active_per_flow,$double:idle_per_flow]:(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$protocol:string\",\"$total_flows:int\",\"$flows_per_sec:double\",\"$packets_per_flow:int\",\"$bytes_per_packet:int\",\"$packets_per_sec:double\",\"$active_per_flow:double\",\"$idle_per_flow:double\"]},\"xxid\":\"c056f8ef-4bfc-9b57-b3de-9c841806afd3\"}]},\"xxid\":\"66424a8d-f1df-1dc6-bd8b-81e0677c036c\"}]},\"xxid\":\"fafcd533-4f7f-84fe-105a-786563081fe0\"},{\"type\":\"1\",\"name\":\"ip_packet_size_distribution_filter\",\"startLine\":\"IP packet size distribution\",\"endLine\":\"IP Flow\",\"skipLines\":null,\"includeLines\":null,\"excludeLines\":null,\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"4d5aeb26-6c05-6e4d-5548-c87a177f8a2c\"},{\"type\":\"4\",\"name\":\"ip_size_distribution\",\"keyVariables\":null,\"startLine\":\"mregex[$size_1_32, $size_64, $size_96, $size_128, $size_160, $size_192, $size_224, $size_256, $size_288, $size_320, $size_352, $size_384, $size_416, $size_448, $size_480, $size_512, $size_544, $size_576, $size_1024, $size_1536, $size_2048, $size_2560, $size_3072, $size_3584, $size_4096, $size_4608]:\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+).*?((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+((?:\\\\d+|)\\\\.\\\\d+)\\\\s+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$size_1_32:string\",\"$size_64:string\",\"$size_96:string\",\"$size_128:string\",\"$size_160:string\",\"$size_192:string\",\"$size_224:string\",\"$size_256:string\",\"$size_288:string\",\"$size_320:string\",\"$size_352:string\",\"$size_384:string\",\"$size_416:string\",\"$size_448:string\",\"$size_480:string\",\"$size_512:string\",\"$size_544:string\",\"$size_576:string\",\"$size_1024:string\",\"$size_1536:string\",\"$size_2048:string\",\"$size_2560:string\",\"$size_3072:string\",\"$size_3584:string\",\"$size_4096:string\",\"$size_4608:string\"]},\"xxid\":\"ce779bcb-ce3d-cac1-84f2-ecc4bac06028\"}]},\"xxid\":\"6213d215-6d14-f233-ad2b-c0de8055947b\"}]},\"xxid\":\"449ddca2-8dfb-b216-749f-475137a857bc\"},{\"type\":\"4\",\"name\":\"ip_flow_switching_cache\",\"keyVariables\":null,\"startLine\":\"regex[$int:cache_bytes]:^IP\\\\s+Flow\\\\s+Switching\\\\s+Cache,\\\\s+(\\\\d+)\\\\s+bytes\",\"endLine\":\"regex:^\\\\S+\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:active,$int:inactive,$int:added]:(\\\\d+)\\\\s+active,\\\\s+(\\\\d+)\\\\s+inactive,\\\\s+(\\\\d+)\\\\s+added\",\"regex[$int:ager_polls,$int:flow_alloc_failures]:(\\\\d+)\\\\s+ager polls,\\\\s+(\\\\d+)\\\\s+flow alloc failures\",\"regex[$int:active_flows_timeout]:Active\\\\s+flows\\\\s+timeout\\\\s+in\\\\s+(\\\\d+)\\\\s+minutes\",\"regex[$int:inactive_flows_timeout]:Inactive\\\\s+flows\\\\s+timeout\\\\s+in\\\\s+(\\\\d+)\\\\s+seconds\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$cache_bytes:int\",\"$active:int\",\"$inactive:int\",\"$added:int\",\"$ager_polls:int\",\"$flow_alloc_failures:int\",\"$active_flows_timeout:int\",\"$inactive_flows_timeout:int\"]},\"xxid\":\"2c063f27-e918-b900-fd3a-3a2357b6e8c9\"}]},\"xxid\":\"856fcdbb-ef7a-fbcc-28b6-663e9dc127a2\"},{\"type\":\"4\",\"name\":\"ip_sub_flow_cache\",\"keyVariables\":null,\"startLine\":\"regex[$int:cache_bytes]:IP\\\\s+Sub\\\\s+Flow\\\\s+Cache,\\\\s+(\\\\d+)\\\\s+bytes\",\"endLine\":\"regex:^\\\\S+\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:active,$int:inactive,$int:added,$int:add_to_flow]:(\\\\d+)\\\\s+active,\\\\s+(\\\\d+)\\\\s+inactive,\\\\s+(\\\\d+)\\\\s+added,\\\\s+(\\\\d+)\\\\s+added\\\\s+to\\\\s+flow\",\"regex[$int:alloc_failures,$int:force_free]:(\\\\d+)\\\\s+alloc\\\\s+failures,\\\\s+(\\\\d+)\\\\s+force\\\\s+free\",\"regex[$int:chunk,$int:chunk_added]:(\\\\d+)\\\\s+chunk,\\\\s+(\\\\d+)\\\\s+chunk\\\\s+added\",\"regex[$last_clearing]:last\\\\s+clearing\\\\s+of\\\\s+statistics\\\\s+(.*)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$cache_bytes:int\",\"$active:int\",\"$inactive:int\",\"$added:int\",\"$add_to_flow:int\",\"$alloc_failures:int\",\"$force_free:int\",\"$chunk:int\",\"$chunk_added:int\",\"$last_clearing:string\"]},\"xxid\":\"d7de6196-8387-df90-4774-07c94f277418\"}]},\"xxid\":\"6decad93-3d4f-8a41-dd54-e8cf25471293\"},{\"type\":\"1\",\"name\":\"traffic_filter\",\"startLine\":\"SrcIf          SrcIPaddress    DstIf          DstIPaddress    Pr TOS Flgs  Pkts\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"7eb12fbe-fb29-340c-652f-f34d723e34f7\"},{\"type\":\"4\",\"name\":\"traffic_table\",\"keyVariables\":\"\",\"startLine\":\"mregex[$src_intf,$src_ip,$dest_intf,$dest_ip,$priority,$tos,$flag,$pkts,$src_port,$src_mask,$src_as,$dest_port,$dest_mask,$dest_as,$next_hop,$pkt,$active_packet]:^(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s*\\\\n\\\\s*(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+\\\\/(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$src_intf:string\",\"$src_ip:string\",\"$dest_intf:string\",\"$dest_ip:string\",\"$priority:string\",\"$tos:string\",\"$flag:string\",\"$pkts:string\",\"$src_port:string\",\"$src_mask:string\",\"$src_as:string\",\"$dest_port:string\",\"$dest_mask:string\",\"$dest_as:string\",\"$next_hop:string\",\"$pkt:string\",\"$active_packet:string\"]},\"xxid\":\"250a52f0-f10b-e2b0-39c6-91e1598554d0\"}]},\"xxid\":\"4f59c3fa-20ac-ba6e-63f3-b5050fa247e6\"}]},\"xxid\":\"bbeba1ac-be1e-d224-685e-aa333c11c39c\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"e355d92e-1c09-73c0-67e8-151425ea8ae9\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "traffic_summary_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "ip_packet_size_distribution_filter",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "traffic_filter",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "total_flows",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "flows_per_sec",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "packets_per_flow",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "bytes_per_packet",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "packets_per_sec",
+                        "type": 2
+                    },
+                    {
+                        "index": 6,
+                        "name": "active_per_flow",
+                        "type": 2
+                    },
+                    {
+                        "index": 7,
+                        "name": "idle_per_flow",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "traffic_summary_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 26,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "size_1_32",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "size_64",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "size_96",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "size_128",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "size_160",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "size_192",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "size_224",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "size_256",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "size_288",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "size_320",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "size_352",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "size_384",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "size_416",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "size_448",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "size_480",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "size_512",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "size_544",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "size_576",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "size_1024",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "size_1536",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "size_2048",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "size_2560",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "size_3072",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "size_3584",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "size_4096",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "size_4608",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 5,
+                "name": "ip_size_distribution",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "cache_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "active",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "inactive",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "added",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "ager_polls",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "flow_alloc_failures",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "active_flows_timeout",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "inactive_flows_timeout",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 6,
+                "name": "ip_flow_switching_cache",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "cache_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "active",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "inactive",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "added",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "add_to_flow",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "alloc_failures",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "force_free",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "chunk",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "chunk_added",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "last_clearing",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 7,
+                "name": "ip_sub_flow_cache",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 17,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "src_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "src_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dest_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dest_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "tos",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "pkts",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "src_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "src_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "src_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "dest_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "dest_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "dest_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "next_hop",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "pkt",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "active_packet",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 8,
+                "name": "traffic_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d3242e81acf751244189cea03ded456a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "traffic_summary_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter",
+            "intfKey": false,
+            "name": "traffic_summary_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table",
+            "intfKey": false,
+            "name": "traffic_summary_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "traffic_summary_table.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table.$total_flows",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$total_flows",
+            "intfKey": false,
+            "name": "$total_flows",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table.$flows_per_sec",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$flows_per_sec",
+            "intfKey": false,
+            "name": "$flows_per_sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table.$packets_per_flow",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$packets_per_flow",
+            "intfKey": false,
+            "name": "$packets_per_flow",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table.$bytes_per_packet",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$bytes_per_packet",
+            "intfKey": false,
+            "name": "$bytes_per_packet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table.$packets_per_sec",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$packets_per_sec",
+            "intfKey": false,
+            "name": "$packets_per_sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table.$active_per_flow",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$active_per_flow",
+            "intfKey": false,
+            "name": "$active_per_flow",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_summary_table.$idle_per_flow",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_summary_filter.traffic_summary_table.$idle_per_flow",
+            "intfKey": false,
+            "name": "$idle_per_flow",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_packet_size_distribution_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter",
+            "intfKey": false,
+            "name": "ip_packet_size_distribution_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution",
+            "intfKey": false,
+            "name": "ip_size_distribution",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ip_size_distribution.$size_1_32",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_1_32",
+            "intfKey": false,
+            "name": "$size_1_32",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_64",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_64",
+            "intfKey": false,
+            "name": "$size_64",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_96",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_96",
+            "intfKey": false,
+            "name": "$size_96",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_128",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_128",
+            "intfKey": false,
+            "name": "$size_128",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_160",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_160",
+            "intfKey": false,
+            "name": "$size_160",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_192",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_192",
+            "intfKey": false,
+            "name": "$size_192",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_224",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_224",
+            "intfKey": false,
+            "name": "$size_224",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_256",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_256",
+            "intfKey": false,
+            "name": "$size_256",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_288",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_288",
+            "intfKey": false,
+            "name": "$size_288",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_320",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_320",
+            "intfKey": false,
+            "name": "$size_320",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_352",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_352",
+            "intfKey": false,
+            "name": "$size_352",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_384",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_384",
+            "intfKey": false,
+            "name": "$size_384",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_416",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_416",
+            "intfKey": false,
+            "name": "$size_416",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_448",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_448",
+            "intfKey": false,
+            "name": "$size_448",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_480",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_480",
+            "intfKey": false,
+            "name": "$size_480",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_512",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_512",
+            "intfKey": false,
+            "name": "$size_512",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_544",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_544",
+            "intfKey": false,
+            "name": "$size_544",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_576",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_576",
+            "intfKey": false,
+            "name": "$size_576",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_1024",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_1024",
+            "intfKey": false,
+            "name": "$size_1024",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_1536",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_1536",
+            "intfKey": false,
+            "name": "$size_1536",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_2048",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_2048",
+            "intfKey": false,
+            "name": "$size_2048",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_2560",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_2560",
+            "intfKey": false,
+            "name": "$size_2560",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_3072",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_3072",
+            "intfKey": false,
+            "name": "$size_3072",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_3584",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_3584",
+            "intfKey": false,
+            "name": "$size_3584",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_4096",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_4096",
+            "intfKey": false,
+            "name": "$size_4096",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_size_distribution.$size_4608",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_packet_size_distribution_filter.ip_size_distribution.$size_4608",
+            "intfKey": false,
+            "name": "$size_4608",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache",
+            "intfKey": false,
+            "name": "ip_flow_switching_cache",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ip_flow_switching_cache.$cache_bytes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$cache_bytes",
+            "intfKey": false,
+            "name": "$cache_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache.$active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$active",
+            "intfKey": false,
+            "name": "$active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache.$inactive",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$inactive",
+            "intfKey": false,
+            "name": "$inactive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache.$added",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$added",
+            "intfKey": false,
+            "name": "$added",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache.$ager_polls",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$ager_polls",
+            "intfKey": false,
+            "name": "$ager_polls",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache.$flow_alloc_failures",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$flow_alloc_failures",
+            "intfKey": false,
+            "name": "$flow_alloc_failures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache.$active_flows_timeout",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$active_flows_timeout",
+            "intfKey": false,
+            "name": "$active_flows_timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_flow_switching_cache.$inactive_flows_timeout",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_flow_switching_cache.$inactive_flows_timeout",
+            "intfKey": false,
+            "name": "$inactive_flows_timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache",
+            "intfKey": false,
+            "name": "ip_sub_flow_cache",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ip_sub_flow_cache.$cache_bytes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$cache_bytes",
+            "intfKey": false,
+            "name": "$cache_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$active",
+            "intfKey": false,
+            "name": "$active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$inactive",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$inactive",
+            "intfKey": false,
+            "name": "$inactive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$added",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$added",
+            "intfKey": false,
+            "name": "$added",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$add_to_flow",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$add_to_flow",
+            "intfKey": false,
+            "name": "$add_to_flow",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$alloc_failures",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$alloc_failures",
+            "intfKey": false,
+            "name": "$alloc_failures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$force_free",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$force_free",
+            "intfKey": false,
+            "name": "$force_free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$chunk",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$chunk",
+            "intfKey": false,
+            "name": "$chunk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$chunk_added",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$chunk_added",
+            "intfKey": false,
+            "name": "$chunk_added",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_sub_flow_cache.$last_clearing",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_sub_flow_cache.$last_clearing",
+            "intfKey": false,
+            "name": "$last_clearing",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter",
+            "intfKey": false,
+            "name": "traffic_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table",
+            "intfKey": false,
+            "name": "traffic_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "traffic_table.$src_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$src_intf",
+            "intfKey": false,
+            "name": "$src_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$src_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$src_ip",
+            "intfKey": false,
+            "name": "$src_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$dest_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$dest_intf",
+            "intfKey": false,
+            "name": "$dest_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$dest_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$dest_ip",
+            "intfKey": false,
+            "name": "$dest_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$tos",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$tos",
+            "intfKey": false,
+            "name": "$tos",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$flag",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$flag",
+            "intfKey": false,
+            "name": "$flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$pkts",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$pkts",
+            "intfKey": false,
+            "name": "$pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$src_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$src_port",
+            "intfKey": false,
+            "name": "$src_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$src_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$src_mask",
+            "intfKey": false,
+            "name": "$src_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$src_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$src_as",
+            "intfKey": false,
+            "name": "$src_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$dest_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$dest_port",
+            "intfKey": false,
+            "name": "$dest_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$dest_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$dest_mask",
+            "intfKey": false,
+            "name": "$dest_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$dest_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$dest_as",
+            "intfKey": false,
+            "name": "$dest_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$next_hop",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$next_hop",
+            "intfKey": false,
+            "name": "$next_hop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$pkt",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$pkt",
+            "intfKey": false,
+            "name": "$pkt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_table.$active_packet",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_filter.traffic_table.$active_packet",
+            "intfKey": false,
+            "name": "$active_packet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

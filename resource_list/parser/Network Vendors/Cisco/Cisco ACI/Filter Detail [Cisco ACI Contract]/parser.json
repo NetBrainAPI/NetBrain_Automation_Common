@@ -1,0 +1,383 @@
+{
+    "_id": "4bca90ec-18da-6eca-b2fd-671a36108f6e",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560796180524
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n\n[\n]\n\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\nimport re\ndef BuildParameters(context, device_name, params):\n    res = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'Logical', 'params' : ['_id'] })\n    apiServerId = res['params']['_id']\n    rtn_params = {}\n    rtn_params['apiServerId'] = apiServerId\n    temp = device_name.split('/uni/')\n    temp1 ='/uni/'+temp[1]\n    rtn_params['dn'] = temp1\n\n    return rtn_params\n\n\t\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    qry = 'query-target=subtree&target-subtree-class=vzRsSubjFiltAtt'\n    url = '/api/node/mo' + dn + '.json?' + qry\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    data = json.loads(data)\n    \n    url = '/api/node/class/vzEntry.json'\n    rtn_params['url'] = url\n    data1 = getData(rtn_params)\n    data1 = json.loads(data1)\n    data += data1\n    \n    \n    return data",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"vzRsSubjFiltAtt\": {\n            \"attributes\": {\n                \"action\": \"permit\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"directives\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/brc-APP-Contract/subj-APP-Permite-sub/rssubjFiltAtt-default\",\n                \"extMngdBy\": \"\",\n                \"forceResolve\": \"yes\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-04-25T10:44:17.388+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"priorityOverride\": \"default\",\n                \"rType\": \"mo\",\n                \"state\": \"formed\",\n                \"stateQual\": \"none\",\n                \"status\": \"\",\n                \"tCl\": \"vzFilter\",\n                \"tContextDn\": \"\",\n                \"tDn\": \"uni/tn-common/flt-default\",\n                \"tRn\": \"flt-default\",\n                \"tType\": \"name\",\n                \"tnVzFilterName\": \"default\",\n                \"uid\": \"15374\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-common/flt-arp/e-arp\",\n                \"etherT\": \"arp\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2018-11-13T12:51:40.675+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"arp\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"0\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-common/flt-est/e-est\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2018-11-13T12:51:40.675+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"est\",\n                \"nameAlias\": \"\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"est\",\n                \"uid\": \"0\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-common/flt-icmp/e-icmp\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2018-11-13T12:51:40.675+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"icmp\",\n                \"nameAlias\": \"\",\n                \"prot\": \"icmp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"0\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-common/flt-default/e-default\",\n                \"etherT\": \"unspecified\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2018-11-13T12:51:40.675+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"default\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"0\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-allow_all/e-allow_all\",\n                \"etherT\": \"unspecified\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-01-09T03:03:18.679+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"allow_all\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"http\",\n                \"dToPort\": \"http\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-taboo_filter/e-taboo_filter_entry1\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-02-13T02:36:39.093+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"taboo_filter_entry1\",\n                \"nameAlias\": \"\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"1\",\n                \"dToPort\": \"1024\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-Contract_Test_Tenant/flt-contract_filter_1/e-filter_1\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-02-13T18:20:54.428+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"filter_1\",\n                \"nameAlias\": \"f1\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"5000\",\n                \"sToPort\": \"65535\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"ftpData\",\n                \"dToPort\": \"smtp\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-Contract_Test_Tenant/flt-taboo_filter/e-taboo_1\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-02-13T18:24:16.073+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"taboo_1\",\n                \"nameAlias\": \"\",\n                \"prot\": \"udp\",\n                \"sFromPort\": \"smtp\",\n                \"sToPort\": \"dns\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"http\",\n                \"dToPort\": \"http\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-Filt_Danny/e-TCP80\",\n                \"etherT\": \"ipv4\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-03-01T12:51:46.462+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"TCP80\",\n                \"nameAlias\": \"\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"15374\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"dns\",\n                \"dToPort\": \"dns\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-Filt_Danny/e-UDP53\",\n                \"etherT\": \"ipv4\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-03-01T12:51:46.462+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"UDP53\",\n                \"nameAlias\": \"\",\n                \"prot\": \"udp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"15374\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"https\",\n                \"dToPort\": \"https\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-transit_route/e-all_route\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-04-12T14:01:04.703+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"all_route\",\n                \"nameAlias\": \"\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-transit_route/e-default\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-04-23T07:43:52.386+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"default\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-QA_allow_all/e-allow_all\",\n                \"etherT\": \"unspecified\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-07T08:07:13.749+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"allow_all\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-l3out_ASA4852_to_QABackEnd_filter/e-4852_\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-08T13:31:59.096+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"4852_\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"http\",\n                \"dToPort\": \"http\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-permit_http/e-permit_http\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-15T11:32:01.582+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"permit_http\",\n                \"nameAlias\": \"\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"8070\",\n                \"dToPort\": \"8081\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-permit_http/e-permit_8080\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-15T13:53:33.357+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"permit_8080\",\n                \"nameAlias\": \"\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"http\",\n                \"dToPort\": \"https\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-permit_http/e-permit_source\",\n                \"etherT\": \"ip\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-15T14:24:42.382+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"permit_source\",\n                \"nameAlias\": \"\",\n                \"prot\": \"tcp\",\n                \"sFromPort\": \"2000\",\n                \"sToPort\": \"20000\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-permit_http/e-test_id\",\n                \"etherT\": \"arp\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-17T08:20:19.140+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"test_id\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-lei/e-lei_filter\",\n                \"etherT\": \"ipv4\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-17T12:14:05.843+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"lei_filter\",\n                \"nameAlias\": \"\",\n                \"prot\": \"icmp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"15374\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/flt-lei_1/e-lei1_filter\",\n                \"etherT\": \"ipv4\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-17T12:43:47.732+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"lei1_filter\",\n                \"nameAlias\": \"\",\n                \"prot\": \"icmp\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"15374\"\n            }\n        }\n    },\n    {\n        \"vzEntry\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"applyToFrag\": \"no\",\n                \"arpOpc\": \"unspecified\",\n                \"childAction\": \"\",\n                \"dFromPort\": \"unspecified\",\n                \"dToPort\": \"unspecified\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.TOR/flt-allow_any/e-allow_any\",\n                \"etherT\": \"unspecified\",\n                \"extMngdBy\": \"\",\n                \"icmpv4T\": \"unspecified\",\n                \"icmpv6T\": \"unspecified\",\n                \"lcOwn\": \"local\",\n                \"matchDscp\": \"unspecified\",\n                \"modTs\": \"2019-05-21T14:19:30.482+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"allow_any\",\n                \"nameAlias\": \"\",\n                \"prot\": \"unspecified\",\n                \"sFromPort\": \"unspecified\",\n                \"sToPort\": \"unspecified\",\n                \"stateful\": \"no\",\n                \"status\": \"\",\n                \"tcpRules\": \"\",\n                \"uid\": \"14363\"\n            }\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\r\\nBegin Declare Variable\\r\\n[\\r\\n    {\\\"name\\\": \\\"filters\\\",  \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\r\\n        {\\\"name\\\": \\\"tnVzFilterName\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"action\\\", \\\"type\\\": \\\"string\\\"}\\r\\n         ]},\\r\\n    {\\\"name\\\": \\\"filters_detail\\\",  \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\r\\n        {\\\"name\\\": \\\"SubFilterName\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"FilterName\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"specificAction\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"dFromPort\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"dToPort\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"etherT\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"prot\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"sFromPort\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"sToPort\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"tcpRules\\\", \\\"type\\\": \\\"string\\\"}\\r\\n       \\r\\n         ]}\\r\\n]\\r\\nEnd Declare\\r\\n'''\\r\\n\\r\\nimport json \\r\\nimport re\\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    \\r\\n    result = json.loads(_original_result)\\r\\n    value = {}\\r\\n    tnVzFilterName = []\\r\\n    action = []\\r\\n    \\r\\n    SubFilterName = []\\r\\n    FilterName = []\\r\\n    specificAction = []\\r\\n    dFromPort = []\\r\\n    dToPort = []\\r\\n    etherT = []\\r\\n    prot = []\\r\\n    sFromPort= []\\r\\n    sToPort = []\\r\\n    tcpRules= []\\r\\n\\r\\n    \\r\\n    temp_name = ''\\r\\n    data = result\\r\\n    \\r\\n    i = 0\\r\\n    \\r\\n    for m in range(len(data)):\\r\\n        temp = str(data[m].keys())\\r\\n        temp = temp.replace('dict_keys([\\\\'', '')\\r\\n        temp = temp.replace('\\\\'])','')\\r\\n        if temp == 'vzRsSubjFiltAtt':\\r\\n            tnVzFilterName.append(data[m][temp]['attributes']['tnVzFilterName'])\\r\\n            temp_name = data[m][temp]['attributes']['tnVzFilterName']\\r\\n            temp_name = '/flt-' + temp_name + '/'\\r\\n        \\r\\n            action.append(data[m][temp]['attributes']['action'])\\r\\n\\r\\n            for n in range(len(data)):\\r\\n                temp1 = str(data[n].keys())\\r\\n                temp1 = temp1.replace('dict_keys([\\\\'', '')\\r\\n                temp1 = temp1.replace('\\\\'])','')\\r\\n                if temp1 == 'vzEntry':\\r\\n                    if temp_name in data[n][temp1]['attributes']['dn']:\\r\\n                        SubFilterName.append(data[m][temp]['attributes']['tnVzFilterName'])\\r\\n                        specificAction.append(data[m][temp]['attributes']['action'])\\r\\n                        FilterName.append(data[n][temp1]['attributes']['name'])\\r\\n                        dFromPort.append(data[n][temp1]['attributes']['dFromPort'])\\r\\n                        dToPort.append(data[n][temp1]['attributes']['dToPort'])\\r\\n                        etherT.append(data[n][temp1]['attributes']['etherT'])\\r\\n                        prot.append(data[n][temp1]['attributes']['prot'])\\r\\n                        sFromPort.append(data[n][temp1]['attributes']['sFromPort'])\\r\\n                        sToPort.append(data[n][temp1]['attributes']['sToPort'])\\r\\n                        tcpRules.append(data[n][temp1]['attributes']['tcpRules'])\\r\\n\\r\\n                 \\r\\n \\r\\n    value['filters']= {'tnVzFilterName': tnVzFilterName, 'action':action}\\r\\n    value['filters_detail']= {'specificAction':specificAction,'SubFilterName': SubFilterName,'FilterName': FilterName, 'dFromPort': dFromPort,'dToPort': dToPort,'etherT': etherT,'prot': prot,'sFromPort': sFromPort,'sToPort': sToPort,'tcpRules': tcpRules}\\r\\n        \\r\\n    return value\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$filters\",\"variableTypes\":{\"variableType\":[{\"name\":\"$tnVzFilterName\",\"type\":\"string\"},{\"name\":\"$action\",\"type\":\"string\"}]}},{\"name\":\"$filters_detail\",\"variableTypes\":{\"variableType\":[{\"name\":\"$SubFilterName\",\"type\":\"string\"},{\"name\":\"$FilterName\",\"type\":\"string\"},{\"name\":\"$specificAction\",\"type\":\"string\"},{\"name\":\"$dFromPort\",\"type\":\"string\"},{\"name\":\"$dToPort\",\"type\":\"string\"},{\"name\":\"$etherT\",\"type\":\"string\"},{\"name\":\"$prot\",\"type\":\"string\"},{\"name\":\"$sFromPort\",\"type\":\"string\"},{\"name\":\"$sToPort\",\"type\":\"string\"},{\"name\":\"$tcpRules\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"f405e411-e2db-a8a5-1fda-b05170c76b82\",\"hashColumns\":{\"filters\":[\"$tnVzFilterName\"],\"filters_detail\":[\"$SubFilterName\",\"$FilterName\",\"$specificAction\",\"$dFromPort\",\"$dToPort\",\"$sFromPort\",\"$sToPort\",\"$tcpRules\"]},\"tableKeys\":{\"filters_detail\":[\"$FilterName\",\"$SubFilterName\"],\"filters\":[\"$tnVzFilterName\"]},\"hashSort\":{\"filters_detail\":false}}]}",
+            "tableKeys": [
+                "_original_result.$filters_detail.$FilterName",
+                "_original_result.$filters.$tnVzFilterName",
+                "_original_result.$filters_detail.$SubFilterName"
+            ]
+        }
+    ],
+    "schemaList": [
+        "ACI.topRoot.children.polUni.children.fvTenant.children.vzBrCP"
+    ],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "action",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "tnVzFilterName",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "tnVzFilterName"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "filters",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "FilterName",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "SubFilterName",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dFromPort",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dToPort",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "etherT",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "prot",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "sFromPort",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "sToPort",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "specificAction",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "tcpRules",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "FilterName",
+                    "SubFilterName",
+                    "dFromPort",
+                    "dToPort",
+                    "sFromPort",
+                    "sToPort",
+                    "specificAction",
+                    "tcpRules"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "filters_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "75742c6b9e5295963a6b27f3f34745d7",
+    "supportNodeType": 1,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$filters_detail.$FilterName",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$FilterName",
+            "intfKey": false,
+            "name": "$FilterName",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$SubFilterName",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$SubFilterName",
+            "intfKey": false,
+            "name": "$SubFilterName",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters.$action",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters.$action",
+            "intfKey": false,
+            "name": "$action",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$dFromPort",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$dFromPort",
+            "intfKey": false,
+            "name": "$dFromPort",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$dToPort",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$dToPort",
+            "intfKey": false,
+            "name": "$dToPort",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$etherT",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$etherT",
+            "intfKey": false,
+            "name": "$etherT",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$tnVzFilterName"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$filters",
+            "intfKey": false,
+            "name": "$filters",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$filters_detail",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$SubFilterName",
+                    "$FilterName",
+                    "$specificAction",
+                    "$dFromPort",
+                    "$dToPort",
+                    "$sFromPort",
+                    "$sToPort",
+                    "$tcpRules"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail",
+            "intfKey": false,
+            "name": "$filters_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$filters_detail.$prot",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$prot",
+            "intfKey": false,
+            "name": "$prot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$sFromPort",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$sFromPort",
+            "intfKey": false,
+            "name": "$sFromPort",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$sToPort",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$sToPort",
+            "intfKey": false,
+            "name": "$sToPort",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$specificAction",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$specificAction",
+            "intfKey": false,
+            "name": "$specificAction",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters_detail.$tcpRules",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters_detail.$tcpRules",
+            "intfKey": false,
+            "name": "$tcpRules",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$filters.$tnVzFilterName",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$filters.$tnVzFilterName",
+            "intfKey": false,
+            "name": "$tnVzFilterName",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,98 @@
+{
+    "_id": "51c8aafc-0856-6d63-0d7a-90aa451436a2",
+    "author": "NetBrain",
+    "bizType": "d198c0de-1232-499e-8cc2-91f316cefbe3",
+    "command": "",
+    "createTime": {
+        "$date": 1560793405873
+    },
+    "description": "",
+    "devTypes": [
+        21011,
+        21007,
+        21008,
+        21010,
+        13002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'ESXI', 'paramType': 'SDN', 'params' : ['moid'] })\r\n    moid = get_dn['params']['moid']\r\n    rtn_params = { 'devName' : device_name, 'moid' : moid, 'vmi_type':\"VirtualMachine\"}\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    # used\r\n    property_paths = [\"summary\", \"quickStats\"]\r\n    property_names = [\"guestMemoryUsage\", \"overallCpuUsage\"]\r\n    rtn_params['property_paths'] = property_paths\r\n    rtn_params['property_names'] = property_names\r\n    resp = get_vmi_object(rtn_params)\r\n    # total\r\n    property_paths = [\"runtime\"]\r\n    property_names = [\"maxMemoryUsage\", \"maxCpuUsage\", \"powerState\"]\r\n    rtn_params['property_paths'] = property_paths\r\n    rtn_params['property_names'] = property_names\r\n    resp2 = get_vmi_object(rtn_params)\r\n    rtn1 = json.loads(resp)\r\n    rtn1.update(json.loads(resp2))\r\n    return json.dumps(rtn1)",
+    "samples": [
+        {
+            "content": "{\n    \"guestMemoryUsage\": 66,\n    \"overallCpuUsage\": 22,\n    \"maxMemoryUsage\": 512,\n    \"maxCpuUsage\": 2200,\n    \"powerState\": \"poweredOn\"\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[    \\n    \\n    {\\\"name\\\": \\\"cpu\\\", \\\"type\\\": \\\"double\\\"},\\n    {\\\"name\\\": \\\"dev_status\\\", \\\"type\\\": \\\"string\\\"},\\n    {\\\"name\\\": \\\"memory\\\", \\\"type\\\": \\\"double\\\"}\\n\\n]\\nEnd Declare\\n'''\\n\\n\\nimport json \\ndef ParseText(_original_result):\\n    rtn ={'dev_status': 'Down'}\\n    value = json.loads(_original_result)\\n    if \\\"overallCpuUsage\\\" in value and \\\"maxCpuUsage\\\" in value:\\n        cpu = round(value['overallCpuUsage']/value['maxCpuUsage'] * 100, 2)\\n    if \\\"guestMemoryUsage\\\" in value and \\\"maxMemoryUsage\\\" in value:\\n        memory = round(value['guestMemoryUsage']/value['maxMemoryUsage'] * 100, 2)\\n    dev_status = 'Up' if value['powerState'].lower() == 'poweredon' else 'Down'\\n    rtn['cpu'] = cpu\\n    rtn['memory'] = memory\\n    rtn['dev_status'] = dev_status\\n    return rtn\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$cpu\",\"type\":\"double\"},{\"name\":\"$dev_status\",\"type\":\"string\"},{\"name\":\"$memory\",\"type\":\"double\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"1e7d1a22-643d-d6f3-7d22-702716c12ec5\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cpu",
+                "type": 2
+            },
+            {
+                "index": 1,
+                "name": "dev_status",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "memory",
+                "type": 2
+            }
+        ]
+    },
+    "structureId": "80517e4b7efc3c78a2cf55b9d0f860f3",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$cpu",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$cpu",
+            "intfKey": false,
+            "name": "$cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$dev_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$dev_status",
+            "intfKey": false,
+            "name": "$dev_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$memory",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$memory",
+            "intfKey": false,
+            "name": "$memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

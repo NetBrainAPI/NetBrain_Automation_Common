@@ -1,0 +1,506 @@
+{
+    "_id": "7d047978-9704-f1e7-cdae-0a6eee5d82bb",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display isis statistics",
+    "createTime": {
+        "$date": 1590769395515
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay isis statistics",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<R1>display isis statistics\r\n\r\n                      Statistics information for IS-IS(80)\r\n                      ------------------------------------\r\n\r\n                               Level-1 Statistics\r\n                               ------------------\r\n\r\nMTR(base)\r\n\r\nLearnt routes information:\r\n        Total IPv4 Learnt Routes in IPv4 Routing Table: 1\r\n\r\nImported routes information:\r\n        IPv4 Imported Routes:\r\n                        Static: 0       Direct: 0\r\n                        ISIS:   0       BGP:    0\r\n                        RIP:    0       OSPF:   0\r\n                        Total Number:   0\r\n\r\nMTR(base)\r\n\r\nLearnt routes information:\r\n        Total IPv6 Learnt Routes in IPv6 Routing Table: 0\r\n\r\nImported routes information:\r\n        IPv6 Imported Routes:\r\n                        Static: 0       Direct: 0\r\n                        ISISv6: 0       BGP4+:  0\r\n                        RIPng:  0       OSPFv3: 0\r\n                        Total Number:   0\r\n\r\nLsp information:\r\n                 LSP Source ID:          No. of used LSPs\r\n                 0000.0000.0002                  001",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_id\",\"keyVariables\":\"\",\"startLine\":\"Statistics information for IS-IS\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$isis_id]:Statistics information for IS-IS\\\\((\\\\d+)\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_id:string\"]},\"xxid\":\"3b9aa8fc-8f26-23db-2a57-81245bddba17\"},{\"type\":\"4\",\"name\":\"level_info\",\"keyVariables\":\"\",\"startLine\":\"regex:Level-\\\\d+ +Statistics\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$level_id]:Level-(\\\\d+) +Statistics\",\"regex[$int:ipv4_routes]:Total IPv4 Learnt Routes in IPv4 Routing Table: +(\\\\d+)\",\"mregex[$int:static,$int:direct,$int:isis,$int:bgp,$int:rip,$int:ospf,$int:total_num]:Static:\\\\s+(\\\\d+)\\\\s+Direct:\\\\s+(\\\\d+)\\\\s+ISIS: +(\\\\d+) +BGP: +(\\\\d+)\\\\s+RIP: +(\\\\d+) +OSPF: +(\\\\d+)\\\\s+Total Number: +(\\\\d+)\",\"mregex[$int:ipv6_static,$int:ipv6_direct,$int:isisv6,$int:bgpv4,$int:ripng,$int:ospfv3,$int:ipv6_total_num]:Static:\\\\s+(\\\\d+)\\\\s+Direct:\\\\s+(\\\\d+)\\\\s+ISISv6: +(\\\\d+) +BGP4\\\\+: +(\\\\d+)\\\\s+RIPng: +(\\\\d+) +OSPFv3: +(\\\\d+)\\\\s+Total Number: +(\\\\d+)\",\"regex[$int:ipv6_routes]:Total IPv6 Learnt Routes in IPv6 Routing Table: +(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level_id:string\",\"$ipv4_routes:int\",\"$static:int\",\"$direct:int\",\"$isis:int\",\"$bgp:int\",\"$rip:int\",\"$ospf:int\",\"$total_num:int\",\"$ipv6_static:int\",\"$ipv6_direct:int\",\"$isisv6:int\",\"$bgpv4:int\",\"$ripng:int\",\"$ospfv3:int\",\"$ipv6_total_num:int\",\"$ipv6_routes:int\"]},\"xxid\":\"4ddf36f9-94eb-a5f2-e79d-8bfbcc8e3d90\"}]},\"xxid\":\"abff6407-7011-c969-9ad9-8131dc73d57c\"}]},\"xxid\":\"9505731b-73ef-825d-fa5b-b483bd0a4d22\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "isis_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_id",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 18,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ipv4_routes",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "static",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "direct",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "isis",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "bgp",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "rip",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "ospf",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "total_num",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "ipv6_static",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "ipv6_direct",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "isisv6",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "bgpv4",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "ripng",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "ospfv3",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "ipv6_total_num",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "ipv6_routes",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "isis_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "level_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a48deede910a6246905d81d2bd8d379e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_id",
+            "dataType": "paragraph",
+            "desc": "IS-IS Process ID.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_id",
+            "intfKey": false,
+            "name": "isis_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_id.$isis_id",
+            "dataType": "string",
+            "desc": "IS-IS Process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.$isis_id",
+            "intfKey": false,
+            "name": "$isis_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info",
+            "intfKey": false,
+            "name": "level_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "level_info.$level_id",
+            "dataType": "string",
+            "desc": "The level ID of IS-IS.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$level_id",
+            "intfKey": false,
+            "name": "$level_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ipv4_routes",
+            "dataType": "int",
+            "desc": "The number of IPv4 routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ipv4_routes",
+            "intfKey": false,
+            "name": "$ipv4_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$static",
+            "dataType": "int",
+            "desc": "The number of imported static IPv4 routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$static",
+            "intfKey": false,
+            "name": "$static",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$direct",
+            "dataType": "int",
+            "desc": "The number of imported direct IPv4 routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$direct",
+            "intfKey": false,
+            "name": "$direct",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$isis",
+            "dataType": "int",
+            "desc": "The number of imported IS-IS routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$isis",
+            "intfKey": false,
+            "name": "$isis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$bgp",
+            "dataType": "int",
+            "desc": "The number of imported BGP routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$bgp",
+            "intfKey": false,
+            "name": "$bgp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$rip",
+            "dataType": "int",
+            "desc": "The number of imported RIP routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$rip",
+            "intfKey": false,
+            "name": "$rip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ospf",
+            "dataType": "int",
+            "desc": "The number of imported OSPF routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ospf",
+            "intfKey": false,
+            "name": "$ospf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$total_num",
+            "dataType": "int",
+            "desc": "The number of total imported routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$total_num",
+            "intfKey": false,
+            "name": "$total_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ipv6_static",
+            "dataType": "int",
+            "desc": "The number of imported static IPv6 routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ipv6_static",
+            "intfKey": false,
+            "name": "$ipv6_static",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ipv6_direct",
+            "dataType": "int",
+            "desc": "The number of imported direct routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ipv6_direct",
+            "intfKey": false,
+            "name": "$ipv6_direct",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$isisv6",
+            "dataType": "int",
+            "desc": "The number of imported IS-ISv6 routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$isisv6",
+            "intfKey": false,
+            "name": "$isisv6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$bgpv4",
+            "dataType": "int",
+            "desc": "The number of imported BGP 4+ routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$bgpv4",
+            "intfKey": false,
+            "name": "$bgpv4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ripng",
+            "dataType": "int",
+            "desc": "The number of imported RIPng routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ripng",
+            "intfKey": false,
+            "name": "$ripng",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ospfv3",
+            "dataType": "int",
+            "desc": "The number of imported OSPFv3 routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ospfv3",
+            "intfKey": false,
+            "name": "$ospfv3",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ipv6_total_num",
+            "dataType": "int",
+            "desc": "The number of total imported IPv6 routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ipv6_total_num",
+            "intfKey": false,
+            "name": "$ipv6_total_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$ipv6_routes",
+            "dataType": "int",
+            "desc": "The number of IPv6 routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$ipv6_routes",
+            "intfKey": false,
+            "name": "$ipv6_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$isis_id",
+            "dataType": "string",
+            "desc": "IS-IS Process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_id.level_info.$isis_id",
+            "intfKey": false,
+            "name": "$isis_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

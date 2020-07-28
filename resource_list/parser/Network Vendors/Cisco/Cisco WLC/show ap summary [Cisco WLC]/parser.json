@@ -1,0 +1,308 @@
+{
+    "_id": "0f4f15b3-8b6b-fd31-a308-462f9bef1514",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ap summary",
+    "createTime": {
+        "$date": 1591038534141
+    },
+    "description": "Device Type:\nCisco WLC\nCommand:\nshow ap summary",
+    "devTypes": [
+        3033
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "(Cisco Controller) >show ap summary\r\n\r\nNumber of APs.................................... 2\r\n\r\nGlobal AP User Name.............................. Not Configured\r\nGlobal AP Dot1x User Name........................ Not Configured\r\n\r\nAP Name             Slots  AP Model              Ethernet MAC       Location          Country  IP Address       Clients\r\n------------------  -----  --------------------  -----------------  ----------------  -------  ---------------  -------\r\nAPc471.feb0.b5fc.netbrain.com  2     AIR-LAP1131AG-C-K9    c4:71:fe:b0:b5:fc  default location  CN       172.24.34.42     1   \r\nAPc471.fe20.4206.netbrain.com  2     AIR-LAP1131AG-C-K9    c4:71:fe:20:42:06  APc471.fe20.4206  CN       172.24.34.89     0   \r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$number_of_aps]:Number of APs\\\\.+\\\\s+(.+)\",\"regex[$ap_user_name]:Global AP User Name\\\\.+\\\\s+(.+)\",\"regex[$ap_dot1x_user_name]:Global AP Dot1x User Name\\\\.+\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$number_of_aps:string\",\"$ap_user_name:string\",\"$ap_dot1x_user_name:string\"]},\"xxid\":\"072cac00-fc8e-13bc-de66-42fc9fae44c7\"},{\"type\":\"4\",\"name\":\"aps\",\"keyVariables\":\"\",\"startLine\":\"regex[$ap_name,$slots,$ap_model,$ethernet_mac,$location,$country,$ip_address,$clients]:(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(.+?)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s*$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ap_name:string\",\"$slots:string\",\"$ap_model:string\",\"$ethernet_mac:string\",\"$location:string\",\"$country:string\",\"$ip_address:string\",\"$clients:string\"]},\"xxid\":\"8f4bfaa1-401c-1599-81ce-a906a1174435\"}]},\"xxid\":\"7e99877a-e30f-0240-2a8a-92e7a6528ff9\",\"hashColumns\":[\"$ap_name\",\"$ap_model\"]}]}",
+            "tableKeys": [
+                "_original_result.aps.$ap_name",
+                "_original_result.aps.$ap_model"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "number_of_aps",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "ap_user_name",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "ap_dot1x_user_name",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ap_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "slots",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ap_model",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ethernet_mac",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "location",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "country",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "clients",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ap_model",
+                    "$ap_name"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "aps",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7ef7c1dc17c0cf2ebc085efe9e9eb243",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$number_of_aps",
+            "dataType": "string",
+            "desc": "Number of APs",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$number_of_aps",
+            "intfKey": false,
+            "name": "$number_of_aps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ap_user_name",
+            "dataType": "string",
+            "desc": "Global AP user name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ap_user_name",
+            "intfKey": false,
+            "name": "$ap_user_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ap_dot1x_user_name",
+            "dataType": "string",
+            "desc": "Global AP dot1x user name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ap_dot1x_user_name",
+            "intfKey": false,
+            "name": "$ap_dot1x_user_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps",
+            "dataType": "paragraph",
+            "desc": "APs table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ap_name",
+                    "$ap_model"
+                ],
+                "hashSort": false
+            },
+            "fullName": "aps",
+            "intfKey": false,
+            "name": "aps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "aps.$ap_name",
+            "dataType": "string",
+            "desc": "AP name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$ap_name",
+            "intfKey": false,
+            "name": "$ap_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps.$slots",
+            "dataType": "string",
+            "desc": "Slots of AP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$slots",
+            "intfKey": false,
+            "name": "$slots",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps.$ap_model",
+            "dataType": "string",
+            "desc": "Model of AP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$ap_model",
+            "intfKey": false,
+            "name": "$ap_model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps.$ethernet_mac",
+            "dataType": "string",
+            "desc": "Mac address of AP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$ethernet_mac",
+            "intfKey": false,
+            "name": "$ethernet_mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps.$location",
+            "dataType": "string",
+            "desc": "Location of AP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$location",
+            "intfKey": false,
+            "name": "$location",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps.$country",
+            "dataType": "string",
+            "desc": "Country of AP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$country",
+            "intfKey": false,
+            "name": "$country",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps.$ip_address",
+            "dataType": "string",
+            "desc": "IP address of AP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "aps.$clients",
+            "dataType": "string",
+            "desc": "Clients on AP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "aps.$clients",
+            "intfKey": false,
+            "name": "$clients",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

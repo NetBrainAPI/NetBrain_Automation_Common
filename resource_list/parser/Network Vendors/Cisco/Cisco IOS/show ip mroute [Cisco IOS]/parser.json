@@ -1,0 +1,577 @@
+{
+    "_id": "d4c515c3-c55c-aea9-e37b-cb58abea7c67",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mroute",
+    "createTime": {
+        "$date": 1579719927583
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch  \nCommand:\nshow ip mroute",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP#show ip mroute\nIP Multicast Routing Table\nFlags: D - Dense, S - Sparse, B - Bidir Group, s - SSM Group, C - Connected,\n       L - Local, P - Pruned, R - RP-bit set, F - Register flag,\n       T - SPT-bit set, J - Join SPT, M - MSDP created entry,\n       X - Proxy Join Timer Running, A - Candidate for MSDP Advertisement,\n       U - URD, I - Received Source Specific Host Report,\n       Z - Multicast Tunnel, z - MDT-data group sender,\n       Y - Joined MDT-data group, y - Sending to MDT-data group\nOutgoing interface flags: H - Hardware switched, A - Assert winner\n Timers: Uptime/Expires\n Interface state: Interface, Next-Hop or VCD, State/Mode\n\n(*, 239.1.1.1), 17:33:20/stopped, RP 2.2.2.2, flags: S\n  Incoming interface: Null, RPF nbr 0.0.0.0\n  Outgoing interface list:\n    Serial2/1, Forward/Dense, 17:33:20/00:00:00\n    Serial2/0, Forward/Dense, 17:33:20/00:00:00\n    FastEthernet1/1, Forward/Dense, 17:33:20/00:00:00\n    FastEthernet1/0, Forward/Dense, 17:33:20/00:00:00\n\n(165.132.1.1, 239.1.1.1), 00:00:10/00:02:53, flags: T\n  Incoming interface: FastEthernet1/0, RPF nbr 194.1.1.1\n  Outgoing interface list:\n    FastEthernet1/1, Forward/Dense, 00:00:10/00:00:00\n    Serial2/0, Forward/Dense, 00:00:10/00:00:00\n    Serial2/1, Forward/Dense, 00:00:10/00:00:00\n\n(*, 224.0.1.40), 17:34:58/00:02:48, RP 2.2.2.2, flags: SJCL\n  Incoming interface: Null, RPF nbr 0.0.0.0\n  Outgoing interface list:\n    FastEthernet1/1, Forward/Dense, 17:34:46/00:00:00\n    Serial2/1, Forward/Dense, 17:34:52/00:00:00\n    Serial2/0, Forward/Dense, 17:34:53/00:00:00\n    FastEthernet1/0, Forward/Dense, 17:34:58/00:00:00\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ip_mroute.$in_interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ip_mroute\",\"keyVariables\":null,\"startLine\":\"regex[$source,$group]:\\\\((\\\\S+), (\\\\S+)\\\\),\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$uptime,$expires]:\\\\), (\\\\S+)/(\\\\S+),\",\"RP $rp,\",\"regex[$flag]:flags: ([^\\\\s,]+)\",\"Incoming interface: $in_interface,\",\"regex[$rpf_neighbor]:RPF nbr ([^\\\\s,]+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$source:string\",\"$group:string\",\"$uptime:string\",\"$expires:string\",\"$rp:string\",\"$flag:string\",\"$in_interface:string\",\"$rpf_neighbor:string\"]},\"xxid\":\"6ac163ff-1cf1-f296-0f3b-0a684691cad4\"},{\"type\":\"4\",\"name\":\"outgoing_interface\",\"keyVariables\":null,\"startLine\":\"regex[$out_interface,$out_intf_state,$out_intf_mode,$out_intf_uptime,$out_intf_expires]:[ ]{4}(.+?), (\\\\S+)/(\\\\S+), (\\\\S+)/(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$out_interface:string\",\"$out_intf_state:string\",\"$out_intf_mode:string\",\"$out_intf_uptime:string\",\"$out_intf_expires:string\"]},\"xxid\":\"a68b6a9f-574a-ac9c-9d90-3f135a4f9b90\"}]},\"xxid\":\"c2deb7d7-b350-f4fd-6cc5-c5ad154901fd\",\"interfaceKey\":\"\",\"hashColumns\":[\"$out_intf\"]}]},\"xxid\":\"f895458b-fcca-2136-9601-054244c1d49f\",\"interfaceKey\":\"$in_interface\",\"hashColumns\":[\"$in_interface\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"ed6e8649-ddee-6b99-4c99-f5a5d26efe9e\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rp",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "in_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "rpf_neighbor",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$in_interface"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ip_mroute",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "out_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "out_intf_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "out_intf_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "out_intf_uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "out_intf_expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "rp",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "in_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "rpf_neighbor",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$out_intf"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "outgoing_interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bca8d52128759585f4bd70096e7568f9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ip_mroute",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$in_interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute",
+            "intfKey": false,
+            "name": "ip_mroute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ip_mroute.$source",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_mroute.$group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_mroute.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_mroute.$expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_mroute.$rp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$rp",
+            "intfKey": false,
+            "name": "$rp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_mroute.$flag",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$flag",
+            "intfKey": false,
+            "name": "$flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_mroute.$in_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$in_interface",
+            "intfKey": false,
+            "name": "$in_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ip_mroute.$rpf_neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.$rpf_neighbor",
+            "intfKey": false,
+            "name": "$rpf_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$out_intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface",
+            "intfKey": false,
+            "name": "outgoing_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "outgoing_interface.$out_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$out_interface",
+            "intfKey": false,
+            "name": "$out_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$out_intf_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$out_intf_state",
+            "intfKey": false,
+            "name": "$out_intf_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$out_intf_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$out_intf_mode",
+            "intfKey": false,
+            "name": "$out_intf_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$out_intf_uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$out_intf_uptime",
+            "intfKey": false,
+            "name": "$out_intf_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$out_intf_expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$out_intf_expires",
+            "intfKey": false,
+            "name": "$out_intf_expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$source",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$rp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$rp",
+            "intfKey": false,
+            "name": "$rp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$flag",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$flag",
+            "intfKey": false,
+            "name": "$flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$in_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$in_interface",
+            "intfKey": false,
+            "name": "$in_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "outgoing_interface.$rpf_neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_mroute.outgoing_interface.$rpf_neighbor",
+            "intfKey": false,
+            "name": "$rpf_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

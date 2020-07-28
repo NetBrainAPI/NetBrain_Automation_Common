@@ -1,0 +1,179 @@
+{
+    "_id": "a5ba4bf7-1ce6-fcc6-2c80-92f3cdea658c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "dir flash:",
+    "createTime": {
+        "$date": 1581006752044
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\ndir flash:",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-arista-veos#dir flash:\r\nDirectory of flash:/\r\n\r\n       -rwx      521284           Apr 16  2015  arpsw-event.log.1\r\n       -rwx          20           Dec 12  2014  boot-config\r\n       drwx        4096           Apr 16  2015  debug\r\n       -rwx      521284           Apr 16  2015  igmpsnoopingsw-event.log.1\r\n       -rwx      521284           Apr 16  2015  macsw-event.log.1\r\n       -rwx      521284           Apr 16  2015  mroutesw-event.log.1\r\n       drwx        4096            May 3 05:56  persist\r\n       -rwx      521284           Apr 16  2015  routesw-event.log.1\r\n       drwx        4096           Apr 16  2015  schedule\r\n       -rwx        5076            May 3 05:51  startup-config\r\n       -rwx   210677906           Dec 12  2014  vEOS.swi\r\n       -rwx          13           Apr 16  2015  zerotouch-config\r\n\r\n1930506240 bytes total (1505345536 bytes free)",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\r\\n\\r\\n\\r\\ndef ParseText(config):\\r\\n    config = config or \\\"\\\"\\r\\n    flash_table = {\\r\\n        \\\"type\\\": [],\\r\\n        \\\"length\\\": [],\\r\\n        \\\"date\\\": [],\\r\\n        \\\"name\\\": [],\\r\\n        '$_columns': ['type','length','date','name']\\r\\n    }\\r\\n\\r\\n    re_title = re.compile(r'.*?[drwx].*?').search\\r\\n    lines = config.splitlines()\\r\\n    for line in lines:\\r\\n        words = line.split()\\r\\n        if words:\\r\\n            if re_title(words[0]) and len(words) == 6:\\r\\n                _type = words[0]\\r\\n                _nlen = words[1]\\r\\n                _date = \\\"%s %s %s\\\"%(words[2], words[3], words[4])\\r\\n                _name = words[5]\\r\\n\\r\\n                flash_table['type'].append(_type)\\r\\n                flash_table['length'].append(int(_nlen))\\r\\n                flash_table['date'].append(_date)\\r\\n                flash_table['name'].append(_name)\\r\\n    \\r\\n    dic = {'flash_table': flash_table}\\r\\n    return dic\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$flash_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$type\",\"type\":\"string\"},{\"name\":\"$length\",\"type\":\"int\"},{\"name\":\"$date\",\"type\":\"string\"},{\"name\":\"$name\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"9ca711eb-a02c-725a-b27d-c145f096e6cb\",\"hashColumns\":{\"flash_table\":[]},\"tableKeys\":{\"flash_table\":[]},\"hashSort\":{\"flash_table\":false}},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"dca2cada-899e-f9d0-cadd-0a4d1824364a\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "date",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "length",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "flash_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "596974e4fbf44cb6369799d413cf9a64",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$flash_table",
+            "dataType": "table",
+            "desc": "Flash table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash_table",
+            "intfKey": false,
+            "name": "$flash_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$flash_table.$type",
+            "dataType": "string",
+            "desc": "The operation of the file permissions.\n-r: only read\n-w: only write",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$flash_table.$length",
+            "dataType": "int",
+            "desc": "Length of the file itself.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash_table.$length",
+            "intfKey": false,
+            "name": "$length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$flash_table.$date",
+            "dataType": "string",
+            "desc": "Date and time the file was created. In the example, -08:00 indicates that the given date and time is 8 hours behind Coordinated Universal Time (UTC).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash_table.$date",
+            "intfKey": false,
+            "name": "$date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$flash_table.$name",
+            "dataType": "string",
+            "desc": "Name of the file.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash_table.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

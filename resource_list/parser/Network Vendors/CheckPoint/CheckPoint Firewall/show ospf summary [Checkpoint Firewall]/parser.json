@@ -1,0 +1,826 @@
+{
+    "_id": "3f54467a-4050-adb5-328c-e79a950b18e0",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf summary",
+    "createTime": {
+        "$date": 1579138879647
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow ospf summary",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "gw-020000> show ospf summary \r\n\r\nOSPF Router with ID  12.1.1.1  Instance  default  \r\n\r\nSPF schedule delay: 2 secs\r\nHold time between two SPFs: 5 secs\r\nNumber of Areas in this router: 2\r\n    Normal: 2      Stub: 0      NSSA: 0\r\nRFC1583 compability mode is on\r\nIt is an area border router\r\nNumber of Virtual Links in this router: 0\r\nNumber of UpEvents: 2  Number of DownEvents: 0\r\nDefault ASE Cost: 1\r\nDefault ASE Type: 1\r\n\r\nArea: 0.0.0.0\r\n\r\n    Number of Interfaces in this area:  1\r\n    Number of ABRs: 1      Number of ASBRs:  0\r\n    Number of times SPF Algorithm executed: 6\r\n    No Area Ranges Configured\r\n    No Area Stubnets Configured\r\n\r\nArea: 0.0.0.1\r\n\r\n    Number of Interfaces in this area:  1\r\n    Number of ABRs: 1      Number of ASBRs:  0\r\n    Number of times SPF Algorithm executed: 6\r\n    No Area Ranges Configured\r\n    No Area Stubnets Configured\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"OSPF_Router_with_ID\",\"keyVariables\":\"\",\"startLine\":\"OSPF Router with ID\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$router_id]:Router +with +ID +(\\\\S+)\",\"regex[$instance]:Router +with +ID +\\\\S+ +Instance +(\\\\S+)\",\"regex[$int:spf_delay]:SPF schedule delay: +(\\\\d+)\",\"regex[$int:spf_hold]:Hold time between two SPFs: +(\\\\d+)\",\"regex[$int:area_count]:Number of Areas in this router: (\\\\d+)\",\"regex[$int:normal_area_count,$stub_area_count,$nssa_area_count]:Normal: (\\\\d+) +Stub: +(\\\\d+) +NSSA: +(\\\\d+)\",\"regex[$int:virtual_link_count]:Number of Virtual Links in this router: +(\\\\d+)\",\"regex[$int:up_event_count]:Number of UpEvents: +(\\\\d+)\",\"regex[$int:down_event_count]:Number of DownEvents: +(\\\\d+)\",\"regex[$int:ase_cost]:Default ASE Cost: +(\\\\d+)\",\"regex[$int:ase_type]:Default ASE Type: +(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$instance:string\",\"$spf_delay:int\",\"$spf_hold:int\",\"$area_count:int\",\"$normal_area_count:int\",\"$stub_area_count:string\",\"$nssa_area_count:string\",\"$virtual_link_count:int\",\"$up_event_count:int\",\"$down_event_count:int\",\"$ase_cost:int\",\"$ase_type:int\"]},\"xxid\":\"971b0b45-36a5-a7e4-aef9-8d566e23f1c3\"},{\"type\":\"4\",\"name\":\"Area\",\"keyVariables\":\"\",\"startLine\":\"regex:^Area: +\\\\S+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$area_id]:^Area: +(\\\\S+)\",\"regex[$int:intf_count]:Number of Interfaces in this area:  +(\\\\d+)\",\"regex[$int:abrs_count,$asbrs_count]:Number of ABRs: +(\\\\d+) +Number of ASBRs: +(\\\\d+)\",\"regex[$int:spf_execution_count]:SPF Algorithm executed: +(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$intf_count:int\",\"$abrs_count:int\",\"$asbrs_count:string\",\"$spf_execution_count:int\"]},\"xxid\":\"1f6cd96f-eaa0-eebc-cd30-6bd98fed17f1\"}]},\"xxid\":\"0e70d29c-f750-0e4d-7eca-4e5c5d5563cc\",\"hashColumns\":[\"$area_id\",\"$intf_count\",\"$abrs_count\",\"$asbrs_count\",\"$router_id\",\"$instance\",\"$spf_delay\",\"$spf_hold\",\"$area_count\",\"$normal_area_count\",\"$stub_area_count\",\"$nssa_area_count\",\"$virtual_link_count\",\"$up_event_count\",\"$down_event_count\"],\"hashSort\":false}]},\"xxid\":\"4f9f7801-c6e0-8ed4-073f-e51f2ff16b99\",\"hashColumns\":[\"$router_id\",\"$instance\",\"$spf_delay\",\"$spf_hold\",\"$area_count\",\"$normal_area_count\",\"$stub_area_count\",\"$nssa_area_count\",\"$virtual_link_count\",\"$up_event_count\",\"$down_event_count\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"be35f576-84c1-8f58-3dd8-83cfb2e8fe98\"}]}",
+            "tableKeys": [
+                "_original_result.OSPF_Router_with_ID.Area.$area_id",
+                "_original_result.OSPF_Router_with_ID.$router_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "spf_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "spf_hold",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "normal_area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "stub_area_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "nssa_area_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "virtual_link_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "up_event_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "down_event_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "ase_cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "ase_type",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_count",
+                    "$down_event_count",
+                    "$instance",
+                    "$normal_area_count",
+                    "$nssa_area_count",
+                    "$router_id",
+                    "$spf_delay",
+                    "$spf_hold",
+                    "$stub_area_count",
+                    "$up_event_count",
+                    "$virtual_link_count"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "OSPF_Router_with_ID",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 18,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "abrs_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "asbrs_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "spf_execution_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "spf_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "spf_hold",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "normal_area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "stub_area_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "nssa_area_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "virtual_link_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "up_event_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "down_event_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "ase_cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "ase_type",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$abrs_count",
+                    "$area_count",
+                    "$area_id",
+                    "$asbrs_count",
+                    "$down_event_count",
+                    "$instance",
+                    "$intf_count",
+                    "$normal_area_count",
+                    "$nssa_area_count",
+                    "$router_id",
+                    "$spf_delay",
+                    "$spf_hold",
+                    "$stub_area_count",
+                    "$up_event_count",
+                    "$virtual_link_count"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "Area",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e4274167edd341e5337dc55c77694060",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "OSPF_Router_with_ID",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on process id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$router_id",
+                    "$instance",
+                    "$spf_delay",
+                    "$spf_hold",
+                    "$area_count",
+                    "$normal_area_count",
+                    "$stub_area_count",
+                    "$nssa_area_count",
+                    "$virtual_link_count",
+                    "$up_event_count",
+                    "$down_event_count"
+                ],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID",
+            "intfKey": false,
+            "name": "OSPF_Router_with_ID",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$router_id",
+            "dataType": "string",
+            "desc": "The OSPF router ID is a 32-bit IP address selected at the start of the OSPF process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$instance",
+            "dataType": "string",
+            "desc": "The OSPF Process instance.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$spf_delay",
+            "dataType": "int",
+            "desc": "SPF schedule delay time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$spf_delay",
+            "intfKey": false,
+            "name": "$spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$spf_hold",
+            "dataType": "int",
+            "desc": "Hold time between two consecutive SPFs time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$spf_hold",
+            "intfKey": false,
+            "name": "$spf_hold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$area_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$area_count",
+            "intfKey": false,
+            "name": "$area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$normal_area_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$normal_area_count",
+            "intfKey": false,
+            "name": "$normal_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$stub_area_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$stub_area_count",
+            "intfKey": false,
+            "name": "$stub_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$nssa_area_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$nssa_area_count",
+            "intfKey": false,
+            "name": "$nssa_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$virtual_link_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$virtual_link_count",
+            "intfKey": false,
+            "name": "$virtual_link_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$up_event_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$up_event_count",
+            "intfKey": false,
+            "name": "$up_event_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$down_event_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$down_event_count",
+            "intfKey": false,
+            "name": "$down_event_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$ase_cost",
+            "dataType": "int",
+            "desc": "Default ASE Cost.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$ase_cost",
+            "intfKey": false,
+            "name": "$ase_cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Router_with_ID.$ase_type",
+            "dataType": "int",
+            "desc": "Default ASE Type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.$ase_type",
+            "intfKey": false,
+            "name": "$ase_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on area id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id",
+                    "$intf_count",
+                    "$abrs_count",
+                    "$asbrs_count",
+                    "$router_id",
+                    "$instance",
+                    "$spf_delay",
+                    "$spf_hold",
+                    "$area_count",
+                    "$normal_area_count",
+                    "$stub_area_count",
+                    "$nssa_area_count",
+                    "$virtual_link_count",
+                    "$up_event_count",
+                    "$down_event_count"
+                ],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area",
+            "intfKey": false,
+            "name": "Area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "Area.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$intf_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$intf_count",
+            "intfKey": false,
+            "name": "$intf_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$abrs_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$abrs_count",
+            "intfKey": false,
+            "name": "$abrs_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$asbrs_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$asbrs_count",
+            "intfKey": false,
+            "name": "$asbrs_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$spf_execution_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$spf_execution_count",
+            "intfKey": false,
+            "name": "$spf_execution_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$router_id",
+            "dataType": "string",
+            "desc": "The OSPF router ID is a 32-bit IP address selected at the start of the OSPF process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$instance",
+            "dataType": "string",
+            "desc": "The OSPF Process instance.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$spf_delay",
+            "dataType": "int",
+            "desc": "SPF schedule delay time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$spf_delay",
+            "intfKey": false,
+            "name": "$spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$spf_hold",
+            "dataType": "int",
+            "desc": "Hold time between two consecutive SPFs time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$spf_hold",
+            "intfKey": false,
+            "name": "$spf_hold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$area_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$area_count",
+            "intfKey": false,
+            "name": "$area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$normal_area_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$normal_area_count",
+            "intfKey": false,
+            "name": "$normal_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$stub_area_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$stub_area_count",
+            "intfKey": false,
+            "name": "$stub_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$nssa_area_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$nssa_area_count",
+            "intfKey": false,
+            "name": "$nssa_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$virtual_link_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$virtual_link_count",
+            "intfKey": false,
+            "name": "$virtual_link_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$up_event_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$up_event_count",
+            "intfKey": false,
+            "name": "$up_event_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$down_event_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$down_event_count",
+            "intfKey": false,
+            "name": "$down_event_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$ase_cost",
+            "dataType": "int",
+            "desc": "Default ASE Cost.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$ase_cost",
+            "intfKey": false,
+            "name": "$ase_cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Area.$ase_type",
+            "dataType": "int",
+            "desc": "Default ASE Type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Router_with_ID.Area.$ase_type",
+            "intfKey": false,
+            "name": "$ase_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

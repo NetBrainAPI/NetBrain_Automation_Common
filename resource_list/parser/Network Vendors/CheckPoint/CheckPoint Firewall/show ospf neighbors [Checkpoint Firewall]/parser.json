@@ -1,0 +1,267 @@
+{
+    "_id": "153cd974-3f6b-3f68-df08-4c7316731c63",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbors",
+    "createTime": {
+        "$date": 1579138655503
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow ospf neighbors",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "CP_HA1> show ospf neighbors \n\nNeighbor state flag: G - graceful restart  \n\nNeighbor ID       Pri   State          Dead    Address           Interface         Errors  \n1.1.1.246         1     FULL/BDR       39      10.8.11.42        10.8.11.33        0  \n192.168.0.59      1     FULL/DR        34      10.8.11.52        10.8.11.49        0  \n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"OSPF_Neighbors\",\"headers\":\"Neighbor ID;Pri;State;Dead;Address;Interface;Errors\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Neighbor ID:$string:neighbor_id;Pri:$string:priority;State:$string:state;Dead:$string:dead_timer;Address:$string:address;Interface:$string:interface;Errors:$int:errors\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$neighbor_id:string\",\"$priority:string\",\"$state:string\",\"$dead_timer:string\",\"$address:string\",\"$interface:string\",\"$errors:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"a97db6b8-dda3-f639-ac62-f708e9bbd647\",\"hashColumns\":[\"$neighbor_id\",\"$priority\",\"$state\",\"$address\",\"$interface\",\"$errors\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"3c2ae611-0e69-5c93-4dc0-b0cbeeeb744e\"}]}",
+            "tableKeys": [
+                "_original_result.OSPF_Neighbors.$neighbor_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dead_timer",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "errors",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$address",
+                    "$errors",
+                    "$interface",
+                    "$neighbor_id",
+                    "$priority",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "OSPF_Neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c575d8bd008c7120e42ccb3c7bb2a513",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "OSPF_Neighbors",
+            "dataType": "table",
+            "desc": "OSPF Neighbors information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor_id",
+                    "$priority",
+                    "$state",
+                    "$address",
+                    "$interface",
+                    "$errors"
+                ],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors",
+            "intfKey": false,
+            "name": "OSPF_Neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "OSPF_Neighbors.$neighbor_id",
+            "dataType": "string",
+            "desc": "Neighbor router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$neighbor_id",
+            "intfKey": false,
+            "name": "$neighbor_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$state",
+            "dataType": "string",
+            "desc": "OSPF state. If one OSPF neighbor has enabled TTL security, the other side of the connection will show the neighbor in the INIT state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$dead_timer",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$dead_timer",
+            "intfKey": false,
+            "name": "$dead_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$address",
+            "dataType": "string",
+            "desc": "IP address of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$address",
+            "intfKey": false,
+            "name": "$address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$interface",
+            "dataType": "string",
+            "desc": "IP address of the neighbor interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$errors",
+            "dataType": "int",
+            "desc": "The error count of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$errors",
+            "intfKey": false,
+            "name": "$errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

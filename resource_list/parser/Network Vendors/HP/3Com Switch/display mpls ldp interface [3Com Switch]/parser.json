@@ -1,0 +1,209 @@
+{
+    "_id": "bcafedc4-51f4-4cfd-a1e5-e7a7da29f732",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display mpls ldp interface",
+    "createTime": {
+        "$date": 1590769629768
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay mpls ldp interface",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<Sysname> display mpls ldp interface\r\n     LDP Interface Information in Public Network\r\n------------------------------------------------------------------------\r\n IF-Name         Status       LAM   Transport-Address   Hello-Sent/Rcv\r\n------------------------------------------------------------------------\r\n Vlan8           Inactive     DU    10.1.1.1            0/0\r\n------------------------------------------------------------------------\r\n LAM: Label Advertisement Mode         IF-Name: Interface name",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.mpls_intf_filter.mpls_intf_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"mpls_intf_filter\",\"startLine\":\"IF-Name         Status       LAM   Transport-Address   Hello-Sent/Rcv\",\"endLine\":\"regex:lam:.+?\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"a2ddff96-1d86-124a-67db-484c870ee5a4\"},{\"type\":\"3\",\"name\":\"mpls_intf_table\",\"headers\":\"IF-Name;Status;LAM;Transport-Address;Hello-Sent/Rcv\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"IF-Name:$string:intf;Status:$string:status;LAM:$string:lam;Transport-Address:$string:transport_addr;Hello-Sent/Rcv:$string:hello_sent_rcv\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$status:string\",\"$lam:string\",\"$transport_addr:string\",\"$hello_sent_rcv:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"70143eea-81f9-2df8-135d-446dd2982c9c\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$status\"]}]},\"xxid\":\"c581d87b-939c-1b67-3c12-0d066f1182a2\"}]}",
+            "tableKeys": [
+                "_original_result.mpls_intf_filter.mpls_intf_table.$status"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "mpls_intf_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "lam",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "transport_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hello_sent_rcv",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "mpls_intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2729a8e57e7396d805a9870004c0f703",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mpls_intf_filter",
+            "dataType": "filter",
+            "desc": "MPLS interface table filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intf_filter",
+            "intfKey": false,
+            "name": "mpls_intf_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_intf_table",
+            "dataType": "table",
+            "desc": "MPLS interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mpls_intf_filter.mpls_intf_table",
+            "intfKey": false,
+            "name": "mpls_intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "mpls_intf_table.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intf_filter.mpls_intf_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "mpls_intf_table.$status",
+            "dataType": "string",
+            "desc": "The status of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intf_filter.mpls_intf_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_intf_table.$lam",
+            "dataType": "string",
+            "desc": "Label advertisement mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intf_filter.mpls_intf_table.$lam",
+            "intfKey": false,
+            "name": "$lam",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_intf_table.$transport_addr",
+            "dataType": "string",
+            "desc": "Transport address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intf_filter.mpls_intf_table.$transport_addr",
+            "intfKey": false,
+            "name": "$transport_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_intf_table.$hello_sent_rcv",
+            "dataType": "string",
+            "desc": "The hello packets of send and received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intf_filter.mpls_intf_table.$hello_sent_rcv",
+            "intfKey": false,
+            "name": "$hello_sent_rcv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

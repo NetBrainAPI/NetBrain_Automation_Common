@@ -1,0 +1,279 @@
+{
+    "_id": "6596eefa-6239-496e-3b60-75f9ae97eca8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interface summary",
+    "createTime": {
+        "$date": 1584122519107
+    },
+    "description": "",
+    "devTypes": [
+        3033
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "(Cisco Controller) >show interface summary\r\n\r\n\r\n Number of Interfaces.......................... 6\r\n\r\nInterface Name                   Port Vlan Id  IP Address      Type    Ap Mgr Guest\r\n-------------------------------- ---- -------- --------------- ------- ------ -----\r\nmanagement                       1    100      10.99.100.10    Static  Yes    No   \r\nredundancy-management            1    100      0.0.0.0         Static  No     No   \r\nredundancy-port                  -    untagged 0.0.0.0         Static  No     No   \r\nservice-port                     N/A  N/A      1.1.1.2         Static  No     No   \r\nssid_vlan_95                     3    95       10.99.95.2      Dynamic No     No   \r\nvirtual                          N/A  N/A      2.2.2.2         Static  No     No   \r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.l3interface_info.$interface_name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\r\\n\\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    data = _original_result.split('\\\\n')\\r\\n    dic = {\\r\\n        'l3interface_info': {\\r\\n            'interface_name':[],\\r\\n            'interface':[],\\r\\n            'port':[],\\r\\n            'vlan_id':[],\\r\\n            'ip_address':[],\\r\\n            'type':[],\\r\\n            'ap_mgr':[],\\r\\n            'guest':[]\\r\\n        }\\r\\n    }\\r\\n\\r\\n    for i in range(len(data)):\\r\\n        r1 = re.findall(r'(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)',data[i])\\r\\n        if r1:\\r\\n            dic['l3interface_info']['interface_name'].append(r1[0][0])\\r\\n            dic['l3interface_info']['port'].append(r1[0][1])\\r\\n            dic['l3interface_info']['vlan_id'].append(r1[0][2])\\r\\n            dic['l3interface_info']['ip_address'].append(r1[0][3])\\r\\n            dic['l3interface_info']['type'].append(r1[0][4])\\r\\n            dic['l3interface_info']['ap_mgr'].append(r1[0][5])\\r\\n            dic['l3interface_info']['guest'].append(r1[0][6])\\r\\n            \\r\\n            check = 0\\r\\n            try:\\r\\n                int(r1[0][1])\\r\\n                check = 1\\r\\n            except:\\r\\n                pass\\r\\n            if check == 1:\\r\\n                dic['l3interface_info']['interface'].append('GigabitEthernet0/0/'+r1[0][1])\\r\\n            else:\\r\\n                dic['l3interface_info']['interface'].append(r1[0][1])\\r\\n            \\r\\n            \\r\\n\\r\\n    return dic\\r\\n\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$l3interface_info\",\"variableTypes\":{\"variableType\":[{\"name\":\"$ap_mgr\",\"type\":\"string\"},{\"name\":\"$guest\",\"type\":\"string\"},{\"name\":\"$interface\",\"type\":\"string\"},{\"name\":\"$interface_name\",\"type\":\"string\"},{\"name\":\"$ip_address\",\"type\":\"string\"},{\"name\":\"$port\",\"type\":\"string\"},{\"name\":\"$type\",\"type\":\"string\"},{\"name\":\"$vlan_id\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"4c18403b-f593-d8e5-a4fb-5cb4af51ca3f\",\"interfaceKey\":{\"l3interface_info\":\"$interface_name\"},\"hashColumns\":{\"l3interface_info\":[\"$ap_mgr\",\"$guest\",\"$interface\",\"$interface_name\",\"$ip_address\",\"$port\",\"$type\",\"$vlan_id\"]},\"hashSort\":{\"l3interface_info\":false}},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"c12038cf-3564-376e-531f-d14cf8204eaf\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ap_mgr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "guest",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "interface_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "vlan_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "ap_mgr",
+                    "guest",
+                    "interface",
+                    "interface_name",
+                    "ip_address",
+                    "port",
+                    "type",
+                    "vlan_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "l3interface_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2d47d37f8a0979ddada91c58270ab753",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$l3interface_info",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ap_mgr",
+                    "$guest",
+                    "$interface",
+                    "$interface_name",
+                    "$ip_address",
+                    "$port",
+                    "$type",
+                    "$vlan_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info",
+            "intfKey": false,
+            "name": "$l3interface_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$l3interface_info.$ap_mgr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$ap_mgr",
+            "intfKey": false,
+            "name": "$ap_mgr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$l3interface_info.$guest",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$guest",
+            "intfKey": false,
+            "name": "$guest",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$l3interface_info.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$l3interface_info.$interface_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$interface_name",
+            "intfKey": false,
+            "name": "$interface_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$l3interface_info.$ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$l3interface_info.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$l3interface_info.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$l3interface_info.$vlan_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$l3interface_info.$vlan_id",
+            "intfKey": false,
+            "name": "$vlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

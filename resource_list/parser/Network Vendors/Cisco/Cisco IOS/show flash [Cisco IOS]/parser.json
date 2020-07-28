@@ -1,0 +1,286 @@
+{
+    "_id": "6b204a61-6e1d-644a-283d-87237963a744",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show flash:",
+    "createTime": {
+        "$date": 1579784068166
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router \nCommand:\n       show flash:",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Router# show flash:\n\n -#- ED --type-- --crc--- -seek-- nlen -length- -----date/time------ name\n 1   .. unknown  317FBA1B  4A0694   24  4720148 Aug 29 1997 17:49:36 \nhampton/nitro/c7200-j-mz\n 2   .. unknown  9237F3FF  92C574   11  4767328 Oct 01 1997 18:42:53 c7200-js-mz\n 3   .D unknown  71AB01F1 10C94E0   10  7982828 Oct 01 1997 18:48:14 rsp-jsv-mz\n 4   .D unknown  96DACD45 10C97E0    8      639 Oct 02 1997 12:09:17 the_time\n 5   .. unknown  96DACD45 10C9AE0    3      639 Oct 02 1997 12:09:32 the_time\n 6   .D unknown  96DACD45 10C9DE0    8      639 Oct 02 1997 12:37:01 the_time\n 7   .. unknown  96DACD45 10CA0E0    8      639 Oct 02 1997 12:37:13 the_time\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"flash_table\",\"keyVariables\":null,\"startLine\":\"regex:\\\\d+\\\\s+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$id,$ed,$type,$crc,$seek,$int:nlen,$int:length,$date_time,$name]:(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(.*)\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$id:string\",\"$ed:string\",\"$type:string\",\"$crc:string\",\"$seek:string\",\"$nlen:int\",\"$length:int\",\"$date_time:string\",\"$name:string\"]},\"xxid\":\"a4dbcdd9-f67c-36f0-9b22-5102dfbd2a56\"}]},\"xxid\":\"40165203-3604-9c0b-7592-f733742e972d\",\"hashColumns\":[\"$name\"],\"interfaceKey\":\"\",\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"652cac01-7470-1ae2-f51b-aa951f66f520\"}]}",
+            "tableKeys": [
+                "_original_result.flash_table.$name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ed",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "crc",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "seek",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "nlen",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "length",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "date_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "flash_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "38a6fb5d3496aa386d63b229e90d5914",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "flash_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "flash_table",
+            "intfKey": false,
+            "name": "flash_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "flash_table.$id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$id",
+            "intfKey": false,
+            "name": "$id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$ed",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$ed",
+            "intfKey": false,
+            "name": "$ed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$crc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$crc",
+            "intfKey": false,
+            "name": "$crc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$seek",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$seek",
+            "intfKey": false,
+            "name": "$seek",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$nlen",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$nlen",
+            "intfKey": false,
+            "name": "$nlen",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$length",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$length",
+            "intfKey": false,
+            "name": "$length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$date_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$date_time",
+            "intfKey": false,
+            "name": "$date_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flash_table.$name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flash_table.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

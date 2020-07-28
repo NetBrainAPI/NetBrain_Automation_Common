@@ -1,0 +1,394 @@
+{
+    "_id": "3a29ea70-625b-de0e-4ade-214582ae4e95",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router isis database",
+    "createTime": {
+        "$date": 1584022966631
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router isis database",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "show router isis database \r\r\r\r===============================================================================\r\rRouter Base ISIS Instance 0 Database\r\r===============================================================================\r\rLSP ID                                  Sequence  Checksum Lifetime Attributes\r\r-------------------------------------------------------------------------------\r\r\r\rDisplaying Level 1 database\r\r-------------------------------------------------------------------------------\r\rAS500_PE1.00-00                         0x5       0x45f0   1119     L1L2 \r\rAS500_P.00-00                           0x6       0x7536   1116     L1 \r\rAS500_P.01-00                           0x3       0xf861   1116     L1 \r\rLevel (1) LSP Count : 3\r\r\r\rDisplaying Level 2 database\r\r-------------------------------------------------------------------------------\r\rAS500_PE1.00-00                         0x2       0x3ca8   1119     L1L2 \r\rLevel (2) LSP Count : 1\r\r===============================================================================\r\r*A:AS500_PE1# ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_instance\",\"keyVariables\":\"\",\"startLine\":\"Router Base ISIS Instance $isis_instance Database\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_instance:string\"]},\"xxid\":\"b74f40a3-ad85-a9e7-421d-a3e6357018b2\"},{\"type\":\"4\",\"name\":\"level_database\",\"keyVariables\":\"\",\"startLine\":\"Displaying Level $level_id database\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level_id:string\"]},\"xxid\":\"c1552894-56d9-28d6-b364-7e4c5f2436e7\"},{\"type\":\"4\",\"name\":\"level_database_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$lsp_id,$seqence,$checksum,$int:lifetime,$attributes]:(\\\\S+) +(\\\\S+) +(\\\\S+) +(\\\\d+) +(\\\\w+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$lsp_id:string\",\"$seqence:string\",\"$checksum:string\",\"$lifetime:int\",\"$attributes:string\"]},\"xxid\":\"b511dbae-e39e-537a-7f23-dfc62a657588\"}]},\"xxid\":\"53febffe-83d1-fa41-21c9-29d261a85c83\",\"interfaceKey\":\"\",\"hashColumns\":[\"$lsp_id\",\"$attributes\",\"$level_id\",\"$isis_instance\"],\"hashSort\":false}]},\"xxid\":\"2e945930-8830-1c2f-c75e-25a2a9a48623\"}]},\"xxid\":\"74d648db-c127-e5c1-79a6-fc37ac5e9838\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"c476ca79-4fa7-717b-a719-94768163882f\"}]}",
+            "tableKeys": [
+                "_original_result.isis_instance.level_database.level_database_detail.$lsp_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "isis_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_instance",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "isis_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "level_database",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "lsp_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "seqence",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "lifetime",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "attributes",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "level_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "isis_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$attributes",
+                    "$isis_instance",
+                    "$level_id",
+                    "$lsp_id"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "level_database_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "cffa9ac52d824358d0f068fbea757a68",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_instance",
+            "dataType": "paragraph",
+            "desc": "ISIS Instance ID.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_instance",
+            "intfKey": false,
+            "name": "isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_instance.$isis_instance",
+            "dataType": "string",
+            "desc": "ISIS Instance ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database",
+            "dataType": "paragraph",
+            "desc": "ISIS level information.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database",
+            "intfKey": false,
+            "name": "level_database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "level_database.$level_id",
+            "dataType": "string",
+            "desc": "1-L1 only, 2-L2 only, 3-L1 and L2.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.$level_id",
+            "intfKey": false,
+            "name": "$level_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database.$isis_instance",
+            "dataType": "string",
+            "desc": "ISIS Instance ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database_detail",
+            "dataType": "paragraph",
+            "desc": "ISIS database Detail information.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$lsp_id",
+                    "$attributes",
+                    "$level_id",
+                    "$isis_instance"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail",
+            "intfKey": false,
+            "name": "level_database_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "level_database_detail.$lsp_id",
+            "dataType": "string",
+            "desc": "\"The LSP identifier. The first six octets form the system ID of the router that originated the LSP.\nThe next octet is the pseudonode ID. When this byte is nonzero, the LSP describes links from the system. When it is zero, the LSP is a so-called nonpseudonode LSP. This mechanism is similar to a router link-state advertisement (LSA) in the Open Shortest Path First (OSPF) protocol. The LSP will describe the state of the originating router.\nFor each LAN, the designated router for that LAN will create and flood a pseudonode LSP, describing all systems attached to that LAN.\nThe last octet is the LSP number. If there is more data than can fit in a single LSP, the LSP will be divided into multiple LSP fragments. Each fragment will have a different LSP number. An asterisk (*) indicates that the LSP was originated by the system on which this command is issued.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail.$lsp_id",
+            "intfKey": false,
+            "name": "$lsp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database_detail.$seqence",
+            "dataType": "string",
+            "desc": "This value is the sequence number for the LSP that allows other systems to determine if they have received the latest information from the source.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail.$seqence",
+            "intfKey": false,
+            "name": "$seqence",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database_detail.$checksum",
+            "dataType": "string",
+            "desc": "This is the checksum of the entire LSP packet.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail.$checksum",
+            "intfKey": false,
+            "name": "$checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database_detail.$lifetime",
+            "dataType": "int",
+            "desc": "This value is the amount of time, in seconds, that the LSP remains valid. A zero holdtime indicates that this is a purged LSP and is being removed from the link state database. A value.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail.$lifetime",
+            "intfKey": false,
+            "name": "$lifetime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database_detail.$attributes",
+            "dataType": "string",
+            "desc": "\"The Attach bit. This bit indicates that the router is also a Level 2 router, and it can reach other areas. Level 1-only routers and Level 1-2 routers that have lost connection to other Level 2 routers will use the Attach bit to find the closest Level 2 router. They will point a default route to the closest Level 2 router.\nThe P bit. Detects if the intermediate systems is area partition repair-capable. Cisco and other vendors do not support area partition repair.\nThe Overload bit. Determines if the IS is congested. If the Overload bit is set, other routers will not use this system as a transit router when calculating routers. Only packets for destinations directly connected to the overloaded router will be sent to this router.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail.$attributes",
+            "intfKey": false,
+            "name": "$attributes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database_detail.$level_id",
+            "dataType": "string",
+            "desc": "1-L1 only, 2-L2 only, 3-L1 and L2.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail.$level_id",
+            "intfKey": false,
+            "name": "$level_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_database_detail.$isis_instance",
+            "dataType": "string",
+            "desc": "ISIS Instance ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_database.level_database_detail.$isis_instance",
+            "intfKey": false,
+            "name": "$isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

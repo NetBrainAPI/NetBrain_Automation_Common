@@ -1,0 +1,256 @@
+{
+    "_id": "b31435f0-fefa-42c4-9fdf-030722ea28c5",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf neighbor",
+    "createTime": {
+        "$date": 1590607426098
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow ip ospf neighbor",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell#show ip ospf neighbor\r\nNeighbor ID Pri State       Dead Time Address  Interface Area\r\n20.20.20.7  1 FULL/DR     00:00:32 182.10.10.3 Te 0/0 0.0.0.2\r\n192.10.10.2 1 FULL/DR     00:00:37 192.10.10.2 Te 0/1 0.0.0.1\r\n20.20.20.1  1 FULL/DROTHER00:00:36 192.10.10.4 Te 0/1 0.0.0.1\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_nbr_filter.ospf_nbr_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"ospf_nbr_filter\",\"startLine\":\"Neighbor ID Pri State       Dead Time Address  Interface Area\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"67d038ab-07b6-f3a5-5950-c02fbe5d2ee0\"},{\"type\":\"4\",\"name\":\"ospf_nbr_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$nbr_id]:^(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:priority]:^\\\\S+\\\\s+(\\\\S+)\",\"regex[$state]:^\\\\S+\\\\s+\\\\S+\\\\s+([A-Z]+\\\\S[A-Z]+)\",\"regex[$dead_time]:^\\\\S+\\\\s+\\\\S+\\\\s+[A-Z]+\\\\S[A-Z]+((?:\\\\s+\\\\S+)|(?:\\\\S+))\",\"regex[$addr]:^\\\\S+\\\\s+\\\\S+\\\\s+[A-Z]+\\\\S[A-Z]+(?:(?:\\\\s+\\\\S+)|(?:\\\\S+))\\\\s+(\\\\S+)\",\"regex[$intf]:^\\\\S+\\\\s+\\\\S+\\\\s+[A-Z]+\\\\S[A-Z]+(?:(?:\\\\s+\\\\S+)|(?:\\\\S+))\\\\s+\\\\S+\\\\s+(\\\\S+\\\\s\\\\S+)\",\"regex[$area_id]:^\\\\S+\\\\s+\\\\S+\\\\s+[A-Z]+\\\\S[A-Z]+(?:(?:\\\\s+\\\\S+)|(?:\\\\S+))\\\\s+\\\\S+\\\\s+\\\\S+\\\\s\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$priority:int\",\"$state:string\",\"$dead_time:string\",\"$addr:string\",\"$intf:string\",\"$area_id:string\"]},\"xxid\":\"3ba66320-1e2b-df4b-3169-fafbfb2e9ca4\"}]},\"xxid\":\"b8cf7d6a-8f78-e648-bb67-8f97b39ea155\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]}]},\"xxid\":\"72a505a8-1d98-ade2-7891-0dc7a80ce56b\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ospf_nbr_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "area_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_nbr_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "6bcd2c59eef4703ae2ecf18be544a419",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_nbr_filter",
+            "dataType": "filter",
+            "desc": "OSPF neighbor filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter",
+            "intfKey": false,
+            "name": "ospf_nbr_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_table",
+            "dataType": "paragraph",
+            "desc": "Display data for OSPF neighboring routers.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table",
+            "intfKey": false,
+            "name": "ospf_nbr_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_nbr_table.$nbr_id",
+            "dataType": "string",
+            "desc": "The neighbor ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_table.$priority",
+            "dataType": "int",
+            "desc": "The priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_table.$state",
+            "dataType": "string",
+            "desc": "The state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_table.$dead_time",
+            "dataType": "string",
+            "desc": "The dead time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table.$dead_time",
+            "intfKey": false,
+            "name": "$dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_table.$addr",
+            "dataType": "string",
+            "desc": "The neighbor address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table.$addr",
+            "intfKey": false,
+            "name": "$addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbr_table.$intf",
+            "dataType": "string",
+            "desc": "The neighbor interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbr_table.$area_id",
+            "dataType": "string",
+            "desc": "The area id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbr_filter.ospf_nbr_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

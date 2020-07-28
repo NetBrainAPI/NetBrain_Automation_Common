@@ -1,0 +1,921 @@
+{
+    "_id": "a5197724-5917-29dd-3e01-507eec2ae113",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree",
+    "createTime": {
+        "$date": 1579717302633
+    },
+    "description": "Device Type:\nCisco Nexus Switch \nCommand:\nshow spanning-tree",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-dv-nexus#show spanning-tree\r\n\r\n\r\nVLAN0001\r\n  Spanning tree enabled protocol rstp\r\n  Root ID    Priority    32769\r\n             Address     5000.002a.002f\r\n             This bridge is the root\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\n  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)\r\n             Address     5000.002a.002f\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\nInterface        Role Sts Cost      Prio.Nbr Type\r\n---------------- ---- --- --------- -------- --------------------------------\r\nEth2/7           Desg FWD 4         128.263  P2p \r\n\r\n\r\nVLAN0002\r\n  Spanning tree enabled protocol rstp\r\n  Root ID    Priority    32770\r\n             Address     5000.002a.002f\r\n             This bridge is the root\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\n  Bridge ID  Priority    32770  (priority 32768 sys-id-ext 2)\r\n             Address     5000.002a.002f\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\nInterface        Role Sts Cost      Prio.Nbr Type\r\n---------------- ---- --- --------- -------- --------------------------------\r\nEth2/7           Desg FWD 4         128.263  P2p \r\n\r\n\r\nVLAN0077\r\n  Spanning tree enabled protocol rstp\r\n  Root ID    Priority    32845\r\n             Address     5000.002a.002f\r\n             This bridge is the root\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\n  Bridge ID  Priority    32845  (priority 32768 sys-id-ext 77)\r\n             Address     5000.002a.002f\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\nInterface        Role Sts Cost      Prio.Nbr Type\r\n---------------- ---- --- --------- -------- --------------------------------\r\nEth2/7           Desg FWD 4         128.263  P2p \r\n\r\n\r\nVLAN0100\r\n  Spanning tree enabled protocol rstp\r\n  Root ID    Priority    32868\r\n             Address     5000.002a.002f\r\n             This bridge is the root\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\n  Bridge ID  Priority    32868  (priority 32768 sys-id-ext 100)\r\n             Address     5000.002a.002f\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\nInterface        Role Sts Cost      Prio.Nbr Type\r\n---------------- ---- --- --------- -------- --------------------------------\r\nEth2/7           Desg FWD 4         128.263  P2p \r\n\r\n\r\nVLAN0200\r\n  Spanning tree enabled protocol rstp\r\n  Root ID    Priority    32968\r\n             Address     5000.002a.002f\r\n             This bridge is the root\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\n  Bridge ID  Priority    32968  (priority 32768 sys-id-ext 200)\r\n             Address     5000.002a.002f\r\n             Hello Time  2  sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\nInterface        Role Sts Cost      Prio.Nbr Type\r\n---------------- ---- --- --------- -------- --------------------------------\r\nEth2/3           Desg FWD 4         128.259  P2p \r\nEth2/7           Desg FWD 4         128.263  P2p \r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.spanning_tree.spanning_tree_interface.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"spanning_tree\",\"keyVariables\":\"\",\"startLine\":\"regex[$vlan_id]:^VLAN(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$stp_enabled_protocol]:^\\\\s+Spanning\\\\s+tree\\\\s+enabled\\\\s+protocol\\\\s+(.*?)$\",\"regex[$int:root_priority]:^\\\\s+Root\\\\s+ID\\\\s+Priority\\\\s+(\\\\d+)\",\"mregex[$root_address]:^\\\\s+Root\\\\s+ID.+?Address\\\\s+(\\\\S+)\",\"mregex[$root_bridge]:^\\\\s+Root\\\\s+ID.+?Address\\\\s+\\\\S+.*?^\\\\s+(This bridge is the root)$\",\"mregex[$int:root_cost]:^\\\\s+Root\\\\s+ID.+?Cost\\\\s+(\\\\d+)\",\"mregex[$root_port]:^\\\\s+Root\\\\s+ID.+?Port\\\\s+(.*?)$\",\"mregex[$root_hello_time]:^\\\\s+Root\\\\s+ID.+?Hello\\\\s+Time\\\\s+(\\\\d+)\",\"mregex[$root_max_age]:^\\\\s+Root\\\\s+ID.+?Max\\\\s+Age\\\\s+(\\\\d+)\",\"mregex[$root_forward_delay]:^\\\\s+Root\\\\s+ID.+?Forward\\\\s+Delay\\\\s+(\\\\d+)\",\"regex[$int:bridge_priority]:^\\\\s+Bridge\\\\s+ID\\\\s+Priority\\\\s+(\\\\d+)\",\"mregex[$bridge_address]:^\\\\s+Bridge\\\\s+ID.*?Address\\\\s+(\\\\S+)\",\"mregex[$bridge_hello_time]:^\\\\s+Bridge\\\\s+ID.+?Hello\\\\s+Time\\\\s+(\\\\S+)\",\"mregex[$bridge_max_age]:^\\\\s+Bridge\\\\s+ID.+?Max\\\\s+Age\\\\s+(\\\\S+)\",\"mregex[$bridge_forward_delay]:^\\\\s+Bridge\\\\s+ID.+?Forward\\\\s+Delay\\\\s+(\\\\S+)\",\"mregex[$bridge_aging_time]:^\\\\s+Bridge\\\\s+ID.+?Aging\\\\s+Time\\\\s+(.*?)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vlan_id:string\",\"$stp_enabled_protocol:string\",\"$root_priority:int\",\"$root_address:string\",\"$root_bridge:string\",\"$root_cost:int\",\"$root_port:string\",\"$root_hello_time:string\",\"$root_max_age:string\",\"$root_forward_delay:string\",\"$bridge_priority:int\",\"$bridge_address:string\",\"$bridge_hello_time:string\",\"$bridge_max_age:string\",\"$bridge_forward_delay:string\",\"$bridge_aging_time:string\"]},\"xxid\":\"14290260-ec42-6574-19e6-83cc23c03e1f\"},{\"type\":\"3\",\"name\":\"spanning_tree_interface\",\"headers\":\"Interface;Role;Sts;Cost;Prio.Nbr;Type\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Interface:$string:interface;Role:$string:role;Sts:$string:sts;Cost:$string:cost;Prio.Nbr:$string:prio_nbr;Type:$string:type\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$role:string\",\"$sts:string\",\"$cost:string\",\"$prio_nbr:string\",\"$type:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"286d7791-6733-c5fc-f2e6-d2fda8bcb3c9\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$role\",\"$sts\",\"$cost\",\"$root_port\"],\"HashSort\":false}]},\"xxid\":\"0e9a1931-2643-6a73-1f21-fb001ec130d4\",\"hashColumns\":[\"$vlan_id\",\"$root_address\",\"$root_bridge\",\"$root_port\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"1183762f-f3d2-a4bd-47dd-66c4c5a41b20\"}]}",
+            "tableKeys": [
+                "_original_result.spanning_tree.$vlan_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 16,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "stp_enabled_protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "root_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "root_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "root_bridge",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "root_cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "root_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "root_hello_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "root_max_age",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "root_forward_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "bridge_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "bridge_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "bridge_hello_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "bridge_max_age",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "bridge_forward_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "bridge_aging_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$root_address",
+                    "$root_bridge",
+                    "$root_port",
+                    "$vlan_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "spanning_tree",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 22,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "role",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "sts",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "cost",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "prio_nbr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "vlan_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "stp_enabled_protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "root_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "root_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "root_bridge",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "root_cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "root_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "root_hello_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "root_max_age",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "root_forward_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "bridge_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "bridge_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "bridge_hello_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "bridge_max_age",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "bridge_forward_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "bridge_aging_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$cost",
+                    "$interface",
+                    "$role",
+                    "$root_port",
+                    "$sts"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "spanning_tree_interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fa338269a818c635eba74e730631eae1",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "spanning_tree",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan_id",
+                    "$root_address",
+                    "$root_bridge",
+                    "$root_port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree",
+            "intfKey": false,
+            "name": "spanning_tree",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "spanning_tree.$vlan_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$vlan_id",
+            "intfKey": false,
+            "name": "$vlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$stp_enabled_protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$stp_enabled_protocol",
+            "intfKey": false,
+            "name": "$stp_enabled_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_priority",
+            "intfKey": false,
+            "name": "$root_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_address",
+            "intfKey": false,
+            "name": "$root_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_bridge",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_bridge",
+            "intfKey": false,
+            "name": "$root_bridge",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_cost",
+            "intfKey": false,
+            "name": "$root_cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_port",
+            "intfKey": false,
+            "name": "$root_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_hello_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_hello_time",
+            "intfKey": false,
+            "name": "$root_hello_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_max_age",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_max_age",
+            "intfKey": false,
+            "name": "$root_max_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$root_forward_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$root_forward_delay",
+            "intfKey": false,
+            "name": "$root_forward_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$bridge_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$bridge_priority",
+            "intfKey": false,
+            "name": "$bridge_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$bridge_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$bridge_address",
+            "intfKey": false,
+            "name": "$bridge_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$bridge_hello_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$bridge_hello_time",
+            "intfKey": false,
+            "name": "$bridge_hello_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$bridge_max_age",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$bridge_max_age",
+            "intfKey": false,
+            "name": "$bridge_max_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$bridge_forward_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$bridge_forward_delay",
+            "intfKey": false,
+            "name": "$bridge_forward_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree.$bridge_aging_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.$bridge_aging_time",
+            "intfKey": false,
+            "name": "$bridge_aging_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$role",
+                    "$sts",
+                    "$cost",
+                    "$root_port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface",
+            "intfKey": false,
+            "name": "spanning_tree_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "spanning_tree_interface.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "spanning_tree_interface.$role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$role",
+            "intfKey": false,
+            "name": "$role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$sts",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$sts",
+            "intfKey": false,
+            "name": "$sts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$cost",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$prio_nbr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$prio_nbr",
+            "intfKey": false,
+            "name": "$prio_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$vlan_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$vlan_id",
+            "intfKey": false,
+            "name": "$vlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$stp_enabled_protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$stp_enabled_protocol",
+            "intfKey": false,
+            "name": "$stp_enabled_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_priority",
+            "intfKey": false,
+            "name": "$root_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_address",
+            "intfKey": false,
+            "name": "$root_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_bridge",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_bridge",
+            "intfKey": false,
+            "name": "$root_bridge",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_cost",
+            "intfKey": false,
+            "name": "$root_cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_port",
+            "intfKey": false,
+            "name": "$root_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_hello_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_hello_time",
+            "intfKey": false,
+            "name": "$root_hello_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_max_age",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_max_age",
+            "intfKey": false,
+            "name": "$root_max_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$root_forward_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$root_forward_delay",
+            "intfKey": false,
+            "name": "$root_forward_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$bridge_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$bridge_priority",
+            "intfKey": false,
+            "name": "$bridge_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$bridge_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$bridge_address",
+            "intfKey": false,
+            "name": "$bridge_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$bridge_hello_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$bridge_hello_time",
+            "intfKey": false,
+            "name": "$bridge_hello_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$bridge_max_age",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$bridge_max_age",
+            "intfKey": false,
+            "name": "$bridge_max_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$bridge_forward_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$bridge_forward_delay",
+            "intfKey": false,
+            "name": "$bridge_forward_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_interface.$bridge_aging_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spanning_tree.spanning_tree_interface.$bridge_aging_time",
+            "intfKey": false,
+            "name": "$bridge_aging_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

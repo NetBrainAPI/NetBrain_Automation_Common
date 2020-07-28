@@ -1,0 +1,210 @@
+{
+    "_id": "372eb4f6-30a3-f05f-2d09-73219e8e3f2d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree mst configuration",
+    "createTime": {
+        "$date": 1591369973142
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCommand:\nshow spanning-tree mst configuration",
+    "devTypes": [
+        2001
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ms3#show spanning-tree mst configuration\nName      [test1]\nRevision  10    Instances configured 2\n\nInstance  Vlans mapped\n--------  ---------------------------------------------------------------------\n0         1-9,21-4094\n10        10-20\n-------------------------------------------------------------------------------\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$mst_name]:Name\\\\s+\\\\[(\\\\S+)\\\\]\",\"regex[$int:revision,$int:instances_configured]:Revision\\\\s+(\\\\d+)\\\\s+Instances\\\\s+configured\\\\s+(\\\\d+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$mst_name:string\",\"$revision:int\",\"$instances_configured:int\"]},\"xxid\":\"f16c04ec-d027-7ef0-8e22-57812a7abb5e\"},{\"type\":\"3\",\"name\":\"mst_instances\",\"headers\":\"Instance;Vlans mapped\",\"endLine\":\"--------------------\",\"isSkipLine\":\"1\",\"skipLine\":\"1\",\"headerToVariables\":\"Instance:$int:instance;Vlans mapped:$string:vlans_mapped\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$instance:int\",\"$vlans_mapped:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"dfceca8e-fde1-103f-3a84-48f6e36a0430\",\"hashColumns\":[\"$vlans_mapped\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$mst_configurtion_cli_outpu_ios_sw]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mst_configurtion_cli_outpu_ios_sw:string\"]},\"xxid\":\"07445e4f-9776-d29b-4bde-7e2f744ecc57\"}]}",
+            "tableKeys": [
+                "_original_result.mst_instances.$vlans_mapped"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "mst_name",
+                "type": 4
+            },
+            {
+                "hashSort": false,
+                "index": 1,
+                "name": "revision",
+                "type": 1
+            },
+            {
+                "hashSort": false,
+                "index": 2,
+                "name": "instances_configured",
+                "type": 1
+            },
+            {
+                "hashSort": false,
+                "index": 3,
+                "name": "mst_configurtion_cli_outpu_ios_sw",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "instance",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlans_mapped",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlans_mapped"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "mst_instances",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "070b34adb5c8d9304a0c5e6bcb0601cb",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$mst_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mst_name",
+            "intfKey": false,
+            "name": "$mst_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$revision",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$revision",
+            "intfKey": false,
+            "name": "$revision",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$instances_configured",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$instances_configured",
+            "intfKey": false,
+            "name": "$instances_configured",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mst_instances",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlans_mapped"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mst_instances",
+            "intfKey": false,
+            "name": "mst_instances",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mst_instances.$instance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mst_instances.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mst_instances.$vlans_mapped",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mst_instances.$vlans_mapped",
+            "intfKey": false,
+            "name": "$vlans_mapped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$mst_configurtion_cli_outpu_ios_sw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mst_configurtion_cli_outpu_ios_sw",
+            "intfKey": false,
+            "name": "$mst_configurtion_cli_outpu_ios_sw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

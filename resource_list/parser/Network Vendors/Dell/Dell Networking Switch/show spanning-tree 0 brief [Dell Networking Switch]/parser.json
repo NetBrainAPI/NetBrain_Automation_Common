@@ -1,0 +1,445 @@
+{
+    "_id": "f96ce4b9-7212-48ae-8183-e4c75691da5d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree 0 brief",
+    "createTime": {
+        "$date": 1590779916403
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow spanning-tree 0 brief",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell#show spanning-tree 0 brief \n    Executing IEEE compatible Spanning Tree Protocol\n          Root ID  Priority 32768, Address 0001.e8d6.5d9d \n          We are the root of the spanning tree\n          Root Bridge hello time 2, max age 20, forward delay 15 \n          Bridge ID  Priority 32768, Address 0001.e8d6.5d9d\n          Configured hello time 2, max age 20, forward delay 15\nInterface                                            Designated\n Name      PortID  Prio Cost   Sts         Cost      Bridge ID         PortID\n---------- ------- ---- ------ ----------- ------ -------------------- ------\nGi 0/47      8.178  8    4      DIS       0      32768 0001.e8d6.5d9d   8.178 \nGi 0/48      8.179  8    4      DIS       0      32768 0001.e8d6.5d9d   8.179 ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.stp_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:root_pri, $root_mac]:\\\\s+Root\\\\s+ID\\\\s+Priority (\\\\d+)\\\\, Address\\\\s+([a-f\\\\d\\\\.]+)\",\"regex[$int:root_bridge, $int:root_max_age, $int:root_forward_delay]:Root Bridge hello time (\\\\d+), max age (\\\\d+), forward delay (\\\\d+)\",\"regex[$int:bridge_pri, $bridge_mac]:\\\\s+Bridge\\\\s+ID\\\\s+Priority (\\\\d+)\\\\, Address\\\\s+([a-f\\\\d\\\\.]+)\",\"regex[$int:bridge_bridge, $int:bridge_max_age, $int:bridge_forward_delay]:Configured hello time (\\\\d+), max age (\\\\d+), forward delay (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$root_pri:int\",\"$root_mac:string\",\"$root_bridge:int\",\"$root_max_age:int\",\"$root_forward_delay:int\",\"$bridge_pri:int\",\"$bridge_mac:string\",\"$bridge_bridge:int\",\"$bridge_max_age:int\",\"$bridge_forward_delay:int\"]},\"xxid\":\"d6a056bc-8f2b-31a3-76e2-984fd456449e\"},{\"type\":\"4\",\"name\":\"stp_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf, $portid_1, $int:pri, $int:cost1, $sts, $int:cost2, $bridge_id, $portid_2]:(.+)\\\\s\\\\s+([\\\\d.]+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+ [\\\\da-f.]+)\\\\s+([\\\\d.]+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$portid_1:string\",\"$pri:int\",\"$cost1:int\",\"$sts:string\",\"$cost2:int\",\"$bridge_id:string\",\"$portid_2:string\"]},\"xxid\":\"821aeeb2-77ab-7b24-7343-850d52d0a462\"}]},\"xxid\":\"5a3e8c6c-b340-6bd2-69a4-c2b28a1cb5bf\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "root_pri",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "root_mac",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "root_bridge",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "root_max_age",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "root_forward_delay",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "bridge_pri",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "bridge_mac",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "bridge_bridge",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "bridge_max_age",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "bridge_forward_delay",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "portid_1",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "pri",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "cost1",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "sts",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "cost2",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "bridge_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "portid_2",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 10,
+                "name": "stp_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "567e93cede5855d8b64ec152075ed1b2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$root_pri",
+            "dataType": "int",
+            "desc": "The root's priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_pri",
+            "intfKey": false,
+            "name": "$root_pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_mac",
+            "dataType": "string",
+            "desc": "The root's mac address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_mac",
+            "intfKey": false,
+            "name": "$root_mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_bridge",
+            "dataType": "int",
+            "desc": "The root's bridge hello time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_bridge",
+            "intfKey": false,
+            "name": "$root_bridge",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_max_age",
+            "dataType": "int",
+            "desc": "The root's max age.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_max_age",
+            "intfKey": false,
+            "name": "$root_max_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_forward_delay",
+            "dataType": "int",
+            "desc": "The root's forward delay time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_forward_delay",
+            "intfKey": false,
+            "name": "$root_forward_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_pri",
+            "dataType": "int",
+            "desc": "The bridge's priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_pri",
+            "intfKey": false,
+            "name": "$bridge_pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_mac",
+            "dataType": "string",
+            "desc": "The bridge's mac address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_mac",
+            "intfKey": false,
+            "name": "$bridge_mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_bridge",
+            "dataType": "int",
+            "desc": "The bridge's hello time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_bridge",
+            "intfKey": false,
+            "name": "$bridge_bridge",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_max_age",
+            "dataType": "int",
+            "desc": "The bridge's max age.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_max_age",
+            "intfKey": false,
+            "name": "$bridge_max_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_forward_delay",
+            "dataType": "int",
+            "desc": "The bridge's forward delay time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_forward_delay",
+            "intfKey": false,
+            "name": "$bridge_forward_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table",
+            "dataType": "paragraph",
+            "desc": "The spanning-tree table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "stp_table",
+            "intfKey": false,
+            "name": "stp_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "stp_table.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "stp_table.$portid_1",
+            "dataType": "string",
+            "desc": "The port id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$portid_1",
+            "intfKey": false,
+            "name": "$portid_1",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$pri",
+            "dataType": "int",
+            "desc": "Interface priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$pri",
+            "intfKey": false,
+            "name": "$pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$cost1",
+            "dataType": "int",
+            "desc": "The cost of the path.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$cost1",
+            "intfKey": false,
+            "name": "$cost1",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$sts",
+            "dataType": "string",
+            "desc": "The state of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$sts",
+            "intfKey": false,
+            "name": "$sts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$cost2",
+            "dataType": "int",
+            "desc": "The cost of the path to the root.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$cost2",
+            "intfKey": false,
+            "name": "$cost2",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$bridge_id",
+            "dataType": "string",
+            "desc": "The bridge id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$bridge_id",
+            "intfKey": false,
+            "name": "$bridge_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$portid_2",
+            "dataType": "string",
+            "desc": "The port id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$portid_2",
+            "intfKey": false,
+            "name": "$portid_2",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,338 @@
+{
+    "_id": "2e490942-86ad-05cc-7a53-71e0f2eb5ae2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis topology",
+    "createTime": {
+        "$date": 1579803958956
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow isis topology",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ciscoasa# show isis topology\r\n \r\nIS-IS TID 0 paths to level-1 routers\r\nSystem Id Metric Next-Hop Interface SNPA\r\ncisco1 --\r\nrouterA 10 routerA subint 0025.8407.f2b0\r\nc3 10\r\nc2 10 c2 subint c08c.60e6.986f\r\n \r\nIS-IS TID 0 paths to level-2 routers\r\nSystem Id Metric Next-Hop Interface SNPA\r\ncisco1 --\r\nrouterA 10 routerA subint 0025.8407.f2b0\r\nc3 10\r\nc2 10 c2 subint c08c.60e6.986f",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis.isis_pro.isis_topology.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis\",\"keyVariables\":\"\",\"startLine\":\"regex[$level]:IS-IS\\\\s+TID\\\\s+.*?to\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level:string\"]},\"xxid\":\"1090e258-483f-b14b-2841-e24ac5481cc3\"},{\"type\":\"4\",\"name\":\"isis_pro\",\"keyVariables\":\"\",\"startLine\":\"System\",\"endLine\":null,\"isLineAsParagraph\":\"1\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"1decea20-4a97-6774-ce37-93a6e044966d\"},{\"type\":\"4\",\"name\":\"isis_topology\",\"keyVariables\":\"\",\"startLine\":\"regex[$system_id, $int:metric]:(\\\\S+)\\\\s+(\\\\d+|--)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$next_hop, $intf, $snpa]:\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$system_id:string\",\"$metric:int\",\"$next_hop:string\",\"$intf:string\",\"$snpa:string\"]},\"xxid\":\"ee546c32-c989-162a-e9cc-2e953e0e6c84\"}]},\"xxid\":\"d1f0ce3a-38ba-5240-0545-dc76af4a0542\",\"hashColumns\":[\"$metric\",\"$intf\",\"$next_hop\",\"$level\"],\"interfaceKey\":\"$intf\"}]},\"xxid\":\"93347366-98c8-7ebe-23c4-fbec6c0a4188\"}]},\"xxid\":\"dbb0d664-7477-b39e-3216-c1ab2f16b09c\"}]}",
+            "tableKeys": [
+                "_original_result.isis.isis_pro.isis_topology.$metric",
+                "_original_result.isis.isis_pro.isis_topology.$next_hop",
+                "_original_result.isis.isis_pro.isis_topology.$level"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "isis",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_pro",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "next_hop",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "level",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$level",
+                    "$metric",
+                    "$next_hop"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_topology",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5badced674858b672eba4d929a7f9ded",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis",
+            "dataType": "paragraph",
+            "desc": "ISIS table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis",
+            "intfKey": false,
+            "name": "isis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis.$level",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_pro",
+            "dataType": "paragraph",
+            "desc": "ISIS process table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro",
+            "intfKey": false,
+            "name": "isis_pro",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_pro.$level",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_topology",
+            "dataType": "paragraph",
+            "desc": "ISIS topology table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$metric",
+                    "$intf",
+                    "$next_hop",
+                    "$level"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.isis_topology",
+            "intfKey": false,
+            "name": "isis_topology",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_topology.$system_id",
+            "dataType": "string",
+            "desc": "Six-byte value that identifies a system in an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.isis_topology.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_topology.$metric",
+            "dataType": "int",
+            "desc": "IS-IS metric for the cost of the adjacency between the originating router and the advertised neighbor, or the metric of the cost to get from the advertising router to the advertised destination (which can be an IP address, an end system [ES], or a CLNS prefix).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.isis_topology.$metric",
+            "intfKey": false,
+            "name": "$metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_topology.$next_hop",
+            "dataType": "string",
+            "desc": "Assigns the routing level for the IS-IS routing process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.isis_topology.$next_hop",
+            "intfKey": false,
+            "name": "$next_hop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_topology.$intf",
+            "dataType": "string",
+            "desc": "Interface from which the system was learned.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.isis_topology.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_topology.$snpa",
+            "dataType": "string",
+            "desc": "Subnetwork point of attachment. This is the data-link address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.isis_topology.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_topology.$level",
+            "dataType": "string",
+            "desc": "The address of the next hop router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_pro.isis_topology.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

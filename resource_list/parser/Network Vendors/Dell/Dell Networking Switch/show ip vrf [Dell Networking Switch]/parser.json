@@ -1,0 +1,149 @@
+{
+    "_id": "533b6e15-5795-461e-b465-24ed411feba6",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip vrf",
+    "createTime": {
+        "$date": 1590777868253
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow ip vrf",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show ip vrf\nVRF-Name                    VRF-ID Interfaces\ndefault                     0       Te 1/1-13,40,\n                                    Fo 1/49,\n                                    Ma 1/1,\n                                    Ma 2/1,\n                                    Ma 3/1,\n                                    Ma 4/1,\n                                    Ma 5/1,\n                                    Ma 6/1,\n                                    Nu 0,\n                                    Vl 1\ntest1                       1       Te 1/16-17\ntest2                       2       Te 1/15\nmanagement                  64     ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.vrfs_table.$interfaces"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\n\\ndef ParseText(config):\\n    vrfs_table = {\\n        'vrf_name'                    :[],\\n        'vrf_id'                    :[],\\n        'interfaces'       :[],\\n        '$_columns':['vrf_name', 'vrf_id', 'interfaces'],\\n        }\\n    if(not 'VRF-Name' in config):\\n        return ''\\n    vrf_table = re.split(r'[\\\\r\\\\n]', config)\\n    flag, j = 0, 0\\n    for i in vrf_table:\\n        vrftitle = re.search(r'^(\\\\S+)\\\\s+(\\\\d+)\\\\s+(.+)', i)\\n        if(not vrftitle):\\n            intf = re.search(r'^\\\\s+(.+)', i)\\n            if(not intf):\\n                continue\\n            if('-' in intf.group(1) or intf.group(1).count(',') > 1):\\n                l = intf.group(1).split('/')[0] + '/'\\n                intfs = intf.group(1).split(',')\\n                newintf = ''\\n                index = 0\\n                for i in intfs:\\n                    if(not i):\\n                        continue\\n                    if (not '-' in i):\\n                        newintf = newintf + intfs[0]\\n                        for k in intfs[1:-1]:\\n                            k = l + k\\n                            newintf = newintf +','+ k\\n                        newintf = newintf + ','\\n                    else:\\n                        index += 1\\n                        numrange = re.search(r'(\\\\d+)\\\\-(\\\\d+)', i)\\n                        for k in range(int(numrange.group(1)), int(numrange.group(2)) + 1):\\n                            k = l + str(k)\\n                            newintf = newintf + k + ','\\n                    if(index > 1):\\n                        newintf = newintf.strip(',')\\n                vrfs_table['interfaces'][j-1] = vrfs_table['interfaces'][j-1] + newintf +','\\n            else:\\n                vrfs_table['interfaces'][j-1] = vrfs_table['interfaces'][j-1] + intf.group(1)\\n\\n        elif(vrftitle):\\n            j += 1\\n            vrfs_table['vrf_name'].append(vrftitle.group(1))\\n            vrfs_table['vrf_id'].append(vrftitle.group(2))\\n            if('-' in vrftitle.group(3) or vrftitle.group(3).count(',') > 1):\\n                l = vrftitle.group(3).split('/')[0] + '/'\\n                intfs = vrftitle.group(3).split(',')\\n                newintf = ''\\n                index = 0\\n                for i in intfs:\\n                    if(not i):\\n                        continue\\n                    if (not '-' in i):\\n                        for k in intfs[1:-1]:\\n                            k = l + k\\n                            newintf = newintf +','+ k\\n                        newintf = newintf + ','\\n                    else:\\n                        index += 1\\n                        numrange = re.search(r'(\\\\d+)\\\\-(\\\\d+)', i)\\n                        for k in range(int(numrange.group(1)), int(numrange.group(2)) + 1):\\n                            k = l + str(k)\\n                            newintf = newintf + k + ','\\n                vrfs_table['interfaces'].append(newintf)\\n            else:\\n                vrfs_table['interfaces'].append(vrftitle.group(3))\\n\\n    dic={\\n        'vrfs_table':vrfs_table,\\n    }\\n    return dic\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$vrfs_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$vrf_name\",\"type\":\"string\"},{\"name\":\"$vrf_id\",\"type\":\"string\"},{\"name\":\"$interfaces\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"7802782f-b67b-1650-3376-87a09ebddad4\",\"hashColumns\":{\"vrfs_table\":[\"$vrf_name\",\"$interfaces\"]},\"tableKeys\":{\"vrfs_table\":[\"$vrf_name\"]},\"hashSort\":{\"vrfs_table\":false},\"interfaceKey\":{\"vrfs_table\":\"$interfaces\"}}]}",
+            "tableKeys": [
+                "_original_result.$vrfs_table.$vrf_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interfaces",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vrf_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "interfaces",
+                    "vrf_name"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vrfs_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "b06148f31133460e58a03ed04052888c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$vrfs_table",
+            "dataType": "table",
+            "desc": "VRF table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vrf_name",
+                    "$interfaces"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$vrfs_table",
+            "intfKey": false,
+            "name": "$vrfs_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$vrfs_table.$vrf_name",
+            "dataType": "string",
+            "desc": "VRF name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrfs_table.$vrf_name",
+            "intfKey": false,
+            "name": "$vrf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrfs_table.$vrf_id",
+            "dataType": "string",
+            "desc": "Route distinguisher of VRF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrfs_table.$vrf_id",
+            "intfKey": false,
+            "name": "$vrf_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrfs_table.$interfaces",
+            "dataType": "string",
+            "desc": "Interfaces assigned to the VRF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrfs_table.$interfaces",
+            "intfKey": false,
+            "name": "$interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        }
+    ],
+    "version": "7.1"
+}

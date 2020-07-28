@@ -1,0 +1,2209 @@
+{
+    "_id": "149747e4-e029-468a-3074-dc3394d4a68e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display ospf",
+    "createTime": {
+        "$date": 1590773562917
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay ospf",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<h3c-2>display ospf\r\n\r\n         OSPF Process 1 with Router ID 2.2.2.2\r\n                 OSPF Protocol Information\r\n\r\n RouterID: 2.2.2.2          Router type:  ABR\r\n Route tag: 0\r\n Multi-VPN-Instance is not enabled\r\n Ext-community type: Domain ID 0x5, Route Type 0x306, Router ID 0x107\r\n Domain ID: 0.0.0.0\r\n Opaque capable\r\n ISPF is enabled\r\n SPF-schedule-interval: 5 50 200\r\n LSA generation interval: 5 50 200\r\n LSA arrival interval: 1000\r\n Transmit pacing: Interval: 20 Count: 3\r\n Default ASE parameters: Metric: 1 Tag: 1 Type: 2\r\n Route preference: 10\r\n ASE route preference: 150\r\n SPF calculation count: 19\r\n RFC 1583 compatible\r\n Graceful restart interval: 120\r\n SNMP trap rate limit interval: 10  Count: 7\r\n Area count: 2   NSSA area count: 0\r\n ExChange/Loading neighbors: 0\r\n\r\n Area: 0.0.0.0          (MPLS TE  not enabled)\r\n Authtype: None    Area flag: Normal\r\n SPF scheduled count: 12\r\n ExChange/Loading neighbors: 0\r\n\r\n Interface: 12.1.1.2 (GigabitEthernet1/0/5)\r\n Cost: 1       State: DR        Type: Broadcast    MTU: 1500\r\n Priority: 1\r\n Designated router: 12.1.1.2\r\n Backup designated router: 12.1.1.1\r\n Timers: Hello 10, Dead 40, Poll 40, Retransmit 5, Transmit Delay 1\r\n FRR backup: Enabled\r\n Enabled by network configuration\r\n\r\n Interface: 2.2.2.2 (LoopBack0)\r\n Cost: 0       State: Loopback    Type: PTP       MTU: 1536\r\n Timers: Hello 10, Dead 40, Poll 40, Retransmit 5, Transmit Delay 1\r\n FRR backup: Enabled\r\n Enabled by network configuration\r\n\r\n Area: 0.0.0.1          (MPLS TE  not enabled)\r\n Authtype: None    Area flag: Normal\r\n SPF scheduled count: 6\r\n ExChange/Loading neighbors: 0\r\n\r\n Interface: 23.1.1.2 (GigabitEthernet1/0/6)\r\n Cost: 1       State: DR        Type: Broadcast    MTU: 1500\r\n Priority: 1\r\n Designated router: 23.1.1.2\r\n Backup designated router: 23.1.1.3\r\n Timers: Hello 10, Dead 40, Poll 40, Retransmit 5, Transmit Delay 1\r\n FRR backup: Enabled\r\n Enabled by network configuration\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_process.area_id_paragraph.interface_pargraph.$interface_name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_process\",\"keyVariables\":\"\",\"startLine\":\"OSPF Process $process_id with Router ID $rid\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process_id:string\",\"$rid:string\"]},\"xxid\":\"9a1a8a7d-5108-baae-31ea-0febde81c95f\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"RouterID: $rid_local\",\"Router type:  $router_type\",\"Route tag: $route_tag\",\"regex[$multi_vpn_instance]:Multi-VPN-Instance is\\\\s+(.+)\",\"regex[$domain_id]:Domain ID:\\\\s+(.+)\",\"regex[$ispf]:ISPF is\\\\s+(.+)\",\"regex[$int:spf_schedule_interval]:SPF-schedule-interval:\\\\s+(.+)\",\"regex[$int:lsa_generation_interval]:LSA generation interval:\\\\s+(.+)\",\"regex[$int:lsa_arrival_interval]:LSA arrival interval:\\\\s+(.+)\",\"regex[$int:transmit_pacing_interval]:Transmit pacing: Interval:\\\\s+(\\\\S+)\",\"regex[$int:transmit_pacing_count]:Transmit pacing: Interval:\\\\s+\\\\S+\\\\s+Count:\\\\s+(\\\\S+)\",\"regex[$int:default_ase_parameters_metric]:Default ASE parameters: Metric:\\\\s+(\\\\S+)\",\"regex[$int:default_ase_parameters_tag]:Default ASE parameters: Metric:\\\\s+\\\\S+\\\\s+Tag:\\\\s+(\\\\S+)\",\"regex[$int:default_ase_parameters_type]:Default ASE parameters: Metric:\\\\s+\\\\S+\\\\s+Tag:\\\\s+\\\\S+\\\\s+Type:\\\\s+(\\\\S+)\",\"regex[$int:route_preference]:Route preference:\\\\s+(\\\\S+)\",\"regex[$int:ase_route_preference]: ASE route preference:\\\\s+(\\\\S+)\",\"regex[$int:spf_calculation_count]: SPF calculation count:\\\\s+(\\\\S+)\",\"regex[$int:graceful_restart_interval]: Graceful restart interval:\\\\s+(\\\\S+)\",\"regex[$int:snmp_trap_rate_limit_interval]: SNMP trap rate limit interval:\\\\s+(\\\\S+)\",\"regex[$int:snmp_trap_rate_limit_count]: SNMP trap rate limit interval:\\\\s+\\\\S+\\\\s+ Count:\\\\s+(\\\\S+)\",\"regex[$int:area_count]: Area count:\\\\s+(\\\\S+)\",\"regex[$int:nssa_area_count]: NSSA area count:\\\\s+(\\\\S+)\",\"regex[$int:exchange_loading_neighbors]: ExChange/Loading neighbors:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$rid_local:string\",\"$router_type:string\",\"$route_tag:string\",\"$multi_vpn_instance:string\",\"$domain_id:string\",\"$ispf:string\",\"$spf_schedule_interval:int\",\"$lsa_generation_interval:int\",\"$lsa_arrival_interval:int\",\"$transmit_pacing_interval:int\",\"$transmit_pacing_count:int\",\"$default_ase_parameters_metric:int\",\"$default_ase_parameters_tag:int\",\"$default_ase_parameters_type:int\",\"$route_preference:int\",\"$ase_route_preference:int\",\"$spf_calculation_count:int\",\"$graceful_restart_interval:int\",\"$snmp_trap_rate_limit_interval:int\",\"$snmp_trap_rate_limit_count:int\",\"$area_count:int\",\"$nssa_area_count:int\",\"$exchange_loading_neighbors:int\"]},\"xxid\":\"9c3dd546-7dde-cfa4-a709-fe8423ad322e\"},{\"type\":\"4\",\"name\":\"area_id_paragraph\",\"keyVariables\":\"\",\"startLine\":\"regex[$area_id]:Area:\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$authtype]:Authtype:\\\\s+(\\\\S+)\",\"Area flag: $area_flag\",\"SPF scheduled count: $spf_scheduled_count\",\"ExChange/Loading neighbors: $area_exchange_loading_neighbors\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$authtype:string\",\"$area_flag:string\",\"$spf_scheduled_count:string\",\"$area_exchange_loading_neighbors:string\"]},\"xxid\":\"b2e3260d-01b2-c6cf-eb61-ada63533f99a\"},{\"type\":\"4\",\"name\":\"interface_pargraph\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface_ip]:Interface:\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$interface_name]:Interface:\\\\s+\\\\S+\\\\s+\\\\((\\\\S+)\\\\)\",\"Cost: $cost\",\"State: $state\",\"Type: $type\",\"MTU: $mtu\",\"Priority: $priority\",\"Designated router: $designated_router\",\"Backup designated router: $backup_designated_router\",\"Hello $hello_time,\",\"Dead $dead_time,\",\"Poll $poll,\",\"Retransmit $retransmit,\",\"Transmit Delay $transmit_delay\",\"FRR backup: $frr_backup\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface_ip:string\",\"$interface_name:string\",\"$cost:string\",\"$state:string\",\"$type:string\",\"$mtu:string\",\"$priority:string\",\"$designated_router:string\",\"$backup_designated_router:string\",\"$hello_time:string\",\"$dead_time:string\",\"$poll:string\",\"$retransmit:string\",\"$transmit_delay:string\",\"$frr_backup:string\"]},\"xxid\":\"17db8def-1294-ca6d-ea84-360832127b9a\"}]},\"xxid\":\"51c71192-924a-8b13-90ea-bb9a294df902\",\"interfaceKey\":\"$interface_name\",\"hashColumns\":[\"$interface_name\",\"$interface_ip\",\"$cost\",\"$state\",\"$type\",\"$mtu\",\"$priority\"]}]},\"xxid\":\"1b454262-f309-28ae-89cb-e7ddf3b61d27\",\"hashColumns\":[\"$area_id\",\"$rid\",\"$router_type\"]}]},\"xxid\":\"f894b401-baff-87df-eb4e-555f13c1f70a\",\"hashColumns\":[\"$process_id\",\"$rid\",\"$rid_local\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_process.$process_id",
+                "_original_result.ospf_process.$rid",
+                "_original_result.ospf_process.$rid_local",
+                "_original_result.ospf_process.area_id_paragraph.$area_id",
+                "_original_result.ospf_process.area_id_paragraph.$rid",
+                "_original_result.ospf_process.area_id_paragraph.$router_type",
+                "_original_result.ospf_process.area_id_paragraph.interface_pargraph.$interface_ip",
+                "_original_result.ospf_process.area_id_paragraph.interface_pargraph.$cost",
+                "_original_result.ospf_process.area_id_paragraph.interface_pargraph.$state",
+                "_original_result.ospf_process.area_id_paragraph.interface_pargraph.$type",
+                "_original_result.ospf_process.area_id_paragraph.interface_pargraph.$mtu",
+                "_original_result.ospf_process.area_id_paragraph.interface_pargraph.$priority"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 25,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "rid_local",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "router_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "route_tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "multi_vpn_instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "domain_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "ispf",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "spf_schedule_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "lsa_generation_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "lsa_arrival_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "transmit_pacing_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "transmit_pacing_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "default_ase_parameters_metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "default_ase_parameters_tag",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "default_ase_parameters_type",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "ase_route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "spf_calculation_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "graceful_restart_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "snmp_trap_rate_limit_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "snmp_trap_rate_limit_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "nssa_area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "exchange_loading_neighbors",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id",
+                    "$rid",
+                    "$rid_local"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_process",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 30,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 31,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "authtype",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "spf_scheduled_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "area_exchange_loading_neighbors",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "rid_local",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "router_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "route_tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "multi_vpn_instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "domain_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "ispf",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "spf_schedule_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "lsa_generation_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "lsa_arrival_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "transmit_pacing_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "transmit_pacing_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "default_ase_parameters_metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "default_ase_parameters_tag",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "default_ase_parameters_type",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "ase_route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "spf_calculation_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "graceful_restart_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "snmp_trap_rate_limit_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "snmp_trap_rate_limit_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "nssa_area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "exchange_loading_neighbors",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$rid",
+                    "$router_type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "area_id_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 45,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 46,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "cost",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "designated_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "backup_designated_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "hello_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "poll",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "retransmit",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "transmit_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "frr_backup",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "authtype",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "area_flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "spf_scheduled_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "area_exchange_loading_neighbors",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "rid_local",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "router_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "route_tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "multi_vpn_instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 26,
+                        "name": "domain_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "ispf",
+                        "type": 4
+                    },
+                    {
+                        "index": 28,
+                        "name": "spf_schedule_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "lsa_generation_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "lsa_arrival_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 31,
+                        "name": "transmit_pacing_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 32,
+                        "name": "transmit_pacing_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 33,
+                        "name": "default_ase_parameters_metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 34,
+                        "name": "default_ase_parameters_tag",
+                        "type": 1
+                    },
+                    {
+                        "index": 35,
+                        "name": "default_ase_parameters_type",
+                        "type": 1
+                    },
+                    {
+                        "index": 36,
+                        "name": "route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 37,
+                        "name": "ase_route_preference",
+                        "type": 1
+                    },
+                    {
+                        "index": 38,
+                        "name": "spf_calculation_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 39,
+                        "name": "graceful_restart_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 40,
+                        "name": "snmp_trap_rate_limit_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 41,
+                        "name": "snmp_trap_rate_limit_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 42,
+                        "name": "area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 43,
+                        "name": "nssa_area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 44,
+                        "name": "exchange_loading_neighbors",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$cost",
+                    "$interface_ip",
+                    "$interface_name",
+                    "$mtu",
+                    "$priority",
+                    "$state",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "interface_pargraph",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "48dce1dafd96a0832dcb1fe243aba520",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_process",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on process id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id",
+                    "$rid",
+                    "$rid_local"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process",
+            "intfKey": false,
+            "name": "ospf_process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_process.$process_id",
+            "dataType": "string",
+            "desc": "OSPF process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$rid",
+            "dataType": "string",
+            "desc": "OSPF router id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$rid_local",
+            "dataType": "string",
+            "desc": "Router ID of the router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$rid_local",
+            "intfKey": false,
+            "name": "$rid_local",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$router_type",
+            "dataType": "string",
+            "desc": "OSPF router type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$router_type",
+            "intfKey": false,
+            "name": "$router_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$route_tag",
+            "dataType": "string",
+            "desc": "Tag of redistributed routes",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$route_tag",
+            "intfKey": false,
+            "name": "$route_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$multi_vpn_instance",
+            "dataType": "string",
+            "desc": "The OSPF process does not support multi-VPN-instance",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$multi_vpn_instance",
+            "intfKey": false,
+            "name": "$multi_vpn_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$domain_id",
+            "dataType": "string",
+            "desc": "Domain ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$domain_id",
+            "intfKey": false,
+            "name": "$domain_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$ispf",
+            "dataType": "string",
+            "desc": "OSPF ISPF",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$ispf",
+            "intfKey": false,
+            "name": "$ispf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$spf_schedule_interval",
+            "dataType": "int",
+            "desc": "Interval for SPF calculations",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$spf_schedule_interval",
+            "intfKey": false,
+            "name": "$spf_schedule_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$lsa_generation_interval",
+            "dataType": "int",
+            "desc": "LSA generation interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$lsa_generation_interval",
+            "intfKey": false,
+            "name": "$lsa_generation_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$lsa_arrival_interval",
+            "dataType": "int",
+            "desc": "LSA arrival interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$lsa_arrival_interval",
+            "intfKey": false,
+            "name": "$lsa_arrival_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$transmit_pacing_interval",
+            "dataType": "int",
+            "desc": "LSU transmit interval of the interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$transmit_pacing_interval",
+            "intfKey": false,
+            "name": "$transmit_pacing_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$transmit_pacing_count",
+            "dataType": "int",
+            "desc": "Maximum number of LSU packets sent each time",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$transmit_pacing_count",
+            "intfKey": false,
+            "name": "$transmit_pacing_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$default_ase_parameters_metric",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: metric",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$default_ase_parameters_metric",
+            "intfKey": false,
+            "name": "$default_ase_parameters_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$default_ase_parameters_tag",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: tag",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$default_ase_parameters_tag",
+            "intfKey": false,
+            "name": "$default_ase_parameters_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$default_ase_parameters_type",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$default_ase_parameters_type",
+            "intfKey": false,
+            "name": "$default_ase_parameters_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$route_preference",
+            "dataType": "int",
+            "desc": "Internal route preference",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$route_preference",
+            "intfKey": false,
+            "name": "$route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$ase_route_preference",
+            "dataType": "int",
+            "desc": "External route preference",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$ase_route_preference",
+            "intfKey": false,
+            "name": "$ase_route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$spf_calculation_count",
+            "dataType": "int",
+            "desc": "SPF computation count of the OSPF process",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$spf_calculation_count",
+            "intfKey": false,
+            "name": "$spf_calculation_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$graceful_restart_interval",
+            "dataType": "int",
+            "desc": "Graceful restart interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$graceful_restart_interval",
+            "intfKey": false,
+            "name": "$graceful_restart_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$snmp_trap_rate_limit_interval",
+            "dataType": "int",
+            "desc": "SNMP notification sending interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$snmp_trap_rate_limit_interval",
+            "intfKey": false,
+            "name": "$snmp_trap_rate_limit_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$snmp_trap_rate_limit_count",
+            "dataType": "int",
+            "desc": "Number of sent SNMP notifications",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$snmp_trap_rate_limit_count",
+            "intfKey": false,
+            "name": "$snmp_trap_rate_limit_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$area_count",
+            "dataType": "int",
+            "desc": "Area count",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$area_count",
+            "intfKey": false,
+            "name": "$area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$nssa_area_count",
+            "dataType": "int",
+            "desc": "Nssa area count",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$nssa_area_count",
+            "intfKey": false,
+            "name": "$nssa_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$exchange_loading_neighbors",
+            "dataType": "int",
+            "desc": "Neighbors in ExChange/Loading state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$exchange_loading_neighbors",
+            "intfKey": false,
+            "name": "$exchange_loading_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on area id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id",
+                    "$rid",
+                    "$router_type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph",
+            "intfKey": false,
+            "name": "area_id_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area_id_paragraph.$area_id",
+            "dataType": "string",
+            "desc": "Area ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$authtype",
+            "dataType": "string",
+            "desc": "Authentication type of the area",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$authtype",
+            "intfKey": false,
+            "name": "$authtype",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$area_flag",
+            "dataType": "string",
+            "desc": "Area flag",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$area_flag",
+            "intfKey": false,
+            "name": "$area_flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$spf_scheduled_count",
+            "dataType": "string",
+            "desc": "SPF calculation count in the OSPF area",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$spf_scheduled_count",
+            "intfKey": false,
+            "name": "$spf_scheduled_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$area_exchange_loading_neighbors",
+            "dataType": "string",
+            "desc": "Neighbors in ExChange/Loading state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$area_exchange_loading_neighbors",
+            "intfKey": false,
+            "name": "$area_exchange_loading_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$process_id",
+            "dataType": "string",
+            "desc": "OSPF process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$rid",
+            "dataType": "string",
+            "desc": "OSPF router id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$rid_local",
+            "dataType": "string",
+            "desc": "Router ID of the router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$rid_local",
+            "intfKey": false,
+            "name": "$rid_local",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$router_type",
+            "dataType": "string",
+            "desc": "OSPF router type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$router_type",
+            "intfKey": false,
+            "name": "$router_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$route_tag",
+            "dataType": "string",
+            "desc": "Tag of redistributed routes",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$route_tag",
+            "intfKey": false,
+            "name": "$route_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$multi_vpn_instance",
+            "dataType": "string",
+            "desc": "The OSPF process does not support multi-VPN-instance",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$multi_vpn_instance",
+            "intfKey": false,
+            "name": "$multi_vpn_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$domain_id",
+            "dataType": "string",
+            "desc": "Domain ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$domain_id",
+            "intfKey": false,
+            "name": "$domain_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$ispf",
+            "dataType": "string",
+            "desc": "OSPF ISPF",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$ispf",
+            "intfKey": false,
+            "name": "$ispf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$spf_schedule_interval",
+            "dataType": "int",
+            "desc": "Interval for SPF calculations",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$spf_schedule_interval",
+            "intfKey": false,
+            "name": "$spf_schedule_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$lsa_generation_interval",
+            "dataType": "int",
+            "desc": "LSA generation interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$lsa_generation_interval",
+            "intfKey": false,
+            "name": "$lsa_generation_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$lsa_arrival_interval",
+            "dataType": "int",
+            "desc": "LSA arrival interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$lsa_arrival_interval",
+            "intfKey": false,
+            "name": "$lsa_arrival_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$transmit_pacing_interval",
+            "dataType": "int",
+            "desc": "LSU transmit interval of the interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$transmit_pacing_interval",
+            "intfKey": false,
+            "name": "$transmit_pacing_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$transmit_pacing_count",
+            "dataType": "int",
+            "desc": "Maximum number of LSU packets sent each time",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$transmit_pacing_count",
+            "intfKey": false,
+            "name": "$transmit_pacing_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$default_ase_parameters_metric",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: metric",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$default_ase_parameters_metric",
+            "intfKey": false,
+            "name": "$default_ase_parameters_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$default_ase_parameters_tag",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: tag",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$default_ase_parameters_tag",
+            "intfKey": false,
+            "name": "$default_ase_parameters_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$default_ase_parameters_type",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$default_ase_parameters_type",
+            "intfKey": false,
+            "name": "$default_ase_parameters_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$route_preference",
+            "dataType": "int",
+            "desc": "Internal route preference",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$route_preference",
+            "intfKey": false,
+            "name": "$route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$ase_route_preference",
+            "dataType": "int",
+            "desc": "External route preference",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$ase_route_preference",
+            "intfKey": false,
+            "name": "$ase_route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$spf_calculation_count",
+            "dataType": "int",
+            "desc": "SPF computation count of the OSPF process",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$spf_calculation_count",
+            "intfKey": false,
+            "name": "$spf_calculation_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$graceful_restart_interval",
+            "dataType": "int",
+            "desc": "Graceful restart interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$graceful_restart_interval",
+            "intfKey": false,
+            "name": "$graceful_restart_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$snmp_trap_rate_limit_interval",
+            "dataType": "int",
+            "desc": "SNMP notification sending interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$snmp_trap_rate_limit_interval",
+            "intfKey": false,
+            "name": "$snmp_trap_rate_limit_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$snmp_trap_rate_limit_count",
+            "dataType": "int",
+            "desc": "Number of sent SNMP notifications",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$snmp_trap_rate_limit_count",
+            "intfKey": false,
+            "name": "$snmp_trap_rate_limit_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$area_count",
+            "dataType": "int",
+            "desc": "Area count",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$area_count",
+            "intfKey": false,
+            "name": "$area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$nssa_area_count",
+            "dataType": "int",
+            "desc": "Nssa area count",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$nssa_area_count",
+            "intfKey": false,
+            "name": "$nssa_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$exchange_loading_neighbors",
+            "dataType": "int",
+            "desc": "Neighbors in ExChange/Loading state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$exchange_loading_neighbors",
+            "intfKey": false,
+            "name": "$exchange_loading_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on interface.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface_name",
+                    "$interface_ip",
+                    "$cost",
+                    "$state",
+                    "$type",
+                    "$mtu",
+                    "$priority"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph",
+            "intfKey": false,
+            "name": "interface_pargraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "interface_pargraph.$interface_ip",
+            "dataType": "string",
+            "desc": "Interface ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$interface_ip",
+            "intfKey": false,
+            "name": "$interface_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$interface_name",
+            "dataType": "string",
+            "desc": "Interface in the area",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$interface_name",
+            "intfKey": false,
+            "name": "$interface_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interface_pargraph.$cost",
+            "dataType": "string",
+            "desc": "Interface cost",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$state",
+            "dataType": "string",
+            "desc": "Interface state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$type",
+            "dataType": "string",
+            "desc": "Interface network type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$mtu",
+            "dataType": "string",
+            "desc": "Interface MTU",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$priority",
+            "dataType": "string",
+            "desc": "Router priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$designated_router",
+            "dataType": "string",
+            "desc": "DR ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$designated_router",
+            "intfKey": false,
+            "name": "$designated_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$backup_designated_router",
+            "dataType": "string",
+            "desc": "BDR ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$backup_designated_router",
+            "intfKey": false,
+            "name": "$backup_designated_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$hello_time",
+            "dataType": "string",
+            "desc": "Interval for sending hello packets",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$hello_time",
+            "intfKey": false,
+            "name": "$hello_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$dead_time",
+            "dataType": "string",
+            "desc": "Interval within which the neighbor is down",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$dead_time",
+            "intfKey": false,
+            "name": "$dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$poll",
+            "dataType": "string",
+            "desc": "Interval for sending hello packets",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$poll",
+            "intfKey": false,
+            "name": "$poll",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$retransmit",
+            "dataType": "string",
+            "desc": "Interval for retransmitting LSAs",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$retransmit",
+            "intfKey": false,
+            "name": "$retransmit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$transmit_delay",
+            "dataType": "string",
+            "desc": "Transmit delay",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$transmit_delay",
+            "intfKey": false,
+            "name": "$transmit_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$frr_backup",
+            "dataType": "string",
+            "desc": "Indicates whether Loop Free Alternate (LFA) calculation is enabled on an interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$frr_backup",
+            "intfKey": false,
+            "name": "$frr_backup",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$area_id",
+            "dataType": "string",
+            "desc": "Area ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$authtype",
+            "dataType": "string",
+            "desc": "Authentication type of the area",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$authtype",
+            "intfKey": false,
+            "name": "$authtype",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$area_flag",
+            "dataType": "string",
+            "desc": "Area flag",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$area_flag",
+            "intfKey": false,
+            "name": "$area_flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$spf_scheduled_count",
+            "dataType": "string",
+            "desc": "SPF calculation count in the OSPF area",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$spf_scheduled_count",
+            "intfKey": false,
+            "name": "$spf_scheduled_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$area_exchange_loading_neighbors",
+            "dataType": "string",
+            "desc": "Neighbors in ExChange/Loading state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$area_exchange_loading_neighbors",
+            "intfKey": false,
+            "name": "$area_exchange_loading_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$process_id",
+            "dataType": "string",
+            "desc": "OSPF process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$rid",
+            "dataType": "string",
+            "desc": "OSPF router id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$rid_local",
+            "dataType": "string",
+            "desc": "Router ID of the router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$rid_local",
+            "intfKey": false,
+            "name": "$rid_local",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$router_type",
+            "dataType": "string",
+            "desc": "OSPF router type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$router_type",
+            "intfKey": false,
+            "name": "$router_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$route_tag",
+            "dataType": "string",
+            "desc": "Tag of redistributed routes",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$route_tag",
+            "intfKey": false,
+            "name": "$route_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$multi_vpn_instance",
+            "dataType": "string",
+            "desc": "The OSPF process does not support multi-VPN-instance",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$multi_vpn_instance",
+            "intfKey": false,
+            "name": "$multi_vpn_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$domain_id",
+            "dataType": "string",
+            "desc": "Domain ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$domain_id",
+            "intfKey": false,
+            "name": "$domain_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$ispf",
+            "dataType": "string",
+            "desc": "OSPF ISPF",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$ispf",
+            "intfKey": false,
+            "name": "$ispf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$spf_schedule_interval",
+            "dataType": "int",
+            "desc": "Interval for SPF calculations",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$spf_schedule_interval",
+            "intfKey": false,
+            "name": "$spf_schedule_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$lsa_generation_interval",
+            "dataType": "int",
+            "desc": "LSA generation interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$lsa_generation_interval",
+            "intfKey": false,
+            "name": "$lsa_generation_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$lsa_arrival_interval",
+            "dataType": "int",
+            "desc": "LSA arrival interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$lsa_arrival_interval",
+            "intfKey": false,
+            "name": "$lsa_arrival_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$transmit_pacing_interval",
+            "dataType": "int",
+            "desc": "LSU transmit interval of the interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$transmit_pacing_interval",
+            "intfKey": false,
+            "name": "$transmit_pacing_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$transmit_pacing_count",
+            "dataType": "int",
+            "desc": "Maximum number of LSU packets sent each time",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$transmit_pacing_count",
+            "intfKey": false,
+            "name": "$transmit_pacing_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$default_ase_parameters_metric",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: metric",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$default_ase_parameters_metric",
+            "intfKey": false,
+            "name": "$default_ase_parameters_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$default_ase_parameters_tag",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: tag",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$default_ase_parameters_tag",
+            "intfKey": false,
+            "name": "$default_ase_parameters_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$default_ase_parameters_type",
+            "dataType": "int",
+            "desc": "Default ASE Parameters: type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$default_ase_parameters_type",
+            "intfKey": false,
+            "name": "$default_ase_parameters_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$route_preference",
+            "dataType": "int",
+            "desc": "Internal route preference",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$route_preference",
+            "intfKey": false,
+            "name": "$route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$ase_route_preference",
+            "dataType": "int",
+            "desc": "External route preference",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$ase_route_preference",
+            "intfKey": false,
+            "name": "$ase_route_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$spf_calculation_count",
+            "dataType": "int",
+            "desc": "SPF computation count of the OSPF process",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$spf_calculation_count",
+            "intfKey": false,
+            "name": "$spf_calculation_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$graceful_restart_interval",
+            "dataType": "int",
+            "desc": "Graceful restart interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$graceful_restart_interval",
+            "intfKey": false,
+            "name": "$graceful_restart_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$snmp_trap_rate_limit_interval",
+            "dataType": "int",
+            "desc": "SNMP notification sending interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$snmp_trap_rate_limit_interval",
+            "intfKey": false,
+            "name": "$snmp_trap_rate_limit_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$snmp_trap_rate_limit_count",
+            "dataType": "int",
+            "desc": "Number of sent SNMP notifications",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$snmp_trap_rate_limit_count",
+            "intfKey": false,
+            "name": "$snmp_trap_rate_limit_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$area_count",
+            "dataType": "int",
+            "desc": "Area count",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$area_count",
+            "intfKey": false,
+            "name": "$area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$nssa_area_count",
+            "dataType": "int",
+            "desc": "Nssa area count",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$nssa_area_count",
+            "intfKey": false,
+            "name": "$nssa_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_pargraph.$exchange_loading_neighbors",
+            "dataType": "int",
+            "desc": "Neighbors in ExChange/Loading state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.interface_pargraph.$exchange_loading_neighbors",
+            "intfKey": false,
+            "name": "$exchange_loading_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

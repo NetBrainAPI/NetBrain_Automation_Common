@@ -1,0 +1,187 @@
+{
+    "_id": "815d92c2-4306-eb5f-9ea0-deabfa612324",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show service fdb-info",
+    "createTime": {
+        "$date": 1587670169318
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "ALU-01#show service fdb-info \n\n===============================================================================\nForwarding Database(FDB) Information\n===============================================================================\nService Id        : 104001              Mac Move          : Disabled\nMac Move Rate     : 2                   Mac Move Timeout  : 10\nMac Move Retries  : 3                   \nTable Size        : 250                 Total Count       : 3\nLearned Count     : 2                   Static Count      : 0\nLearned Count     :                     Cond MAC Count    : 0\nBGP EVPN Count    : 0                   EVPN Static Cnt   : 0\nRemote Age        : 900                 Local Age         : 300\nHigh Watermark    : 95%                 Low Watermark     : 90%\nMac Learning      : Enabled             Discard Unknown   : Disabled\nMac Aging         : Enabled             Relearn Only      : False\n \nService Id        : 503027              Mac Move          : Disabled\nMac Move Rate     : 2                   Mac Move Timeout  : 10\nMac Move Retries  : 3                   \nTable Size        : 250                 Total Count       : 1\nLearned Count     : 0                   Static Count      : 0\nLearned Count     :                     Cond MAC Count    : 0\nBGP EVPN Count    : 0                   EVPN Static Cnt   : 0\nRemote Age        : 900                 Local Age         : 300\nHigh Watermark    : 95%                 Low Watermark     : 90%\nMac Learning      : Enabled             Discard Unknown   : Disabled\nMac Aging         : Enabled             Relearn Only      : False\n \nService Id        : 603027              Mac Move          : Disabled\nMac Move Rate     : 2                   Mac Move Timeout  : 10\nMac Move Retries  : 3                   \nTable Size        : 250                 Total Count       : 2\nLearned Count     : 1                   Static Count      : 0\nLearned Count     :                     Cond MAC Count    : 0\nBGP EVPN Count    : 0                   EVPN Static Cnt   : 0\nRemote Age        : 900                 Local Age         : 300\nHigh Watermark    : 95%                 Low Watermark     : 90%\nMac Learning      : Enabled             Discard Unknown   : Disabled\nMac Aging         : Enabled             Relearn Only      : False\n \nService Id        : 903027              Mac Move          : Disabled\nMac Move Rate     : 2                   Mac Move Timeout  : 10\nMac Move Retries  : 3                   \nTable Size        : 250                 Total Count       : 1\nLearned Count     : 0                   Static Count      : 0\nLearned Count     :                     Cond MAC Count    : 0\nBGP EVPN Count    : 0                   EVPN Static Cnt   : 0\nRemote Age        : 900                 Local Age         : 300\nHigh Watermark    : 95%                 Low Watermark     : 90%\nMac Learning      : Enabled             Discard Unknown   : Disabled\nMac Aging         : Enabled             Relearn Only      : False\n \n-------------------------------------------------------------------------------\nTotal Service FDBs : 4          \nTotal FDB Configured Size : 1000      \nTotal FDB Entries In Use  : 7         \nPBB MAC Address Indices In Use  : 0         \n-------------------------------------------------------------------------------\n===============================================================================\n\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"forwarding_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:service_id]:^Service Id\\\\s+:\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:table_size]:Table Size\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:total_count]:Total Count\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:total_in_use]:Total In Use\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:learned_count]:Learned Count\\\\s+:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$service_id:int\",\"$table_size:int\",\"$total_count:int\",\"$total_in_use:int\",\"$learned_count:int\"]},\"xxid\":\"ccf1a3a2-2c5f-8b06-94aa-ba739d0eb9bd\"}]},\"xxid\":\"c00621de-9197-b06d-d950-32c8e4dd82a6\",\"hashColumns\":[\"$service_id\",\"$table_size\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.forwarding_info.$service_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "service_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "table_size",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "total_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "total_in_use",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "learned_count",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$service_id",
+                    "$table_size"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "forwarding_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fee4c4e6b0012214ac0a989ae3040baa",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "forwarding_info",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$service_id",
+                    "$table_size"
+                ],
+                "hashSort": false
+            },
+            "fullName": "forwarding_info",
+            "intfKey": false,
+            "name": "forwarding_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "forwarding_info.$service_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "forwarding_info.$service_id",
+            "intfKey": false,
+            "name": "$service_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "forwarding_info.$table_size",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "forwarding_info.$table_size",
+            "intfKey": false,
+            "name": "$table_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "forwarding_info.$total_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "forwarding_info.$total_count",
+            "intfKey": false,
+            "name": "$total_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "forwarding_info.$total_in_use",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "forwarding_info.$total_in_use",
+            "intfKey": false,
+            "name": "$total_in_use",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "forwarding_info.$learned_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "forwarding_info.$learned_count",
+            "intfKey": false,
+            "name": "$learned_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

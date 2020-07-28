@@ -1,0 +1,1269 @@
+{
+    "_id": "44ded606-3cd7-b113-bee7-504eb002feef",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show flows",
+    "createTime": {
+        "$date": 1590521663298
+    },
+    "description": "Device Type:\nRiverbed WAN Optimizer\nCommand:\nshow flows",
+    "devTypes": [
+        10466
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "amnesiac > show flows\r\n \r\nT  Source               Destination     App     Rdn Since\r\n--------------------------------------------------------------------------------\r\nN  10.190.0.1:406       10.190.5.2:1003 UDPv4 99% 2011/04/30 23:58:01\r\nO  192.168.0.1:80       192.168.5.79:52912 NAGLE\t   11% 2011/05/01 00:00:01\r\nO  192.168.221.1:1080   192.168.221.1:1080 CIFS     0% 2011/05/01 00:20:01\r\nO  192.168.221.1:443    192.168.221.1:443 MAPI\t    99% 2011/05/01 00:21:01\r\nN  [abcd:a:b:c:d:1:1:1]:1009 \r\n                         [1bcd:a:b:c:d:2:21:12]:508\r\n                                               TCPv6   99% 2011/05/01 00:00:01\r\nO  [eedc:ba98:54::3210]:34870 \r\n                         [eedc:ba98:7011:3221:1111:1120:201:2021]:443\r\n                                               MAPI    97% 2011/05/01 00:21:01\r\n0  [eedc:ba98:765::1]34870 \r\n                         [eedc:ba98:54::3210]:443\r\n                                               MAPI    97% 2011/05/01 00:21:01\r\n0  [eedc:ba98:7011:3221:1111:1120:201:2001]:34870 \r\n                         [eedc:ba98:7011:3221:1111:1120:201:2001]:443\r\n                                               MAPI    97% 2011/05/01 00:21:01\r\nO  [eedc:ba98:7011:3221:1111:1120:201:2021]:34870 \r\n                         [eedc:ba98:54::3210]:443\r\n                                               MAPI    97% 2011/05/01 00:21:01\r\nN [fbcd::1:1]:12    [5bcd::2:2]:102 TCPv6 99% 2011/04/30 23:56:01\r\nN [fbcd::1:1]:12    [5bcd::2:2]:103 TCPv6 99% 2011/05/01 00:00:01\r\n \r\n--------------------------------------------------------------------------------\r\nAll V4 V6\r\n---------------------------------------------------------------\r\nEstablished Optimized: 11 4 7\r\nRiOS Only (O): 7 3 4\r\nSCPS Only (SO): 0 0 0\r\nRiOS+SCPS (RS): 0 0 0\r\nTCP Proxy (TP): 0 0 0\r\nPacket-mode optimized (N): 4 1 3\r\nHalf-opened optimized (H): 0 0 0\r\nHalf-closed optimized (C): 0 0 0\r\nEstablishing:                              0      0      0\r\nPassthrough (unoptimized): 1 1 0\r\nPassthrough intentional(PI): 0 0 0\r\nPassthrough unintentional (PU):         0 0 0\r\n  Terminated:                            0      0      0(\r\n    Packet-mode:                           0 0 0\r\nForwarded (F): 0 0 0\r\nDiscarded(terminated): 0\r\nDenied (terminated): 0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"flows_paragraph\",\"keyVariables\":\"\",\"startLine\":\"regex:T\\\\s+Source\\\\s+Destination\\\\s+App\\\\s+Rdn\\\\s+Since\",\"endLine\":\"All V4 V6\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"bf98fa55-4ca8-0e0a-1da5-f4e7ba0dca9a\"},{\"type\":\"4\",\"name\":\"flows_table\",\"keyVariables\":\"\",\"startLine\":\"mregex[$tag,$source,$dest,$app,$rdn,$since]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\/\\\\d+\\\\/\\\\d+ +\\\\d+:\\\\d+:\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$tag:string\",\"$source:string\",\"$dest:string\",\"$app:string\",\"$rdn:string\",\"$since:string\"]},\"xxid\":\"d86a6b9b-6b56-9847-d0c7-2f1178378d74\"}]},\"xxid\":\"f75ebb11-f7bc-907b-5fbb-76a38fe1dd17\",\"hashColumns\":[\"$source\",\"$dest\",\"$tag\",\"$app\"]}]},\"xxid\":\"c735545a-e4dc-2a36-3852-ee341cd2266b\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:optimized_all,$int:optimized_v4,$int:optimized_v6]:Established Optimized:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$rios_only_all,$rios_only_v4,$rios_only_v6]:RiOS Only \\\\(O\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$scps_all,$scps_v4,$scps_v6]:SCPS Only \\\\(SO\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$rs_all,$rs_v4,$rs_v6]:RiOS+SCPS \\\\(RS\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$tp_all,$tp_v4,$tp_v6]:TCP Proxy \\\\(TP\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$packet_all,$packet_v4,$packet_v6]:Packet-mode optimized \\\\(N\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$halfopened_all,$halfopened_v4,$halfopened_v6]:Half-opened optimized \\\\(H\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$halfclosed_all,$halfclosed_v4,$halfclosed_v6]:Half-closed optimized \\\\(C\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$establishing_all,$establishing_v4,$establishing_v6]:Establishing:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$passthrough_all,$passthrough_v4,$passthrough_v6]:Passthrough \\\\(unoptimized\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$pi_all,$pi_v4,$pi_v6]:Passthrough intentional\\\\(PI\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$pu_all,$pu_v4,$pu_v6]:Passthrough unintentional \\\\(PU\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$terminated_all,$terminated_v4,$terminated_v6]:  Terminated:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$packet_mode_all,$packet_mode_v4,$packet_mode_v6]:Packet-mode:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$forward_all,$forward_v4,$forward_v6]:Forwarded \\\\(F\\\\):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$discarded_all,$discarded_v4,$discarded_v6]:Discarded\\\\(terminated\\\\):\\\\s+(\\\\d+)\",\"regex[$denied_all,$denied_v4,$denied_v6]:Denied \\\\(terminated\\\\):\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$optimized_all:int\",\"$optimized_v4:int\",\"$optimized_v6:int\",\"$rios_only_all:string\",\"$rios_only_v4:string\",\"$rios_only_v6:string\",\"$scps_all:string\",\"$scps_v4:string\",\"$scps_v6:string\",\"$rs_all:string\",\"$rs_v4:string\",\"$rs_v6:string\",\"$tp_all:string\",\"$tp_v4:string\",\"$tp_v6:string\",\"$packet_all:string\",\"$packet_v4:string\",\"$packet_v6:string\",\"$halfopened_all:string\",\"$halfopened_v4:string\",\"$halfopened_v6:string\",\"$halfclosed_all:string\",\"$halfclosed_v4:string\",\"$halfclosed_v6:string\",\"$establishing_all:string\",\"$establishing_v4:string\",\"$establishing_v6:string\",\"$passthrough_all:string\",\"$passthrough_v4:string\",\"$passthrough_v6:string\",\"$pi_all:string\",\"$pi_v4:string\",\"$pi_v6:string\",\"$pu_all:string\",\"$pu_v4:string\",\"$pu_v6:string\",\"$terminated_all:string\",\"$terminated_v4:string\",\"$terminated_v6:string\",\"$packet_mode_all:string\",\"$packet_mode_v4:string\",\"$packet_mode_v6:string\",\"$forward_all:string\",\"$forward_v4:string\",\"$forward_v6:string\",\"$discarded_all:string\",\"$discarded_v4:string\",\"$discarded_v6:string\",\"$denied_all:string\",\"$denied_v4:string\",\"$denied_v6:string\"]},\"xxid\":\"d202e50e-d001-38a9-b0fe-8197b40228fb\"}]}",
+            "tableKeys": [
+                "_original_result.flows_paragraph.flows_table.$source",
+                "_original_result.flows_paragraph.flows_table.$dest",
+                "_original_result.flows_paragraph.flows_table.$tag",
+                "_original_result.flows_paragraph.flows_table.$app"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "optimized_all",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "optimized_v4",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "optimized_v6",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "rios_only_all",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "rios_only_v4",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "rios_only_v6",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "scps_all",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "scps_v4",
+                "type": 4
+            },
+            {
+                "index": 8,
+                "name": "scps_v6",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "rs_all",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "rs_v4",
+                "type": 4
+            },
+            {
+                "index": 11,
+                "name": "rs_v6",
+                "type": 4
+            },
+            {
+                "index": 12,
+                "name": "tp_all",
+                "type": 4
+            },
+            {
+                "index": 13,
+                "name": "tp_v4",
+                "type": 4
+            },
+            {
+                "index": 14,
+                "name": "tp_v6",
+                "type": 4
+            },
+            {
+                "index": 15,
+                "name": "packet_all",
+                "type": 4
+            },
+            {
+                "index": 16,
+                "name": "packet_v4",
+                "type": 4
+            },
+            {
+                "index": 17,
+                "name": "packet_v6",
+                "type": 4
+            },
+            {
+                "index": 18,
+                "name": "halfopened_all",
+                "type": 4
+            },
+            {
+                "index": 19,
+                "name": "halfopened_v4",
+                "type": 4
+            },
+            {
+                "index": 20,
+                "name": "halfopened_v6",
+                "type": 4
+            },
+            {
+                "index": 21,
+                "name": "halfclosed_all",
+                "type": 4
+            },
+            {
+                "index": 22,
+                "name": "halfclosed_v4",
+                "type": 4
+            },
+            {
+                "index": 23,
+                "name": "halfclosed_v6",
+                "type": 4
+            },
+            {
+                "index": 24,
+                "name": "establishing_all",
+                "type": 4
+            },
+            {
+                "index": 25,
+                "name": "establishing_v4",
+                "type": 4
+            },
+            {
+                "index": 26,
+                "name": "establishing_v6",
+                "type": 4
+            },
+            {
+                "index": 27,
+                "name": "passthrough_all",
+                "type": 4
+            },
+            {
+                "index": 28,
+                "name": "passthrough_v4",
+                "type": 4
+            },
+            {
+                "index": 29,
+                "name": "passthrough_v6",
+                "type": 4
+            },
+            {
+                "index": 30,
+                "name": "pi_all",
+                "type": 4
+            },
+            {
+                "index": 31,
+                "name": "pi_v4",
+                "type": 4
+            },
+            {
+                "index": 32,
+                "name": "pi_v6",
+                "type": 4
+            },
+            {
+                "index": 33,
+                "name": "pu_all",
+                "type": 4
+            },
+            {
+                "index": 34,
+                "name": "pu_v4",
+                "type": 4
+            },
+            {
+                "index": 35,
+                "name": "pu_v6",
+                "type": 4
+            },
+            {
+                "index": 36,
+                "name": "terminated_all",
+                "type": 4
+            },
+            {
+                "index": 37,
+                "name": "terminated_v4",
+                "type": 4
+            },
+            {
+                "index": 38,
+                "name": "terminated_v6",
+                "type": 4
+            },
+            {
+                "index": 39,
+                "name": "packet_mode_all",
+                "type": 4
+            },
+            {
+                "index": 40,
+                "name": "packet_mode_v4",
+                "type": 4
+            },
+            {
+                "index": 41,
+                "name": "packet_mode_v6",
+                "type": 4
+            },
+            {
+                "index": 42,
+                "name": "forward_all",
+                "type": 4
+            },
+            {
+                "index": 43,
+                "name": "forward_v4",
+                "type": 4
+            },
+            {
+                "index": 44,
+                "name": "forward_v6",
+                "type": 4
+            },
+            {
+                "index": 45,
+                "name": "discarded_all",
+                "type": 4
+            },
+            {
+                "index": 46,
+                "name": "discarded_v4",
+                "type": 4
+            },
+            {
+                "index": 47,
+                "name": "discarded_v6",
+                "type": 4
+            },
+            {
+                "index": 48,
+                "name": "denied_all",
+                "type": 4
+            },
+            {
+                "index": 49,
+                "name": "denied_v4",
+                "type": 4
+            },
+            {
+                "index": 50,
+                "name": "denied_v6",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 51,
+                "name": "flows_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dest",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "app",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rdn",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "since",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$app",
+                    "$dest",
+                    "$source",
+                    "$tag"
+                ],
+                "hashSort": false,
+                "index": 52,
+                "name": "flows_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "aadf2bae7aabb4d755864d6a9019a50d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "flows_paragraph",
+            "dataType": "paragraph",
+            "desc": "flows table",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph",
+            "intfKey": false,
+            "name": "flows_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "flows_table",
+            "dataType": "paragraph",
+            "desc": "flow table detail.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$source",
+                    "$dest",
+                    "$tag",
+                    "$app"
+                ],
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph.flows_table",
+            "intfKey": false,
+            "name": "flows_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "flows_table.$tag",
+            "dataType": "string",
+            "desc": "Tag of the flow.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph.flows_table.$tag",
+            "intfKey": false,
+            "name": "$tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows_table.$source",
+            "dataType": "string",
+            "desc": "Source address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph.flows_table.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows_table.$dest",
+            "dataType": "string",
+            "desc": "Destination address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph.flows_table.$dest",
+            "intfKey": false,
+            "name": "$dest",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows_table.$app",
+            "dataType": "string",
+            "desc": "Application protocol.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph.flows_table.$app",
+            "intfKey": false,
+            "name": "$app",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows_table.$rdn",
+            "dataType": "string",
+            "desc": "RDN.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph.flows_table.$rdn",
+            "intfKey": false,
+            "name": "$rdn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows_table.$since",
+            "dataType": "string",
+            "desc": "Flow time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows_paragraph.flows_table.$since",
+            "intfKey": false,
+            "name": "$since",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$optimized_all",
+            "dataType": "int",
+            "desc": "Established Optimized number for ALL flows.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$optimized_all",
+            "intfKey": false,
+            "name": "$optimized_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$optimized_v4",
+            "dataType": "int",
+            "desc": "Established Optimized number for V4 flows.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$optimized_v4",
+            "intfKey": false,
+            "name": "$optimized_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$optimized_v6",
+            "dataType": "int",
+            "desc": "Established Optimized number for V6 flows.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$optimized_v6",
+            "intfKey": false,
+            "name": "$optimized_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rios_only_all",
+            "dataType": "string",
+            "desc": "The number of RiOS Only.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rios_only_all",
+            "intfKey": false,
+            "name": "$rios_only_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rios_only_v4",
+            "dataType": "string",
+            "desc": "The number of RiOS Only.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rios_only_v4",
+            "intfKey": false,
+            "name": "$rios_only_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rios_only_v6",
+            "dataType": "string",
+            "desc": "The number of RiOS Only.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rios_only_v6",
+            "intfKey": false,
+            "name": "$rios_only_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$scps_all",
+            "dataType": "string",
+            "desc": "The number of SCPS Only (SO)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$scps_all",
+            "intfKey": false,
+            "name": "$scps_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$scps_v4",
+            "dataType": "string",
+            "desc": "The number of SCPS Only (SO)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$scps_v4",
+            "intfKey": false,
+            "name": "$scps_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$scps_v6",
+            "dataType": "string",
+            "desc": "The number of SCPS Only (SO)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$scps_v6",
+            "intfKey": false,
+            "name": "$scps_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rs_all",
+            "dataType": "string",
+            "desc": "The number of RiOS+SCPS (RS)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rs_all",
+            "intfKey": false,
+            "name": "$rs_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rs_v4",
+            "dataType": "string",
+            "desc": "The number of RiOS+SCPS (RS)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rs_v4",
+            "intfKey": false,
+            "name": "$rs_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rs_v6",
+            "dataType": "string",
+            "desc": "The number of RiOS+SCPS (RS)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rs_v6",
+            "intfKey": false,
+            "name": "$rs_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tp_all",
+            "dataType": "string",
+            "desc": "The number of TCP Proxy (TP)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tp_all",
+            "intfKey": false,
+            "name": "$tp_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tp_v4",
+            "dataType": "string",
+            "desc": "The number of TCP Proxy (TP)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tp_v4",
+            "intfKey": false,
+            "name": "$tp_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tp_v6",
+            "dataType": "string",
+            "desc": "The number of TCP Proxy (TP)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tp_v6",
+            "intfKey": false,
+            "name": "$tp_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$packet_all",
+            "dataType": "string",
+            "desc": "The number of Packet-mode optimized (N)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$packet_all",
+            "intfKey": false,
+            "name": "$packet_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$packet_v4",
+            "dataType": "string",
+            "desc": "The number of Packet-mode optimized (N)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$packet_v4",
+            "intfKey": false,
+            "name": "$packet_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$packet_v6",
+            "dataType": "string",
+            "desc": "The number of Packet-mode optimized (N)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$packet_v6",
+            "intfKey": false,
+            "name": "$packet_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$halfopened_all",
+            "dataType": "string",
+            "desc": "The number of Half-opened optimized (H)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$halfopened_all",
+            "intfKey": false,
+            "name": "$halfopened_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$halfopened_v4",
+            "dataType": "string",
+            "desc": "The number of Half-opened optimized (H)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$halfopened_v4",
+            "intfKey": false,
+            "name": "$halfopened_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$halfopened_v6",
+            "dataType": "string",
+            "desc": "The number of Half-opened optimized (H)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$halfopened_v6",
+            "intfKey": false,
+            "name": "$halfopened_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$halfclosed_all",
+            "dataType": "string",
+            "desc": "Half-closed optimized (C)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$halfclosed_all",
+            "intfKey": false,
+            "name": "$halfclosed_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$halfclosed_v4",
+            "dataType": "string",
+            "desc": "Half-closed optimized (C)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$halfclosed_v4",
+            "intfKey": false,
+            "name": "$halfclosed_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$halfclosed_v6",
+            "dataType": "string",
+            "desc": "Half-closed optimized (C)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$halfclosed_v6",
+            "intfKey": false,
+            "name": "$halfclosed_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$establishing_all",
+            "dataType": "string",
+            "desc": "Establishing",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$establishing_all",
+            "intfKey": false,
+            "name": "$establishing_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$establishing_v4",
+            "dataType": "string",
+            "desc": "Establishing",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$establishing_v4",
+            "intfKey": false,
+            "name": "$establishing_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$establishing_v6",
+            "dataType": "string",
+            "desc": "Establishing",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$establishing_v6",
+            "intfKey": false,
+            "name": "$establishing_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$passthrough_all",
+            "dataType": "string",
+            "desc": "Passthrough (unoptimized)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$passthrough_all",
+            "intfKey": false,
+            "name": "$passthrough_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$passthrough_v4",
+            "dataType": "string",
+            "desc": "Passthrough (unoptimized)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$passthrough_v4",
+            "intfKey": false,
+            "name": "$passthrough_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$passthrough_v6",
+            "dataType": "string",
+            "desc": "Passthrough (unoptimized)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$passthrough_v6",
+            "intfKey": false,
+            "name": "$passthrough_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pi_all",
+            "dataType": "string",
+            "desc": "Passthrough intentional(PI)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pi_all",
+            "intfKey": false,
+            "name": "$pi_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pi_v4",
+            "dataType": "string",
+            "desc": "Passthrough intentional(PI)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pi_v4",
+            "intfKey": false,
+            "name": "$pi_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pi_v6",
+            "dataType": "string",
+            "desc": "Passthrough intentional(PI)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pi_v6",
+            "intfKey": false,
+            "name": "$pi_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pu_all",
+            "dataType": "string",
+            "desc": "Passthrough unintentional (PU)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pu_all",
+            "intfKey": false,
+            "name": "$pu_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pu_v4",
+            "dataType": "string",
+            "desc": "Passthrough unintentional (PU)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pu_v4",
+            "intfKey": false,
+            "name": "$pu_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pu_v6",
+            "dataType": "string",
+            "desc": "Passthrough unintentional (PU)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pu_v6",
+            "intfKey": false,
+            "name": "$pu_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$terminated_all",
+            "dataType": "string",
+            "desc": "Terminated",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$terminated_all",
+            "intfKey": false,
+            "name": "$terminated_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$terminated_v4",
+            "dataType": "string",
+            "desc": "Terminated",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$terminated_v4",
+            "intfKey": false,
+            "name": "$terminated_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$terminated_v6",
+            "dataType": "string",
+            "desc": "Terminated",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$terminated_v6",
+            "intfKey": false,
+            "name": "$terminated_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$packet_mode_all",
+            "dataType": "string",
+            "desc": "Packet-mode",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$packet_mode_all",
+            "intfKey": false,
+            "name": "$packet_mode_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$packet_mode_v4",
+            "dataType": "string",
+            "desc": "Packet-mode",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$packet_mode_v4",
+            "intfKey": false,
+            "name": "$packet_mode_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$packet_mode_v6",
+            "dataType": "string",
+            "desc": "Packet-mode",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$packet_mode_v6",
+            "intfKey": false,
+            "name": "$packet_mode_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$forward_all",
+            "dataType": "string",
+            "desc": "Forwarded (F)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$forward_all",
+            "intfKey": false,
+            "name": "$forward_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$forward_v4",
+            "dataType": "string",
+            "desc": "Forwarded (F)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$forward_v4",
+            "intfKey": false,
+            "name": "$forward_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$forward_v6",
+            "dataType": "string",
+            "desc": "Forwarded (F)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$forward_v6",
+            "intfKey": false,
+            "name": "$forward_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$discarded_all",
+            "dataType": "string",
+            "desc": "Discarded(terminated)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$discarded_all",
+            "intfKey": false,
+            "name": "$discarded_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$discarded_v4",
+            "dataType": "string",
+            "desc": "Discarded(terminated)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$discarded_v4",
+            "intfKey": false,
+            "name": "$discarded_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$discarded_v6",
+            "dataType": "string",
+            "desc": "Discarded(terminated)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$discarded_v6",
+            "intfKey": false,
+            "name": "$discarded_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$denied_all",
+            "dataType": "string",
+            "desc": "Denied (terminated)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$denied_all",
+            "intfKey": false,
+            "name": "$denied_all",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$denied_v4",
+            "dataType": "string",
+            "desc": "Denied (terminated)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$denied_v4",
+            "intfKey": false,
+            "name": "$denied_v4",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$denied_v6",
+            "dataType": "string",
+            "desc": "Denied (terminated)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$denied_v6",
+            "intfKey": false,
+            "name": "$denied_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

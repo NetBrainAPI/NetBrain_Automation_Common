@@ -1,0 +1,290 @@
+{
+    "_id": "16b98f54-8fee-49a7-f3e8-d97c59c6d659",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf database summary",
+    "createTime": {
+        "$date": 1579885755945
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow ospf database summary",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ciscoasa# show ospf database summary\r\nOSPF Router with id(192.168.239.66) (Process ID 300)\r\nDisplaying Summary Net Link States(Area 0.0.0.0)\r\nLS age: 1401\r\nOptions: (No TOS-capability)\r\nLS Type: Summary Links(Network)\r\nLink State ID: 10.187.240.0 (summary Network Number)\r\nAdvertising Router: 10.187.241.5\r\nLS Seq Number: 80000072\r\nChecksum: 0x84FF\r\nLength: 28\r\nNetwork Mask: 255.255.255.0 TOS: 0 Metric: 1\r\nDisplaying Summary Net Link States(Area 0.0.0.1)\r\nLS age: 1401\r\nOptions: (No TOS-capability)\r\nLS Type: Summary Links(Network)\r\nLink State ID: 10.187.240.0 (summary Network Number)\r\nAdvertising Router: 10.187.241.5\r\nLS Seq Number: 80000072\r\nChecksum: 0x84FF\r\nLength: 28\r\nNetwork Mask: 255.255.255.0 TOS: 0 Metric: 1",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ospf_id_asa]:^OSPF Router with id\\\\((\\\\S+)\\\\)\",\"regex[$int:ospf_pid_asa]:^OSPF.+?ID\\\\s+(\\\\S+)\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_id_asa:string\",\"$ospf_pid_asa:int\"]},\"xxid\":\"7626f2db-63c3-de15-b37d-6767083249c6\"},{\"type\":\"4\",\"name\":\"ospf_per_area_db\",\"keyVariables\":\"\",\"startLine\":\"Displaying Summary Net Link States\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ospf_area_id_asa]:Displaying Summary Net Link States\\\\(Area (\\\\S+)\\\\)\",\"regex[$int:ospf_ls_age_asa]:^LS age: (\\\\S+)\",\"regex[$ospf_ls_type_asa]:^LS Type: (.+)\",\"regex[$ospf_link_st_id_asa]:^Link State ID: (\\\\S+)\",\"regex[$ospf_adv_rtr_asa]:^Advertising Router: (\\\\S+)\",\"regex[$ospf_net_msk_asa]:^Network Mask: (\\\\S+)\",\"regex[$int:ospf_tos_asa]:^Network Mask:.+?TOS:\\\\s+(\\\\S+)\",\"regex[$int:ospf_lsa_metric_asa]:^Network Mask:.+?Metric:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_area_id_asa:string\",\"$ospf_ls_age_asa:int\",\"$ospf_ls_type_asa:string\",\"$ospf_link_st_id_asa:string\",\"$ospf_adv_rtr_asa:string\",\"$ospf_net_msk_asa:string\",\"$ospf_tos_asa:int\",\"$ospf_lsa_metric_asa:int\"]},\"xxid\":\"c0e393f5-a260-9b64-cac2-b2e803e95aaa\"}]},\"xxid\":\"dede3a19-ed28-1e1c-0a96-a4f69b149dc0\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ospf_id_asa",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "ospf_pid_asa",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ospf_area_id_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ospf_ls_age_asa",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "ospf_ls_type_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ospf_link_st_id_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "ospf_adv_rtr_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ospf_net_msk_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ospf_tos_asa",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "ospf_lsa_metric_asa",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "ospf_per_area_db",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "71c9e7f4aa17a2215ba33d1591a67d73",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$ospf_id_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ospf_id_asa",
+            "intfKey": false,
+            "name": "$ospf_id_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ospf_pid_asa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ospf_pid_asa",
+            "intfKey": false,
+            "name": "$ospf_pid_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db",
+            "intfKey": false,
+            "name": "ospf_per_area_db",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_area_id_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_area_id_asa",
+            "intfKey": false,
+            "name": "$ospf_area_id_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_ls_age_asa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_ls_age_asa",
+            "intfKey": false,
+            "name": "$ospf_ls_age_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_ls_type_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_ls_type_asa",
+            "intfKey": false,
+            "name": "$ospf_ls_type_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_link_st_id_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_link_st_id_asa",
+            "intfKey": false,
+            "name": "$ospf_link_st_id_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_adv_rtr_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_adv_rtr_asa",
+            "intfKey": false,
+            "name": "$ospf_adv_rtr_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_net_msk_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_net_msk_asa",
+            "intfKey": false,
+            "name": "$ospf_net_msk_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_tos_asa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_tos_asa",
+            "intfKey": false,
+            "name": "$ospf_tos_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_per_area_db.$ospf_lsa_metric_asa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_per_area_db.$ospf_lsa_metric_asa",
+            "intfKey": false,
+            "name": "$ospf_lsa_metric_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

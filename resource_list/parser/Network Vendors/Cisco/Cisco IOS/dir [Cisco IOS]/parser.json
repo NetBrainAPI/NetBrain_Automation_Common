@@ -1,0 +1,228 @@
+{
+    "_id": "d0e91d86-5826-349a-11fe-4731640f7240",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "dir",
+    "createTime": {
+        "$date": 1579714882390
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\ndir /all",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-c3560-1#dir\r\nDirectory of flash:/\r\n\r\n    2  -rwx        1096   Mar 1 1993 02:03:44 +00:00  vlan.dat\r\n    3  -rwx        1939   Apr 6 1993 21:30:13 +00:00  private-config.text\r\n    4  -rwx    12484113   Mar 1 1993 00:07:07 +00:00  c3560-ipservicesk9-mz.122-53.SE2.bin\r\n    5  -rwx        5472   Apr 6 1993 21:30:13 +00:00  config.text\r\n    6  -rwx     8851488  Mar 15 1993 22:04:44 +00:00  c3560-ipbasek9-mz.122-44.SE6.bin\r\n    7  drwx         192   Mar 1 1993 00:09:54 +00:00  c3560-ipbase-mz.122-35.SE5\r\n  466  -rwx        6168   Mar 1 1993 00:01:24 +00:00  multiple-fs\r\n\r\n32514048 bytes total (2108416 bytes free)",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"$int:total bytes total ($int:free bytes free)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$free:int\"]},\"xxid\":\"d8eb939c-9be7-f476-1d42-1ff971027f97\"},{\"type\":\"4\",\"name\":\"dir_table\",\"keyVariables\":\"\",\"startLine\":\"regex:^\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+\\\\d+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:file_size]:^\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+(\\\\d+)\",\"regex[$last_modified]:^.+?(\\\\S+\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+\\\\d+\\\\:\\\\d+:\\\\d+)\",\"regex[$file_name]:^.+\\\\s+(\\\\S+)\",\"regex[$permissions]:^\\\\s+\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$file_size:int\",\"$last_modified:string\",\"$file_name:string\",\"$permissions:string\"]},\"xxid\":\"7da2614c-af78-e9aa-ac66-2356ab16062a\"}]},\"xxid\":\"09bf1718-5219-a42f-426b-b41ea40c464c\",\"hashColumns\":[\"$file_name\",\"$permissions\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"028adb32-2442-bbbf-0ea4-28c5663ea396\"}]}",
+            "tableKeys": [
+                "_original_result.dir_table.$file_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "free",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "file_size",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "last_modified",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "file_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "permissions",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$file_name",
+                    "$permissions"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "dir_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bbe5f9d2932e91e640437a0219e9e37f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Number of total memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$free",
+            "dataType": "int",
+            "desc": "Number of free memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table",
+            "dataType": "paragraph",
+            "desc": "Dir table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$file_name",
+                    "$permissions"
+                ],
+                "hashSort": false
+            },
+            "fullName": "dir_table",
+            "intfKey": false,
+            "name": "dir_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "dir_table.$file_size",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dir_table.$file_size",
+            "intfKey": false,
+            "name": "$file_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$last_modified",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dir_table.$last_modified",
+            "intfKey": false,
+            "name": "$last_modified",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$file_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dir_table.$file_name",
+            "intfKey": false,
+            "name": "$file_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$permissions",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dir_table.$permissions",
+            "intfKey": false,
+            "name": "$permissions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

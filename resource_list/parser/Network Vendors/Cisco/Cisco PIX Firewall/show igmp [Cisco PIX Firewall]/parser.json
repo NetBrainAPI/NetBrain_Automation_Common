@@ -1,0 +1,685 @@
+{
+    "_id": "d1750812-60a4-eb01-f663-af7e73b20f1b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show igmp",
+    "createTime": {
+        "$date": 1591030335749
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow igmp",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BST-FW-PIX# show igmp \n\n  IGMP is enabled on interface outside\n  Current IGMP version is 2\n  IGMP query interval is 60 seconds\n  IGMP querier timeout is 125 seconds\n  IGMP max query response time is 10 seconds\n  Last member query response interval is 1 seconds\n  Inbound IGMP access group is aa\n  IGMP max groups is 500\n  IGMP activity: 2 joins, 0 leaves\n  IGMP querying router is 192.168.3.19 (this system)\n\n  IGMP Connected Group Membership\n   Group Address    Interface            Uptime    Expires   Last Reporter\n   224.1.1.2        outside              00:00:10  never     192.168.3.19\n   224.0.1.40       outside              00:00:12  00:02:07  192.168.3.16\n\n\n  IGMP is enabled on interface intf2\n  Current IGMP version is 2\n  IGMP query interval is 60 seconds\n  IGMP querier timeout is 125 seconds\n  IGMP max query response time is 10 seconds\n  Last member query response interval is 1 seconds\n  Inbound IGMP access group is \n  IGMP max groups is 500\n  IGMP activity: 1 joins, 0 leaves\n  IGMP querying router is 192.168.77.2 (this system)\n\n  IGMP Connected Group Membership\n   Group Address    Interface            Uptime    Expires   Last Reporter\n   224.1.2.3        intf2                00:01:09  never     192.168.77.2",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.igmp_interfaces.$igmp_interface",
+                "_original_result.igmp_interfaces.igmp_member_table.$igmp_interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"igmp_interfaces\",\"keyVariables\":\"\",\"startLine\":\"regex[$igmp_interface]:IGMP is enabled on interface (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$igmp_version]:Current IGMP version is (\\\\d+)\",\"regex[$int:igmp_query_interval]:IGMP query interval is (\\\\d+) seconds\",\"regex[$int:igmp_querier_timeout]:IGMP querier timeout is (\\\\d+) seconds\",\"regex[$int:igmp_max_query_response]:IGMP max query response time is (\\\\d+) seconds\",\"regex[$int:last_query_response]:Last member query response interval is (\\\\d+) seconds\",\"regex[$inbound_access_group]:Inbound IGMP access group is (\\\\S*)\",\"regex[$int:igmp_max_group]:IGMP max groups is (\\\\d+)\",\"regex[$int:igmp_act, $int:igmp_leave]:IGMP activity: (\\\\d+) joins, (\\\\d+) leaves\",\"regex[$query_router]:IGMP querying router is ([\\\\d.]+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$igmp_interface:string\",\"$igmp_version:string\",\"$igmp_query_interval:int\",\"$igmp_querier_timeout:int\",\"$igmp_max_query_response:int\",\"$last_query_response:int\",\"$inbound_access_group:string\",\"$igmp_max_group:int\",\"$igmp_act:int\",\"$igmp_leave:int\",\"$query_router:string\"]},\"xxid\":\"349eb5ed-9213-d5c6-7612-f1333ac2d6c4\"},{\"type\":\"3\",\"name\":\"igmp_member_table\",\"headers\":\"Group Address;Interface;Uptime;Expires;Last Reporter\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Group Address:$string:group_address;Interface:$string:interface;Uptime:$string:uptime;Expires:$string:expires;Last Reporter:$string:last_reporter\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$group_address:string\",\"$interface:string\",\"$uptime:string\",\"$expires:string\",\"$last_reporter:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"c3b3dbcf-518f-2f82-253e-ce3c660605b6\",\"interfaceKey\":\"$igmp_interface\",\"hashColumns\":[\"$group_address\",\"$intf\",\"$igmp_interface\"]}]},\"xxid\":\"34a16524-94f7-1d2b-1a65-42bc74e79fe9\",\"interfaceKey\":\"$igmp_interface\",\"hashColumns\":[\"$intf\",\"$igmp_interface\"]}]}",
+            "tableKeys": [
+                "_original_result.igmp_interfaces.igmp_member_table.$group_address"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "igmp_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "igmp_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "igmp_query_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "igmp_querier_timeout",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "igmp_max_query_response",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "last_query_response",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "inbound_access_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "igmp_max_group",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "igmp_act",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "igmp_leave",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "query_router",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$igmp_interface",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "igmp_interfaces",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 16,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "last_reporter",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "igmp_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "igmp_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "igmp_query_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "igmp_querier_timeout",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "igmp_max_query_response",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "last_query_response",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "inbound_access_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "igmp_max_group",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "igmp_act",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "igmp_leave",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "query_router",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group_address",
+                    "$igmp_interface",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "igmp_member_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "51d2ebff91294dff487f72475d7b7aa6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_interfaces",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$igmp_interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces",
+            "intfKey": false,
+            "name": "igmp_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_interface",
+            "intfKey": false,
+            "name": "$igmp_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_version",
+            "intfKey": false,
+            "name": "$igmp_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_query_interval",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_query_interval",
+            "intfKey": false,
+            "name": "$igmp_query_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_querier_timeout",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_querier_timeout",
+            "intfKey": false,
+            "name": "$igmp_querier_timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_max_query_response",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_max_query_response",
+            "intfKey": false,
+            "name": "$igmp_max_query_response",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$last_query_response",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$last_query_response",
+            "intfKey": false,
+            "name": "$last_query_response",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$inbound_access_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$inbound_access_group",
+            "intfKey": false,
+            "name": "$inbound_access_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_max_group",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_max_group",
+            "intfKey": false,
+            "name": "$igmp_max_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_act",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_act",
+            "intfKey": false,
+            "name": "$igmp_act",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$igmp_leave",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$igmp_leave",
+            "intfKey": false,
+            "name": "$igmp_leave",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interfaces.$query_router",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.$query_router",
+            "intfKey": false,
+            "name": "$query_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table",
+            "dataType": "table",
+            "desc": "The IGMP connected group membership.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group_address",
+                    "$intf",
+                    "$igmp_interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table",
+            "intfKey": false,
+            "name": "igmp_member_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_member_table.$group_address",
+            "dataType": "string",
+            "desc": "Displays the IP multicast sources corresponding to the IP multicast groups which are statically configured.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$interface",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$uptime",
+            "dataType": "string",
+            "desc": "Amount of time the group has been operational.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$expires",
+            "dataType": "string",
+            "desc": "Amount of time until the entry expires.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$last_reporter",
+            "dataType": "string",
+            "desc": "IP address of the last host to be a member of the IGMP group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$last_reporter",
+            "intfKey": false,
+            "name": "$last_reporter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$igmp_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_interface",
+            "intfKey": false,
+            "name": "$igmp_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_member_table.$igmp_version",
+            "dataType": "string",
+            "desc": "The igmp version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_version",
+            "intfKey": false,
+            "name": "$igmp_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$igmp_query_interval",
+            "dataType": "int",
+            "desc": "The igmp query interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_query_interval",
+            "intfKey": false,
+            "name": "$igmp_query_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$igmp_querier_timeout",
+            "dataType": "int",
+            "desc": "The igmp querier timeout.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_querier_timeout",
+            "intfKey": false,
+            "name": "$igmp_querier_timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$igmp_max_query_response",
+            "dataType": "int",
+            "desc": "The igmp max query response.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_max_query_response",
+            "intfKey": false,
+            "name": "$igmp_max_query_response",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$last_query_response",
+            "dataType": "int",
+            "desc": "The last query response.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$last_query_response",
+            "intfKey": false,
+            "name": "$last_query_response",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$inbound_access_group",
+            "dataType": "string",
+            "desc": "The inbound access group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$inbound_access_group",
+            "intfKey": false,
+            "name": "$inbound_access_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$igmp_max_group",
+            "dataType": "int",
+            "desc": "The max number of igmp group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_max_group",
+            "intfKey": false,
+            "name": "$igmp_max_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$igmp_act",
+            "dataType": "int",
+            "desc": "The number of activity igmp merbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_act",
+            "intfKey": false,
+            "name": "$igmp_act",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$igmp_leave",
+            "dataType": "int",
+            "desc": "The number of leave igmp merbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$igmp_leave",
+            "intfKey": false,
+            "name": "$igmp_leave",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_member_table.$query_router",
+            "dataType": "string",
+            "desc": "IGMP querying router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interfaces.igmp_member_table.$query_router",
+            "intfKey": false,
+            "name": "$query_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,256 @@
+{
+    "_id": "322f1806-f758-0c95-4bfb-5444127c9432",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip isis adjacency",
+    "createTime": {
+        "$date": 1590695224819
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip isis adjacency",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip isis adjacency\r\n=================================================================================\r\nISIS Adjacency\r\n=================================================================================\r\nSystem ID         Type    State   Hold  VlanID  MT IDs  Hostname\r\n---------------------------------------------------------------------------------\r\n0000.0000.0001    L1      UP        25    20    0, 2    Router-A\r\n0000.0000.0002    L2      UP        21    30    None    Router-B\r\n---------------------------------------------------------------------------------\r\nAdjacency : 2\r\n=================================================================================\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Adjacency : $int:total\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\"]},\"xxid\":\"e9594ea7-433c-4f3e-f8e9-8715dd52e4f1\"},{\"type\":\"3\",\"name\":\"adjacency\",\"headers\":\"System ID;Type;State;Hold;VlanID;MT IDs;Hostname\",\"endLine\":\"Adjacency :\",\"isSkipLine\":\"0\",\"skipLine\":0,\"headerToVariables\":\"System ID:$string:systemid;Type:$string:type;State:$string:state;Hold:$int:hold;VlanID:$string:vlanid;MT IDs:$string:mt_ids;Hostname:$string:hostname\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$systemid:string\",\"$type:string\",\"$state:string\",\"$hold:int\",\"$vlanid:string\",\"$mt_ids:string\",\"$hostname:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"1f245078-227e-2f41-efc6-ad976004e6dd\",\"hashColumns\":[\"$systemid\"]}]}",
+            "tableKeys": [
+                "_original_result.adjacency.$systemid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "systemid",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "hold",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "vlanid",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "mt_ids",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "hostname",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$systemid"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "adjacency",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "27429d092778243bdb84a7cd9772ac3d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Total of adjacencies",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency",
+            "dataType": "table",
+            "desc": "Adjacency table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$systemid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "adjacency",
+            "intfKey": false,
+            "name": "adjacency",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "adjacency.$systemid",
+            "dataType": "string",
+            "desc": "The system ID of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$systemid",
+            "intfKey": false,
+            "name": "$systemid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$type",
+            "dataType": "string",
+            "desc": "The level (LI, L2, or L1/L2) of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$state",
+            "dataType": "string",
+            "desc": "The state of the adjacent router (Up or Down)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$hold",
+            "dataType": "int",
+            "desc": "The Hold time of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$hold",
+            "intfKey": false,
+            "name": "$hold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$vlanid",
+            "dataType": "string",
+            "desc": "The VLAN ID of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$vlanid",
+            "intfKey": false,
+            "name": "$vlanid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$mt_ids",
+            "dataType": "string",
+            "desc": "MT IDs sent by MT enabled ISIS neighbour",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$mt_ids",
+            "intfKey": false,
+            "name": "$mt_ids",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$hostname",
+            "dataType": "string",
+            "desc": "The host name of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$hostname",
+            "intfKey": false,
+            "name": "$hostname",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,416 @@
+{
+    "_id": "967bb3aa-133c-ec20-c40f-89bf5ae1a7ef",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display hwtacacs scheme",
+    "createTime": {
+        "$date": 1590772295360
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay hwtacacs scheme",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<H3C>display hwtacacs scheme\r\nTotal 1 HWTACACS schemes\r\n\r\n------------------------------------------------------------------\r\nHWTACACS Scheme Name  : test\r\n  Index : 0\r\n  Primary Auth Server:\r\n    IP  : 10.10.1.1       Port: 49     State: Active\r\n    VPN Instance: Not configured\r\n    Single-connection: Disabled\r\n  Primary Author Server:\r\n    IP  : 10.10.2.1       Port: 49     State: Active\r\n    VPN Instance: Not configured\r\n    Single-connection: Disabled\r\n  Primary Acct Server:\r\n    IP  : 10.10.3.1       Port: 49     State: Active\r\n    VPN Instance: Not configured\r\n    Single-connection: Disabled\r\n\r\n  VPN Instance                          : Not configured\r\n  NAS IP Address                        : Not configured\r\n  Server Quiet Period(minutes)          : 5\r\n  Realtime Accounting Interval(minutes) : 12\r\n  Response Timeout Interval(seconds)    : 5\r\n  Username Format                       : with-domain\r\n  Data flow unit                        : Byte\r\n  Packet unit                           : one\r\n------------------------------------------------------------------\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.server_table.$port"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total $int:total_schemes HWTACACS schemes\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_schemes:int\"]},\"xxid\":\"02d96792-e044-cddf-83f5-4b5d1d163d9a\"},{\"type\":\"4\",\"name\":\"server_table\",\"keyVariables\":\"\",\"startLine\":\"Primary\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$string:server,$string:port, $string:state]:IP+\\\\s+:\\\\s+(\\\\S+)+\\\\s+ Port:\\\\s+(\\\\S+)+\\\\s+State:\\\\s+(\\\\S+)\",\"regex[$string:vpn_instance]:VPN Instance:\\\\s+(.+)\",\"Single-connection: $single_connect\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$server:string\",\"$port:string\",\"$state:string\",\"$vpn_instance:string\",\"$single_connect:string\"]},\"xxid\":\"c9091695-5b81-5f6a-8921-845718291b75\"}]},\"xxid\":\"8f57d773-2b05-767b-154a-d082a06b2fa5\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\",\"$server\",\"$state\"]},{\"type\":\"4\",\"name\":\"server_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$string:vpn_instance]:VPN Instance\\\\s+:+\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$string:nas_ip_address]:NAS IP Address\\\\s+:+\\\\s+(.+)\",\"Server Quiet Period(minutes)          : $quiet_period\",\"Realtime Accounting Interval(minutes) : $account_interval\",\"Response Timeout Interval(seconds)    : $timeout_interval\",\"Username Format                       : $username_format\",\"Data flow unit                        : $data_flow_unit\",\"Packet unit                           : $packet_unit\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vpn_instance:string\",\"$nas_ip_address:string\",\"$quiet_period:string\",\"$account_interval:string\",\"$timeout_interval:string\",\"$username_format:string\",\"$data_flow_unit:string\",\"$packet_unit:string\"]},\"xxid\":\"1acb79a4-fe65-f824-17b4-48872c0e2f59\"}]},\"xxid\":\"4659ccbc-a990-7caa-92a6-6f81fa2788e9\",\"hashColumns\":[\"$vpn_instance\",\"$nas_ip_address\"]}]}",
+            "tableKeys": [
+                "_original_result.server_table.$server",
+                "_original_result.server_table.$state",
+                "_original_result.server_info.$vpn_instance",
+                "_original_result.server_info.$nas_ip_address"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_schemes",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "server",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vpn_instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "single_connect",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port",
+                    "$server",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "server_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vpn_instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "nas_ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "quiet_period",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "account_interval",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "timeout_interval",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "username_format",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "data_flow_unit",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "packet_unit",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nas_ip_address",
+                    "$vpn_instance"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "server_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8177dda63cb6f5386eecaf79d5fae54f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total_schemes",
+            "dataType": "int",
+            "desc": "Total schemes",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_schemes",
+            "intfKey": false,
+            "name": "$total_schemes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port",
+                    "$server",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "server_table",
+            "intfKey": false,
+            "name": "server_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "server_table.$server",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_table.$server",
+            "intfKey": false,
+            "name": "$server",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "server_table.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_table.$vpn_instance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_table.$vpn_instance",
+            "intfKey": false,
+            "name": "$vpn_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_table.$single_connect",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_table.$single_connect",
+            "intfKey": false,
+            "name": "$single_connect",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vpn_instance",
+                    "$nas_ip_address"
+                ],
+                "hashSort": false
+            },
+            "fullName": "server_info",
+            "intfKey": false,
+            "name": "server_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "server_info.$vpn_instance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$vpn_instance",
+            "intfKey": false,
+            "name": "$vpn_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info.$nas_ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$nas_ip_address",
+            "intfKey": false,
+            "name": "$nas_ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info.$quiet_period",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$quiet_period",
+            "intfKey": false,
+            "name": "$quiet_period",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info.$account_interval",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$account_interval",
+            "intfKey": false,
+            "name": "$account_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info.$timeout_interval",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$timeout_interval",
+            "intfKey": false,
+            "name": "$timeout_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info.$username_format",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$username_format",
+            "intfKey": false,
+            "name": "$username_format",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info.$data_flow_unit",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$data_flow_unit",
+            "intfKey": false,
+            "name": "$data_flow_unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_info.$packet_unit",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_info.$packet_unit",
+            "intfKey": false,
+            "name": "$packet_unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

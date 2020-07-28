@@ -1,0 +1,304 @@
+{
+    "_id": "c3cc3a3b-0530-d6fd-ea62-e6122efc6c3a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis summary",
+    "createTime": {
+        "$date": 1581007305057
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow isis summary",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "WSZArista#show isis summary \r\n \r\nISIS Instance: 1 VRF: default\r\n  System ID: 0000.0000.0001, administratively enabled, not attached\r\n  Internal Preference: Level 1: 115, Level 2: 115\r\n  External Preference: Level 1: 115, Level 2: 115\r\n  IS-Type: Level 1, Number active interfaces: 1\r\n  Routes IPv4 only\r\n  Last Level 1 SPF run 6:48 minutes ago\r\n  Area Addresses:\r\n    49.0000\r\n  level 1: number dis interfaces: 0, LSDB size: 3",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_summary\",\"keyVariables\":\"\",\"startLine\":\"ISIS Instance: $process_id VRF: $vrf\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"System ID: $system_id,\",\"regex[$status]:System ID:\\\\s+\\\\S+\\\\s+(.*),\",\"regex[$internal_per]:Internal Preference:\\\\s+(.*)\",\"regex[$external_per]:External Preference:\\\\s+(.*)\",\"regex[$type]:IS-Type:\\\\s+(.*?),\",\"regex[$int:active_intf]:Number active interfaces:\\\\s+(\\\\S+)\",\"mregex[$area_addr]: Area Addresses:\\\\n\\\\s+(\\\\d+\\\\S+.+)\\\\n\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process_id:string\",\"$vrf:string\",\"$system_id:string\",\"$status:string\",\"$internal_per:string\",\"$external_per:string\",\"$type:string\",\"$active_intf:int\",\"$area_addr:string\"]},\"xxid\":\"2577d550-9c94-fa79-45e4-ad8fbc60ef21\"}]},\"xxid\":\"e52ab951-7db1-8dd9-9ec7-91f29aeadb8c\",\"hashColumns\":[\"$vrf\",\"$system_id\",\"$status\",\"$process_id\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"a85fccec-7487-41bf-e4b7-71fa061eb648\"}]}",
+            "tableKeys": [
+                "_original_result.isis_summary.$system_id",
+                "_original_result.isis_summary.$vrf",
+                "_original_result.isis_summary.$process_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "internal_per",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "external_per",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "active_intf",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "area_addr",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id",
+                    "$status",
+                    "$system_id",
+                    "$vrf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_summary",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c4bbb921102866c89a6f6206f2978789",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_summary",
+            "dataType": "paragraph",
+            "desc": "ISIS summary table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vrf",
+                    "$system_id",
+                    "$status",
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_summary",
+            "intfKey": false,
+            "name": "isis_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_summary.$process_id",
+            "dataType": "string",
+            "desc": "ISIS Process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$vrf",
+            "dataType": "string",
+            "desc": "VRF name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$system_id",
+            "dataType": "string",
+            "desc": "ISIS system ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$status",
+            "dataType": "string",
+            "desc": "ISIS process status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$internal_per",
+            "dataType": "string",
+            "desc": "Internal Preference.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$internal_per",
+            "intfKey": false,
+            "name": "$internal_per",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$external_per",
+            "dataType": "string",
+            "desc": "External Preference.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$external_per",
+            "intfKey": false,
+            "name": "$external_per",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$type",
+            "dataType": "string",
+            "desc": "Levels the interface is running on (circuit-type configuration) which may be a subset of levels on the router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$active_intf",
+            "dataType": "int",
+            "desc": "Number active interfaces.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$active_intf",
+            "intfKey": false,
+            "name": "$active_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_summary.$area_addr",
+            "dataType": "string",
+            "desc": "Area ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_summary.$area_addr",
+            "intfKey": false,
+            "name": "$area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,190 @@
+{
+    "_id": "7eecd20c-6d79-9aaf-3b20-cdb04893860d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf neighbor",
+    "createTime": {
+        "$date": 1591104140237
+    },
+    "description": "Device Type:\nAruba WLC\nCommand:\nshow ip ospf neighbor",
+    "devTypes": [
+        3035
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "(qapp-aruba3200) #show ip ospf neighbor \r\n\r\nOSPF Neighbor Table\r\n-------------------\r\nNeighbor ID    Pri  State     Address      Interface\r\n-----------    ---  -----     -------      ---------\r\n172.27.0.5     1    FULL      172.27.0.5   Vlan 1\r\n192.168.10.1   1    FULL      172.27.0.1   Vlan 1\r\n192.168.10.2   1    FULL/DR   172.27.0.2   Vlan 1",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"ospf_nbrs\",\"headers\":\"Neighbor ID;Pri;State;Address;Interface\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Neighbor ID:$string:nbr_id;Pri:$int:priority;State:$string:state;Address:$string:nbr_addr;Interface:$string:intf\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$priority:int\",\"$state:string\",\"$nbr_addr:string\",\"$intf:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"5fa89edc-2de3-6415-64b2-d2028f427764\",\"interfaceKey\":\"\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "nbr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4a69c04a9bfc6ab9957cf590a54f0ed9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_nbrs",
+            "dataType": "table",
+            "desc": "Display data for OSPF neighboring routers.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs",
+            "intfKey": false,
+            "name": "ospf_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_id",
+            "dataType": "string",
+            "desc": "The neighbor ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$priority",
+            "dataType": "int",
+            "desc": "The priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$state",
+            "dataType": "string",
+            "desc": "The state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_addr",
+            "dataType": "string",
+            "desc": "The neighbor address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$nbr_addr",
+            "intfKey": false,
+            "name": "$nbr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$intf",
+            "dataType": "string",
+            "desc": "The ospf interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

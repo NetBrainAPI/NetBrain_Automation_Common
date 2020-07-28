@@ -1,0 +1,230 @@
+{
+    "_id": "e828ac7e-304f-0645-9225-bf70f48f28fe",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vdc resource",
+    "createTime": {
+        "$date": 1579646070161
+    },
+    "description": "Device Type:\nCisco Nexus Switch \nCommand: \nshow vdc resource",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K-Core7#show vdc resource\r\n\r\n\r\n  vlan                27 used     0 unused  16356 free  16356 avail  16383 total\r\n\r\n\r\n  vrf                  2 used     0 unused   4094 free   4094 avail   4096 total\r\n\r\n\r\n  port-channel         0 used     0 unused    768 free    768 avail    768 total\r\n\r\n\r\n  u4route-mem          1 used    95 unused    515 free    420 avail    516 total\r\n\r\n\r\n  u6route-mem          1 used    23 unused    207 free    184 avail    208 total\r\n\r\n\r\n  m4route-mem          1 used    57 unused    199 free    142 avail    200 total\r\n\r\n\r\n  m6route-mem          1 used     7 unused     79 free     72 avail     80 total\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vdc_resources\",\"keyVariables\":\"\",\"startLine\":\"regex[$resource_name,$int:used,$int:unused,$int:free,$int:avail,$int:total]:\\\\s+(\\\\S+)\\\\s+(\\\\d+) used\\\\s+(\\\\d+) unused\\\\s+(\\\\d+) free\\\\s+(\\\\d+) avail\\\\s+(\\\\d+) total\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$resource_name:string\",\"$used:int\",\"$unused:int\",\"$free:int\",\"$avail:int\",\"$total:int\"]},\"xxid\":\"e0ccbc0a-96a5-a80f-318d-8bd137e264c5\"}]},\"xxid\":\"07b5203a-c1e1-9600-5d85-5a6987eb4a9a\",\"hashColumns\":[\"$resource_name\",\"$total\",\"$used\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"ce5e4edc-b061-3d2b-a7fa-98d2f65cce6f\"}]}",
+            "tableKeys": [
+                "_original_result.vdc_resources.$resource_name",
+                "_original_result.vdc_resources.$used"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "resource_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "used",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "unused",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "free",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "avail",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "total",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$resource_name",
+                    "$total",
+                    "$used"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "vdc_resources",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "eb58d59a5d8c349c39db3835eaa0491c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vdc_resources",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$resource_name",
+                    "$total",
+                    "$used"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vdc_resources",
+            "intfKey": false,
+            "name": "vdc_resources",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vdc_resources.$resource_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_resources.$resource_name",
+            "intfKey": false,
+            "name": "$resource_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_resources.$used",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_resources.$used",
+            "intfKey": false,
+            "name": "$used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_resources.$unused",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_resources.$unused",
+            "intfKey": false,
+            "name": "$unused",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_resources.$free",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_resources.$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_resources.$avail",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_resources.$avail",
+            "intfKey": false,
+            "name": "$avail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_resources.$total",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_resources.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

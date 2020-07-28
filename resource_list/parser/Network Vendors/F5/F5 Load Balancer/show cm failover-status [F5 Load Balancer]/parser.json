@@ -1,0 +1,292 @@
+{
+    "_id": "6f994464-f390-43de-b6ba-b9559b8ad08a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show cm failover-status",
+    "createTime": {
+        "$date": 1579624899781
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow cm failover-status",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip2)(cfg-sync In Sync)(Active)(/Common)(tmos)# show cm failover-status\r\n\r\n-------------------------------------------\r\nCM::Failover Status\r\n-------------------------------------------\r\nColor    green\r\nStatus   ACTIVE\r\nSummary  1/1 active\r\nDetails\r\n         active for /Common/traffic-group-1\r\n\r\n-----------------------------------------------------------------------------------------------\r\nCM::Failover Connections\r\nLocal Failover Address  Remote Device        Packets  Transitions  Received Last Packet  Status\r\n-----------------------------------------------------------------------------------------------\r\n10.1.1.10:1026          netbrain_f5_2        2393856  1            2017-May-04 09:31:00  Ok\r\n10.1.1.27:1026          netbrain_f5_3        5942391  1            2017-May-04 09:31:00  Ok",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$failover_status]:^Status\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$failover_status:string\"]},\"xxid\":\"614a5f0b-67fe-d671-bb0e-92b14b493abe\"},{\"type\":\"3\",\"name\":\"failover_connections\",\"headers\":\"Local Failover Address;Remote Device;Packets;Transitions;Received Last Packet;Status\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Local Failover Address:$string:local_fail_over_address;Remote Device:$string:remote_device;Packets:$string:packets;Transitions:$int:transitions;Received Last Packet:$string:received_last_packet;Status:$string:status\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$local_fail_over_address:string\",\"$remote_device:string\",\"$packets:string\",\"$transitions:int\",\"$received_last_packet:string\",\"$status:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"c326de23-74e9-dc5c-6237-714035e82008\",\"hashColumns\":[\"$local_fail_over_address\",\"$status\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$color]:^Color\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$color:string\"]},\"xxid\":\"44bb68f4-a8ce-4529-8c5c-b919f40939cb\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$string:summary]:^Summary\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$summary:string\"]},\"xxid\":\"64fc3d18-61f2-457a-d2c0-d5af83de15f6\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"9c774bf4-f9d6-68df-c08f-a1541242b0e3\"}]}",
+            "tableKeys": [
+                "_original_result.failover_connections.$local_fail_over_address"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "failover_status",
+                "type": 4
+            },
+            {
+                "hashSort": false,
+                "index": 1,
+                "name": "color",
+                "type": 4
+            },
+            {
+                "hashSort": false,
+                "index": 2,
+                "name": "summary",
+                "type": 4
+            },
+            {
+                "hashSort": false,
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "local_fail_over_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "remote_device",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "packets",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "transitions",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "received_last_packet",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$local_fail_over_address",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "failover_connections",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5f00311fe8926a1e694fb348fc5e7217",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$failover_status",
+            "dataType": "string",
+            "desc": "Ths status of failover.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$failover_status",
+            "intfKey": false,
+            "name": "$failover_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_connections",
+            "dataType": "table",
+            "desc": "Failover connections table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$local_fail_over_address",
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "failover_connections",
+            "intfKey": false,
+            "name": "failover_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "failover_connections.$local_fail_over_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "failover_connections.$local_fail_over_address",
+            "intfKey": false,
+            "name": "$local_fail_over_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_connections.$remote_device",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "failover_connections.$remote_device",
+            "intfKey": false,
+            "name": "$remote_device",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_connections.$packets",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "failover_connections.$packets",
+            "intfKey": false,
+            "name": "$packets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_connections.$transitions",
+            "dataType": "int",
+            "desc": "The transitions numbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "failover_connections.$transitions",
+            "intfKey": false,
+            "name": "$transitions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_connections.$received_last_packet",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "failover_connections.$received_last_packet",
+            "intfKey": false,
+            "name": "$received_last_packet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "failover_connections.$status",
+            "dataType": "string",
+            "desc": "Each failover status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "failover_connections.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$color",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$color",
+            "intfKey": false,
+            "name": "$color",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$summary",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$summary",
+            "intfKey": false,
+            "name": "$summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

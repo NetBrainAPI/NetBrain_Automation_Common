@@ -1,0 +1,429 @@
+{
+    "_id": "3b334f3e-2470-785c-834e-674d78cf7768",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router ospf $ospf_instance virtual-link detail",
+    "createTime": {
+        "$date": 1587667573044
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [
+        {
+            "name": "$ospf_instance"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:PE_SR2# show router ospf 1 virtual-link detail\r\n \r\n===============================================================================\r\nRtr Base OSPFv2 Instance 1 Virtual Links (detail)\r\n===============================================================================\r\nNeighbor Router Id :  180.0.0.10\r\n-------------------------------------------------------------------------------\r\nNbr Router Id  : 180.0.0.10             Area Id        : 0.0.0.1\r\nLocal Interface: 180.1.7.12             Metric         : 300\r\nState          : Point To Point         Admin State    : Up\r\nHello Intrvl   : 10 sec                 Rtr Dead Intrvl: 60 sec\r\nTot Rx Packets : 43022                  Tot Tx Packets : 42964\r\nRx Hellos      : 24834                  Tx Hellos      : 24853\r\nRx DBDs        : 3                      Tx DBDs        : 2\r\nRx LSRs        : 0                      Tx LSRs        : 0\r\nRx LSUs        : 15966                  Tx LSUs        : 16352\r\nRx LS Acks     : 2219                   Tx LS Acks     : 1757\r\nRetransmits    : 0                      Discards       : 0\r\nBad Networks   : 0                      Bad Versions   : 0\r\nBad Areas      : 0                      Bad Dest Addrs : 0\r\nBad Auth Types : 0                      Auth Failures  : 0\r\nBad Neighbors  : 0                      Bad Pkt Types  : 0\r\nBad Lengths    : 0                      Bad Hello Int. : 0\r\nBad Dead Int.  : 0                      Bad Options    : 0\r\nRetrans Intrvl : 5 sec                  Transit Delay  : 1 sec\r\nLast Event     : 11/07/2006 17:11:56    Authentication : None\r\n-------------------------------------------------------------------------------\r\nNeighbor Router Id :  180.0.0.10\r\n-------------------------------------------------------------------------------\r\nNbr Router Id  : 180.0.0.10             Area Id        : 0.0.0.2\r\nLocal Interface: 180.2.7.12             Metric         : 300\r\nState          : Point To Point         Admin State    : Up\r\nHello Intrvl   : 10 sec                 Rtr Dead Intrvl: 60 sec\r\nTot Rx Packets : 43073                  Tot Tx Packets : 43034\r\nRx Hellos      : 24851                  Tx Hellos      : 24844\r\nRx DBDs        : 3                      Tx DBDs        : 2\r\nRx LSRs        : 1                      Tx LSRs        : 1\r\nRx LSUs        : 18071                  Tx LSUs        : 17853\r\nRx LS Acks     : 147                    Tx LS Acks     : 334\r\nRetransmits    : 0                      Discards       : 0\r\nBad Networks   : 0                      Bad Versions   : 0\r\nBad Areas      : 0                      Bad Dest Addrs : 0\r\nBad Auth Types : 0                      Auth Failures  : 0\r\nBad Neighbors  : 0                      Bad Pkt Types  : 0\r\nBad Lengths    : 0                      Bad Hello Int. : 0\r\nBad Dead Int.  : 0                      Bad Options    : 0\r\nRetrans Intrvl : 5 sec                  Transit Delay  : 1 sec\r\nLast Event     : 11/07/2006 17:12:00    Authentication : MD5\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_instance\",\"keyVariables\":\"\",\"startLine\":\"Rtr Base OSPFv2 Instance $ospf_instance Virtual Links (detail)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_instance:string\"]},\"xxid\":\"a48a89ed-959a-fbaf-ad0f-c36e8e856580\"},{\"type\":\"4\",\"name\":\"ospf_virtual_links\",\"keyVariables\":\"\",\"startLine\":\"regex[$nbr_router_id,$area_id]:Nbr Router Id\\\\s+: (\\\\S+)\\\\s+Area Id\\\\s+: (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$local_interface,$int:metric]:Local Interface: (\\\\S+)\\\\s+Metric\\\\s+: (.+)\",\"regex[$state,$admin_state]:State\\\\s+: (.+)         Admin State\\\\s+: (.+)\",\"regex[$hello_intrvl,$rtr_dead_intrvl]:Hello Intrvl\\\\s+: (\\\\d+ \\\\w+)\\\\s+Rtr Dead Intrvl: (.+)\",\"regex[$retrans_intrvl,$transit_delay]:Retrans Intrvl\\\\s+: (\\\\d+ \\\\w+)\\\\s+Transit Delay\\\\s+: (.+)\",\"regex[$last_event,$authentication]:Last Event\\\\s+: (\\\\S+ \\\\S+)\\\\s+Authentication\\\\s+: (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_router_id:string\",\"$area_id:string\",\"$local_interface:string\",\"$metric:int\",\"$state:string\",\"$admin_state:string\",\"$hello_intrvl:string\",\"$rtr_dead_intrvl:string\",\"$retrans_intrvl:string\",\"$transit_delay:string\",\"$last_event:string\",\"$authentication:string\"]},\"xxid\":\"75daf3d3-b6ac-05bc-c8fa-c0981be46f1c\"}]},\"xxid\":\"34f819c2-edd1-b7f5-d60f-b5f06102bcf1\",\"hashColumns\":[\"$nbr_router_id\",\"$area_id\",\"$local_interface\",\"$metric\",\"$state\",\"$admin_state\",\"$hello_intrvl\",\"$rtr_dead_intrvl\",\"$retrans_intrvl\",\"$transit_delay\",\"$last_event\",\"$authentication\",\"$ospf_instance\"],\"hashSort\":false}]},\"xxid\":\"278f86c1-b50e-cb93-8954-1dc33de6123e\"}]}",
+            "tableKeys": [
+                "_original_result.ospf_instance.ospf_virtual_links.$nbr_router_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ospf_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_instance",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "local_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "hello_intrvl",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "rtr_dead_intrvl",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "retrans_intrvl",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "transit_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "last_event",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "authentication",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "ospf_instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_state",
+                    "$area_id",
+                    "$authentication",
+                    "$hello_intrvl",
+                    "$last_event",
+                    "$local_interface",
+                    "$metric",
+                    "$nbr_router_id",
+                    "$ospf_instance",
+                    "$retrans_intrvl",
+                    "$rtr_dead_intrvl",
+                    "$state",
+                    "$transit_delay"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_virtual_links",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "92c33d56ef060dbdebd3fdd9c4a24f76",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_instance",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf_instance",
+            "intfKey": false,
+            "name": "ospf_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_instance.$ospf_instance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.$ospf_instance",
+            "intfKey": false,
+            "name": "$ospf_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_router_id",
+                    "$area_id",
+                    "$local_interface",
+                    "$metric",
+                    "$state",
+                    "$admin_state",
+                    "$hello_intrvl",
+                    "$rtr_dead_intrvl",
+                    "$retrans_intrvl",
+                    "$transit_delay",
+                    "$last_event",
+                    "$authentication",
+                    "$ospf_instance"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links",
+            "intfKey": false,
+            "name": "ospf_virtual_links",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_virtual_links.$nbr_router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$nbr_router_id",
+            "intfKey": false,
+            "name": "$nbr_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$local_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$local_interface",
+            "intfKey": false,
+            "name": "$local_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$metric",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$metric",
+            "intfKey": false,
+            "name": "$metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$hello_intrvl",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$hello_intrvl",
+            "intfKey": false,
+            "name": "$hello_intrvl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$rtr_dead_intrvl",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$rtr_dead_intrvl",
+            "intfKey": false,
+            "name": "$rtr_dead_intrvl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$retrans_intrvl",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$retrans_intrvl",
+            "intfKey": false,
+            "name": "$retrans_intrvl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$transit_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$transit_delay",
+            "intfKey": false,
+            "name": "$transit_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$last_event",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$last_event",
+            "intfKey": false,
+            "name": "$last_event",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$authentication",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$authentication",
+            "intfKey": false,
+            "name": "$authentication",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_virtual_links.$ospf_instance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_instance.ospf_virtual_links.$ospf_instance",
+            "intfKey": false,
+            "name": "$ospf_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

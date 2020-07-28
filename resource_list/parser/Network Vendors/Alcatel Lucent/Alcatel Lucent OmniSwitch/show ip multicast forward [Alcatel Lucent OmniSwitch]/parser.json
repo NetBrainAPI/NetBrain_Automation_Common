@@ -1,0 +1,251 @@
+{
+    "_id": "4bf74ec0-138b-ab1f-4959-e2a2f592b638",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip multicast forward",
+    "createTime": {
+        "$date": 1590696413327
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip multicast forward",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip multicast forward\r\n \r\nTotal 1 Forwards\r\n                                                 Ingress    Egress\r\nGroup Address   Host Address    Tunnel Address  VLAN   Port  VLAN  Port\r\n---------------+---------------+---------------+-----+-----+-----+------\r\n228.0.0.1       1.0.0.2         0.0.0.0          1     2/1/1    1    2/1/23",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.multicast_forward_table.$ingress_port"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total $int:num_forwards Forwards\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num_forwards:int\"]},\"xxid\":\"ba1cd278-6f43-3d7e-380c-0ee3fbbdfc09\"},{\"type\":\"3\",\"name\":\"multicast_forward_table\",\"headers\":\"Group Address;Host Address;Tunnel Address;Ingress VLAN;Ingress Port;Egress VLAN;Egress Port\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Group Address:$string:group_addr;Host Address:$string:host_addr;Tunnel Address:$string:tunnel_addr;Ingress VLAN:$string:ingress_vlan;Ingress Port:$string:ingress_port;Egress VLAN:$string:egress_vlan;Egress Port:$string:egress_port\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$group_addr:string\",\"$host_addr:string\",\"$tunnel_addr:string\",\"$ingress_vlan:string\",\"$ingress_port:string\",\"$egress_vlan:string\",\"$egress_port:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"efd76f0d-2fd7-f1b4-c771-319d4d41b8d2\",\"hashColumns\":[\"$group_addr\",\"$ingress_port\",\"$egress_port\"],\"interfaceKey\":\"$ingress_port\"}]}",
+            "tableKeys": [
+                "_original_result.multicast_forward_table.$group_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "num_forwards",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "host_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "tunnel_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ingress_vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "ingress_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "egress_vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "egress_port",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$egress_port",
+                    "$group_addr",
+                    "$ingress_port"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "multicast_forward_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "db5eabacd8c2f692e7fc0d3bd406ac27",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$num_forwards",
+            "dataType": "int",
+            "desc": "Total number of forwards.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$num_forwards",
+            "intfKey": false,
+            "name": "$num_forwards",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "multicast_forward_table",
+            "dataType": "table",
+            "desc": "Multicast forward Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group_addr",
+                    "$ingress_port",
+                    "$egress_port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table",
+            "intfKey": false,
+            "name": "multicast_forward_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "multicast_forward_table.$group_addr",
+            "dataType": "string",
+            "desc": "IP group address of the IP multicast forward.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table.$group_addr",
+            "intfKey": false,
+            "name": "$group_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "multicast_forward_table.$host_addr",
+            "dataType": "string",
+            "desc": "IP host address of the IP multicast forward.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table.$host_addr",
+            "intfKey": false,
+            "name": "$host_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "multicast_forward_table.$tunnel_addr",
+            "dataType": "string",
+            "desc": "IP source tunnel address of the IP multicast forward.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table.$tunnel_addr",
+            "intfKey": false,
+            "name": "$tunnel_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "multicast_forward_table.$ingress_vlan",
+            "dataType": "string",
+            "desc": "Ingress vlan associated with the IP multicast forward.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table.$ingress_vlan",
+            "intfKey": false,
+            "name": "$ingress_vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "multicast_forward_table.$ingress_port",
+            "dataType": "string",
+            "desc": "Ingress port associated with the IP multicast forward.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table.$ingress_port",
+            "intfKey": false,
+            "name": "$ingress_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "multicast_forward_table.$egress_vlan",
+            "dataType": "string",
+            "desc": "Egress vlan associated with the IP multicast forward.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table.$egress_vlan",
+            "intfKey": false,
+            "name": "$egress_vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "multicast_forward_table.$egress_port",
+            "dataType": "string",
+            "desc": "Egress port associated with the IP multicast forward.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "multicast_forward_table.$egress_port",
+            "intfKey": false,
+            "name": "$egress_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

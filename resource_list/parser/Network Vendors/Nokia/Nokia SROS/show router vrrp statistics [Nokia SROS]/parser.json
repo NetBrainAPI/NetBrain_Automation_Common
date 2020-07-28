@@ -1,0 +1,169 @@
+{
+    "_id": "329463aa-8896-8401-2b4e-abd4115735da",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router vrrp statistics",
+    "createTime": {
+        "$date": 1583866480284
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:ALA-48# show router vrrp statistics\r\n===============================================================================\r\nVRRP Global Statistics\r\n===============================================================================\r\nVR Id Errors       : 0                  Version Errors     : 0\r\nChecksum Errors    : 0\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vrrp_statistics\",\"keyVariables\":\"\",\"startLine\":\"VRRP Global Statistics\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:vr_id_errors,$int:version_errors]:VR Id Errors\\\\s+: (\\\\d+)\\\\b\\\\s+Version Errors\\\\s+: (\\\\d+)\",\"regex[$int:checksum_errors]:Checksum Errors\\\\s+: (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vr_id_errors:int\",\"$version_errors:int\",\"$checksum_errors:int\"]},\"xxid\":\"200d554f-04fe-d2a1-c40e-ce416573a80f\"}]},\"xxid\":\"fb72b126-faaf-2a7e-e766-c5abe49deaeb\",\"hashColumns\":[\"$vr_id_errors\",\"$version_errors\",\"$checksum_errors\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"a3f91d51-6505-2dfa-33ea-f8ec8612df60\"}]}",
+            "tableKeys": [
+                "_original_result.vrrp_statistics.$vr_id_errors"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vr_id_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "version_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "checksum_errors",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$checksum_errors",
+                    "$version_errors",
+                    "$vr_id_errors"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "vrrp_statistics",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a4f05acf619ac0f870238f57ee27569f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vrrp_statistics",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vr_id_errors",
+                    "$version_errors",
+                    "$checksum_errors"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vrrp_statistics",
+            "intfKey": false,
+            "name": "vrrp_statistics",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vrrp_statistics.$vr_id_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrrp_statistics.$vr_id_errors",
+            "intfKey": false,
+            "name": "$vr_id_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrrp_statistics.$version_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrrp_statistics.$version_errors",
+            "intfKey": false,
+            "name": "$version_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrrp_statistics.$checksum_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrrp_statistics.$checksum_errors",
+            "intfKey": false,
+            "name": "$checksum_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

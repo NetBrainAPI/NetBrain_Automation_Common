@@ -1,0 +1,223 @@
+{
+    "_id": "780ad96a-e703-255a-4a0a-c5e5626f30a0",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip address",
+    "createTime": {
+        "$date": 1591037002777
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow ip address",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BST-FW-PIX# show ip address\nSystem IP Addresses:\n        ip address inside 172.24.101.42 255.255.255.0\n        ip address outside 192.168.3.19 255.255.255.0\n        ip address intf2 192.168.77.2 255.255.255.0\nCurrent IP Addresses:\n        ip address inside 172.24.101.42 255.255.255.0\n        ip address outside 192.168.3.19 255.255.255.0\n        ip address intf2 192.168.77.2 255.255.255.0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ip_address_table.ip_table.$interface_nameif"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ip_address_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$address_type]:(\\\\S+) IP Addresses:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$address_type:string\"]},\"xxid\":\"9f227c57-bfa0-61c9-31fe-21f12f8e8c6f\"},{\"type\":\"4\",\"name\":\"ip_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface_nameif, $ip_address, $subnet_mask]:ip address (\\\\S+) ([\\\\d.]+) ([\\\\d.]+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface_nameif:string\",\"$ip_address:string\",\"$subnet_mask:string\"]},\"xxid\":\"a6b7351f-728d-bd49-197e-71c67b61834c\"}]},\"xxid\":\"01c90e2f-c9dc-967c-a844-de6e177f3b04\",\"interfaceKey\":\"$interface_nameif\",\"hashColumns\":[\"$intf\",\"$interface_nameif\"]}]},\"xxid\":\"3bfeff04-794b-e5bd-fc55-0e3e4bfa4f6d\",\"hashColumns\":[]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "address_type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "ip_address_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface_nameif",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "subnet_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "address_type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface_nameif",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ip_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "df777ece97f1a6988c7bedf4eb7205fb",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ip_address_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_address_table",
+            "intfKey": false,
+            "name": "ip_address_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ip_address_table.$address_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_address_table.$address_type",
+            "intfKey": false,
+            "name": "$address_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_table",
+            "dataType": "paragraph",
+            "desc": "The interface IP address table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface_nameif"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ip_address_table.ip_table",
+            "intfKey": false,
+            "name": "ip_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ip_table.$interface_nameif",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_address_table.ip_table.$interface_nameif",
+            "intfKey": false,
+            "name": "$interface_nameif",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ip_table.$ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_address_table.ip_table.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_table.$subnet_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_address_table.ip_table.$subnet_mask",
+            "intfKey": false,
+            "name": "$subnet_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_table.$address_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_address_table.ip_table.$address_type",
+            "intfKey": false,
+            "name": "$address_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

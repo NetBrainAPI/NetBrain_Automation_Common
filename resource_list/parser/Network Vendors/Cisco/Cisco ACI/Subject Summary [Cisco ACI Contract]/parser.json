@@ -1,0 +1,167 @@
+{
+    "_id": "8802166c-81b7-8503-da1b-fc05c56084a8",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560808641740
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n\n[\n]\n\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\n\ndef BuildParameters(context, device_name, params):\n    res = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'Logical', 'params' : ['_id'] })\n    apiServerId = res['params']['_id']\n    rtn_params = {}\n    rtn_params['apiServerId'] = apiServerId\n    temp = device_name.split('/uni/')\n    temp1 ='/uni/'+temp[1]\n    rtn_params['dn'] = temp1\n    return rtn_params\n\n\t\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    qry = \"rsp-subtree=full&rsp-subtree-class=vzSubj\"\n    url = '/api/mo/' + dn + '.json?' + qry\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    return data\n    \n    \n",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"vzBrCP\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"configIssues\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-Contract_Test_Tenant/brc-Contract_std_application\",\n                \"extMngdBy\": \"\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-02-13T18:20:59.544+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"Contract_std_application\",\n                \"nameAlias\": \"\",\n                \"ownerKey\": \"\",\n                \"ownerTag\": \"\",\n                \"prio\": \"unspecified\",\n                \"reevaluateAll\": \"no\",\n                \"scope\": \"application-profile\",\n                \"status\": \"\",\n                \"targetDscp\": \"unspecified\",\n                \"uid\": \"14363\"\n            },\n            \"children\": [\n                {\n                    \"vzSubj\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"\",\n                            \"configIssues\": \"\",\n                            \"consMatchT\": \"AtleastOne\",\n                            \"descr\": \"\",\n                            \"extMngdBy\": \"\",\n                            \"lcOwn\": \"local\",\n                            \"modTs\": \"2019-02-13T18:18:49.687+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"contract_subject_application\",\n                            \"nameAlias\": \"\",\n                            \"prio\": \"unspecified\",\n                            \"provMatchT\": \"AtleastOne\",\n                            \"revFltPorts\": \"yes\",\n                            \"rn\": \"subj-contract_subject_application\",\n                            \"status\": \"\",\n                            \"targetDscp\": \"unspecified\",\n                            \"uid\": \"14363\"\n                        },\n                        \"children\": [\n                            {\n                                \"vzRsSubjFiltAtt\": {\n                                    \"attributes\": {\n                                        \"action\": \"permit\",\n                                        \"annotation\": \"\",\n                                        \"childAction\": \"\",\n                                        \"directives\": \"\",\n                                        \"extMngdBy\": \"\",\n                                        \"forceResolve\": \"yes\",\n                                        \"lcOwn\": \"local\",\n                                        \"modTs\": \"2019-02-13T18:20:59.544+00:00\",\n                                        \"monPolDn\": \"uni/tn-common/monepg-default\",\n                                        \"priorityOverride\": \"default\",\n                                        \"rType\": \"mo\",\n                                        \"rn\": \"rssubjFiltAtt-contract_filter_1\",\n                                        \"state\": \"formed\",\n                                        \"stateQual\": \"none\",\n                                        \"status\": \"\",\n                                        \"tCl\": \"vzFilter\",\n                                        \"tContextDn\": \"\",\n                                        \"tDn\": \"uni/tn-Contract_Test_Tenant/flt-contract_filter_1\",\n                                        \"tRn\": \"flt-contract_filter_1\",\n                                        \"tType\": \"name\",\n                                        \"tnVzFilterName\": \"contract_filter_1\",\n                                        \"uid\": \"14363\"\n                                    }\n                                }\n                            },\n                            {\n                                \"vzRsSubjFiltAtt\": {\n                                    \"attributes\": {\n                                        \"action\": \"permit\",\n                                        \"annotation\": \"\",\n                                        \"childAction\": \"\",\n                                        \"directives\": \"\",\n                                        \"extMngdBy\": \"\",\n                                        \"forceResolve\": \"yes\",\n                                        \"lcOwn\": \"local\",\n                                        \"modTs\": \"2019-02-13T18:18:49.754+00:00\",\n                                        \"monPolDn\": \"uni/tn-common/monepg-default\",\n                                        \"priorityOverride\": \"default\",\n                                        \"rType\": \"mo\",\n                                        \"rn\": \"rssubjFiltAtt-icmp\",\n                                        \"state\": \"formed\",\n                                        \"stateQual\": \"none\",\n                                        \"status\": \"\",\n                                        \"tCl\": \"vzFilter\",\n                                        \"tContextDn\": \"\",\n                                        \"tDn\": \"uni/tn-common/flt-icmp\",\n                                        \"tRn\": \"flt-icmp\",\n                                        \"tType\": \"name\",\n                                        \"tnVzFilterName\": \"icmp\",\n                                        \"uid\": \"14363\"\n                                    }\n                                }\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"# Declare variable struture, type and name.\\r\\n'''\\r\\nBegin Declare Variable\\r\\n[\\r\\n    {\\\"name\\\": \\\"contract_name\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"contract_scope\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    \\r\\n    {\\\"name\\\": \\\"contract_detail\\\", \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\r\\n        {\\\"name\\\": \\\"subject\\\", \\\"type\\\": \\\"string\\\"},\\r\\n        {\\\"name\\\": \\\"filter\\\", \\\"type\\\": \\\"string\\\"}\\r\\n    ]}\\r\\n    \\r\\n]\\r\\nEnd Declare\\r\\n'''\\r\\nimport json \\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    result = json.loads(_original_result)\\r\\n    value ={}\\r\\n    value['contract_name'] =  result[0]['vzBrCP']['attributes']['name']\\r\\n    value['contract_scope'] =  result[0]['vzBrCP']['attributes']['scope']\\r\\n    vzSubj = []\\r\\n    tnVzFilterName = []\\r\\n    temp = ''\\r\\n    \\r\\n    try:\\r\\n        for m in range(len(result[0]['vzBrCP']['children'])):\\r\\n            vzSubj.append(result[0]['vzBrCP']['children'][m]['vzSubj']['attributes']['name'])\\r\\n            for n in range(len(result[0]['vzBrCP']['children'][m]['vzSubj']['children'])):\\r\\n                temp = temp + result[0]['vzBrCP']['children'][m]['vzSubj']['children'][n]['vzRsSubjFiltAtt']['attributes']['tnVzFilterName']\\r\\n                temp = temp + '-' + result[0]['vzBrCP']['children'][m]['vzSubj']['children'][n]['vzRsSubjFiltAtt']['attributes']['action'] + ', '\\r\\n            tnVzFilterName.append(temp)\\r\\n            temp = ''\\r\\n        \\r\\n    except Exception as ex:\\r\\n        print(str(ex))\\r\\n    value['contract_detail'] = {'subject': vzSubj ,'filter': tnVzFilterName}\\r\\n    return value\\r\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$contract_name\",\"type\":\"string\"},{\"name\":\"$contract_scope\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$contract_detail\",\"variableTypes\":{\"variableType\":[{\"name\":\"$subject\",\"type\":\"string\"},{\"name\":\"$filter\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"43bbb7b2-de24-3ed8-3338-5fbad4112a3b\",\"hashColumns\":{\"contract_detail\":[\"$subject\"]},\"tableKeys\":{\"contract_detail\":[\"$subject\"]},\"hashSort\":{\"contract_detail\":false}}]}",
+            "tableKeys": [
+                "_original_result.$contract_detail.$subject"
+            ]
+        }
+    ],
+    "schemaList": [
+        "ACI.topRoot.children.polUni.children.fvTenant.children.vzBrCP"
+    ],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "contract_name",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "contract_scope",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "filter",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "subject",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "subject"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "contract_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7b07c224be98119bf1924030e42d8863",
+    "supportNodeType": 1,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$contract_detail",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$subject"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$contract_detail",
+            "intfKey": false,
+            "name": "$contract_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$contract_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$contract_name",
+            "intfKey": false,
+            "name": "$contract_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$contract_scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$contract_scope",
+            "intfKey": false,
+            "name": "$contract_scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$contract_detail.$filter",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$contract_detail.$filter",
+            "intfKey": false,
+            "name": "$filter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$contract_detail.$subject",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$contract_detail.$subject",
+            "intfKey": false,
+            "name": "$subject",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

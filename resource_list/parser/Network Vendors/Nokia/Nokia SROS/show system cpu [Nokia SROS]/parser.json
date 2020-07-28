@@ -1,0 +1,426 @@
+{
+    "_id": "fe83c836-a0fa-7a9f-ef94-8a4d72cd44e6",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show system cpu",
+    "createTime": {
+        "$date": 1584037185270
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow system cpu",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:vRR# show system cpu \r\n\r\n===============================================================================\r\nCPU Utilization (Sample period: 1 second)\r\n===============================================================================\r\nName                                   CPU Time       CPU Usage        Capacity\r\n                                         (uSec)                           Usage\r\n-------------------------------------------------------------------------------\r\nBFD                                           0           0.00%           0.00%\r\nBGP                                           0           0.00%           0.00%\r\nBGP PE-CE                                     0           0.00%           0.00%\r\nCFLOWD                                      156           0.01%           0.01%\r\nCards & Ports                            20,889           2.10%           0.67%\r\nDHCP Server                                  63          ~0.00%          ~0.00%\r\nETH-CFM                                       0           0.00%           0.00%\r\nICC                                         653           0.06%           0.03%\r\nIGMP/MLD                                  2,643           0.26%           0.26%\r\nIMSI Db Appl                                311           0.03%           0.01%\r\nIOM                                      76,771           7.72%          +2.83%\r\nIP Stack                                 11,085           1.11%           0.50%\r\nIS-IS                                     3,447           0.34%           0.18%\r\nISA                                       8,791           0.88%           0.30%\r\nLDP                                         308           0.03%           0.03%\r\nLogging                                     396           0.03%           0.03%\r\nMBUF                                          0           0.00%           0.00%\r\nMCS                                       1,083           0.10%           0.10%\r\nMPLS/RSVP                                 6,554           0.65%           0.44%\r\nMSCP                                          0           0.00%           0.00%\r\nMSDP                                          0           0.00%           0.00%\r\nManagement                               16,004           1.61%           0.73%\r\nOAM                                      12,326           1.24%           0.75%\r\nOSPF                                     11,200           1.12%           0.33%\r\nOpenFlow                                    173           0.01%           0.01%\r\nPIM/L2Mcast                                   0           0.00%           0.00%\r\nPTP                                          19          ~0.00%          ~0.00%\r\nRIP                                           0           0.00%           0.00%\r\nRTM/Policies                                  0           0.00%           0.00%\r\nRedundancy                                7,828           0.78%           0.61%\r\nSIM                                       2,904           0.29%           0.14%\r\nSNMP Daemon                                   0           0.00%           0.00%\r\nServices                                  6,302           0.63%           0.22%\r\nStats                                         0           0.00%           0.00%\r\nSubscriber Mgmt                           4,992           0.50%           0.16%\r\nSystem                                   30,067           3.02%           1.30%\r\nTraffic Eng                                   0           0.00%           0.00%\r\nVRRP                                      1,962           0.19%           0.12%\r\nWEB Redirect                                123           0.01%           0.01%\r\n-------------------------------------------------------------------------------\r\nTotal                                   993,721         100.00%                \r\n   Idle                                 766,671          77.15%                \r\n   Usage                                227,050          22.84%                \r\nBusiest Core Utilization                227,050          22.84%                \r\n===============================================================================\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"cpu_processes\",\"keyVariables\":\"\",\"startLine\":\"regex[$name,$cpu_time,$double:cpu_usage,$double:capacity_usage]:(.+?)\\\\s+([\\\\d\\\\,]+)\\\\s+[\\\\W]*([\\\\d\\\\.]+)\\\\%\\\\s+[\\\\W]*([\\\\d\\\\.]+)\\\\%\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$name:string\",\"$cpu_time:string\",\"$cpu_usage:double\",\"$capacity_usage:double\"]},\"xxid\":\"c59435bc-e168-4568-8e74-0d9fd648f7dc\"}]},\"xxid\":\"b087c0a9-1bd4-0f81-be41-d41b017e9804\",\"hashColumns\":[\"$name\",\"$cpu_time\",\"$cpu_usage\",\"$capacity_usage\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"cpu_utilization\",\"keyVariables\":\"\",\"startLine\":\"CPU Utilization (Sample period: $sample_period_seconds second)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$total_cpu, $double:total_percent]:^Total\\\\s+(\\\\S+)\\\\s+[\\\\W]*([\\\\d\\\\.]+)\\\\%\",\"regex[$idle_cpu, $double:idle_percent]:^\\\\s*Idle\\\\s+(\\\\S+)\\\\s+[\\\\W]*([\\\\d\\\\.]+)\\\\%\",\"regex[$usage_cpu, $double:usage_percent]:^\\\\s*Usage\\\\s+(\\\\S+)\\\\s+[\\\\W]*([\\\\d\\\\.]+)\\\\%\",\"regex[$busiest_cpu, $double:busiest_percent]:^\\\\s*Busiest Core Utilization\\\\s+(\\\\S+)\\\\s+[\\\\W]*([\\\\d\\\\.]+)\\\\%\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sample_period_seconds:string\",\"$total_cpu:string\",\"$total_percent:double\",\"$idle_cpu:string\",\"$idle_percent:double\",\"$usage_cpu:string\",\"$usage_percent:double\",\"$busiest_cpu:string\",\"$busiest_percent:double\"]},\"xxid\":\"7ef3cf00-89e2-d143-9de4-e0402b75664c\"}]},\"xxid\":\"21f58b60-a97e-ab8c-6d51-cd75d8ef79eb\",\"hashColumns\":[\"$total_cpu\",\"$total_percent\",\"$idle_cpu\",\"$idle_percent\",\"$usage_cpu\",\"$usage_percent\",\"$busiest_cpu\",\"$busiest_percent\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"e5b56359-b494-c086-004a-f7d6c0680f71\"}]}",
+            "tableKeys": [
+                "_original_result.cpu_processes.$name",
+                "_original_result.cpu_utilization.$total_cpu"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "cpu_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "cpu_usage",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "capacity_usage",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": [
+                    "$capacity_usage",
+                    "$cpu_time",
+                    "$cpu_usage",
+                    "$name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "cpu_processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sample_period_seconds",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "total_cpu",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "total_percent",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "idle_cpu",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "idle_percent",
+                        "type": 2
+                    },
+                    {
+                        "index": 5,
+                        "name": "usage_cpu",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "usage_percent",
+                        "type": 2
+                    },
+                    {
+                        "index": 7,
+                        "name": "busiest_cpu",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "busiest_percent",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": [
+                    "$busiest_cpu",
+                    "$busiest_percent",
+                    "$idle_cpu",
+                    "$idle_percent",
+                    "$total_cpu",
+                    "$total_percent",
+                    "$usage_cpu",
+                    "$usage_percent"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "cpu_utilization",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d9ccaeebb7999d4ae587bdc06e685f9b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "cpu_processes",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name",
+                    "$cpu_time",
+                    "$cpu_usage",
+                    "$capacity_usage"
+                ],
+                "hashSort": false
+            },
+            "fullName": "cpu_processes",
+            "intfKey": false,
+            "name": "cpu_processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "cpu_processes.$name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_processes.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_processes.$cpu_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_processes.$cpu_time",
+            "intfKey": false,
+            "name": "$cpu_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_processes.$cpu_usage",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_processes.$cpu_usage",
+            "intfKey": false,
+            "name": "$cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_processes.$capacity_usage",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_processes.$capacity_usage",
+            "intfKey": false,
+            "name": "$capacity_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$total_cpu",
+                    "$total_percent",
+                    "$idle_cpu",
+                    "$idle_percent",
+                    "$usage_cpu",
+                    "$usage_percent",
+                    "$busiest_cpu",
+                    "$busiest_percent"
+                ],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization",
+            "intfKey": false,
+            "name": "cpu_utilization",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "cpu_utilization.$sample_period_seconds",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$sample_period_seconds",
+            "intfKey": false,
+            "name": "$sample_period_seconds",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$total_cpu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$total_cpu",
+            "intfKey": false,
+            "name": "$total_cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$total_percent",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$total_percent",
+            "intfKey": false,
+            "name": "$total_percent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$idle_cpu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$idle_cpu",
+            "intfKey": false,
+            "name": "$idle_cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$idle_percent",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$idle_percent",
+            "intfKey": false,
+            "name": "$idle_percent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$usage_cpu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$usage_cpu",
+            "intfKey": false,
+            "name": "$usage_cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$usage_percent",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$usage_percent",
+            "intfKey": false,
+            "name": "$usage_percent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$busiest_cpu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$busiest_cpu",
+            "intfKey": false,
+            "name": "$busiest_cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_utilization.$busiest_percent",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_utilization.$busiest_percent",
+            "intfKey": false,
+            "name": "$busiest_percent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,371 @@
+{
+    "_id": "c8eec991-6d27-a8f8-0c58-7d7a6891d922",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree bridge",
+    "createTime": {
+        "$date": 1580749511513
+    },
+    "description": "Device Type:\nJuniper EX Switch\nCommand:\nshow spanning-tree bridge",
+    "devTypes": [
+        2012
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@EX2200-1>show spanning-tree bridge \n\nSTP bridge parameters\nRouting instance name               : GLOBAL\nEnabled protocol                    : RSTP\n  Root ID                           : 28672.00:90:69:0b:3f:d0\n  Hello time                        : 2 seconds\n  Maximum age                       : 20 seconds\n  Forward delay                     : 15 seconds\n  Message age                       : 0\n  Number of topology changes        : 58\n  Time since last topology change   : 14127 seconds\n  Local parameters\n    Bridge ID                       : 28672.00:90:69:0b:3f:d0\n    Extended system ID              : 0\n\n STP bridge parameters for bridge VLAN 10\n   Root ID                         : 28672.00:90:69:0b:3f:d0\n   Hello time                      : 2 seconds\n   Maximum age                     : 20 seconds\n   Forward delay                   : 15 seconds\n   Message age                     : 0\n   Number of topology changes      : 58\n   Time since last topology change : 14127 seconds\n   Local parameters\n     Bridge ID                     : 28672.00:90:69:0b:3f:d0\n     Extended system ID            : 0\n\n STP bridge parameters for bridge VLAN 20\n   Root ID                         : 28672.00:90:69:0b:3f:d0\n   Hello time                      : 2 seconds\n   Maximum age                     : 20 seconds\n   Forward delay                   : 15 seconds\n   Message age                     : 0\n   Number of topology changes      : 58\n   Time since last topology change : 14127 seconds\n   Local parameters\n     Bridge ID                     : 28672.00:90:69:0b:3f:d0\n     Extended system ID            : 0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"bridge_parameters\",\"startLine\":\"STP bridge parameters\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"ea621501-fe85-c3b6-7168-a60bed7fd0dd\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$enabled_protocol]:Enabled protocol\\\\s+:\\\\s+(\\\\S+)\",\"regex[$root_id]:Root ID\\\\s+:\\\\s+(\\\\S+)\",\"regex[$topology_changes_count]:Number of topology changes\\\\s+:\\\\s+(\\\\d+)\",\"regex[$time_since_last_topology_change]:Time since last topology change\\\\s+:\\\\s+(\\\\d+).*\",\"regex[$bridge_id]:Bridge ID\\\\s+:\\\\s+(\\\\S+)\",\"regex[$extended_system_id]:Extended system ID\\\\s+:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$enabled_protocol:string\",\"$root_id:string\",\"$topology_changes_count:string\",\"$time_since_last_topology_change:string\",\"$bridge_id:string\",\"$extended_system_id:string\"]},\"xxid\":\"0be94051-0e69-fc10-6bdb-4a45482e3240\"}]},\"xxid\":\"4e97991c-a1d3-a1cb-a46f-378d3bcd5737\"},{\"type\":\"4\",\"name\":\"vlan_bridge_parameters\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:vlan]:STP bridge parameters for bridge VLAN (\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vlan_root_id]:Root ID\\\\s+:\\\\s+(\\\\S+)\",\"regex[$vlan_topology_changes_count]:Number of topology changes\\\\s+:\\\\s+(\\\\d+)\",\"regex[$vlan_time_since_last_topology_change]:Time since last topology change\\\\s+:\\\\s+(\\\\d+).*\",\"regex[$vlan_bridge_id]:Bridge ID\\\\s+:\\\\s+(\\\\S+)\",\"regex[$vlan_extended_system_id]:Extended system ID\\\\s+:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vlan:int\",\"$vlan_root_id:string\",\"$vlan_topology_changes_count:string\",\"$vlan_time_since_last_topology_change:string\",\"$vlan_bridge_id:string\",\"$vlan_extended_system_id:string\"]},\"xxid\":\"4afafb4d-6696-132e-16b5-76c1f29a3cc8\"}]},\"xxid\":\"0341437b-f823-b78e-df7e-e591068fe0ee\",\"hashColumns\":[\"$vlan\",\"$vlan_root_id\",\"$vlan_bridge_id\",\"$vlan_extended_system_id\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"3db44717-e04e-c772-129c-215f0601d394\"}]}",
+            "tableKeys": [
+                "_original_result.vlan_bridge_parameters.$vlan"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bridge_parameters",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "enabled_protocol",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "root_id",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "topology_changes_count",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "time_since_last_topology_change",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "bridge_id",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "extended_system_id",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan_root_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vlan_topology_changes_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vlan_time_since_last_topology_change",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "vlan_bridge_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "vlan_extended_system_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan",
+                    "$vlan_bridge_id",
+                    "$vlan_extended_system_id",
+                    "$vlan_root_id"
+                ],
+                "hashSort": false,
+                "index": 8,
+                "name": "vlan_bridge_parameters",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bc5df4b5844c42195c2c04d7d06a3ae2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "bridge_parameters",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bridge_parameters",
+            "intfKey": false,
+            "name": "bridge_parameters",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$enabled_protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bridge_parameters.$enabled_protocol",
+            "intfKey": false,
+            "name": "$enabled_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bridge_parameters.$root_id",
+            "intfKey": false,
+            "name": "$root_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$topology_changes_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bridge_parameters.$topology_changes_count",
+            "intfKey": false,
+            "name": "$topology_changes_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$time_since_last_topology_change",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bridge_parameters.$time_since_last_topology_change",
+            "intfKey": false,
+            "name": "$time_since_last_topology_change",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bridge_parameters.$bridge_id",
+            "intfKey": false,
+            "name": "$bridge_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$extended_system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bridge_parameters.$extended_system_id",
+            "intfKey": false,
+            "name": "$extended_system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_bridge_parameters",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan",
+                    "$vlan_root_id",
+                    "$vlan_bridge_id",
+                    "$vlan_extended_system_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlan_bridge_parameters",
+            "intfKey": false,
+            "name": "vlan_bridge_parameters",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vlan_bridge_parameters.$vlan",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_bridge_parameters.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_bridge_parameters.$vlan_root_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_bridge_parameters.$vlan_root_id",
+            "intfKey": false,
+            "name": "$vlan_root_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_bridge_parameters.$vlan_topology_changes_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_bridge_parameters.$vlan_topology_changes_count",
+            "intfKey": false,
+            "name": "$vlan_topology_changes_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_bridge_parameters.$vlan_time_since_last_topology_change",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_bridge_parameters.$vlan_time_since_last_topology_change",
+            "intfKey": false,
+            "name": "$vlan_time_since_last_topology_change",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_bridge_parameters.$vlan_bridge_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_bridge_parameters.$vlan_bridge_id",
+            "intfKey": false,
+            "name": "$vlan_bridge_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_bridge_parameters.$vlan_extended_system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_bridge_parameters.$vlan_extended_system_id",
+            "intfKey": false,
+            "name": "$vlan_extended_system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

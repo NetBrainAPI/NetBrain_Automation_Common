@@ -1,0 +1,257 @@
+{
+    "_id": "601e6fd5-3a50-fc87-4bcd-6ef4b055e771",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show port detailed-info",
+    "createTime": {
+        "$date": 1584122519201
+    },
+    "description": "",
+    "devTypes": [
+        3033
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "(Cisco Controller) >show port detailed-info\r\n\r\nIndex                  Description                           Type                   MTU     Speed(Mbps)  MAC address\r\n-----  ---------------------------------------------------  ---------------------  ------  ------------  -----------------\r\n1      Unit: 0 Slot: 0 Port: 1 Gigabit - Level 0x6070001      ethernetCsmacd       1500   1000       \tfc-5b-39-f6-33-44\r\n2      Unit: 0 Slot: 0 Port: 2 Gigabit - Level 0x6070001      ethernetCsmacd       1500   1000       \tfc-5b-39-f6-33-45\r\n3      Unit: 0 Slot: 0 Port: 3 Gigabit - Level 0x6070001      ethernetCsmacd       1500   1000       \tfc-5b-39-f6-33-46\r\n4      Unit: 0 Slot: 0 Port: 4 Gigabit - Level 0x6070001      ethernetCsmacd       1500   1000       \tfc-5b-39-f6-33-47\r\n5      Unit: 0 Slot: 0 Port: 5 Gigabit - Level 0x6070001      ethernetCsmacd       1500   10         \tfc-5b-39-f6-33-48\r\n6      Unit: 0 Slot: 0 Port: 6 Gigabit - Level 0x6070001      ethernetCsmacd       1500   10         \tfc-5b-39-f6-33-49\r\n7      Unit: 0 Slot: 0 Port: 7 Gigabit - Level 0x6070001      ethernetCsmacd       1500   10         \tfc-5b-39-f6-33-4a\r\n8      Unit: 0 Slot: 0 Port: 8 Gigabit - Level 0x6070001      ethernetCsmacd       1500   10         \tfc-5b-39-f6-33-4b\r\nRP     Unit: 0 Slot: 0 Port:RP Gigabit - Level 0x6070001      ethernetCsmacd       1500   1000       \tfc-5b-39-f6-33-42\r\nSP     Unit: 0 Slot: 0 Port:SP Gigabit - Level 0x6070001      ethernetCsmacd       1500   1000       \tfc-5b-39-f6-33-41\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.port_info.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\r\\n\\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    data = _original_result.split('\\\\n')\\r\\n    dic = {\\r\\n        'port_info': {\\r\\n            'index':[],\\r\\n            'interface':[],\\r\\n            'type':[],\\r\\n            'mtu':[],\\r\\n            'speed':[],\\r\\n            'description':[],\\r\\n            'mac':[]\\r\\n        }\\r\\n    }\\r\\n\\r\\n    for i in range(len(data)):\\r\\n        r1 = re.findall(r'(\\\\S+)\\\\s+(Unit.+Level\\\\s\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)',data[i])\\r\\n        if r1:\\r\\n            dic['port_info']['index'].append(r1[0][0])\\r\\n            dic['port_info']['description'].append(r1[0][1])\\r\\n            dic['port_info']['type'].append(r1[0][2])\\r\\n            dic['port_info']['mtu'].append(r1[0][3])\\r\\n            dic['port_info']['speed'].append(r1[0][4])\\r\\n            dic['port_info']['mac'].append(r1[0][5])\\r\\n            r2  = (str(dic['port_info']['description']).split(' '))\\r\\n            dic['port_info']['interface'].append(r2[6]+'Ethernet'+r2[1]+'/'+r2[3]+'/'+r1[0][0])\\r\\n            \\r\\n            \\r\\n\\r\\n    return dic\\r\\n\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$port_info\",\"variableTypes\":{\"variableType\":[{\"name\":\"$description\",\"type\":\"string\"},{\"name\":\"$index\",\"type\":\"string\"},{\"name\":\"$interface\",\"type\":\"string\"},{\"name\":\"$mac\",\"type\":\"string\"},{\"name\":\"$mtu\",\"type\":\"string\"},{\"name\":\"$speed\",\"type\":\"string\"},{\"name\":\"$type\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"c7bc73eb-b5b0-6413-b833-5b8c1bf16e2e\",\"interfaceKey\":{\"port_info\":\"$interface\"},\"hashColumns\":{\"port_info\":[\"$description\",\"$index\",\"$interface\",\"$mac\",\"$mtu\",\"$speed\",\"$type\"]},\"hashSort\":{\"port_info\":false}},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"ef24d700-7274-5ac5-680d-9f46f6a19f8a\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "description",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "index",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mac",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "speed",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "description",
+                    "index",
+                    "interface",
+                    "mac",
+                    "mtu",
+                    "speed",
+                    "type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "port_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2018df68da6b0e7c023a4ee5d64aff29",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$port_info",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$description",
+                    "$index",
+                    "$interface",
+                    "$mac",
+                    "$mtu",
+                    "$speed",
+                    "$type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$port_info",
+            "intfKey": false,
+            "name": "$port_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$port_info.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$port_info.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$port_info.$index",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$port_info.$index",
+            "intfKey": false,
+            "name": "$index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$port_info.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$port_info.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$port_info.$mac",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$port_info.$mac",
+            "intfKey": false,
+            "name": "$mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$port_info.$mtu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$port_info.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$port_info.$speed",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$port_info.$speed",
+            "intfKey": false,
+            "name": "$speed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$port_info.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$port_info.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

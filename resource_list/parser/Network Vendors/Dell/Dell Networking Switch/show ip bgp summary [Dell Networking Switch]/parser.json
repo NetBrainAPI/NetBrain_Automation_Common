@@ -1,0 +1,596 @@
+{
+    "_id": "e8554adc-ec4c-fa80-cd17-4de0ca37d811",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip bgp summary",
+    "createTime": {
+        "$date": 1590598400513
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow ip bgp summary",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show ip bgp summary\r\nBGP router identifier 192.168.11.5, local AS number 100\r\nBGP local RIB : Routes to be Added 0, Replaced 0, Withdrawn 0\r\n2 network entrie(s) using 152 bytes of memory\r\n2 paths using 208 bytes of memory\r\nBGP-RIB over all using 210 bytes of memory\r\n2 BGP path attribute entrie(s) using 144 bytes of memory\r\n1 BGP AS-PATH entrie(s) using 10 bytes of memory\r\n2 neighbor(s) using 16384 bytes of memory\r\n\r\nNeighbor      AS    MsgRcvd  MsgSent  TblVer  InQ  OutQ  Up/Down   State/Pfx\r\n172.16.0.2    200        10        8       0     0    0  00:05:34  2\r\n192.168.10.2  100         0       22       0     0    0  00:00:00 ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"BGP router identifier $rid, local AS number $int:local_as\",\"BGP local RIB : Routes to be Added $int:routes_added, Replaced $int:routes_replaced, Withdrawn $int:routes_withdrawn\",\"$int:network network entrie(s) using $int:network_memory\",\"$int:path paths using $int:path_memory bytes of memory\",\"BGP-RIB over all using $int:rib_all_memory bytes of memory\",\"$int:path_attribute BGP path attribute entrie(s) using $int:path_attribute_memory\",\"$int:as_path BGP AS-PATH entrie(s) using $int:as_path_memory\",\"$int:nbr_count neighbor(s) using $int:nbr_memory bytes of memory\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$rid:string\",\"$local_as:int\",\"$routes_added:int\",\"$routes_replaced:int\",\"$routes_withdrawn:int\",\"$network:int\",\"$network_memory:int\",\"$path:int\",\"$path_memory:int\",\"$rib_all_memory:int\",\"$path_attribute:int\",\"$path_attribute_memory:int\",\"$as_path:int\",\"$as_path_memory:int\",\"$nbr_count:int\",\"$nbr_memory:int\"]},\"xxid\":\"38e79deb-14fc-7bb1-d3bf-9ee7a2723789\"},{\"type\":\"4\",\"name\":\"bgp_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[$nbr_id,$remote_as,$int:msgrevd,$int:msgsent,$int:table_version,$int:in_queued,$int:out_queued,$up_down]:(\\\\d+\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$prefix_rcvd]:\\\\d+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$remote_as:string\",\"$msgrevd:int\",\"$msgsent:int\",\"$table_version:int\",\"$in_queued:int\",\"$out_queued:int\",\"$up_down:string\",\"$prefix_rcvd:string\"]},\"xxid\":\"53095d6e-6ca3-2c61-6e32-eeec7551a2c5\"}]},\"xxid\":\"3ef8a9e4-51f9-0712-c243-20dc1a527597\",\"hashColumns\":[\"$nbr_id\"]}]}",
+            "tableKeys": [
+                "_original_result.bgp_nbrs.$nbr_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "rid",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_as",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "routes_added",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "routes_replaced",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "routes_withdrawn",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "network",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "network_memory",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "path",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "path_memory",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "rib_all_memory",
+                "type": 1
+            },
+            {
+                "index": 10,
+                "name": "path_attribute",
+                "type": 1
+            },
+            {
+                "index": 11,
+                "name": "path_attribute_memory",
+                "type": 1
+            },
+            {
+                "index": 12,
+                "name": "as_path",
+                "type": 1
+            },
+            {
+                "index": 13,
+                "name": "as_path_memory",
+                "type": 1
+            },
+            {
+                "index": 14,
+                "name": "nbr_count",
+                "type": 1
+            },
+            {
+                "index": 15,
+                "name": "nbr_memory",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "remote_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "msgrevd",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "msgsent",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "table_version",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "in_queued",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "out_queued",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "prefix_rcvd",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nbr_id"
+                ],
+                "hashSort": false,
+                "index": 16,
+                "name": "bgp_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "cc4664a62be4b4610280bb2401dcdf40",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$rid",
+            "dataType": "string",
+            "desc": "In order of precedence and availability, the router identifier specified by the bgp router-id command, a loopback address, or the highest IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "int",
+            "desc": "Local Autonomous system number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routes_added",
+            "dataType": "int",
+            "desc": "Number of routes to be added in BGP local RIB.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routes_added",
+            "intfKey": false,
+            "name": "$routes_added",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routes_replaced",
+            "dataType": "int",
+            "desc": "Number of routes to be replaced in BGP local RIB.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routes_replaced",
+            "intfKey": false,
+            "name": "$routes_replaced",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routes_withdrawn",
+            "dataType": "int",
+            "desc": "Number of routes to be withdrawn in BGP local RIB.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routes_withdrawn",
+            "intfKey": false,
+            "name": "$routes_withdrawn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$network",
+            "dataType": "int",
+            "desc": "Displays the number of network entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$network",
+            "intfKey": false,
+            "name": "$network",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$network_memory",
+            "dataType": "int",
+            "desc": "Displays the amount of memory used to network entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$network_memory",
+            "intfKey": false,
+            "name": "$network_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path",
+            "dataType": "int",
+            "desc": "Displays the number of path entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path",
+            "intfKey": false,
+            "name": "$path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_memory",
+            "dataType": "int",
+            "desc": "Displays the amount of memory used to path entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_memory",
+            "intfKey": false,
+            "name": "$path_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rib_all_memory",
+            "dataType": "int",
+            "desc": "BGP-RIB over all memory used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rib_all_memory",
+            "intfKey": false,
+            "name": "$rib_all_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_attribute",
+            "dataType": "int",
+            "desc": "Displays the number of BGP path attributes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_attribute",
+            "intfKey": false,
+            "name": "$path_attribute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_attribute_memory",
+            "dataType": "int",
+            "desc": "Displays the amount of memory used to BGP path attribute.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_attribute_memory",
+            "intfKey": false,
+            "name": "$path_attribute_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$as_path",
+            "dataType": "int",
+            "desc": "Displays the number of BGP AS_PATH attributes processed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$as_path",
+            "intfKey": false,
+            "name": "$as_path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$as_path_memory",
+            "dataType": "int",
+            "desc": "Displays the amount of memory used to BGP AS_PATH attributes processed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$as_path_memory",
+            "intfKey": false,
+            "name": "$as_path_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$nbr_count",
+            "dataType": "int",
+            "desc": "Displays the number of BGP neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$nbr_count",
+            "intfKey": false,
+            "name": "$nbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$nbr_memory",
+            "dataType": "int",
+            "desc": "Displays the amount of memory used to BGP neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$nbr_memory",
+            "intfKey": false,
+            "name": "$nbr_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs",
+            "dataType": "paragraph",
+            "desc": "BGP neighbors table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs",
+            "intfKey": false,
+            "name": "bgp_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_nbrs.$nbr_id",
+            "dataType": "string",
+            "desc": "Displays the BGP neighbor address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$remote_as",
+            "dataType": "string",
+            "desc": "Displays the AS number of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$remote_as",
+            "intfKey": false,
+            "name": "$remote_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$msgrevd",
+            "dataType": "int",
+            "desc": "Displays the number of BGP messages that neighbor received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$msgrevd",
+            "intfKey": false,
+            "name": "$msgrevd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$msgsent",
+            "dataType": "int",
+            "desc": "Displays the number of BGP messages that neighbor sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$msgsent",
+            "intfKey": false,
+            "name": "$msgsent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$table_version",
+            "dataType": "int",
+            "desc": "Displays the version of the BGP table that was sent to that neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$table_version",
+            "intfKey": false,
+            "name": "$table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$in_queued",
+            "dataType": "int",
+            "desc": "Displays the number of messages from that neighbor waiting to be processed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$in_queued",
+            "intfKey": false,
+            "name": "$in_queued",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$out_queued",
+            "dataType": "int",
+            "desc": "Displays the number of messages waiting to be sent to that neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$out_queued",
+            "intfKey": false,
+            "name": "$out_queued",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$up_down",
+            "dataType": "string",
+            "desc": "Displays the amount of time that the neighbor is in the\nEstablished stage.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$prefix_rcvd",
+            "dataType": "string",
+            "desc": "If the neighbor is in Established stage, the number of network prefixes received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$prefix_rcvd",
+            "intfKey": false,
+            "name": "$prefix_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

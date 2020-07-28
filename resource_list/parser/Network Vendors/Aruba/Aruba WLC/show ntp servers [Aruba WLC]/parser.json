@@ -1,0 +1,248 @@
+{
+    "_id": "9d3673b8-cc7b-4d24-b0ec-eaca49a11a75",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ntp servers",
+    "createTime": {
+        "$date": 1591104181746
+    },
+    "description": "Device Type:\nAruba WLC\nCommand:\nshow ntp servers",
+    "devTypes": [
+        3035
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "(qapp-aruba3200) #show ntp servers \r\n\r\nNTP Server Table Entries\r\n------------------------\r\n\r\nFlags:     * Selected for synchronization\r\n           + Included in the final selection set\r\n           # Selected for synchronization but distance exceeds maximum\r\n           - Discarded by the clustering algorithm\r\n           = mode is client\r\n\r\n  remote                                  local                                    st   poll   reach    delay     offset      disp\r\n=========================================================================================================================================\r\n=202.112.29.82                            172.27.0.7                               16 1024       0    0.00000     0.000000    3.99217\r\n=58.220.207.226                           172.27.0.7                               16 1024       0    0.00000     0.000000    3.99217\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"ntp_servers\",\"headers\":\"remote;local;st;poll;reach;delay;offset;disp\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":0,\"headerToVariables\":\"remote:$string:remote;local:$string:local;st:$int:st;poll:$int:poll;reach:$int:reach;delay:$double:delay;offset:$double:offset;disp:$double:disp\",\"leftAlign\":\"1\",\"alignType\":\"3\",\"alignRange\":\"1;1;1;1;1;1;1;1\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$remote:string\",\"$local:string\",\"$st:int\",\"$poll:int\",\"$reach:int\",\"$delay:double\",\"$offset:double\",\"$disp:double\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"6ee06fb0-af7c-1215-2828-eab528dce10b\",\"hashColumns\":[\"$remote\",\"$local\"]}]}",
+            "tableKeys": [
+                "_original_result.ntp_servers.$remote",
+                "_original_result.ntp_servers.$local"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "remote",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "local",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "st",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "poll",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "reach",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "delay",
+                        "type": 2
+                    },
+                    {
+                        "index": 6,
+                        "name": "offset",
+                        "type": 2
+                    },
+                    {
+                        "index": 7,
+                        "name": "disp",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": [
+                    "$local",
+                    "$remote"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ntp_servers",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "12cf1e57be4b93eedebfb3ada4674c7c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ntp_servers",
+            "dataType": "table",
+            "desc": "ntp servers table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$remote",
+                    "$local"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers",
+            "intfKey": false,
+            "name": "ntp_servers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ntp_servers.$remote",
+            "dataType": "string",
+            "desc": "IP address of the remote NTP server defined using the cli command",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$remote",
+            "intfKey": false,
+            "name": "$remote",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$local",
+            "dataType": "string",
+            "desc": "IP address of the local clock.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$local",
+            "intfKey": false,
+            "name": "$local",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$st",
+            "dataType": "int",
+            "desc": "NTP uses hierarchical levels of clock sources, or strata, and assigns each layer a number starting with zero at the root. The??st??column in the output of this command represents the number of servers between the configured NTP server and the root reference clock.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$st",
+            "intfKey": false,
+            "name": "$st",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$poll",
+            "dataType": "int",
+            "desc": "Interval, in seconds, between the local NTP server???s attempt to poll the remote NTP server.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$poll",
+            "intfKey": false,
+            "name": "$poll",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$reach",
+            "dataType": "int",
+            "desc": "An index that measures whether or not the remote NTP server could be reached at eight most recent polling intervals.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$reach",
+            "intfKey": false,
+            "name": "$reach",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$delay",
+            "dataType": "double",
+            "desc": "Delay, in seconds, between the time that the local clock polls the NTP server and the NTP server returns a reply.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$delay",
+            "intfKey": false,
+            "name": "$delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$offset",
+            "dataType": "double",
+            "desc": "The difference in time, in seconds, between the local clock and the NTP server.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$offset",
+            "intfKey": false,
+            "name": "$offset",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$disp",
+            "dataType": "double",
+            "desc": "Dispersion represents the maximum error of the local clock relative to the reference clock, and is a measurement of the time server and network quality. Lower dispersion values are preferred over higher dispersion values.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$disp",
+            "intfKey": false,
+            "name": "$disp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

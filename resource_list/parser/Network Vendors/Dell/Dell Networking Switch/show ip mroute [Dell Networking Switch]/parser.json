@@ -1,0 +1,315 @@
+{
+    "_id": "58836ead-f9e9-4e56-b2f3-8d69932d6218",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mroute",
+    "createTime": {
+        "$date": 1590607423723
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow ip mroute",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show ip mroute\r\nIP Multicast Routing Table\r\n(*, 224.10.10.1), uptime 00:05:12\r\n Incoming interface: TenGigabitEthernet 3/12\r\n Outgoing interface list:\r\n TenGigabitEthernet 3/13\r\n(1.13.1.100, 224.10.10.1), uptime 00:04:03\r\n Incoming interface: TenGigabitEthernet 3/4\r\n Outgoing interface list:\r\n TenGigabitEthernet 3/12\r\n TenGigabitEthernet 3/13\r\n(*, 224.20.20.1), uptime 00:05:12\r\n Incoming interface: TenGigabitEthernet 3/12\r\n Outgoing interface list:\r\n TenGigabitEthernet 3/4",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"mroute\",\"keyVariables\":\"\",\"startLine\":\"mregex[$source,$group,$uptime,$in_intf]:\\\\((\\\\S+), +(\\\\S+)\\\\), +uptime +(\\\\S+)\\\\s+Incoming +interface: +(\\\\S+ \\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$source:string\",\"$group:string\",\"$uptime:string\",\"$in_intf:string\"]},\"xxid\":\"bede96d3-448e-554d-cd39-deffe3eafc57\"},{\"type\":\"4\",\"name\":\"out_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$out_intf]:^\\\\s+(\\\\S+ +\\\\S+)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"0\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$out_intf:string\"]},\"xxid\":\"4c81d3c0-53e4-55a6-bb8c-bfa85619240c\"}]},\"xxid\":\"9c03dfd5-88cf-162b-0774-03458bac91b6\",\"hashColumns\":[\"$source\",\"$group\"]}]},\"xxid\":\"1dafb68e-ca94-6dbb-4ff2-f3e33e62ba1e\"}]}",
+            "tableKeys": [
+                "_original_result.mroute.out_intfs.$source",
+                "_original_result.mroute.out_intfs.$group"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "in_intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "mroute",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "out_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "in_intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group",
+                    "$source"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "out_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8346c1127852c9a5568e48492c5404d7",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mroute",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "mroute",
+            "intfKey": false,
+            "name": "mroute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mroute.$source",
+            "dataType": "string",
+            "desc": "The entry consists of the IP address of the source router followed by the IP address of the multicast group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$group",
+            "dataType": "string",
+            "desc": "How long (in hours, minutes, and seconds) the entry has been in the IP multicast routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$uptime",
+            "dataType": "string",
+            "desc": "Expected interface for a multicast packet from the source. If the packet is not received on this interface, it is discarded.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mroute.$in_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.$in_intf",
+            "intfKey": false,
+            "name": "$in_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs",
+            "dataType": "paragraph",
+            "desc": "Output interface list.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$source",
+                    "$group"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mroute.out_intfs",
+            "intfKey": false,
+            "name": "out_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "out_intfs.$out_intf",
+            "dataType": "string",
+            "desc": "Name and number of the outgoing interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.out_intfs.$out_intf",
+            "intfKey": false,
+            "name": "$out_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$source",
+            "dataType": "string",
+            "desc": "An asterisk (*) in place of the source router indicates all sources.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.out_intfs.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$group",
+            "dataType": "string",
+            "desc": "The entry consists of the IP address of the source router followed by the IP address of the multicast group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.out_intfs.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$uptime",
+            "dataType": "string",
+            "desc": "How long (in hours, minutes, and seconds) the entry has been in the IP multicast routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.out_intfs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$in_intf",
+            "dataType": "string",
+            "desc": "Expected interface for a multicast packet from the source. If the packet is not received on this interface, it is discarded.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mroute.out_intfs.$in_intf",
+            "intfKey": false,
+            "name": "$in_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,1763 @@
+{
+    "_id": "5f78a67b-6ad0-d0b2-bb0d-d0d3196d9cdd",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys traffic",
+    "createTime": {
+        "$date": 1579705218943
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys traffic",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip2)(cfg-sync In Sync)(Active)(/Common)(tmos)# show sys traffic \n\n---------------------------------------------------------------------\nSys::Global Traffic      \n---------------------------------------------------------------------\nClientSide Traffic          Total  Last 5 sec  Last 1 min  Last 5 min\n                                    (avg/sec)   (avg/sec)   (avg/sec)\n  Bits In                    6.3G       22.2K       35.1K       34.6K\n  Bits Out                  46.9M         192         248         256\n  Packets In                 3.8M          13          21          21\n  Packets Out              146.1K           1           1           1\n  Current Connections          12           -           -           -\n  Maximum Connections          19           -           -           -\n  Total Connections        145.7K           1           1           1\n                         \nServerSide Traffic          Total  Last 5 sec  Last 1 min  Last 5 min\n                                    (avg/sec)   (avg/sec)   (avg/sec)\n  Bits In                    6.3G       22.2K       35.1K       34.6K\n  Bits Out                  46.9M         192         248         256\n  Packets In                 3.8M          13          21          21\n  Packets Out              146.1K           1           1           1\n  Current Connections          12           -           -           -\n  Maximum Connections          19           -           -           -\n  Total Connections        145.6K           1           1           1\n                         \nMiscellaneous            \n  Total Requests                0\n  HW Syncookies Generated       0\n  HW Syncookies Detected        0\n                         \nErrors                   \n  Maintenance Mode              0\n  Virtual Addr Limit            0\n  Virtual Server Limit          0\n  Wrong Address                 0\n  No handler                    0\n  No Staged Handler         19.4K\n  No license                    0\n  Connection Memory             0\n  Packets Dropped               0\n  Packets In Errors             0\n  Packets Out Errors            0\n                         \nTM Auth                  \n  Current Sessions              0\n  Maximum Sessions              0\n  Total Sessions                0\n  Success Results               0\n  Failure Results               0\n  Want-Credential Results       0\n  Error Results                 0\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"client_traffic\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^ClientSide Traffic\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$cbits_in_total,$cbits_in_5sec,$cbits_in_1min,$cbits_in_5min]:Bits In\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$cbits_out_total,$cbits_out_5sec,$cbits_out_1min,$cbits_out_5min]:Bits Out\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$cpackets_in_total,$cpackets_in_5sec,$cpackets_in_1min,$cpackets_in_5min]:Packets In\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$cpackets_out_total,$cpackets_out_5sec,$cpackets_out_1min,$cpackets_out_5min]:Packets Out\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$ccurrent_connections_total,$ccurrent_connections_5sec,$ccurrent_connections_1min,$ccurrent_connections_5min]:Current Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$cmaximum_connections_total,$cmaximum_connections_5sec,$cmaximum_connections_1min,$cmaximum_connections_5min]:Maximum Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$ctotal_connections_total,$ctotal_connections_5sec,$ctotal_connections_1min,$ctotal_connections_5min]:Total Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cbits_in_total:string\",\"$cbits_in_5sec:string\",\"$cbits_in_1min:string\",\"$cbits_in_5min:string\",\"$cbits_out_total:string\",\"$cbits_out_5sec:string\",\"$cbits_out_1min:string\",\"$cbits_out_5min:string\",\"$cpackets_in_total:string\",\"$cpackets_in_5sec:string\",\"$cpackets_in_1min:string\",\"$cpackets_in_5min:string\",\"$cpackets_out_total:string\",\"$cpackets_out_5sec:string\",\"$cpackets_out_1min:string\",\"$cpackets_out_5min:string\",\"$ccurrent_connections_total:string\",\"$ccurrent_connections_5sec:string\",\"$ccurrent_connections_1min:string\",\"$ccurrent_connections_5min:string\",\"$cmaximum_connections_total:string\",\"$cmaximum_connections_5sec:string\",\"$cmaximum_connections_1min:string\",\"$cmaximum_connections_5min:string\",\"$ctotal_connections_total:string\",\"$ctotal_connections_5sec:string\",\"$ctotal_connections_1min:string\",\"$ctotal_connections_5min:string\"]},\"xxid\":\"fbc8cf19-fea6-005b-4947-14292e9615ae\"}]},\"xxid\":\"a91449ea-d829-5483-dd1a-f08d9e6dc287\"},{\"type\":\"4\",\"name\":\"server_traffic\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^ServerSide Traffic\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$sbits_in_total,$sbits_in_5sec,$sbits_in_1min,$sbits_in_5min]:Bits In\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$sbits_out_total,$sbits_out_5sec,$sbits_out_1min,$sbits_out_5min]:Bits Out\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$spackets_in_total,$spackets_in_5sec,$spackets_in_1min,$spackets_in_5min]:Packets In\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$spackets_out_total,$spackets_out_5sec,$spackets_out_1min,$spackets_out_5min]:Packets Out\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$scurrent_connections_total,$scurrent_connections_5sec,$scurrent_connections_1min,$scurrent_connections_5min]:Current Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$smaximum_connections_total,$smaximum_connections_5sec,$smaximum_connections_1min,$smaximum_connections_5min]:Maximum Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$stotal_connections_total,$stotal_connections_5sec,$stotal_connections_1min,$stotal_connections_5min]:Total Connections\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sbits_in_total:string\",\"$sbits_in_5sec:string\",\"$sbits_in_1min:string\",\"$sbits_in_5min:string\",\"$sbits_out_total:string\",\"$sbits_out_5sec:string\",\"$sbits_out_1min:string\",\"$sbits_out_5min:string\",\"$spackets_in_total:string\",\"$spackets_in_5sec:string\",\"$spackets_in_1min:string\",\"$spackets_in_5min:string\",\"$spackets_out_total:string\",\"$spackets_out_5sec:string\",\"$spackets_out_1min:string\",\"$spackets_out_5min:string\",\"$scurrent_connections_total:string\",\"$scurrent_connections_5sec:string\",\"$scurrent_connections_1min:string\",\"$scurrent_connections_5min:string\",\"$smaximum_connections_total:string\",\"$smaximum_connections_5sec:string\",\"$smaximum_connections_1min:string\",\"$smaximum_connections_5min:string\",\"$stotal_connections_total:string\",\"$stotal_connections_5sec:string\",\"$stotal_connections_1min:string\",\"$stotal_connections_5min:string\"]},\"xxid\":\"7510a5c0-b9b5-fc62-5aae-ac2166efc9c0\"}]},\"xxid\":\"0f8c12cd-267c-8c82-a548-ae9d727cdb63\"},{\"type\":\"4\",\"name\":\"miscellaneous\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^Miscellaneous\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$total_requests]:Total Requests\\\\s+(\\\\S+)\",\"regex[$hw_syncookies_generated]:HW Syncookies Generated\\\\s+(\\\\S+)\",\"regex[$hw_syncookies_detected]:HW Syncookies Detected\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_requests:string\",\"$hw_syncookies_generated:string\",\"$hw_syncookies_detected:string\"]},\"xxid\":\"fa048a68-d051-a34b-f1ca-be6eea46ffad\"}]},\"xxid\":\"4a435c8f-80b5-942a-f2fb-7c49f883c948\"},{\"type\":\"4\",\"name\":\"errors\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^Errors\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$maintenance_mode]:Maintenance Mode\\\\s+(\\\\S+)\",\"regex[$virtual_addr_limt]:Virtual Addr Limit\\\\s+(\\\\S+)\",\"regex[$virtual_server_limit]:Virtual Server Limit\\\\s+(\\\\S+)\",\"regex[$wrong_address]:Wrong Address\\\\s+(\\\\S+)\",\"regex[$no_handler]:No handler\\\\s+(\\\\S+)\",\"regex[$no_staged_handler]:No Staged Handler\\\\s+(\\\\S+)\",\"regex[$no_license]:No license\\\\s+(\\\\S+)\",\"regex[$connection_memory]:Connection Memory\\\\s+(\\\\S+)\",\"regex[$packets_dropped]:Packets Dropped\\\\s+(\\\\S+)\",\"regex[$packets_in_errors]:Packets In Errors\\\\s+(\\\\S+)\",\"regex[$packets_out_errors]:Packets Out Errors\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$maintenance_mode:string\",\"$virtual_addr_limt:string\",\"$virtual_server_limit:string\",\"$wrong_address:string\",\"$no_handler:string\",\"$no_staged_handler:string\",\"$no_license:string\",\"$connection_memory:string\",\"$packets_dropped:string\",\"$packets_in_errors:string\",\"$packets_out_errors:string\"]},\"xxid\":\"cf9fba82-d1ac-9d59-d292-0fcbdbb76d8d\"}]},\"xxid\":\"be830cd2-d4aa-5a3f-3026-62ffa7af4b45\"},{\"type\":\"4\",\"name\":\"tm_auth\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^TM Auth\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$current_sessions]:Current Sessions\\\\s+(\\\\S+)\",\"regex[$maximum_sessions]:Maximum Sessions\\\\s+(\\\\S+)\",\"regex[$total_sessions]:Total Sessions\\\\s+(\\\\S+)\",\"regex[$success_results]:Success Results\\\\s+(\\\\S+)\",\"regex[$failure_results]: Failure Results\\\\s+(\\\\S+)\",\"regex[$want_credential_results]:Want-Credential Results\\\\s+(\\\\S+)\",\"regex[$error_results]:Error Results\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$current_sessions:string\",\"$maximum_sessions:string\",\"$total_sessions:string\",\"$success_results:string\",\"$failure_results:string\",\"$want_credential_results:string\",\"$error_results:string\"]},\"xxid\":\"2d1d177d-902c-b9e9-2641-5f4fc9e7990a\"}]},\"xxid\":\"1e456d0e-7d62-337f-795c-c267adc617ec\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 28,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "cbits_in_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "cbits_in_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "cbits_in_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "cbits_in_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "cbits_out_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "cbits_out_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "cbits_out_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "cbits_out_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "cpackets_in_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "cpackets_in_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "cpackets_in_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "cpackets_in_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "cpackets_out_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "cpackets_out_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "cpackets_out_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "cpackets_out_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "ccurrent_connections_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "ccurrent_connections_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "ccurrent_connections_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "ccurrent_connections_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "cmaximum_connections_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "cmaximum_connections_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "cmaximum_connections_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "cmaximum_connections_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "ctotal_connections_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "ctotal_connections_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 26,
+                        "name": "ctotal_connections_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "ctotal_connections_5min",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "client_traffic",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 28,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sbits_in_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "sbits_in_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "sbits_in_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "sbits_in_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sbits_out_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "sbits_out_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "sbits_out_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "sbits_out_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "spackets_in_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "spackets_in_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "spackets_in_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "spackets_in_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "spackets_out_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "spackets_out_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "spackets_out_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "spackets_out_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "scurrent_connections_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "scurrent_connections_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "scurrent_connections_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "scurrent_connections_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "smaximum_connections_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "smaximum_connections_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "smaximum_connections_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "smaximum_connections_5min",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "stotal_connections_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "stotal_connections_5sec",
+                        "type": 4
+                    },
+                    {
+                        "index": 26,
+                        "name": "stotal_connections_1min",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "stotal_connections_5min",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "server_traffic",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "total_requests",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "hw_syncookies_generated",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "hw_syncookies_detected",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "miscellaneous",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "maintenance_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "virtual_addr_limt",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "virtual_server_limit",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "wrong_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "no_handler",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "no_staged_handler",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "no_license",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "connection_memory",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "packets_dropped",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "packets_in_errors",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "packets_out_errors",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "errors",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "current_sessions",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "maximum_sessions",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "total_sessions",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "success_results",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "failure_results",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "want_credential_results",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "error_results",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "tm_auth",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ebf852b4c91b096c7f042e58af22cbf6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "client_traffic",
+            "dataType": "paragraph",
+            "desc": "The client traffic.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "client_traffic",
+            "intfKey": false,
+            "name": "client_traffic",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "client_traffic.$cbits_in_total",
+            "dataType": "string",
+            "desc": "The number of total bytes received on the client side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_in_total",
+            "intfKey": false,
+            "name": "$cbits_in_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cbits_in_5sec",
+            "dataType": "string",
+            "desc": "The number of bytes received on the client side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_in_5sec",
+            "intfKey": false,
+            "name": "$cbits_in_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cbits_in_1min",
+            "dataType": "string",
+            "desc": "The number of bytes received on the client side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_in_1min",
+            "intfKey": false,
+            "name": "$cbits_in_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cbits_in_5min",
+            "dataType": "string",
+            "desc": "The number of bytes received on the client side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_in_5min",
+            "intfKey": false,
+            "name": "$cbits_in_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cbits_out_total",
+            "dataType": "string",
+            "desc": "The number of total bytes sent on the client side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_out_total",
+            "intfKey": false,
+            "name": "$cbits_out_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cbits_out_5sec",
+            "dataType": "string",
+            "desc": "The number of bytes sent on the client side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_out_5sec",
+            "intfKey": false,
+            "name": "$cbits_out_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cbits_out_1min",
+            "dataType": "string",
+            "desc": "The number of bytes sent on the client side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_out_1min",
+            "intfKey": false,
+            "name": "$cbits_out_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cbits_out_5min",
+            "dataType": "string",
+            "desc": "The number of bytes sent on the client side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cbits_out_5min",
+            "intfKey": false,
+            "name": "$cbits_out_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_in_total",
+            "dataType": "string",
+            "desc": "The number of total packerts received on the client side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_in_total",
+            "intfKey": false,
+            "name": "$cpackets_in_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_in_5sec",
+            "dataType": "string",
+            "desc": "The number of packerts received on the client side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_in_5sec",
+            "intfKey": false,
+            "name": "$cpackets_in_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_in_1min",
+            "dataType": "string",
+            "desc": "The number of packerts received on the client side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_in_1min",
+            "intfKey": false,
+            "name": "$cpackets_in_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_in_5min",
+            "dataType": "string",
+            "desc": "The number of packerts received on the client side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_in_5min",
+            "intfKey": false,
+            "name": "$cpackets_in_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_out_total",
+            "dataType": "string",
+            "desc": "The number of total packerts sent on the client side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_out_total",
+            "intfKey": false,
+            "name": "$cpackets_out_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_out_5sec",
+            "dataType": "string",
+            "desc": "The number of packerts sent on the client side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_out_5sec",
+            "intfKey": false,
+            "name": "$cpackets_out_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_out_1min",
+            "dataType": "string",
+            "desc": "The number of packerts sent on the client side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_out_1min",
+            "intfKey": false,
+            "name": "$cpackets_out_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cpackets_out_5min",
+            "dataType": "string",
+            "desc": "The number of packerts sent on the client side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cpackets_out_5min",
+            "intfKey": false,
+            "name": "$cpackets_out_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ccurrent_connections_total",
+            "dataType": "string",
+            "desc": "The number of total current connections on the client side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ccurrent_connections_total",
+            "intfKey": false,
+            "name": "$ccurrent_connections_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ccurrent_connections_5sec",
+            "dataType": "string",
+            "desc": "The number of current connections on the client side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ccurrent_connections_5sec",
+            "intfKey": false,
+            "name": "$ccurrent_connections_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ccurrent_connections_1min",
+            "dataType": "string",
+            "desc": "The number of current connections on the client side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ccurrent_connections_1min",
+            "intfKey": false,
+            "name": "$ccurrent_connections_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ccurrent_connections_5min",
+            "dataType": "string",
+            "desc": "The number of current connections on the client side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ccurrent_connections_5min",
+            "intfKey": false,
+            "name": "$ccurrent_connections_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cmaximum_connections_total",
+            "dataType": "string",
+            "desc": "The number of total max-connections on the client side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cmaximum_connections_total",
+            "intfKey": false,
+            "name": "$cmaximum_connections_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cmaximum_connections_5sec",
+            "dataType": "string",
+            "desc": "The number of max-connections on the client side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cmaximum_connections_5sec",
+            "intfKey": false,
+            "name": "$cmaximum_connections_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cmaximum_connections_1min",
+            "dataType": "string",
+            "desc": "The number of max-connections on the client side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cmaximum_connections_1min",
+            "intfKey": false,
+            "name": "$cmaximum_connections_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$cmaximum_connections_5min",
+            "dataType": "string",
+            "desc": "The number of max-connections on the client side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$cmaximum_connections_5min",
+            "intfKey": false,
+            "name": "$cmaximum_connections_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ctotal_connections_total",
+            "dataType": "string",
+            "desc": "The number of total connections on the client side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ctotal_connections_total",
+            "intfKey": false,
+            "name": "$ctotal_connections_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ctotal_connections_5sec",
+            "dataType": "string",
+            "desc": "The number of total connections on the client side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ctotal_connections_5sec",
+            "intfKey": false,
+            "name": "$ctotal_connections_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ctotal_connections_1min",
+            "dataType": "string",
+            "desc": "The number of total connections on the client side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ctotal_connections_1min",
+            "intfKey": false,
+            "name": "$ctotal_connections_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "client_traffic.$ctotal_connections_5min",
+            "dataType": "string",
+            "desc": "The number of total connections on the client side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "client_traffic.$ctotal_connections_5min",
+            "intfKey": false,
+            "name": "$ctotal_connections_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic",
+            "dataType": "paragraph",
+            "desc": "The server traffic.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "server_traffic",
+            "intfKey": false,
+            "name": "server_traffic",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "server_traffic.$sbits_in_total",
+            "dataType": "string",
+            "desc": "The number of total bytes received on the server side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_in_total",
+            "intfKey": false,
+            "name": "$sbits_in_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$sbits_in_5sec",
+            "dataType": "string",
+            "desc": "The number of bytes received on the server side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_in_5sec",
+            "intfKey": false,
+            "name": "$sbits_in_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$sbits_in_1min",
+            "dataType": "string",
+            "desc": "The number of bytes received on the server side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_in_1min",
+            "intfKey": false,
+            "name": "$sbits_in_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$sbits_in_5min",
+            "dataType": "string",
+            "desc": "The number of bytes received on the server side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_in_5min",
+            "intfKey": false,
+            "name": "$sbits_in_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$sbits_out_total",
+            "dataType": "string",
+            "desc": "The number of total bytes sent on the server side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_out_total",
+            "intfKey": false,
+            "name": "$sbits_out_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$sbits_out_5sec",
+            "dataType": "string",
+            "desc": "The number of bytes sent on the server side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_out_5sec",
+            "intfKey": false,
+            "name": "$sbits_out_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$sbits_out_1min",
+            "dataType": "string",
+            "desc": "The number of bytes sent on the server side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_out_1min",
+            "intfKey": false,
+            "name": "$sbits_out_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$sbits_out_5min",
+            "dataType": "string",
+            "desc": "The number of bytes sent on the server side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$sbits_out_5min",
+            "intfKey": false,
+            "name": "$sbits_out_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_in_total",
+            "dataType": "string",
+            "desc": "The number of total packerts received on the server side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_in_total",
+            "intfKey": false,
+            "name": "$spackets_in_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_in_5sec",
+            "dataType": "string",
+            "desc": "The number of packerts received on the server side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_in_5sec",
+            "intfKey": false,
+            "name": "$spackets_in_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_in_1min",
+            "dataType": "string",
+            "desc": "The number of packerts received on the server side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_in_1min",
+            "intfKey": false,
+            "name": "$spackets_in_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_in_5min",
+            "dataType": "string",
+            "desc": "The number of packerts received on the server side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_in_5min",
+            "intfKey": false,
+            "name": "$spackets_in_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_out_total",
+            "dataType": "string",
+            "desc": "The number of total packerts sent on the server side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_out_total",
+            "intfKey": false,
+            "name": "$spackets_out_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_out_5sec",
+            "dataType": "string",
+            "desc": "The number of packerts sent on the server side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_out_5sec",
+            "intfKey": false,
+            "name": "$spackets_out_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_out_1min",
+            "dataType": "string",
+            "desc": "The number of packerts sent on the server side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_out_1min",
+            "intfKey": false,
+            "name": "$spackets_out_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$spackets_out_5min",
+            "dataType": "string",
+            "desc": "The number of packerts sent on the server side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$spackets_out_5min",
+            "intfKey": false,
+            "name": "$spackets_out_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$scurrent_connections_total",
+            "dataType": "string",
+            "desc": "The number of total current connections on the server side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$scurrent_connections_total",
+            "intfKey": false,
+            "name": "$scurrent_connections_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$scurrent_connections_5sec",
+            "dataType": "string",
+            "desc": "The number of current connections on the server side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$scurrent_connections_5sec",
+            "intfKey": false,
+            "name": "$scurrent_connections_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$scurrent_connections_1min",
+            "dataType": "string",
+            "desc": "The number of current connections on the server side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$scurrent_connections_1min",
+            "intfKey": false,
+            "name": "$scurrent_connections_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$scurrent_connections_5min",
+            "dataType": "string",
+            "desc": "The number of current connections on the server side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$scurrent_connections_5min",
+            "intfKey": false,
+            "name": "$scurrent_connections_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$smaximum_connections_total",
+            "dataType": "string",
+            "desc": "The number of total max-connections on the server side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$smaximum_connections_total",
+            "intfKey": false,
+            "name": "$smaximum_connections_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$smaximum_connections_5sec",
+            "dataType": "string",
+            "desc": "The number of max-connections on the server side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$smaximum_connections_5sec",
+            "intfKey": false,
+            "name": "$smaximum_connections_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$smaximum_connections_1min",
+            "dataType": "string",
+            "desc": "The number of max-connections on the server side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$smaximum_connections_1min",
+            "intfKey": false,
+            "name": "$smaximum_connections_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$smaximum_connections_5min",
+            "dataType": "string",
+            "desc": "The number of max-connections on the server side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$smaximum_connections_5min",
+            "intfKey": false,
+            "name": "$smaximum_connections_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$stotal_connections_total",
+            "dataType": "string",
+            "desc": "The number of total connections on the server side.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$stotal_connections_total",
+            "intfKey": false,
+            "name": "$stotal_connections_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$stotal_connections_5sec",
+            "dataType": "string",
+            "desc": "The number of total connections on the server side in last 5 sec.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$stotal_connections_5sec",
+            "intfKey": false,
+            "name": "$stotal_connections_5sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$stotal_connections_1min",
+            "dataType": "string",
+            "desc": "The number of total connections on the server side in last 1 min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$stotal_connections_1min",
+            "intfKey": false,
+            "name": "$stotal_connections_1min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "server_traffic.$stotal_connections_5min",
+            "dataType": "string",
+            "desc": "The number of total connections on the server side in last 5min.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "server_traffic.$stotal_connections_5min",
+            "intfKey": false,
+            "name": "$stotal_connections_5min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "miscellaneous",
+            "dataType": "paragraph",
+            "desc": "The miscellaneous traffic.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "miscellaneous",
+            "intfKey": false,
+            "name": "miscellaneous",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "miscellaneous.$total_requests",
+            "dataType": "string",
+            "desc": "The number of total requests.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "miscellaneous.$total_requests",
+            "intfKey": false,
+            "name": "$total_requests",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "miscellaneous.$hw_syncookies_generated",
+            "dataType": "string",
+            "desc": "The number of generated hardware synchronous cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "miscellaneous.$hw_syncookies_generated",
+            "intfKey": false,
+            "name": "$hw_syncookies_generated",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "miscellaneous.$hw_syncookies_detected",
+            "dataType": "string",
+            "desc": "The number of detected hardware synchronous cookies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "miscellaneous.$hw_syncookies_detected",
+            "intfKey": false,
+            "name": "$hw_syncookies_detected",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors",
+            "dataType": "paragraph",
+            "desc": "The errors traffic.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "errors",
+            "intfKey": false,
+            "name": "errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "errors.$maintenance_mode",
+            "dataType": "string",
+            "desc": "The number of errors packets on maintenance mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$maintenance_mode",
+            "intfKey": false,
+            "name": "$maintenance_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$virtual_addr_limt",
+            "dataType": "string",
+            "desc": "The number of errors packets about virtual address limit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$virtual_addr_limt",
+            "intfKey": false,
+            "name": "$virtual_addr_limt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$virtual_server_limit",
+            "dataType": "string",
+            "desc": "The number of errors packets about virtual server limit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$virtual_server_limit",
+            "intfKey": false,
+            "name": "$virtual_server_limit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$wrong_address",
+            "dataType": "string",
+            "desc": "The number of errors packets about wrong address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$wrong_address",
+            "intfKey": false,
+            "name": "$wrong_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$no_handler",
+            "dataType": "string",
+            "desc": "The number of errors packets about no handler.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$no_handler",
+            "intfKey": false,
+            "name": "$no_handler",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$no_staged_handler",
+            "dataType": "string",
+            "desc": "The number of errors packets about no staged handler.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$no_staged_handler",
+            "intfKey": false,
+            "name": "$no_staged_handler",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$no_license",
+            "dataType": "string",
+            "desc": "The number of errors packets about no license.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$no_license",
+            "intfKey": false,
+            "name": "$no_license",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$connection_memory",
+            "dataType": "string",
+            "desc": "The number of errors packets about connection_memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$connection_memory",
+            "intfKey": false,
+            "name": "$connection_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$packets_dropped",
+            "dataType": "string",
+            "desc": "The number of packets be dropped.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$packets_dropped",
+            "intfKey": false,
+            "name": "$packets_dropped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$packets_in_errors",
+            "dataType": "string",
+            "desc": "The number of input errors packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$packets_in_errors",
+            "intfKey": false,
+            "name": "$packets_in_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "errors.$packets_out_errors",
+            "dataType": "string",
+            "desc": "The number of output errors packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "errors.$packets_out_errors",
+            "intfKey": false,
+            "name": "$packets_out_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tm_auth",
+            "dataType": "paragraph",
+            "desc": "The TM authentication.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "tm_auth",
+            "intfKey": false,
+            "name": "tm_auth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "tm_auth.$current_sessions",
+            "dataType": "string",
+            "desc": "The number of current sessions about TM authentication",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tm_auth.$current_sessions",
+            "intfKey": false,
+            "name": "$current_sessions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tm_auth.$maximum_sessions",
+            "dataType": "string",
+            "desc": "The number of maximum sessions about TM authentication",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tm_auth.$maximum_sessions",
+            "intfKey": false,
+            "name": "$maximum_sessions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tm_auth.$total_sessions",
+            "dataType": "string",
+            "desc": "The number of total sessions about TM authentication",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tm_auth.$total_sessions",
+            "intfKey": false,
+            "name": "$total_sessions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tm_auth.$success_results",
+            "dataType": "string",
+            "desc": "The number of success results about TM authentication",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tm_auth.$success_results",
+            "intfKey": false,
+            "name": "$success_results",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tm_auth.$failure_results",
+            "dataType": "string",
+            "desc": "The number of failure results about TM authentication",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tm_auth.$failure_results",
+            "intfKey": false,
+            "name": "$failure_results",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tm_auth.$want_credential_results",
+            "dataType": "string",
+            "desc": "The number of want credential results about TM authentication",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tm_auth.$want_credential_results",
+            "intfKey": false,
+            "name": "$want_credential_results",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tm_auth.$error_results",
+            "dataType": "string",
+            "desc": "The number of error results about TM authentication",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tm_auth.$error_results",
+            "intfKey": false,
+            "name": "$error_results",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

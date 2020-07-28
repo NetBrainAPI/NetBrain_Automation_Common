@@ -1,0 +1,245 @@
+{
+    "_id": "4cd6ebeb-834b-df09-279b-1e85dba6eed0",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip igmp membership all",
+    "createTime": {
+        "$date": 1591101037967
+    },
+    "description": "Device Type:\nCisco Catalyst Switch\nCommand:\nshow ip igmp membership all",
+    "devTypes": [
+        2060
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Switch#show ip igmp membership all\r\nFlags: A  -aggregate, T -tracked\r\n       L  -Local, S -static, V -virtual, R -Reported through v3\r\n       I -v3lite, U -Urd, M -SSM (S,G) channel\r\n       1,2,3 -The version of IGMP, the group is in\r\nChannel/Group-Flags:\r\n       / -Filtering entry (Exclude mode (S,G), Include mode (G))\r\nReporter:\r\n       <mac-or-ip-address> -last reporter if group is not explicitly tracked\r\n       <n>/<m>      -<n> reporter in include mode, <m> reporter in exclude\r\n\r\n Channel/Group         Reporter        Uptime   Exp.  Flags  Interface\r\n *,239.255.255.255     10.32.104.1     4d18h    02:05 3LA    Vl413\r\n *,239.255.255.255     10.33.170.1     4d18h    02:59 3LA    Vl412\r\n *,239.255.255.250     10.33.170.33    01:32:53 02:59 2A     Vl412\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"out_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$source, $group,$reporter,$uptime, $expires, $flags, $out_intf]:(\\\\S+),(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$source:string\",\"$group:string\",\"$reporter:string\",\"$uptime:string\",\"$expires:string\",\"$flags:string\",\"$out_intf:string\"]},\"xxid\":\"7a2acc32-b80a-2b3a-8b91-2d569e143991\"}]},\"xxid\":\"741d7178-9f66-5d46-aae5-2ad5e16feb1b\",\"hashColumns\":[\"$source\",\"$group\",\"$out_intf\",\"$flags\"]}]}",
+            "tableKeys": [
+                "_original_result.out_intfs.$source",
+                "_original_result.out_intfs.$group",
+                "_original_result.out_intfs.$out_intf",
+                "_original_result.out_intfs.$flags"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "reporter",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "out_intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$flags",
+                    "$group",
+                    "$out_intf",
+                    "$source"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "out_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1a5f261011d772eb0d2931e6eeb246dd",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "out_intfs",
+            "dataType": "paragraph",
+            "desc": "Group table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$source",
+                    "$group",
+                    "$out_intf",
+                    "$flags"
+                ],
+                "hashSort": false
+            },
+            "fullName": "out_intfs",
+            "intfKey": false,
+            "name": "out_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "out_intfs.$source",
+            "dataType": "string",
+            "desc": "An asterisk (*) in place of the source router indicates all sources.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "out_intfs.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$group",
+            "dataType": "string",
+            "desc": "The entry consists of the IP address of the source router followed by the IP address of the multicast group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "out_intfs.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$reporter",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "out_intfs.$reporter",
+            "intfKey": false,
+            "name": "$reporter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$uptime",
+            "dataType": "string",
+            "desc": "How long (in hours, minutes, and seconds) the entry has been in the IP multicast routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "out_intfs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$expires",
+            "dataType": "string",
+            "desc": "How long (in hours, minutes, and seconds) until the entry will be removed from the IP multicast routing table on the outgoing interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "out_intfs.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$flags",
+            "dataType": "string",
+            "desc": "Information about the entry.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "out_intfs.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "out_intfs.$out_intf",
+            "dataType": "string",
+            "desc": "Name and number of the outgoing interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "out_intfs.$out_intf",
+            "intfKey": false,
+            "name": "$out_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

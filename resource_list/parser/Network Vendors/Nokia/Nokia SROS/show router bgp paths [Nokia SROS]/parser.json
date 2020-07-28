@@ -1,0 +1,418 @@
+{
+    "_id": "0fd4095c-ba80-534f-29f9-07dc62d17350",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router bgp paths",
+    "createTime": {
+        "$date": 1583263034499
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:Dut-C#  show router bgp paths\r\n===============================================================================\r\n BGP Router ID : 10.0.0.14         AS : 65206   Local AS : 65206 \r\n===============================================================================\r\nBGP Paths\r\n===============================================================================\r\nPath: 60203 65001 19855 3356  15412 \r\n-------------------------------------------------------------------------------\r\nOrigin           : IGP                  Next Hop         : 10.0.28.1           \r\nMED              : 60203                Local Preference : none                \r\nRefs             : 4                    ASes             : 5                   \r\nSegments         : 1                                                           \r\nFlags            : EBGP-learned\r\nAggregator       : 15412  62.216.140.1\r\n-------------------------------------------------------------------------------\r\nPath: 60203 65001 19855 3356  1     1236  1236  1236  1236  \r\n-------------------------------------------------------------------------------\r\nOrigin           : IGP                  Next Hop         : 10.0.28.1           \r\nMED              : 60203                Local Preference : none                \r\nRefs             : 2                    ASes             : 9                   \r\nSegments         : 1                                                           \r\nFlags            : EBGP-learned\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$bgp_router_id,$as,$local_as]:BGP Router ID : (\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+AS : (\\\\d+)\\\\s+Local AS : (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$bgp_router_id:string\",\"$as:string\",\"$local_as:string\"]},\"xxid\":\"e64d53f8-eceb-bc05-da7f-f13356d09f95\"},{\"type\":\"4\",\"name\":\"bgp_paths\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^BGP Paths\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"f6d3ad1c-c233-1a1b-dffb-f056ebcc0b55\"},{\"type\":\"4\",\"name\":\"bgppaths\",\"keyVariables\":\"\",\"startLine\":\"regex[$path]:Path: (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$origin,$next_hop]:Origin\\\\s+: (\\\\S+)\\\\s+Next Hop\\\\s+: (\\\\S+)\",\"regex[$med,$local_preference]:MED\\\\s+: (\\\\S+)\\\\s+Local Preference\\\\s+: (\\\\S+)\",\"regex[$refs,$ases]:Refs\\\\s+: (\\\\S+)\\\\s+ASes\\\\s+: (\\\\S+)\",\"regex[$segments]:Segments\\\\s+: (\\\\S+)\",\"regex[$flags]:Flags\\\\s+: (\\\\S+)\",\"regex[$aggregator]:Aggregator\\\\s+: (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$path:string\",\"$origin:string\",\"$next_hop:string\",\"$med:string\",\"$local_preference:string\",\"$refs:string\",\"$ases:string\",\"$segments:string\",\"$flags:string\",\"$aggregator:string\"]},\"xxid\":\"af05ee77-1d0a-ad94-8047-9678a485efea\"}]},\"xxid\":\"19755562-454d-54c8-d6aa-95ef1ff602ad\",\"hashColumns\":[\"$path\",\"$origin\",\"$next_hop\",\"$med\",\"$local_preference\",\"$refs\",\"$ases\",\"$segments\",\"$flags\",\"$aggregator\"],\"hashSort\":false,\"interfaceKey\":\"\"}]},\"xxid\":\"1e9eee2a-3262-d81f-1782-536211385846\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"51a56abf-e5e0-0458-0125-010c17c90e23\"}]}",
+            "tableKeys": [
+                "_original_result.bgp_paths.bgppaths.$path"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bgp_router_id",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "as",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "local_as",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "bgp_paths",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "path",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "origin",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "next_hop",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "med",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "local_preference",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "refs",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ases",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "segments",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "aggregator",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$aggregator",
+                    "$ases",
+                    "$flags",
+                    "$local_preference",
+                    "$med",
+                    "$next_hop",
+                    "$origin",
+                    "$path",
+                    "$refs",
+                    "$segments"
+                ],
+                "hashSort": false,
+                "index": 5,
+                "name": "bgppaths",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "43d656e06b94db13a1244691e0de7a6b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$bgp_router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_router_id",
+            "intfKey": false,
+            "name": "$bgp_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_paths",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "bgp_paths",
+            "intfKey": false,
+            "name": "bgp_paths",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgppaths",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$path",
+                    "$origin",
+                    "$next_hop",
+                    "$med",
+                    "$local_preference",
+                    "$refs",
+                    "$ases",
+                    "$segments",
+                    "$flags",
+                    "$aggregator"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths",
+            "intfKey": false,
+            "name": "bgppaths",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgppaths.$path",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$path",
+            "intfKey": false,
+            "name": "$path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$origin",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$origin",
+            "intfKey": false,
+            "name": "$origin",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$next_hop",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$next_hop",
+            "intfKey": false,
+            "name": "$next_hop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$med",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$med",
+            "intfKey": false,
+            "name": "$med",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$local_preference",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$local_preference",
+            "intfKey": false,
+            "name": "$local_preference",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$refs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$refs",
+            "intfKey": false,
+            "name": "$refs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$ases",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$ases",
+            "intfKey": false,
+            "name": "$ases",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$segments",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$segments",
+            "intfKey": false,
+            "name": "$segments",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgppaths.$aggregator",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_paths.bgppaths.$aggregator",
+            "intfKey": false,
+            "name": "$aggregator",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

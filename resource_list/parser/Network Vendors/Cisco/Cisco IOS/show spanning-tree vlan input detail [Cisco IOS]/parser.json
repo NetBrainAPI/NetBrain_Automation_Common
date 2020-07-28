@@ -1,0 +1,297 @@
+{
+    "_id": "802bd0af-05b1-b751-bf12-d41fa991ad83",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree vlan $vlan_id detail",
+    "createTime": {
+        "$date": 1580852789246
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow spanning-tree vlan $InputVlanId.vlan_id detail",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [
+        {
+            "name": "$vlan_id"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-c3560-1#show spanning-tree vlan 50 detail\r\n\r\n VLAN0050 is executing the ieee compatible Spanning Tree protocol\r\n  Bridge Identifier has priority 32768, sysid 50, address 0817.35d7.cb80\r\n  Configured hello time 2, max age 20, forward delay 15\r\n  Current root has priority 32768, address 0009.b7cf.31b2\r\n  Root port is 24 (GigabitEthernet0/24), cost of root path is 27\r\n  Topology change flag not set, detected flag not set\r\n  Number of topology changes 3 last change occurred 14w0d ago\r\n          from Port-channel1\r\n  Times:  hold 1, topology change 35, notification 2\r\n          hello 2, max age 20, forward delay 15 \r\n  Timers: hello 0, topology change 0, notification 0, aging 300\r\n\r\n Port 2 (GigabitEthernet0/2) of VLAN0050 is designated forwarding \r\n   Port path cost 4, Port priority 128, Port Identifier 128.2.\r\n   Designated root has priority 32768, address 0009.b7cf.31b2\r\n   Designated bridge has priority 32818, address 0817.35d7.cb80\r\n   Designated port id is 128.2, designated path cost 27\r\n   Timers: message age 0, forward delay 0, hold 0\r\n   Number of transitions to forwarding state: 1\r\n   Link type is point-to-point by default\r\n   BPDU: sent 4273129, received 0\r\n\r\n Port 19 (GigabitEthernet0/19) of VLAN0050 is designated forwarding \r\n   Port path cost 4, Port priority 128, Port Identifier 128.19.\r\n   Designated root has priority 32768, address 0009.b7cf.31b2\r\n   Designated bridge has priority 32818, address 0817.35d7.cb80\r\n   Designated port id is 128.19, designated path cost 27\r\n   Timers: message age 0, forward delay 0, hold 0\r\n   Number of transitions to forwarding state: 1\r\n   Link type is point-to-point by default\r\n   BPDU: sent 4273129, received 0\r\n\r\n Port 23 (GigabitEthernet0/23) of VLAN0050 is designated forwarding \r\n   Port path cost 4, Port priority 128, Port Identifier 128.23.\r\n   Designated root has priority 32768, address 0009.b7cf.31b2\r\n   Designated bridge has priority 32818, address 0817.35d7.cb80\r\n   Designated port id is 128.23, designated path cost 27\r\n   Timers: message age 0, forward delay 0, hold 0\r\n   Number of transitions to forwarding state: 1\r\n   Link type is point-to-point by default\r\n   BPDU: sent 4273130, received 2\r\n\r\n Port 24 (GigabitEthernet0/24) of VLAN0050 is root forwarding \r\n   Port path cost 4, Port priority 128, Port Identifier 128.24.\r\n   Designated root has priority 32768, address 0009.b7cf.31b2\r\n   Designated bridge has priority 32818, address 689c.e2d7.5500\r\n   Designated port id is 128.23, designated path cost 23\r\n   Timers: message age 4, forward delay 0, hold 0\r\n   Number of transitions to forwarding state: 1\r\n   Link type is point-to-point by default\r\n   BPDU: sent 3, received 4273132\r\n\r\n Port 56 (Port-channel1) of VLAN0050 is designated forwarding \r\n   Port path cost 4, Port priority 128, Port Identifier 128.56.\r\n   Designated root has priority 32768, address 0009.b7cf.31b2\r\n   Designated bridge has priority 32818, address 0817.35d7.cb80\r\n   Designated port id is 128.56, designated path cost 27\r\n   Timers: message age 0, forward delay 0, hold 0\r\n   Number of transitions to forwarding state: 1\r\n   Link type is point-to-point by default\r\n   BPDU: sent 4273130, received 1\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$bridge_priority,$bridge_id]:Bridge\\\\s+Identifier\\\\s+has\\\\s+priority\\\\s+(\\\\w+),\\\\s+\\\\S+\\\\s+\\\\S+,\\\\s+address\\\\s+(\\\\S+)\",\"regex[$root]:\\\\s+(.*root.*)$\",\"regex[$int:topo_changes]:Number\\\\s+of\\\\s+topology\\\\s+changes\\\\s+(\\\\d+)\",\"regex[$last_ago]:last change occurred\\\\s+(\\\\S+)\\\\s+ago\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$bridge_priority:string\",\"$bridge_id:string\",\"$root:string\",\"$topo_changes:int\",\"$last_ago:string\"]},\"xxid\":\"3ec130fc-d775-3e66-ee80-d078e3fccfdb\"},{\"type\":\"4\",\"name\":\"intf\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$role,$status]:^\\\\s+Port\\\\s+\\\\d+\\\\s+\\\\((\\\\S+)\\\\)\\\\s+of\\\\s+\\\\S+\\\\s+is\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Port path cost $cost,\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$role:string\",\"$status:string\",\"$cost:string\"]},\"xxid\":\"94283a0c-034a-a605-53f5-140e15f631d7\"}]},\"xxid\":\"434479bb-c3f0-dc49-3944-02385fe7b52b\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$role\",\"$status\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$vlan_instance_ios_cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vlan_instance_ios_cli_output:string\"]},\"xxid\":\"0af7c4d1-c5ad-5fd7-ca0d-d3301dea1812\"}]}",
+            "tableKeys": [
+                "_original_result.intf.$role",
+                "_original_result.intf.$status"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bridge_priority",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "bridge_id",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "root",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "topo_changes",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "last_ago",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "vlan_instance_ios_cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "role",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "cost",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$role",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "intf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8eb3d6f682e7539b5e4422c6567bcd45",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$bridge_priority",
+            "dataType": "string",
+            "desc": "Bridge priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_priority",
+            "intfKey": false,
+            "name": "$bridge_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_id",
+            "dataType": "string",
+            "desc": "Bridge ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_id",
+            "intfKey": false,
+            "name": "$bridge_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root",
+            "dataType": "string",
+            "desc": "Root information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root",
+            "intfKey": false,
+            "name": "$root",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$topo_changes",
+            "dataType": "int",
+            "desc": "Topology changes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$topo_changes",
+            "intfKey": false,
+            "name": "$topo_changes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$last_ago",
+            "dataType": "string",
+            "desc": "Topology last change.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$last_ago",
+            "intfKey": false,
+            "name": "$last_ago",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf",
+            "dataType": "paragraph",
+            "desc": "Interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$role",
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intf",
+            "intfKey": false,
+            "name": "intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intf.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intf.$role",
+            "dataType": "string",
+            "desc": "Role.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf.$role",
+            "intfKey": false,
+            "name": "$role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf.$status",
+            "dataType": "string",
+            "desc": "Status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf.$cost",
+            "dataType": "string",
+            "desc": "Cost.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vlan_instance_ios_cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vlan_instance_ios_cli_output",
+            "intfKey": false,
+            "name": "$vlan_instance_ios_cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

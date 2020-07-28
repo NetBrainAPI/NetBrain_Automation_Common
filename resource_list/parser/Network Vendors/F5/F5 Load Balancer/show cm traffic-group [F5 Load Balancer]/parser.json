@@ -1,0 +1,189 @@
+{
+    "_id": "65aa9124-34ed-f08d-918f-2137d36fe053",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show cm traffic-group recursive",
+    "createTime": {
+        "$date": 1583182956907
+    },
+    "description": "",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "root@(BIG-IP_VE1)(cfg-sync In Sync)(Standby)(/)(tmos)#show cm traffic-group recursive\r\n\r\n--------------------------------------------------------------------------------\r\nCentMgmt::Traffic-Group        \r\nName                             Device                          Status   Next    Previous  Active\r\n                                                                          Active  Active    Reason\r\n--------------------------------------------------------------------------------\r\nCommon/chris_tg_1                Common/BIG-IP_VE1.netbrain.com  standby  true    false     -\r\nCommon/chris_tg_1                Common/BIG-IP_VE2.netbrain.com  standby  false   false     -\r\nCommon/chris_tg_1                Common/BIG-IP_VE3.netbrain.com  active   false   false     -\r\nCommon/chris_tg_2                Common/BIG-IP_VE1.netbrain.com  standby  false   false     -\r\nCommon/chris_tg_2                Common/BIG-IP_VE2.netbrain.com  standby  true    false     -\r\nCommon/chris_tg_2                Common/BIG-IP_VE3.netbrain.com  active   false   false     -\r\nCommon/test_tg                   Common/BIG-IP_VE1.netbrain.com  standby  true    false     -\r\nCommon/test_tg                   Common/BIG-IP_VE2.netbrain.com  active   false   false     ha-load\r\nCommon/test_tg                   Common/BIG-IP_VE3.netbrain.com  standby  false   false     -\r\nCommon/traffic-group-1           Common/BIG-IP_VE1.netbrain.com  standby  true    false     -\r\nCommon/traffic-group-1           Common/BIG-IP_VE2.netbrain.com  active   false   false     peer-forced-standby\r\nCommon/traffic-group-1           Common/BIG-IP_VE3.netbrain.com  standby  false   true      -\r\nCommon/traffic-group-local-only  -                               -        -       -         -\r\n\r\nWarning(s):\r\n* All devices in traffic group chris_tg_1(2 of 3) should have HA Score enabled.\r\n\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"02c122a8-5b25-a025-e10c-6ff56b1a2a51\"}]},\"xxid\":\"ea6f2109-517b-55e9-bbc3-91250e5b19db\"},{\"type\":\"4\",\"name\":\"traffic_group\",\"keyVariables\":\"\",\"startLine\":\"regex[$traffic_group,$device,$status,$active_reason]:^(\\\\S+\\\\/\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$traffic_group:string\",\"$device:string\",\"$status:string\",\"$active_reason:string\"]},\"xxid\":\"210ed287-47f5-ab50-97e1-8aac1813af60\"}]},\"xxid\":\"073afd8f-328e-235d-fdcf-f324aadf14e9\",\"hashColumns\":[\"$traffic_group\",\"$device\",\"$status\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.traffic_group.$traffic_group"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "traffic_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "device",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "active_reason",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$device",
+                    "$status",
+                    "$traffic_group"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "traffic_group",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0280f7c03cb81030a8af6ca91385634a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_group",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$traffic_group",
+                    "$device",
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "traffic_group",
+            "intfKey": false,
+            "name": "traffic_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "traffic_group.$traffic_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_group.$traffic_group",
+            "intfKey": false,
+            "name": "$traffic_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_group.$device",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_group.$device",
+            "intfKey": false,
+            "name": "$device",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_group.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_group.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "traffic_group.$active_reason",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "traffic_group.$active_reason",
+            "intfKey": false,
+            "name": "$active_reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,297 @@
+{
+    "_id": "292a0330-ea2f-eab4-8824-d73c25075f33",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf database database-summary",
+    "createTime": {
+        "$date": 1579138517598
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow ospf database database-summary",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "gw-020000> show ospf database database-summary \r\n\r\nOSPF Router with ID  12.1.1.1  Instance  default  \r\n\r\nArea ID           Router    Network   Sum-Net   Sum-ASBR  Type-7    Subtotal  \r\n0.0.0.0           2         1         1         0         0         4         \r\n0.0.0.1           2         1         1         0         0         4         \r\nAS External                                                         0         \r\nTotal             4         2         2         0         0         8         \r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"OSPF Router with ID  $router_id  Instance  $instance\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$instance:string\"]},\"xxid\":\"123e539b-8dc0-c576-38de-b01b228b6df6\"},{\"type\":\"4\",\"name\":\"areas_database\",\"keyVariables\":\"\",\"startLine\":\"regex[$area_id,$int:router,$int:network,$int:sum_net,$int:sum_asbr,$int:type_7,$int:subtotal]:^(\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$router:int\",\"$network:int\",\"$sum_net:int\",\"$sum_asbr:int\",\"$type_7:int\",\"$subtotal:int\"]},\"xxid\":\"52742804-72e3-d5a8-341d-731e60643028\"}]},\"xxid\":\"4cf8761b-3570-bd55-e401-6379442bf221\",\"hashColumns\":[\"$area_id\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"2540317b-1d0e-9c44-871c-7474672afe4e\"}]}",
+            "tableKeys": [
+                "_original_result.areas_database.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "router_id",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "instance",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "router",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "network",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "sum_net",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "sum_asbr",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "type_7",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "subtotal",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "areas_database",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "047ae0ab1f4ecdd824caa96ffdbc921e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$instance",
+            "dataType": "string",
+            "desc": "Instance.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database",
+            "dataType": "paragraph",
+            "desc": "OSPF database table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "areas_database",
+            "intfKey": false,
+            "name": "areas_database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "areas_database.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "areas_database.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$router",
+            "dataType": "int",
+            "desc": "Number of router link-state advertisements.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "areas_database.$router",
+            "intfKey": false,
+            "name": "$router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$network",
+            "dataType": "int",
+            "desc": "Number of network link-state advertisements.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "areas_database.$network",
+            "intfKey": false,
+            "name": "$network",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$sum_net",
+            "dataType": "int",
+            "desc": "Number of summary Net link-state advertisements.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "areas_database.$sum_net",
+            "intfKey": false,
+            "name": "$sum_net",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$sum_asbr",
+            "dataType": "int",
+            "desc": "Number of summary ASBR link-state advertisements.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "areas_database.$sum_asbr",
+            "intfKey": false,
+            "name": "$sum_asbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$type_7",
+            "dataType": "int",
+            "desc": "Number of type-7 Ext link-state advertisements.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "areas_database.$type_7",
+            "intfKey": false,
+            "name": "$type_7",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$subtotal",
+            "dataType": "int",
+            "desc": "Number of total LSAs counts.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "areas_database.$subtotal",
+            "intfKey": false,
+            "name": "$subtotal",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

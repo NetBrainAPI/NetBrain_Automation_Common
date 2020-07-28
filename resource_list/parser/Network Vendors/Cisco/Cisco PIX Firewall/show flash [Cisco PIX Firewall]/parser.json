@@ -1,0 +1,185 @@
+{
+    "_id": "519668e5-350e-df4e-d384-a8d420ebf99f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show flash",
+    "createTime": {
+        "$date": 1591030066449
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow flash",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BST-FW-PIX# show flash\nflash file system:  version:3  magic:0x12345679\n  file 0: origin:       0 length:1978424\n  file 1: origin: 2097152 length:8914\n  file 2: origin: 2228224 length:3555\n  file 3: origin: 2359296 length:3152452\n  file 4: origin:       0 length:0\n  file 5: origin: 8257536 length:308\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$version, $magic]:flash file system:  version:(\\\\d+)  magic:(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$version:string\",\"$magic:string\"]},\"xxid\":\"8ea7af50-5687-ccfc-5576-f7b04c2ed2f5\"},{\"type\":\"4\",\"name\":\"file_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$file, $int:origin, $int:length]:file (\\\\d+): origin:\\\\s+(\\\\d+) length:(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$file:string\",\"$origin:int\",\"$length:int\"]},\"xxid\":\"5bbc6a67-791a-384f-20da-ed5ae1823d00\"}]},\"xxid\":\"c5635f11-048f-fff3-a0ba-653ea5727d16\",\"hashColumns\":[\"$length\"]}]}",
+            "tableKeys": [
+                "_original_result.file_table.$length"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "version",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "magic",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "file",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "origin",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "length",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$length"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "file_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c69cbe592ff8faae3a896e720e85c309",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$version",
+            "dataType": "string",
+            "desc": "The file system version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$magic",
+            "dataType": "string",
+            "desc": "The magic of file system.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$magic",
+            "intfKey": false,
+            "name": "$magic",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "file_table",
+            "dataType": "paragraph",
+            "desc": "The file table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$length"
+                ],
+                "hashSort": false
+            },
+            "fullName": "file_table",
+            "intfKey": false,
+            "name": "file_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "file_table.$file",
+            "dataType": "string",
+            "desc": "Number of files??? ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "file_table.$file",
+            "intfKey": false,
+            "name": "$file",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "file_table.$origin",
+            "dataType": "int",
+            "desc": "Origin length of the file.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "file_table.$origin",
+            "intfKey": false,
+            "name": "$origin",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "file_table.$length",
+            "dataType": "int",
+            "desc": "Length of the file itself.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "file_table.$length",
+            "intfKey": false,
+            "name": "$length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

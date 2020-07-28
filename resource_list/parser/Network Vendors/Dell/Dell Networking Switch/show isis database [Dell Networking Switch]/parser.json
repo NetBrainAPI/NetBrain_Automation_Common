@@ -1,0 +1,352 @@
+{
+    "_id": "7130523b-6168-42b8-8d85-06c45b12089b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis database",
+    "createTime": {
+        "$date": 1590777869120
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow isis database",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show isis database\r\nIS-IS Level-1 Link State Database\r\nLSPID LSP Seq Num LSP Checksum LSP Holdtime ATT/P/OL\r\nISIS.00-00 * 0x00000006 0xCF43 580 0/0/0\r\n\r\nIS-IS Level-2 Link State Database\r\nLSPID LSP Seq Num LSP Checksum LSP Holdtime ATT/P/OL\r\nISIS.00-00 * 0x00000006 0xCF43 580 0/0/0\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_database\",\"keyVariables\":\"\",\"startLine\":\"regex[$lv, $state]:^is-is (level-\\\\d+)\\\\s+link state\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$lv:string\",\"$state:string\"]},\"xxid\":\"c1cc91af-e82f-91dd-b305-6be4a150e503\"},{\"type\":\"4\",\"name\":\"lsp_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$lspid, $lsp_seq_num, $lsp_chksum, $int:lsp_holdtime, $att, $p, $ol]:(\\\\S+ \\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\/(\\\\d+)\\\\/(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$lspid:string\",\"$lsp_seq_num:string\",\"$lsp_chksum:string\",\"$lsp_holdtime:int\",\"$att:string\",\"$p:string\",\"$ol:string\"]},\"xxid\":\"84430d53-9ccb-eaa2-44bc-ec08e0da202f\"}]},\"xxid\":\"30fc05ad-61b9-9238-85e4-a39ad57b7478\",\"hashColumns\":[\"$lspid\"]}]},\"xxid\":\"c83bfb49-0595-dc9e-6e03-28ff870d7cfc\"}]}",
+            "tableKeys": [
+                "_original_result.isis_database.lsp_info.$lspid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "lv",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_database",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "lspid",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "lsp_seq_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "lsp_chksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "lsp_holdtime",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "att",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "p",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ol",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "lv",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$lspid"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "lsp_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7698e974dab256e338e3d6d0f9e6eb0c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_database",
+            "dataType": "paragraph",
+            "desc": "ISIS database",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_database",
+            "intfKey": false,
+            "name": "isis_database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_database.$lv",
+            "dataType": "string",
+            "desc": "Level type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.$lv",
+            "intfKey": false,
+            "name": "$lv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_database.$state",
+            "dataType": "string",
+            "desc": "Level state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info",
+            "dataType": "paragraph",
+            "desc": "LSP info table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$lspid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info",
+            "intfKey": false,
+            "name": "lsp_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "lsp_info.$lspid",
+            "dataType": "string",
+            "desc": "Displays the LSP identifier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$lspid",
+            "intfKey": false,
+            "name": "$lspid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$lsp_seq_num",
+            "dataType": "string",
+            "desc": "This value is the sequence number for the LSP that allows other systems to determine if they have received the latest information from the source.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$lsp_seq_num",
+            "intfKey": false,
+            "name": "$lsp_seq_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$lsp_chksum",
+            "dataType": "string",
+            "desc": "This is the checksum of the entire LSP packet.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$lsp_chksum",
+            "intfKey": false,
+            "name": "$lsp_chksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$lsp_holdtime",
+            "dataType": "int",
+            "desc": "This value is the amount of time, in seconds, that the LSP remains valid. A zero holdtime indicates that this is a purged LSP and is being removed from the link state database. A value.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$lsp_holdtime",
+            "intfKey": false,
+            "name": "$lsp_holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$att",
+            "dataType": "string",
+            "desc": "This value represents the Attach bit. This value indicates that the router is a Level 1-2 router and can reach other areas. Level 1-only routers and Level 1-2 routers that have lost connection to other Level 1-2 routers use the Attach bit to find the closest Level 1-2 router. They install a default route to the closest Level 1-2 router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$att",
+            "intfKey": false,
+            "name": "$att",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$p",
+            "dataType": "string",
+            "desc": "This value represents the P bit. This bit is always set to zero as Dell Networking does not support area partition repair.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$p",
+            "intfKey": false,
+            "name": "$p",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$ol",
+            "dataType": "string",
+            "desc": "This value represents the overload bit, determining congestion. If the overload bit is set, other routers do not use this system as a transit router when calculating routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$ol",
+            "intfKey": false,
+            "name": "$ol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$lv",
+            "dataType": "string",
+            "desc": "Level type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$lv",
+            "intfKey": false,
+            "name": "$lv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "lsp_info.$state",
+            "dataType": "string",
+            "desc": "Level state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_database.lsp_info.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

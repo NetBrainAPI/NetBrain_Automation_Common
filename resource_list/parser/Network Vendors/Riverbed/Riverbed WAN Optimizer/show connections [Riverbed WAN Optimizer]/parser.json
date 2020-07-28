@@ -1,0 +1,409 @@
+{
+    "_id": "f296b182-71cf-10f9-41d2-5ab1cf2d16e6",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show connections",
+    "createTime": {
+        "$date": 1585329829389
+    },
+    "description": "Device Type:\nRiverbed WAN Optimizer\nCommand:\nshow connections",
+    "devTypes": [
+        10466
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "nbRiverbed # show connections\r\nT  Source                Destination           App      Rdn  Since\r\n--------------------------------------------------------------------------------\r\nRS  10.5.132.136:51632   10.5.160.235:445      SMB-UNS  6%   2016/01/20 14:21:59\r\n--------------------------------------------------------------------------------\r\nEstablished Optimized (O):     0\r\nHalf-Opened Optimized (H):     0\r\nHalf-Closed Optimized (C):     0\r\nPass Through (P):              0\r\nPI = Passthrough Intentional\r\nPU = Passthrough Unintentional\r\nForwarded (F):                 0\r\nDiscarded (not shown):         0\r\nDenied    (not shown):         0\r\n--------------------------------\r\nTotal:                         0\r\nc = Client Steelhead\r\ns = Server Steelhead\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"connections_paragraph\",\"keyVariables\":\"\",\"startLine\":\"T  Source                Destination\",\"endLine\":\"Established Optimized\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"ea3a6203-c1d2-a44a-019a-452736b3adf0\"},{\"type\":\"3\",\"name\":\"connections_tables\",\"headers\":\"T;Source;Destination;App;Rdn;Since\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"T:$string:t;Source:$string:source;Destination:$string:destination;App:$string:app;Rdn:$string:rdn;Since:$string:since\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$t:string\",\"$source:string\",\"$destination:string\",\"$app:string\",\"$rdn:string\",\"$since:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"4b54f550-21c0-a7fc-712c-da97492b8ad2\",\"hashColumns\":[\"$source\",\"$destination\",\"$app\",\"$t\"]}]},\"xxid\":\"59933e6c-a2b3-a7dd-629f-8f739950c118\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$established_opt]:Established Optimized \\\\(O\\\\):\\\\s+(\\\\S+)\",\"regex[$half_open]:Half-Opened Optimized \\\\(H\\\\):\\\\s+(\\\\S+)\",\"regex[$half_closed]:Half-Closed Optimized \\\\(C\\\\):\\\\s+(\\\\d+)\",\"regex[$pass_through]:Pass Through \\\\(P\\\\):\\\\s+(\\\\d+)\",\"regex[$forward]:Forwarded \\\\(F\\\\):\\\\s+(\\\\d+)\",\"regex[$discarded]:Discarded \\\\(not shown\\\\):\\\\s+(\\\\d+)\",\"regex[$denied]:Denied    \\\\(not shown\\\\):\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$established_opt:string\",\"$half_open:string\",\"$half_closed:string\",\"$pass_through:string\",\"$forward:string\",\"$discarded:string\",\"$denied:string\"]},\"xxid\":\"baa392aa-3311-6f10-6f85-756af38bb3fc\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total]:Total:\\\\s+ (\\\\S+)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\"]},\"xxid\":\"f772fc6a-5eb7-6f62-ec85-491806bbccd2\"}]}",
+            "tableKeys": [
+                "_original_result.connections_paragraph.connections_tables.$source",
+                "_original_result.connections_paragraph.connections_tables.$destination",
+                "_original_result.connections_paragraph.connections_tables.$app",
+                "_original_result.connections_paragraph.connections_tables.$t"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "established_opt",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "half_open",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "half_closed",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "pass_through",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "forward",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "discarded",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "denied",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 8,
+                "name": "connections_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "t",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "destination",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "app",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rdn",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "since",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$app",
+                    "$destination",
+                    "$source",
+                    "$t"
+                ],
+                "hashSort": false,
+                "index": 9,
+                "name": "connections_tables",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c52630721e0d27169f08423ad9434532",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "connections_paragraph",
+            "dataType": "paragraph",
+            "desc": "connections paragraph",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph",
+            "intfKey": false,
+            "name": "connections_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "connections_tables",
+            "dataType": "table",
+            "desc": "connections table detail.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$source",
+                    "$destination",
+                    "$app",
+                    "$t"
+                ],
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph.connections_tables",
+            "intfKey": false,
+            "name": "connections_tables",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "connections_tables.$t",
+            "dataType": "string",
+            "desc": "Connection Tag.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph.connections_tables.$t",
+            "intfKey": false,
+            "name": "$t",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connections_tables.$source",
+            "dataType": "string",
+            "desc": "Source address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph.connections_tables.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connections_tables.$destination",
+            "dataType": "string",
+            "desc": "Destination address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph.connections_tables.$destination",
+            "intfKey": false,
+            "name": "$destination",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connections_tables.$app",
+            "dataType": "string",
+            "desc": "Application protocol.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph.connections_tables.$app",
+            "intfKey": false,
+            "name": "$app",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connections_tables.$rdn",
+            "dataType": "string",
+            "desc": "Rdn",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph.connections_tables.$rdn",
+            "intfKey": false,
+            "name": "$rdn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "connections_tables.$since",
+            "dataType": "string",
+            "desc": "connection time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "connections_paragraph.connections_tables.$since",
+            "intfKey": false,
+            "name": "$since",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$established_opt",
+            "dataType": "string",
+            "desc": "Established Optimized (O)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$established_opt",
+            "intfKey": false,
+            "name": "$established_opt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$half_open",
+            "dataType": "string",
+            "desc": "Half-Opened Optimized (H)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$half_open",
+            "intfKey": false,
+            "name": "$half_open",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$half_closed",
+            "dataType": "string",
+            "desc": "Half-Closed Optimized (C)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$half_closed",
+            "intfKey": false,
+            "name": "$half_closed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$pass_through",
+            "dataType": "string",
+            "desc": "Pass Through (P)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$pass_through",
+            "intfKey": false,
+            "name": "$pass_through",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$forward",
+            "dataType": "string",
+            "desc": "Forwarded (F)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$forward",
+            "intfKey": false,
+            "name": "$forward",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$discarded",
+            "dataType": "string",
+            "desc": "Discarded (not shown)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$discarded",
+            "intfKey": false,
+            "name": "$discarded",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$denied",
+            "dataType": "string",
+            "desc": "Denied    (not shown)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$denied",
+            "intfKey": false,
+            "name": "$denied",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Total number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

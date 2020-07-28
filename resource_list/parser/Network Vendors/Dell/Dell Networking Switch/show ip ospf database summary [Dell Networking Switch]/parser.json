@@ -1,0 +1,553 @@
+{
+    "_id": "ffec6683-ce73-4139-b109-2c557e1f46f2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf database summary",
+    "createTime": {
+        "$date": 1590607423685
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow ip ospf database summary",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell#show ip ospf database summary\r\n OSPF Router with ID (1.1.1.10) (Process ID 100)\r\n     \r\n     Summary Network (Area 0.0.0.0)\r\n\r\nLS age: 1551\r\nOptions: (No TOS-capability, DC, E)\r\nLS type: Summary Network\r\nLink State ID: 192.68.16.0\r\nAdvertising Router: 192.168.17.1\r\nLS Seq Number: 0x80000054\r\nChecksum: 0xb5a2\r\nLength: 28\r\nNetwork Mask: /24\r\n TOS: 0 Metric: 1\r\n\r\nLS age: 9\r\nOptions: (No TOS-capability, No DC, E)\r\nLS type: Summary Network\r\nLink State ID: 192.68.32.0\r\nAdvertising Router: 1.1.1.10\r\nLS Seq Number: 0x80000016\r\nChecksum: 0x987c\r\nLength: 28\r\nNetwork Mask: /24\r\n TOS: 0 Metric: 1\r\n\r\nLS age: 7\r\nOptions: (No TOS-capability, No DC, E)\r\nLS type: Summary Network\r\nLink State ID: 192.68.33.0\r\nAdvertising Router: 1.1.1.10\r\nLS Seq Number: 0x80000016\r\nChecksum: 0x1241\r\nLength: 28\r\nNetwork Mask: /26\r\n TOS: 0 Metric: 1",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_database_summary_process_id_paragraph\",\"keyVariables\":\"\",\"startLine\":\"regex[$rid,$int:process_id]:OSPF Router with ID \\\\((\\\\S+)\\\\) \\\\(Process ID (\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$rid:string\",\"$process_id:int\"]},\"xxid\":\"70890690-2994-f279-6a83-ba015d96baa1\"},{\"type\":\"4\",\"name\":\"ospf_database_summary_area_id_paragraph\",\"keyVariables\":\"\",\"startLine\":\"regex[$area_id]:Area\\\\s+(\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\"]},\"xxid\":\"bbf88a83-1dd0-4bb2-64f8-924e12096284\"},{\"type\":\"4\",\"name\":\"ospf_database_summary_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$ls_age]:LS age:\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$options]:Options:\\\\s+\\\\((.+)\\\\)\",\"regex[$ls_type]:LS type:\\\\s+(.+)\",\"regex[$link_state_id]:Link State ID:\\\\s+(.+)\",\"regex[$advertising_routers]:Advertising Router:\\\\s+(.+)\",\"regex[$ls_seq_num]:LS Seq Number:\\\\s+(.+)\",\"regex[$checksum]:Checksum:\\\\s+(.+)\",\"regex[$int:length]:Length:\\\\s+(.+)\",\"regex[$network_mask]:Network Mask:\\\\s+(.+)\",\"regex[$int:tos]:TOS:\\\\s+(\\\\S+)\",\"regex[$int:metric]:Metric:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ls_age:string\",\"$options:string\",\"$ls_type:string\",\"$link_state_id:string\",\"$advertising_routers:string\",\"$ls_seq_num:string\",\"$checksum:string\",\"$length:int\",\"$network_mask:string\",\"$tos:int\",\"$metric:int\"]},\"xxid\":\"19b37ac1-e67a-c11f-0014-73f12f4d0b62\"}]},\"xxid\":\"3edd48be-30f0-9a4a-59c5-bd698e754f21\",\"hashColumns\":[\"$link_state_id\"]}]},\"xxid\":\"dfc60334-076a-be67-042f-6369496e5fd0\"}]},\"xxid\":\"15a44bc2-566c-2e6e-66e2-d3cb18a63808\",\"hashColumns\":[\"$process_id\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_database_summary_process_id_paragraph.$process_id",
+                "_original_result.ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$link_state_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "process_id",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_database_summary_process_id_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "process_id",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_database_summary_area_id_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ls_age",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "options",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ls_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "link_state_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "advertising_routers",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ls_seq_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "length",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "network_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "tos",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "process_id",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "ospf_database_summary_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "19a982d4a00a96b1f800a241f7cb9278",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_database_summary_process_id_paragraph",
+            "dataType": "paragraph",
+            "desc": "OSPF process table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph",
+            "intfKey": false,
+            "name": "ospf_database_summary_process_id_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_database_summary_process_id_paragraph.$rid",
+            "dataType": "string",
+            "desc": "Router ID number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_process_id_paragraph.$process_id",
+            "dataType": "int",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_area_id_paragraph",
+            "dataType": "paragraph",
+            "desc": "Area id table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph",
+            "intfKey": false,
+            "name": "ospf_database_summary_area_id_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_database_summary_area_id_paragraph.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_area_id_paragraph.$rid",
+            "dataType": "string",
+            "desc": "Router ID number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_area_id_paragraph.$process_id",
+            "dataType": "int",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table",
+            "dataType": "paragraph",
+            "desc": "Link state database table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$link_state_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table",
+            "intfKey": false,
+            "name": "ospf_database_summary_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_database_summary_table.$ls_age",
+            "dataType": "string",
+            "desc": "Displays the LSA age.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$ls_age",
+            "intfKey": false,
+            "name": "$ls_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$options",
+            "dataType": "string",
+            "desc": "Displays the optional capabilities available on router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$options",
+            "intfKey": false,
+            "name": "$options",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$ls_type",
+            "dataType": "string",
+            "desc": "Displays the LSA type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$ls_type",
+            "intfKey": false,
+            "name": "$ls_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$link_state_id",
+            "dataType": "string",
+            "desc": "Displays the Link State ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$link_state_id",
+            "intfKey": false,
+            "name": "$link_state_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$advertising_routers",
+            "dataType": "string",
+            "desc": "Identifies the router ID of the LSA???s originating router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$advertising_routers",
+            "intfKey": false,
+            "name": "$advertising_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$ls_seq_num",
+            "dataType": "string",
+            "desc": "Displays the link state sequence number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$ls_seq_num",
+            "intfKey": false,
+            "name": "$ls_seq_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$checksum",
+            "dataType": "string",
+            "desc": "Displays the Fletcher checksum of an LSA???s complete contents.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$checksum",
+            "intfKey": false,
+            "name": "$checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$length",
+            "dataType": "int",
+            "desc": "Displays the length in bytes of the LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$length",
+            "intfKey": false,
+            "name": "$length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$network_mask",
+            "dataType": "string",
+            "desc": "Displays the network mask implemented on the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$network_mask",
+            "intfKey": false,
+            "name": "$network_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$tos",
+            "dataType": "int",
+            "desc": "Displays the TOS options. Option 0 is the only option.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$tos",
+            "intfKey": false,
+            "name": "$tos",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$metric",
+            "dataType": "int",
+            "desc": "Displays the LSA metrics.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$metric",
+            "intfKey": false,
+            "name": "$metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$rid",
+            "dataType": "string",
+            "desc": "Router ID number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_summary_table.$process_id",
+            "dataType": "int",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_summary_process_id_paragraph.ospf_database_summary_area_id_paragraph.ospf_database_summary_table.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

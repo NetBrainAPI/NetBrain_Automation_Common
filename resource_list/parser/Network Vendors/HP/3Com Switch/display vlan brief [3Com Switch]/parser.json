@@ -1,0 +1,151 @@
+{
+    "_id": "26744e4c-491f-6280-1104-24b7ee47804a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display vlan brief",
+    "createTime": {
+        "$date": 1590771835341
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay vlan brief",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<SW1>display vlan brief\r\nBrief information about all VLANs:\r\nSupported Minimum VLAN ID: 1\r\nSupported Maximum VLAN ID: 4094\r\nDefault VLAN ID: 1\r\nVLAN ID   Name                             Port\r\n1         VLAN 0001                        FGE1/0/53  FGE1/0/54  GE1/0/7\r\n                                           GE1/0/8  GE1/0/9  GE1/0/10\r\n                                           GE1/0/12  GE1/0/13  GE1/0/14\r\n                                           GE1/0/15  GE1/0/16  GE1/0/17\r\n                                           GE1/0/18  GE1/0/19  GE1/0/20\r\n                                           GE1/0/21  GE1/0/22  GE1/0/23\r\n                                           GE1/0/24  GE1/0/25  GE1/0/26\r\n                                           GE1/0/27  GE1/0/28  GE1/0/29\r\n                                           GE1/0/30  GE1/0/31  GE1/0/32\r\n                                           GE1/0/33  GE1/0/34  GE1/0/35\r\n                                           GE1/0/36  GE1/0/37  GE1/0/38\r\n                                           GE1/0/39  GE1/0/40  GE1/0/41\r\n                                           GE1/0/42  GE1/0/43  GE1/0/44\r\n                                           GE1/0/45  GE1/0/46  GE1/0/47\r\n                                           GE1/0/48  XGE1/0/49  XGE1/0/50\r\n                                           XGE1/0/51  XGE1/0/52\r\n2         VLAN 0002                        GE1/0/2  GE1/0/3  GE1/0/4  GE1/0/5\r\n3         VLAN 0003                        GE1/0/6\r\n4         VLAN 0004\r\n5         VLAN 0005\r\n6         VLAN 0006\r\n7         VLAN 0007\r\n10        VLAN 0010                        GE1/0/1\r\n11        VLAN 0011                        GE1/0/11",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vlans\",\"keyVariables\":\"\",\"startLine\":\"regex[$vlan_id]:^(\\\\d+)\\\\s+\\\\S+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vlan_name]:^\\\\d+\\\\s+(\\\\S+\\\\s+\\\\S+)\",\"mregex[$ports]:^\\\\d+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vlan_id:string\",\"$vlan_name:string\",\"$ports:string\"]},\"xxid\":\"5af5ff65-7f2e-9459-88de-a9d8a7ddc806\"}]},\"xxid\":\"a8e1c875-0d62-9884-7679-7a63218cfc10\",\"hashColumns\":[\"$vlan_id\",\"$vlan_name\",\"$ports\"]}]}",
+            "tableKeys": [
+                "_original_result.vlans.$vlan_id",
+                "_original_result.vlans.$vlan_name",
+                "_original_result.vlans.$ports"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ports",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ports",
+                    "$vlan_id",
+                    "$vlan_name"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vlans",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "942d7950cde7930fff5267cff1bfabb1",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vlans",
+            "dataType": "paragraph",
+            "desc": "VLANs table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan_id",
+                    "$vlan_name",
+                    "$ports"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlans",
+            "intfKey": false,
+            "name": "vlans",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vlans.$vlan_id",
+            "dataType": "string",
+            "desc": "VLAN ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans.$vlan_id",
+            "intfKey": false,
+            "name": "$vlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlans.$vlan_name",
+            "dataType": "string",
+            "desc": "VLAN name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans.$vlan_name",
+            "intfKey": false,
+            "name": "$vlan_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlans.$ports",
+            "dataType": "string",
+            "desc": "Ports.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

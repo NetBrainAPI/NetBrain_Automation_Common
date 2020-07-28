@@ -1,0 +1,505 @@
+{
+    "_id": "dcfdda15-1641-8f40-a4b3-68be134a45dc",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mrib ipv4 route",
+    "createTime": {
+        "$date": 1579122298802
+    },
+    "description": "Device Type:\nCisco IOS XR\nCommand:\nshow mrib ipv4 route",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:xrv10#show mrib ipv4 route\r\n\r\nTue Jan 21 20:25:53.063 UTC\r\n\r\nIP Multicast Routing Information Base\r\nEntry flags: L - Domain-Local Source, E - External Source to the Domain,\r\n    C - Directly-Connected Check, S - Signal, IA - Inherit Accept,\r\n    IF - Inherit From, D - Drop, ME - MDT Encap, EID - Encap ID,\r\n    MD - MDT Decap, MT - MDT Threshold Crossed, MH - MDT interface handle\r\n    CD - Conditional Decap, MPLS - MPLS Decap, EX - Extranet\r\n    MoFE - MoFRR Enabled, MoFS - MoFRR State, MoFP - MoFRR Primary\r\n    MoFB - MoFRR Backup, RPFID - RPF ID Set, X - VXLAN\r\nInterface flags: F - Forward, A - Accept, IC - Internal Copy,\r\n    NS - Negate Signal, DP - Don't Preserve, SP - Signal Present,\r\n    II - Internal Interest, ID - Internal Disinterest, LI - Local Interest,\r\n    LD - Local Disinterest, DI - Decapsulation Interface\r\n    EI - Encapsulation Interface, MI - MDT Interface, LVIF - MPLS Encap,\r\n    EX - Extranet, A2 - Secondary Accept, MT - MDT Threshold Crossed,\r\n    MA - Data MDT Assigned, LMI - mLDP MDT Interface, TMI - P2MP-TE MDT Interface\r\n    IRMI - IR MDT Interface\r\n\r\n(*,224.0.0.0/24) Flags: D P\r\n  Up: 22w6d\r\n\r\n(*,224.0.1.39) Flags: S P\r\n  Up: 22w6d\r\n\r\n(*,224.0.1.40) Flags: S P\r\n  Up: 22w6d\r\n  Outgoing Interface List\r\n    Loopback0 Flags: II LI, Up: 22w6d\r\n\r\n(*,239.10.10.0/24) Flags: D P\r\n  Up: 22w6d\r\n\r\n(75.75.75.1,239.10.10.4) RPF nbr: 30.1.1.5 Flags: RPF MD MH CD\r\n  MVPN TID: 0xe0000011\r\n  MVPN Remote TID: 0x0\r\n  MVPN Payload: IPv4\r\n  MDT IFH: 0x480\r\n  Up: 1w0d\r\n  Incoming Interface List\r\n    GigabitEthernet0/0/0/0 Flags: A, Up: 1w0d\r\n  Outgoing Interface List\r\n    Loopback0 Flags: F NS, Up: 1w0d\r\n\r\n(75.75.75.3,239.10.10.4) RPF nbr: 20.1.1.9 Flags: RPF MD MH\r\n  MVPN TID: 0xe0000011\r\n  MVPN Remote TID: 0x0\r\n  MVPN Payload: IPv4\r\n  MDT IFH: 0x480\r\n  Up: 20w0d\r\n  Incoming Interface List\r\n    GigabitEthernet0/0/0/2 Flags: A, Up: 20w0d\r\n  Outgoing Interface List\r\n    Loopback0 Flags: F NS, Up: 1w0d\r\n    GigabitEthernet0/0/0/0 Flags: F NS, Up: 20w0d\r\n\r\n(75.75.75.5,239.10.10.4) RPF nbr: 30.1.1.5 Flags: RPF MD MH\r\n  MVPN TID: 0xe0000011\r\n  MVPN Remote TID: 0x0\r\n  MVPN Payload: IPv4\r\n  MDT IFH: 0x480\r\n  Up: 10w0d\r\n  Incoming Interface List\r\n    GigabitEthernet0/0/0/0 Flags: A, Up: 10w0d\r\n  Outgoing Interface List\r\n    Loopback0 Flags: F NS, Up: 1w0d\r\n    GigabitEthernet0/0/0/2 Flags: F NS, Up: 10w0d\r\n\r\n(75.75.75.7,239.10.10.4) RPF nbr: 75.75.75.7 Flags: RPF ME MH\r\n  MVPN TID: 0xe0000011\r\n  MVPN Remote TID: 0x0\r\n  MVPN Payload: IPv4\r\n  MDT IFH: 0x480\r\n  Up: 22w6d\r\n  Incoming Interface List\r\n    Loopback0 Flags: F A, Up: 22w6d\r\n  Outgoing Interface List\r\n    Loopback0 Flags: F A, Up: 22w6d\r\n    GigabitEthernet0/0/0/0 Flags: F NS, Up: 1w0d\r\n    GigabitEthernet0/0/0/2 Flags: F NS, Up: 1w0d\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.groups.$in_interface",
+                "_original_result.groups.mrib_info.$out_interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"groups\",\"keyVariables\":null,\"startLine\":\"regex[$source_address,$source_mask,$group_address,$group_mask]:^\\\\((\\\\S+?)(?:/(\\\\d+))?,(\\\\S+?)(?:/(\\\\d+))?\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$rpf_neighbour]:RPF nbr: ([^\\\\s,]+)\",\"regex[$flags]:Flags: (\\\\S+(?: \\\\S+)*)\",\"mregex[$in_interface]:Incoming Interface List\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$source_address:string\",\"$source_mask:string\",\"$group_address:string\",\"$group_mask:string\",\"$rpf_neighbour:string\",\"$flags:string\",\"$in_interface:string\"]},\"xxid\":\"fb2f3479-5ea5-c52e-607c-c2dc9e817ae2\"},{\"type\":\"4\",\"name\":\"mrib_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$out_interface,$interface_flags,$uptime]:[ ]{4}(\\\\S+) Flags: (\\\\S+(?: \\\\S+)*), Up: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$out_interface:string\",\"$interface_flags:string\",\"$uptime:string\"]},\"xxid\":\"22e2b5ec-f2e6-e41c-6d14-8956a6b52a6a\"}]},\"xxid\":\"4760b0e5-9ff4-2085-a470-5db91e244062\",\"interfaceKey\":\"$out_interface\",\"hashColumns\":[\"$out_interface\",\"$interface_flags\",\"$group_address\",\"$flags\",\"$in_interface\",\"$source_address\",\"$rpf_neighbour\"],\"hashSort\":false}]},\"xxid\":\"d940b484-63ca-8b04-9c74-365a52716d44\",\"interfaceKey\":\"$in_interface\",\"hashColumns\":[\"$source_address\",\"$group_address\",\"$rpf_neighbour\",\"$flags\",\"$in_interface\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.groups.$group_address",
+                "_original_result.groups.$in_interface",
+                "_original_result.groups.mrib_info.$group_address",
+                "_original_result.groups.mrib_info.$source_address",
+                "_original_result.groups.mrib_info.$in_interface",
+                "_original_result.groups.mrib_info.$flags",
+                "_original_result.groups.mrib_info.$rpf_neighbour"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "source_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "group_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rpf_neighbour",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "in_interface",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$flags",
+                    "$group_address",
+                    "$in_interface",
+                    "$rpf_neighbour",
+                    "$source_address"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "groups",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "out_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "source_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "source_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "group_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "rpf_neighbour",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "in_interface",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$flags",
+                    "$group_address",
+                    "$in_interface",
+                    "$interface_flags",
+                    "$out_interface",
+                    "$rpf_neighbour",
+                    "$source_address"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "mrib_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fae8d256ab26ccbdafc0ad7bea8090b7",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "groups",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$source_address",
+                    "$group_address",
+                    "$rpf_neighbour",
+                    "$flags",
+                    "$in_interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "groups",
+            "intfKey": false,
+            "name": "groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "groups.$source_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$source_address",
+            "intfKey": false,
+            "name": "$source_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$source_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$source_mask",
+            "intfKey": false,
+            "name": "$source_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$group_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$group_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group_mask",
+            "intfKey": false,
+            "name": "$group_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$rpf_neighbour",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$rpf_neighbour",
+            "intfKey": false,
+            "name": "$rpf_neighbour",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$in_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$in_interface",
+            "intfKey": false,
+            "name": "$in_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "mrib_info",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$out_interface",
+                    "$interface_flags",
+                    "$group_address",
+                    "$flags",
+                    "$in_interface",
+                    "$source_address",
+                    "$rpf_neighbour"
+                ],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info",
+            "intfKey": false,
+            "name": "mrib_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "mrib_info.$out_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$out_interface",
+            "intfKey": false,
+            "name": "$out_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "mrib_info.$interface_flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$interface_flags",
+            "intfKey": false,
+            "name": "$interface_flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$source_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$source_address",
+            "intfKey": false,
+            "name": "$source_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$source_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$source_mask",
+            "intfKey": false,
+            "name": "$source_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$group_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$group_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$group_mask",
+            "intfKey": false,
+            "name": "$group_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$rpf_neighbour",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$rpf_neighbour",
+            "intfKey": false,
+            "name": "$rpf_neighbour",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$flags",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mrib_info.$in_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.mrib_info.$in_interface",
+            "intfKey": false,
+            "name": "$in_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

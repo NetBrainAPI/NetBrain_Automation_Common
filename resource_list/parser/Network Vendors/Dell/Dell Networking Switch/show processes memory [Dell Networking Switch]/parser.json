@@ -1,0 +1,265 @@
+{
+    "_id": "3d514a62-00a1-4b57-b0e7-19202c177e73",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show processes memory",
+    "createTime": {
+        "$date": 1590779913136
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow processes memory",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show processes memory \r\nTotal: 268435456, MaxUsed: 2420244, CurrentUsed: 2420244,\r\nCurrentFree:\r\n266015212\r\nTaskName TotalAllocated TotalFreed MaxHeld CurrentHolding\r\ntme      435406         397536     54434   37870\r\nipc       16652              0     16652   16652\r\ntimerMgr  33304              0     33304   33304\r\nsysAdmTsk 33216              0     33216   33216\r\ntFib4   1943960              0   1943960 1943960\r\naclAgent  90770          16564     74206   74206\r\nifagt_1   21318          16564     21318    4754\r\ndsagt      6504              0      6504    6504\r\nMacAgent 269778              0    269778  269778\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$double:total_memory, $double:maxused_memory, $double:current_used_memory]:Total: (\\\\d+), MaxUsed: (\\\\d+), CurrentUsed: (\\\\d+)\",\"regex[$double:current_free_memory]:^(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_memory:double\",\"$maxused_memory:double\",\"$current_used_memory:double\",\"$current_free_memory:double\"]},\"xxid\":\"dfc26a32-9259-0aeb-c44f-b35f9d64a5d7\"},{\"type\":\"4\",\"name\":\"process_memory\",\"keyVariables\":\"\",\"startLine\":\"regex[$task_name, $double:total_allocated, $double:total_free, $double:max_held, $double:current_holding]:(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$task_name:string\",\"$total_allocated:double\",\"$total_free:double\",\"$max_held:double\",\"$current_holding:double\"]},\"xxid\":\"71e46597-850c-065b-ae6a-92da70ffff9c\"}]},\"xxid\":\"c9dbbf54-ced4-5fd6-712d-043ec8909d23\",\"hashColumns\":[\"$task_name\"]}]}",
+            "tableKeys": [
+                "_original_result.process_memory.$task_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_memory",
+                "type": 2
+            },
+            {
+                "index": 1,
+                "name": "maxused_memory",
+                "type": 2
+            },
+            {
+                "index": 2,
+                "name": "current_used_memory",
+                "type": 2
+            },
+            {
+                "index": 3,
+                "name": "current_free_memory",
+                "type": 2
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "task_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "total_allocated",
+                        "type": 2
+                    },
+                    {
+                        "index": 2,
+                        "name": "total_free",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "max_held",
+                        "type": 2
+                    },
+                    {
+                        "index": 4,
+                        "name": "current_holding",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": [
+                    "$task_name"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "process_memory",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bcfad07bfd3b49ad5cdb5a9fc5d2d8e4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total_memory",
+            "dataType": "double",
+            "desc": "The number of total memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_memory",
+            "intfKey": false,
+            "name": "$total_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$maxused_memory",
+            "dataType": "double",
+            "desc": "The number of maxused memory",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$maxused_memory",
+            "intfKey": false,
+            "name": "$maxused_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$current_used_memory",
+            "dataType": "double",
+            "desc": "The number of  current used memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$current_used_memory",
+            "intfKey": false,
+            "name": "$current_used_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$current_free_memory",
+            "dataType": "double",
+            "desc": "The number of  current free memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$current_free_memory",
+            "intfKey": false,
+            "name": "$current_free_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_memory",
+            "dataType": "paragraph",
+            "desc": "processes_memory_table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$task_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "process_memory",
+            "intfKey": false,
+            "name": "process_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "process_memory.$task_name",
+            "dataType": "string",
+            "desc": "Task name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_memory.$task_name",
+            "intfKey": false,
+            "name": "$task_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_memory.$total_allocated",
+            "dataType": "double",
+            "desc": "Total allocated memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_memory.$total_allocated",
+            "intfKey": false,
+            "name": "$total_allocated",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_memory.$total_free",
+            "dataType": "double",
+            "desc": "Total free memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_memory.$total_free",
+            "intfKey": false,
+            "name": "$total_free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_memory.$max_held",
+            "dataType": "double",
+            "desc": "Max held memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_memory.$max_held",
+            "intfKey": false,
+            "name": "$max_held",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_memory.$current_holding",
+            "dataType": "double",
+            "desc": "Current holding memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "process_memory.$current_holding",
+            "intfKey": false,
+            "name": "$current_holding",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

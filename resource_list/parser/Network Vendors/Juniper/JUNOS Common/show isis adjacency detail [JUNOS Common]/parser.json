@@ -1,0 +1,462 @@
+{
+    "_id": "c585e7da-b251-2529-6fbf-ea712b438025",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis adjacency detail",
+    "createTime": {
+        "$date": 1580702989279
+    },
+    "description": "Device Type:\nJuniper EX Switch\nJuniper Router \nJuniper SRX Firewall\nCommand:\nshow isis adjacency ",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "netbrain@junr2>show isis adjacency detail \njunsrx1\n  Interface: em2.0, Level: 1, State: Up, Expires in 8 secs\n  Priority: 64, Up/Down transitions: 329825, Last transition: 08:21:34 ago\n  Circuit type: 3, Speaks: IP, IPv6, MAC address: 0:c:29:b9:70:14\n  Topologies: Unicast\n  Restart capable: Yes, Adjacency advertisement: Advertise\n  LAN id: junsrx1.02, IP addresses: 163.0.23.2\n\njunsrx1\n  Interface: em2.0, Level: 2, State: Up, Expires in 6 secs\n  Priority: 64, Up/Down transitions: 346967, Last transition: 08:21:32 ago\n  Circuit type: 3, Speaks: IP, IPv6, MAC address: 0:c:29:b9:70:14\n  Topologies: Unicast\n  Restart capable: Yes, Adjacency advertisement: Advertise\n  LAN id: junsrx1.02, IP addresses: 163.0.23.2\n\nBR1-MX2\n  Interface: ge-0/0/3.0, Level: 2, State: Up, Expires in 26 secs\n  Priority: 64, Up/Down transitions: 65981, Last transition: 10:22:28 ago\n  Circuit type: 2, Speaks: IP, IPv6, MAC address: 0:5:86:71:2e:3\n  Topologies: Unicast\n  Restart capable: Yes, Adjacency advertisement: Advertise\n  LAN id: BR1-MX1.02, IP addresses: 10.10.0.2\n  IPv6 addresses: fe80::205:86ff:fe71:2e03\n\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.title.isis_neighbors.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"title\",\"startLine\":null,\"endLine\":null,\"skipLines\":null,\"includeLines\":null,\"excludeLines\":{\"excludeline\":\"show isis adjacency detail \"},\"filterLoop\":\"1\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"9a1319d1-f0a1-d2b5-55be-23f832eb3ced\"},{\"type\":\"4\",\"name\":\"isis_neighbors\",\"keyVariables\":null,\"startLine\":\"mregex:\\\\S+\\\\s+  Interface:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"$neighbor_id\",\"Interface: $interface, Level: $level,\",\"State: $state, Expires in $int:expires_time secs\",\"Priority: $int:priority, Up/Down transitions: $int:up_down_transitions, Last transition: $last_transition_time ago\",\"regex[$circuit_type,$speaks,$mac_addr]:Circuit type: (\\\\S+), Speaks: (.*), MAC address: (\\\\S+)\",\"Topologies: $topologies\",\"Restart capable: $restart_capable, Adjacency advertisement: $adjacency_advertisement\",\"IP addresses: $neighbor_ip_address\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$neighbor_id:string\",\"$interface:string\",\"$level:string\",\"$state:string\",\"$expires_time:int\",\"$priority:int\",\"$up_down_transitions:int\",\"$last_transition_time:string\",\"$circuit_type:string\",\"$speaks:string\",\"$mac_addr:string\",\"$topologies:string\",\"$restart_capable:string\",\"$adjacency_advertisement:string\",\"$neighbor_ip_address:string\"]},\"xxid\":\"7a557c16-a7bf-1290-4594-83af40681230\"}]},\"xxid\":\"f0a3a7e4-e0f4-31eb-8927-171f1e79a9d8\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$neighbor_id\",\"$interface\",\"$level\",\"$state\",\"$priority\",\"$up_down_transitions\",\"$circuit_type\",\"$speaks\",\"$mac_addr\",\"$topology\",\"$is_restart_capable\",\"$adjacency_advertisement\",\"$neighbor_ip_address\"],\"hashSort\":false}]},\"xxid\":\"be45cb73-f058-aec4-d573-7d8f4892f5e0\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"765074b8-4c80-460b-f9ff-b4d33d6e6ba8\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "title",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 15,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "level",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "expires_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "up_down_transitions",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "last_transition_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "circuit_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "speaks",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "topologies",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "restart_capable",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "adjacency_advertisement",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "neighbor_ip_address",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$adjacency_advertisement",
+                    "$circuit_type",
+                    "$interface",
+                    "$is_restart_capable",
+                    "$level",
+                    "$mac_addr",
+                    "$neighbor_id",
+                    "$neighbor_ip_address",
+                    "$priority",
+                    "$speaks",
+                    "$state",
+                    "$topology",
+                    "$up_down_transitions"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e80e469a9ff83593fb94e00b6ffff9b2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "title",
+            "dataType": "filter",
+            "desc": "ISIS Adjacency Configuration",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title",
+            "intfKey": false,
+            "name": "title",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor_id",
+                    "$interface",
+                    "$level",
+                    "$state",
+                    "$priority",
+                    "$up_down_transitions",
+                    "$circuit_type",
+                    "$speaks",
+                    "$mac_addr",
+                    "$topology",
+                    "$is_restart_capable",
+                    "$adjacency_advertisement",
+                    "$neighbor_ip_address"
+                ],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors",
+            "intfKey": false,
+            "name": "isis_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_neighbors.$neighbor_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$neighbor_id",
+            "intfKey": false,
+            "name": "$neighbor_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_neighbors.$level",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$expires_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$expires_time",
+            "intfKey": false,
+            "name": "$expires_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$up_down_transitions",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$up_down_transitions",
+            "intfKey": false,
+            "name": "$up_down_transitions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$last_transition_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$last_transition_time",
+            "intfKey": false,
+            "name": "$last_transition_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$circuit_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$circuit_type",
+            "intfKey": false,
+            "name": "$circuit_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$speaks",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$speaks",
+            "intfKey": false,
+            "name": "$speaks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$mac_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$mac_addr",
+            "intfKey": false,
+            "name": "$mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$topologies",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$topologies",
+            "intfKey": false,
+            "name": "$topologies",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$restart_capable",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$restart_capable",
+            "intfKey": false,
+            "name": "$restart_capable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$adjacency_advertisement",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$adjacency_advertisement",
+            "intfKey": false,
+            "name": "$adjacency_advertisement",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_neighbors.$neighbor_ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "title.isis_neighbors.$neighbor_ip_address",
+            "intfKey": false,
+            "name": "$neighbor_ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

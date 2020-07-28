@@ -1,0 +1,455 @@
+{
+    "_id": "5690d9c3-ddcf-c999-6ccc-bf9d01d1d6e9",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf interface",
+    "createTime": {
+        "$date": 1590765647103
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow ip ospf interface",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-arista-veos#show ip ospf interface\r\nEthernet1 is up\r\n  Interface Address 172.27.128.5, VRF default, Area 0.0.0.0\r\n  Network Type Broadcast, Cost: 10\r\n  Transmit Delay is 1 sec, State DR Other, Priority 1\r\n  Designated Router is 172.27.128.161\r\n  Backup Designated Router is 172.27.128.1\r\n  Timer intervals configured, Hello 10, Dead 40, Retransmit 5\r\n  Neighbor Count is 2\r\n  No authentication\r\nVlan1 is up, line protocol is up (connected)\r\n  Internet Address 10.168.0.1/24, Area 0.0.0.0\r\n  Process ID 1, Router ID 10.168.103.1, Network Type BROADCAST, Cost: 10\r\n  Transmit Delay is 1 sec, State BDR, Priority 1\r\n  Designated Router is 10.168.104.2\r\n  Backup Designated router is 10.168.103.1\r\n  Timer intervals configured, Hello 10, Dead 40, Retransmit 5\r\n  Neighbor Count is 1\r\n  MTU is 1500\r\nqapp-arista-veos#",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex:\\\\w+ +is +up\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"$intf is up\",\"regex[$intf_ip]:Address\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"regex[$intf_mask]:\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\/(\\\\d+)\",\"VRF $vrf_name, Area\",\"Area $area_id$\",\"Type $network_type, Cost:\",\"regex[$int:cost]:Broadcast, Cost:(.+)$\",\"Transmit Delay is $int:trans_delay sec,\",\"regex[$state]:State\\\\s+(.+?),\",\"Priority $int:priority$\",\"Designated Router is $dr$\",\"Backup Designated router is $backup_dr$\",\"Hello $int:hello_interval, Dead\",\"Dead $int:dead_interval, Retransmit\",\"Retransmit $int:retransmit_interval$\",\"Neighbor Count is $int:nbr_count$\",\"MTU is $int:mtu$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$intf_ip:string\",\"$intf_mask:string\",\"$vrf_name:string\",\"$area_id:string\",\"$network_type:string\",\"$cost:int\",\"$trans_delay:int\",\"$state:string\",\"$priority:int\",\"$dr:string\",\"$backup_dr:string\",\"$hello_interval:int\",\"$dead_interval:int\",\"$retransmit_interval:int\",\"$nbr_count:int\",\"$mtu:int\"]},\"xxid\":\"975f9bf0-f59f-4d89-7c7e-62098eda7326\"}]},\"xxid\":\"3fda2627-04a6-7517-ce2e-b12e1e48516e\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$network_type\",\"$cost\",\"$state\",\"$hello_interval\",\"$dead_interval\",\"$mtu\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_intfs.$network_type",
+                "_original_result.ospf_intfs.$cost",
+                "_original_result.ospf_intfs.$state",
+                "_original_result.ospf_intfs.$hello_interval",
+                "_original_result.ospf_intfs.$dead_interval",
+                "_original_result.ospf_intfs.$mtu"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 17,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vrf_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "network_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "trans_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "backup_dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "hello_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "dead_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "retransmit_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "nbr_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "mtu",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$cost",
+                    "$dead_interval",
+                    "$hello_interval",
+                    "$intf",
+                    "$mtu",
+                    "$network_type",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ee0314e227b4cbb59d0e5dc07150eaa1",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_intfs",
+            "dataType": "paragraph",
+            "desc": "OSPF interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$network_type",
+                    "$cost",
+                    "$state",
+                    "$hello_interval",
+                    "$dead_interval",
+                    "$mtu"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs",
+            "intfKey": false,
+            "name": "ospf_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_intfs.$intf",
+            "dataType": "string",
+            "desc": "The interface on which the OSPF neighbor has formed adjacency.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_intfs.$intf_ip",
+            "dataType": "string",
+            "desc": "The IP address of this interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$intf_ip",
+            "intfKey": false,
+            "name": "$intf_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$intf_mask",
+            "dataType": "string",
+            "desc": "The masks of this interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$intf_mask",
+            "intfKey": false,
+            "name": "$intf_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$vrf_name",
+            "dataType": "string",
+            "desc": "The VRF name of this interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$vrf_name",
+            "intfKey": false,
+            "name": "$vrf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$area_id",
+            "dataType": "string",
+            "desc": "Number of the area that the interface is in.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$network_type",
+            "dataType": "string",
+            "desc": "In the example, the OSPF network type is BROADCAST, which uses OSPF multicasting capabilities. Under this network type, a designated router (DR) and backup designated router (BDR) are elected. For routers on an interface to become neighbors, the network type for all should match.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$network_type",
+            "intfKey": false,
+            "name": "$network_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$cost",
+            "dataType": "int",
+            "desc": "This is an OSPF metric.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$trans_delay",
+            "dataType": "int",
+            "desc": "The transmit delay is the amount of time OSPF waits before flooding a link-state advertisement (LSA) over the link.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$trans_delay",
+            "intfKey": false,
+            "name": "$trans_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$state",
+            "dataType": "string",
+            "desc": "Defines the state of the link and can be any of these:DR/BDR/DROTHER/Waiting/P2P/P2M.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$priority",
+            "dataType": "int",
+            "desc": "This is the OSPF priority that helps determine the DR and BDR on the network to which this interface is connected.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dr",
+            "dataType": "string",
+            "desc": "This is the router ID of the DR for this broadcast network.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$backup_dr",
+            "dataType": "string",
+            "desc": "This is the router ID of the BDR for this broadcast network.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$backup_dr",
+            "intfKey": false,
+            "name": "$backup_dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$hello_interval",
+            "dataType": "int",
+            "desc": "Interval time in seconds that a router sends an OSPF hello packet.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$hello_interval",
+            "intfKey": false,
+            "name": "$hello_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dead_interval",
+            "dataType": "int",
+            "desc": "Time in seconds to wait before declaring a neighbor dead.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dead_interval",
+            "intfKey": false,
+            "name": "$dead_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$retransmit_interval",
+            "dataType": "int",
+            "desc": "Time to wait before retransmitting a database description (DBD) packet when it has not been acknowledged.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$retransmit_interval",
+            "intfKey": false,
+            "name": "$retransmit_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$nbr_count",
+            "dataType": "int",
+            "desc": "This is the number of routers running OSPF that are fully adjacent with this router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$nbr_count",
+            "intfKey": false,
+            "name": "$nbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$mtu",
+            "dataType": "int",
+            "desc": "Interface maximum transmission unit (MTU).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

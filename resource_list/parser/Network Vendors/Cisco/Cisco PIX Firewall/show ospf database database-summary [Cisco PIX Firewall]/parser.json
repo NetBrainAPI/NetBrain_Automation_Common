@@ -1,0 +1,1118 @@
+{
+    "_id": "ffb6f241-32a9-bdbb-7dbc-1b0a570bfc25",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf database database-summary",
+    "createTime": {
+        "$date": 1591046651024
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow show ospf database database-summary",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "pixfirewall# show ospf database database-summary \r\n\r\n\r\n             OSPF Router with ID (3.3.3.3) (Process ID 1)\r\n\r\nArea 0 database summary\r\n  LSA Type      Count    Delete   Maxage\r\n          Router       3        0        0\r\n         Network       2        0        0\r\n     Summary Net       0        0        0\r\n    Summary ASBR       0        0        0\r\n      Type-7 Ext       0        0        0\r\n        Subtotal       5        0        0\r\n\r\nProcess 1 database summary\r\n  LSA Type      Count    Delete   Maxage\r\n          Router       3        0        0\r\n         Network       2        0        0\r\n     Summary Net       0        0        0\r\n    Summary ASBR       0        0        0\r\n      Type-7 Ext       0        0        0\r\n      Type-5 Ext       0        0        0\r\n           Total       5        0        0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_database_process_id\",\"keyVariables\":\"\",\"startLine\":\"regex[$router_id,$process_id]:OSPF Router with ID \\\\((\\\\S+)\\\\) \\\\(Process ID (\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$process_id:string\"]},\"xxid\":\"1d00ede7-3216-0e7f-94e1-c5c6acab0ce7\"},{\"type\":\"4\",\"name\":\"database\",\"keyVariables\":\"\",\"startLine\":\"Process $database_summary_process_id database summary\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:router_count,$int:router_delete,$int:router_maxage]:Router\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$int:network_count,$int:network_delete,$int:network_maxage]:Network\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$int:summary_net_count,$int:summary_net_delete,$int:summary_net_maxage]:Summary Net\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$int:summary_asbr_count,$int:summary_asbr_delete,$int:summary_asbr_maxage]:Summary ASBR\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$int:type_7_ext_count,$int:type_7_ext_delete,$int:type_7_ext_maxage]:Type-7 Ext\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$int:type_5_ext_count,$int:type_5_ext_delete,$int:type_5_ext_maxage]:Type-5 Ext\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"regex[$int:total_count,$int:total_delete,$int:total_maxage]:Total\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$database_summary_process_id:string\",\"$router_count:int\",\"$router_delete:int\",\"$router_maxage:int\",\"$network_count:int\",\"$network_delete:int\",\"$network_maxage:int\",\"$summary_net_count:int\",\"$summary_net_delete:int\",\"$summary_net_maxage:int\",\"$summary_asbr_count:int\",\"$summary_asbr_delete:int\",\"$summary_asbr_maxage:int\",\"$type_7_ext_count:int\",\"$type_7_ext_delete:int\",\"$type_7_ext_maxage:int\",\"$type_5_ext_count:int\",\"$type_5_ext_delete:int\",\"$type_5_ext_maxage:int\",\"$total_count:int\",\"$total_delete:int\",\"$total_maxage:int\"]},\"xxid\":\"e3c722ff-9486-c1c4-01e7-bd6fb48455b9\"}]},\"xxid\":\"ffd69854-fec9-f2f1-abdd-a8b7151f3828\",\"hashColumns\":[\"$database_summary_process_id\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"areas_database\",\"keyVariables\":\"\",\"startLine\":\"Area $area_id database summary\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:router_count,$int:router_delete,$int:router_maxage]:Router\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:network_count,$int:network_delete,$int:network_maxage]:Network\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:summary_net_count,$int:summary_net_delete,$int:summary_net_maxage]:Summary Net\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:summary_asbr_count,$int:summary_asbr_delete,$int:summary_asbr_maxage]:Summary ASBR\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:type_7_ext_count,$int:type_7_ext_delete,$int:type_7_ext_maxage]:Type-7 Ext\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$int:subtotal_count,$int:subtotal_delete,$int:subtotal_maxage]:Subtotal\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$router_count:int\",\"$router_delete:int\",\"$router_maxage:int\",\"$network_count:int\",\"$network_delete:int\",\"$network_maxage:int\",\"$summary_net_count:int\",\"$summary_net_delete:int\",\"$summary_net_maxage:int\",\"$summary_asbr_count:int\",\"$summary_asbr_delete:int\",\"$summary_asbr_maxage:int\",\"$type_7_ext_count:int\",\"$type_7_ext_delete:int\",\"$type_7_ext_maxage:int\",\"$subtotal_count:int\",\"$subtotal_delete:int\",\"$subtotal_maxage:int\"]},\"xxid\":\"9fa47ce5-2c6a-5211-2864-f0c2e31dc9a1\"}]},\"xxid\":\"a43745ef-e3e8-3b72-9110-7e122166f195\",\"hashColumns\":[\"$area_id\"]}]},\"xxid\":\"6d13b9be-8f9a-deb9-b103-5b750eb707f9\",\"hashColumns\":[\"$process_id\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_database_process_id.$process_id",
+                "_original_result.ospf_database_process_id.database.$database_summary_process_id",
+                "_original_result.ospf_database_process_id.areas_database.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_database_process_id",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 24,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "database_summary_process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "router_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "router_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "router_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "network_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "network_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "network_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "summary_net_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "summary_net_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "summary_net_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "summary_asbr_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "summary_asbr_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "summary_asbr_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "type_7_ext_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "type_7_ext_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "type_7_ext_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "type_5_ext_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "type_5_ext_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "type_5_ext_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "total_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "total_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "total_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$database_summary_process_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "database",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 21,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "router_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "router_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "router_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "network_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "network_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "network_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "summary_net_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "summary_net_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "summary_net_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "summary_asbr_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "summary_asbr_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "summary_asbr_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "type_7_ext_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "type_7_ext_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "type_7_ext_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "subtotal_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "subtotal_delete",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "subtotal_maxage",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "areas_database",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ad55266c03cac8263c377157a448dd8a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_database_process_id",
+            "dataType": "paragraph",
+            "desc": "OSPF process table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id",
+            "intfKey": false,
+            "name": "ospf_database_process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_database_process_id.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_database_process_id.$process_id",
+            "dataType": "string",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$database_summary_process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database",
+            "intfKey": false,
+            "name": "database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "database.$database_summary_process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$database_summary_process_id",
+            "intfKey": false,
+            "name": "$database_summary_process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$router_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$router_count",
+            "intfKey": false,
+            "name": "$router_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$router_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$router_delete",
+            "intfKey": false,
+            "name": "$router_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$router_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$router_maxage",
+            "intfKey": false,
+            "name": "$router_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$network_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$network_count",
+            "intfKey": false,
+            "name": "$network_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$network_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$network_delete",
+            "intfKey": false,
+            "name": "$network_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$network_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$network_maxage",
+            "intfKey": false,
+            "name": "$network_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$summary_net_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$summary_net_count",
+            "intfKey": false,
+            "name": "$summary_net_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$summary_net_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$summary_net_delete",
+            "intfKey": false,
+            "name": "$summary_net_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$summary_net_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$summary_net_maxage",
+            "intfKey": false,
+            "name": "$summary_net_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$summary_asbr_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$summary_asbr_count",
+            "intfKey": false,
+            "name": "$summary_asbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$summary_asbr_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$summary_asbr_delete",
+            "intfKey": false,
+            "name": "$summary_asbr_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$summary_asbr_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$summary_asbr_maxage",
+            "intfKey": false,
+            "name": "$summary_asbr_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$type_7_ext_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$type_7_ext_count",
+            "intfKey": false,
+            "name": "$type_7_ext_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$type_7_ext_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$type_7_ext_delete",
+            "intfKey": false,
+            "name": "$type_7_ext_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$type_7_ext_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$type_7_ext_maxage",
+            "intfKey": false,
+            "name": "$type_7_ext_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$type_5_ext_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$type_5_ext_count",
+            "intfKey": false,
+            "name": "$type_5_ext_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$type_5_ext_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$type_5_ext_delete",
+            "intfKey": false,
+            "name": "$type_5_ext_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$type_5_ext_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$type_5_ext_maxage",
+            "intfKey": false,
+            "name": "$type_5_ext_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$total_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$total_count",
+            "intfKey": false,
+            "name": "$total_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$total_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$total_delete",
+            "intfKey": false,
+            "name": "$total_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$total_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$total_maxage",
+            "intfKey": false,
+            "name": "$total_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "database.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.database.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database",
+            "intfKey": false,
+            "name": "areas_database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "areas_database.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$router_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$router_count",
+            "intfKey": false,
+            "name": "$router_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$router_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$router_delete",
+            "intfKey": false,
+            "name": "$router_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$router_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$router_maxage",
+            "intfKey": false,
+            "name": "$router_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$network_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$network_count",
+            "intfKey": false,
+            "name": "$network_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$network_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$network_delete",
+            "intfKey": false,
+            "name": "$network_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$network_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$network_maxage",
+            "intfKey": false,
+            "name": "$network_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$summary_net_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$summary_net_count",
+            "intfKey": false,
+            "name": "$summary_net_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$summary_net_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$summary_net_delete",
+            "intfKey": false,
+            "name": "$summary_net_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$summary_net_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$summary_net_maxage",
+            "intfKey": false,
+            "name": "$summary_net_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$summary_asbr_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$summary_asbr_count",
+            "intfKey": false,
+            "name": "$summary_asbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$summary_asbr_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$summary_asbr_delete",
+            "intfKey": false,
+            "name": "$summary_asbr_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$summary_asbr_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$summary_asbr_maxage",
+            "intfKey": false,
+            "name": "$summary_asbr_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$type_7_ext_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$type_7_ext_count",
+            "intfKey": false,
+            "name": "$type_7_ext_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$type_7_ext_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$type_7_ext_delete",
+            "intfKey": false,
+            "name": "$type_7_ext_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$type_7_ext_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$type_7_ext_maxage",
+            "intfKey": false,
+            "name": "$type_7_ext_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$subtotal_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$subtotal_count",
+            "intfKey": false,
+            "name": "$subtotal_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$subtotal_delete",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$subtotal_delete",
+            "intfKey": false,
+            "name": "$subtotal_delete",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$subtotal_maxage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$subtotal_maxage",
+            "intfKey": false,
+            "name": "$subtotal_maxage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "areas_database.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_database_process_id.areas_database.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

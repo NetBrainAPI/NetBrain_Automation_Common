@@ -1,0 +1,251 @@
+{
+    "_id": "6534c361-e06d-f6ec-82df-0c77a5068256",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show time",
+    "createTime": {
+        "$date": 1591038584035
+    },
+    "description": "Device Type:\nCisco WLC\nCommand:\nshow time",
+    "devTypes": [
+        3033
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "(Cisco Controller) >show time\r\n\r\nTime............................................. Mon Jun 26 16:07:21 2017\r\n\r\nTimezone delta................................... 0:0\r\nTimezone location................................ (GMT) London, Lisbon, Dublin, Edinburgh\r\n\r\nNTP Servers\r\n    NTP Polling Interval.........................     86400\r\n\r\n     Index     NTP Key Index                  NTP Server                  NTP Msg Auth Status\r\n    -------  ----------------------------------------------------------------------------------\r\n       1              0                                202.118.1.46       AUTH DISABLED*\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$time]:Time\\\\.+\\\\s+(.+)\",\"regex[$timezone_delta]:Timezone delta\\\\.+\\\\s+(.+)\",\"regex[$timezone_location]:Timezone location\\\\.+\\\\s+(.+)\",\"regex[$polling_interval]:NTP Polling Interval\\\\.+\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$time:string\",\"$timezone_delta:string\",\"$timezone_location:string\",\"$polling_interval:string\"]},\"xxid\":\"fb864720-a8c2-1acb-350c-df0b367b6776\"},{\"type\":\"4\",\"name\":\"ntp_servers\",\"keyVariables\":\"\",\"startLine\":\"regex[$index,$ntp_key_index,$ntp_server,$ntp_msg_auth_status]:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(.+)\\\\s*$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$index:string\",\"$ntp_key_index:string\",\"$ntp_server:string\",\"$ntp_msg_auth_status:string\"]},\"xxid\":\"3fefefdd-3589-93a2-b7e4-43f1d8800682\"}]},\"xxid\":\"a9827838-1e3e-bbe4-6e94-bfaa5d6a169a\",\"hashColumns\":[\"$index\",\"$ntp_key_index\",\"$ntp_server\"]}]}",
+            "tableKeys": [
+                "_original_result.ntp_servers.$index",
+                "_original_result.ntp_servers.$ntp_key_index",
+                "_original_result.ntp_servers.$ntp_server"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "time",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "timezone_delta",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "timezone_location",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "polling_interval",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "index",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ntp_key_index",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ntp_server",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ntp_msg_auth_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$index",
+                    "$ntp_key_index",
+                    "$ntp_server"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "ntp_servers",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "81d3259af36dfb6ccad9a5d9754b1207",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$time",
+            "dataType": "string",
+            "desc": "Current time",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$timezone_delta",
+            "dataType": "string",
+            "desc": "Delta of timezone",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$timezone_delta",
+            "intfKey": false,
+            "name": "$timezone_delta",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$timezone_location",
+            "dataType": "string",
+            "desc": "Location of timezone",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$timezone_location",
+            "intfKey": false,
+            "name": "$timezone_location",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$polling_interval",
+            "dataType": "string",
+            "desc": "NTP polling interval",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$polling_interval",
+            "intfKey": false,
+            "name": "$polling_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers",
+            "dataType": "paragraph",
+            "desc": "NTP server table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$index",
+                    "$ntp_key_index",
+                    "$ntp_server"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers",
+            "intfKey": false,
+            "name": "ntp_servers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ntp_servers.$index",
+            "dataType": "string",
+            "desc": "Index of servers",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$index",
+            "intfKey": false,
+            "name": "$index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$ntp_key_index",
+            "dataType": "string",
+            "desc": "NTP key index",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$ntp_key_index",
+            "intfKey": false,
+            "name": "$ntp_key_index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$ntp_server",
+            "dataType": "string",
+            "desc": "IP address of NTP server",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$ntp_server",
+            "intfKey": false,
+            "name": "$ntp_server",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_servers.$ntp_msg_auth_status",
+            "dataType": "string",
+            "desc": "NTP message authorize status",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_servers.$ntp_msg_auth_status",
+            "intfKey": false,
+            "name": "$ntp_msg_auth_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

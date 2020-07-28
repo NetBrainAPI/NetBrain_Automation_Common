@@ -1,0 +1,466 @@
+{
+    "_id": "641d0de1-3acb-b23d-c479-b482bebca5f0",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interface trunk",
+    "createTime": {
+        "$date": 1579820377216
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:\n       show interface trunk",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "switch(config)# show interface trunk\n \n-----------------------------------------------------------------------------\nPort Native Status Port\nVlan Channel\n-----------------------------------------------------------------------------\nEth2/9 1 trunking --\nEth2/10 1 trnk-bndl Po50\nPo50 1 not-trunking --\n \n-----------------------------------------------------------------------------\nPort Vlans Allowed on Trunk\n-----------------------------------------------------------------------------\nEth2/9 1-3967,4048-4093\nEth2/10 1-3967,4048-4093\nPo50 1-3967,4048-4093\n \n-----------------------------------------------------------------------------\nPort STP Forwarding\n-----------------------------------------------------------------------------\nEth2/9 none\nEth2/10 none\nPo50 none",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_trunk.native_table.$port_vlan",
+                "_original_result.Port_Vlans_Allowed.allowed_table.$port",
+                "_original_result.port_stp_forwarding.stp_table.$port"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intf_trunk\",\"keyVariables\":null,\"startLine\":\"regex:^Port Native Status Port\",\"endLine\":\"Port Vlans\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"6c0374c6-e0cb-8078-43b0-0c7ee0cf9e6e\"},{\"type\":\"4\",\"name\":\"native_table\",\"keyVariables\":null,\"startLine\":\"regex:^\\\\S+\\\\s+\\\\d+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$port_vlan]:^(\\\\S+)\\\\s+\\\\d+\",\"regex[$channel]:^\\\\S+\\\\s+(\\\\d+)\",\"regex[$status]:^\\\\S+\\\\s+\\\\d+\\\\s+(\\\\S+)\",\"regex[$port]:^\\\\S+\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$port_vlan:string\",\"$channel:string\",\"$status:string\",\"$port:string\"]},\"xxid\":\"6d3dc1ac-703a-e9eb-d9c5-1a312d40ff57\"}]},\"xxid\":\"c306bc06-29ae-bb69-ce32-cb1f00966fa1\",\"interfaceKey\":\"$port_vlan\",\"hashColumns\":[\"$port_vlan\",\"$channel\",\"$status\",\"$port\"],\"hashSort\":false}]},\"xxid\":\"66e29cdf-ac93-478a-485d-f696b60e8dd1\",\"hashColumns\":[]},{\"type\":\"4\",\"name\":\"Port_Vlans_Allowed\",\"keyVariables\":null,\"startLine\":\"Port Vlans Allowed on Trunk\",\"endLine\":\"Port STP Forwarding\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"9c834b8c-a0ea-0d28-c7d8-b981284ccd49\"},{\"type\":\"4\",\"name\":\"allowed_table\",\"keyVariables\":null,\"startLine\":\"regex:^\\\\S+\\\\s+\\\\d+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$port]:^(\\\\S+)\\\\s+\\\\d+\",\"regex[$vlan]:^\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$port:string\",\"$vlan:string\"]},\"xxid\":\"90e7528a-ae3b-c81b-c7e6-127d55298891\"}]},\"xxid\":\"325975f7-2b5c-269d-2668-7bc675e31dbe\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\",\"$vlan\"],\"hashSort\":false}]},\"xxid\":\"714a5aa8-4f20-e3e9-a07a-f44d7d3464ec\",\"hashColumns\":[]},{\"type\":\"4\",\"name\":\"port_stp_forwarding\",\"keyVariables\":null,\"startLine\":\"Port STP Forwarding\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"86f69b45-4e21-ec02-e4d9-0029f5d57bb0\"},{\"type\":\"4\",\"name\":\"stp_table\",\"keyVariables\":null,\"startLine\":\"regex:^\\\\S+\\\\s+\\\\S+$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$port]:^(\\\\S+)\\\\s+\\\\S+$\",\"regex[$stp_forwarding]:^\\\\S+\\\\s+(\\\\S+)$\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$port:string\",\"$stp_forwarding:string\"]},\"xxid\":\"b4d88168-ec08-7a34-4a3f-853f6f4ad962\"}]},\"xxid\":\"84f517b1-4c84-2756-645c-654dbe6cfc68\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\",\"$stp_forwarding\"],\"hashSort\":false}]},\"xxid\":\"52cd3fff-a592-b8a2-5ccd-8c11a1ae170b\",\"hashColumns\":[]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"4b1a9341-4b53-ea55-ec8d-b0f0157646d3\"}]}",
+            "tableKeys": [
+                "_original_result.intf_trunk.native_table.$port_vlan",
+                "_original_result.Port_Vlans_Allowed.allowed_table.$port",
+                "_original_result.port_stp_forwarding.stp_table.$port"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "intf_trunk",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port_vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "channel",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "port",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$channel",
+                    "$port",
+                    "$port_vlan",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "native_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "Port_Vlans_Allowed",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port",
+                    "$vlan"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "allowed_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 5,
+                "name": "port_stp_forwarding",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "stp_forwarding",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port",
+                    "$stp_forwarding"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "stp_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "77c26323db74734dcd324338e6b5fba9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intf_trunk",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_trunk",
+            "intfKey": false,
+            "name": "intf_trunk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "native_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port_vlan",
+                    "$channel",
+                    "$status",
+                    "$port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intf_trunk.native_table",
+            "intfKey": false,
+            "name": "native_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "native_table.$port_vlan",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_trunk.native_table.$port_vlan",
+            "intfKey": false,
+            "name": "$port_vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "native_table.$channel",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_trunk.native_table.$channel",
+            "intfKey": false,
+            "name": "$channel",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "native_table.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_trunk.native_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "native_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_trunk.native_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "Port_Vlans_Allowed",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "Port_Vlans_Allowed",
+            "intfKey": false,
+            "name": "Port_Vlans_Allowed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "allowed_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port",
+                    "$vlan"
+                ],
+                "hashSort": false
+            },
+            "fullName": "Port_Vlans_Allowed.allowed_table",
+            "intfKey": false,
+            "name": "allowed_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "allowed_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "Port_Vlans_Allowed.allowed_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "allowed_table.$vlan",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "Port_Vlans_Allowed.allowed_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_stp_forwarding",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_stp_forwarding",
+            "intfKey": false,
+            "name": "port_stp_forwarding",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "stp_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port",
+                    "$stp_forwarding"
+                ],
+                "hashSort": false
+            },
+            "fullName": "port_stp_forwarding.stp_table",
+            "intfKey": false,
+            "name": "stp_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "stp_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_stp_forwarding.stp_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "stp_table.$stp_forwarding",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_stp_forwarding.stp_table.$stp_forwarding",
+            "intfKey": false,
+            "name": "$stp_forwarding",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

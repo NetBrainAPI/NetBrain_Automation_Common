@@ -1,0 +1,240 @@
+{
+    "_id": "b1efd027-0abe-412f-af44-b55150fffa53",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf neighbor",
+    "createTime": {
+        "$date": 1590766668656
+    },
+    "description": "Device Type:\nArista Switch \nCommand:\nshow ip ospf neighbor",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-arista-veos>show ip ospf neighbor\r\nNeighbor ID     VRF    Pri   State            Dead Time   Address         Interface\r\n172.27.128.161  default    1   FULL/DR          00:00:39    172.27.128.2    Ethernet1\r\n172.27.128.1    default    1   FULL/BDR         00:00:38    172.27.128.1    Ethernet1\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"ospf_nbrs\",\"headers\":\"Neighbor ID;VRF;Pri;State;Dead Time;Address;Interface\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Address:$string:nbr_addr;Dead Time:$string:dead;Interface:$string:intf;Neighbor ID:$string:nbr_id;Pri:$int:priority;State:$string:state;VRF:$string:vrf\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$nbr_addr:string\",\"$dead:string\",\"$intf:string\",\"$nbr_id:string\",\"$priority:int\",\"$state:string\",\"$vrf:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"870183f3-55a9-5534-9f0d-5cf6af6c9b45\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$state\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_nbrs.$state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "dead",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "nbr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "787cf163fc75177a84ebbf8d294ea5cd",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_nbrs",
+            "dataType": "table",
+            "desc": "OSPF Neighbors information table base on process id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs",
+            "intfKey": false,
+            "name": "ospf_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_addr",
+            "dataType": "string",
+            "desc": "Neighbor router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$nbr_addr",
+            "intfKey": false,
+            "name": "$nbr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$dead",
+            "dataType": "string",
+            "desc": "Expected time in hours:minutes:seconds before Cisco IOS software will declare the neighbor dead.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$dead",
+            "intfKey": false,
+            "name": "$dead",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$intf",
+            "dataType": "string",
+            "desc": "IP address of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_id",
+            "dataType": "string",
+            "desc": "Neighbor router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$priority",
+            "dataType": "int",
+            "desc": "Router priority of the neighbor and neighbor state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$state",
+            "dataType": "string",
+            "desc": "OSPF state. If one OSPF neighbor has enabled TTL security, the other side of the connection will show the neighbor in the INIT state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$vrf",
+            "dataType": "string",
+            "desc": "Vrf name of ospf interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

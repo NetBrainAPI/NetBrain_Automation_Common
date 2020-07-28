@@ -1,0 +1,285 @@
+{
+    "_id": "bfaaf84b-e9ae-a4cb-1dc5-5393be23bc0d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show stpd",
+    "createTime": {
+        "$date": 1591076726922
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow stpd",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "* Song sp:9 # show stpd\nName       Tag  Flags  Ports Bridge ID        Designated Root  Rt Port Rt Cost\ns0         0000 D-----    24 80000004960535f4 0000000000000000 -------       0\n\nTotal number of STPDs: 1\nBPDU Filter: Disable\nFlags: (C) Topology Change, (D) Disable, (E) Enable, (R) Rapid Root Failover\n       (T) Topology Change Detected, (M) MSTP CIST, (I) MSTP MSTI",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"stp_table\",\"headers\":\"Name;Tag;Flags;Ports;Bridge ID;Designated Root;Rt Port;Rt Cost\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Name:$string:name;Tag:$string:tag;Flags:$string:flags;Ports:$string:ports;Bridge ID:$string:bridge_id;Designated Root:$string:designated_root;Rt Port:$string:rt_port;Rt Cost:$string:rt_cost\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$name:string\",\"$tag:string\",\"$flags:string\",\"$ports:string\",\"$bridge_id:string\",\"$designated_root:string\",\"$rt_port:string\",\"$rt_cost:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"ed0856ff-b68f-06cc-71b0-d6b13409bfaa\",\"hashColumns\":[\"$name\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$total_stpd, $bpdi_filter]:Total number of STPDs:\\\\s+(\\\\d+)\\\\s+BPDU Filter:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_stpd:string\",\"$bpdi_filter:string\"]},\"xxid\":\"bf56444e-dd90-58e0-3307-1614b727c904\"}]}",
+            "tableKeys": [
+                "_original_result.stp_table.$name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_stpd",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "bpdi_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ports",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "bridge_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "designated_root",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "rt_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "rt_cost",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$name"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "stp_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "44cbb929ba80d74048a53b9a73e640bf",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "stp_table",
+            "dataType": "table",
+            "desc": "The STPD table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "stp_table",
+            "intfKey": false,
+            "name": "stp_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "stp_table.$name",
+            "dataType": "string",
+            "desc": "The name of the STPD.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$tag",
+            "dataType": "string",
+            "desc": "The StpdID of the domain, if configured.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$tag",
+            "intfKey": false,
+            "name": "$tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$flags",
+            "dataType": "string",
+            "desc": "\"The following flags communicate information about the current state of the STPD:\n    (C) Topology Change???A network topology change has occurred in the network.\n    (D) Disable???The STPD is disabled.\n    (E) Enable???The STPD is enabled.\n    (R) Rapid Root Failover???The STPD has been configured for rapid root failover.\n    (T) Topology Change Detected???The STPD has detected a change in the network topology.\n    (M) MSTP CIST???The STPD has been configured for MSTP, and the STPD is the common and internal spanning tree.\n    (I) MSTP MSTI???The STPD has been configured for MSTP, and the STPD is a multiple instance spanning tree.\"",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$ports",
+            "dataType": "string",
+            "desc": "The number of ports that are part of the STPD.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$bridge_id",
+            "dataType": "string",
+            "desc": "The MAC addresses of the switch.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$bridge_id",
+            "intfKey": false,
+            "name": "$bridge_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$designated_root",
+            "dataType": "string",
+            "desc": "The MAC address of the switch that is the designated root bridge.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$designated_root",
+            "intfKey": false,
+            "name": "$designated_root",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$rt_port",
+            "dataType": "string",
+            "desc": "The root port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$rt_port",
+            "intfKey": false,
+            "name": "$rt_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_table.$rt_cost",
+            "dataType": "string",
+            "desc": "The path cost to the root port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_table.$rt_cost",
+            "intfKey": false,
+            "name": "$rt_cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_stpd",
+            "dataType": "string",
+            "desc": "The total number of STPDs configured on the switch.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_stpd",
+            "intfKey": false,
+            "name": "$total_stpd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bpdi_filter",
+            "dataType": "string",
+            "desc": "The method used to flush the FDB during a topology change.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bpdi_filter",
+            "intfKey": false,
+            "name": "$bpdi_filter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,313 @@
+{
+    "_id": "8fda2683-3f80-5cf9-f3be-9a22b1a34380",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "get router info bgp summary",
+    "createTime": {
+        "$date": 1584365907846
+    },
+    "description": "",
+    "devTypes": [
+        10380
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "# FGT1# get router info bgp summary\r\nBGP router identifier 3.3.3.3, local AS number 65003\r\nBGP table version is 11\r\n2 BGP AS-PATH entries\r\n0 BGP community entries\r\n\r\nNeighbor        V         AS  MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\r\n10.56.240.2   4      65004    670      667       10            0    0        2d15h37m        2\r\n10.56.240.3   4      65004    670      667       10            0    0        2d15h37m        2\r\n10.56.240.4   4      65004    670      667       10            0    0        2d15h37m        2\r\n\r\nTotal number of neighbors 1",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"bgp_summary\",\"keyVariables\":\"\",\"startLine\":\"regex[$neighbor,$v,$as,$int:msg_rcvd,$int:msg_sent,$int:tbl_ver,$int:inq,$int:outq,$up_down,$state_pfxrcd]:(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbor:string\",\"$v:string\",\"$as:string\",\"$msg_rcvd:int\",\"$msg_sent:int\",\"$tbl_ver:int\",\"$inq:int\",\"$outq:int\",\"$up_down:string\",\"$state_pfxrcd:string\"]},\"xxid\":\"fe1d94e3-69ae-e03c-fd5b-6c4ae3f83b63\"}]},\"xxid\":\"17bcb8db-4604-2f33-0a41-f948c4278c03\",\"hashColumns\":[\"$neighbor\",\"$v\",\"$as\",\"$tbl_ver\",\"$state_pfxrcd\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"bbf8acc8-52da-afe9-4851-0cc357b349a1\"}]}",
+            "tableKeys": [
+                "_original_result.bgp_summary.$neighbor"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "v",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "as",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "msg_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "msg_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "tbl_ver",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "inq",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "outq",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "state_pfxrcd",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$as",
+                    "$neighbor",
+                    "$state_pfxrcd",
+                    "$tbl_ver",
+                    "$v"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "bgp_summary",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2710e611cdb9d5d7b0e403d07b7aef51",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "bgp_summary",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor",
+                    "$v",
+                    "$as",
+                    "$tbl_ver",
+                    "$state_pfxrcd"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary",
+            "intfKey": false,
+            "name": "bgp_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_summary.$neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$neighbor",
+            "intfKey": false,
+            "name": "$neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$v",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$v",
+            "intfKey": false,
+            "name": "$v",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$msg_rcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$msg_rcvd",
+            "intfKey": false,
+            "name": "$msg_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$msg_sent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$msg_sent",
+            "intfKey": false,
+            "name": "$msg_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$tbl_ver",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$tbl_ver",
+            "intfKey": false,
+            "name": "$tbl_ver",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$inq",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$inq",
+            "intfKey": false,
+            "name": "$inq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$outq",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$outq",
+            "intfKey": false,
+            "name": "$outq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$up_down",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary.$state_pfxrcd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.$state_pfxrcd",
+            "intfKey": false,
+            "name": "$state_pfxrcd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

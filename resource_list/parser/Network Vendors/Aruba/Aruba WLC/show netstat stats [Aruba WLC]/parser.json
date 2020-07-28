@@ -1,0 +1,1623 @@
+{
+    "_id": "2e906b07-656e-0741-bb9c-ec0df9092fa1",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show netstat stats",
+    "createTime": {
+        "$date": 1591104169226
+    },
+    "description": "Device Type:\nAruba WLC\nCommand:\nshow netstat stats",
+    "devTypes": [
+        3035
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "(qapp-aruba3200) #show netstat stats\n\nIp:\n    4482737 total packets received\n    528 forwarded\n    0 incoming packets discarded\n    4154078 incoming packets delivered\n    3323654 requests sent out\n    480841 reassemblies required\n    152842 packets reassembled ok\n    2175 fragments received ok\nIcmp:\n    1000 ICMP messages received\n    54 input ICMP message failed.\n    ICMP input histogram:\n        destination unreachable: 84\n        echo requests: 838\n        echo replies: 24\n    1674 ICMP messages sent\n    0 ICMP messages failed\n    ICMP output histogram:\n        destination unreachable: 836\n        echo replies: 838\nTcp:\n    0 active connections openings                 \n    11841 passive connection openings\n    0 failed connection attempts\n    6805 connection resets received\n    1 connections established\n    211533 segments received\n    185023 segments send out\n    264 segments retransmited\n\n\n    0 bad segments received.\n    108 resets sent\nUdp:\n    2724688 packets received\n    17 packets to unknown port received.\n    0 packet receive errors\n    1990859 packets sent\nTcpExt:\n    78 invalid SYN cookies received\n    40 packets pruned from receive queue because of socket buffer overrun\n    ArpFilter: 0\n    1814 TCP sockets finished time wait in fast timer\n    2621 delayed acks sent\n    19 delayed acks further delayed because of locked socket\n    Quick ack mode was activated 1 times          \n    2465 packets directly queued to recvmsg prequeue.\n    2222 packets directly received from prequeue\n    15007 packets header predicted\n    TCPPureAcks: 29229\n    TCPHPAcks: 60784\n    TCPRenoRecovery: 0\n    TCPSackRecovery: 0\n    TCPSACKReneging: 0\n    TCPFACKReorder: 0\n    TCPSACKReorder: 0\n    TCPRenoReorder: 0\n    TCPTSReorder: 0\n    TCPFullUndo: 0\n    TCPPartialUndo: 0\n    TCPDSACKUndo: 20\n\n\n    TCPLossUndo: 229\n    TCPLoss: 0\n    TCPLostRetransmit: 0\n    TCPRenoFailures: 0\n    TCPSackFailures: 0\n    TCPLossFailures: 0\n    TCPFastRetrans: 0                             \n    TCPForwardRetrans: 0\n    TCPSlowStartRetrans: 0\n    TCPTimeouts: 263\n    TCPRenoRecoveryFail: 0\n    TCPSackRecoveryFail: 0\n    TCPSchedulerFailed: 0\n    TCPRcvCollapsed: 1792\n    TCPDSACKOldSent: 1\n    TCPDSACKOfoSent: 0\n    TCPDSACKRecv: 251\n    TCPDSACKOfoRecv: 0\n    TCPAbortOnSyn: 0\n    TCPAbortOnData: 26\n    TCPAbortOnClose: 18\n    TCPAbortOnMemory: 0\n    TCPAbortOnTimeout: 0\n    TCPAbortOnLinger: 0\n    TCPAbortFailed: 0\n    TCPMemoryPressures: 0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:ip_total_packet_recevied]:(\\\\d+) total packets received\",\"regex[$int:ip_forwarded]:(\\\\d+) forwarded\",\"regex[$int:ip_income_packet_discarded]:(\\\\d+) incoming packets discarded\",\"regex[$int:ip_incoming_packets_delivered]:(\\\\d+) incoming packets delivered\",\"regex[$int:ip_requests_sent_out]:(\\\\d+) requests sent out\",\"regex[$int:ip_reassemblies_required]:(\\\\d+) reassemblies required\",\"regex[$int:ip_packets_reassembled_ok]:(\\\\d+) packets reassembled ok\",\"regex[$int:ip_fragments_received_ok]:(\\\\d+) fragments received ok\",\"regex[$int:icmp_messages_received]:(\\\\d+) ICMP messages received\",\"regex[$int:icmp_input_fail]:(\\\\d+) input ICMP message failed\",\"mregex[$int:icmp_input_destination_unrearchable]:ICMP input histogram:\\\\s+destination unreachable:\\\\s+(\\\\d+)\",\"mregex[$int:icmp_input_echo_requests]:ICMP input histogram:\\\\s+.+\\\\s+echo requests:\\\\s+(\\\\d+)\",\"mregex[$int:icmp_input_echo_replies]:ICMP input histogram:\\\\s+.+\\\\s+echo requests:\\\\s+\\\\d+\\\\s+echo replies:\\\\s+(\\\\d+)\",\"regex[$int:icmp_sent]:(\\\\d+) ICMP messages sent\",\"regex[$int:icmp_failed]:(\\\\d+) ICMP messages failed\",\"mregex[$int:icmp_output_destination_unrearchable]:ICMP output histogram:\\\\s+destination unreachable:\\\\s+(\\\\d+)\",\"mregex[$int:icmp_output_echo_replies]:ICMP input histogram:\\\\s+.+\\\\s+echo replies:\\\\s+(\\\\d+)\",\"regex[$int:tcp_active_connections_openings]:(\\\\d+) active connections openings\",\"regex[$int:tcp_passive_connections_openings]:(\\\\d+) passive connection openings\",\"regex[$int:tcp_failed_connection_attempts]:(\\\\d+) failed connection attempts\",\"regex[$int:tcp_connection_resets_recevied]:(\\\\d+) connection resets received\",\"regex[$int:tcp_connection_established]:(\\\\d+) connections established\",\"regex[$int:tcp_segments_received]:(\\\\d+) segments received\",\"regex[$int:tcp_segments_send_out]:(\\\\d+) segments send out\",\"regex[$int:tcp_segments_retransmited]:(\\\\d+) segments retransmited\",\"regex[$int:tcp_bad_segments_received]:(\\\\d+) bad segments received\",\"regex[$int:tcp_resets_sent]:(\\\\d+) resets sent\",\"regex[$int:udp_packets_recevied]:(\\\\d+) packets received\",\"regex[$int:udp_packets_unknow_port_recevied]:(\\\\d+) packets to unknown port received\",\"regex[$int:udp_packets_recevied_errors]:(\\\\d+) packet receive errors\",\"regex[$int:udp_packets_sent]:(\\\\d+) packets sent\",\"regex[$int:tcpext_invalid_syn_cookies_received]:(\\\\d+) invalid SYN cookies received\",\"regex[$int:tcpext_pruned_buffer_overrun]:(\\\\d+) packets pruned from receive queue because of socket buffer overrun\",\"regex[$int:tcpext_arpfilter]:ArpFilter:\\\\s+(\\\\d+)\",\"regex[$int:tcpext_tcp_finished_wait_fast]:(\\\\d+) TCP sockets finished time wait in fast timer\",\"regex[$int:tcpext_delayed_acks_sent]:(\\\\d+) delayed acks sent\",\"regex[$int:tcpext_delayed_acks_locked_socket]:(\\\\d+) delayed acks further delayed because of locked socket\",\"regex[$int:tcpext_quick_ack_mode]:Quick ack mode was activated (\\\\d+)\",\"regex[$int:tcpext_directly_to_recvmsg]:(\\\\d+) packets directly queued to recvmsg prequeue\",\"regex[$int:tcpext_directly_recevied_from_prequeue]:(\\\\d+) packets directly received from prequeue\",\"regex[$int:tcpext_header_predicted]:(\\\\d+) packets header predicted\",\"mregex[$int:tcppureacks,$int:tcphpacks,$int:tcprenorecovery,$int:tcpsackrecovery,$int:tcpsackreneging,$int:tcpfackreorder,$int:tcpsackreorder,$int:tcprenoreorder,$int:tcptsreorder,$int:tcpfullundo,$int:tcppartialundo,$int:tcpdsackundo]:TCPPureAcks: (\\\\d+)\\\\s+TCPHPAcks: (\\\\d+)\\\\s+TCPRenoRecovery: (\\\\d+)\\\\s+TCPSackRecovery: (\\\\d+)\\\\s+TCPSACKReneging: (\\\\d+)\\\\s+TCPFACKReorder: (\\\\d+)\\\\s+TCPSACKReorder: (\\\\d+)\\\\s+TCPRenoReorder: (\\\\d+)\\\\s+TCPTSReorder: (\\\\d+)\\\\s+TCPFullUndo: (\\\\d+)\\\\s+TCPPartialUndo: (\\\\d+)\\\\s+TCPDSACKUndo: (\\\\d+)\\\\s+\",\"mregex[$int:tcplossundo,$int:tcploss,$int:tcplostretransmit,$int:tcprenofailures,$int:tcpsackfailures,$int:tcplossfailures,$int:tcpfastretrans,$int:tcpforwardretrans,$int:tcpslowstartretrans,$int:tcptimeouts,$int:tcprenorecoveryfail,$int:tcpsackrecoveryfail,$int:tcpschedulerfailed,$int:tcprcvcollapsed,$int:tcpdsackoldsent,$int:tcpdsackofosent,$int:tcpdsackrecv,$int:tcpdsackoforecv,$int:tcpabortonsyn,$int:tcpabortondata,$int:tcpabortonclose,$int:tcpabortonmemory,$int:tcpabortontimeout,$int:tcpabortonlinger,$int:tcpabortfailed,$int:tcpmemorypressures]:TCPLossUndo: (\\\\d+)\\\\s+TCPLoss: (\\\\d+)\\\\s+TCPLostRetransmit: (\\\\d+)\\\\s+TCPRenoFailures: (\\\\d+)\\\\s+TCPSackFailures: (\\\\d+)\\\\s+TCPLossFailures: (\\\\d+)\\\\s+TCPFastRetrans: (\\\\d+)\\\\s+TCPForwardRetrans: (\\\\d+)\\\\s+TCPSlowStartRetrans: (\\\\d+)\\\\s+TCPTimeouts: (\\\\d+)\\\\s+TCPRenoRecoveryFail: (\\\\d+)\\\\s+TCPSackRecoveryFail: (\\\\d+)\\\\s+TCPSchedulerFailed: (\\\\d+)\\\\s+TCPRcvCollapsed: (\\\\d+)\\\\s+TCPDSACKOldSent: (\\\\d+)\\\\s+TCPDSACKOfoSent: (\\\\d+)\\\\s+TCPDSACKRecv: (\\\\d+)\\\\s+TCPDSACKOfoRecv: (\\\\d+)\\\\s+TCPAbortOnSyn: (\\\\d+)\\\\s+TCPAbortOnData: (\\\\d+)\\\\s+TCPAbortOnClose: (\\\\d+)\\\\s+TCPAbortOnMemory: (\\\\d+)\\\\s+TCPAbortOnTimeout: (\\\\d+)\\\\s+TCPAbortOnLinger: (\\\\d+)\\\\s+TCPAbortFailed: (\\\\d+)\\\\s+TCPMemoryPressures: (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ip_total_packet_recevied:int\",\"$ip_forwarded:int\",\"$ip_income_packet_discarded:int\",\"$ip_incoming_packets_delivered:int\",\"$ip_requests_sent_out:int\",\"$ip_reassemblies_required:int\",\"$ip_packets_reassembled_ok:int\",\"$ip_fragments_received_ok:int\",\"$icmp_messages_received:int\",\"$icmp_input_fail:int\",\"$icmp_input_destination_unrearchable:int\",\"$icmp_input_echo_requests:int\",\"$icmp_input_echo_replies:int\",\"$icmp_sent:int\",\"$icmp_failed:int\",\"$icmp_output_destination_unrearchable:int\",\"$icmp_output_echo_replies:int\",\"$tcp_active_connections_openings:int\",\"$tcp_passive_connections_openings:int\",\"$tcp_failed_connection_attempts:int\",\"$tcp_connection_resets_recevied:int\",\"$tcp_connection_established:int\",\"$tcp_segments_received:int\",\"$tcp_segments_send_out:int\",\"$tcp_segments_retransmited:int\",\"$tcp_bad_segments_received:int\",\"$tcp_resets_sent:int\",\"$udp_packets_recevied:int\",\"$udp_packets_unknow_port_recevied:int\",\"$udp_packets_recevied_errors:int\",\"$udp_packets_sent:int\",\"$tcpext_invalid_syn_cookies_received:int\",\"$tcpext_pruned_buffer_overrun:int\",\"$tcpext_arpfilter:int\",\"$tcpext_tcp_finished_wait_fast:int\",\"$tcpext_delayed_acks_sent:int\",\"$tcpext_delayed_acks_locked_socket:int\",\"$tcpext_quick_ack_mode:int\",\"$tcpext_directly_to_recvmsg:int\",\"$tcpext_directly_recevied_from_prequeue:int\",\"$tcpext_header_predicted:int\",\"$tcppureacks:int\",\"$tcphpacks:int\",\"$tcprenorecovery:int\",\"$tcpsackrecovery:int\",\"$tcpsackreneging:int\",\"$tcpfackreorder:int\",\"$tcpsackreorder:int\",\"$tcprenoreorder:int\",\"$tcptsreorder:int\",\"$tcpfullundo:int\",\"$tcppartialundo:int\",\"$tcpdsackundo:int\",\"$tcplossundo:int\",\"$tcploss:int\",\"$tcplostretransmit:int\",\"$tcprenofailures:int\",\"$tcpsackfailures:int\",\"$tcplossfailures:int\",\"$tcpfastretrans:int\",\"$tcpforwardretrans:int\",\"$tcpslowstartretrans:int\",\"$tcptimeouts:int\",\"$tcprenorecoveryfail:int\",\"$tcpsackrecoveryfail:int\",\"$tcpschedulerfailed:int\",\"$tcprcvcollapsed:int\",\"$tcpdsackoldsent:int\",\"$tcpdsackofosent:int\",\"$tcpdsackrecv:int\",\"$tcpdsackoforecv:int\",\"$tcpabortonsyn:int\",\"$tcpabortondata:int\",\"$tcpabortonclose:int\",\"$tcpabortonmemory:int\",\"$tcpabortontimeout:int\",\"$tcpabortonlinger:int\",\"$tcpabortfailed:int\",\"$tcpmemorypressures:int\"]},\"xxid\":\"f0fff092-e386-c486-8fcb-84044676d25f\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ip_total_packet_recevied",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "ip_forwarded",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "ip_income_packet_discarded",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "ip_incoming_packets_delivered",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "ip_requests_sent_out",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "ip_reassemblies_required",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "ip_packets_reassembled_ok",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "ip_fragments_received_ok",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "icmp_messages_received",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "icmp_input_fail",
+                "type": 1
+            },
+            {
+                "index": 10,
+                "name": "icmp_input_destination_unrearchable",
+                "type": 1
+            },
+            {
+                "index": 11,
+                "name": "icmp_input_echo_requests",
+                "type": 1
+            },
+            {
+                "index": 12,
+                "name": "icmp_input_echo_replies",
+                "type": 1
+            },
+            {
+                "index": 13,
+                "name": "icmp_sent",
+                "type": 1
+            },
+            {
+                "index": 14,
+                "name": "icmp_failed",
+                "type": 1
+            },
+            {
+                "index": 15,
+                "name": "icmp_output_destination_unrearchable",
+                "type": 1
+            },
+            {
+                "index": 16,
+                "name": "icmp_output_echo_replies",
+                "type": 1
+            },
+            {
+                "index": 17,
+                "name": "tcp_active_connections_openings",
+                "type": 1
+            },
+            {
+                "index": 18,
+                "name": "tcp_passive_connections_openings",
+                "type": 1
+            },
+            {
+                "index": 19,
+                "name": "tcp_failed_connection_attempts",
+                "type": 1
+            },
+            {
+                "index": 20,
+                "name": "tcp_connection_resets_recevied",
+                "type": 1
+            },
+            {
+                "index": 21,
+                "name": "tcp_connection_established",
+                "type": 1
+            },
+            {
+                "index": 22,
+                "name": "tcp_segments_received",
+                "type": 1
+            },
+            {
+                "index": 23,
+                "name": "tcp_segments_send_out",
+                "type": 1
+            },
+            {
+                "index": 24,
+                "name": "tcp_segments_retransmited",
+                "type": 1
+            },
+            {
+                "index": 25,
+                "name": "tcp_bad_segments_received",
+                "type": 1
+            },
+            {
+                "index": 26,
+                "name": "tcp_resets_sent",
+                "type": 1
+            },
+            {
+                "index": 27,
+                "name": "udp_packets_recevied",
+                "type": 1
+            },
+            {
+                "index": 28,
+                "name": "udp_packets_unknow_port_recevied",
+                "type": 1
+            },
+            {
+                "index": 29,
+                "name": "udp_packets_recevied_errors",
+                "type": 1
+            },
+            {
+                "index": 30,
+                "name": "udp_packets_sent",
+                "type": 1
+            },
+            {
+                "index": 31,
+                "name": "tcpext_invalid_syn_cookies_received",
+                "type": 1
+            },
+            {
+                "index": 32,
+                "name": "tcpext_pruned_buffer_overrun",
+                "type": 1
+            },
+            {
+                "index": 33,
+                "name": "tcpext_arpfilter",
+                "type": 1
+            },
+            {
+                "index": 34,
+                "name": "tcpext_tcp_finished_wait_fast",
+                "type": 1
+            },
+            {
+                "index": 35,
+                "name": "tcpext_delayed_acks_sent",
+                "type": 1
+            },
+            {
+                "index": 36,
+                "name": "tcpext_delayed_acks_locked_socket",
+                "type": 1
+            },
+            {
+                "index": 37,
+                "name": "tcpext_quick_ack_mode",
+                "type": 1
+            },
+            {
+                "index": 38,
+                "name": "tcpext_directly_to_recvmsg",
+                "type": 1
+            },
+            {
+                "index": 39,
+                "name": "tcpext_directly_recevied_from_prequeue",
+                "type": 1
+            },
+            {
+                "index": 40,
+                "name": "tcpext_header_predicted",
+                "type": 1
+            },
+            {
+                "index": 41,
+                "name": "tcppureacks",
+                "type": 1
+            },
+            {
+                "index": 42,
+                "name": "tcphpacks",
+                "type": 1
+            },
+            {
+                "index": 43,
+                "name": "tcprenorecovery",
+                "type": 1
+            },
+            {
+                "index": 44,
+                "name": "tcpsackrecovery",
+                "type": 1
+            },
+            {
+                "index": 45,
+                "name": "tcpsackreneging",
+                "type": 1
+            },
+            {
+                "index": 46,
+                "name": "tcpfackreorder",
+                "type": 1
+            },
+            {
+                "index": 47,
+                "name": "tcpsackreorder",
+                "type": 1
+            },
+            {
+                "index": 48,
+                "name": "tcprenoreorder",
+                "type": 1
+            },
+            {
+                "index": 49,
+                "name": "tcptsreorder",
+                "type": 1
+            },
+            {
+                "index": 50,
+                "name": "tcpfullundo",
+                "type": 1
+            },
+            {
+                "index": 51,
+                "name": "tcppartialundo",
+                "type": 1
+            },
+            {
+                "index": 52,
+                "name": "tcpdsackundo",
+                "type": 1
+            },
+            {
+                "index": 53,
+                "name": "tcplossundo",
+                "type": 1
+            },
+            {
+                "index": 54,
+                "name": "tcploss",
+                "type": 1
+            },
+            {
+                "index": 55,
+                "name": "tcplostretransmit",
+                "type": 1
+            },
+            {
+                "index": 56,
+                "name": "tcprenofailures",
+                "type": 1
+            },
+            {
+                "index": 57,
+                "name": "tcpsackfailures",
+                "type": 1
+            },
+            {
+                "index": 58,
+                "name": "tcplossfailures",
+                "type": 1
+            },
+            {
+                "index": 59,
+                "name": "tcpfastretrans",
+                "type": 1
+            },
+            {
+                "index": 60,
+                "name": "tcpforwardretrans",
+                "type": 1
+            },
+            {
+                "index": 61,
+                "name": "tcpslowstartretrans",
+                "type": 1
+            },
+            {
+                "index": 62,
+                "name": "tcptimeouts",
+                "type": 1
+            },
+            {
+                "index": 63,
+                "name": "tcprenorecoveryfail",
+                "type": 1
+            },
+            {
+                "index": 64,
+                "name": "tcpsackrecoveryfail",
+                "type": 1
+            },
+            {
+                "index": 65,
+                "name": "tcpschedulerfailed",
+                "type": 1
+            },
+            {
+                "index": 66,
+                "name": "tcprcvcollapsed",
+                "type": 1
+            },
+            {
+                "index": 67,
+                "name": "tcpdsackoldsent",
+                "type": 1
+            },
+            {
+                "index": 68,
+                "name": "tcpdsackofosent",
+                "type": 1
+            },
+            {
+                "index": 69,
+                "name": "tcpdsackrecv",
+                "type": 1
+            },
+            {
+                "index": 70,
+                "name": "tcpdsackoforecv",
+                "type": 1
+            },
+            {
+                "index": 71,
+                "name": "tcpabortonsyn",
+                "type": 1
+            },
+            {
+                "index": 72,
+                "name": "tcpabortondata",
+                "type": 1
+            },
+            {
+                "index": 73,
+                "name": "tcpabortonclose",
+                "type": 1
+            },
+            {
+                "index": 74,
+                "name": "tcpabortonmemory",
+                "type": 1
+            },
+            {
+                "index": 75,
+                "name": "tcpabortontimeout",
+                "type": 1
+            },
+            {
+                "index": 76,
+                "name": "tcpabortonlinger",
+                "type": 1
+            },
+            {
+                "index": 77,
+                "name": "tcpabortfailed",
+                "type": 1
+            },
+            {
+                "index": 78,
+                "name": "tcpmemorypressures",
+                "type": 1
+            }
+        ]
+    },
+    "structureId": "fa328428c2fa3c815297fd137ff67dcd",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$ip_total_packet_recevied",
+            "dataType": "int",
+            "desc": "The number of ip total packets received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_total_packet_recevied",
+            "intfKey": false,
+            "name": "$ip_total_packet_recevied",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_forwarded",
+            "dataType": "int",
+            "desc": "The number of ip forwarded.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_forwarded",
+            "intfKey": false,
+            "name": "$ip_forwarded",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_income_packet_discarded",
+            "dataType": "int",
+            "desc": "The number of ip incoming packets discarded.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_income_packet_discarded",
+            "intfKey": false,
+            "name": "$ip_income_packet_discarded",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_incoming_packets_delivered",
+            "dataType": "int",
+            "desc": "The number of ip incoming packets delivered.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_incoming_packets_delivered",
+            "intfKey": false,
+            "name": "$ip_incoming_packets_delivered",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_requests_sent_out",
+            "dataType": "int",
+            "desc": "The number of ip requests sent out.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_requests_sent_out",
+            "intfKey": false,
+            "name": "$ip_requests_sent_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_reassemblies_required",
+            "dataType": "int",
+            "desc": "The number of ip reassemblies required.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_reassemblies_required",
+            "intfKey": false,
+            "name": "$ip_reassemblies_required",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_packets_reassembled_ok",
+            "dataType": "int",
+            "desc": "The number of ip packets reassembled ok.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_packets_reassembled_ok",
+            "intfKey": false,
+            "name": "$ip_packets_reassembled_ok",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ip_fragments_received_ok",
+            "dataType": "int",
+            "desc": "The number of ip fragments received ok.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ip_fragments_received_ok",
+            "intfKey": false,
+            "name": "$ip_fragments_received_ok",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_messages_received",
+            "dataType": "int",
+            "desc": "The number of icmp messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_messages_received",
+            "intfKey": false,
+            "name": "$icmp_messages_received",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_input_fail",
+            "dataType": "int",
+            "desc": "The number of icmp input message failed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_input_fail",
+            "intfKey": false,
+            "name": "$icmp_input_fail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_input_destination_unrearchable",
+            "dataType": "int",
+            "desc": "The number of icmp reviced destination unreachable.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_input_destination_unrearchable",
+            "intfKey": false,
+            "name": "$icmp_input_destination_unrearchable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_input_echo_requests",
+            "dataType": "int",
+            "desc": "The number of icmp reviced echo requests.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_input_echo_requests",
+            "intfKey": false,
+            "name": "$icmp_input_echo_requests",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_input_echo_replies",
+            "dataType": "int",
+            "desc": "The number of icmp reviced echo replies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_input_echo_replies",
+            "intfKey": false,
+            "name": "$icmp_input_echo_replies",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_sent",
+            "dataType": "int",
+            "desc": "The number of icmp messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_sent",
+            "intfKey": false,
+            "name": "$icmp_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_failed",
+            "dataType": "int",
+            "desc": "The number of icmp messages failed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_failed",
+            "intfKey": false,
+            "name": "$icmp_failed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_output_destination_unrearchable",
+            "dataType": "int",
+            "desc": "The number of icmp sent destination unreachable.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_output_destination_unrearchable",
+            "intfKey": false,
+            "name": "$icmp_output_destination_unrearchable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$icmp_output_echo_replies",
+            "dataType": "int",
+            "desc": "The number of icmp sent echo replies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$icmp_output_echo_replies",
+            "intfKey": false,
+            "name": "$icmp_output_echo_replies",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_active_connections_openings",
+            "dataType": "int",
+            "desc": "The number of tcp active connections openings.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_active_connections_openings",
+            "intfKey": false,
+            "name": "$tcp_active_connections_openings",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_passive_connections_openings",
+            "dataType": "int",
+            "desc": "The number of tcp passive connection openings.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_passive_connections_openings",
+            "intfKey": false,
+            "name": "$tcp_passive_connections_openings",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_failed_connection_attempts",
+            "dataType": "int",
+            "desc": "The number of tcp failed connection attempts.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_failed_connection_attempts",
+            "intfKey": false,
+            "name": "$tcp_failed_connection_attempts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_connection_resets_recevied",
+            "dataType": "int",
+            "desc": "The number of tcp connection resets received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_connection_resets_recevied",
+            "intfKey": false,
+            "name": "$tcp_connection_resets_recevied",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_connection_established",
+            "dataType": "int",
+            "desc": "The number of tcp connections established.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_connection_established",
+            "intfKey": false,
+            "name": "$tcp_connection_established",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_segments_received",
+            "dataType": "int",
+            "desc": "The number of tcp segments received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_segments_received",
+            "intfKey": false,
+            "name": "$tcp_segments_received",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_segments_send_out",
+            "dataType": "int",
+            "desc": "The number of tcp segments send out.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_segments_send_out",
+            "intfKey": false,
+            "name": "$tcp_segments_send_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_segments_retransmited",
+            "dataType": "int",
+            "desc": "The number of tcp segments retransmited.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_segments_retransmited",
+            "intfKey": false,
+            "name": "$tcp_segments_retransmited",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_bad_segments_received",
+            "dataType": "int",
+            "desc": "The number of tcp bad segments received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_bad_segments_received",
+            "intfKey": false,
+            "name": "$tcp_bad_segments_received",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcp_resets_sent",
+            "dataType": "int",
+            "desc": "The number of tcp resets sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcp_resets_sent",
+            "intfKey": false,
+            "name": "$tcp_resets_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$udp_packets_recevied",
+            "dataType": "int",
+            "desc": "The number of udp packets received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$udp_packets_recevied",
+            "intfKey": false,
+            "name": "$udp_packets_recevied",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$udp_packets_unknow_port_recevied",
+            "dataType": "int",
+            "desc": "The number of udp packets to unknown port received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$udp_packets_unknow_port_recevied",
+            "intfKey": false,
+            "name": "$udp_packets_unknow_port_recevied",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$udp_packets_recevied_errors",
+            "dataType": "int",
+            "desc": "The number of udp packet receive errors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$udp_packets_recevied_errors",
+            "intfKey": false,
+            "name": "$udp_packets_recevied_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$udp_packets_sent",
+            "dataType": "int",
+            "desc": "The number of udp packets sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$udp_packets_sent",
+            "intfKey": false,
+            "name": "$udp_packets_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_invalid_syn_cookies_received",
+            "dataType": "int",
+            "desc": "The number of tcp extension invalid SYN cookies received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_invalid_syn_cookies_received",
+            "intfKey": false,
+            "name": "$tcpext_invalid_syn_cookies_received",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_pruned_buffer_overrun",
+            "dataType": "int",
+            "desc": "The number of tcp extension packets pruned from receive queue because of socket buffer overrun.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_pruned_buffer_overrun",
+            "intfKey": false,
+            "name": "$tcpext_pruned_buffer_overrun",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_arpfilter",
+            "dataType": "int",
+            "desc": "The number of tcp extension arpfilter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_arpfilter",
+            "intfKey": false,
+            "name": "$tcpext_arpfilter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_tcp_finished_wait_fast",
+            "dataType": "int",
+            "desc": "The number of tcp extension TCP sockets finished time wait in fast timer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_tcp_finished_wait_fast",
+            "intfKey": false,
+            "name": "$tcpext_tcp_finished_wait_fast",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_delayed_acks_sent",
+            "dataType": "int",
+            "desc": "The number of tcp extension delayed acks sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_delayed_acks_sent",
+            "intfKey": false,
+            "name": "$tcpext_delayed_acks_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_delayed_acks_locked_socket",
+            "dataType": "int",
+            "desc": "The number of tcp extension delayed acks further delayed because of locked socket.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_delayed_acks_locked_socket",
+            "intfKey": false,
+            "name": "$tcpext_delayed_acks_locked_socket",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_quick_ack_mode",
+            "dataType": "int",
+            "desc": "The number of tcp extension quick ack mode was activated.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_quick_ack_mode",
+            "intfKey": false,
+            "name": "$tcpext_quick_ack_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_directly_to_recvmsg",
+            "dataType": "int",
+            "desc": "The number of tcp extension packets directly queued to recvmsg prequeue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_directly_to_recvmsg",
+            "intfKey": false,
+            "name": "$tcpext_directly_to_recvmsg",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_directly_recevied_from_prequeue",
+            "dataType": "int",
+            "desc": "The number of tcp extension packets directly received from prequeue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_directly_recevied_from_prequeue",
+            "intfKey": false,
+            "name": "$tcpext_directly_recevied_from_prequeue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpext_header_predicted",
+            "dataType": "int",
+            "desc": "The number of tcp extension packets header predicted.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpext_header_predicted",
+            "intfKey": false,
+            "name": "$tcpext_header_predicted",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcppureacks",
+            "dataType": "int",
+            "desc": "The number of TCPPureAcks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcppureacks",
+            "intfKey": false,
+            "name": "$tcppureacks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcphpacks",
+            "dataType": "int",
+            "desc": "The number of TCPHPAcks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcphpacks",
+            "intfKey": false,
+            "name": "$tcphpacks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcprenorecovery",
+            "dataType": "int",
+            "desc": "The number of TCPRenoRecovery.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcprenorecovery",
+            "intfKey": false,
+            "name": "$tcprenorecovery",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpsackrecovery",
+            "dataType": "int",
+            "desc": "The number of TCPSackRecovery.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpsackrecovery",
+            "intfKey": false,
+            "name": "$tcpsackrecovery",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpsackreneging",
+            "dataType": "int",
+            "desc": "The number of TCPSACKReneging.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpsackreneging",
+            "intfKey": false,
+            "name": "$tcpsackreneging",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpfackreorder",
+            "dataType": "int",
+            "desc": "The number of TCPFACKReorder.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpfackreorder",
+            "intfKey": false,
+            "name": "$tcpfackreorder",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpsackreorder",
+            "dataType": "int",
+            "desc": "The number of TCPSACKReorder.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpsackreorder",
+            "intfKey": false,
+            "name": "$tcpsackreorder",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcprenoreorder",
+            "dataType": "int",
+            "desc": "The number of TCPRenoReorder.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcprenoreorder",
+            "intfKey": false,
+            "name": "$tcprenoreorder",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcptsreorder",
+            "dataType": "int",
+            "desc": "The number of TCPTSReorder.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcptsreorder",
+            "intfKey": false,
+            "name": "$tcptsreorder",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpfullundo",
+            "dataType": "int",
+            "desc": "The number of TCPFullUndo.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpfullundo",
+            "intfKey": false,
+            "name": "$tcpfullundo",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcppartialundo",
+            "dataType": "int",
+            "desc": "The number of TCPPartialUndo.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcppartialundo",
+            "intfKey": false,
+            "name": "$tcppartialundo",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpdsackundo",
+            "dataType": "int",
+            "desc": "The number of TCPDSACKUndo.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpdsackundo",
+            "intfKey": false,
+            "name": "$tcpdsackundo",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcplossundo",
+            "dataType": "int",
+            "desc": "The number of TCPLossUndo.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcplossundo",
+            "intfKey": false,
+            "name": "$tcplossundo",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcploss",
+            "dataType": "int",
+            "desc": "The number of TCPLoss.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcploss",
+            "intfKey": false,
+            "name": "$tcploss",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcplostretransmit",
+            "dataType": "int",
+            "desc": "The number of TCPLostRetransmit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcplostretransmit",
+            "intfKey": false,
+            "name": "$tcplostretransmit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcprenofailures",
+            "dataType": "int",
+            "desc": "The number of TCPRenoFailures.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcprenofailures",
+            "intfKey": false,
+            "name": "$tcprenofailures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpsackfailures",
+            "dataType": "int",
+            "desc": "The number of TCPSackFailures.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpsackfailures",
+            "intfKey": false,
+            "name": "$tcpsackfailures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcplossfailures",
+            "dataType": "int",
+            "desc": "The number of TCPLossFailures.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcplossfailures",
+            "intfKey": false,
+            "name": "$tcplossfailures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpfastretrans",
+            "dataType": "int",
+            "desc": "The number of TCPFastRetrans.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpfastretrans",
+            "intfKey": false,
+            "name": "$tcpfastretrans",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpforwardretrans",
+            "dataType": "int",
+            "desc": "The number of TCPForwardRetrans.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpforwardretrans",
+            "intfKey": false,
+            "name": "$tcpforwardretrans",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpslowstartretrans",
+            "dataType": "int",
+            "desc": "The number of TCPSlowStartRetrans.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpslowstartretrans",
+            "intfKey": false,
+            "name": "$tcpslowstartretrans",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcptimeouts",
+            "dataType": "int",
+            "desc": "The number of TCPTimeouts.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcptimeouts",
+            "intfKey": false,
+            "name": "$tcptimeouts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcprenorecoveryfail",
+            "dataType": "int",
+            "desc": "The number of TCPRenoRecoveryFail.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcprenorecoveryfail",
+            "intfKey": false,
+            "name": "$tcprenorecoveryfail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpsackrecoveryfail",
+            "dataType": "int",
+            "desc": "The number of TCPSackRecoveryFail.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpsackrecoveryfail",
+            "intfKey": false,
+            "name": "$tcpsackrecoveryfail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpschedulerfailed",
+            "dataType": "int",
+            "desc": "The number of TCPSchedulerFailed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpschedulerfailed",
+            "intfKey": false,
+            "name": "$tcpschedulerfailed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcprcvcollapsed",
+            "dataType": "int",
+            "desc": "The number of TCPRcvCollapsed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcprcvcollapsed",
+            "intfKey": false,
+            "name": "$tcprcvcollapsed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpdsackoldsent",
+            "dataType": "int",
+            "desc": "The number of TCPDSACKOldSent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpdsackoldsent",
+            "intfKey": false,
+            "name": "$tcpdsackoldsent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpdsackofosent",
+            "dataType": "int",
+            "desc": "The number of TCPDSACKOfoSent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpdsackofosent",
+            "intfKey": false,
+            "name": "$tcpdsackofosent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpdsackrecv",
+            "dataType": "int",
+            "desc": "The number of TCPDSACKRecv.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpdsackrecv",
+            "intfKey": false,
+            "name": "$tcpdsackrecv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpdsackoforecv",
+            "dataType": "int",
+            "desc": "The number of TCPDSACKOfoRecv.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpdsackoforecv",
+            "intfKey": false,
+            "name": "$tcpdsackoforecv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpabortonsyn",
+            "dataType": "int",
+            "desc": "The number of TCPAbortOnSyn.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpabortonsyn",
+            "intfKey": false,
+            "name": "$tcpabortonsyn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpabortondata",
+            "dataType": "int",
+            "desc": "The number of TCPAbortOnData.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpabortondata",
+            "intfKey": false,
+            "name": "$tcpabortondata",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpabortonclose",
+            "dataType": "int",
+            "desc": "The number of TCPAbortOnClose.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpabortonclose",
+            "intfKey": false,
+            "name": "$tcpabortonclose",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpabortonmemory",
+            "dataType": "int",
+            "desc": "The number of TCPAbortOnMemory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpabortonmemory",
+            "intfKey": false,
+            "name": "$tcpabortonmemory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpabortontimeout",
+            "dataType": "int",
+            "desc": "The number of TCPAbortOnTimeout.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpabortontimeout",
+            "intfKey": false,
+            "name": "$tcpabortontimeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpabortonlinger",
+            "dataType": "int",
+            "desc": "The number of TCPAbortOnLinger.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpabortonlinger",
+            "intfKey": false,
+            "name": "$tcpabortonlinger",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpabortfailed",
+            "dataType": "int",
+            "desc": "The number of TCPAbortFailed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpabortfailed",
+            "intfKey": false,
+            "name": "$tcpabortfailed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tcpmemorypressures",
+            "dataType": "int",
+            "desc": "The number of TCPMemoryPressures.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tcpmemorypressures",
+            "intfKey": false,
+            "name": "$tcpmemorypressures",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

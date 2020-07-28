@@ -1,0 +1,477 @@
+{
+    "_id": "ca1521d5-f791-49eb-b0ca-7d1ca9997283",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis protocol",
+    "createTime": {
+        "$date": 1590777871859
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow isis protocol",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show isis protocol\r\nIS-IS Router: <Null Tag>\r\n  System Id: F100.E120.0013 IS-Type: level-1-2\r\n  Manual area address(es):\r\n   49.0000.0001\r\n  Routing for area address(es):\r\n   49.0000.0001\r\n  Interfaces supported by IS-IS:\r\n  TenGigabitEthernet 1/1 - IP - IPv6\r\n  TenGigabitEthernet 1/2 - IP - IPv6\r\n  TenGigabitEthernet 1/10 - IP - IPv6\r\n  Loopback 0 - IP - IPv6\r\nRedistributing:\r\nDistance: 115\r\nGenerate narrow metrics: level-1-2\r\nAccept narrow metrics: level-1-2\r\nGenerate wide metrics: none\r\nAccept wide metrics: none\r\nMulti Topology Routing is enabled in transition mode.\r\nDell#",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"isis_router\",\"startLine\":\"regex:^IS-IS Router:\",\"endLine\":\"regex:^\\\\S+\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"4f9c783b-dfdf-0828-20bf-fc2a8611742e\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$isis_rt_tag]:is-is router:\\\\s+(.+?)$\",\"regex[$sys_id, $type]:system id:\\\\s+(\\\\S+)\\\\s+is-type:\\\\s+(\\\\S+)\",\"mregex[$manual_area_addr]:manual area address\\\\(es\\\\):.*?(\\\\d+\\\\S+)\",\"mregex[$rt_area_addr]:routing for area address\\\\(es\\\\):.*?(\\\\d+\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_rt_tag:string\",\"$sys_id:string\",\"$type:string\",\"$manual_area_addr:string\",\"$rt_area_addr:string\"]},\"xxid\":\"9bdbc524-5c2b-38c8-0dd1-aab7f2761036\"},{\"type\":\"4\",\"name\":\"intf_support\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf_support]:^\\\\s+(\\\\S+ \\\\d+\\\\S*\\\\s+-\\\\s*.+?)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf_support:string\"]},\"xxid\":\"13f7339d-3c6f-3f4b-1d29-4f8b9483cf21\"}]},\"xxid\":\"460ba343-6467-4817-ae1b-bb2aaf82ba66\",\"hashColumns\":[\"$intf_support\"]}]},\"xxid\":\"7152eee3-28de-eaed-ae7f-ca7208cf2867\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:distance]:distance:\\\\s+(\\\\d+)\",\"regex[$generate_narrow_metric]:Generate narrow metrics: (.+?)$\",\"regex[$accept_narrow_metric]:Accept narrow metrics: (.+?)$\",\"regex[$generate_wide_metric]:Generate wide metrics: (.+?)$\",\"regex[$accept_wide_metric]:Accept wide metrics: (.+?)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$distance:int\",\"$generate_narrow_metric:string\",\"$accept_narrow_metric:string\",\"$generate_wide_metric:string\",\"$accept_wide_metric:string\"]},\"xxid\":\"b3158ca3-ae49-8793-e23d-21914d2f9831\"},{\"type\":\"4\",\"name\":\"isis_protocols\",\"keyVariables\":\"\",\"startLine\":\"regex[$string:isis_rt_tag]:IS-IS Router:\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$string:system_id,$string:is_type]:System Id: (\\\\S+) IS-Type: (.+)\",\"mregex[$manual_area_addr]:manual area address\\\\(es\\\\):.*?(\\\\d+\\\\S+)\",\"mregex[$rt_area_addr]:routing for area address\\\\(es\\\\):.*?(\\\\d+\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_rt_tag:string\",\"$system_id:string\",\"$is_type:string\",\"$manual_area_addr:string\",\"$rt_area_addr:string\"]},\"xxid\":\"8e18db35-30cd-d42b-c254-368a19c7ccbd\"}]},\"xxid\":\"469e0ff7-6daf-37b7-b09e-115b05b05666\",\"hashColumns\":[\"$system_id\"]}]}",
+            "tableKeys": [
+                "_original_result.isis_protocols.$system_id",
+                "_original_result.isis_router.intf_support.$intf_support"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "isis_router",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "isis_rt_tag",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "sys_id",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "type",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "manual_area_addr",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "rt_area_addr",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "distance",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "generate_narrow_metric",
+                "type": 4
+            },
+            {
+                "index": 8,
+                "name": "accept_narrow_metric",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "generate_wide_metric",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "accept_wide_metric",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf_support",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf_support"
+                ],
+                "hashSort": false,
+                "index": 11,
+                "name": "intf_support",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "isis_rt_tag",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "is_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "manual_area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rt_area_addr",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$system_id"
+                ],
+                "hashSort": false,
+                "index": 12,
+                "name": "isis_protocols",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "17b011d0043964ddfdc5d75535427dcc",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_router",
+            "dataType": "filter",
+            "desc": "IS-IS router filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_router",
+            "intfKey": false,
+            "name": "isis_router",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$isis_rt_tag",
+            "dataType": "string",
+            "desc": "Tag.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_router.$isis_rt_tag",
+            "intfKey": false,
+            "name": "$isis_rt_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sys_id",
+            "dataType": "string",
+            "desc": "System ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_router.$sys_id",
+            "intfKey": false,
+            "name": "$sys_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$type",
+            "dataType": "string",
+            "desc": "ISIS type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_router.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$manual_area_addr",
+            "dataType": "string",
+            "desc": "Manual area addresses.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_router.$manual_area_addr",
+            "intfKey": false,
+            "name": "$manual_area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rt_area_addr",
+            "dataType": "string",
+            "desc": "Routing for area addresses.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_router.$rt_area_addr",
+            "intfKey": false,
+            "name": "$rt_area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_support",
+            "dataType": "paragraph",
+            "desc": "Interfaces supported by IS-IS table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf_support"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_router.intf_support",
+            "intfKey": false,
+            "name": "intf_support",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "intf_support.$intf_support",
+            "dataType": "string",
+            "desc": "Supported interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_router.intf_support.$intf_support",
+            "intfKey": false,
+            "name": "$intf_support",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$distance",
+            "dataType": "int",
+            "desc": "Redistributing distance.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$distance",
+            "intfKey": false,
+            "name": "$distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$generate_narrow_metric",
+            "dataType": "string",
+            "desc": "Generate narrow metrics.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$generate_narrow_metric",
+            "intfKey": false,
+            "name": "$generate_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$accept_narrow_metric",
+            "dataType": "string",
+            "desc": "Accept narrow metrics.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$accept_narrow_metric",
+            "intfKey": false,
+            "name": "$accept_narrow_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$generate_wide_metric",
+            "dataType": "string",
+            "desc": "Generate wide metrics.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$generate_wide_metric",
+            "intfKey": false,
+            "name": "$generate_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$accept_wide_metric",
+            "dataType": "string",
+            "desc": "Accept wide metrics.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$accept_wide_metric",
+            "intfKey": false,
+            "name": "$accept_wide_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocols",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$system_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_protocols",
+            "intfKey": false,
+            "name": "isis_protocols",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_protocols.$isis_rt_tag",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocols.$isis_rt_tag",
+            "intfKey": false,
+            "name": "$isis_rt_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocols.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocols.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocols.$is_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocols.$is_type",
+            "intfKey": false,
+            "name": "$is_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocols.$manual_area_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocols.$manual_area_addr",
+            "intfKey": false,
+            "name": "$manual_area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocols.$rt_area_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocols.$rt_area_addr",
+            "intfKey": false,
+            "name": "$rt_area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

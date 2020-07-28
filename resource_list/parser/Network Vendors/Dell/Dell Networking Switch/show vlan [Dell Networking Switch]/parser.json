@@ -1,0 +1,185 @@
+{
+    "_id": "dd09d337-31be-48a5-a2bc-95f392c4edc9",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vlan",
+    "createTime": {
+        "$date": 1590779918854
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow vlan",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show vlan\r\nCodes: * - Default VLAN, G - GVRP VLANs, P - Primary, C -\r\nCommunity, I - Isolated\r\nQ: U - Untagged, T - Tagged, O - Openflow\r\n   x - Dot1x untagged, X - Dot1x tagged\r\n   o - OpenFlow untagged, O - OpenFlow tagged\r\n   G - GVRP tagged, M - Vlan-stack\r\n   i - Internal untagged, I - Internal tagged, v - VLT untagged,\r\nV - VLT tagged\r\n    NUM   Status                Description     Q  Ports\r\n*   1     Inactive\r\n    2     Active                This is end PC  U  Po1(Te 1/1)\r\n                                                T  Po20(Te 1/6), Te 1/25\r\n                                                T  Te 1/7\r\n    3     Active                                T  Po20(Te 1/6)\r\n                                                T  Te 1/7\r\n                                                U  Te 1/1\r\n    4     Active                                U  Po2(Te 1/2)\r\n                                                T  Po20(Te 1/6)\r\n                                                T  Te 1/7\r\n    5     Active                                T  Po20(Te 1/6)\r\n                                                T  Te 1/7\r\n                                                U  Te 1/3\r\n    6     Active                                U  Po3(Te 1/4)\r\n                                                T  Po20(Te 1/6)\r\n                                                T  Te 1/7\r\n    7     Active                                T  Po20(Te 1/6)\r\n                                                T  Te 1/7\r\n                                                U  Te 1/5\r\nP 100     Active                                T  Po1(Te 1/1)\r\n                                                T  Te 1/2\r\nC 101     Inactive                              T  Te 1/3\r\nI 102     Inactive                              T  Te 1/4\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"vlans_table\",\"headers\":\"NUM;Status;Description;Q;Ports\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":0,\"headerToVariables\":\"NUM:$string:vlan_id;Status:$string:status;Description:$string:description;Q:$string:q;Ports:$string:ports\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"1\",\"usePrevars\":\"$vlan_id;$status\",\"variableTypes\":{\"variableType\":[\"$vlan_id:string\",\"$status:string\",\"$description:string\",\"$q:string\",\"$ports:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"0c5e5ff2-5986-f4ee-ea8a-a8579a046bce\",\"hashColumns\":[\"$vlan_id\"]}]}",
+            "tableKeys": [
+                "_original_result.vlans_table.$vlan_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "description",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "q",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "ports",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vlans_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "87ab8bdde7de03775e38af3afe818846",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vlans_table.$description",
+            "dataType": "string",
+            "desc": "Description.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans_table.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlans_table.$ports",
+            "dataType": "string",
+            "desc": "Displays the type, slot, and port information.\n??? Po = port channel\n??? Te = ten-gigabit Ethernet",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans_table.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlans_table.$q",
+            "dataType": "string",
+            "desc": "??? Displays G for GVRP tagged\n??? M for member of a VLAN-Stack VLAN\n??? T for tagged interface\n??? U for untagged interface\n??? x (not capitalized x) for Dot1x untagged\n??? X (capitalized X) for Dot1x tagged\n??? o (not capitalized o) for OpenFlow untagged\n??? O (capitalized O) for OpenFlow tagged\n??? H for VSN tagged\n??? i (not capitalized i) for Internal untagged\n??? I (capitalized I) for Internal tagged\n??? v (not capitalized v) for VLT untagged\n??? V (capitalized V) for VLT tagged",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans_table.$q",
+            "intfKey": false,
+            "name": "$q",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlans_table.$status",
+            "dataType": "string",
+            "desc": "Displays the word Inactive for inactive VLANs and the word Active for active VLANs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlans_table.$vlan_id",
+            "dataType": "string",
+            "desc": "Displays existing VLAN IDs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlans_table.$vlan_id",
+            "intfKey": false,
+            "name": "$vlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlans_table",
+            "dataType": "table",
+            "desc": "VLAN table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlans_table",
+            "intfKey": false,
+            "name": "vlans_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

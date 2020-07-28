@@ -1,0 +1,328 @@
+{
+    "_id": "e04b3b43-0a8a-ba98-de44-77939610d1e2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display ipsec tunnel",
+    "createTime": {
+        "$date": 1590769083790
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay ipsec tunnel",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "[H3C]display ipsec tunnel\r\nTunnel ID: 0\r\nStatus: Active\r\nPerfect forward secrecy:\r\nSA's SPI:\r\n    outbound:  3172586561  (0xbd19d441)   [ESP]\r\n    inbound:   2556747733  (0x9864dfd5)   [ESP]\r\nTunnel:\r\n    local  address: 2.2.2.2\r\n    remote address: 2.2.2.1\r\nFlow:\r\n        sour addr: 10.1.2.0/255.255.255.0  port: 0  protocol: ip\r\n        dest addr: 10.1.1.0/255.255.255.0  port: 0  protocol: ip\r\n\r\nTunnel ID: 1\r\nStatus: Active\r\nPerfect forward secrecy:\r\nSA's SPI:\r\n    outbound:  3172586561  (0xbd19d441)   [ESP]\r\n    inbound:   2556747733  (0x9864dfd5)   [ESP]\r\nTunnel:\r\n    local  address: 2.2.2.2\r\n    remote address: 2.2.2.1\r\nFlow:\r\n        sour addr: 10.1.2.0/255.255.255.0  port: 0  protocol: ip\r\n        dest addr: 10.1.1.0/255.255.255.0  port: 0  protocol: ip\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ipsec_tunnel\",\"keyVariables\":\"\",\"startLine\":\"Tunnel ID: $tunnel_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Status: $status\",\"outbound: $spi_out\",\"inbound: $spi_in\",\"local address: $local_address\",\"remote address: $remote_address\",\"sour addr: $sour_addr port: $sour_port protocol: $sour_protocol\",\"dest addr: $dest_addr port: $dest_port protocol: $dest_protocol\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$tunnel_id:string\",\"$status:string\",\"$spi_out:string\",\"$spi_in:string\",\"$local_address:string\",\"$remote_address:string\",\"$sour_addr:string\",\"$sour_port:string\",\"$sour_protocol:string\",\"$dest_addr:string\",\"$dest_port:string\",\"$dest_protocol:string\"]},\"xxid\":\"d2a7b75f-38c6-97e2-dd7f-c3e0b4be80e5\"}]},\"xxid\":\"75f4f7a4-a5e6-996c-2d3d-7b37c01f9c4b\",\"hashColumns\":[\"$tunnel_id\",\"$status\"]}]}",
+            "tableKeys": [
+                "_original_result.ipsec_tunnel.$tunnel_id",
+                "_original_result.ipsec_tunnel.$status"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "tunnel_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "spi_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "spi_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "local_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "remote_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "sour_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "sour_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "sour_protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "dest_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "dest_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "dest_protocol",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$status",
+                    "$tunnel_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ipsec_tunnel",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "28731a64ef27847685c8808088e2da5f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ipsec_tunnel",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$tunnel_id",
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel",
+            "intfKey": false,
+            "name": "ipsec_tunnel",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ipsec_tunnel.$tunnel_id",
+            "dataType": "string",
+            "desc": "Used to uniquely identify an IPsec tunnel",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$tunnel_id",
+            "intfKey": false,
+            "name": "$tunnel_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$status",
+            "dataType": "string",
+            "desc": "Status of tunnel",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$spi_out",
+            "dataType": "string",
+            "desc": "SPIs of the outbound SAs",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$spi_out",
+            "intfKey": false,
+            "name": "$spi_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$spi_in",
+            "dataType": "string",
+            "desc": "SPIs of the inbound SAs",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$spi_in",
+            "intfKey": false,
+            "name": "$spi_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$local_address",
+            "dataType": "string",
+            "desc": "Local address of the tunnel",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$local_address",
+            "intfKey": false,
+            "name": "$local_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$remote_address",
+            "dataType": "string",
+            "desc": "Remote address of the tunnel",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$remote_address",
+            "intfKey": false,
+            "name": "$remote_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$sour_addr",
+            "dataType": "string",
+            "desc": "Source ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$sour_addr",
+            "intfKey": false,
+            "name": "$sour_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$sour_port",
+            "dataType": "string",
+            "desc": "Source port",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$sour_port",
+            "intfKey": false,
+            "name": "$sour_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$sour_protocol",
+            "dataType": "string",
+            "desc": "Source protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$sour_protocol",
+            "intfKey": false,
+            "name": "$sour_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$dest_addr",
+            "dataType": "string",
+            "desc": "Destination ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$dest_addr",
+            "intfKey": false,
+            "name": "$dest_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$dest_port",
+            "dataType": "string",
+            "desc": "Destination port",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$dest_port",
+            "intfKey": false,
+            "name": "$dest_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipsec_tunnel.$dest_protocol",
+            "dataType": "string",
+            "desc": "Destination protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipsec_tunnel.$dest_protocol",
+            "intfKey": false,
+            "name": "$dest_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

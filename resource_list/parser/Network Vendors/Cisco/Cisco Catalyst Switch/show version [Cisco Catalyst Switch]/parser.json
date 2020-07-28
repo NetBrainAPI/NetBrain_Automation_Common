@@ -1,0 +1,632 @@
+{
+    "_id": "0427526d-1b2d-d3c7-342d-25b2acbad61b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show version",
+    "createTime": {
+        "$date": 1591102078489
+    },
+    "description": "Device Type:\nCisco Catalyst Switch\nCommand:\nshow version",
+    "devTypes": [
+        2060
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BJ-Cat-5000>show version\r\rWS-C5000 Software, Version McpSW: 4.1(3) NmpSW: 4.1(3)\rCopyright (c) 1995-1998 by Cisco Systems\rNMP S/W compiled on Aug 18 1998, 11:03:25\rMCP S/W compiled on Aug 18 1998, 11:13:25\r\rSystem Bootstrap Version: 2.4(1)\r\rHardware Version: 2.1  Model: WS-C5000  Serial #: 008147975\r\rMod Port Model      Serial #  Versions\r--- ---- ---------- --------- ----------------------------------------\r1   2    WS-X5509   008147975 Hw : 2.1\r                              Fw : 2.4(1)\r                              Fw1: 2.4(1)\r                              Sw : 4.1(3)\r2   1    WS-X5302   015937415 Hw : 7.6\r                              Fw : 20.20\r                              Fw1: 3.1(1)\r                              Sw : 12.0(7)W5(16) \r3   24   WS-X5225R  015414599 Hw : 3.3\r                              Fw : 4.3(1)\r                              Sw : 4.1(3)\r\r       DRAM                    FLASH                   NVRAM\rModule Total   Used    Free    Total   Used    Free    Total Used  Free\r------ ------- ------- ------- ------- ------- ------- ----- ----- -----\r1       16384K  10005K   6379K   8192K   3840K   4352K  256K  114K  142K\r\rUptime is 18 days, 19 hours, 12 minutes\r",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Version McpSW: $mcpsw NmpSW: $nmpsw\",\"Bootstrap Version: $bootstrap\",\"Version: $hardware  Model: $model Serial #: $serial\",\"regex[$int:uptime_day, $int:uptime_hour, $int:uptime_minute]:is (\\\\d+) days, (\\\\d+) hours, (\\\\d+) minutes\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mcpsw:string\",\"$nmpsw:string\",\"$bootstrap:string\",\"$hardware:string\",\"$model:string\",\"$serial:string\",\"$uptime_day:int\",\"$uptime_hour:int\",\"$uptime_minute:int\"]},\"xxid\":\"c9bff248-1bf7-1287-dcba-40994ed552ef\"},{\"type\":\"3\",\"name\":\"ram_table\",\"headers\":\"Module;DRAM Total;DRAM Used;DRAM Free;FLASH Total;FLASH Used;FLASH Free;NVRAM Total;NVRAM Used;NVRAM Free\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Module:$string:module;DRAM Total:$string:dram_total;DRAM Used:$string:dram_used;DRAM Free:$string:dram_free;FLASH Total:$string:flash_total;FLASH Used:$string:flash_used;FLASH Free:$string:flash_free;NVRAM Total:$string:nvram_total;NVRAM Used:$string:nvram_used;NVRAM Free:$string:nvram_free\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$module:string\",\"$dram_total:string\",\"$dram_used:string\",\"$dram_free:string\",\"$flash_total:string\",\"$flash_used:string\",\"$flash_free:string\",\"$nvram_total:string\",\"$nvram_used:string\",\"$nvram_free:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"1dbbfe06-da9b-94f3-de1f-b0de0e124195\"},{\"type\":\"1\",\"name\":\"mod_filter\",\"startLine\":\"Mod Port Model\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"8e49bccd-8619-5ee6-d026-85c7f392bf83\"},{\"type\":\"4\",\"name\":\"mod_version\",\"keyVariables\":\"\",\"startLine\":\"regex[$mod]:^(\\\\d+)\\\\s+\\\\d+\\\\s+\\\\S+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$mod_port]:^\\\\d+\\\\s+(\\\\d+)\\\\s+\\\\S+\",\"regex[$mod_model]:^\\\\d+\\\\s+\\\\d+\\\\s+(\\\\S+)\\\\s+\",\"regex[$mod_serial]:^\\\\d+\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+(\\\\S+)\\\\s+\",\"mregex[$mod_versions]:^\\\\d+\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mod:string\",\"$mod_port:string\",\"$mod_model:string\",\"$mod_serial:string\",\"$mod_versions:string\"]},\"xxid\":\"baf989cf-4b14-ee60-cd1a-da548490ad4a\"}]},\"xxid\":\"33a8fd7e-6d9c-887b-6fb1-7d87d95f1b98\",\"hashColumns\":[\"$mod\",\"$mod_port\",\"$mod_model\",\"$mod_serial\",\"$mod_versions\"]}]},\"xxid\":\"7d59ab07-d211-3068-f29f-fda997655263\"}]}",
+            "tableKeys": [
+                "_original_result.mod_filter.mod_version.$mod",
+                "_original_result.mod_filter.mod_version.$mod_port",
+                "_original_result.mod_filter.mod_version.$mod_model",
+                "_original_result.mod_filter.mod_version.$mod_serial"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "mcpsw",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "nmpsw",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "bootstrap",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "hardware",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "model",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "serial",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "uptime_day",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "uptime_hour",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "uptime_minute",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "mod_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "module",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "dram_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dram_used",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dram_free",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "flash_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "flash_used",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "flash_free",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "nvram_total",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "nvram_used",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "nvram_free",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 10,
+                "name": "ram_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "mod_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "mod_model",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mod_serial",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mod_versions",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$mod",
+                    "$mod_model",
+                    "$mod_port",
+                    "$mod_serial",
+                    "$mod_versions"
+                ],
+                "hashSort": false,
+                "index": 11,
+                "name": "mod_version",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4c471865ad343c9b195247cc43897714",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$mcpsw",
+            "dataType": "string",
+            "desc": "McpSW version",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mcpsw",
+            "intfKey": false,
+            "name": "$mcpsw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$nmpsw",
+            "dataType": "string",
+            "desc": "NmpSW version",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$nmpsw",
+            "intfKey": false,
+            "name": "$nmpsw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bootstrap",
+            "dataType": "string",
+            "desc": "System bootstrap version",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bootstrap",
+            "intfKey": false,
+            "name": "$bootstrap",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hardware",
+            "dataType": "string",
+            "desc": "Hardware version",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$hardware",
+            "intfKey": false,
+            "name": "$hardware",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$model",
+            "dataType": "string",
+            "desc": "Chassis model",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$model",
+            "intfKey": false,
+            "name": "$model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$serial",
+            "dataType": "string",
+            "desc": "Chassis serial number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$serial",
+            "intfKey": false,
+            "name": "$serial",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_day",
+            "dataType": "int",
+            "desc": "Uptime of day",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_day",
+            "intfKey": false,
+            "name": "$uptime_day",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_hour",
+            "dataType": "int",
+            "desc": "Uptime of hour",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_hour",
+            "intfKey": false,
+            "name": "$uptime_hour",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_minute",
+            "dataType": "int",
+            "desc": "Uptime of minute",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_minute",
+            "intfKey": false,
+            "name": "$uptime_minute",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ram_table",
+            "intfKey": false,
+            "name": "ram_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ram_table.$module",
+            "dataType": "string",
+            "desc": "Module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$module",
+            "intfKey": false,
+            "name": "$module",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$dram_total",
+            "dataType": "string",
+            "desc": "Total DRAM of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$dram_total",
+            "intfKey": false,
+            "name": "$dram_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$dram_used",
+            "dataType": "string",
+            "desc": "Used DRAM of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$dram_used",
+            "intfKey": false,
+            "name": "$dram_used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$dram_free",
+            "dataType": "string",
+            "desc": "Free DRAM of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$dram_free",
+            "intfKey": false,
+            "name": "$dram_free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$flash_total",
+            "dataType": "string",
+            "desc": "Total FLASH of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$flash_total",
+            "intfKey": false,
+            "name": "$flash_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$flash_used",
+            "dataType": "string",
+            "desc": "Used FLASH of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$flash_used",
+            "intfKey": false,
+            "name": "$flash_used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$flash_free",
+            "dataType": "string",
+            "desc": "Free FLASH of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$flash_free",
+            "intfKey": false,
+            "name": "$flash_free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$nvram_total",
+            "dataType": "string",
+            "desc": "Total NVRAM of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$nvram_total",
+            "intfKey": false,
+            "name": "$nvram_total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$nvram_used",
+            "dataType": "string",
+            "desc": "Used NVRAM of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$nvram_used",
+            "intfKey": false,
+            "name": "$nvram_used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ram_table.$nvram_free",
+            "dataType": "string",
+            "desc": "Free NVRAM of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ram_table.$nvram_free",
+            "intfKey": false,
+            "name": "$nvram_free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_filter",
+            "dataType": "filter",
+            "desc": "Filter for module information",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_filter",
+            "intfKey": false,
+            "name": "mod_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$mod",
+                    "$mod_port",
+                    "$mod_model",
+                    "$mod_serial",
+                    "$mod_versions"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mod_filter.mod_version",
+            "intfKey": false,
+            "name": "mod_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mod_version.$mod",
+            "dataType": "string",
+            "desc": "Module number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_filter.mod_version.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version.$mod_port",
+            "dataType": "string",
+            "desc": "Module ports",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_filter.mod_version.$mod_port",
+            "intfKey": false,
+            "name": "$mod_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version.$mod_model",
+            "dataType": "string",
+            "desc": "Model of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_filter.mod_version.$mod_model",
+            "intfKey": false,
+            "name": "$mod_model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version.$mod_serial",
+            "dataType": "string",
+            "desc": "Serial number of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_filter.mod_version.$mod_serial",
+            "intfKey": false,
+            "name": "$mod_serial",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version.$mod_versions",
+            "dataType": "string",
+            "desc": "Versions of module",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_filter.mod_version.$mod_versions",
+            "intfKey": false,
+            "name": "$mod_versions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,219 @@
+{
+    "_id": "97a0d60f-1a11-0428-7362-df0e54966a8c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show wlan summary",
+    "createTime": {
+        "$date": 1584122518951
+    },
+    "description": "",
+    "devTypes": [
+        3033
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "(Cisco Controller) >show wlan summary\r\n\r\nNumber of WLANs.................................. 1\r\n\r\nWLAN ID  WLAN Profile Name / SSID                                                 Status    Interface Name        PMIPv6 Mobility\r\n-------  -----------------------------------------------------------------------  --------  --------------------  ---------------\r\n1        NetBrain / NetBrain                                                      Enabled   ssid_vlan_95          none        \r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.WLAN_Summary.$interface_name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Number of WLANs.................................. $int:number_of_WLANs$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$number_of_WLANs:int\"]},\"xxid\":\"fd490870-7415-caef-6925-00437ce4ba8f\"},{\"type\":\"3\",\"name\":\"WLAN_Summary\",\"headers\":\"WLAN ID;WLAN Profile Name / SSID;Status;Interface Name;PMIPv6 Mobility\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"WLAN ID:$string:wlan_id;WLAN Profile Name / SSID:$string:wlan_profile_name___ssid;Status:$string:status;Interface Name:$string:interface_name;PMIPv6 Mobility:$string:pmipv6_mobility\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$wlan_id:string\",\"$wlan_profile_name___ssid:string\",\"$status:string\",\"$interface_name:string\",\"$pmipv6_mobility:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"caa430e9-9fa1-2e70-5a14-eed9ab67a537\",\"hashColumns\":[\"$wlan_id\",\"$wlan_profile_name___ssid\",\"$status\",\"$interface_name\",\"$pmipv6_mobility\"],\"HashSort\":false,\"interfaceKey\":\"$interface_name\"}]}",
+            "tableKeys": [
+                "_original_result.WLAN_Summary.$wlan_id",
+                "_original_result.WLAN_Summary.$wlan_profile_name___ssid",
+                "_original_result.WLAN_Summary.$status",
+                "_original_result.WLAN_Summary.$interface_name",
+                "_original_result.WLAN_Summary.$pmipv6_mobility"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "number_of_WLANs",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "wlan_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "wlan_profile_name___ssid",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "interface_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "pmipv6_mobility",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface_name",
+                    "$pmipv6_mobility",
+                    "$status",
+                    "$wlan_id",
+                    "$wlan_profile_name___ssid"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "WLAN_Summary",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "06f005b676b1ab8dee69f0f62b698c4c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$number_of_WLANs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$number_of_WLANs",
+            "intfKey": false,
+            "name": "$number_of_WLANs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "WLAN_Summary",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$wlan_id",
+                    "$wlan_profile_name___ssid",
+                    "$status",
+                    "$interface_name",
+                    "$pmipv6_mobility"
+                ],
+                "hashSort": false
+            },
+            "fullName": "WLAN_Summary",
+            "intfKey": false,
+            "name": "WLAN_Summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "WLAN_Summary.$wlan_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "WLAN_Summary.$wlan_id",
+            "intfKey": false,
+            "name": "$wlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "WLAN_Summary.$wlan_profile_name___ssid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "WLAN_Summary.$wlan_profile_name___ssid",
+            "intfKey": false,
+            "name": "$wlan_profile_name___ssid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "WLAN_Summary.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "WLAN_Summary.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "WLAN_Summary.$interface_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "WLAN_Summary.$interface_name",
+            "intfKey": false,
+            "name": "$interface_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "WLAN_Summary.$pmipv6_mobility",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "WLAN_Summary.$pmipv6_mobility",
+            "intfKey": false,
+            "name": "$pmipv6_mobility",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

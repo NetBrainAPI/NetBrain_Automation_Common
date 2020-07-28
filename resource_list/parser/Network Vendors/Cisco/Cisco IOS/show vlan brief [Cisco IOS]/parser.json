@@ -1,0 +1,165 @@
+{
+    "_id": "59e4c1d6-5f55-383c-05e1-e8df18af0bc3",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vlan brief",
+    "createTime": {
+        "$date": 1560808631017
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCommand: \nshow vlan brief",
+    "devTypes": [
+        2001
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BJ-L2-Core-A#show vlan brief\n\nVLAN Name                             Status    Ports\n---- -------------------------------- --------- -------------------------------\n1    default                          active    Fa0/4, Fa0/6, Fa0/7, Fa0/8\n                                                Fa0/9, Fa0/11, Fa0/14, Fa0/17\n                                                Fa0/18, Fa0/19, Fa0/20, Gi0/1\n                                                Gi0/2\n2    VLAN0002                         active    \n3    VLAN0003                         active    \n5    LinkToRouter                     active    \n6    ip-unnumber-test                 active    \n10   VLAN0010                         active    Fa0/3, Fa0/15, Fa0/16\n11   VLAN0011                         active    \n20   Dev                              active    \n21   QA                               active    \n22   Market                           active    Fa0/10\n23   VLAN0023                         active    \n24   VLAN0024                         active    \n30   VLAN0030                         active    \n31   VLAN0031                         active    \n32   VLAN0032                         active    \n40   VLAN0040                         active    \n45   VLAN0045                         active    \n60   VLAN0060                         active    \n70   VLAN0070                         active    \n80   VLAN0080                         active    \n81   VLAN0081                         active    \n100  admin                            active    \n300  VLAN0300                         active    \n701  formstp                          active    \n800  voice                            active    \n1000 VLAN1000                         active    \n1001 VLAN1001                         active    \n1002 fddi-default                     act/unsup \n1003 token-ring-default               act/unsup \n1004 fddinet-default                  act/unsup \n1005 trnet-default                    act/unsup \n2000 VLAN2000                         active    \n3001 VLAN3001                         active    \n3002 VLAN3002                         active    \n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vlan_intfs\",\"keyVariables\":null,\"startLine\":\"regex[$vlan_id]:^(\\\\d+)\\\\s+\\\\S+\\\\s+\\\\S+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vlan_name]:^\\\\d+\\\\s+(\\\\S+)\\\\s+\\\\S+\",\"regex[$vlan_status]:^\\\\d+\\\\s+\\\\S+\\\\s+(\\\\S+)\",\"mregex[$ports]:^\\\\d+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(.+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$vlan_id:string\",\"$vlan_name:string\",\"$vlan_status:string\",\"$ports:string\"]},\"xxid\":\"b5869083-2b49-dc6c-96e6-8c93c1cb1582\"}]},\"xxid\":\"daf400a0-4d52-3ba2-be14-d7058353ae4f\",\"hashColumns\":[\"$vlan_id\"]}]}",
+            "tableKeys": [
+                "_original_result.vlan_intfs.$vlan_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vlan_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ports",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vlan_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d9eee47d60d00adaf60fda7764c8ff9b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vlan_intfs.$ports",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_intfs.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs.$vlan_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_intfs.$vlan_id",
+            "intfKey": false,
+            "name": "$vlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs.$vlan_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_intfs.$vlan_name",
+            "intfKey": false,
+            "name": "$vlan_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs.$vlan_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_intfs.$vlan_status",
+            "intfKey": false,
+            "name": "$vlan_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlan_intfs",
+            "intfKey": false,
+            "name": "vlan_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

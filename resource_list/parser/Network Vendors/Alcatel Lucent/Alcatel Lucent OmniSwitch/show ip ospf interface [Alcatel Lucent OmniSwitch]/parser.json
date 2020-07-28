@@ -1,0 +1,220 @@
+{
+    "_id": "fef45d23-41b9-53b8-35dc-34f897d122ee",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf interface",
+    "createTime": {
+        "$date": 1590697896006
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip ospf interface",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip ospf interface\r\n        Interface           DR             Backup DR      Admin   Oper\r\n          Name            Address           Address      Status  Status  State\r\n---------------------+----------------+----------------+--------+------+-------\r\nvlan-213              213.10.10.1      213.10.10.254    enabled   up    DR\r\nvlan-215              215.10.10.254    215.10.10.1      enabled   up    BDR",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_intf_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_intf_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf, $dr_addr, $bdr_addr, $admin_status, $oper_status, $state]:(\\\\S+)\\\\s+(\\\\d+\\\\S+)\\\\s+(\\\\d+\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$dr_addr:string\",\"$bdr_addr:string\",\"$admin_status:string\",\"$oper_status:string\",\"$state:string\"]},\"xxid\":\"963557f0-380d-1c73-a6eb-051a0ef94b55\"}]},\"xxid\":\"b35d2e28-60a3-06a7-4170-d48eb91773f8\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$dr_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_intf_table.$dr_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "dr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "bdr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "admin_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "oper_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$dr_addr",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d96d80523ef41b11fbfc6fa5d115f781",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_intf_table",
+            "dataType": "paragraph",
+            "desc": "OSPF interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$dr_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_table",
+            "intfKey": false,
+            "name": "ospf_intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_intf_table.$intf",
+            "dataType": "string",
+            "desc": "The name of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_intf_table.$dr_addr",
+            "dataType": "string",
+            "desc": "The designated router IP address on this network segment. Make sure you configure a VLAN for the router IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_table.$dr_addr",
+            "intfKey": false,
+            "name": "$dr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$bdr_addr",
+            "dataType": "string",
+            "desc": "The IP address of the backup designated router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_table.$bdr_addr",
+            "intfKey": false,
+            "name": "$bdr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$admin_status",
+            "dataType": "string",
+            "desc": "The current administration status of the interface, either enabled or disabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_table.$admin_status",
+            "intfKey": false,
+            "name": "$admin_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$oper_status",
+            "dataType": "string",
+            "desc": "Whether the interface is an active OSPF interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_table.$oper_status",
+            "intfKey": false,
+            "name": "$oper_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intf_table.$state",
+            "dataType": "string",
+            "desc": "The current state of the OSPF interface. It will be down, up, dp, dr, or other.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intf_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

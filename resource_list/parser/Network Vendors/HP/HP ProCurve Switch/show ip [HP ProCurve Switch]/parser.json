@@ -1,0 +1,205 @@
+{
+    "_id": "9a0c6bb8-7634-49df-927e-fd6559711b89",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip",
+    "createTime": {
+        "$date": 1590604781918
+    },
+    "description": "Device Type:\nHP ProCurve Switch\nCommand:\nshow ip",
+    "devTypes": [
+        2011
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB_HP_ProCurve# show ip\n\n Internet (IP) Service\n\n\n  Default Gateway : 172.24.101.1   \n  Default TTL     : 64   \n\n  VLAN         | IP Config  IP Address      Subnet Mask    \n  ------------ + ---------- --------------- ---------------\n  vlan1_Defult | Disabled  \n  VLAN8        | Disabled  \n  10_128       | Manual     172.24.101.34   255.255.255.0  \n ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ip_table.$vlan"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$default_gateway, $int:default_ttl]:Default Gateway\\\\s+:\\\\s+([\\\\d.]+)\\\\s+Default TTL\\\\s+:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$default_gateway:string\",\"$default_ttl:int\"]},\"xxid\":\"0320e551-1f66-190e-0231-25e59aba0924\"},{\"type\":\"4\",\"name\":\"ip_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$vlan, $ip_config, $ip_address, $subnet_mask]:(\\\\S+)\\\\s+\\\\|\\\\s+(\\\\S+)\\\\s+([\\\\d.]*)\\\\s+([\\\\d.]*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vlan:string\",\"$ip_config:string\",\"$ip_address:string\",\"$subnet_mask:string\"]},\"xxid\":\"b4c2511e-3074-fb05-16c9-3d979cbb94b9\"}]},\"xxid\":\"68a227ce-233c-5df5-a6d9-fcbb6c19fc05\",\"interfaceKey\":\"$vlan\",\"hashColumns\":[\"$vlan\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "default_gateway",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "default_ttl",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_config",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "subnet_mask",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "ip_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c9ac5696b40248f3a2985000acbb36e2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$default_gateway",
+            "dataType": "string",
+            "desc": "The default gateway ip address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$default_gateway",
+            "intfKey": false,
+            "name": "$default_gateway",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$default_ttl",
+            "dataType": "int",
+            "desc": "The value of default ttl.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$default_ttl",
+            "intfKey": false,
+            "name": "$default_ttl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_table",
+            "dataType": "paragraph",
+            "desc": "Interface table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ip_table",
+            "intfKey": false,
+            "name": "ip_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ip_table.$vlan",
+            "dataType": "string",
+            "desc": "Interface name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ip_table.$ip_config",
+            "dataType": "string",
+            "desc": "The mode of ip config.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_table.$ip_config",
+            "intfKey": false,
+            "name": "$ip_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_table.$ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_table.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ip_table.$subnet_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ip_table.$subnet_mask",
+            "intfKey": false,
+            "name": "$subnet_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

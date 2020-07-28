@@ -1,0 +1,308 @@
+{
+    "_id": "6bb53c47-2246-7cfe-4d77-e5c51a9e8e78",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router igmp interface",
+    "createTime": {
+        "$date": 1583870268610
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router igmp interface",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:vRR# show router igmp interface \r\n\r\n===============================================================================\r\nIGMP Interfaces\r\n===============================================================================\r\nInterface               Adm  Oper Querier         Cfg/Opr Num     Policy\r\n                                                  Version Groups  \r\n-------------------------------------------------------------------------------\r\nto-r3                   Up   Up   13.1.1.1        3/3     1       none\r\n-------------------------------------------------------------------------------\r\nInterfaces : 1\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.igmp_interface_filter.igmp_interface.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"igmp_interface_filter\",\"startLine\":\"IGMP Interfaces\",\"endLine\":\"Interfaces :\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":{\"excludeLine\":\"===============================================================================\"},\"filterLoop\":\"1\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"d35b61f5-d8e9-97cf-7e0a-dd2d701c7cb7\"},{\"type\":\"3\",\"name\":\"igmp_interface\",\"headers\":\"Interface;Adm;Oper;Querier;Cfg/Opr Version;Num Groups;Policy\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Interface:$string:interface;Adm:$string:adm;Oper:$string:oper;Querier:$string:querier;Cfg/Opr Version:$string:cfg_opr_version;Num Groups:$string:num_groups;Policy:$string:policy\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$adm:string\",\"$oper:string\",\"$querier:string\",\"$cfg_opr_version:string\",\"$num_groups:string\",\"$policy:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"6b284c5a-0dda-063f-8c91-c1aec0256522\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$adm\",\"$oper\",\"$querier\",\"$cfg_opr_version\",\"$num_groups\",\"$policy\"],\"HashSort\":false}]},\"xxid\":\"3a81d124-2ee2-ba47-9bb9-c59be562207d\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Interfaces : $int:number\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$number:int\"]},\"xxid\":\"aae24dba-d5f1-a4c2-7053-4c0b1f320a93\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"21c699e0-2da0-ff83-fdd2-71269da61f42\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "igmp_interface_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "number",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "adm",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "oper",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "querier",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "cfg_opr_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "num_groups",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "policy",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$adm",
+                    "$cfg_opr_version",
+                    "$interface",
+                    "$num_groups",
+                    "$oper",
+                    "$policy",
+                    "$querier"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "igmp_interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d5b91d2c306cbb97706e5c50fd8355fe",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_interface_filter",
+            "dataType": "filter",
+            "desc": "igmp interface filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter",
+            "intfKey": false,
+            "name": "igmp_interface_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interface",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$adm",
+                    "$oper",
+                    "$querier",
+                    "$cfg_opr_version",
+                    "$num_groups",
+                    "$policy"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface",
+            "intfKey": false,
+            "name": "igmp_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_interface.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_interface.$adm",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface.$adm",
+            "intfKey": false,
+            "name": "$adm",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interface.$oper",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface.$oper",
+            "intfKey": false,
+            "name": "$oper",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interface.$querier",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface.$querier",
+            "intfKey": false,
+            "name": "$querier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interface.$cfg_opr_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface.$cfg_opr_version",
+            "intfKey": false,
+            "name": "$cfg_opr_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interface.$num_groups",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface.$num_groups",
+            "intfKey": false,
+            "name": "$num_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_interface.$policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_interface_filter.igmp_interface.$policy",
+            "intfKey": false,
+            "name": "$policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$number",
+            "dataType": "int",
+            "desc": "Total IGMP interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$number",
+            "intfKey": false,
+            "name": "$number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

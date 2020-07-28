@@ -1,0 +1,240 @@
+{
+    "_id": "09447126-65d1-43ec-828b-cdc0964cdc70",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis neighbors",
+    "createTime": {
+        "$date": 1590777870893
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow isis neighbors",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show isis neighbors\r\nSystem Id Interface State Type Priority Uptime Circuit Id\r\nTEST Te 7/1 Up L1L2(M) 127 09:28:01 TEST.02\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[$sys_id, $intf, $state, $type, $priority, $int:uptime, $circuit_id]:^(\\\\S+)\\\\s+(\\\\S+ \\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sys_id:string\",\"$intf:string\",\"$state:string\",\"$type:string\",\"$priority:string\",\"$uptime:int\",\"$circuit_id:string\"]},\"xxid\":\"5e1855f2-9dd5-e2bb-efae-3e673c52d9b6\"}]},\"xxid\":\"a1c1c461-775e-5ca0-a200-b64d0010a9cd\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$sys_id\"]}]}",
+            "tableKeys": [
+                "_original_result.isis_nbrs.$sys_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sys_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "uptime",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "circuit_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$sys_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "03350ff2a87dee9c58eab093c78f480b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_nbrs",
+            "dataType": "paragraph",
+            "desc": "ISIS neighbors table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$sys_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs",
+            "intfKey": false,
+            "name": "isis_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_nbrs.$sys_id",
+            "dataType": "string",
+            "desc": "The value that identifies a system in an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$sys_id",
+            "intfKey": false,
+            "name": "$sys_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$intf",
+            "dataType": "string",
+            "desc": "The interface, slot, and port in which the router was discovered.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_nbrs.$state",
+            "dataType": "string",
+            "desc": "The value providing status about the adjacency state. The range is Up and Init",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$type",
+            "dataType": "string",
+            "desc": "This value displays the adjacency type (Layer 2, Layer 2 or both).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$priority",
+            "dataType": "string",
+            "desc": "IS-IS priority the neighbor advertises. The neighbor with highest priority becomes the designated router for the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$uptime",
+            "dataType": "int",
+            "desc": "Displays the interfaces uptime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$circuit_id",
+            "dataType": "string",
+            "desc": "The neighbor???s interpretation of the designated router for the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$circuit_id",
+            "intfKey": false,
+            "name": "$circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,1054 @@
+{
+    "_id": "3d1946e4-1289-ba85-d1a5-1b3e52107ea1",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show qos sap-ingress detail",
+    "createTime": {
+        "$date": 1587666960255
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "Alcatel#show qos sap-ingress detail \n\n===============================================================================\nQoS Sap Ingress\n===============================================================================\n-------------------------------------------------------------------------------\nSap Ingress Policy (1)\n-------------------------------------------------------------------------------\nPolicy-id      : 1                            Scope        : Template\nDefault FC     : be                           Priority     : Low\nDescription    : Default SAP ingress QoS policy.\n \n-------------------------------------------------------------------------------\nQueue Mode    CIR Admin PIR Admin CBS   HiPrio Slope-Policy\n              CIR Rule  PIR Rule  MBS\n-------------------------------------------------------------------------------\n1     Prio      0         max     def    def   default                          \n                closest   closest def                                           \n \n \n-------------------------------------------------------------------------------\nFC            UCastQ         MCastQ         BCastQ         UnknownQ\n-------------------------------------------------------------------------------\nNo FC-Map Entries Found.\n \n \n-------------------------------------------------------------------------------\nDot1p           FC                               Priority                      \n-------------------------------------------------------------------------------\nNo Dot1p-Map Entries Found.\n \n \n-------------------------------------------------------------------------------\nDSCP            FC                               Priority                      \n-------------------------------------------------------------------------------\nNo DSCP-Map Entries Found.\n \n-------------------------------------------------------------------------------\nAssociations\n-------------------------------------------------------------------------------\nService-Id     : 1004001 (IES)                Customer-Id  : 1\n - SAP : 1/2/1                               \n \n \n-------------------------------------------------------------------------------\nSap Ingress Policy (100)\n-------------------------------------------------------------------------------\nPolicy-id      : 100                          Scope        : Template\nDefault FC     : be                           Priority     : Low\nDescription    : Ethernet SAP - Ingress\n \n-------------------------------------------------------------------------------\nQueue Mode    CIR Admin PIR Admin CBS   HiPrio Slope-Policy\n              CIR Rule  PIR Rule  MBS\n-------------------------------------------------------------------------------\n1     Prio      max       max     def    def   default                          \n                closest   closest def                                           \n2     Prio      0         1       def    def   default                          \n                closest   closest def                                           \n3     Prio      max       max     def    def   default                          \n                closest   closest def                                           \n5     Prio      max       max     def    def   default                          \n                closest   closest def                                           \n7     Prio      max       max     def    def   default                          \n                closest   closest def                                           \n8     Prio      50        50      def    def   default                          \n                closest   closest def                                           \n \n-------------------------------------------------------------------------------\nFC            UCastQ         MCastQ         BCastQ         UnknownQ\n-------------------------------------------------------------------------------\nbe              1              8              8              8                 \nl2              2              8              8              8                 \naf              3              8              8              8                 \nef              5              8              8              8                 \nnc              7              8              8              8                 \n \n-------------------------------------------------------------------------------\nDot1p           FC                               Priority                      \n-------------------------------------------------------------------------------\nNo Dot1p-Map Entries Found.\n \n \n-------------------------------------------------------------------------------\nDSCP            FC                               Priority                      \n-------------------------------------------------------------------------------\nbe              be                               Default                       \nef              nc                               Default                       \ncs1             be                               Default                       \ncs3             ef                               Default                       \ncs4             ef                               Default                       \ncs5             ef                               Default                       \nnc1             nc                               Default                       \nnc2             nc                               Default                       \naf11            af                               Default                       \naf12            af                               Default                       \naf13            af                               Default                       \naf21            ef                               Default                       \naf22            ef                               Default                       \naf23            ef                               Default                       \naf31            ef                               Default                       \naf41            nc                               Default                       \ncp44            l2                               Default                       \ncp51            nc                               Default                       \n-------------------------------------------------------------------------------\nAssociations\n-------------------------------------------------------------------------------\nService-Id     : 100 (IES)                    Customer-Id  : 1\n - SAP : lag-1:100                           \n \n-------------------------------------------------------------------------------\nSap Ingress Policy (800)\n-------------------------------------------------------------------------------\nPolicy-id      : 800                          Scope        : Template\nDefault FC     : l2                           Priority     : Low\nDescription    : RFC2544 EPIPE Traffic\n \n-------------------------------------------------------------------------------\nQueue Mode    CIR Admin PIR Admin CBS   HiPrio Slope-Policy\n              CIR Rule  PIR Rule  MBS\n-------------------------------------------------------------------------------\n1     Prio      max       max     def    def   default                          \n                closest   closest def                                           \n2     Prio      max       max     def    def   default                          \n                closest   closest def                                           \n \n-------------------------------------------------------------------------------\nFC            UCastQ         MCastQ         BCastQ         UnknownQ\n-------------------------------------------------------------------------------\nl2              2              def            def            def               \n \n-------------------------------------------------------------------------------\nDot1p           FC                               Priority                      \n-------------------------------------------------------------------------------\nNo Dot1p-Map Entries Found.\n \n \n-------------------------------------------------------------------------------\nDSCP            FC                               Priority                      \n-------------------------------------------------------------------------------\nNo DSCP-Map Entries Found.\n \n-------------------------------------------------------------------------------\nAssociations\n-------------------------------------------------------------------------------\nNo Associations Found.\n \n===============================================================================\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"sap_ingress_policy\",\"keyVariables\":\"\",\"startLine\":\"Sap Ingress Policy ($policy_id)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$scope]:Scope\\\\s+\\\\:\\\\s+(\\\\S+)\",\"regex[$default_fc]:Default FC\\\\s+\\\\:\\\\s+(\\\\S+)\",\"regex[$priority]:Priority\\\\s+\\\\:\\\\s+(\\\\S+)\",\"regex[$description]:Description\\\\s+\\\\:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$policy_id:string\",\"$scope:string\",\"$default_fc:string\",\"$priority:string\",\"$description:string\"]},\"xxid\":\"c8c88f6f-1902-25b0-a6ae-ba4bdf446290\"},{\"type\":\"4\",\"name\":\"sap_ingress_policy_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$service_id,$customer_id]:Service\\\\-Id\\\\s+\\\\:\\\\s+(\\\\d+).+Customer-Id\\\\s+\\\\:\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$service_id:string\",\"$customer_id:string\"]},\"xxid\":\"b8acc37b-bd68-f643-3bef-30e467e6b226\"},{\"type\":\"4\",\"name\":\"qos_sap_ingress_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$sap_id]:(SAP : \\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sap_id:string\"]},\"xxid\":\"cb216454-84ae-8f67-b414-d88638dfe07d\"}]},\"xxid\":\"76dd45bb-bccb-a9da-7416-76a9e2ab42ce\",\"hashColumns\":[\"$policy_id\"]}]},\"xxid\":\"8b3243e8-fd7a-c174-2338-941030527533\",\"hashColumns\":[\"$policy_id\"]},{\"type\":\"3\",\"name\":\"ingress_queue\",\"headers\":\"Queue;Mode;CIR Admin;PIR Admin;CBS;HiPrio;Slope-Policy\",\"endLine\":\"---------\",\"isSkipLine\":\"1\",\"skipLine\":2,\"headerToVariables\":\"Queue:$string:queue;Mode:$string:mode;CIR Admin:$string:cir_admin;PIR Admin:$string:pir_admin;CBS:$string:cbs;HiPrio:$string:hiprio;Slope-Policy:$string:slope_policy\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"1\",\"usePrevars\":\"$queue;$mode;$hiprio;$slope_policy\",\"variableTypes\":{\"variableType\":[\"$queue:string\",\"$mode:string\",\"$cir_admin:string\",\"$pir_admin:string\",\"$cbs:string\",\"$hiprio:string\",\"$slope_policy:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"0c764c83-a320-afa3-09d1-4dd687607a2c\",\"hashColumns\":[],\"HashSort\":false},{\"type\":\"3\",\"name\":\"ingress_dscp_map\",\"headers\":\"DSCP;FC;Priority\",\"endLine\":\"Associations\",\"isSkipLine\":\"0\",\"skipLine\":0,\"headerToVariables\":\"DSCP:$string:dscp;FC:$string:fc;Priority:$string:dscp_priority\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$dscp:string\",\"$fc:string\",\"$dscp_priority:string\"]},\"child\":{\"parseRule\":[{\"type\":\"1\",\"name\":\"no_dscp\",\"startLine\":\"\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":{\"includeLine\":\"No\"},\"excludeLines\":\"\",\"filterLoop\":\"1\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"ebc4f15e-dc71-168f-071e-e4ec7f6b77c3\"}]},\"xxid\":\"36ae9429-7a5d-2559-ad9a-6f2d3178235e\"}]},\"xxid\":\"bcbf1e8e-33b7-0ac2-f7fd-034b7280a1c7\",\"hashColumns\":[\"$policy_id\"]}]},\"xxid\":\"7d0d4196-4085-2b5b-feb2-0c9ef3939303\",\"hashColumns\":[],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.sap_ingress_policy.sap_ingress_policy_detail.$policy_id",
+                "_original_result.sap_ingress_policy.ingress_dscp_map.$policy_id",
+                "_original_result.sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$policy_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "default_fc",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "sap_ingress_policy",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "service_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "customer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "default_fc",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "sap_ingress_policy_detail",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sap_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "service_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "customer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "default_fc",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "qos_sap_ingress_detail",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "queue",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "cir_admin",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "pir_admin",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "cbs",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "hiprio",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "slope_policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "default_fc",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "ingress_queue",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "dscp",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "fc",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dscp_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "default_fc",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "ingress_dscp_map",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "57070564b3a611c13d3567d9a2896eec",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "sap_ingress_policy",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy",
+            "intfKey": false,
+            "name": "sap_ingress_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sap_ingress_policy.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy.$default_fc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.$default_fc",
+            "intfKey": false,
+            "name": "$default_fc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail",
+            "intfKey": false,
+            "name": "sap_ingress_policy_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sap_ingress_policy_detail.$service_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.$service_id",
+            "intfKey": false,
+            "name": "$service_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy_detail.$customer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.$customer_id",
+            "intfKey": false,
+            "name": "$customer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy_detail.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy_detail.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy_detail.$default_fc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.$default_fc",
+            "intfKey": false,
+            "name": "$default_fc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy_detail.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_ingress_policy_detail.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail",
+            "intfKey": false,
+            "name": "qos_sap_ingress_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$sap_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$sap_id",
+            "intfKey": false,
+            "name": "$sap_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$service_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$service_id",
+            "intfKey": false,
+            "name": "$service_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$customer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$customer_id",
+            "intfKey": false,
+            "name": "$customer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$default_fc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$default_fc",
+            "intfKey": false,
+            "name": "$default_fc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_ingress_detail.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.sap_ingress_policy_detail.qos_sap_ingress_detail.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue",
+            "intfKey": false,
+            "name": "ingress_queue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ingress_queue.$queue",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$queue",
+            "intfKey": false,
+            "name": "$queue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$cir_admin",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$cir_admin",
+            "intfKey": false,
+            "name": "$cir_admin",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$pir_admin",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$pir_admin",
+            "intfKey": false,
+            "name": "$pir_admin",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$cbs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$cbs",
+            "intfKey": false,
+            "name": "$cbs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$hiprio",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$hiprio",
+            "intfKey": false,
+            "name": "$hiprio",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$slope_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$slope_policy",
+            "intfKey": false,
+            "name": "$slope_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$default_fc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$default_fc",
+            "intfKey": false,
+            "name": "$default_fc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_queue.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_queue.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map",
+            "intfKey": false,
+            "name": "ingress_dscp_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ingress_dscp_map.$dscp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$dscp",
+            "intfKey": false,
+            "name": "$dscp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.$fc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$fc",
+            "intfKey": false,
+            "name": "$fc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.$dscp_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$dscp_priority",
+            "intfKey": false,
+            "name": "$dscp_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.$default_fc",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$default_fc",
+            "intfKey": false,
+            "name": "$default_fc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.$priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ingress_dscp_map.no_dscp",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_ingress_policy.ingress_dscp_map.no_dscp",
+            "intfKey": false,
+            "name": "no_dscp",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,408 @@
+{
+    "_id": "81f73086-d9b9-4ecf-993c-86f50414119e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip route summary",
+    "createTime": {
+        "$date": 1591599442076
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco IOS Router\nCommand:\nshow ip route summary",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R8>show ip route summary\nIP routing table name is default (0x0)\nIP routing table maximum-paths is 32\nRoute Source    Networks    Subnets     Replicates  Overhead    Memory (bytes)\nconnected       0           15          0           840         2580\nstatic          0           0           0           0           0\nisis 1          0           1           0           56          172\n  Level 1: 1 Level 2: 0 Inter-area: 0\nospf 100        0           1           0           56          176\n  Intra-area: 1 Inter-area: 0 External-1: 0 External-2: 0\n  NSSA External-1: 0 NSSA External-2: 0\neigrp 1         0           0           0           0           0\neigrp 321       0           0           0           0           0\nisis            0           0           0           0           0\n  Level 1: 0 Level 2: 0 Inter-area: 0\neigrp 199       0           0           0           0           0\neigrp 100       0           0           0           0           0\neigrp 20        0           3           0           228         516\neigrp 30000     2           5           0           608         1204\ninternal        6                                               2688\nTotal           8           25          0           1788        7336\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"eigrp_routes\",\"keyVariables\":\"\",\"startLine\":\"regex[$eigrp_route_source, $networks, $subnets]:^(eigrp\\\\s+\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$eigrp_route_source:string\",\"$networks:string\",\"$subnets:string\"]},\"xxid\":\"45f1c7fd-4b4e-1a93-b874-49f104270a41\"}]},\"xxid\":\"6c9efdcd-a448-a728-149a-3cf3a8692582\"},{\"type\":\"8\",\"script\":\"import re\\ndef ParseText(config):\\n    route_summary = {\\n            'protocol'         :[],\\n            'count'      :[],\\n            '$_columns'         :['protocol','count']\\n    }\\n    ospf_process_filter = re.findall(r'^(ospf\\\\s+.+?(?:\\\\n|\\\\r).+?)(?=\\\\Z|^\\\\S+)',config,re.S|re.M)\\n    # print(ospf_process_filter)\\n    if ospf_process_filter:\\n        for each in ospf_process_filter:\\n            ospf_process_cfg = each\\n            ospf_process_id = re.search(r'^ospf\\\\s+(\\\\S+)', ospf_process_cfg, re.M)\\n            o_filter = re.search(r'Intra-area:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\n            oia_filter = re.search(r'Inter-area:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\n            oe1_filter = re.search(r'External-1:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\n            oe2_filter = re.search(r'External-2:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\n            ospf_summary = int(o_filter.group(1)) + int(oia_filter.group(1)) + int(oe1_filter.group(1)) + int(oe2_filter.group(1))\\n            route_summary['protocol'].append('OSPF Process ID: '+ospf_process_id.group(1))\\n            route_summary['count'].append(ospf_summary)\\n            # route_summary['description'].append('OSPF')\\n            # print(ospf_process_id)\\n    else:\\n        pass\\n    eigrp_process_filter = re.findall(r'^(eigrp\\\\s+\\\\S+.+?)(?=$)',config,re.S|re.M)\\n    if eigrp_process_filter:\\n        for each in eigrp_process_filter:\\n            eigrp_process_cfg = each\\n            eigrp_process_id = re.search(r'^eigrp\\\\s(\\\\S+)', eigrp_process_cfg, re.M)\\n            eigrp_net = re.search(r'^eigrp\\\\s\\\\S+\\\\s+(\\\\S+)', eigrp_process_cfg, re.M)\\n            eigrp_sub = re.search(r'^eigrp\\\\s\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)', eigrp_process_cfg, re.M)\\n            eigrp_summary = int(eigrp_net.group(1)) + int(eigrp_sub.group(1))\\n            route_summary['protocol'].append('EIGRP AS: '+eigrp_process_id.group(1))\\n            route_summary['count'].append(eigrp_summary)\\n    bgp_process_filter = re.findall(r'^(bgp\\\\s+.+?(?:\\\\n|\\\\r).+?)(?=\\\\Z|^\\\\S+)',config,re.S|re.M)\\n    if bgp_process_filter:\\n        for each in bgp_process_filter:\\n            bgp_process_cfg = each\\n            bgp_process_id = re.search(r'^bgp\\\\s(\\\\S+)', bgp_process_cfg, re.M)\\n            bgp_ex = re.search(r'External:\\\\s+(\\\\S+)', bgp_process_cfg, re.M)\\n            bgp_in = re.search(r'Internal:\\\\s+(\\\\S+)', bgp_process_cfg, re.M)\\n            bgp_lo = re.search(r'Local:\\\\s+(\\\\S+)', bgp_process_cfg, re.M)\\n            bgp_summary = int(bgp_ex.group(1)) + int(bgp_in.group(1)) + int(bgp_lo.group(1))\\n            route_summary['protocol'].append('BGP AS: '+bgp_process_id.group(1))\\n            route_summary['count'].append(bgp_summary)\\n    else:\\n        pass\\n    isis_process_filter = re.findall(r'^(isis\\\\s+.+?(?:\\\\n|\\\\r).+?)(?=\\\\Z|^\\\\S+)',config,re.S|re.M)\\n    if isis_process_filter:\\n        for each in  isis_process_filter:\\n            isis_process_cfg = each\\n            isis_process_id = re.search(r'isis\\\\s(\\\\S+)', isis_process_cfg, re.M)\\n            isis_level_1 = re.search(r'Level 1:\\\\s+(\\\\S+)', isis_process_cfg, re.M)\\n            isis_level_2 = re.search(r'Level 2:\\\\s+(\\\\S+)', isis_process_cfg, re.M)\\n            isis_inter = re.search(r'Inter-area:\\\\s+(\\\\S+)', isis_process_cfg, re.M)\\n            isis_summary = int(isis_level_1.group(1)) + int(isis_level_2.group(1)) + int(isis_inter.group(1))\\n            route_summary['count'].append(isis_summary)\\n            if isis_process_id != None:\\n                route_summary['protocol'].append('ISIS Process ID: '+isis_process_id.group(1))\\n            else:\\n                route_summary['protocol'].append('ISIS Process ID: NULL')\\n\\n    dic = {\\n        'route_summary' : route_summary,\\n    }\\n    return dic\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$route_summary\",\"variableTypes\":{\"variableType\":[{\"name\":\"$protocol\",\"type\":\"string\"},{\"name\":\"$count\",\"type\":\"int\"}]}}]},\"name\":\"\",\"xxid\":\"9df55bf1-7c87-cc91-b25c-393da776813d\"},{\"type\":\"8\",\"script\":\"import re\\r\\ndef ParseText(config):\\r\\n    isis_route_summary = {\\r\\n            'route_tag'         :[],\\r\\n            'route_number'      :[],\\r\\n            'description'       :[],\\r\\n            '$_columns'         :['route_tag','route_number','description']\\r\\n    }\\r\\n    i_number = []\\r\\n    i_l1_numver = []\\r\\n    i_l2_number = []\\r\\n    isis_process_filter = re.findall(r'isis\\\\s+.+?(?:\\\\n|\\\\r)(.+?)(?=\\\\Z|^\\\\S+)',config,re.S|re.M)\\r\\n    if isis_process_filter:\\r\\n        for each in isis_process_filter:\\r\\n            isis_process_cfg = each\\r\\n            i_filter = re.search(r'Intra-area:\\\\s+(\\\\d+)',isis_process_cfg,re.M)\\r\\n            i_l1_filter = re.search(r'Level 1:\\\\s+(\\\\d+)',isis_process_cfg,re.M)\\r\\n            i_l2_filter = re.search(r'Level 2:\\\\s+(\\\\d+)',isis_process_cfg,re.M)\\r\\n            if i_filter:\\r\\n                i_number.append(int(i_filter.group(1)))\\r\\n            if i_l1_filter:\\r\\n                i_l1_numver.append(int(i_l1_filter.group(1)))\\r\\n            if i_l2_filter:\\r\\n                i_l2_number.append(int(i_l2_filter.group(1)))\\r\\n\\r\\n    route_tag_list = ['i IA', 'i L1', 'i L2']\\r\\n    route_number_list = [sum(i_number), sum(i_l1_numver), sum(i_l2_number)]\\r\\n    route_description_list = ['IS-IS intra area','IS-IS level-1','IS-IS level-2']\\r\\n    isis_route_summary['route_tag'] = route_tag_list\\r\\n    isis_route_summary['route_number'] = route_number_list\\r\\n    isis_route_summary['description'] = route_description_list\\r\\n    dic = {\\r\\n        'isis_routes' : isis_route_summary,\\r\\n    }\\r\\n    return dic\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$isis_routes\",\"variableTypes\":{\"variableType\":[{\"name\":\"$route_tag\",\"type\":\"string\"},{\"name\":\"$route_number\",\"type\":\"int\"},{\"name\":\"$description\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"dc6e2d9c-8f94-7450-2501-a27b1aa60d40\"},{\"type\":\"8\",\"script\":\"import re\\r\\ndef ParseText(config):\\r\\n    ospf_route_summary = {\\r\\n            'route_tag'         :[],\\r\\n            'route_number'      :[],\\r\\n            'description'       :[],\\r\\n            '$_columns'         :['route_tag','route_number','description']\\r\\n    }\\r\\n    o_number = []\\r\\n    oia_numver = []\\r\\n    oe1_number = []\\r\\n    oe2_number = []\\r\\n    ospf_process_filter = re.findall(r'ospf\\\\s+.+?(?:\\\\n|\\\\r)(.+?)(?=\\\\Z|^\\\\S+)',config,re.S|re.M)\\r\\n    if ospf_process_filter:\\r\\n        for each in ospf_process_filter:\\r\\n            ospf_process_cfg = each\\r\\n            o_filter = re.search(r'Intra-area:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\r\\n            oia_filter = re.search(r'Inter-area:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\r\\n            oe1_filter = re.search(r'External-1:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\r\\n            oe2_filter = re.search(r'External-2:\\\\s+(\\\\d+)',ospf_process_cfg,re.M)\\r\\n            if o_filter:\\r\\n                o_number.append(int(o_filter.group(1)))\\r\\n            if oia_filter:\\r\\n                oia_numver.append(int(oia_filter.group(1)))\\r\\n            if oe1_filter:\\r\\n                oe1_number.append(int(oe1_filter.group(1)))\\r\\n            if oe2_filter:\\r\\n                oe2_number.append(int(oe2_filter.group(1)))\\r\\n    route_tag_list = ['O', 'O IA', 'OE 1', 'OE 2']\\r\\n    route_number_list = [sum(o_number), sum(oia_numver), sum(oe1_number), sum(oe2_number)]\\r\\n    route_description_list = ['OSPF intra area','OSPF inter area','OSPF external type 1','OSPF external type 2']\\r\\n    ospf_route_summary['route_tag'] = route_tag_list\\r\\n    ospf_route_summary['route_number'] = route_number_list\\r\\n    ospf_route_summary['description'] = route_description_list\\r\\n    dic = {\\r\\n        'ospf_route_summary' : ospf_route_summary,\\r\\n    }\\r\\n    return dic\\r\\n    \",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$ospf_route_summary\",\"variableTypes\":{\"variableType\":[{\"name\":\"$route_tag\",\"type\":\"string\"},{\"name\":\"$route_number\",\"type\":\"int\"},{\"name\":\"$description\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"747d5125-cf01-d0bf-9e7e-90d80ee58be6\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "eigrp_route_source",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "networks",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "subnets",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "eigrp_routes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "count",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "protocol",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "route_summary",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "description",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "route_number",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "route_tag",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_routes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "description",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "route_number",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "route_tag",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "ospf_route_summary",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f03c51422382a783fc86fb3e23a376f0",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "eigrp_routes",
+            "dataType": "paragraph",
+            "desc": "EIGRP route summary table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "eigrp_routes",
+            "intfKey": false,
+            "name": "eigrp_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "eigrp_routes.$eigrp_route_source",
+            "dataType": "string",
+            "desc": "Route tag of EIGRP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_routes.$eigrp_route_source",
+            "intfKey": false,
+            "name": "$eigrp_route_source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_routes.$networks",
+            "dataType": "string",
+            "desc": "Number of networks.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_routes.$networks",
+            "intfKey": false,
+            "name": "$networks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_routes.$subnets",
+            "dataType": "string",
+            "desc": "Number of subnets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_routes.$subnets",
+            "intfKey": false,
+            "name": "$subnets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$route_summary",
+            "dataType": "table",
+            "desc": "Route summary table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$route_summary",
+            "intfKey": false,
+            "name": "$route_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$route_summary.$protocol",
+            "dataType": "string",
+            "desc": "Protocol of devices to run.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$route_summary.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$route_summary.$count",
+            "dataType": "int",
+            "desc": "Number of Route type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$route_summary.$count",
+            "intfKey": false,
+            "name": "$count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$isis_routes",
+            "dataType": "table",
+            "desc": "ISIS route summary table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$isis_routes",
+            "intfKey": false,
+            "name": "$isis_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$isis_routes.$route_tag",
+            "dataType": "string",
+            "desc": "Route tag of ISIS.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$isis_routes.$route_tag",
+            "intfKey": false,
+            "name": "$route_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$isis_routes.$route_number",
+            "dataType": "int",
+            "desc": "Number of routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$isis_routes.$route_number",
+            "intfKey": false,
+            "name": "$route_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$isis_routes.$description",
+            "dataType": "string",
+            "desc": "Description of route tag.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$isis_routes.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ospf_route_summary",
+            "dataType": "table",
+            "desc": "OSPF route summary table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ospf_route_summary",
+            "intfKey": false,
+            "name": "$ospf_route_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$ospf_route_summary.$route_tag",
+            "dataType": "string",
+            "desc": "Route tag of OSPF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ospf_route_summary.$route_tag",
+            "intfKey": false,
+            "name": "$route_tag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ospf_route_summary.$route_number",
+            "dataType": "int",
+            "desc": "Number of routes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ospf_route_summary.$route_number",
+            "intfKey": false,
+            "name": "$route_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ospf_route_summary.$description",
+            "dataType": "string",
+            "desc": "Description of route tag.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ospf_route_summary.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}
