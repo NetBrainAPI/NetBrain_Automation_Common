@@ -1,7 +1,7 @@
 
-## Auto DVT Group by Vendor
+# Auto DVT Group by Vendor
 
-### [(Alcatel OmniSwitch)(Alcatel OmniStack)]
+## [(Alcatel OmniSwitch)(Alcatel OmniStack)]
 
 #### aaa 
 
@@ -34,7 +34,7 @@
 #### vrf 
 
 
-### [Arista Switch]
+## [Arista Switch]
 
 #### aaa 
 
@@ -57,7 +57,7 @@
 #### vlan 
 
 
-### [(Cisco IOS Switch)(Cisco Router)]
+## [(Cisco IOS Switch)(Cisco Router)]
 
 #### acl 
 
@@ -90,7 +90,7 @@
 #### vtp 
 
 
-### [Cisco ASA Firewall]
+## [Cisco ASA Firewall]
 
 #### anyconnect 
 
@@ -115,7 +115,7 @@
 #### ospf 
 
 
-### [F5 Load Balancer]
+## [F5 Load Balancer]
 
 #### apm 
 
@@ -128,7 +128,7 @@
 #### ltm 
 
 
-### [Alcatel Lucent Service Router]
+## [Alcatel Lucent Service Router]
 
 #### bfd 
 
@@ -161,7 +161,7 @@
 #### vrrp 
 
 
-### [(Checkpoint Gaia)(Checkpoint Gaia R80)]
+## [(Checkpoint Gaia)(Checkpoint Gaia R80)]
 
 #### bgp 
 
@@ -184,7 +184,7 @@
 #### virtual-system 
 
 
-### [(Dell Networking Switch)(Dell Force10 Switch)]
+## [(Dell Networking Switch)(Dell Force10 Switch)]
 
 #### bgp 
 
@@ -213,7 +213,7 @@
 #### vrf 
 
 
-### [(Juniper Router)(Juniper EX Switch)(Juniper SRX Firewall)]
+## [(Juniper Router)(Juniper EX Switch)(Juniper SRX Firewall)]
 
 #### bgp 
 
@@ -238,7 +238,7 @@
 #### pim 
 
 
-### [3Com Switch]
+## [3Com Switch]
 
 #### bgp 
 
@@ -261,7 +261,7 @@
 #### vlan 
 
 
-### [Cisco IOS XR]
+## [Cisco IOS XR]
 
 #### bgp 
 
@@ -292,7 +292,7 @@
 #### vrrp 
 
 
-### [Cisco Nexus Switch]
+## [Cisco Nexus Switch]
 
 #### bgp 
 
@@ -315,7 +315,7 @@
 #### vlan 
 
 
-### [Extreme Switch]
+## [Extreme Switch]
 
 #### bgp 
 
@@ -330,7 +330,7 @@
 #### ospfv2 
 
 
-### [Fortinet Fortigate Firewall]
+## [Fortinet Fortigate Firewall]
 
 #### bgp 
 
@@ -349,7 +349,7 @@
 #### vrrp 
 
 
-### [Palo Alto Firewall]
+## [Palo Alto Firewall]
 
 #### bgp 
 
@@ -370,14 +370,14 @@
 #### vlan 
 
 
-### [Cisco WLC]
+## [Cisco WLC]
 
 #### cdp 
 
 #### general 
 
 
-### [Riverbed WAN Optimizer]
+## [Riverbed WAN Optimizer]
 
 #### failover 
 
@@ -390,7 +390,7 @@
 #### sessions 
 
 
-### [Aruba WLC]
+## [Aruba WLC]
 
 #### general 
 
@@ -405,7 +405,7 @@
 #### trunk 
 
 
-### [Cisco PIX Firewall]
+## [Cisco PIX Firewall]
 
 #### general 
 
@@ -418,12 +418,12 @@
 #### ospf 
 
 
-### [Cisco WAAS]
+## [Cisco WAAS]
 
 #### general 
 
 
-### [Cisco Catalyst Switch]
+## [Cisco Catalyst Switch]
 
 #### igmp 
 
@@ -432,7 +432,7 @@
 #### spanning-tree 
 
 
-### [HP ProCurve Switch]
+## [HP ProCurve Switch]
 
 #### interface 
 
