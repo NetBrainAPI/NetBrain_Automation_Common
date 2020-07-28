@@ -11,14 +11,16 @@
 Decode Your Network 
 ![alt text](images/dvt.png "NetBrain Data View")
 **(Total Number: 188)**
-* [Category by Vendor](resource_list/data_view_template/byVendor.md)
-* [Category by Feature](resource_list/data_view_template/byFeature.md)
+* [DVT List Category by Vendor](resource_list/data_view_template/byVendor.md)
+* [DVT List Category by Feature](resource_list/data_view_template/byFeature.md)
 
 
 ### [Runbook Template](https://www.netbraintech.com/docs/ie80/help/index.html?using-runbook.htm)
 Digitalize Your Procedure
 ![alt text](images/runbook.png "NetBrain Runbook")
-**(Total Number: 118)**
+**(Total Number: 188)**
+* [Runbook List Category by Vendor](resource_list/runbook_template/byVendor.md)
+* [Runbook List Category by Feature](resource_list/runbook_template/byFeature.md)
 
 ### [Parser](https://www.netbraintech.com/docs/ie80/help/index.html?parser-library.htm)
 Automate Your Commands
