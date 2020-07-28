@@ -29,7 +29,7 @@ Digitalize Your Procedure
 Automate Your Commands
 ![alt text](images/parser.png "NetBrain Parser")
 **(Total Number: 820)**
-* [Runbook List Category by Vendor](resource_list/parser/byVendor.md)
+* [Parser List Category by Vendor](resource_list/parser/byVendor.md)
 
 *Note: List is based on path: [Built-in Parsers>Network Vendors].*
 
