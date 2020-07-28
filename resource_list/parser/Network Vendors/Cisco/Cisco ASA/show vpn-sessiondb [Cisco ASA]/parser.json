@@ -1,0 +1,403 @@
+{
+    "_id": "a2c2102c-54f5-e0a7-d813-499e17d34e3a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vpn-sessiondb",
+    "createTime": {
+        "$date": 1584564479713
+    },
+    "description": "",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "ASA#show vpn-sessiondb\r\n---------------------------------------------------------------------------\r\nVPN Session Summary\r\n---------------------------------------------------------------------------\r\n                               Active : Cumulative : Peak Concur : Inactive\r\n                             ----------------------------------------------\r\nAnyConnect Client            :     71 :      12828 :          72 :        0\r\n  SSL/TLS/DTLS               :     71 :      12828 :          72 :        0\r\nClientless VPN               :      0 :        154 :           3\r\n  Browser                    :      0 :        154 :           3\r\nSite-to-Site VPN             :      4 :      62660 :           6\r\n  IKEv2 IPsec                :      1 :        602 :           3\r\n  IKEv1 IPsec                :      3 :      62058 :           5\r\n---------------------------------------------------------------------------\r\nTotal Active and Inactive    :     75             Total Cumulative :  75642\r\nDevice Total VPN Capacity    :    750\r\nDevice Load                  :    10%\r\n---------------------------------------------------------------------------\r\n\r\n---------------------------------------------------------------------------\r\nTunnels Summary\r\n---------------------------------------------------------------------------\r\n                               Active : Cumulative : Peak Concurrent   \r\n                             ----------------------------------------------\r\nIKEv1                        :      3 :      62058 :               5\r\nIKEv2                        :      1 :        602 :               3\r\nIPsec                        :     10 :       4849 :              14\r\nIPsecOverNatT                :      2 :         62 :               4\r\nClientless                   :      0 :        154 :               3\r\nAnyConnect-Parent            :     71 :      12828 :              72\r\nSSL-Tunnel                   :     71 :      43790 :              71\r\nDTLS-Tunnel                  :     70 :      39779 :              70\r\n---------------------------------------------------------------------------\r\nTotals                       :    228 :     164122\r\n---------------------------------------------------------------------------\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:anyConnect_active,$int:anyConnect_peak]:AnyConnect Client\\\\s+:\\\\s+(\\\\d+)\\\\s:\\\\s+\\\\d+\\\\s:\\\\s+(\\\\d+)\",\"regex[$int:ssl_tls_dtls_active,$int:ssl_tls_dtls_peak]:SSL/TLS/DTLS\\\\s+:\\\\s+(\\\\d+)\\\\s:\\\\s+\\\\d+\\\\s:\\\\s+(\\\\d+)\",\"regex[$int:clientless_active,$int:clientless_peak]:Clientless VPN\\\\s+:\\\\s+(\\\\d+)\\\\s:\\\\s+\\\\d+\\\\s:\\\\s+(\\\\d+)\",\"regex[$int:browser_active,$int:browser_peak]:Browser\\\\s+:\\\\s+(\\\\d+)\\\\s:\\\\s+\\\\d+\\\\s:\\\\s+(\\\\d+)\",\"regex[$int:site_to_site_active,$int:site_to_site_peak]:Site-to-Site VPN\\\\s+:\\\\s+(\\\\d+)\\\\s:\\\\s+\\\\d+\\\\s:\\\\s+(\\\\d+)\",\"regex[$int:ikev2_active,$int:ikev2_peak]:IKEv2 IPsec\\\\s+:\\\\s+(\\\\d+)\\\\s:\\\\s+\\\\d+\\\\s:\\\\s+(\\\\d+)\",\"regex[$int:ikev1_active,$int:ikev1_peak]:IKEv1 IPsec\\\\s+:\\\\s+(\\\\d+)\\\\s:\\\\s+\\\\d+\\\\s:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$anyConnect_active:int\",\"$anyConnect_peak:int\",\"$ssl_tls_dtls_active:int\",\"$ssl_tls_dtls_peak:int\",\"$clientless_active:int\",\"$clientless_peak:int\",\"$browser_active:int\",\"$browser_peak:int\",\"$site_to_site_active:int\",\"$site_to_site_peak:int\",\"$ikev2_active:int\",\"$ikev2_peak:int\",\"$ikev1_active:int\",\"$ikev1_peak:int\"]},\"xxid\":\"715d1dd3-78b7-1721-d3ea-f6eaf8d9b209\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:load_percent]:Device Load\\\\s+:\\\\s+(\\\\d+)%\",\"regex[$int:total_vpn_capacity]:Device Total VPN Capacity\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:total_active]:Total Active and Inactive\\\\s+:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$load_percent:int\",\"$total_vpn_capacity:int\",\"$total_active:int\"]},\"xxid\":\"af8e97e6-aeee-a05c-4b77-fb63ce8ffc80\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"29aa36ab-698f-03e2-4e43-71f219acfabf\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "anyConnect_active",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "anyConnect_peak",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "ssl_tls_dtls_active",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "ssl_tls_dtls_peak",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "clientless_active",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "clientless_peak",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "browser_active",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "browser_peak",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "site_to_site_active",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "site_to_site_peak",
+                "type": 1
+            },
+            {
+                "index": 10,
+                "name": "ikev2_active",
+                "type": 1
+            },
+            {
+                "index": 11,
+                "name": "ikev2_peak",
+                "type": 1
+            },
+            {
+                "index": 12,
+                "name": "ikev1_active",
+                "type": 1
+            },
+            {
+                "index": 13,
+                "name": "ikev1_peak",
+                "type": 1
+            },
+            {
+                "index": 14,
+                "name": "load_percent",
+                "type": 1
+            },
+            {
+                "index": 15,
+                "name": "total_vpn_capacity",
+                "type": 1
+            },
+            {
+                "index": 16,
+                "name": "total_active",
+                "type": 1
+            },
+            {
+                "index": 17,
+                "name": "cli_output",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "8442239b6a00373b71dbbe566be441e5",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$anyConnect_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$anyConnect_active",
+            "intfKey": false,
+            "name": "$anyConnect_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$anyConnect_peak",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$anyConnect_peak",
+            "intfKey": false,
+            "name": "$anyConnect_peak",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ssl_tls_dtls_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ssl_tls_dtls_active",
+            "intfKey": false,
+            "name": "$ssl_tls_dtls_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ssl_tls_dtls_peak",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ssl_tls_dtls_peak",
+            "intfKey": false,
+            "name": "$ssl_tls_dtls_peak",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$clientless_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$clientless_active",
+            "intfKey": false,
+            "name": "$clientless_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$clientless_peak",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$clientless_peak",
+            "intfKey": false,
+            "name": "$clientless_peak",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$browser_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$browser_active",
+            "intfKey": false,
+            "name": "$browser_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$browser_peak",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$browser_peak",
+            "intfKey": false,
+            "name": "$browser_peak",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$site_to_site_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$site_to_site_active",
+            "intfKey": false,
+            "name": "$site_to_site_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$site_to_site_peak",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$site_to_site_peak",
+            "intfKey": false,
+            "name": "$site_to_site_peak",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ikev2_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ikev2_active",
+            "intfKey": false,
+            "name": "$ikev2_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ikev2_peak",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ikev2_peak",
+            "intfKey": false,
+            "name": "$ikev2_peak",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ikev1_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ikev1_active",
+            "intfKey": false,
+            "name": "$ikev1_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ikev1_peak",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ikev1_peak",
+            "intfKey": false,
+            "name": "$ikev1_peak",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$load_percent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$load_percent",
+            "intfKey": false,
+            "name": "$load_percent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_vpn_capacity",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_vpn_capacity",
+            "intfKey": false,
+            "name": "$total_vpn_capacity",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_active",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_active",
+            "intfKey": false,
+            "name": "$total_active",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

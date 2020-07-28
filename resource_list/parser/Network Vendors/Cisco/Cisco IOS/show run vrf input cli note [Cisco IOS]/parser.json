@@ -1,0 +1,67 @@
+{
+    "_id": "51eac4bd-55e2-4b63-2ec9-49f2a618004b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show run vrf $vrf_name1",
+    "createTime": {
+        "$date": 1562009218785
+    },
+    "description": "",
+    "devTypes": [
+        2
+    ],
+    "params": [
+        {
+            "name": "$vrf_name1"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "CSR5#show run vrf IOS7-OSPF\r\nBuilding configuration...\r\n\r\nCurrent configuration : 617 bytes\r\nvrf definition IOS7-OSPF\r\n rd 200:200\r\n !\r\n address-family ipv4\r\n  import map IOS7-OSPF-IMPORT-POLICY\r\n  mdt default 239.10.10.4\r\n  route-target export 200:200\r\n  route-target import 200:200\r\n  route-target import 150:150\r\n  route-target import 100:100\r\n exit-address-family\r\n!\r\n!\r\ninterface GigabitEthernet2\r\n description To vIOS7 OSPF\r\n vrf forwarding IOS7-OSPF\r\n ip address 100.1.1.13 255.255.255.252\r\n ip pim sparse-mode\r\n negotiation auto\r\n!\r\nrouter bgp 100\r\n !\r\n address-family ipv4 vrf IOS7-OSPF\r\n  neighbor 100.1.1.14 remote-as 15\r\n  neighbor 100.1.1.14 activate\r\n  neighbor 100.1.1.14 send-community both\r\n exit-address-family\r\n!\r\nend\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$show_run_vrf_cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$show_run_vrf_cli_output:string\"]},\"xxid\":\"b5c5892b-9663-92de-d6b8-82643873339d\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "show_run_vrf_cli_output",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "9848f342a2279c6f5f4bff069982236a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$show_run_vrf_cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$show_run_vrf_cli_output",
+            "intfKey": false,
+            "name": "$show_run_vrf_cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,265 @@
+{
+    "_id": "191c92b1-c585-0fdd-239a-23c500f92257",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mroute",
+    "createTime": {
+        "$date": 1581007399394
+    },
+    "description": "Device Type:\nArista Switch \nCommand:\nshow ip mroute",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "AristaR2#show ip mroute\r\nPIM Sparse Mode Multicast Routing Table\r\nFlags: E - Entry forwarding on the RPT, J - Joining to the SPT\r\n    R - RPT bit is set, S - SPT bit is set, L - Source is attached\r\n    W - Wildcard entry, X - External component interest\r\n    I - SG Include Join alert rcvd, P - Ex-Prune alert rcvd\r\n    H - Joining SPT due to policy, D - Joining SPT due to protocol\r\n    Z - Entry marked for deletion, C - Learned from a DR via a register\r\n    A - Learned via Anycast RP Router, M - Learned via MSDP\r\n    N - May notify MSDP, K - Keepalive timer not running\r\n    T - Switching Incoming Interface, B - Learned via Border Router\r\nRPF route: U - From unicast routing table\r\n           M - From multicast routing table\r\n233.0.0.1\r\n  10.2.255.2, 1:02:35, flags: JED\r\n    Incoming interface: Null\r\n    Outgoing interface list:\r\n      Ethernet2\r\n239.255.255.250\r\n  0.0.0.0, 1:02:27, RP 1.1.1.1, flags: W\r\n    Incoming interface: Null\r\n    Outgoing interface list:\r\n      Ethernet2\r\n  202.100.13.99, 1:02:09, flags: SL\r\n    Incoming interface: Ethernet2\r\n    RPF route: [U] 202.100.13.99/32 [1/0]\r\n    Outgoing interface list:\r\n      Register\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.out_intfs.$in_intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\r\\n\\r\\n\\r\\ndef ParseText(config):\\r\\n    config = config or \\\"\\\"\\r\\n    mroute_table = {\\r\\n        \\\"group\\\": [],\\r\\n        \\\"uptime\\\": [],\\r\\n        \\\"rp\\\": [],\\r\\n        \\\"flag\\\": [],\\r\\n        \\\"source\\\": [],\\r\\n        \\\"in_intf\\\": [],\\r\\n        \\\"out_intf\\\": [],\\r\\n        '$_columns': ['group','source','uptime','rp', 'flag', 'in_intf', 'out_intf']\\r\\n    }\\r\\n\\r\\n    grps_obj_lst = re.compile(r'^(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)(.+?)(?=^\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+|\\\\Z)', re.S|re.M).findall(config)\\r\\n    src_obj_lst_rf = re.compile(r'^\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+),\\\\s+(\\\\S+),\\\\s+(rp (\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+),\\\\s+)?flags:\\\\s+(\\\\S+)(.+?)(?=^\\\\s+\\\\d+|\\\\Z)', re.S|re.M|re.I).findall\\r\\n    in_intf_rs = re.compile(r'^\\\\s+incoming interface:\\\\s+(\\\\S+)', re.M|re.I).search\\r\\n    out_intf_rs = re.compile(r'^\\\\s+outgoing interface list:.*?^\\\\s+(.+)', re.S|re.M|re.I).search\\r\\n\\r\\n    for grps_obj in grps_obj_lst:\\r\\n        _group = grps_obj[0]\\r\\n        grp_cfg = grps_obj[1]\\r\\n        src_obj_lst = src_obj_lst_rf(grp_cfg)\\r\\n        for src_obj in src_obj_lst:\\r\\n            src_cfg = src_obj[-1]\\r\\n            in_intf_grp = in_intf_rs(src_cfg)\\r\\n            out_intf_grp = out_intf_rs(src_cfg)\\r\\n            _source = src_obj[0]\\r\\n            _uptime = src_obj[1]\\r\\n            _rp = src_obj[3]\\r\\n            _flag = src_obj[4]\\r\\n            _in_intf = in_intf_grp.group(1) if in_intf_grp else \\\"\\\"\\r\\n            out_intf_lst = out_intf_grp.group(1).split() if out_intf_grp else []\\r\\n            for _out_intf in out_intf_lst:\\r\\n                mroute_table['group'].append(_group)\\r\\n                mroute_table['source'].append(_source)\\r\\n                mroute_table['uptime'].append(_uptime)\\r\\n                mroute_table['rp'].append(_rp)\\r\\n                mroute_table['flag'].append(_flag)\\r\\n                mroute_table['in_intf'].append(_in_intf)\\r\\n                mroute_table['out_intf'].append(_out_intf)\\r\\n\\r\\n    dic = {\\\"out_intfs\\\" : mroute_table}\\r\\n    return dic\\r\\n    \",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$out_intfs\",\"variableTypes\":{\"variableType\":[{\"name\":\"$group\",\"type\":\"string\"},{\"name\":\"$source\",\"type\":\"string\"},{\"name\":\"$uptime\",\"type\":\"string\"},{\"name\":\"$rp\",\"type\":\"string\"},{\"name\":\"$flag\",\"type\":\"string\"},{\"name\":\"$in_intf\",\"type\":\"string\"},{\"name\":\"$out_intf\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"80e7cd44-7e66-00ff-237f-998b01162020\",\"tableKeys\":{\"out_intfs\":[\"$group\",\"$source\"]},\"hashColumns\":{\"out_intfs\":[\"$group\",\"$source\",\"$in_intf\",\"$out_intf\"]},\"interfaceKey\":{\"out_intfs\":\"$in_intf\"}},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"d96de600-6ad2-2d86-f224-19c0db0bd4a2\"}]}",
+            "tableKeys": [
+                "_original_result.$out_intfs.$group",
+                "_original_result.$out_intfs.$source"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "flag",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "in_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "out_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rp",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "uptime",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "group",
+                    "in_intf",
+                    "out_intf",
+                    "source"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "out_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "691176ea3d17f8242ae23333c4a1010c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$out_intfs",
+            "dataType": "table",
+            "desc": "Group table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group",
+                    "$source",
+                    "$in_intf",
+                    "$out_intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs",
+            "intfKey": false,
+            "name": "$out_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$out_intfs.$group",
+            "dataType": "string",
+            "desc": "Multicast addresses.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$out_intfs.$source",
+            "dataType": "string",
+            "desc": "Entry in the IP multicast routing table. The entry consists of the IP address of the source router followed by the IP address of the multicast group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$out_intfs.$uptime",
+            "dataType": "string",
+            "desc": "How long (in hours, minutes, and seconds) the entry has been in the IP multicast routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$out_intfs.$rp",
+            "dataType": "string",
+            "desc": "Address of the rendezvous point router. For routers and access servers operating in sparse mode, this address is always 0.0.0.0.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs.$rp",
+            "intfKey": false,
+            "name": "$rp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$out_intfs.$flag",
+            "dataType": "string",
+            "desc": "Information about the entry.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs.$flag",
+            "intfKey": false,
+            "name": "$flag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$out_intfs.$in_intf",
+            "dataType": "string",
+            "desc": "Expected interface for a multicast packet from the source. If the packet is not received on this interface, it is discarded.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs.$in_intf",
+            "intfKey": false,
+            "name": "$in_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$out_intfs.$out_intf",
+            "dataType": "string",
+            "desc": "Interfaces through which packets will be forwarded. When the ip pim nbma-mode command is enabled on the interface, the IP address of the PIM neighbor is also displayed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$out_intfs.$out_intf",
+            "intfKey": false,
+            "name": "$out_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

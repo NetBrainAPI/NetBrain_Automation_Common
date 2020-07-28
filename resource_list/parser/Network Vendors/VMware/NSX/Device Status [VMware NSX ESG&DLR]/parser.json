@@ -1,0 +1,112 @@
+{
+    "_id": "895844c8-5141-4394-01af-856fba9832d1",
+    "author": "NetBrain",
+    "bizType": "81134e79-841f-4e59-b72b-0e41da2035a5",
+    "command": "",
+    "createTime": {
+        "$date": 1560793209356
+    },
+    "description": "",
+    "devTypes": [
+        21007,
+        21008
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\nimport time\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    node_dn = GetDeviceProperties(context, device_name, {'techName': 'NSX', 'paramType': 'SDN', 'params':['edgeId', 'nbPathSchema']})\r\n    edge_id = node_dn['params'].get('edgeId')\r\n    dev_schema = node_dn['params'].get('nbPathSchema')\r\n    rtn_params = { 'name':device_name, 'edge_id' : edge_id, 'dev_schema': dev_schema}\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    edge_id = rtn_params['edge_id']\r\n    dev_schema = rtn_params['dev_schema']\r\n    dev_name = rtn_params['name']\r\n    current_time = int(time.time())\r\n    if not edge_id:\r\n        return {'error:':'params not correct', 'rtn_params':rtn_params}\r\n    edge_url = 'api/4.0/edges/%s'%edge_id\r\n    edge_state = 'api/4.0/edges/%s/status'%edge_id\r\n    rtn_params['url'] = edge_url\r\n    edge_data = json.loads(getData(rtn_params))\r\n    edge_dict = json.loads(edge_data)\r\n    rtn_params['url'] = edge_state\r\n    edge_state_data = json.loads(getData(rtn_params))\r\n    edge_state_dict = json.loads(edge_state_data)\r\n    rtn = {}\r\n    active_index = edge_state_dict.get('activeVseHaIndex')\r\n    edge_status = edge_state_dict.get('edgeStatus')\r\n    system_status = edge_state_dict.get('systemStatus')\r\n    publish_status = edge_state_dict.get('publishStatus')\r\n    current_ha_index = None\r\n    for application in edge_dict.get(\"appliances\", {}).get(\"appliances\",[]):\r\n        if application.get('vmName', '') == dev_name:\r\n            current_ha_index = application.get(\"highAvailabilityIndex\")\r\n    if current_ha_index is None:\r\n        ha_state = 'unknown'\r\n    elif current_ha_index == active_index:\r\n        ha_state = 'active'\r\n    else:\r\n        ha_state = 'standby'\r\n    rtn['edge_status'] = edge_status.lower()\r\n    rtn['system_status'] = system_status.lower()\r\n    rtn['publish_status'] = publish_status.lower()\r\n    rtn['ha_state'] = ha_state\r\n    return rtn\r\n",
+    "samples": [
+        {
+            "content": "{\n    \"edge_status\": \"green\",\n    \"ha_state\": \"active\",\n    \"publish_status\": \"applied\",\n    \"system_status\": \"good\"\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n        {\\\"name\\\": \\\"edge_status\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"ha_state\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"system_status\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"publish_status\\\", \\\"type\\\": \\\"string\\\"}\\n]\\nEnd Declare\\n\\n'''\\nimport re \\nimport json\\ndef ParseText(_original_result):\\n    original_result = json.loads(_original_result)\\n    return original_result\",\"variableTypes\":{\"variableType\":[{\"name\":\"$edge_status\",\"type\":\"string\"},{\"name\":\"$ha_state\",\"type\":\"string\"},{\"name\":\"$publish_status\",\"type\":\"string\"},{\"name\":\"$system_status\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"de38efb6-6fc9-e7e7-2f08-e898f73017f2\",\"interfaceKey\":{}}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "edge_status",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "ha_state",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "publish_status",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "system_status",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "ad7e296a09ead0902c1adac2562f9a36",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$edge_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$edge_status",
+            "intfKey": false,
+            "name": "$edge_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ha_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$ha_state",
+            "intfKey": false,
+            "name": "$ha_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$publish_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$publish_status",
+            "intfKey": false,
+            "name": "$publish_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$system_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$system_status",
+            "intfKey": false,
+            "name": "$system_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

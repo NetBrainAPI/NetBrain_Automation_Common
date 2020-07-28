@@ -1,0 +1,269 @@
+{
+    "_id": "8fc58463-f4c7-4059-59d3-b4a1d479e24c",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560792921722
+    },
+    "description": "Device Type:\nAll Device Type\nCommand:\n       SNMP",
+    "devTypes": [
+        30001
+    ],
+    "params": [
+        {
+            "name": "$intf_name"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n    {\"name\": \"$intf_name\"}\r\n ]\r\n End Declare\r\n '''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    intf_name = params['intf_name']\r\n    get_dn = GetInterfaceProperties(context, device_name,intf_name, {'techName': 'Cisco ACI', 'paramType': 'SDN', 'params' : ['dn'] })\r\n    dn = get_dn['params']['dn']\r\n    rtn_params = [{ 'devName' : device_name, 'dn' : dn, 'intfName': intf_name }]\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    dn = rtn_params['dn']\r\n    node_dn = dn.rpartition('/sys')[0]\r\n    url = '/api/mo/' + node_dn + '/sys.json'\r\n    rtn_params['dn'] = node_dn\r\n    rtn_params['url'] = url\r\n    node_data = getData(rtn_params)\r\n    node_data = json.loads(node_data)\r\n    uptime = node_data[0]['topSystem']['attributes']['systemUpTime']\r\n    #333:03:58:38.000\r\n    uptimes = uptime.replace('.000', '').split(':')\r\n    day = 0\r\n    hour = 0\r\n    min = 0\r\n    sec = 0\r\n    padding = 4 - len(uptimes)\r\n    if padding > 0:\r\n        for i in range(padding):\r\n            uptimes = ['0'] + uptimes\r\n    if len(uptimes) == 4:\r\n        day = int(uptimes[0])\r\n        hour = int(uptimes[1])\r\n        min = int(uptimes[2])\r\n        sec = int(uptimes[3])\r\n    uptime = 100 * (day * 86400 + hour * 3600 + min * 60 + sec)\r\n    \r\n    intf_name = rtn_params['intfName']\r\n    url = '/api/mo/' + dn + '.json'\r\n    rtn_params['url'] = url\r\n    rtn_params['dn'] = dn\r\n    data = getData(rtn_params)\r\n    bandwidth = 0\r\n    intf_status = 'Down'\r\n    data = json.loads(data)\r\n    intf_data = {}\r\n    use64 = False\r\n    traffic_in_byte = 0\r\n    traffic_out_byte = 0\r\n    link_error_in = 0\r\n    link_error_out = 0\r\n    if 'cnwPhysIf' in data[0]:\r\n        intf_data = data[0]['cnwPhysIf']['attributes']\r\n        bandwidth = int(intf_data['bw'])\r\n        if bandwidth >= 4294967295:\r\n            use64 = True\r\n        intf_status = intf_data['operSt'].capitalize()\r\n    elif 'cnwAggrIf' in data[0]:\r\n        intf_data = data[0]['cnwAggrIf']['attributes']\r\n        bandwidth = int(intf_data['bw'])\r\n        if bandwidth >= 4294967295:\r\n            use64 = True\r\n        intf_status = intf_data['operSt'].capitalize()\r\n    rtn = {'intf': [intf_name], 'intf_status': [intf_status], 'bandwidth': [bandwidth], 'traffic_in_byte': [traffic_in_byte], 'traffic_out_byte': [traffic_out_byte], 'used64couter': [use64], 'link_error_in': [link_error_in], 'link_error_out': [link_error_out], 'sys_uptime': [uptime]}\r\n    return json.dumps(rtn)\r\n    \r\n    \r\n    ",
+    "samples": [
+        {
+            "content": "{\n    \"intf\": [\n        \"Ethernet2-1\"\n    ],\n    \"intf_status\": [\n        \"Up\"\n    ],\n    \"bandwidth\": [\n        0\n    ],\n    \"traffic_in_byte\": [\n        0\n    ],\n    \"traffic_out_byte\": [\n        0\n    ],\n    \"used64couter\": [\n        false\n    ],\n    \"link_error_in\": [\n        0\n    ],\n    \"link_error_out\": [\n        0\n    ],\n    \"sys_uptime\": [\n        1441386300\n    ]\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"intf_table\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"intf\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"intf_status\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"bandwidth\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"traffic_in_byte\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"traffic_out_byte\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"used64couter\\\", \\\"type\\\": \\\"bool\\\"},\\n        {\\\"name\\\": \\\"link_error_in\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"link_error_out\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"sys_uptime\\\", \\\"type\\\": \\\"int\\\"}\\n        \\n    ]}\\n]\\nEnd Declare\\n\\n'''\\nimport re \\nimport json\\ndef ParseText(_original_result):\\n    original_result = json.loads(_original_result)\\n    value = {}\\n    value['intf_table']= original_result\\n    return value\\t\\n\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$intf_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$intf\",\"type\":\"string\"},{\"name\":\"$intf_status\",\"type\":\"string\"},{\"name\":\"$bandwidth\",\"type\":\"int\"},{\"name\":\"$traffic_in_byte\",\"type\":\"int\"},{\"name\":\"$traffic_out_byte\",\"type\":\"int\"},{\"name\":\"$used64couter\",\"type\":\"bool\"},{\"name\":\"$link_error_in\",\"type\":\"int\"},{\"name\":\"$link_error_out\",\"type\":\"int\"},{\"name\":\"$sys_uptime\",\"type\":\"int\"}]}}]},\"name\":\"\",\"xxid\":\"8d56d26b-832a-33fb-2764-09070775cbc0\",\"interfaceKey\":{\"intf_table\":\"$intf\"},\"hashColumns\":{\"intf_table\":[\"$intf\"]}}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "bandwidth",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "link_error_in",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "link_error_out",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "sys_uptime",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "traffic_in_byte",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "traffic_out_byte",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "used64couter",
+                        "type": 3
+                    }
+                ],
+                "hashColumns": [
+                    "intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "aff8514693cc158e1a100a235d283c56",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$intf_table.$bandwidth",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$bandwidth",
+            "intfKey": false,
+            "name": "$bandwidth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$intf_table.$intf_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf_status",
+            "intfKey": false,
+            "name": "$intf_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table",
+            "dataType": "table",
+            "desc": "Interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$intf_table",
+            "intfKey": false,
+            "name": "$intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$intf_table.$link_error_in",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$link_error_in",
+            "intfKey": false,
+            "name": "$link_error_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$link_error_out",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$link_error_out",
+            "intfKey": false,
+            "name": "$link_error_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$sys_uptime",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$sys_uptime",
+            "intfKey": false,
+            "name": "$sys_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$traffic_in_byte",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$traffic_in_byte",
+            "intfKey": false,
+            "name": "$traffic_in_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$traffic_out_byte",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$traffic_out_byte",
+            "intfKey": false,
+            "name": "$traffic_out_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$used64couter",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$used64couter",
+            "intfKey": false,
+            "name": "$used64couter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

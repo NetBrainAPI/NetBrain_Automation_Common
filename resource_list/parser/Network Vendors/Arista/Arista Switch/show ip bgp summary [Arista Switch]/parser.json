@@ -1,0 +1,371 @@
+{
+    "_id": "90c3888b-fb4a-b59f-fdc9-dfd2cbed14df",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip bgp summary",
+    "createTime": {
+        "$date": 1581006645259
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow ip bgp summary",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [],
+        "expression": ""
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "DC-EOS-BGP-EDGE-1>show ip bgp summary\r\nBGP summary information for VRF default\r\nRouter identifier 10.100.0.13, local AS number 100\r\nNeighbor Status Codes: m - Under maintenance\r\n  Neighbor         V  AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State  PfxRcd PfxAcc\r\n  100.0.0.31       4  200                0         0    0    0    1d13h Active        \r\n  100.0.0.35       4  200                0         0    0    0    1d13h Idle(Admin)        \r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$rid]:Router\\\\s+identifier\\\\s+([^,]+)\",\"regex[$local_as]:local\\\\s+AS\\\\s+number\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$rid:string\",\"$local_as:string\"]},\"xxid\":\"7a4f3184-a273-e6b7-c1b5-a51fd6ac6293\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"9ba885b6-b770-76a0-bebe-83d8ce38d124\"},{\"type\":\"3\",\"name\":\"bgp_nbr\",\"headers\":\"Neighbor;V;AS;MsgRcvd;MsgSent;InQ;OutQ;Up/Down;State;PfxRcd;PfxAcc\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Neighbor:$string:neighbor;V:$int:v;AS:$int:as;MsgRcvd:$int:msgrcvd;MsgSent:$int:msgsent;InQ:$int:inq;OutQ:$int:outq;Up/Down:$string:up_down;State:$string:state;PfxRcd:$int:pfxrcd;PfxAcc:$int:pfxacc\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$neighbor:string\",\"$v:int\",\"$as:int\",\"$msgrcvd:int\",\"$msgsent:int\",\"$inq:int\",\"$outq:int\",\"$up_down:string\",\"$state:string\",\"$pfxrcd:int\",\"$pfxacc:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"d859646c-9106-37d0-e9d4-20f4da7d2a75\",\"hashColumns\":[\"$neighbor\",\"$state\"]}]}",
+            "tableKeys": [
+                "_original_result.bgp_nbr.$neighbor",
+                "_original_result.bgp_nbr.$state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "rid",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_as",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "v",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "as",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "msgrcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "msgsent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "inq",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "outq",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "pfxrcd",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "pfxacc",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$neighbor",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "bgp_nbr",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "97f62ae772c0e4513fb741c6b4d24875",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$rid",
+            "dataType": "string",
+            "desc": "In order of precedence and availability, the router identifier specified by the bgp router-id command, a loopback address, or the highest IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "string",
+            "desc": "Local Autonomous system number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr",
+            "dataType": "table",
+            "desc": "BGP Neighbor Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr",
+            "intfKey": false,
+            "name": "bgp_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_nbr.$neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$neighbor",
+            "intfKey": false,
+            "name": "$neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$v",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$v",
+            "intfKey": false,
+            "name": "$v",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$as",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$msgrcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$msgrcvd",
+            "intfKey": false,
+            "name": "$msgrcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$msgsent",
+            "dataType": "int",
+            "desc": "Number of messages sent to the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$msgsent",
+            "intfKey": false,
+            "name": "$msgsent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$inq",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$inq",
+            "intfKey": false,
+            "name": "$inq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$outq",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$outq",
+            "intfKey": false,
+            "name": "$outq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$up_down",
+            "dataType": "string",
+            "desc": "The length of time that the BGP session has been in the Established state, or the current status if not in the Established state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$state",
+            "dataType": "string",
+            "desc": "Current state of the BGP session.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$pfxrcd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$pfxrcd",
+            "intfKey": false,
+            "name": "$pfxrcd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr.$pfxacc",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbr.$pfxacc",
+            "intfKey": false,
+            "name": "$pfxacc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

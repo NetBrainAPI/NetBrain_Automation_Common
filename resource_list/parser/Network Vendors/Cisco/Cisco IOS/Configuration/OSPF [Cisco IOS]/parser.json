@@ -1,0 +1,131 @@
+{
+    "_id": "d3c27b0e-8071-7eb1-8d1a-70417e848fe1",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585838268046
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\n       <Configuration>",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": null,
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "! Info via SNMP: sysoid=1.3.6.1.4.1.9.1.1,vendor=Cisco,model=ciscoGatewayServer,hostname=Core-SW1\nCore-SW1#show run\nBuilding configuration...\n\nCurrent configuration : 5237 bytes\n!\n! Last configuration change at 12:11:55 UTC Wed Jan 20 2016\n!\nversion 15.1\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\nservice compress-config\n!\nhostname Core-SW1\n!\nboot-start-marker\nboot-end-marker\n!\n!\nlogging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL \nlogging buffered 50000\nlogging console discriminator EXCESS\nenable password nb\n!\nno aaa new-model\nno ip icmp rate-limit unreachable\n!\nip vrf site1\n rd 1:1\n route-target export 100:1\n route-target import 100:1\n!\nip cef\n!\n!\nno ip domain-lookup\nno ipv6 cef\nipv6 multicast rpf use-bgp\nmpls label range 16 100\nmpls label protocol ldp\nspanning-tree mode pvst\nspanning-tree extend system-id\n!\n!\n!\n!\n!\n!\nvlan internal allocation policy ascending\n!\nip tcp synwait-time 5\n!\n!\n!\n!\ninterface Loopback0\n ip address 2.1.1.1 255.255.255.255\n ip ospf dead-interval 555\n ip ospf hello-interval 23\n ip ospf 1 area 0\n ip ospf cost 199\n!\ninterface Loopback1\n ip address 1.1.1.1 255.255.255.255\n!\ninterface Loopback100\n ip address 100.1.1.1 255.255.255.255\n!\ninterface Loopback111\n ip address 111.1.1.1 255.255.255.255\n!\ninterface Ethernet0/0\n no switchport\n ip address 192.168.9.101 255.255.255.0\n!\ninterface Ethernet0/1\n no switchport\n ip address 3.3.3.3 255.255.255.0\n ip access-group acava32afaf in\n ip access-group asdcasdfa123aqdfa out\n ip mtu 1490\n ip router isis 4701\n ip pim sparse-mode\n ip igmp join-group 239.2.2.2\n ip ospf dead-interval 222\n ip ospf hello-interval 111\n ip ospf 1 area 0\n ip ospf cost 123\n mpls label protocol ldp\n mpls ip\n isis network point-to-point \n isis metric 1 level-1\n isis metric 2 level-2\n isis authentication mode text\n isis authentication key-chain 123\n isis authentication send-only\n isis priority 1 level-1\n isis priority 2 level-2\n isis hello-interval 2\n isis retransmit-throttle-interval 23\n isis retransmit-interval 412\n!\ninterface Ethernet0/2\n switchport trunk encapsulation dot1q\n switchport mode trunk\n duplex auto\n!\ninterface Ethernet0/3\n no switchport\n ip address 4.4.4.1 255.255.255.0\n ip ospf message-digest-key 1 md5 Netbrain-QA\n ip ospf 2 area 0\n ip router isis \n!\ninterface Ethernet1/0\n duplex auto\n!\ninterface Ethernet1/1\n duplex auto\n!\ninterface Ethernet1/2\n duplex auto\n!\ninterface Ethernet1/3\n duplex auto\n!\ninterface Ethernet2/0\n duplex auto\n!\ninterface Ethernet2/1\n no switchport\n ip ospf authentication\n ip ospf authentication-key 123\n ip address 202.1.1.100 255.255.255.0\n ip ospf cost 100\n!\ninterface Ethernet2/2\n no switchport\n ip address 200.1.1.1 255.255.255.0\n ip ospf 2 area 1\n!\ninterface Ethernet2/3\n duplex auto\n!\ninterface Ethernet3/0\n duplex auto\n!\ninterface Ethernet3/1\n duplex auto\n!\ninterface Ethernet3/2\n duplex auto\n!\ninterface Ethernet3/3\n duplex auto\n!\ninterface Ethernet4/0\n duplex auto\n!\ninterface Ethernet4/1\n duplex auto\n!\ninterface Ethernet4/2\n duplex auto\n!\ninterface Ethernet4/3\n duplex auto\n!\ninterface Ethernet5/0\n duplex auto\n!\ninterface Ethernet5/1\n duplex auto\n!\ninterface Ethernet5/2\n duplex auto\n!\ninterface Ethernet5/3\n duplex auto\n!\ninterface Ethernet6/0\n duplex auto\n!\ninterface Ethernet6/1\n duplex auto\n!\ninterface Ethernet6/2\n duplex auto\n!\ninterface Ethernet6/3\n duplex auto\n!\ninterface Ethernet7/0\n duplex auto\n!\ninterface Ethernet7/1\n duplex auto\n!\ninterface Ethernet7/2\n duplex auto\n!\ninterface Ethernet7/3\n duplex auto\n!\ninterface Vlan1\n no ip address\n shutdown\n!\n!\nrouter eigrp 1\n network 3.3.3.0 0.0.0.255\n redistribute ospf 1 metric 10000 100 255 1 1500 route-map rm\n redistribute eigrp 100\n passive-interface Loopback1\n passive-interface Loopback100\n!\n!\nrouter eigrp 321\n network 3.3.3.3 0.0.0.0\n redistribute isis level-2 route-map rmm\n passive-interface Loopback100\n eigrp router-id 6.6.6.6\n!\n!\nrouter eigrp 199\n passive-interface Ethernet0/1\n!\n!\nrouter eigrp 100\n!\n!\nrouter eigrp 111\n!\nrouter ospf 1\n router-id 1.1.1.1\n area 1 virtual-link 1.1.1.1 transmit-delay 2 hello-interval 3 dead-interval 10 ttl-security hops 13 authentication-key cscd\n area 1 virtual-link 2.2.2.2 ttl-security hops 12\n redistribute eigrp 100 subnets \n passive-interface Loopback1\n network 1.1.1.1 0.0.0.0 area 0\n network 2.2.2.0 0.0.0.255 area 0\n!\nrouter ospf 2\n area 1 virtual-link 1.1.1.1 transmit-delay 2 hello-interval 3 dead-interval 10 ttl-security hops 12 authentication message-digest authentication-key 12 \n redistribute isis level-1 subnets\n redistribute eigrp 123 subnets route-map rmm\n network 4.4.4.1 0.0.0.0 area 0\n!\nrouter ospf 100\n passive-interface Loopback100\n!\nrouter isis\n authentication mode text level-1\n authentication mode md5 level-2\n authentication key-chain 1123\n authentication send-only\n summary-address 192.168.1.0 255.255.255.0 metric 2\n passive-interface Loopback1\n!\nrouter isis 321\n passive-interface Loopback100\n!\nrouter isis 4701\n!\nrouter isis 47.0001\n!\nrouter isis 654\n net 47.0000.0000.0001.00\n!\nrouter rip\n version 2\n network 1.0.0.0\n!\nrouter bgp 1\n bgp log-neighbor-changes\n !\n address-family ipv4\n  redistribute ospf 1 route-map rm\n exit-address-family\n!\n!\n!\nno ip http server\n!\naccess-list 100 permit ip 100.1.1.0 0.0.0.255 host 1.1.1.1\n!\nroute-map ac permit 10\n match ip address 123\n set ip next-hop 2.2.2.2\n!\nroute-map rmm permit 10\n match ip address 100\n!\n!\nsnmp-server community nb RO\n!\ncontrol-plane\n!\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n password nb\n login\n!\nend\n\n ",
+            "devName": "Core-SW1",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf\",\"keyVariables\":\"\",\"startLine\":\"mregex[$ospf_config,$ospf_pid]:(^router ospf\\\\s+(\\\\S+).+?)(?:^\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_config:string\",\"$ospf_pid:string\"]},\"xxid\":\"e6cb2946-e2bf-6297-07af-84c3fc42d2ba\"}]},\"xxid\":\"b561c90e-0071-96d6-9ec3-3d73a22942f1\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ospf_config",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ospf_pid",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "541bf0442e5ca76a6d11f9d595961b62",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "ospf",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf",
+            "intfKey": false,
+            "name": "ospf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf.$ospf_config",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$ospf_config",
+            "intfKey": false,
+            "name": "$ospf_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$ospf_pid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$ospf_pid",
+            "intfKey": false,
+            "name": "$ospf_pid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

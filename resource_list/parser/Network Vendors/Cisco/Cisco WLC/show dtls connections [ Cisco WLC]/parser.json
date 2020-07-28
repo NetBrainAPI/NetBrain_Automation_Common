@@ -1,0 +1,313 @@
+{
+    "_id": "81f124d0-2900-5595-087e-b4097d0083c3",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show dtls connections",
+    "createTime": {
+        "$date": 1584122521373
+    },
+    "description": "",
+    "devTypes": [
+        3033
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "(Cisco Controller) >show dtls connections\r\n\r\nTotal DTLS Connections Count..................... 5\r\nControl DTLS Connections Count................... 5\r\nData DTLS Connections Count...................... 0\r\nHandshaking DTLS Connections Count............... 0\r\nLicensed AP Support Capacity..................... 150\r\n       AP Name         Local Port        Peer IP        Peer Port                Ciphersuite          \r\n -------------------- ------------- ----------------  -------------     ------------------------------\r\n AS_Area               Capwap_Ctrl    10.99.100.26      62085           TLS_RSA_WITH_AES_128_CBC_SHA\r\n Dev_Area              Capwap_Ctrl    10.99.100.27      63589           TLS_RSA_WITH_AES_128_CBC_SHA\r\n QA_Area               Capwap_Ctrl    10.99.100.28      61998           TLS_RSA_WITH_AES_128_CBC_SHA\r\n Kitchen_Area          Capwap_Ctrl    10.99.100.29      58554           TLS_RSA_WITH_AES_128_CBC_SHA\r\n Foyer                 Capwap_Ctrl    10.99.100.30      65444           TLS_RSA_WITH_AES_128_CBC_SHA\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total DTLS Connections Count..................... $int:num_dtls_connections$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num_dtls_connections:int\"]},\"xxid\":\"fc25f4d6-35b1-2252-2ca7-b603e3cdee78\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Control DTLS Connections Count................... $int:control_dtls_connection$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$control_dtls_connection:int\"]},\"xxid\":\"c990a798-db0b-83ea-fecd-f642e2350f57\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Data DTLS Connections Count...................... $int:data_dtls_connection$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$data_dtls_connection:int\"]},\"xxid\":\"5a3af4f0-53ef-81e9-6fed-bbc3818a2d6c\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Handshaking DTLS Connections Count............... $int:handshaking_dtls_connection$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$handshaking_dtls_connection:int\"]},\"xxid\":\"e7608812-5b02-3b3d-ea75-9cddb2ce13d7\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Licensed AP Support Capacity..................... $int:license_ap_capacity$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$license_ap_capacity:int\"]},\"xxid\":\"f4de7611-c0eb-cb93-aa86-dbddcb427d0b\"},{\"type\":\"4\",\"name\":\"dtls_connections\",\"keyVariables\":\"\",\"startLine\":\"regex[$ap_name,$local_port,$peer_ip,$peer_port,$ciphersuite]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ap_name:string\",\"$local_port:string\",\"$peer_ip:string\",\"$peer_port:string\",\"$ciphersuite:string\"]},\"xxid\":\"ef599155-19c1-a3d9-ade0-eadc41b3251b\"}]},\"xxid\":\"4fe4b5e4-2058-9d1f-0b6b-657be19f533b\",\"hashColumns\":[\"$ap_name\",\"$local_port\",\"$peer_ip\",\"$peer_port\",\"$ciphersuite\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"da7fd7c9-ed6b-dbe0-01ef-62f199ac1617\"}]}",
+            "tableKeys": [
+                "_original_result.dtls_connections.$ap_name"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "num_dtls_connections",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "control_dtls_connection",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "data_dtls_connection",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "handshaking_dtls_connection",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "license_ap_capacity",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ap_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "local_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "peer_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "peer_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "ciphersuite",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ap_name",
+                    "$ciphersuite",
+                    "$local_port",
+                    "$peer_ip",
+                    "$peer_port"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "dtls_connections",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "70110e2ba586e46261fe8d202eedda5b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$num_dtls_connections",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$num_dtls_connections",
+            "intfKey": false,
+            "name": "$num_dtls_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$control_dtls_connection",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$control_dtls_connection",
+            "intfKey": false,
+            "name": "$control_dtls_connection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$data_dtls_connection",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$data_dtls_connection",
+            "intfKey": false,
+            "name": "$data_dtls_connection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$handshaking_dtls_connection",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$handshaking_dtls_connection",
+            "intfKey": false,
+            "name": "$handshaking_dtls_connection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$license_ap_capacity",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$license_ap_capacity",
+            "intfKey": false,
+            "name": "$license_ap_capacity",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dtls_connections",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ap_name",
+                    "$local_port",
+                    "$peer_ip",
+                    "$peer_port",
+                    "$ciphersuite"
+                ],
+                "hashSort": false
+            },
+            "fullName": "dtls_connections",
+            "intfKey": false,
+            "name": "dtls_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "dtls_connections.$ap_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dtls_connections.$ap_name",
+            "intfKey": false,
+            "name": "$ap_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dtls_connections.$local_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dtls_connections.$local_port",
+            "intfKey": false,
+            "name": "$local_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dtls_connections.$peer_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dtls_connections.$peer_ip",
+            "intfKey": false,
+            "name": "$peer_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dtls_connections.$peer_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dtls_connections.$peer_port",
+            "intfKey": false,
+            "name": "$peer_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dtls_connections.$ciphersuite",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dtls_connections.$ciphersuite",
+            "intfKey": false,
+            "name": "$ciphersuite",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

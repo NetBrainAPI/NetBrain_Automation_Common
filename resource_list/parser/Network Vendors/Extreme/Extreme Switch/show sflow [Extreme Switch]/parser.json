@@ -1,0 +1,345 @@
+{
+    "_id": "14b7295b-ae10-05bf-f839-5741f60f068f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sflow",
+    "createTime": {
+        "$date": 1591076675979
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow sflow",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB# show sflow\r\n\r\nSFLOW Global Configuration   \r\nGlobal Status: enabled   \r\nPolling interval: 20   \r\nSampling rate: 8192   \r\nMaximum cpu sample limit: 2000   \r\nSFLOW Configured Agent IP: 0.0.0.0 \r\nOperational Agent IP: 10.127.11.88   \r\nCollectors      \r\n\r\nSFLOW Port Configuration   \r\nPort  Status           Sample-rate         Subsampling   Sflow-type                          \r\n                       Config / Actual        factor      Ingress / Egress   \r\n5:21   enabled           8192 / 8192             1        Disabled / Enabled ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$global_status]:global status:\\\\s+(\\\\S+)\",\"regex[$polling_interval]:polling interval:\\\\s+(\\\\S+)\",\"regex[$sampling_rate]:sampling rate:\\\\s+(\\\\S+)\",\"regex[$max_cpu]:maximum cpu sample limit:\\\\s+(\\\\S+)\",\"regex[$sflow_cfg_agent_ip]:sflow configured agent ip:\\\\s+(\\\\S+)\",\"regex[$oper_agent_ip]:operational agent ip:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$global_status:string\",\"$polling_interval:string\",\"$sampling_rate:string\",\"$max_cpu:string\",\"$sflow_cfg_agent_ip:string\",\"$oper_agent_ip:string\"]},\"xxid\":\"488d8a6c-4ca1-5a2c-2b93-652f8b35ded8\"},{\"type\":\"4\",\"name\":\"sflow_port_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$port, $status, $sample_rate_cfg, $sample_rate_actual, $subsampling_factor, $sflow_type_ingress, $sflow_type_egress]:(\\\\d+\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s*\\\\/\\\\s*(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s*\\\\/\\\\s*(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$port:string\",\"$status:string\",\"$sample_rate_cfg:string\",\"$sample_rate_actual:string\",\"$subsampling_factor:string\",\"$sflow_type_ingress:string\",\"$sflow_type_egress:string\"]},\"xxid\":\"e5eb02a0-6563-8edc-7d4c-40b748750fe7\"}]},\"xxid\":\"edb4ae9b-07a4-48bd-5433-9cb60a68c737\",\"hashColumns\":[\"$port\"]}]}",
+            "tableKeys": [
+                "_original_result.sflow_port_table.$port"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "global_status",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "polling_interval",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "sampling_rate",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "max_cpu",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "sflow_cfg_agent_ip",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "oper_agent_ip",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "sample_rate_cfg",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "sample_rate_actual",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "subsampling_factor",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "sflow_type_ingress",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "sflow_type_egress",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "sflow_port_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "64d52da071f0aff20b571e4c2f11b2db",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$global_status",
+            "dataType": "string",
+            "desc": "Global status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$global_status",
+            "intfKey": false,
+            "name": "$global_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$polling_interval",
+            "dataType": "string",
+            "desc": "Polling interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$polling_interval",
+            "intfKey": false,
+            "name": "$polling_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sampling_rate",
+            "dataType": "string",
+            "desc": "Sampling rate.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$sampling_rate",
+            "intfKey": false,
+            "name": "$sampling_rate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_cpu",
+            "dataType": "string",
+            "desc": "Maximum cpu sample limit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_cpu",
+            "intfKey": false,
+            "name": "$max_cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sflow_cfg_agent_ip",
+            "dataType": "string",
+            "desc": "SFLOW configured agent IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$sflow_cfg_agent_ip",
+            "intfKey": false,
+            "name": "$sflow_cfg_agent_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$oper_agent_ip",
+            "dataType": "string",
+            "desc": "Operational agent IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$oper_agent_ip",
+            "intfKey": false,
+            "name": "$oper_agent_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_port_table",
+            "dataType": "paragraph",
+            "desc": "SFLOW port table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table",
+            "intfKey": false,
+            "name": "sflow_port_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sflow_port_table.$port",
+            "dataType": "string",
+            "desc": "Port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_port_table.$status",
+            "dataType": "string",
+            "desc": "Status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_port_table.$sample_rate_cfg",
+            "dataType": "string",
+            "desc": "Sample rate of configured.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table.$sample_rate_cfg",
+            "intfKey": false,
+            "name": "$sample_rate_cfg",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_port_table.$sample_rate_actual",
+            "dataType": "string",
+            "desc": "Sample rate of actual.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table.$sample_rate_actual",
+            "intfKey": false,
+            "name": "$sample_rate_actual",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_port_table.$subsampling_factor",
+            "dataType": "string",
+            "desc": "Subsampling factor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table.$subsampling_factor",
+            "intfKey": false,
+            "name": "$subsampling_factor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_port_table.$sflow_type_ingress",
+            "dataType": "string",
+            "desc": "Sflow type of ingress.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table.$sflow_type_ingress",
+            "intfKey": false,
+            "name": "$sflow_type_ingress",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_port_table.$sflow_type_egress",
+            "dataType": "string",
+            "desc": "Sflow type of egress.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_port_table.$sflow_type_egress",
+            "intfKey": false,
+            "name": "$sflow_type_egress",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

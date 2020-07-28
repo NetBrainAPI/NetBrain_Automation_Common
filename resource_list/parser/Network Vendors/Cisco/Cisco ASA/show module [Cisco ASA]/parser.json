@@ -1,0 +1,587 @@
+{
+    "_id": "f1c602ef-1edd-2459-de9f-2d7952bec3fb",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show module",
+    "createTime": {
+        "$date": 1579804265056
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow module",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ciscoasa# show module\nMod Card Type Model Serial No.\n--- -------------------------------------------- ------------------ -----------\n0 ASA 5520 Adaptive Security Appliance ASA5520 P3000000034\n1 ASA 5500 Series Security Services Module-20 ASA-SSM-20 0\n \nMod MAC Address Range Hw Version Fw Version Sw Version\n--- --------------------------------- ------------ ------------ ---------------\n0 000b.fcf8.c30d to 000b.fcf8.c311 1.0 1.0(10)0 7.1(0)5\n1 000b.fcf8.012c to 000b.fcf8.012c 1.0 1.0(10)0 CSC SSM 5.0 (Build#1187)\n \nMod SSM Application Name SSM Application Version\n--- ------------------------------ --------------------------\n1 CSC SSM scan services are not\n1 CSC SSM 5.0 (Build#1187)\n \nMod Status Data Plane Status Compatibility\n--- ------------------ --------------------- -------------\n0 Up Sys Not Applicable\n1 Up Up\n\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"per_mode_parag\",\"startLine\":\"Mod Card\",\"endLine\":\"Mod MAC\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"11f4e570-1b6b-5c7c-c73e-96f48e983a35\"},{\"type\":\"4\",\"name\":\"per_mod_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$mod_asa,$card_asa,$type_asa,$model_asa,$seria_asa]:^(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(.+?\\\\d)\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mod_asa:string\",\"$card_asa:string\",\"$type_asa:string\",\"$model_asa:string\",\"$seria_asa:string\"]},\"xxid\":\"53386228-c814-06c9-ba02-fbf73f948c50\"}]},\"xxid\":\"15dc0e7d-b1dc-1de5-b81b-b507f13ce55c\"}]},\"xxid\":\"81608138-cf78-9195-73dc-b536623b5b88\"},{\"type\":\"1\",\"name\":\"per_mod_hw_info\",\"startLine\":\"Mod MAC\",\"endLine\":\"Mod SSM\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"95f73778-3ae6-81e5-81ab-5938dc007a5b\"},{\"type\":\"4\",\"name\":\"per_mod_hw_parag\",\"keyVariables\":\"\",\"startLine\":\"regex[$hw_mod_asa,$mac_range_asa,$hw_version,$fw_version_asa,$sw_version_asa]:^(\\\\d+)\\\\s+(\\\\S+\\\\s+to\\\\s+\\\\S+)\\\\s+(\\\\S+)(.+?\\\\)\\\\d+)\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$hw_mod_asa:string\",\"$mac_range_asa:string\",\"$hw_version:string\",\"$fw_version_asa:string\",\"$sw_version_asa:string\"]},\"xxid\":\"c2b34c96-13a5-2a4f-ff8e-91b2d733078b\"}]},\"xxid\":\"5dc8b112-ce5a-13da-b2af-5006ee62d1f5\"}]},\"xxid\":\"f47e2e2f-10b1-70d4-957a-7fc5d09efa7f\"},{\"type\":\"1\",\"name\":\"per_ssm_filter\",\"startLine\":\"Mod SSM\",\"endLine\":\"Mod Status\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"dfc3ee43-0503-463d-f9de-b596bdc2bba0\"},{\"type\":\"4\",\"name\":\"per_mod_ssm_parag\",\"keyVariables\":\"\",\"startLine\":\"regex[$ssm_mod_asa,$ssm_app_name_asa,$ssm_app_ver_asa]:^(\\\\d+)\\\\s+(\\\\S+\\\\s+\\\\S+)\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ssm_mod_asa:string\",\"$ssm_app_name_asa:string\",\"$ssm_app_ver_asa:string\"]},\"xxid\":\"f52e9fa4-f8a3-ce9c-0d0d-384bdabd482f\"}]},\"xxid\":\"0b04bcc3-8bf7-340c-3e87-623bcd95e003\"}]},\"xxid\":\"71d8a533-748b-d7fd-7bc6-1100d889fcd8\"},{\"type\":\"1\",\"name\":\"per_mod_status\",\"startLine\":\"Mod Status\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"a63969a6-3aa7-bbd6-fc2a-02ab7f060b38\"},{\"type\":\"4\",\"name\":\"per_mod_status_parag\",\"keyVariables\":\"\",\"startLine\":\"regex[$mod_status_asa,$data_plane_stat_asa,$compatibility_asa]:^(\\\\d+)\\\\s+(\\\\S+)\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mod_status_asa:string\",\"$data_plane_stat_asa:string\",\"$compatibility_asa:string\"]},\"xxid\":\"324ec7b6-ea1a-a7c6-c6fb-6f796aec0a54\"}]},\"xxid\":\"ace55214-3a27-e701-f34d-667162aeede8\"}]},\"xxid\":\"d53024b3-194a-dc03-6fe2-02d15a758411\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "per_mode_parag",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "per_mod_hw_info",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "per_ssm_filter",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "per_mod_status",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "card_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "type_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "model_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "seria_asa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "per_mod_info",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "hw_mod_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "mac_range_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "hw_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "fw_version_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sw_version_asa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 5,
+                "name": "per_mod_hw_parag",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ssm_mod_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ssm_app_name_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ssm_app_ver_asa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 6,
+                "name": "per_mod_ssm_parag",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod_status_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "data_plane_stat_asa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "compatibility_asa",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 7,
+                "name": "per_mod_status_parag",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0412dc981ccc012b6fa1f559f6bbf68f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "per_mode_parag",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mode_parag",
+            "intfKey": false,
+            "name": "per_mode_parag",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_info",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "per_mode_parag.per_mod_info",
+            "intfKey": false,
+            "name": "per_mod_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "per_mod_info.$mod_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mode_parag.per_mod_info.$mod_asa",
+            "intfKey": false,
+            "name": "$mod_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_info.$card_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mode_parag.per_mod_info.$card_asa",
+            "intfKey": false,
+            "name": "$card_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_info.$type_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mode_parag.per_mod_info.$type_asa",
+            "intfKey": false,
+            "name": "$type_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_info.$model_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mode_parag.per_mod_info.$model_asa",
+            "intfKey": false,
+            "name": "$model_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_info.$seria_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mode_parag.per_mod_info.$seria_asa",
+            "intfKey": false,
+            "name": "$seria_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_hw_info",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_hw_info",
+            "intfKey": false,
+            "name": "per_mod_hw_info",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_hw_parag",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "per_mod_hw_info.per_mod_hw_parag",
+            "intfKey": false,
+            "name": "per_mod_hw_parag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "per_mod_hw_parag.$hw_mod_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_hw_info.per_mod_hw_parag.$hw_mod_asa",
+            "intfKey": false,
+            "name": "$hw_mod_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_hw_parag.$mac_range_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_hw_info.per_mod_hw_parag.$mac_range_asa",
+            "intfKey": false,
+            "name": "$mac_range_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_hw_parag.$hw_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_hw_info.per_mod_hw_parag.$hw_version",
+            "intfKey": false,
+            "name": "$hw_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_hw_parag.$fw_version_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_hw_info.per_mod_hw_parag.$fw_version_asa",
+            "intfKey": false,
+            "name": "$fw_version_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_hw_parag.$sw_version_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_hw_info.per_mod_hw_parag.$sw_version_asa",
+            "intfKey": false,
+            "name": "$sw_version_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_ssm_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_ssm_filter",
+            "intfKey": false,
+            "name": "per_ssm_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_ssm_parag",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "per_ssm_filter.per_mod_ssm_parag",
+            "intfKey": false,
+            "name": "per_mod_ssm_parag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "per_mod_ssm_parag.$ssm_mod_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_ssm_filter.per_mod_ssm_parag.$ssm_mod_asa",
+            "intfKey": false,
+            "name": "$ssm_mod_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_ssm_parag.$ssm_app_name_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_ssm_filter.per_mod_ssm_parag.$ssm_app_name_asa",
+            "intfKey": false,
+            "name": "$ssm_app_name_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_ssm_parag.$ssm_app_ver_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_ssm_filter.per_mod_ssm_parag.$ssm_app_ver_asa",
+            "intfKey": false,
+            "name": "$ssm_app_ver_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_status",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_status",
+            "intfKey": false,
+            "name": "per_mod_status",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_status_parag",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "per_mod_status.per_mod_status_parag",
+            "intfKey": false,
+            "name": "per_mod_status_parag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "per_mod_status_parag.$mod_status_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_status.per_mod_status_parag.$mod_status_asa",
+            "intfKey": false,
+            "name": "$mod_status_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_status_parag.$data_plane_stat_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_status.per_mod_status_parag.$data_plane_stat_asa",
+            "intfKey": false,
+            "name": "$data_plane_stat_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_mod_status_parag.$compatibility_asa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_mod_status.per_mod_status_parag.$compatibility_asa",
+            "intfKey": false,
+            "name": "$compatibility_asa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

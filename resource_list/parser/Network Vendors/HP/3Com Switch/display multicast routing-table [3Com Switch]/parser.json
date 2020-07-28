@@ -1,0 +1,450 @@
+{
+    "_id": "199967fc-9113-47a3-a403-c6ab79ef654d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display multicast routing-table",
+    "createTime": {
+        "$date": 1590781402917
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay multicast routing-table",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<H3C> display multicast routing-table\r\nMulticast routing table\r\n Total 1 entry\r\n 00001. (172.168.0.2, 227.0.0.1)\r\n       Uptime: 00:00:28\r\n       Upstream Interface: Vlan-interface1\r\n       List of 2 downstream interfaces\r\n           1:  Vlan-interface2\r\n           2:  Vlan-interface3\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.muticast.down_intf.$up_intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total $int:total entry\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\"]},\"xxid\":\"79aa5a2b-1c52-9e18-4a81-cdac436505c4\"},{\"type\":\"4\",\"name\":\"muticast\",\"keyVariables\":\"\",\"startLine\":\"regex[$num,$s,$g]:\\\\s+(\\\\d+)\\\\.\\\\s+\\\\((\\\\S+),\\\\s+(\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Uptime: $uptime\",\"Upstream Interface: $up_intf\",\"List of $down_intfs_count\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num:string\",\"$s:string\",\"$g:string\",\"$uptime:string\",\"$up_intf:string\",\"$down_intfs_count:string\"]},\"xxid\":\"3093aba6-48de-6f16-5fc4-ad930bf080ca\"},{\"type\":\"4\",\"name\":\"down_intf\",\"keyVariables\":\"\",\"startLine\":\"regex[$down_num,$down_intf]:\\\\s+(\\\\d+):\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$down_num:string\",\"$down_intf:string\"]},\"xxid\":\"75fcd804-8292-1711-164d-1715f1ee8f3f\"}]},\"xxid\":\"776ac3e3-6e1e-7ee7-5ba1-c7efb2ccb9a7\",\"hashColumns\":[\"$s\",\"$g\",\"$up_intf\",\"$down_intf\"],\"interfaceKey\":\"$up_intf\"}]},\"xxid\":\"a85d2770-7ef4-e96a-cd55-787fee3ff49e\",\"hashColumns\":[\"$s\",\"$g\"]}]}",
+            "tableKeys": [
+                "_original_result.muticast.$s",
+                "_original_result.muticast.$g",
+                "_original_result.muticast.down_intf.$s",
+                "_original_result.muticast.down_intf.$g",
+                "_original_result.muticast.down_intf.$down_intf"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "num",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "s",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "g",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "up_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "down_intfs_count",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$g",
+                    "$s"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "muticast",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "down_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "down_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "num",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "s",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "g",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "up_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "down_intfs_count",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$down_intf",
+                    "$g",
+                    "$s",
+                    "$up_intf"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "down_intf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c51ff861f3cf61c3dec6a97ae2541e64",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Total number of (S, G) entries",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$s",
+                    "$g"
+                ],
+                "hashSort": false
+            },
+            "fullName": "muticast",
+            "intfKey": false,
+            "name": "muticast",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "muticast.$num",
+            "dataType": "string",
+            "desc": "Sequence number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$num",
+            "intfKey": false,
+            "name": "$num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$s",
+            "dataType": "string",
+            "desc": "An (S, G) entry of the multicast forwarding table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$s",
+            "intfKey": false,
+            "name": "$s",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$g",
+            "dataType": "string",
+            "desc": "An (S, G) entry of the multicast forwarding table",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$g",
+            "intfKey": false,
+            "name": "$g",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$uptime",
+            "dataType": "string",
+            "desc": "Length of time for which the (S, G) entry has been up, in hours:minutes:seconds",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$up_intf",
+            "dataType": "string",
+            "desc": "Upstream interface the (S, G) entry: multicast packets should arrive at this interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$up_intf",
+            "intfKey": false,
+            "name": "$up_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "muticast.$down_intfs_count",
+            "dataType": "string",
+            "desc": "Downstream interface list",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.$down_intfs_count",
+            "intfKey": false,
+            "name": "$down_intfs_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "down_intf",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$s",
+                    "$g",
+                    "$up_intf",
+                    "$down_intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf",
+            "intfKey": false,
+            "name": "down_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "down_intf.$down_num",
+            "dataType": "string",
+            "desc": "Downstream interface number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$down_num",
+            "intfKey": false,
+            "name": "$down_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "down_intf.$down_intf",
+            "dataType": "string",
+            "desc": "Downstream interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$down_intf",
+            "intfKey": false,
+            "name": "$down_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "down_intf.$num",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$num",
+            "intfKey": false,
+            "name": "$num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "down_intf.$s",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$s",
+            "intfKey": false,
+            "name": "$s",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "down_intf.$g",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$g",
+            "intfKey": false,
+            "name": "$g",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "down_intf.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "down_intf.$up_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$up_intf",
+            "intfKey": false,
+            "name": "$up_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "down_intf.$down_intfs_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "muticast.down_intf.$down_intfs_count",
+            "intfKey": false,
+            "name": "$down_intfs_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

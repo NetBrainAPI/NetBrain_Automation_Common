@@ -1,0 +1,208 @@
+{
+    "_id": "cd5a1f77-ed1b-7e0c-15b7-5cc6433f7629",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vrrp",
+    "createTime": {
+        "$date": 1591603296366
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router\nCommand:\nshow vrrp",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "PE-ASR1K-01#show vrrp\r\n\r\nTenGigabitEthernet0/0/0 - Group 17 - Address-Family IPv6\r\n  State is MASTER\r\n  State duration 29 weeks 3 days 23 hours\r\n  Virtual IP address is FE80::AA9D:21FF:FE64:8817\r\n  Virtual MAC address is 0000.5E00.0211\r\n  Advertisement interval is 1000 msec\r\n  Preemption enabled\r\n  Priority is 20\r\n  Master Router is FE80::AA9D:21FF:FE64:8800 (local), priority is 20\r\n  Master Advertisement interval is 1000 msec (expires in 341 msec)\r\n  Master Down interval is unknown\r\n\r\nTenGigabitEthernet0/0/0 - Group 18 - Address-Family IPv6\r\n  State is MASTER\r\n  State duration 29 weeks 3 days 23 hours\r\n  Virtual IP address is FE80::AA9D:21FF:FE64:8818\r\n  Virtual MAC address is 0000.5E00.0212\r\n  Advertisement interval is 1000 msec\r\n  Preemption enabled\r\n  Priority is 110\r\n  Master Router is FE80::AA9D:21FF:FE64:8800 (local), priority is 110\r\n  Master Advertisement interval is 1000 msec (expires in 485 msec)\r\n  Master Down interval is unknown",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.interface.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"interface\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface,$int:group_id]:^(\\\\S+) - group\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:priority]:priority is (\\\\d+)\",\"regex[$virtual_ip]:Virtual (?:ip|ipv6) address is (\\\\S+)\",\"regex[$virtual_mac]:virtual MAC address is (\\\\S+)\",\"regex[$active_ip]:Master Router is ([^\\\\s,]+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$group_id:int\",\"$priority:int\",\"$virtual_ip:string\",\"$virtual_mac:string\",\"$active_ip:string\"]},\"xxid\":\"1deb4fd7-4180-8fbc-89af-5c9791fca4f7\"}]},\"xxid\":\"84b64383-df21-bcdc-dc9d-2a55449b3f54\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$intf\",\"$interface\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "virtual_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "virtual_mac",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "active_ip",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e666a2f87105943c987a6cc615276e17",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "interface",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "interface",
+            "intfKey": false,
+            "name": "interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "interface.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interface.$group_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$group_id",
+            "intfKey": false,
+            "name": "$group_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$virtual_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$virtual_ip",
+            "intfKey": false,
+            "name": "$virtual_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$virtual_mac",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$virtual_mac",
+            "intfKey": false,
+            "name": "$virtual_mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$active_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$active_ip",
+            "intfKey": false,
+            "name": "$active_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

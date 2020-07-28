@@ -1,0 +1,437 @@
+{
+    "_id": "2757c5ba-6981-3b2a-c4d0-fb33bbcbc970",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show module",
+    "createTime": {
+        "$date": 1579706303440
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand: \n       show module",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K#show module\n\nMod  Ports  Module-Type                      Model              Status\n---  -----  -------------------------------- ------------------ ------------\n1    0      Unknown Module                   TITANIUM           active *\n2    9      Titanium Ethernet Module                            ok\n\nMod  Sw              Hw      World-Wide-Name(s) (WWN)\n---  --------------  ------  --------------------------------------------------\n1    5.1(2)          0.14081  --                                                 \n2    NA              0.0     --                                                 \n\n\nMod  MAC-Address(es)                         Serial-Num\n---  --------------------------------------  ----------\n1    00-19-07-6c-5a-a8 to 00-19-07-6c-62-a8  T50569F000C\n2    02-00-0c-00-02-00 to 02-00-0c-00-02-80  NA         \n\n* this terminal session \n",
+            "devName": "N7K",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"mod_summary_table\",\"headers\":\"Mod;Ports;Module-Type;Model;Status\",\"endLine\":\"Mod  Sw              Hw      World-Wide-Name(s) (WWN)\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Mod:$int:mod;Model:$string:model;Module-Type:$string:module_type;Ports:$int:ports;Status:$string:status\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$mod:int\",\"$model:string\",\"$module_type:string\",\"$ports:int\",\"$status:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"0717d029-9ab2-cbc1-3876-fb8dedb28db4\",\"hashColumns\":[\"$mod\",\"$model\",\"$module_type\",\"$status\"],\"HashSort\":false},{\"type\":\"3\",\"name\":\"mod_version_table\",\"headers\":\"Mod;Sw;Hw;World-Wide-Name(s) (WWN)\",\"endLine\":\"Mod  MAC-Address(es)                         Serial-Num\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Hw:$string:hw;Mod:$int:mod;Sw:$string:sw;World-Wide-Name(s) (WWN):$string:wwn\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$hw:string\",\"$mod:int\",\"$sw:string\",\"$wwn:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"5d02d904-f42e-6342-5dcf-5ff885c235ba\",\"hashColumns\":[\"$mod\",\"$sw\"],\"HashSort\":false},{\"type\":\"3\",\"name\":\"mod_intf_table\",\"headers\":\"Mod;MAC-Address(es);Serial-Num\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"MAC-Address(es):$string:mac;Mod:$int:mod;Serial-Num:$string:serial_num\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$mac:string\",\"$mod:int\",\"$serial_num:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"f440dd9f-9926-8dcc-2ee7-f91191e51d04\",\"hashColumns\":[\"$mod\",\"$serial_num\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"f077e00a-c293-c4e7-8a5f-9b8de12c727f\"}]}",
+            "tableKeys": [
+                "_original_result.mod_summary_table.$mod",
+                "_original_result.mod_version_table.$mod",
+                "_original_result.mod_intf_table.$mod"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "ports",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "module_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "model",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$mod",
+                    "$model",
+                    "$module_type",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "mod_summary_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "sw",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "hw",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "wwn",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$mod",
+                    "$sw"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "mod_version_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "mac",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "serial_num",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$mod",
+                    "$serial_num"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "mod_intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "801545b15d69609857aff2fb6fbf47e3",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mod_summary_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$mod",
+                    "$model",
+                    "$module_type",
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table",
+            "intfKey": false,
+            "name": "mod_summary_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mod_summary_table.$mod",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$model",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$model",
+            "intfKey": false,
+            "name": "$model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$module_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$module_type",
+            "intfKey": false,
+            "name": "$module_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$ports",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_summary_table.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_summary_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$mod",
+                    "$sw"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table",
+            "intfKey": false,
+            "name": "mod_version_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mod_version_table.$hw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$hw",
+            "intfKey": false,
+            "name": "$hw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table.$mod",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table.$sw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$sw",
+            "intfKey": false,
+            "name": "$sw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_version_table.$wwn",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_version_table.$wwn",
+            "intfKey": false,
+            "name": "$wwn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_intf_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$mod",
+                    "$serial_num"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mod_intf_table",
+            "intfKey": false,
+            "name": "mod_intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mod_intf_table.$mac",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_intf_table.$mac",
+            "intfKey": false,
+            "name": "$mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_intf_table.$mod",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_intf_table.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mod_intf_table.$serial_num",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mod_intf_table.$serial_num",
+            "intfKey": false,
+            "name": "$serial_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

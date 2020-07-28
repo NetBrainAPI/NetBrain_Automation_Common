@@ -1,0 +1,171 @@
+{
+    "_id": "e6d361f9-4522-73d8-6053-564721beeff4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show system redundancy status",
+    "createTime": {
+        "$date": 1579716364928
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:\nshow system redundancy ha status",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NXOS# show system redundancy status\r\nRedundancy mode\r\n---------------\r\n      administrative:   HA\r\n         operational:   HA\r\nThis supervisor (sup-1)\r\n-----------------------\r\n    Redundancy state:   Active\r\n    Supervisor state:   Active\r\n      Internal state:   Active with HA standby\r\nOther supervisor (sup-2)\r\n------------------------\r\n    Redundancy state:   Standby\r\n    Supervisor state:   HA standby\r\n      Internal state:   HA standby",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"system_redundancy_status\",\"keyVariables\":\"\",\"startLine\":\"regex[$supervisor]:^\\\\S+ supervisor \\\\((\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$redundancy_state]:Redundancy state:   (.+)\",\"regex[$supervisor_state]:Supervisor state:   (.+)\",\"regex[$internal_state]:Internal state:   (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$supervisor:string\",\"$redundancy_state:string\",\"$supervisor_state:string\",\"$internal_state:string\"]},\"xxid\":\"cb52d3f5-1d9c-ed3a-c54e-f0ab1e81d6f8\"}]},\"xxid\":\"18abb81f-828e-6c71-80a5-86c063e1a50b\",\"hashColumns\":[\"$supervisor\",\"$redundancy_state\",\"$supervisor_state\",\"$internal_state\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.system_redundancy_status.$supervisor"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "supervisor",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "redundancy_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "supervisor_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "internal_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$internal_state",
+                    "$redundancy_state",
+                    "$supervisor",
+                    "$supervisor_state"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "system_redundancy_status",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "df4b73b409d4dd241b8ff237ae65d861",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "system_redundancy_status",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$supervisor",
+                    "$redundancy_state",
+                    "$supervisor_state",
+                    "$internal_state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "system_redundancy_status",
+            "intfKey": false,
+            "name": "system_redundancy_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "system_redundancy_status.$supervisor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_redundancy_status.$supervisor",
+            "intfKey": false,
+            "name": "$supervisor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_redundancy_status.$redundancy_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_redundancy_status.$redundancy_state",
+            "intfKey": false,
+            "name": "$redundancy_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_redundancy_status.$supervisor_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_redundancy_status.$supervisor_state",
+            "intfKey": false,
+            "name": "$supervisor_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_redundancy_status.$internal_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_redundancy_status.$internal_state",
+            "intfKey": false,
+            "name": "$internal_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

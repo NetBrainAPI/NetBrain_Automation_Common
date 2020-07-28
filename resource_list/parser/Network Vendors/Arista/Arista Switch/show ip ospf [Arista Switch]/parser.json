@@ -1,0 +1,1432 @@
+{
+    "_id": "c0489ae4-49e7-9dc7-7947-12d5c3502ddc",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf",
+    "createTime": {
+        "$date": 1590765126629
+    },
+    "description": "Device Type:\nArista Switch \nCommand:\nshow ip ospf",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-arista-veos>show ip ospf\r\nRouting Process \"ospf 1\" with ID 192.168.100.1 VRF default\r\n Supports opaque LSA\r\nMaximum number of LSA allowed 12000\r\n  Threshold for warning message 75%\r\n  Ignore-time 5 minutes, reset-time 5 minutes\r\n  Ignore-count allowed 5, current 0\r\n It is not an autonomous system boundary router and is not an area border router\r\n Initial SPF schedule delay 0 msecs\r\n Minimum hold time between two consecutive SPFs 5000 msecs\r\n Current hold time between two consecutive SPFs 5000 msecs\r\n Maximum wait time between two consecutive SPFs 5000 msecs\r\n Minimum LSA arrival 1000 msecs\r\n Initial LSA throttle delay 1000 msecs\r\n Minimum hold time for LSA throttle 5000 msecs\r\n Maximum wait time for LSA throttle 5000 msecs\r\n Number of external LSA 3, Checksum sum 76744\r\n Number of opaque AS LSA 0,  Checksum sum 0\r\n Number of areas in this router is 1. 1 normal, 0 stub, 0 nssa\r\n Number of LSA 16\r\n Time since last SPF 5283 secs\r\n No Scheduled SPF\r\n Adjacency exchange-start threshold is 20\r\n Maximum number of next-hops supported in ECMP is 128\r\n Area 0.0.0.0\r\n Number of interface in this area is 1\r\n   It is a normal area\r\n   Area has None authentication \r\n   SPF algorithm executed 10 times\r\n   Number of LSA 8. Checksum Sum 246580\r\n   Number of opaque link LSA 0. Checksum Sum 0\r\n   Area ranges are\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf\",\"keyVariables\":\"\",\"startLine\":\"Routing Process \\\"ospf $process_id\\\" with ID $rid VRF $vrf\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Maximum number of LSA allowed $int:max_lsa\",\"Threshold for warning message $threshold_warning\",\"Ignore-time $int:ignore_time minutes, reset-time $int:reset_time minutes\",\"Ignore-count allowed $int:ignore_count, current $int:current_ignore_count\",\"regex[$router_role]:It is (.*)\",\"Initial SPF schedule delay $int:initial_spf_schedule_delay msecs\",\"Minimum hold time between two consecutive SPFs $int:min_spf_hold_time msecs\",\"Current hold time between two consecutive SPFs $int:current_spf_hold_time msecs\",\"Maximum wait time between two consecutive SPFs $int:max_spf_wait_time msecs\",\"Minimum LSA arrival $int:lsa_minimum_arrival msecs\",\"Initial LSA throttle delay $int:initial_lsa_throttle_delay_times msecs\",\"Minimum hold time for LSA throttle $int:min_lsa_throttle_hold_time msecs\",\"Maximum wait time for LSA throttle $int:max_lsa_throttle_hold_time msecs\",\"Number of external LSA $int:num_external_lsa, Checksum Sum $external_lsa_checksum\",\"Number of opaque AS LSA $int:num_opaque_lsa, Checksum Sum $opaque_lsa_checksum\",\"Number of areas in this router is $int:num_areas_routers. $int:num_normal_routers normal, $int:num_stub_routers stub, $int:num_nssa_routers nssa\",\"regex[$int:num_lsa]:^\\\\s+Number of LSA (\\\\d+)\",\"Time since last SPF $int:last_time_spf secs\",\"Adjacency exchange-start threshold is $int:adj_exchange_start_threshold\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process_id:string\",\"$rid:string\",\"$vrf:string\",\"$max_lsa:int\",\"$threshold_warning:string\",\"$ignore_time:int\",\"$reset_time:int\",\"$ignore_count:int\",\"$current_ignore_count:int\",\"$router_role:string\",\"$initial_spf_schedule_delay:int\",\"$min_spf_hold_time:int\",\"$current_spf_hold_time:int\",\"$max_spf_wait_time:int\",\"$lsa_minimum_arrival:int\",\"$initial_lsa_throttle_delay_times:int\",\"$min_lsa_throttle_hold_time:int\",\"$max_lsa_throttle_hold_time:int\",\"$num_external_lsa:int\",\"$external_lsa_checksum:string\",\"$num_opaque_lsa:int\",\"$opaque_lsa_checksum:string\",\"$num_areas_routers:int\",\"$num_normal_routers:int\",\"$num_stub_routers:int\",\"$num_nssa_routers:int\",\"$num_lsa:int\",\"$last_time_spf:int\",\"$adj_exchange_start_threshold:int\"]},\"xxid\":\"bcb0dbfb-07a9-b9eb-ef53-169d86955dfe\"},{\"type\":\"4\",\"name\":\"area\",\"keyVariables\":\"\",\"startLine\":\"regex[$area_id]:Area\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+|\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Number of interface in this area is $num_of_area_intfs\",\"SPF algorithm executed $spf_algorithm_executed_times times\",\"Number of LSA $total_lsa_count. Checksum Sum $checksum\",\"Number of opaque link LSA $num_opaque_link_lsa. Checksum Sum $opaque_link_lsa_checksum\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$num_of_area_intfs:string\",\"$spf_algorithm_executed_times:string\",\"$total_lsa_count:string\",\"$checksum:string\",\"$num_opaque_link_lsa:string\",\"$opaque_link_lsa_checksum:string\"]},\"xxid\":\"2a131ceb-ea39-154e-f15a-2a01617f0653\"}]},\"xxid\":\"f175eaed-8684-9dcc-d184-dae7dbf12ed0\"}]},\"xxid\":\"c93361e0-c48f-be34-bc66-e467ae4245b1\",\"hashColumns\":[\"$process_id\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf.$process_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 29,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vrf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "max_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "threshold_warning",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ignore_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "reset_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "ignore_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "current_ignore_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "router_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "initial_spf_schedule_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "min_spf_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "current_spf_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "max_spf_wait_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "lsa_minimum_arrival",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "initial_lsa_throttle_delay_times",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "min_lsa_throttle_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "max_lsa_throttle_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "num_external_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "external_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "num_opaque_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "opaque_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "num_areas_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "num_normal_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "num_stub_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "num_nssa_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "num_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "last_time_spf",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "adj_exchange_start_threshold",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 36,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 37,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "num_of_area_intfs",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "spf_algorithm_executed_times",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "total_lsa_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "num_opaque_link_lsa",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "opaque_link_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "vrf",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "max_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "threshold_warning",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "ignore_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "reset_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "ignore_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "current_ignore_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "router_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "initial_spf_schedule_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "min_spf_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "current_spf_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "max_spf_wait_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "lsa_minimum_arrival",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "initial_lsa_throttle_delay_times",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "min_lsa_throttle_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "max_lsa_throttle_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "num_external_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "external_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "num_opaque_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "opaque_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 29,
+                        "name": "num_areas_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "num_normal_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 31,
+                        "name": "num_stub_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 32,
+                        "name": "num_nssa_routers",
+                        "type": 1
+                    },
+                    {
+                        "index": 33,
+                        "name": "num_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 34,
+                        "name": "last_time_spf",
+                        "type": 1
+                    },
+                    {
+                        "index": 35,
+                        "name": "adj_exchange_start_threshold",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "area",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3dd8a05607bcc294bce83d60f6924747",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf",
+            "dataType": "paragraph",
+            "desc": "OSPF information table base on process id.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf",
+            "intfKey": false,
+            "name": "ospf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf.$process_id",
+            "dataType": "string",
+            "desc": "Process identifier (ID). The range is from 1 to 65535.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$rid",
+            "dataType": "string",
+            "desc": "The OSPF router ID is a 32-bit IP address selected at the start of the OSPF process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$vrf",
+            "dataType": "string",
+            "desc": "Vrf name of OSPF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$max_lsa",
+            "dataType": "int",
+            "desc": "Maximum number of allowed LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$max_lsa",
+            "intfKey": false,
+            "name": "$max_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$threshold_warning",
+            "dataType": "string",
+            "desc": "Threshold for warning message.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$threshold_warning",
+            "intfKey": false,
+            "name": "$threshold_warning",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$ignore_time",
+            "dataType": "int",
+            "desc": "Number of ignore time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$ignore_time",
+            "intfKey": false,
+            "name": "$ignore_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$reset_time",
+            "dataType": "int",
+            "desc": "Number of reset time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$reset_time",
+            "intfKey": false,
+            "name": "$reset_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$ignore_count",
+            "dataType": "int",
+            "desc": "Number of ignore count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$ignore_count",
+            "intfKey": false,
+            "name": "$ignore_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$current_ignore_count",
+            "dataType": "int",
+            "desc": "Number of current ignore count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$current_ignore_count",
+            "intfKey": false,
+            "name": "$current_ignore_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$router_role",
+            "dataType": "string",
+            "desc": "The role of OSPF device.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$router_role",
+            "intfKey": false,
+            "name": "$router_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$initial_spf_schedule_delay",
+            "dataType": "int",
+            "desc": "Initial SPF schedule delay.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$initial_spf_schedule_delay",
+            "intfKey": false,
+            "name": "$initial_spf_schedule_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$min_spf_hold_time",
+            "dataType": "int",
+            "desc": "Minimum hold time between two consecutive SPFs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$min_spf_hold_time",
+            "intfKey": false,
+            "name": "$min_spf_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$current_spf_hold_time",
+            "dataType": "int",
+            "desc": "Current hold time between two consecutive SPFs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$current_spf_hold_time",
+            "intfKey": false,
+            "name": "$current_spf_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$max_spf_wait_time",
+            "dataType": "int",
+            "desc": "Maximum wait time between two consecutive SPFs",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$max_spf_wait_time",
+            "intfKey": false,
+            "name": "$max_spf_wait_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$lsa_minimum_arrival",
+            "dataType": "int",
+            "desc": "The time of minimum LSA arrival.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$lsa_minimum_arrival",
+            "intfKey": false,
+            "name": "$lsa_minimum_arrival",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$initial_lsa_throttle_delay_times",
+            "dataType": "int",
+            "desc": "The time of initial LSA throttle delay.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$initial_lsa_throttle_delay_times",
+            "intfKey": false,
+            "name": "$initial_lsa_throttle_delay_times",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$min_lsa_throttle_hold_time",
+            "dataType": "int",
+            "desc": "Minimum hold time for LSA throttle.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$min_lsa_throttle_hold_time",
+            "intfKey": false,
+            "name": "$min_lsa_throttle_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$max_lsa_throttle_hold_time",
+            "dataType": "int",
+            "desc": "Maximum wait time for LSA throttle.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$max_lsa_throttle_hold_time",
+            "intfKey": false,
+            "name": "$max_lsa_throttle_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$num_external_lsa",
+            "dataType": "int",
+            "desc": "Number of external LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$num_external_lsa",
+            "intfKey": false,
+            "name": "$num_external_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$external_lsa_checksum",
+            "dataType": "string",
+            "desc": "External LSA checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$external_lsa_checksum",
+            "intfKey": false,
+            "name": "$external_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$num_opaque_lsa",
+            "dataType": "int",
+            "desc": "Number of opaque AS LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$num_opaque_lsa",
+            "intfKey": false,
+            "name": "$num_opaque_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$opaque_lsa_checksum",
+            "dataType": "string",
+            "desc": "Opaque AS LSA checksum.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$opaque_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$num_areas_routers",
+            "dataType": "int",
+            "desc": "Number of areas in this router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$num_areas_routers",
+            "intfKey": false,
+            "name": "$num_areas_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$num_normal_routers",
+            "dataType": "int",
+            "desc": "Number of normal areas in this router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$num_normal_routers",
+            "intfKey": false,
+            "name": "$num_normal_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$num_stub_routers",
+            "dataType": "int",
+            "desc": "Number of stub areas in this router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$num_stub_routers",
+            "intfKey": false,
+            "name": "$num_stub_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$num_nssa_routers",
+            "dataType": "int",
+            "desc": "Number of nssa areas in this router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$num_nssa_routers",
+            "intfKey": false,
+            "name": "$num_nssa_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$num_lsa",
+            "dataType": "int",
+            "desc": "Number of LSA.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$num_lsa",
+            "intfKey": false,
+            "name": "$num_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$last_time_spf",
+            "dataType": "int",
+            "desc": "Time since last SPF.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$last_time_spf",
+            "intfKey": false,
+            "name": "$last_time_spf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf.$adj_exchange_start_threshold",
+            "dataType": "int",
+            "desc": "Adjacency exchange-start threshold.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.$adj_exchange_start_threshold",
+            "intfKey": false,
+            "name": "$adj_exchange_start_threshold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area",
+            "dataType": "paragraph",
+            "desc": "OSPF area table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf.area",
+            "intfKey": false,
+            "name": "area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_of_area_intfs",
+            "dataType": "string",
+            "desc": "Number of interfaces in this area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_of_area_intfs",
+            "intfKey": false,
+            "name": "$num_of_area_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$spf_algorithm_executed_times",
+            "dataType": "string",
+            "desc": "SPF algorithm last executed time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$spf_algorithm_executed_times",
+            "intfKey": false,
+            "name": "$spf_algorithm_executed_times",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$total_lsa_count",
+            "dataType": "string",
+            "desc": "Total LSA count of an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$total_lsa_count",
+            "intfKey": false,
+            "name": "$total_lsa_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$checksum",
+            "dataType": "string",
+            "desc": "Total LSA checksum of an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$checksum",
+            "intfKey": false,
+            "name": "$checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_opaque_link_lsa",
+            "dataType": "string",
+            "desc": "Opaque link LSA of an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_opaque_link_lsa",
+            "intfKey": false,
+            "name": "$num_opaque_link_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$opaque_link_lsa_checksum",
+            "dataType": "string",
+            "desc": "Opaque link LSA checksum of an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$opaque_link_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_link_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$rid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$vrf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$max_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$max_lsa",
+            "intfKey": false,
+            "name": "$max_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$threshold_warning",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$threshold_warning",
+            "intfKey": false,
+            "name": "$threshold_warning",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$ignore_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$ignore_time",
+            "intfKey": false,
+            "name": "$ignore_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$reset_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$reset_time",
+            "intfKey": false,
+            "name": "$reset_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$ignore_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$ignore_count",
+            "intfKey": false,
+            "name": "$ignore_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$current_ignore_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$current_ignore_count",
+            "intfKey": false,
+            "name": "$current_ignore_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$router_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$router_role",
+            "intfKey": false,
+            "name": "$router_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$initial_spf_schedule_delay",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$initial_spf_schedule_delay",
+            "intfKey": false,
+            "name": "$initial_spf_schedule_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$min_spf_hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$min_spf_hold_time",
+            "intfKey": false,
+            "name": "$min_spf_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$current_spf_hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$current_spf_hold_time",
+            "intfKey": false,
+            "name": "$current_spf_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$max_spf_wait_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$max_spf_wait_time",
+            "intfKey": false,
+            "name": "$max_spf_wait_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$lsa_minimum_arrival",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$lsa_minimum_arrival",
+            "intfKey": false,
+            "name": "$lsa_minimum_arrival",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$initial_lsa_throttle_delay_times",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$initial_lsa_throttle_delay_times",
+            "intfKey": false,
+            "name": "$initial_lsa_throttle_delay_times",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$min_lsa_throttle_hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$min_lsa_throttle_hold_time",
+            "intfKey": false,
+            "name": "$min_lsa_throttle_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$max_lsa_throttle_hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$max_lsa_throttle_hold_time",
+            "intfKey": false,
+            "name": "$max_lsa_throttle_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_external_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_external_lsa",
+            "intfKey": false,
+            "name": "$num_external_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$external_lsa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$external_lsa_checksum",
+            "intfKey": false,
+            "name": "$external_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_opaque_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_opaque_lsa",
+            "intfKey": false,
+            "name": "$num_opaque_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$opaque_lsa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$opaque_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_areas_routers",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_areas_routers",
+            "intfKey": false,
+            "name": "$num_areas_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_normal_routers",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_normal_routers",
+            "intfKey": false,
+            "name": "$num_normal_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_stub_routers",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_stub_routers",
+            "intfKey": false,
+            "name": "$num_stub_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_nssa_routers",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_nssa_routers",
+            "intfKey": false,
+            "name": "$num_nssa_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$num_lsa",
+            "intfKey": false,
+            "name": "$num_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$last_time_spf",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$last_time_spf",
+            "intfKey": false,
+            "name": "$last_time_spf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$adj_exchange_start_threshold",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf.area.$adj_exchange_start_threshold",
+            "intfKey": false,
+            "name": "$adj_exchange_start_threshold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

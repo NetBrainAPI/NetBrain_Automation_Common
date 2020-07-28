@@ -1,0 +1,209 @@
+{
+    "_id": "356f5460-501b-84d3-d27c-31a3ebc848dc",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip interface brief",
+    "createTime": {
+        "$date": 1581007193325
+    },
+    "description": "Device Type:\nArista Switch\nCommand: \nshow ip interface brief",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R1>show ip interface brief\r\nInterface              IP Address         Status     Protocol         MTU\r\nEthernet1              172.27.128.5/28    up         up              1500\r\nManagement1            unassigned         up         up              1500\r\nVlan50                 10.10.4.1/24       down       lowerlayerdown  1500\r\nVlan70                 10.10.5.1/24       down       lowerlayerdown  1500\r\nVlan100                192.168.100.1/24   down       lowerlayerdown  1500",
+            "devName": "R1",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf, $ip_addr, $status, $protocol, $int:mtu]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$ip_addr:string\",\"$status:string\",\"$protocol:string\",\"$mtu:int\"]},\"xxid\":\"24077505-818e-fac1-00d2-de78868c6b5a\"}]},\"xxid\":\"eac9f9e2-de30-a941-9c53-bb29033a1e03\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$status\",\"$protocol\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"d379a986-d41d-190e-b051-b73c5f41c56f\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mtu",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$protocol",
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "07bea83be21cb43bb941f657a01ce079",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intfs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$status",
+                    "$protocol"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intfs",
+            "intfKey": false,
+            "name": "intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intfs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intfs.$ip_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$mtu",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

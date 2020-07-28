@@ -1,0 +1,317 @@
+{
+    "_id": "2515d3aa-f8cc-4a92-6b34-56189c62d160",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "dir",
+    "createTime": {
+        "$date": 1579788447122
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand: \ndir",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ASA-AA/pri/act#dir\r\n\r\nDirectory of disk0:/\r\n\r\n2      drwx  4096         01:39:23 Nov 25 2005  .private\r\n55     -rwx  15390720     09:19:24 Mar 28 2014  asa825-k8.bin\r\n56     -rwx  16280544     10:26:36 Feb 08 2014  asdm-645.bin\r\n6      drwx  4096         22:21:56 Jan 01 2003  log\r\n17     drwx  4096         22:22:08 Jan 01 2003  crypto_archive\r\n18     drwx  4096         22:22:10 Jan 01 2003  coredumpinfo\r\n57     drwx  4096         22:22:42 Jan 01 2003  boot\r\n58     -rwx  4096         00:00:00 Jan 01 1980  FSCK0000.REC\r\n59     -rwx  20480        00:00:00 Jan 01 1980  FSCK0001.REC\r\n60     -rwx  28672        00:00:00 Jan 01 1980  FSCK0002.REC\r\n61     -rwx  4061         07:07:38 Nov 22 2005  old_running.cfg\r\n62     -rwx  13411        23:10:08 Nov 27 2005  admin.cfg\r\n63     -rwx  25752        23:13:47 Nov 27 2005  context1.cfg\r\n64     -rwx  14097        08:03:36 Nov 22 2005  context2.cfg\r\n65     -rwx  27703296     07:00:30 Nov 22 2005  asa917-16-k8.bin\r\n66     -rwx  30431232     04:35:30 Jan 15 2003  asa921-k8.bin\r\n67     -rwx  27260928     05:19:52 Jan 15 2003  asa901-k8.bin\r\n68     -rwx  3475         05:39:46 Jan 15 2003  8_2_5_0_startup_cfg.sav\r\n69     -rwx  1138         05:39:46 Jan 15 2003  upgrade_startup_errors_200301150539.log\r\n\r\n255320064 bytes total (137699328 bytes free)\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"disk\",\"keyVariables\":\"\",\"startLine\":\"Directory of disk\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$disk]:Directory of (\\\\S+):\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$disk:string\"]},\"xxid\":\"43ac3e74-573e-605c-49d1-6749a94606f6\"},{\"type\":\"4\",\"name\":\"dir_table\",\"keyVariables\":\"\",\"startLine\":\"regex:^\\\\d+\\\\s+\\\\S+\\\\s+\\\\d+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$id,$status,$int:num,$time,$process]:^(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(.*)\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$id:string\",\"$status:string\",\"$num:int\",\"$time:string\",\"$process:string\"]},\"xxid\":\"a52884df-04f7-fddf-28be-a19ba1e8ae0c\"}]},\"xxid\":\"c4059837-9d39-ccae-4eb5-c83588fe43f6\"}]},\"xxid\":\"56a9942e-d58c-9d32-1c4f-5a93326a230f\",\"hashColumns\":[]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total,$int:free]:^(\\\\d+).*total\\\\s+\\\\((\\\\d+).*free\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$free:int\"]},\"xxid\":\"48d69c73-11ab-9c3c-bb3b-44459fe5f383\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"74c93cfb-b319-2c1e-4672-c2300f822249\"}]}",
+            "tableKeys": [
+                "_original_result.disk.$disk"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "free",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "disk",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "disk",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "num",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "disk",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "dir_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ce7ea45d5b00929449ce8eaf364038c4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "disk",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk",
+            "intfKey": false,
+            "name": "disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "disk.$disk",
+            "dataType": "string",
+            "desc": "Name of directory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.$disk",
+            "intfKey": false,
+            "name": "$disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table",
+            "intfKey": false,
+            "name": "dir_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "dir_table.$id",
+            "dataType": "string",
+            "desc": "Number of files??? ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$id",
+            "intfKey": false,
+            "name": "$id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$status",
+            "dataType": "string",
+            "desc": "The status of memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$num",
+            "dataType": "int",
+            "desc": "Number of files size.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$num",
+            "intfKey": false,
+            "name": "$num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$time",
+            "dataType": "string",
+            "desc": "Time of last modify.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$process",
+            "dataType": "string",
+            "desc": "File???s name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$disk",
+            "dataType": "string",
+            "desc": "Name of directory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$disk",
+            "intfKey": false,
+            "name": "$disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Number of total memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$free",
+            "dataType": "int",
+            "desc": "Number of free memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

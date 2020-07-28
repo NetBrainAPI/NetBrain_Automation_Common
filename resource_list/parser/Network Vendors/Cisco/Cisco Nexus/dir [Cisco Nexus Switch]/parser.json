@@ -1,0 +1,225 @@
+{
+    "_id": "1d8eb260-55a4-641f-d874-53d2c5570cc5",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "dir",
+    "createTime": {
+        "$date": 1579796758138
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:  \n       dir",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K# dir \n      16384    Jan 07 00:54:26 2011  lost+found/\n      23823    Jan 11 05:39:46 2016  mts.log\n   28511744    Dec 23 02:21:57 2010  titanium-d1-kickstart.5.1.2.gbin\n   60024194    Dec 23 02:22:00 2010  titanium-d1.5.1.2.gbin\n       4096    Jan 07 00:55:10 2011  vdc_2/\n       4096    Jan 07 00:55:10 2011  vdc_3/\n       4096    Jan 07 00:55:10 2011  vdc_4/\n        784    Jan 11 05:40:07 2016  vlan.dat\n\nUsage for bootflash://\n  203313152 bytes used\n 1391562752 bytes free\n 1594875904 bytes total",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"dir_table\",\"keyVariables\":null,\"startLine\":\"regex:^\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+\\\\d+\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$pkt]:^\\\\s+(\\\\d+)\",\"regex[$time]:^\\\\s+\\\\d+\\\\s+(\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+)\",\"regex[$process]:^\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$pkt:string\",\"$time:string\",\"$process:string\"]},\"xxid\":\"e675073f-f059-6b4e-d784-857274771cc9\"}]},\"xxid\":\"86f89d45-32e8-9bb0-244c-773653dfb529\",\"hashColumns\":[\"$process\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:used]:^\\\\s+(\\\\d+)\\\\s+bytes used\",\"regex[$int:free]:^\\\\s+(\\\\d+)\\\\s+bytes free\",\"regex[$int:total]:^\\\\s+(\\\\d+)\\\\s+bytes total\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$used:int\",\"$free:int\",\"$total:int\"]},\"xxid\":\"07081c8e-5ad2-08d8-40f2-09cbb413ee29\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"cb7d6a20-d04a-2b4f-c223-c83499e44a8d\"}]}",
+            "tableKeys": [
+                "_original_result.dir_table.$process"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "used",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "free",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "pkt",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "time",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "process",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "dir_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "38976cdf1ed7bf0b3b340ff31efda2f5",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "dir_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false
+            },
+            "fullName": "dir_table",
+            "intfKey": false,
+            "name": "dir_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "dir_table.$pkt",
+            "dataType": "string",
+            "desc": "Number of files size.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dir_table.$pkt",
+            "intfKey": false,
+            "name": "$pkt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$time",
+            "dataType": "string",
+            "desc": "Time of last modify.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dir_table.$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$process",
+            "dataType": "string",
+            "desc": "File???s name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "dir_table.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$used",
+            "dataType": "int",
+            "desc": "Number of used memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$used",
+            "intfKey": false,
+            "name": "$used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$free",
+            "dataType": "int",
+            "desc": "Number of free memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Number of total memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

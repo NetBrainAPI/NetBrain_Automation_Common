@@ -1,0 +1,181 @@
+{
+    "_id": "53cdddcf-9cb9-c7a5-22df-62920ec2907b",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560795838199
+    },
+    "description": "",
+    "devTypes": [
+        30001,
+        30003,
+        30002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n[\n]\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\ndef BuildParameters(context, device_name, params):\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'SDN', 'params' : ['dn','role'] })\n    dn = get_dn['params']['dn']\n    role = get_dn['params']['role']\n    rtn_params = [{ 'devName' : device_name, 'dn' : dn, 'role': role }]\n    return rtn_params\n\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    role = rtn_params['role']\n    qry = '?query-target=self&rsp-subtree-include=health,fault-count'\n    url = '/api/node/mo/' + dn + '/sys.json' +qry\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    data = json.loads(data)\n\n    return json.dumps(data)\n    \n\n    ",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"topSystem\": {\n            \"attributes\": {\n                \"address\": \"10.1.200.64\",\n                \"bootstrapState\": \"done\",\n                \"childAction\": \"\",\n                \"configIssues\": \"\",\n                \"currentTime\": \"2019-04-24T16:22:39.734+00:00\",\n                \"dn\": \"topology/pod-2/node-204/sys\",\n                \"etepAddr\": \"0.0.0.0\",\n                \"fabricDomain\": \"ACI Fabric1\",\n                \"fabricId\": \"1\",\n                \"fabricMAC\": \"00:22:BD:F8:19:FF\",\n                \"id\": \"204\",\n                \"inbMgmtAddr\": \"0.0.0.0\",\n                \"inbMgmtAddr6\": \"::\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-03-11T19:43:59.968+00:00\",\n                \"mode\": \"unspecified\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBSPINE-4\",\n                \"oobMgmtAddr\": \"192.168.48.158\",\n                \"oobMgmtAddr6\": \"::\",\n                \"podId\": \"2\",\n                \"remoteNetworkId\": \"0\",\n                \"remoteNode\": \"no\",\n                \"role\": \"spine\",\n                \"serial\": \"FDO22212GXE\",\n                \"state\": \"in-service\",\n                \"status\": \"\",\n                \"systemUpTime\": \"43:13:43:26.000\"\n            },\n            \"children\": [\n                {\n                    \"healthInst\": {\n                        \"attributes\": {\n                            \"childAction\": \"\",\n                            \"chng\": \"12\",\n                            \"cur\": \"90\",\n                            \"maxSev\": \"cleared\",\n                            \"prev\": \"80\",\n                            \"rn\": \"health\",\n                            \"status\": \"\",\n                            \"twScore\": \"90\",\n                            \"updTs\": \"2019-03-12T02:44:38.632+00:00\"\n                        }\n                    }\n                },\n                {\n                    \"faultCounts\": {\n                        \"attributes\": {\n                            \"childAction\": \"\",\n                            \"crit\": \"0\",\n                            \"critAcked\": \"0\",\n                            \"critAckedandDelegated\": \"0\",\n                            \"critDelegated\": \"0\",\n                            \"maj\": \"1\",\n                            \"majAcked\": \"0\",\n                            \"majAckedandDelegated\": \"0\",\n                            \"majDelegated\": \"0\",\n                            \"minor\": \"2\",\n                            \"minorAcked\": \"0\",\n                            \"minorAckedandDelegated\": \"0\",\n                            \"minorDelegated\": \"0\",\n                            \"rn\": \"fltCnts\",\n                            \"status\": \"\",\n                            \"warn\": \"0\",\n                            \"warnAcked\": \"0\",\n                            \"warnAckedandDelegated\": \"0\",\n                            \"warnDelegated\": \"0\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    \\n        {\\\"name\\\": \\\"health_current\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"health_previous\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"health_change\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"health_timestamp\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"fault_critical\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"fault_major\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"fault_minor\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"fault_warn\\\", \\\"type\\\": \\\"int\\\"}\\n    \\n]\\nEnd Declare\\n'''\\n\\nimport json \\n\\n\\ndef ParseText(_original_result):\\n    result = json.loads(_original_result)\\n    value ={}\\n    try:       \\n        value['health_current'] = result[0]['topSystem']['children'][0]['healthInst']['attributes']['cur']\\n        value['health_previous'] = result[0]['topSystem']['children'][0]['healthInst']['attributes']['prev']\\n        value['health_change'] = result[0]['topSystem']['children'][0]['healthInst']['attributes']['chng']\\n        value['health_timestamp'] = result[0]['topSystem']['children'][0]['healthInst']['attributes']['updTs']\\n        value['fault_critical'] = result[0]['topSystem']['children'][1]['faultCounts']['attributes']['crit']\\n        value['fault_major'] = result[0]['topSystem']['children'][1]['faultCounts']['attributes']['maj']\\n        value['fault_minor'] = result[0]['topSystem']['children'][1]['faultCounts']['attributes']['minor']\\n        value['fault_warn'] = result[0]['topSystem']['children'][1]['faultCounts']['attributes']['warn']\\n\\n\\n\\n    except Exception as ex:\\n        print(str(ex))\\n    return value\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$fault_critical\",\"type\":\"int\"},{\"name\":\"$fault_major\",\"type\":\"int\"},{\"name\":\"$fault_minor\",\"type\":\"int\"},{\"name\":\"$fault_warn\",\"type\":\"int\"},{\"name\":\"$health_change\",\"type\":\"int\"},{\"name\":\"$health_current\",\"type\":\"int\"},{\"name\":\"$health_previous\",\"type\":\"int\"},{\"name\":\"$health_timestamp\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"5a03db5c-bccd-03e4-cf0a-c8e10bf3aa15\"}]}",
+            "tableKeys": null
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "fault_critical",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "fault_major",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "fault_minor",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "fault_warn",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "health_change",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "health_current",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "health_previous",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "health_timestamp",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "6675934a9ca68abcbd29b9b19b156c0e",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$fault_critical",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$fault_critical",
+            "intfKey": false,
+            "name": "$fault_critical",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_major",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$fault_major",
+            "intfKey": false,
+            "name": "$fault_major",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_minor",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$fault_minor",
+            "intfKey": false,
+            "name": "$fault_minor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fault_warn",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$fault_warn",
+            "intfKey": false,
+            "name": "$fault_warn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$health_change",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$health_change",
+            "intfKey": false,
+            "name": "$health_change",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$health_current",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$health_current",
+            "intfKey": false,
+            "name": "$health_current",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$health_previous",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$health_previous",
+            "intfKey": false,
+            "name": "$health_previous",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$health_timestamp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$health_timestamp",
+            "intfKey": false,
+            "name": "$health_timestamp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

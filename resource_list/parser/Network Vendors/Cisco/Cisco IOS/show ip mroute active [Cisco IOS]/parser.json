@@ -1,0 +1,307 @@
+{
+    "_id": "341fcd21-b935-828d-ce50-2771928f62f3",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mroute active",
+    "createTime": {
+        "$date": 1579719617402
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:  \nshow ip mroute active",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "MCR2#show ip mroute active\nActive IP Multicast Sources - sending >= 4 kbps\n a negative (-) Rate counts pps being fast-dropped\n\nGroup: 239.1.1.1, (?)\n  RP-tree:\n     Rate: 1 pps/16 kbps(1sec), 16 kbps(last 10 secs), 6 kbps(life avg)\n   Source: 165.132.1.1 (?)\n     Rate: 1 pps/16 kbps(1sec), 16 kbps(last 10 secs), 16 kbps(life avg)\n   Source: 194.1.1.1 (?)\n     Rate: 1 pps/16 kbps(1sec), 16 kbps(last 40 secs), 16 kbps(life avg)",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"groups\",\"keyVariables\":null,\"startLine\":\"regex[$group]:^\\\\s*Group: (\\\\S+),\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$group:string\"]},\"xxid\":\"7fc0ae95-17de-6d53-f771-4d1f078a1400\"},{\"type\":\"4\",\"name\":\"rates\",\"keyVariables\":null,\"startLine\":\"regex[$type,$source,$dns]:^\\\\s+(RP-tree|Source):(?: (\\\\S+) \\\\((.+?)\\\\))?\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:pps,$int:kbps]:^\\\\s+Rate: (\\\\d+) pps/(\\\\d+) kbps\",\"$int:avg_kbps kbps(life avg)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$type:string\",\"$source:string\",\"$dns:string\",\"$pps:int\",\"$kbps:int\",\"$avg_kbps:int\"]},\"xxid\":\"6088cb68-a93a-830a-677f-0b975e14243f\"}]},\"xxid\":\"25be78ca-db8e-474c-2855-375d210cedb3\",\"hashColumns\":[],\"hashSort\":false}]},\"xxid\":\"6d702d09-661f-8b2f-28cd-761263597579\",\"hashColumns\":[],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"a91383d1-3b1f-9066-08ab-7440b1f02a22\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "groups",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dns",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "pps",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "kbps",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "avg_kbps",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "group",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "rates",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c270ebc709d01021613896388820c954",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "groups",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups",
+            "intfKey": false,
+            "name": "groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "groups.$group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates",
+            "intfKey": false,
+            "name": "rates",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "rates.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$source",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$dns",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$dns",
+            "intfKey": false,
+            "name": "$dns",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$pps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$pps",
+            "intfKey": false,
+            "name": "$pps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$kbps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$kbps",
+            "intfKey": false,
+            "name": "$kbps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$avg_kbps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$avg_kbps",
+            "intfKey": false,
+            "name": "$avg_kbps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

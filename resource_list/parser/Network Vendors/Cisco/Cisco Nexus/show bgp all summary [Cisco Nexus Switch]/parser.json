@@ -1,0 +1,636 @@
+{
+    "_id": "ade85c80-db66-6211-621c-98ad1fa59e26",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show bgp all summary",
+    "createTime": {
+        "$date": 1579706067033
+    },
+    "description": "Device Type:\nCisco Router\nCisco Nexus Switch\nCommand:\nshow bgp all summary",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "NXOS-4(config-router)# do sh bgp all summary\r\nBGP summary information for VRF default, address family IPv4 Unicast\r\nBGP router identifier 20.20.20.20, local AS number 3000\r\nBGP table version is 2, IPv4 Unicast config peers 2, capable peers 0\r\n0 network entries and 0 paths using 0 bytes of memory\r\nBGP attribute entries [0/0], BGP AS path entries [0/0]\r\nBGP community entries [0/0], BGP clusterlist entries [0/0]\r\n\r\nNeighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\r\n34.34.34.34     4  4567       0       0        0    0    0 00:12:08 Idle\r\n192.168.100.1   4  3000       0       0        0    0    0 01:51:07 Idle\r\n\r\nBGP summary information for VRF default, address family IPv6 Unicast\r\n\r\nBGP summary information for VRF default, address family VPNv4 Unicast\r\nBGP router identifier 9.88.1.53, local AS number 65149\r\nBGP table version is 53815, VPNv4 Unicast config peers 2, capable peers 2\r\n536 network entries and 993 paths using 67704 bytes of memory\r\nBGP attribute entries [262/35632], BGP AS path entries [9/82]\r\nBGP community entries [72/3804], BGP clusterlist entries [20/80]\r\n\r\nNeighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\r\n9.88.0.13       4 65149  748192  726828    53815    0    0    6d15h 320       \r\n9.88.0.14       4 65149  715394  707600    53815    0    0    6d14h 320       ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$rid,$local_as]:BGP router identifier (\\\\S+), local AS number (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$rid:string\",\"$local_as:string\"]},\"xxid\":\"bbac4bae-10ab-7b9a-2ac7-2cc2524aaaf5\"},{\"type\":\"1\",\"name\":\"ipv4_unicast_filter\",\"startLine\":\"regex[]:BGP summary information for VRF \\\\S+, address family IPv4 Unicast\",\"endLine\":\"regex[]:BGP summary information for VRF \\\\S+, address family\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"2aa6299c-6445-d159-2a8e-45f198fae3a9\"},{\"type\":\"3\",\"name\":\"bgp_ipv4_nbr\",\"headers\":\"Neighbor;V;AS;MsgRcvd;MsgSent;TblVer;InQ;OutQ;Up/Down;State/PfxRcd\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":0,\"headerToVariables\":\"Neighbor:$string:nbr_id;V:$int:version;AS:$string:remote_as;MsgRcvd:$int:msgrevd;MsgSent:$int:msgsent;TblVer:$int:table_version;InQ:$int:in_queued;OutQ:$int:out_queued;Up/Down:$string:up_down;State/PfxRcd:$string:prefix_rcvd\",\"leftAlign\":\"1\",\"alignType\":\"3\",\"alignRange\":\"1;1;1;1;1;1;1;1;1;1\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$version:int\",\"$remote_as:string\",\"$msgrevd:int\",\"$msgsent:int\",\"$table_version:int\",\"$in_queued:int\",\"$out_queued:int\",\"$up_down:string\",\"$prefix_rcvd:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"85d76e75-cb2b-400b-0749-e48ebe77c14a\",\"hashColumns\":[\"$nbr_id\",\"$remote_as\",\"$prefix_rcvd\"],\"HashSort\":false}]},\"xxid\":\"09839417-ecbb-68e8-3e86-a1e8daa8b40b\"},{\"type\":\"1\",\"name\":\"vpnv4_unicast_filter\",\"startLine\":\"regex[]:BGP summary information for VRF \\\\S+, address family VPNv4 Unicast\",\"endLine\":\"regex[]:BGP summary information for VRF \\\\S+, address family\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"b42adcc7-afc6-98f5-2f60-eea6c46e5ade\"},{\"type\":\"3\",\"name\":\"bgp_vpnv4_nbr\",\"headers\":\"Neighbor;V;AS;MsgRcvd;MsgSent;TblVer;InQ;OutQ;Up/Down;State/PfxRcd\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":0,\"headerToVariables\":\"Neighbor:$string:nbr_id;V:$int:version;AS:$string:remote_as;MsgRcvd:$int:msgrevd;MsgSent:$int:msgsent;TblVer:$int:table_version;InQ:$int:in_queued;OutQ:$int:out_queued;Up/Down:$string:up_down;State/PfxRcd:$string:prefix_rcvd\",\"leftAlign\":\"1\",\"alignType\":\"3\",\"alignRange\":\"1;1;1;1;1;1;1;1;1;1\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$version:int\",\"$remote_as:string\",\"$msgrevd:int\",\"$msgsent:int\",\"$table_version:int\",\"$in_queued:int\",\"$out_queued:int\",\"$up_down:string\",\"$prefix_rcvd:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"8195831c-ddbf-956e-0787-72661d5b2263\",\"hashColumns\":[\"$nbr_id\",\"$remote_as\",\"$prefix_rcvd\"],\"HashSort\":false}]},\"xxid\":\"eaca6b1e-43fe-d4d7-9108-1e341a065fa7\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"b3c1c695-4e39-c311-bbdf-2b7cb3f37eb7\"}]}",
+            "tableKeys": [
+                "_original_result.ipv4_unicast_filter.bgp_ipv4_nbr.$nbr_id",
+                "_original_result.ipv4_unicast_filter.bgp_ipv4_nbr.$prefix_rcvd",
+                "_original_result.vpnv4_unicast_filter.bgp_vpnv4_nbr.$nbr_id",
+                "_original_result.vpnv4_unicast_filter.bgp_vpnv4_nbr.$prefix_rcvd"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "rid",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_as",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "ipv4_unicast_filter",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "vpnv4_unicast_filter",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "version",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "remote_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "msgrevd",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "msgsent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "table_version",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "in_queued",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "out_queued",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "prefix_rcvd",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nbr_id",
+                    "$prefix_rcvd",
+                    "$remote_as"
+                ],
+                "hashSort": false,
+                "index": 5,
+                "name": "bgp_ipv4_nbr",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "version",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "remote_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "msgrevd",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "msgsent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "table_version",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "in_queued",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "out_queued",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "prefix_rcvd",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nbr_id",
+                    "$prefix_rcvd",
+                    "$remote_as"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "bgp_vpnv4_nbr",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "84d3123c5e34f46299558a777d8c379b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$rid",
+            "dataType": "string",
+            "desc": "In order of precedence and availability, the router identifier specified by the bgp router-id command, a loopback address, or the highest IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "string",
+            "desc": "Local Autonomous system number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ipv4_unicast_filter",
+            "dataType": "filter",
+            "desc": "IPv4 unicast family address filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter",
+            "intfKey": false,
+            "name": "ipv4_unicast_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr",
+            "dataType": "table",
+            "desc": "IPv4 BGP Neighbors Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_id",
+                    "$remote_as",
+                    "$prefix_rcvd"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr",
+            "intfKey": false,
+            "name": "bgp_ipv4_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$nbr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$remote_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$remote_as",
+            "intfKey": false,
+            "name": "$remote_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$msgrevd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$msgrevd",
+            "intfKey": false,
+            "name": "$msgrevd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$msgsent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$msgsent",
+            "intfKey": false,
+            "name": "$msgsent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$table_version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$table_version",
+            "intfKey": false,
+            "name": "$table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$in_queued",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$in_queued",
+            "intfKey": false,
+            "name": "$in_queued",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$out_queued",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$out_queued",
+            "intfKey": false,
+            "name": "$out_queued",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$up_down",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_ipv4_nbr.$prefix_rcvd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ipv4_unicast_filter.bgp_ipv4_nbr.$prefix_rcvd",
+            "intfKey": false,
+            "name": "$prefix_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpnv4_unicast_filter",
+            "dataType": "filter",
+            "desc": "VPNv4 unicast family address filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter",
+            "intfKey": false,
+            "name": "vpnv4_unicast_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr",
+            "dataType": "table",
+            "desc": "VPNv4 BGP Neighbors Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_id",
+                    "$remote_as",
+                    "$prefix_rcvd"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr",
+            "intfKey": false,
+            "name": "bgp_vpnv4_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$nbr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$remote_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$remote_as",
+            "intfKey": false,
+            "name": "$remote_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$msgrevd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$msgrevd",
+            "intfKey": false,
+            "name": "$msgrevd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$msgsent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$msgsent",
+            "intfKey": false,
+            "name": "$msgsent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$table_version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$table_version",
+            "intfKey": false,
+            "name": "$table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$in_queued",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$in_queued",
+            "intfKey": false,
+            "name": "$in_queued",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$out_queued",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$out_queued",
+            "intfKey": false,
+            "name": "$out_queued",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$up_down",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_nbr.$prefix_rcvd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpnv4_unicast_filter.bgp_vpnv4_nbr.$prefix_rcvd",
+            "intfKey": false,
+            "name": "$prefix_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

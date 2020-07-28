@@ -1,0 +1,319 @@
+{
+    "_id": "d6b5a430-5a54-a713-cac2-638573a8cd07",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "get system status",
+    "createTime": {
+        "$date": 1584128249414
+    },
+    "description": "",
+    "devTypes": [
+        10380
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "FortiADC-docs # get system status\r\nVersion: FortiADC-VM v4.4.0,build0468,151218 VM\r\nRegistration:\r\nValid: License has been successfully authenticated with registration servers.\r\nVM License File: License file and resources are valid.\r\nVM Resources: 1 CPU/1 allowed, 1620 MB RAM/2048 MB allowed, 59 GB Disk/1024 GB allowed\r\nSerial-Number: FADV010000047341\r\nWAF Signature DB: 00001.00001 IP Reputation DB: 00001.00094\r\nBootloader version: n/a\r\nLog disk: Capacity 58 GB, Used 7 GB (12.78%), Free 51 GB\r\nHostname: FortiADC-docs\r\nHA configured mode: standalone\r\nHA effective mode: Standalone\r\nDistribution: International\r\nUptime: 1 days 4 hours 14 minutes\r\nLast reboot: Mon Dec 21 09:30:19 PST 2015\r\nSystem time: Tue Dec 22 13:44:41 PST 2015\r\nStatistics table: No synced with config",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"system_status\",\"keyVariables\":\"\",\"startLine\":\"regex[$version]:^Version: (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$registration]:Registration: (.+)\",\"regex[$valid]:Valid: (.+)\",\"regex[$serial_number]:Serial-Number: (.+)\",\"regex[$hostname]:Hostname: (.+)\",\"regex[$ha_configured_mode]:HA configured mode: (.+)\",\"regex[$ha_effective_mode]:HA effective mode: (.+)\",\"regex[$uptime]:Uptime: (.+)\",\"regex[$last_reboot]:Last reboot: (.+)\",\"regex[$system_time]:System time: (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$version:string\",\"$registration:string\",\"$valid:string\",\"$serial_number:string\",\"$hostname:string\",\"$ha_configured_mode:string\",\"$ha_effective_mode:string\",\"$uptime:string\",\"$last_reboot:string\",\"$system_time:string\"]},\"xxid\":\"1d0de73c-bedf-6e1a-8bc7-838ee01b2bab\"}]},\"xxid\":\"408d450c-bc30-8cf3-6f74-42cd3155b653\",\"hashColumns\":[\"$version\",\"$registration\",\"$valid\",\"$serial_number\",\"$hostname\",\"$ha_configured_mode\",\"$ha_effective_mode\",\"$last_reboot\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"80fe323d-8520-beab-02d0-6d58908fa772\"}]}",
+            "tableKeys": [
+                "_original_result.system_status.$version"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "version",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "registration",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "valid",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "serial_number",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hostname",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ha_configured_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ha_effective_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "last_reboot",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "system_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ha_configured_mode",
+                    "$ha_effective_mode",
+                    "$hostname",
+                    "$last_reboot",
+                    "$registration",
+                    "$serial_number",
+                    "$valid",
+                    "$version"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "system_status",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5c7c0c72031f02388c02d017c6f0f78f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "system_status",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$version",
+                    "$registration",
+                    "$valid",
+                    "$serial_number",
+                    "$hostname",
+                    "$ha_configured_mode",
+                    "$ha_effective_mode",
+                    "$last_reboot"
+                ],
+                "hashSort": false
+            },
+            "fullName": "system_status",
+            "intfKey": false,
+            "name": "system_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "system_status.$version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$registration",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$registration",
+            "intfKey": false,
+            "name": "$registration",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$valid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$valid",
+            "intfKey": false,
+            "name": "$valid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$serial_number",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$serial_number",
+            "intfKey": false,
+            "name": "$serial_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$hostname",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$hostname",
+            "intfKey": false,
+            "name": "$hostname",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$ha_configured_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$ha_configured_mode",
+            "intfKey": false,
+            "name": "$ha_configured_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$ha_effective_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$ha_effective_mode",
+            "intfKey": false,
+            "name": "$ha_effective_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$last_reboot",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$last_reboot",
+            "intfKey": false,
+            "name": "$last_reboot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "system_status.$system_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "system_status.$system_time",
+            "intfKey": false,
+            "name": "$system_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,216 @@
+{
+    "_id": "774c5752-0ef9-961f-6612-bf52ff349713",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf lsdb",
+    "createTime": {
+        "$date": 1590697849028
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip ospf lsdb",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip ospf lsdb\r\nArea Id           Type         LS Id       Orig Router-Id     SeqNo      Age\r\n----------------+-------+----------------+----------------+------------+-----\r\n0.0.0.1           OSPF   198.168.100.100  198.168.100.100     1          100",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"ospf_lsdb_table\",\"headers\":\"Area Id;Type;LS Id;Orig Router-Id;SeqNo;Age\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Area Id:$string:area_id;Type:$string:type;LS Id:$string:ls_id;Orig Router-Id:$string:orig_rid;SeqNo:$int:seq;Age:$int:age\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$type:string\",\"$ls_id:string\",\"$orig_rid:string\",\"$seq:int\",\"$age:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"c5c05ff0-050c-50eb-d2d9-b2ef3ca43e75\",\"hashColumns\":[\"$area_id\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_lsdb_table.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ls_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "orig_rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "seq",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "age",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_lsdb_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e62a9f05d1b54510d79a6b2cdf876cf6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_lsdb_table",
+            "dataType": "table",
+            "desc": "OSPF LSDB table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_lsdb_table",
+            "intfKey": false,
+            "name": "ospf_lsdb_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_lsdb_table.$area_id",
+            "dataType": "string",
+            "desc": "The area identification for the area to which the record belongs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_lsdb_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_lsdb_table.$type",
+            "dataType": "string",
+            "desc": "The protocol type from where the route was learned.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_lsdb_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_lsdb_table.$ls_id",
+            "dataType": "string",
+            "desc": "The Link state ID. The ID is a unique 32-bit value such as an IP address. This number is used as a record in the link state database.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_lsdb_table.$ls_id",
+            "intfKey": false,
+            "name": "$ls_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_lsdb_table.$orig_rid",
+            "dataType": "string",
+            "desc": "The router ID of the router that originated the external LSDB.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_lsdb_table.$orig_rid",
+            "intfKey": false,
+            "name": "$orig_rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_lsdb_table.$seq",
+            "dataType": "int",
+            "desc": "The advertisement sequence number (i.e., a value used to identify old and duplicate link state advertisements).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_lsdb_table.$seq",
+            "intfKey": false,
+            "name": "$seq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_lsdb_table.$age",
+            "dataType": "int",
+            "desc": "The age of the LSA in seconds. That is, the duration for which this entry has existed in the external database.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_lsdb_table.$age",
+            "intfKey": false,
+            "name": "$age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

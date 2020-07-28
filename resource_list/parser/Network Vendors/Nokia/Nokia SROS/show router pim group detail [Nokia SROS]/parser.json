@@ -1,0 +1,301 @@
+{
+    "_id": "bb7cc165-6475-3498-0a46-47f2de7e64f8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router pim group detail",
+    "createTime": {
+        "$date": 1583524987879
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:Dut-A# show router pim group detail \r\n===============================================================================\r\nPIM Source Group ipv4\r\n===============================================================================\r\nGroup Address      : 224.1.1.1\r\nSource Address     : 3.1.1.21\r\nRP Address         : 10.20.1.4\r\nAdvt Ruoter        : 10.20.1.3\r\nFlags              :                    Type               : (S,G)\r\nMRIB Next Hop      : 10.10.2.3\r\nMRIB Src Flags     : remote             Standby Src Flags  : remote\r\nkeepalive Timer    : Not Running\r\nUp Time            : 0d 00:01:22        Resolved By        : rtable-u\r\n \r\nUp JP State        : Joined             Up JP Expiry       : 0d 00:00:00\r\nUp JP Rpt          : Pruned             Up JP Rpt Override : 0d 00:00:00\r\nUp Stdby JP State  : Joined             Up Stdby JP Expiry : 0d 00:00:12\r\n \r\nRegister State     : No Info            \r\nReg From Anycast RP: No                 \r\n \r\nRpf Neighbor       : 10.10.2.3          Stdby Rpf Neighbor : 10.10.1.2\r\nIncoming Intf      : ip-10.10.2.1       Stdby Intf         : ip-10.10.1.1\r\nOutgoing Host List : ix\r\n \r\nCurr Fwding Rate   : 0.0 kbps           \r\nForwarded Packets  : 0                  Discarded Packets  : 0\r\nForwarded Octets   : 0                  RPF Mismatches     : 0\r\nSpt threshold      : 0 kbps             ECMP opt threshold : 7\r\nAdmin bandwidth    : 1 kbps             \r\n \r\n===============================================================================\r\nPIM Source Group ipv4",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"pim_group\",\"keyVariables\":\"\",\"startLine\":\"Group Address      : $group_address\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Source Address     : $source_address\",\"RP Address         : $rp_address\",\"Advt Ruoter        : $advt_router\",\"MRIB Next Hop      : $mrib_next_hop\",\"regex[$rpf_neighbor,$stdby_rpf_neighbor]:Rpf Neighbor\\\\s+: (\\\\S+)\\\\s+Stdby Rpf Neighbor : (.+)\",\"regex[$incoming_intf,$stdby_intf]:Incoming Intf\\\\s+: (\\\\S+)\\\\s+Stdby Intf\\\\s+: (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$group_address:string\",\"$source_address:string\",\"$rp_address:string\",\"$advt_router:string\",\"$mrib_next_hop:string\",\"$rpf_neighbor:string\",\"$stdby_rpf_neighbor:string\",\"$incoming_intf:string\",\"$stdby_intf:string\"]},\"xxid\":\"86776d31-6e96-2038-afdb-690e2d8cc3b5\"}]},\"xxid\":\"9aabc22a-e99d-8745-370d-44b8ac4806ac\",\"hashColumns\":[\"$group_address\",\"$source_address\",\"$rp_address\",\"$advt_router\",\"$mrib_next_hop\",\"$rpf_neighbor\",\"$stdby_rpf_neighbor\",\"$incoming_intf\",\"$stdby_intf\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"d42807c7-47a8-8513-9113-399f06ab0274\"}]}",
+            "tableKeys": [
+                "_original_result.pim_group.$group_address"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "rp_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "advt_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mrib_next_hop",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "rpf_neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "stdby_rpf_neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "incoming_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "stdby_intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$advt_router",
+                    "$group_address",
+                    "$incoming_intf",
+                    "$mrib_next_hop",
+                    "$rp_address",
+                    "$rpf_neighbor",
+                    "$source_address",
+                    "$stdby_intf",
+                    "$stdby_rpf_neighbor"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_group",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2aa8c90afc3e84046a2d3cc1452e157d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_group",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group_address",
+                    "$source_address",
+                    "$rp_address",
+                    "$advt_router",
+                    "$mrib_next_hop",
+                    "$rpf_neighbor",
+                    "$stdby_rpf_neighbor",
+                    "$incoming_intf",
+                    "$stdby_intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_group",
+            "intfKey": false,
+            "name": "pim_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "pim_group.$group_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$source_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$source_address",
+            "intfKey": false,
+            "name": "$source_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$rp_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$rp_address",
+            "intfKey": false,
+            "name": "$rp_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$advt_router",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$advt_router",
+            "intfKey": false,
+            "name": "$advt_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$mrib_next_hop",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$mrib_next_hop",
+            "intfKey": false,
+            "name": "$mrib_next_hop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$rpf_neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$rpf_neighbor",
+            "intfKey": false,
+            "name": "$rpf_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$stdby_rpf_neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$stdby_rpf_neighbor",
+            "intfKey": false,
+            "name": "$stdby_rpf_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$incoming_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$incoming_intf",
+            "intfKey": false,
+            "name": "$incoming_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_group.$stdby_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_group.$stdby_intf",
+            "intfKey": false,
+            "name": "$stdby_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,240 @@
+{
+    "_id": "dd622fed-0a65-afe0-5149-b9d2ac485733",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip pim interface",
+    "createTime": {
+        "$date": 1590758613381
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip pim interface",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip pim interface\r\nTotal 1 Interfaces\r\n \r\nInterface Name       IP Address      Designated      Hello    J/P      Oper\r\n                                    Router          Interval Interval Status\r\n--------------------+---------------+---------------+--------+--------+--------\r\ntesvl                50.1.1.1        50.1.1.1        100      10       disabled",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.pim_intf_table.$intf_name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total $int:num_intfs Interfaces\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num_intfs:int\"]},\"xxid\":\"2e4cc4f1-8d07-dcb3-ac80-20beaa87edb9\"},{\"type\":\"3\",\"name\":\"pim_intf_table\",\"headers\":\"Interface Name;IP Address;Designated Router;Hello Interval;J/P Interval;Oper Status\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":2,\"headerToVariables\":\"Interface Name:$string:intf_name;IP Address:$string:ip_addr;Designated Router:$string:designated_router;Hello Interval:$int:hello_interval;J/P Interval:$int:j_p_interval;Oper Status:$string:oper_status\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$intf_name:string\",\"$ip_addr:string\",\"$designated_router:string\",\"$hello_interval:int\",\"$j_p_interval:int\",\"$oper_status:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"384c3044-fc52-0bb4-e380-3843e25eb81a\",\"interfaceKey\":\"$intf_name\",\"hashColumns\":[\"$intf_name\",\"$ip_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.pim_intf_table.$ip_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "num_intfs",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "designated_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "hello_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "j_p_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "oper_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf_name",
+                    "$ip_addr"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "45200d92db9ea0713a9c4e690ee4afad",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$num_intfs",
+            "dataType": "int",
+            "desc": "Total number of pim interfaces",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$num_intfs",
+            "intfKey": false,
+            "name": "$num_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intf_table",
+            "dataType": "table",
+            "desc": "Pim interface table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf_name",
+                    "$ip_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_intf_table",
+            "intfKey": false,
+            "name": "pim_intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "pim_intf_table.$intf_name",
+            "dataType": "string",
+            "desc": "The name of the interface on which PIM is enabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_intf_table.$intf_name",
+            "intfKey": false,
+            "name": "$intf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "pim_intf_table.$ip_addr",
+            "dataType": "string",
+            "desc": "Specifies the IP address of the specified interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_intf_table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intf_table.$designated_router",
+            "dataType": "string",
+            "desc": "The 32-bit IP address for the Designated Router (DR). The DR acts on behalf of any directly-connected hosts with respect to the PIM-SM??protocol. Only one router in the LAN will act as the DR.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_intf_table.$designated_router",
+            "intfKey": false,
+            "name": "$designated_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intf_table.$hello_interval",
+            "dataType": "int",
+            "desc": "The frequency at which PIM Hello messages are transmitted on a spec??ified interface. Values may range from 1??to 18000. The default value is 30.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_intf_table.$hello_interval",
+            "intfKey": false,
+            "name": "$hello_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intf_table.$j_p_interval",
+            "dataType": "int",
+            "desc": "The Join/Prune interval for the associated interface. The Join/Prune interval is the interval at which periodic PIM-SM??Join/Prune messages are sent. Values may range from 1??to 18000.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_intf_table.$j_p_interval",
+            "intfKey": false,
+            "name": "$j_p_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_intf_table.$oper_status",
+            "dataType": "string",
+            "desc": "The current operational status of the corresponding interface. Options include??enabled??and??disabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_intf_table.$oper_status",
+            "intfKey": false,
+            "name": "$oper_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

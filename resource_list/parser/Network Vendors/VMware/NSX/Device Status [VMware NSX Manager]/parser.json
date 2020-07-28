@@ -1,0 +1,422 @@
+{
+    "_id": "d3d073ff-6180-850f-3f6e-04b7eb9d616e",
+    "author": "NetBrain",
+    "bizType": "81134e79-841f-4e59-b72b-0e41da2035a5",
+    "command": "",
+    "createTime": {
+        "$date": 1560793256812
+    },
+    "description": "",
+    "devTypes": [
+        21010
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\nimport time\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    node_dn = GetDeviceProperties(context, device_name, {'techName': 'NSX', 'paramType': 'SDN', 'params':['id', 'nbPathSchema']})\r\n    dev_schema = node_dn['params'].get('nbPathSchema')\r\n    rtn_params = { 'name':device_name, 'dev_schema': dev_schema}\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    dev_schema = rtn_params['dev_schema']\r\n    dev_name = rtn_params['name']\r\n    manager_url = 'api/1.0/appliance-management/summary/components'\r\n    rtn_params['url'] = manager_url\r\n    manager_data = json.loads(getData(rtn_params))\r\n    manager_dict = json.loads(manager_data)\r\n    rtn = {}\r\n    for k, v in manager_dict.items():\r\n        for sub_key1, sub_v1 in v.items():\r\n            for sub_key2, sub_v2 in sub_v1.items():\r\n                new_key = '_'.join([k, sub_key1, sub_key2])\r\n                temp_dict = {}\r\n                temp_list = []\r\n                for sub_list in sub_v2:\r\n                    for i, j in sub_list.items():\r\n                        temp_dict[sub_key1 + '_' + i]= j\r\n                    temp_list.append(temp_dict)\r\n                rtn[new_key] = temp_list\r\n    return rtn\r\n\r\n",
+    "samples": [
+        {
+            "content": "{\n    \"componentsByGroup_COMMON_components\": [\n        {\n            \"COMMON_componentGroup\": \"COMMON\",\n            \"COMMON_componentId\": \"RABBITMQ\",\n            \"COMMON_description\": \"RabbitMQ - Messaging service\",\n            \"COMMON_enabled\": true,\n            \"COMMON_name\": \"RabbitMQ\",\n            \"COMMON_showTechSupportLogs\": false,\n            \"COMMON_status\": \"RUNNING\",\n            \"COMMON_usedBy\": [\n                \"NSX\"\n            ],\n            \"COMMON_uses\": null,\n            \"COMMON_versionInfo\": null\n        },\n        {\n            \"COMMON_componentGroup\": \"COMMON\",\n            \"COMMON_componentId\": \"RABBITMQ\",\n            \"COMMON_description\": \"RabbitMQ - Messaging service\",\n            \"COMMON_enabled\": true,\n            \"COMMON_name\": \"RabbitMQ\",\n            \"COMMON_showTechSupportLogs\": false,\n            \"COMMON_status\": \"RUNNING\",\n            \"COMMON_usedBy\": [\n                \"NSX\"\n            ],\n            \"COMMON_uses\": null,\n            \"COMMON_versionInfo\": null\n        }\n    ],\n    \"componentsByGroup_NSXGRP_components\": [\n        {\n            \"NSXGRP_componentGroup\": \"NSXGRP\",\n            \"NSXGRP_componentId\": \"NSX\",\n            \"NSXGRP_description\": \"NSX Manager\",\n            \"NSXGRP_enabled\": true,\n            \"NSXGRP_name\": \"NSX Manager\",\n            \"NSXGRP_showTechSupportLogs\": true,\n            \"NSXGRP_status\": \"RUNNING\",\n            \"NSXGRP_usedBy\": [\n                \"NSXREPLICATOR\"\n            ],\n            \"NSXGRP_uses\": [\n                \"VPOSTGRES\",\n                \"RABBITMQ\"\n            ],\n            \"NSXGRP_versionInfo\": {\n                \"buildNumber\": \"4818372\",\n                \"majorVersion\": \"6\",\n                \"minorVersion\": \"2\",\n                \"patchVersion\": \"5\"\n            }\n        },\n        {\n            \"NSXGRP_componentGroup\": \"NSXGRP\",\n            \"NSXGRP_componentId\": \"NSX\",\n            \"NSXGRP_description\": \"NSX Manager\",\n            \"NSXGRP_enabled\": true,\n            \"NSXGRP_name\": \"NSX Manager\",\n            \"NSXGRP_showTechSupportLogs\": true,\n            \"NSXGRP_status\": \"RUNNING\",\n            \"NSXGRP_usedBy\": [\n                \"NSXREPLICATOR\"\n            ],\n            \"NSXGRP_uses\": [\n                \"VPOSTGRES\",\n                \"RABBITMQ\"\n            ],\n            \"NSXGRP_versionInfo\": {\n                \"buildNumber\": \"4818372\",\n                \"majorVersion\": \"6\",\n                \"minorVersion\": \"2\",\n                \"patchVersion\": \"5\"\n            }\n        }\n    ],\n    \"componentsByGroup_SYSTEM_components\": [\n        {\n            \"SYSTEM_componentGroup\": \"SYSTEM\",\n            \"SYSTEM_componentId\": \"SSH\",\n            \"SYSTEM_description\": \"Secure Shell\",\n            \"SYSTEM_enabled\": true,\n            \"SYSTEM_name\": \"SSH Service\",\n            \"SYSTEM_showTechSupportLogs\": false,\n            \"SYSTEM_status\": \"RUNNING\",\n            \"SYSTEM_usedBy\": [],\n            \"SYSTEM_uses\": null,\n            \"SYSTEM_versionInfo\": null\n        }\n    ]\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"componentsByGroup_COMMON_components\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"COMMON_componentGroup\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"COMMON_componentId\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"COMMON_description\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"COMMON_name\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"COMMON_status\\\", \\\"type\\\": \\\"bool\\\"}\\n        \\n    ]},\\n    {\\\"name\\\": \\\"componentsByGroup_NSXGRP_components\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"NSXGRP_componentGroup\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"NSXGRP_componentId\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"NSXGRP_description\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"NSXGRP_name\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"NSXGRP_status\\\", \\\"type\\\": \\\"bool\\\"}\\n        \\n    ]},\\n    {\\\"name\\\": \\\"componentsByGroup_SYSTEM_components\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"SYSTEM_componentGroup\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"SYSTEM_componentId\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"SYSTEM_description\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"SYSTEM_name\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"SYSTEM_status\\\", \\\"type\\\": \\\"bool\\\"}\\n        \\n    ]}\\n]\\nEnd Declare\\n\\n'''\\nimport re \\nimport json\\ndef ParseText(_original_result):\\n    value = {\\n        'componentsByGroup_COMMON_components':{\\n            'COMMON_componentGroup':[],\\n            'COMMON_componentId':[],\\n            'COMMON_description':[],\\n            'COMMON_enabled':[],\\n            'COMMON_name':[],\\n            'COMMON_status':[]\\n            },\\n        'componentsByGroup_NSXGRP_components':{\\n            'NSXGRP_componentGroup':[],\\n            'NSXGRP_componentId':[],\\n            'NSXGRP_description':[],\\n            'NSXGRP_enabled':[],\\n            'NSXGRP_name':[],\\n            'NSXGRP_status':[]\\n            },\\n        'componentsByGroup_SYSTEM_components':{\\n            'SYSTEM_componentGroup':[],\\n            'SYSTEM_componentId':[],\\n            'SYSTEM_description':[],\\n            'SYSTEM_enabled':[],\\n            'SYSTEM_name':[],\\n            'SYSTEM_status':[]\\n            }\\n        }\\n    original_result = json.loads(_original_result)\\n    for k,v in original_result.items():\\n        if k in value:\\n            for i in v:\\n                for sub_k, sub_v in i.items():\\n                    if sub_k in value[k]:\\n                        value[k][sub_k].append(sub_v.lower() if isinstance(sub_v, str) else sub_v)\\n    return value\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$componentsByGroup_COMMON_components\",\"variableTypes\":{\"variableType\":[{\"name\":\"$COMMON_componentGroup\",\"type\":\"string\"},{\"name\":\"$COMMON_componentId\",\"type\":\"string\"},{\"name\":\"$COMMON_description\",\"type\":\"string\"},{\"name\":\"$COMMON_name\",\"type\":\"string\"},{\"name\":\"$COMMON_status\",\"type\":\"bool\"}]}},{\"name\":\"$componentsByGroup_NSXGRP_components\",\"variableTypes\":{\"variableType\":[{\"name\":\"$NSXGRP_componentGroup\",\"type\":\"string\"},{\"name\":\"$NSXGRP_componentId\",\"type\":\"string\"},{\"name\":\"$NSXGRP_description\",\"type\":\"string\"},{\"name\":\"$NSXGRP_name\",\"type\":\"string\"},{\"name\":\"$NSXGRP_status\",\"type\":\"bool\"}]}},{\"name\":\"$componentsByGroup_SYSTEM_components\",\"variableTypes\":{\"variableType\":[{\"name\":\"$SYSTEM_componentGroup\",\"type\":\"string\"},{\"name\":\"$SYSTEM_componentId\",\"type\":\"string\"},{\"name\":\"$SYSTEM_description\",\"type\":\"string\"},{\"name\":\"$SYSTEM_name\",\"type\":\"string\"},{\"name\":\"$SYSTEM_status\",\"type\":\"bool\"}]}}]},\"name\":\"\",\"xxid\":\"de38efb6-6fc9-e7e7-2f08-e898f73017f2\",\"interfaceKey\":{},\"tableKeys\":{\"componentsByGroup_COMMON_components\":[\"$COMMON_componentId\"],\"componentsByGroup_NSXGRP_components\":[\"$NSXGRP_componentId\"],\"componentsByGroup_SYSTEM_components\":[\"$SYSTEM_componentId\"]},\"hashColumns\":{\"componentsByGroup_COMMON_components\":[\"$COMMON_componentId\"],\"componentsByGroup_NSXGRP_components\":[\"$NSXGRP_componentId\"],\"componentsByGroup_SYSTEM_components\":[\"$SYSTEM_componentId\"]}}]}",
+            "tableKeys": [
+                "_original_result.$componentsByGroup_COMMON_components.$COMMON_componentId",
+                "_original_result.$componentsByGroup_NSXGRP_components.$NSXGRP_componentId",
+                "_original_result.$componentsByGroup_SYSTEM_components.$SYSTEM_componentId"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "COMMON_componentGroup",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "COMMON_componentId",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "COMMON_description",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "COMMON_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "COMMON_status",
+                        "type": 3
+                    }
+                ],
+                "hashColumns": [
+                    "COMMON_componentId"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "componentsByGroup_COMMON_components",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "NSXGRP_componentGroup",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "NSXGRP_componentId",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "NSXGRP_description",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "NSXGRP_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "NSXGRP_status",
+                        "type": 3
+                    }
+                ],
+                "hashColumns": [
+                    "NSXGRP_componentId"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "componentsByGroup_NSXGRP_components",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "SYSTEM_componentGroup",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "SYSTEM_componentId",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "SYSTEM_description",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "SYSTEM_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "SYSTEM_status",
+                        "type": 3
+                    }
+                ],
+                "hashColumns": [
+                    "SYSTEM_componentId"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "componentsByGroup_SYSTEM_components",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c112e6141681cfd8a0172478ac9418a0",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$componentsByGroup_COMMON_components.$COMMON_componentGroup",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_COMMON_components.$COMMON_componentGroup",
+            "intfKey": false,
+            "name": "$COMMON_componentGroup",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_COMMON_components.$COMMON_componentId",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_COMMON_components.$COMMON_componentId",
+            "intfKey": false,
+            "name": "$COMMON_componentId",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_COMMON_components.$COMMON_description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_COMMON_components.$COMMON_description",
+            "intfKey": false,
+            "name": "$COMMON_description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_COMMON_components.$COMMON_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_COMMON_components.$COMMON_name",
+            "intfKey": false,
+            "name": "$COMMON_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_COMMON_components.$COMMON_status",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_COMMON_components.$COMMON_status",
+            "intfKey": false,
+            "name": "$COMMON_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_NSXGRP_components.$NSXGRP_componentGroup",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_NSXGRP_components.$NSXGRP_componentGroup",
+            "intfKey": false,
+            "name": "$NSXGRP_componentGroup",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_NSXGRP_components.$NSXGRP_componentId",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_NSXGRP_components.$NSXGRP_componentId",
+            "intfKey": false,
+            "name": "$NSXGRP_componentId",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_NSXGRP_components.$NSXGRP_description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_NSXGRP_components.$NSXGRP_description",
+            "intfKey": false,
+            "name": "$NSXGRP_description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_NSXGRP_components.$NSXGRP_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_NSXGRP_components.$NSXGRP_name",
+            "intfKey": false,
+            "name": "$NSXGRP_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_NSXGRP_components.$NSXGRP_status",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_NSXGRP_components.$NSXGRP_status",
+            "intfKey": false,
+            "name": "$NSXGRP_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_SYSTEM_components.$SYSTEM_componentGroup",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_SYSTEM_components.$SYSTEM_componentGroup",
+            "intfKey": false,
+            "name": "$SYSTEM_componentGroup",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_SYSTEM_components.$SYSTEM_componentId",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_SYSTEM_components.$SYSTEM_componentId",
+            "intfKey": false,
+            "name": "$SYSTEM_componentId",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_SYSTEM_components.$SYSTEM_description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_SYSTEM_components.$SYSTEM_description",
+            "intfKey": false,
+            "name": "$SYSTEM_description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_SYSTEM_components.$SYSTEM_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_SYSTEM_components.$SYSTEM_name",
+            "intfKey": false,
+            "name": "$SYSTEM_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_SYSTEM_components.$SYSTEM_status",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$componentsByGroup_SYSTEM_components.$SYSTEM_status",
+            "intfKey": false,
+            "name": "$SYSTEM_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$componentsByGroup_COMMON_components",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$COMMON_componentId"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$componentsByGroup_COMMON_components",
+            "intfKey": false,
+            "name": "$componentsByGroup_COMMON_components",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$componentsByGroup_NSXGRP_components",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$NSXGRP_componentId"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$componentsByGroup_NSXGRP_components",
+            "intfKey": false,
+            "name": "$componentsByGroup_NSXGRP_components",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$componentsByGroup_SYSTEM_components",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$SYSTEM_componentId"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$componentsByGroup_SYSTEM_components",
+            "intfKey": false,
+            "name": "$componentsByGroup_SYSTEM_components",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

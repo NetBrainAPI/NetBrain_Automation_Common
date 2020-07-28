@@ -1,0 +1,751 @@
+{
+    "_id": "87ba26e4-4231-6e15-4b79-68ec318f7fa8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show module switch all",
+    "createTime": {
+        "$date": 1580492811074
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow module switch all",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB1502CORE1>show module switch all\r\nSwitch Number: 1 Role: Virtual Switch Standby\r\n\r\nChassis Type : WS-C4500X-32\r\n\r\nPower consumed by backplane : 0 Watts\r\n\r\nMod Ports Card Type                              Model              Serial No.\r\n---+-----+--------------------------------------+------------------+-----------\r\n 1    32  4500X-32 10GE (SFP+)                   WS-C4500X-32       JAE185107KY \r\n 2     8  10GE SFP+                              C4KX-NM-8          JAE184807UX \r\n\r\n M MAC addresses                    Hw  Fw           Sw               Status\r\n--+--------------------------------+---+------------+----------------+---------\r\n 1 f4cf.e213.1c78 to f4cf.e213.1c97 2.0 15.0(1r)SG11 03.04.04.SG      Ok       \r\n 2 7c0e.cee7.bdd0 to 7c0e.cee7.bdd7 1.0                               Ok       \r\n\r\nMod  Redundancy role     Operating mode      Redundancy status\r\n----+-------------------+-------------------+----------------------------------\r\n 1   Standby Supervisor  SSO                 Standby hot                       \r\n\r\nSwitch Number: 2 Role: Virtual Switch Active\r\n\r\nChassis Type : WS-C4500X-32\r\n\r\nPower consumed by backplane : 0 Watts\r\n\r\nMod Ports Card Type                              Model              Serial No.\r\n---+-----+--------------------------------------+------------------+-----------\r\n 1    32  4500X-32 10GE (SFP+)                   WS-C4500X-32       JAE185200E1 \r\n 2     8  10GE SFP+                              C4KX-NM-8          JAE184807UK \r\n\r\n M MAC addresses                    Hw  Fw           Sw               Status\r\n--+--------------------------------+---+------------+----------------+---------\r\n 1 f4cf.e213.1cb8 to f4cf.e213.1cd7 2.0 15.0(1r)SG11 03.04.04.SG      Ok       \r\n 2 7c0e.cee7.bde0 to 7c0e.cee7.bde7 1.0                               Ok       \r\n\r\nMod  Redundancy role     Operating mode      Redundancy status\r\n----+-------------------+-------------------+----------------------------------\r\n 1   Active Supervisor   SSO                 Active                            \r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vss_switch\",\"keyVariables\":\"\",\"startLine\":\"regex[]:(.*)Switch Number:(.*)Role:(.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Number: $switch_number Role:\",\"Virtual Switch $switch_role$\",\"Chassis Type : $chassis_type\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$switch_number:string\",\"$switch_role:string\",\"$chassis_type:string\"]},\"xxid\":\"adc4f417-0e9d-de92-be0a-8ceda39c2a54\"},{\"type\":\"3\",\"name\":\"hardware_info\",\"headers\":\"Mod;Ports;Card Type;Model;Serial No.\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Mod:$string:mod;Ports:$string:ports;Card Type:$string:card_type;Model:$string:model;Serial No.:$string:sn\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$mod:string\",\"$ports:string\",\"$card_type:string\",\"$model:string\",\"$sn:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"92da2a86-0517-b35e-3691-5bdb2cc65569\",\"hashColumns\":[\"$model\"],\"HashSort\":false},{\"type\":\"3\",\"name\":\"software_info\",\"headers\":\"Mod;MAC addresses;Hw;Fw;Sw;Status\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Mod:$string:mod;MAC addresses:$string:mac_addr;Hw:$string:hw;Fw:$string:fw;Sw:$string:sw;Status:$string:status\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$mod:string\",\"$mac_addr:string\",\"$hw:string\",\"$fw:string\",\"$sw:string\",\"$status:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"d997227c-50e4-d1e8-7905-eb44580dd523\"},{\"type\":\"3\",\"name\":\"redundancy_info\",\"headers\":\"Mod;Redundancy role;Operating mode;Redundancy status\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Mod:$string:mod;Redundancy role:$string:redundancy_role;Operating mode:$string:operating_mode;Redundancy status:$string:redundancy_status\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$mod:string\",\"$redundancy_role:string\",\"$operating_mode:string\",\"$redundancy_status:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"b4dca963-7df5-11f5-0648-dc59607b7654\",\"hashColumns\":[]}]},\"xxid\":\"ae70989e-c547-1b33-a866-7c84e86ffb22\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"8168af0c-2e55-b240-d7c5-6644446ae2b8\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "switch_number",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "switch_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "chassis_type",
+                        "type": 4
+                    }
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "vss_switch",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ports",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "card_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "model",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sn",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "switch_number",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "switch_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "chassis_type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$model"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "hardware_info",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "hw",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "fw",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "sw",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "switch_number",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "switch_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "chassis_type",
+                        "type": 4
+                    }
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "software_info",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mod",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "redundancy_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "operating_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "redundancy_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "switch_number",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "switch_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "chassis_type",
+                        "type": 4
+                    }
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "redundancy_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e982fec76230cf78b95902e7ee6beef9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vss_switch",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "vss_switch",
+            "intfKey": false,
+            "name": "vss_switch",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vss_switch.$switch_number",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.$switch_number",
+            "intfKey": false,
+            "name": "$switch_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vss_switch.$switch_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.$switch_role",
+            "intfKey": false,
+            "name": "$switch_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vss_switch.$chassis_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.$chassis_type",
+            "intfKey": false,
+            "name": "$chassis_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$model"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info",
+            "intfKey": false,
+            "name": "hardware_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "hardware_info.$mod",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info.$ports",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info.$card_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$card_type",
+            "intfKey": false,
+            "name": "$card_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info.$model",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$model",
+            "intfKey": false,
+            "name": "$model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info.$sn",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$sn",
+            "intfKey": false,
+            "name": "$sn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info.$switch_number",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$switch_number",
+            "intfKey": false,
+            "name": "$switch_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info.$switch_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$switch_role",
+            "intfKey": false,
+            "name": "$switch_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "hardware_info.$chassis_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.hardware_info.$chassis_type",
+            "intfKey": false,
+            "name": "$chassis_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info",
+            "intfKey": false,
+            "name": "software_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "software_info.$mod",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$mac_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$mac_addr",
+            "intfKey": false,
+            "name": "$mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$hw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$hw",
+            "intfKey": false,
+            "name": "$hw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$fw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$fw",
+            "intfKey": false,
+            "name": "$fw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$sw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$sw",
+            "intfKey": false,
+            "name": "$sw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$switch_number",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$switch_number",
+            "intfKey": false,
+            "name": "$switch_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$switch_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$switch_role",
+            "intfKey": false,
+            "name": "$switch_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "software_info.$chassis_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.software_info.$chassis_type",
+            "intfKey": false,
+            "name": "$chassis_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_info",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info",
+            "intfKey": false,
+            "name": "redundancy_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "redundancy_info.$mod",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info.$mod",
+            "intfKey": false,
+            "name": "$mod",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_info.$redundancy_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info.$redundancy_role",
+            "intfKey": false,
+            "name": "$redundancy_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_info.$operating_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info.$operating_mode",
+            "intfKey": false,
+            "name": "$operating_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_info.$redundancy_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info.$redundancy_status",
+            "intfKey": false,
+            "name": "$redundancy_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_info.$switch_number",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info.$switch_number",
+            "intfKey": false,
+            "name": "$switch_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_info.$switch_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info.$switch_role",
+            "intfKey": false,
+            "name": "$switch_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_info.$chassis_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vss_switch.redundancy_info.$chassis_type",
+            "intfKey": false,
+            "name": "$chassis_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

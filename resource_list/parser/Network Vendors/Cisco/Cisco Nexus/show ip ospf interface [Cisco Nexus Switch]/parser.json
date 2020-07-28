@@ -1,0 +1,676 @@
+{
+    "_id": "f17afc95-e7e9-55a2-c0f9-50927365ac66",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf interface",
+    "createTime": {
+        "$date": 1579709238175
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:\nshow ip ospf interface",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "OSPF-N7K#show ip ospf interface\n\n VL1-0.0.0.2-1.1.1.1 is up, line protocol is up\n    IP address 10.1.1.2, Process ID 1 VRF default, area 0.0.0.0\n    State P2P, Network type P2P, cost 40\n    Index 1, Transmit delay 1 sec\n    1 Neighbors, flooding to 1, adjacent with 1\n    Timer intervals: Hello 10, Dead 40, Wait 40, Retransmit 5\n      Hello timer due in 00:00:05\n    No authentication\n    Number of opaque link LSAs: 0, checksum sum 0\n VL2-0.0.0.3-33.1.1.1 is up, line protocol is up\n    IP address 192.168.1.1, Process ID 1 VRF default, area 0.0.0.0\n    State P2P, Network type P2P, cost 40\n    Index 2, Transmit delay 1 sec\n    1 Neighbors, flooding to 1, adjacent with 1\n    Timer intervals: Hello 10, Dead 40, Wait 40, Retransmit 5\n      Hello timer due in 00:00:02\n    No authentication\n    Number of opaque link LSAs: 0, checksum sum 0\n loopback0 is up, line protocol is up\n    IP address 111.1.1.1/32, Process ID 1 VRF default, area 0.0.0.3\n    Enabled by interface configuration\n    State LOOPBACK, Network type LOOPBACK, cost 1\n    Index 3\n Ethernet2/1 is up, line protocol is up\n    IP address 10.1.1.2/30, Process ID 1 VRF default, area 0.0.0.2\n    Enabled by interface configuration\n    State DR, Network type BROADCAST, cost 40\n    Index 6, Transmit delay 1 sec, Router Priority 1\n    Designated Router ID: 111.1.1.1, address: 10.1.1.2\n    Backup Designated Router ID: 1.1.1.1, address: 10.1.1.1\n    1 Neighbors, flooding to 1, adjacent with 1\n    Timer intervals: Hello 10, Dead 40, Wait 40, Retransmit 5\n      Hello timer due in 00:00:03\n    Message-digest authentication, using keychain nexus (ready)\n    Number of opaque link LSAs: 0, checksum sum 0\n Ethernet2/2 is up, line protocol is up\n    IP address 10.1.1.5/30, Process ID 1 VRF default, area 0.0.0.0\n    Enabled by interface configuration\n    State DR, Network type BROADCAST, cost 40\n    Index 5, Transmit delay 1 sec, Router Priority 1\n    Designated Router ID: 111.1.1.1, address: 10.1.1.5\n    Backup Designated Router ID: 2.2.2.2, address: 10.1.1.6\n    1 Neighbors, flooding to 1, adjacent with 1\n    Timer intervals: Hello 10, Dead 40, Wait 40, Retransmit 5\n      Hello timer due in 00:00:06\n    No authentication\n    Number of opaque link LSAs: 0, checksum sum 0\n Ethernet2/3 is up, line protocol is up\n    IP address 192.168.1.1/24, Process ID 1 VRF default, area 0.0.0.3\n    Enabled by interface configuration\n    State DR, Network type BROADCAST, cost 40\n    Index 4, Transmit delay 1 sec, Router Priority 1\n    Designated Router ID: 111.1.1.1, address: 192.168.1.1\n    Backup Designated Router ID: 33.1.1.1, address: 192.168.1.2\n    1 Neighbors, flooding to 1, adjacent with 1\n    Timer intervals: Hello 10, Dead 40, Wait 40, Retransmit 5\n      Hello timer due in 00:00:06\n    No authentication\n    Number of opaque link LSAs: 0, checksum sum 0\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_interfaces.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_interfaces\",\"keyVariables\":null,\"startLine\":\"regex[$interface,$physical_state,$protocol_state]:^\\\\s+(\\\\S+) is (\\\\S+),\\\\s+line protocol is (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ip,$mask]:\\\\s+IP address (\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\/?(\\\\d+|)\",\"Process ID $process_id\",\"area $area_id\",\"State $state, Network type $network_type, cost $int:cost\",\"Index $int:index, Transmit delay $int:transmit_delay sec\",\"Router Priority $int:router_priority\",\"Designated Router ID: $designated_router_id, address: $designated_router_address\",\"Backup Designated Router ID: $backup_designated_router_id, address: $backup_designated_router_address\",\"$neighbor_count Neighbors, flooding to $flooding_neighbor_count, adjacent with $adjacent_neighbor_count\",\"Timer intervals: Hello $int:hello, Dead $int:dead, Wait $int:wait, Retransmit $int:retransmit\",\"Hello timer due in $hello_due\",\"Number of opaque link LSAs: $int:opaque_link_lsas, checksum sum $opaque_link_checksum\",\"regex[$authentication]:\\\\s+(.*\\\\s+authentication.*$)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$physical_state:string\",\"$protocol_state:string\",\"$ip:string\",\"$mask:string\",\"$process_id:string\",\"$area_id:string\",\"$state:string\",\"$network_type:string\",\"$cost:int\",\"$index:int\",\"$transmit_delay:int\",\"$router_priority:int\",\"$designated_router_id:string\",\"$designated_router_address:string\",\"$backup_designated_router_id:string\",\"$backup_designated_router_address:string\",\"$neighbor_count:string\",\"$flooding_neighbor_count:string\",\"$adjacent_neighbor_count:string\",\"$hello:int\",\"$dead:int\",\"$wait:int\",\"$retransmit:int\",\"$hello_due:string\",\"$opaque_link_lsas:int\",\"$opaque_link_checksum:string\",\"$authentication:string\"]},\"xxid\":\"f42aac9a-0e4e-5873-2b10-7d8f8486603e\"}]},\"xxid\":\"fe374bd2-0ad9-2e82-862d-43968f0e128b\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$physical_state\",\"$protocol_state\",\"$ip\",\"$mask\",\"$process_id\",\"$area_id\",\"$state\",\"$network_type\",\"$cost\",\"$authentication\"],\"hashSort\":false}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 28,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "physical_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "network_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "index",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "transmit_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "router_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "designated_router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "designated_router_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "backup_designated_router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "backup_designated_router_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "neighbor_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "flooding_neighbor_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "adjacent_neighbor_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "hello",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "dead",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "wait",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "retransmit",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "hello_due",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "opaque_link_lsas",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "opaque_link_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "authentication",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$authentication",
+                    "$cost",
+                    "$interface",
+                    "$ip",
+                    "$mask",
+                    "$network_type",
+                    "$physical_state",
+                    "$process_id",
+                    "$protocol_state",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_interfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "9576c13e92e1539066ff0e4a53825b09",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_interfaces",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$physical_state",
+                    "$protocol_state",
+                    "$ip",
+                    "$mask",
+                    "$process_id",
+                    "$area_id",
+                    "$state",
+                    "$network_type",
+                    "$cost",
+                    "$authentication"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces",
+            "intfKey": false,
+            "name": "ospf_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_interfaces.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_interfaces.$physical_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$physical_state",
+            "intfKey": false,
+            "name": "$physical_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$protocol_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$protocol_state",
+            "intfKey": false,
+            "name": "$protocol_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$ip",
+            "intfKey": false,
+            "name": "$ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$mask",
+            "intfKey": false,
+            "name": "$mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$network_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$network_type",
+            "intfKey": false,
+            "name": "$network_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$index",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$index",
+            "intfKey": false,
+            "name": "$index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$transmit_delay",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$transmit_delay",
+            "intfKey": false,
+            "name": "$transmit_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$router_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$router_priority",
+            "intfKey": false,
+            "name": "$router_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$designated_router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$designated_router_id",
+            "intfKey": false,
+            "name": "$designated_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$designated_router_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$designated_router_address",
+            "intfKey": false,
+            "name": "$designated_router_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$backup_designated_router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$backup_designated_router_id",
+            "intfKey": false,
+            "name": "$backup_designated_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$backup_designated_router_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$backup_designated_router_address",
+            "intfKey": false,
+            "name": "$backup_designated_router_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$neighbor_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$neighbor_count",
+            "intfKey": false,
+            "name": "$neighbor_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$flooding_neighbor_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$flooding_neighbor_count",
+            "intfKey": false,
+            "name": "$flooding_neighbor_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$adjacent_neighbor_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$adjacent_neighbor_count",
+            "intfKey": false,
+            "name": "$adjacent_neighbor_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$hello",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$hello",
+            "intfKey": false,
+            "name": "$hello",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$dead",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$dead",
+            "intfKey": false,
+            "name": "$dead",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$wait",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$wait",
+            "intfKey": false,
+            "name": "$wait",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$retransmit",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$retransmit",
+            "intfKey": false,
+            "name": "$retransmit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$hello_due",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$hello_due",
+            "intfKey": false,
+            "name": "$hello_due",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$opaque_link_lsas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$opaque_link_lsas",
+            "intfKey": false,
+            "name": "$opaque_link_lsas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$opaque_link_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$opaque_link_checksum",
+            "intfKey": false,
+            "name": "$opaque_link_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$authentication",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$authentication",
+            "intfKey": false,
+            "name": "$authentication",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

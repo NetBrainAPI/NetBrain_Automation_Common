@@ -1,0 +1,274 @@
+{
+    "_id": "e1816c69-6026-ee92-5383-053b512ddb4f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show protocols",
+    "createTime": {
+        "$date": 1579116375591
+    },
+    "description": "Device Type:\nCisco IOS XR \nCommand:\nshow ip protocols",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:ios#show ip protocols\nMon Jun 30 19:39:15.159 UTC\n\nRouting Protocol: EIGRP, instance 100\n Default context AS: 100, Router ID: 12.12.12.12\n  Address Family: IPv4\n   Default networks not flagged in outgoing updates\n   Default networks not accepted from incoming updates\n   Distance: internal 90, external 170\n   Maximum paths: 4\n   EIGRP metric weight K1=1, K2=0, K3=1, K4=0, K5=0, K6=0\n   EIGRP metric rib scale 128\n   EIGRP metric version 64-bit\n   EIGRP maximum hopcount 100\n   EIGRP maximum metric variance 1\n   EIGRP NSF: enabled\n    NSF-aware route hold timer is 480s\n    NSF signal timer is 20s\n    NSF converge timer is 300s\n    Time since last restart is 03:58:39\n   SIA Active timer is 180s\n   Interfaces:\n    GigabitEthernet0/0/0/0\n\nRouting Protocol: BGP, instance 100\n Default context AS: 100, Router ID: 12.12.12.12\n  Address Family: IPv4\n   Default networks not flagged in outgoing updates\n   Default networks not accepted from incoming updates\n   Distance: internal 90, external 170\n   Maximum paths: 4\n   EIGRP metric weight K1=1, K2=0, K3=1, K4=0, K5=0, K6=0\n   EIGRP metric rib scale 128\n   EIGRP metric version 64-bit\n   EIGRP maximum hopcount 100\n   EIGRP maximum metric variance 1\n   EIGRP NSF: enabled\n    NSF-aware route hold timer is 480s\n    NSF signal timer is 20s\n    NSF converge timer is 300s\n    Time since last restart is 03:58:39\n   SIA Active timer is 180s\n   Interfaces:\n    GigabitEthernet0/0/0/0",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"protocols\",\"keyVariables\":null,\"startLine\":\"Routing Protocol: $protocol, instance $instance\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Default context AS: $default_context_as, Router ID: $rid\",\"regex[$default_network_outgoing]:Default networks (.*) in outgoing updates\",\"regex[$default_network_incoming]:Default networks (.*) from incoming updates\",\"regex[$int:internal_distance,$int:external_distance]:Distance:\\\\s+internal (\\\\d+), external (\\\\d+)\",\"aximum paths: $int:max_path\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$protocol:string\",\"$instance:string\",\"$default_context_as:string\",\"$rid:string\",\"$default_network_outgoing:string\",\"$default_network_incoming:string\",\"$internal_distance:int\",\"$external_distance:int\",\"$max_path:int\"]},\"xxid\":\"1b6427c1-f1f9-c84b-423b-a8ff2b185387\"}]},\"xxid\":\"b80bc5fd-9625-96dd-d3a4-d4d11d88da00\",\"hashColumns\":[\"$protocol\",\"$rid\",\"$instance\",\"$default_context_as\"]}]}",
+            "tableKeys": [
+                "_original_result.protocols.$protocol",
+                "_original_result.protocols.$rid",
+                "_original_result.protocols.$instance",
+                "_original_result.protocols.$default_context_as"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "default_context_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "default_network_outgoing",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "default_network_incoming",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "internal_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "external_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "max_path",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$default_context_as",
+                    "$instance",
+                    "$protocol",
+                    "$rid"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "protocols",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "517d6b710ee543da5750e5aa037c765b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "protocols",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$protocol",
+                    "$rid",
+                    "$instance",
+                    "$default_context_as"
+                ],
+                "hashSort": false
+            },
+            "fullName": "protocols",
+            "intfKey": false,
+            "name": "protocols",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "protocols.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$instance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$default_context_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$default_context_as",
+            "intfKey": false,
+            "name": "$default_context_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$rid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$default_network_outgoing",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$default_network_outgoing",
+            "intfKey": false,
+            "name": "$default_network_outgoing",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$default_network_incoming",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$default_network_incoming",
+            "intfKey": false,
+            "name": "$default_network_incoming",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$internal_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$internal_distance",
+            "intfKey": false,
+            "name": "$internal_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$external_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$external_distance",
+            "intfKey": false,
+            "name": "$external_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$max_path",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$max_path",
+            "intfKey": false,
+            "name": "$max_path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

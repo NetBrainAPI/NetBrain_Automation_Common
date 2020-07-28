@@ -1,0 +1,277 @@
+{
+    "_id": "02541bb4-e4ce-a51d-483a-7c6b226f061e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ap database",
+    "createTime": {
+        "$date": 1591103372392
+    },
+    "description": "Device Type:\nAruba WLC\nCommand:\nshow ap database",
+    "devTypes": [
+        3035
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NetBrain-Aruba-WLC#show ap database\r\n\r\nAP Database\r\n-----------\r\nName    Group            AP Type  IP Address   Status     Flags  Switch IP    Standby IP\r\n----    -----            -------  ----------   ------     -----  ---------    ----------\r\nAP-1    NB-CAP-AP-GROUP  225      10.18.1.137  Up 1m:47s  IL     10.88.1.131  0.0.0.0\r\nAP-3    NB-CAP-AP-GROUP  225      10.18.1.138  Up 1m:50s  IL     10.88.1.132  0.0.0.0\r\nAP-3-3  NB-CAP-AP-GROUP  225      10.18.1.139  Up 1m:51s  IL     10.88.1.133  0.0.0.0\r\nAP-4    NB-CAP-AP-GROUP  225      10.18.1.140  Up 1m:50s  IL     10.88.1.132  0.0.0.0\r\nAP-5    NB-CAP-AP-GROUP  225      10.18.1.140  Up 1m:50s  IL     10.88.1.122  0.0.0.0\r\n\r\nFlags: U = Unprovisioned; N = Duplicate name; G = No such group; L = Unlicensed\r\n       I = Inactive; D = Dirty or no config; E = Regulatory Domain Mismatch\r\n       X = Maintenance Mode; P = PPPoE AP; B = Built-in AP; s = LACP striping\r\n       R = Remote AP; R- = Remote AP requires Auth; C = Cellular RAP;\r\n       c = CERT-based RAP; 1 = 802.1x authenticated AP; 2 = Using IKE version 2\r\n       u = Custom-Cert RAP; S = Standby-mode AP; J = USB cert at AP\r\n       M = Mesh node; Y = Mesh Recovery\r\n\r\nTotal APs:5",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_aps]:Total\\\\s*APs\\\\s*:\\\\s*(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_aps:int\"]},\"xxid\":\"1660c33a-2018-9ef1-897f-bc62be85760e\"},{\"type\":\"3\",\"name\":\"ap_database\",\"headers\":\"Name;Group;AP Type;IP Address;Status;Flags;Switch IP;Standby IP\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Name:$string:name;Group:$string:group;AP Type:$string:ap_type;IP Address:$string:ip_addr;Status:$string:status;Flags:$string:flags;Switch IP:$string:switch_ip;Standby IP:$string:standby_ip\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$name:string\",\"$group:string\",\"$ap_type:string\",\"$ip_addr:string\",\"$status:string\",\"$flags:string\",\"$switch_ip:string\",\"$standby_ip:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"a03ef00a-5b5a-cf30-b252-5603badd720a\",\"hashColumns\":[\"$name\",\"$ap_type\",\"$ip_addr\",\"$switch_ip\",\"$standby_ip\"]}]}",
+            "tableKeys": [
+                "_original_result.ap_database.$name",
+                "_original_result.ap_database.$ap_type",
+                "_original_result.ap_database.$ip_addr",
+                "_original_result.ap_database.$switch_ip",
+                "_original_result.ap_database.$standby_ip"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_aps",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ap_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "switch_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "standby_ip",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ap_type",
+                    "$ip_addr",
+                    "$name",
+                    "$standby_ip",
+                    "$switch_ip"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ap_database",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d6c142fc99d79935853754f51fec9da1",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total_aps",
+            "dataType": "int",
+            "desc": "Total APs",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_aps",
+            "intfKey": false,
+            "name": "$total_aps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database",
+            "dataType": "table",
+            "desc": "AP Database Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$name",
+                    "$ap_type",
+                    "$ip_addr",
+                    "$switch_ip",
+                    "$standby_ip"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ap_database",
+            "intfKey": false,
+            "name": "ap_database",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ap_database.$name",
+            "dataType": "string",
+            "desc": "AP Name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database.$group",
+            "dataType": "string",
+            "desc": "Group",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database.$ap_type",
+            "dataType": "string",
+            "desc": "AP Type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$ap_type",
+            "intfKey": false,
+            "name": "$ap_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database.$ip_addr",
+            "dataType": "string",
+            "desc": "IP Address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database.$status",
+            "dataType": "string",
+            "desc": "Status",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database.$flags",
+            "dataType": "string",
+            "desc": "Flags",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database.$switch_ip",
+            "dataType": "string",
+            "desc": "Switch IP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$switch_ip",
+            "intfKey": false,
+            "name": "$switch_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ap_database.$standby_ip",
+            "dataType": "string",
+            "desc": "Standby IP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ap_database.$standby_ip",
+            "intfKey": false,
+            "name": "$standby_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

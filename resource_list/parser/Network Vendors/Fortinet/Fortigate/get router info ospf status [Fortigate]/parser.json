@@ -1,0 +1,603 @@
+{
+    "_id": "530c6fc6-92cf-b4a8-9ce9-bea3f621685d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "get router info ospf status",
+    "createTime": {
+        "$date": 1584130771526
+    },
+    "description": "",
+    "devTypes": [
+        10380
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "FG1# get router info ospf status\nRouting Process \"ospf 0\" with ID 192.168.182.110\nProcess uptime is 11 minutes\nProcess bound to VRF default\nConforms to RFC2328, and RFC1583Compatibility flag is disabled\nSupports only single TOS(TOS0) routes\nSupports opaque LSA\nDo not support Restarting\nSPF schedule delay 5 secs, Hold time between two SPFs 10 secs\nRefresh timer 10 secs\nNumber of incomming current DD exchange neighbors 0/5\nNumber of outgoing current DD exchange neighbors 0/5\nNumber of external LSA 0. Checksum 0x000000\nNumber of opaque AS LSA 0. Checksum 0x000000\nNumber of non-default external LSA 0\nExternal LSA database is unlimited.\nNumber of LSA originated 1\nNumber of LSA received 0\nNumber of areas attached to this router: 1\nArea 0.0.0.0 (BACKBONE)\nNumber of interfaces in this area is 2(3)\nNumber of fully adjacent neighbors in this area is 0\nArea has no authentication\nSPF algorithm last executed 00:11:18.710 ago\nSPF algorithm executed 2 times\nNumber of LSA 1. Checksum 0x0008dc\nArea 0.0.0.1 (Stub) (Inactive)\nNumber of interfaces in this area is 0(0)\nNumber of fully adjacent neighbors in this area is 0\nNumber of fully adjacent virtual neighbors through this area is 0\nArea has no authentication\nSPF algorithm executed 0 times\nNumber of LSA 1. Checksum 0x002028\nShortcutting mode: Disabled, S-bit consensus: no",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_status\",\"keyVariables\":\"\",\"startLine\":\"regex[$ospf_process,$ospf_id]:Routing Process \\\"(.+)\\\" with ID (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$process_uptime]:Process uptime is (.+)\",\"Process bound to VRF $process_bound_to_vrf\",\"regex[$spf_delay_secs,$spf_hold_time_secs]:SPF schedule delay (\\\\d+) secs, Hold time between two SPFs (\\\\d+) secs\",\"Refresh timer $int:refresh_timer_secs secs\",\"Number of areas attached to this router: $int:areas_attached\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_process:string\",\"$ospf_id:string\",\"$process_uptime:string\",\"$process_bound_to_vrf:string\",\"$spf_delay_secs:string\",\"$spf_hold_time_secs:string\",\"$refresh_timer_secs:int\",\"$areas_attached:int\"]},\"xxid\":\"2c6064fe-31df-07e6-12c9-069c528335ab\"},{\"type\":\"4\",\"name\":\"ospf_areas\",\"keyVariables\":\"\",\"startLine\":\"Area $ospf_area ($area_type)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$number_of_interfaces]:Number of interfaces in this area is (.+)\",\"Number of fully adjacent neighbors in this area is $int:adjacent_neighbors\",\"Number of fully adjacent virtual neighbors through this area is $int:adjacent_virtual_neighbors\",\"SPF algorithm executed $int:times_spf_executed times\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_area:string\",\"$area_type:string\",\"$number_of_interfaces:string\",\"$adjacent_neighbors:int\",\"$adjacent_virtual_neighbors:int\",\"$times_spf_executed:int\"]},\"xxid\":\"331fefd4-3fa6-5292-5268-cbf473d23458\"}]},\"xxid\":\"fe13ee2a-915a-2412-81f2-9bba60170044\",\"hashColumns\":[\"$ospf_area\",\"$area_type\",\"$number_of_interfaces\",\"$adjacent_neighbors\",\"$adjacent_virtual_neighbors\",\"$ospf_process\",\"$ospf_id\",\"$process_bound_to_vrf\",\"$spf_delay_secs\",\"$spf_hold_time_secs\",\"$refresh_timer_secs\",\"$areas_attached\"],\"hashSort\":false}]},\"xxid\":\"63ddfd7c-3934-55ed-d4f6-f7b1d0c355da\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"0e6bd176-d596-ce8d-50bd-7c37eefb2fa8\"}]}",
+            "tableKeys": [
+                "_original_result.ospf_status.ospf_areas.$ospf_area"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ospf_process",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ospf_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "process_uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "process_bound_to_vrf",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "spf_delay_secs",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "spf_hold_time_secs",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "refresh_timer_secs",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "areas_attached",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_status",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ospf_area",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "area_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "number_of_interfaces",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "adjacent_neighbors",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "adjacent_virtual_neighbors",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "times_spf_executed",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "ospf_process",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "ospf_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "process_uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "process_bound_to_vrf",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "spf_delay_secs",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "spf_hold_time_secs",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "refresh_timer_secs",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "areas_attached",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$adjacent_neighbors",
+                    "$adjacent_virtual_neighbors",
+                    "$area_type",
+                    "$areas_attached",
+                    "$number_of_interfaces",
+                    "$ospf_area",
+                    "$ospf_id",
+                    "$ospf_process",
+                    "$process_bound_to_vrf",
+                    "$refresh_timer_secs",
+                    "$spf_delay_secs",
+                    "$spf_hold_time_secs"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "ospf_areas",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0c527692990dcc56d93bda9c6e0883ea",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_status",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf_status",
+            "intfKey": false,
+            "name": "ospf_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_status.$ospf_process",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$ospf_process",
+            "intfKey": false,
+            "name": "$ospf_process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_status.$ospf_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$ospf_id",
+            "intfKey": false,
+            "name": "$ospf_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_status.$process_uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$process_uptime",
+            "intfKey": false,
+            "name": "$process_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_status.$process_bound_to_vrf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$process_bound_to_vrf",
+            "intfKey": false,
+            "name": "$process_bound_to_vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_status.$spf_delay_secs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$spf_delay_secs",
+            "intfKey": false,
+            "name": "$spf_delay_secs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_status.$spf_hold_time_secs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$spf_hold_time_secs",
+            "intfKey": false,
+            "name": "$spf_hold_time_secs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_status.$refresh_timer_secs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$refresh_timer_secs",
+            "intfKey": false,
+            "name": "$refresh_timer_secs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_status.$areas_attached",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.$areas_attached",
+            "intfKey": false,
+            "name": "$areas_attached",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ospf_area",
+                    "$area_type",
+                    "$number_of_interfaces",
+                    "$adjacent_neighbors",
+                    "$adjacent_virtual_neighbors",
+                    "$ospf_process",
+                    "$ospf_id",
+                    "$process_bound_to_vrf",
+                    "$spf_delay_secs",
+                    "$spf_hold_time_secs",
+                    "$refresh_timer_secs",
+                    "$areas_attached"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas",
+            "intfKey": false,
+            "name": "ospf_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_areas.$ospf_area",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$ospf_area",
+            "intfKey": false,
+            "name": "$ospf_area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$area_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$area_type",
+            "intfKey": false,
+            "name": "$area_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$number_of_interfaces",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$number_of_interfaces",
+            "intfKey": false,
+            "name": "$number_of_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$adjacent_neighbors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$adjacent_neighbors",
+            "intfKey": false,
+            "name": "$adjacent_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$adjacent_virtual_neighbors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$adjacent_virtual_neighbors",
+            "intfKey": false,
+            "name": "$adjacent_virtual_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$times_spf_executed",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$times_spf_executed",
+            "intfKey": false,
+            "name": "$times_spf_executed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$ospf_process",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$ospf_process",
+            "intfKey": false,
+            "name": "$ospf_process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$ospf_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$ospf_id",
+            "intfKey": false,
+            "name": "$ospf_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$process_uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$process_uptime",
+            "intfKey": false,
+            "name": "$process_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$process_bound_to_vrf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$process_bound_to_vrf",
+            "intfKey": false,
+            "name": "$process_bound_to_vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$spf_delay_secs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$spf_delay_secs",
+            "intfKey": false,
+            "name": "$spf_delay_secs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$spf_hold_time_secs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$spf_hold_time_secs",
+            "intfKey": false,
+            "name": "$spf_hold_time_secs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$refresh_timer_secs",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$refresh_timer_secs",
+            "intfKey": false,
+            "name": "$refresh_timer_secs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_areas.$areas_attached",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_status.ospf_areas.$areas_attached",
+            "intfKey": false,
+            "name": "$areas_attached",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

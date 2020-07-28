@@ -1,0 +1,258 @@
+{
+    "_id": "e4ea272a-e2b5-9125-9c25-41fe2251ed6a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbor",
+    "createTime": {
+        "$date": 1591076070076
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow ospf neighbor",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "# show ospf neighbor        \r\n\r\nNeighbor ID     Pri State              Up/Dead Time             Address      Interface             \r\n          BFD Session State   \r\n=========================================================================================   \r\n160.26.26.2      10 FULL      /BDR     10:16:42:57/00:00:00:00  160.26.26.2   CHI_160_26_26             \r\n          Disabled   \r\n10.0.2.2         10 FULL      /BDR     07:17:55:29/00:00:00:09  10.0.2.2      HQ_10_0_2             \r\n          Active    \r\n10.0.3.2         10 FULL      /BDR     07:17:54:56/00:00:00:03  10.0.3.2      HQ_10_0_3             \r\n          Error (Session Limit Exceeded)       \r\n\r\nTotal number of neighbors: 3 (All neighbors in Full state)       \r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_nbrs.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_nbrs\",\"keyVariables\":\"\",\"startLine\":\"mregex[$neighbor_id, $pri, $state, $up_dead_time, $addr, $interface, $bfd_session_state]:^(\\\\d+\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+\\\\s*\\\\/\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\S+)\\\\s+(\\\\S+)[\\\\r\\\\n]*\\\\s*(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbor_id:string\",\"$pri:string\",\"$state:string\",\"$up_dead_time:string\",\"$addr:string\",\"$interface:string\",\"$bfd_session_state:string\"]},\"xxid\":\"4e516405-5d23-5d72-e2a7-dc5abaa24e49\"}]},\"xxid\":\"ec9d6590-79ef-e17a-f5e4-9df280dac707\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$intf\",\"$interface\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_number_nbrs]:total number of neighbors\\\\s*:\\\\s*(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_number_nbrs:int\"]},\"xxid\":\"17717300-1eef-fa8b-029a-1f52b70ff371\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_number_nbrs",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "pri",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "up_dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "bfd_session_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c9052ae5b9a5e4aec26a465554b08830",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_nbrs",
+            "dataType": "paragraph",
+            "desc": "OSPF neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs",
+            "intfKey": false,
+            "name": "ospf_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_nbrs.$neighbor_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$neighbor_id",
+            "intfKey": false,
+            "name": "$neighbor_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$pri",
+            "dataType": "string",
+            "desc": "Priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$pri",
+            "intfKey": false,
+            "name": "$pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$state",
+            "dataType": "string",
+            "desc": "State.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$up_dead_time",
+            "dataType": "string",
+            "desc": "UP/Dead time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$up_dead_time",
+            "intfKey": false,
+            "name": "$up_dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$addr",
+            "dataType": "string",
+            "desc": "Address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$addr",
+            "intfKey": false,
+            "name": "$addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbrs.$bfd_session_state",
+            "dataType": "string",
+            "desc": "BFD session state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_nbrs.$bfd_session_state",
+            "intfKey": false,
+            "name": "$bfd_session_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_number_nbrs",
+            "dataType": "int",
+            "desc": "Total number of neighbors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_number_nbrs",
+            "intfKey": false,
+            "name": "$total_number_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

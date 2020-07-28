@@ -1,0 +1,132 @@
+{
+    "_id": "ad6b35fb-8be8-ce7d-f3e9-521411f33f89",
+    "author": "NetBrain",
+    "bizType": "d198c0de-1232-499e-8cc2-91f316cefbe3",
+    "command": "",
+    "createTime": {
+        "$date": 1560793449710
+    },
+    "description": "",
+    "devTypes": [
+        21011,
+        21007,
+        21008,
+        21010,
+        13002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'ESXI', 'paramType': 'SDN', 'params' : ['moid'] })\r\n    moid = get_dn['params']['moid']\r\n    rtn_params = { 'devName' : device_name, 'moid' : moid, 'vmi_type':\"VirtualMachine\"}\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    # used\r\n    property_paths = [\"summary\", \"quickStats\"]\r\n    property_names = [\"hostMemoryUsage\", \"overallCpuUsage\"]\r\n    rtn_params['property_paths'] = property_paths\r\n    rtn_params['property_names'] = property_names\r\n    resp = get_vmi_object(rtn_params)\r\n    # total\r\n    property_paths = []\r\n    property_names = [\"overallStatus\", \"configStatus\", \"guestHeartbeatStatus\"]\r\n    rtn_params['property_paths'] = property_paths\r\n    rtn_params['property_names'] = property_names\r\n    resp2 = get_vmi_object(rtn_params)\r\n    rtn1 = json.loads(resp)\r\n    if resp2:\r\n        rtn1.update(json.loads(resp2))\r\n    return json.dumps(rtn1)",
+    "samples": [
+        {
+            "content": "{\n    \"hostMemoryUsage\": 896,\n    \"overallCpuUsage\": 0,\n    \"overallStatus\": \"green\",\n    \"configStatus\": \"green\",\n    \"guestHeartbeatStatus\": \"gray\"\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[    \\n    \\n    {\\\"name\\\": \\\"hostMemoryUsage\\\", \\\"type\\\": \\\"int\\\"},\\n    {\\\"name\\\": \\\"overallCpuUsage\\\", \\\"type\\\": \\\"int\\\"},\\n    {\\\"name\\\": \\\"overallStatus\\\", \\\"type\\\": \\\"string\\\"},\\n    {\\\"name\\\": \\\"configStatus\\\", \\\"type\\\": \\\"string\\\"},\\n    {\\\"name\\\": \\\"guestHeartbeatStatus\\\", \\\"type\\\": \\\"string\\\"}\\n\\n]\\nEnd Declare\\n'''\\n\\n\\nimport json \\ndef ParseText(_original_result):\\n    value = json.loads(_original_result)\\n    return value\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$configStatus\",\"type\":\"string\"},{\"name\":\"$guestHeartbeatStatus\",\"type\":\"string\"},{\"name\":\"$hostMemoryUsage\",\"type\":\"int\"},{\"name\":\"$overallCpuUsage\",\"type\":\"int\"},{\"name\":\"$overallStatus\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"1e7d1a22-643d-d6f3-7d22-702716c12ec5\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "configStatus",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "guestHeartbeatStatus",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "hostMemoryUsage",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "overallCpuUsage",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "overallStatus",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "c9faab21d958108f06e3811e7a6e53ac",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$configStatus",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$configStatus",
+            "intfKey": false,
+            "name": "$configStatus",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$guestHeartbeatStatus",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$guestHeartbeatStatus",
+            "intfKey": false,
+            "name": "$guestHeartbeatStatus",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hostMemoryUsage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$hostMemoryUsage",
+            "intfKey": false,
+            "name": "$hostMemoryUsage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$overallCpuUsage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$overallCpuUsage",
+            "intfKey": false,
+            "name": "$overallCpuUsage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$overallStatus",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$overallStatus",
+            "intfKey": false,
+            "name": "$overallStatus",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

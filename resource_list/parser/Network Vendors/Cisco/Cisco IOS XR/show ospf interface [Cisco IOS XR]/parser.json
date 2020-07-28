@@ -1,0 +1,596 @@
+{
+    "_id": "fd09d118-d3f1-479c-6d1b-5dbb4afd1c84",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf interface",
+    "createTime": {
+        "$date": 1579122074323
+    },
+    "description": "Device Type:\nCisco IOS XR\nCommand:\nshow ospf interface",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:xrv9#show ospf interface\r\n\r\nTue Jan 21 15:55:50.003 UTC\r\n\r\nInterfaces for OSPF 100\r\n\r\nLoopback0 is up, line protocol is up \r\n  Internet Address 75.75.75.6/32, Area 0\r\n  Process ID 100, Router ID 75.75.75.6, Network Type LOOPBACK, Cost: 1\r\n  Loopback interface is treated as a stub Host\r\nGigabitEthernet0/0/0/0 is up, line protocol is up \r\n  Internet Address 30.1.1.2/30, Area 0\r\n  Process ID 100, Router ID 75.75.75.6, Network Type POINT_TO_POINT, Cost: 1\r\n  LDP Sync Enabled, Sync Status: Achieved\r\n  Transmit Delay is 1 sec, State POINT_TO_POINT, MTU 1500, MaxPktSz 1500\r\n  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5\r\n    Hello due in 00:00:04:255\r\n  Index 2/2, flood queue length 0\r\n  Next 0(0)/0(0)\r\n  Last flood scan length is 5, maximum is 9\r\n  Last flood scan time is 0 msec, maximum is 0 msec\r\n  LS Ack List: current length 0, high water mark 9\r\n  Neighbor Count is 1, Adjacent neighbor count is 1\r\n    Adjacent with neighbor 75.75.75.5\r\n  Suppress hello for 0 neighbor(s)\r\n  Multi-area interface Count is 0\r\nGigabitEthernet0/0/0/1 is up, line protocol is up \r\n  Internet Address 30.1.1.5/30, Area 0\r\n  Process ID 100, Router ID 75.75.75.6, Network Type POINT_TO_POINT, Cost: 1\r\n  LDP Sync Enabled, Sync Status: Achieved\r\n  Transmit Delay is 1 sec, State POINT_TO_POINT, MTU 1500, MaxPktSz 1500\r\n  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5\r\n    Hello due in 00:00:04:235\r\n  Index 3/3, flood queue length 0\r\n  Next 0(0)/0(0)\r\n  Last flood scan length is 5, maximum is 9\r\n  Last flood scan time is 0 msec, maximum is 0 msec\r\n  LS Ack List: current length 0, high water mark 5\r\n  Neighbor Count is 1, Adjacent neighbor count is 1\r\n    Adjacent with neighbor 75.75.75.7\r\n  Suppress hello for 0 neighbor(s)\r\n  Multi-area interface Count is 0\r\nGigabitEthernet0/0/0/2 is up, line protocol is up \r\n  Internet Address 20.1.1.6/30, Area 0\r\n  Process ID 100, Router ID 75.75.75.6, Network Type POINT_TO_POINT, Cost: 1\r\n  LDP Sync Enabled, Sync Status: Achieved\r\n  Transmit Delay is 1 sec, State POINT_TO_POINT, MTU 1500, MaxPktSz 1500\r\n  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5\r\n    Hello due in 00:00:08:014\r\n  Index 4/4, flood queue length 0\r\n  Next 0(0)/0(0)\r\n  Last flood scan length is 4, maximum is 5\r\n  Last flood scan time is 0 msec, maximum is 0 msec\r\n  LS Ack List: current length 0, high water mark 11\r\n  Neighbor Count is 1, Adjacent neighbor count is 1\r\n    Adjacent with neighbor 75.75.75.2\r\n  Suppress hello for 0 neighbor(s)\r\n  Multi-area interface Count is 0\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_intfs.ospf_interface_table.$interfacef"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_intfs\",\"keyVariables\":null,\"startLine\":\"Interfaces for OSPF $process_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process_id:string\"]},\"xxid\":\"ae60af6e-2bfa-0a20-7685-c6568199bb1d\"},{\"type\":\"4\",\"name\":\"ospf_interface_table\",\"keyVariables\":null,\"startLine\":\"regex[$interfacef,$physical_state,$protocol_state]:^(\\\\S+) is (\\\\S+), line protocol is (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ip,$mask,$area_id]:\\\\s+Internet Address (\\\\S+)\\\\/(\\\\S+), Area (\\\\S+)\",\"Router ID $router_id, Network Type $network_type, Cost: $int:cost\",\"MTU $int:mtu, MaxPktSz $int:maxpktsz\",\"Designated Router (ID) $dr_id, Interface address $dr_intf_addr\",\"Backup Designated router (ID) $bdr_id, Interface address $bdr_intf_addr\",\"Neighbor Count is $int:neighbor_count, Adjacent neighbor count is $int:adjacent_neighbor_count\",\"Adjacent with neighbor $adjacent_neighbor_address\",\"regex[$authentication]:\\\\s+(.*\\\\s+authentication.*$)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$interfacef:string\",\"$physical_state:string\",\"$protocol_state:string\",\"$ip:string\",\"$mask:string\",\"$area_id:string\",\"$router_id:string\",\"$network_type:string\",\"$cost:int\",\"$mtu:int\",\"$maxpktsz:int\",\"$dr_id:string\",\"$dr_intf_addr:string\",\"$bdr_id:string\",\"$bdr_intf_addr:string\",\"$neighbor_count:int\",\"$adjacent_neighbor_count:int\",\"$adjacent_neighbor_address:string\",\"$authentication:string\"]},\"xxid\":\"57ccfb3c-55c8-cec9-bf20-aa53b8b4b9e4\"}]},\"xxid\":\"0d03a74a-c4a9-853b-dc21-cca41382189f\",\"interfaceKey\":\"$interfacef\",\"hashColumns\":[\"$interfacef\",\"$physical_state\",\"$protocol_state\",\"$ip\",\"$router_id\",\"$network_type\",\"$cost\",\"$mtu\",\"$maxpktsz\",\"$dr_id\",\"$dr_intf_addr\",\"$bdr_id\",\"$bdr_intf_addr\",\"$neighbor_count\",\"$adjacent_neighbor_count\",\"$authentication\",\"$area_id\",\"$process_id\"],\"hashSort\":false}]},\"xxid\":\"8853e27b-a74e-b076-ce3a-467c99f9db67\",\"hashColumns\":[]}]}",
+            "tableKeys": [
+                "_original_result.ospf_intfs.ospf_interface_table.$ip",
+                "_original_result.ospf_intfs.ospf_interface_table.$physical_state",
+                "_original_result.ospf_intfs.ospf_interface_table.$protocol_state",
+                "_original_result.ospf_intfs.ospf_interface_table.$area_id",
+                "_original_result.ospf_intfs.ospf_interface_table.$router_id",
+                "_original_result.ospf_intfs.ospf_interface_table.$cost",
+                "_original_result.ospf_intfs.ospf_interface_table.$mtu",
+                "_original_result.ospf_intfs.ospf_interface_table.$process_id",
+                "_original_result.ospf_intfs.ospf_interface_table.$neighbor_count"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_intfs",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 20,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interfacef",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "physical_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "network_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "maxpktsz",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "dr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "dr_intf_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "bdr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "bdr_intf_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "neighbor_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "adjacent_neighbor_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "adjacent_neighbor_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "authentication",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$adjacent_neighbor_count",
+                    "$area_id",
+                    "$authentication",
+                    "$bdr_id",
+                    "$bdr_intf_addr",
+                    "$cost",
+                    "$dr_id",
+                    "$dr_intf_addr",
+                    "$interfacef",
+                    "$ip",
+                    "$maxpktsz",
+                    "$mtu",
+                    "$neighbor_count",
+                    "$network_type",
+                    "$physical_state",
+                    "$process_id",
+                    "$protocol_state",
+                    "$router_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_interface_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bb021ae2ff24d349b137a8e566ce1dfa",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_intfs",
+            "dataType": "paragraph",
+            "desc": "OSPF process id table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs",
+            "intfKey": false,
+            "name": "ospf_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_intfs.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interfacef",
+                    "$physical_state",
+                    "$protocol_state",
+                    "$ip",
+                    "$router_id",
+                    "$network_type",
+                    "$cost",
+                    "$mtu",
+                    "$maxpktsz",
+                    "$dr_id",
+                    "$dr_intf_addr",
+                    "$bdr_id",
+                    "$bdr_intf_addr",
+                    "$neighbor_count",
+                    "$adjacent_neighbor_count",
+                    "$authentication",
+                    "$area_id",
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table",
+            "intfKey": false,
+            "name": "ospf_interface_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_interface_table.$interfacef",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$interfacef",
+            "intfKey": false,
+            "name": "$interfacef",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_interface_table.$physical_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$physical_state",
+            "intfKey": false,
+            "name": "$physical_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$protocol_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$protocol_state",
+            "intfKey": false,
+            "name": "$protocol_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$ip",
+            "intfKey": false,
+            "name": "$ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$mask",
+            "intfKey": false,
+            "name": "$mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$network_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$network_type",
+            "intfKey": false,
+            "name": "$network_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$mtu",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$maxpktsz",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$maxpktsz",
+            "intfKey": false,
+            "name": "$maxpktsz",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$dr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$dr_id",
+            "intfKey": false,
+            "name": "$dr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$dr_intf_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$dr_intf_addr",
+            "intfKey": false,
+            "name": "$dr_intf_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$bdr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$bdr_id",
+            "intfKey": false,
+            "name": "$bdr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$bdr_intf_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$bdr_intf_addr",
+            "intfKey": false,
+            "name": "$bdr_intf_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$neighbor_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$neighbor_count",
+            "intfKey": false,
+            "name": "$neighbor_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$adjacent_neighbor_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$adjacent_neighbor_count",
+            "intfKey": false,
+            "name": "$adjacent_neighbor_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$adjacent_neighbor_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$adjacent_neighbor_address",
+            "intfKey": false,
+            "name": "$adjacent_neighbor_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$authentication",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$authentication",
+            "intfKey": false,
+            "name": "$authentication",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.ospf_interface_table.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

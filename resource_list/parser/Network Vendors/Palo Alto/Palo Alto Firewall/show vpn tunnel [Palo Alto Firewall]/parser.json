@@ -1,0 +1,284 @@
+{
+    "_id": "06c9efe5-b348-2721-c016-59380c25419c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vpn tunnel",
+    "createTime": {
+        "$date": 1579617932284
+    },
+    "description": "Device Type:\nPalo Alto Firewall\nCommand:\nshow vpn tunnel",
+    "devTypes": [
+        2130
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NetBrain_PaloAloto> show vpn tunnel\r\n\r\nTnID Name(Gateway)                  Local Proxy IP     Ptl:Port  Remote Proxy IP    Ptl:Port  Proposals\r\n---- -------------                  --------------     --------- ---------------    --------- ---------\r\n   7 to-qapp 0.0.0.0        0:0     0.0.0.0       0:0     ESP tunl [DH2][AES128][SHA1] 3600-sec\r\n  14 to-devlopment 192.168.102.1-192.168.102.100     0:0     192.168.103.1-192.168.103.100     0:0     ESP tunl [DH2][AES128][SHA1] 3600-sec\r\n   8 To-Management 10.10.50.0/24        0:0     10.33.0.0/16         0:0     ESP tunl [DH2][AES128][SHA1] 3600-sec\r\n  10 To-Support 10.10.101.0/24       0:0     10.33.0.0/16         0:0     ESP tunl [DH2][AES128][SHA1] 3600-sec\r\n  11 To-Tech 10.10.101.0/24       0:0     10.20.3.0/24         0:0     ESP tunl [DH2][AES128][SHA1] 3600-sec\r\n  12 To-Boss 10.10.101.0/24       0:0     192.168.39.0/24      0:0     ESP tunl [DH2][AES128][SHA1] 3600-sec\r\n\r\nShow IPSec tunnel config: Total 6 tunnels found.\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vpn_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:tn_id, $gateway_name, $local_proxy_ip, $local_proxy_protocol, $local_proxy_port, $remote_proxy_ip, $remote_proxy_protocol, $remote_proxy_port, $proposals]:^\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\S+)\\\\s+(\\\\d+)\\\\:(\\\\d+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\S+)\\\\s+(\\\\d+)\\\\:(\\\\d+)\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$tn_id:int\",\"$gateway_name:string\",\"$local_proxy_ip:string\",\"$local_proxy_protocol:string\",\"$local_proxy_port:string\",\"$remote_proxy_ip:string\",\"$remote_proxy_protocol:string\",\"$remote_proxy_port:string\",\"$proposals:string\"]},\"xxid\":\"8a072724-f75c-f516-c23e-382470630782\"}]},\"xxid\":\"2c2191b1-b66a-7658-6e36-1be244c7b079\",\"hashColumns\":[\"$tn_id\",\"$gateway_name\",\"$local_proxy_ip\",\"$local_proxy_protocol\",\"$local_proxy_port\",\"$remote_proxy_ip\",\"$remote_proxy_protocol\",\"$remote_proxy_port\",\"$proposals\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.vpn_table.$tn_id",
+                "_original_result.vpn_table.$gateway_name",
+                "_original_result.vpn_table.$local_proxy_ip",
+                "_original_result.vpn_table.$proposals"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "tn_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "gateway_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "local_proxy_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "local_proxy_protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "local_proxy_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "remote_proxy_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "remote_proxy_protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "remote_proxy_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "proposals",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$gateway_name",
+                    "$local_proxy_ip",
+                    "$local_proxy_port",
+                    "$local_proxy_protocol",
+                    "$proposals",
+                    "$remote_proxy_ip",
+                    "$remote_proxy_port",
+                    "$remote_proxy_protocol",
+                    "$tn_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vpn_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e7104136a972ed47efb300047fea6618",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vpn_table",
+            "dataType": "paragraph",
+            "desc": "VPN table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$tn_id",
+                    "$gateway_name",
+                    "$local_proxy_ip",
+                    "$local_proxy_protocol",
+                    "$local_proxy_port",
+                    "$remote_proxy_ip",
+                    "$remote_proxy_protocol",
+                    "$remote_proxy_port",
+                    "$proposals"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vpn_table",
+            "intfKey": false,
+            "name": "vpn_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vpn_table.$tn_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$tn_id",
+            "intfKey": false,
+            "name": "$tn_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$gateway_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$gateway_name",
+            "intfKey": false,
+            "name": "$gateway_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$local_proxy_ip",
+            "dataType": "string",
+            "desc": "Local proxy IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$local_proxy_ip",
+            "intfKey": false,
+            "name": "$local_proxy_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$local_proxy_protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$local_proxy_protocol",
+            "intfKey": false,
+            "name": "$local_proxy_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$local_proxy_port",
+            "dataType": "string",
+            "desc": "Local proxy port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$local_proxy_port",
+            "intfKey": false,
+            "name": "$local_proxy_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$remote_proxy_ip",
+            "dataType": "string",
+            "desc": "Remote proxy IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$remote_proxy_ip",
+            "intfKey": false,
+            "name": "$remote_proxy_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$remote_proxy_protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$remote_proxy_protocol",
+            "intfKey": false,
+            "name": "$remote_proxy_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$remote_proxy_port",
+            "dataType": "string",
+            "desc": "Remote proxy port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$remote_proxy_port",
+            "intfKey": false,
+            "name": "$remote_proxy_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_table.$proposals",
+            "dataType": "string",
+            "desc": "The VPN policy information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_table.$proposals",
+            "intfKey": false,
+            "name": "$proposals",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

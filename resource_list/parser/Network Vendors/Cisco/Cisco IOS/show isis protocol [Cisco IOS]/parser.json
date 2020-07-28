@@ -1,0 +1,246 @@
+{
+    "_id": "9c922b4a-67f3-439d-8d2e-b87879a0d42c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis protocol",
+    "createTime": {
+        "$date": 1561066407962
+    },
+    "description": "",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "r6#show isis protocol\n\nTag 55:\nIS-IS Router: 55\n  System Id: 0000.0000.0006.00  IS-Type: level-2\n  Manual area address(es):\n        00\n  Routing for area address(es):\n        00\n  Interfaces supported by IS-IS:\n        GigabitEthernet2.561 - IP - IPv6\n        GigabitEthernet2.562 - IP - IPv6\n        GigabitEthernet2.563 - IP - IPv6\n  Passive interface:\n        Loopback0\n        Loopback2\n  Redistribute:\n    static (on by default)\n  Distance for L2 CLNS routes: 110\n  RRR level: level-2\n  Generate narrow metrics: none\n  Accept narrow metrics:   none\n  Generate wide metrics:   level-1-2\n  Accept wide metrics:     level-1-2\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"System Id: $system_id  IS-Type: $is_type\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$system_id:string\",\"$is_type:string\"]},\"xxid\":\"15a274e1-e11a-b15b-d1d5-d9507ad63ef8\"},{\"type\":\"4\",\"name\":\"isis_protocol_process\",\"keyVariables\":\"\",\"startLine\":\"IS-IS Router: $process_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$system_id,$is_type]:^\\\\s+System Id: (\\\\S+)\\\\s+\\\\S+\\\\s+(\\\\S+)\",\"mregex[$](.+metrics:.+)\",\"mregex[$isis_supported_interfaces]:Interfaces supported by IS-IS:(.+)?Passive\",\"mregex[$passive_interface]:Passive interface:(.+)?Redistribute\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process_id:string\",\"$system_id:string\",\"$is_type:string\",\"$isis_supported_interfaces:string\",\"$passive_interface:string\"]},\"xxid\":\"ea4a8c8b-037a-140c-b447-f1fd96d78c47\"}]},\"xxid\":\"60aa9121-3fe7-48ea-a41d-efadb235b322\",\"hashColumns\":[\"$process_id\"]},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"93f1572f-944f-6dc9-f129-c46c215cddf3\"}]},\"xxid\":\"27d3eb50-bd68-9b8f-c839-7e1bfa847aec\"}]}",
+            "tableKeys": [
+                "_original_result.isis_protocol_process.$process_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "system_id",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "is_type",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "is_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "isis_supported_interfaces",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "passive_interface",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "isis_protocol_process",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7113e8a34716de48d2e0ef749075cef9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$is_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$is_type",
+            "intfKey": false,
+            "name": "$is_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocol_process.$is_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocol_process.$is_type",
+            "intfKey": false,
+            "name": "$is_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocol_process.$isis_supported_interfaces",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocol_process.$isis_supported_interfaces",
+            "intfKey": false,
+            "name": "$isis_supported_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocol_process.$passive_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocol_process.$passive_interface",
+            "intfKey": false,
+            "name": "$passive_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocol_process.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocol_process.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocol_process.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_protocol_process.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_protocol_process",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_protocol_process",
+            "intfKey": false,
+            "name": "isis_protocol_process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

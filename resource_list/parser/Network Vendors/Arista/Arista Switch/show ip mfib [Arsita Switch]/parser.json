@@ -1,0 +1,306 @@
+{
+    "_id": "472ddc74-eb76-4459-8b2a-c56aad1eb237",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip mfib",
+    "createTime": {
+        "$date": 1590764924028
+    },
+    "description": "Device Type:\nArsita Switch\nCommand:  \nshow ip mfib",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "AristaR2#show ip mfib \r\nActivity poll time: 60 seconds\r\n  233.0.0.1 10.2.255.2\r\n    Null0 (iif)\r\n    Ethernet2\r\n    Fa0/1\r\n    Fa0/2\r\n      Activity 0:02:11 ago\r\n  239.255.255.250 202.100.13.99\r\n    Ethernet2 (iif)\r\n    Cpu\r\n      Activity 0:02:11 ago\r\n  239.255.255.250 0.0.0.0/0\r\n    Null0 (iif)\r\n    Ethernet2\r\n      Activity 0:03:27 ago",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.groups.$in_intf",
+                "_original_result.groups.rates.$out_intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"groups\",\"keyVariables\":\"\",\"startLine\":\"regex[$group, $source]:^\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$in_intf]:^\\\\s+(\\\\S+)\\\\s+\\\\(iif\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$group:string\",\"$source:string\",\"$in_intf:string\"]},\"xxid\":\"8b8def46-8396-32c1-3a9d-f9e707e09c55\"},{\"type\":\"4\",\"name\":\"rates\",\"keyVariables\":\"\",\"startLine\":\"regex[$out_intf]:^\\\\s+(\\\\S+)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$keep_alive]:activity\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$out_intf:string\",\"$keep_alive:string\"]},\"xxid\":\"680ce7bc-17da-954f-3356-44c92a12b2f1\"}]},\"xxid\":\"8fd8b604-7926-9bc2-8108-01f1df2bbc4c\",\"interfaceKey\":\"$out_intf\",\"hashColumns\":[\"$in_intf\",\"$out_intf\"]}]},\"xxid\":\"4534c7f1-5ba9-9ba8-f6f5-8ee59fa214ea\",\"interfaceKey\":\"$in_intf\",\"hashColumns\":[\"$in_intf\",\"$group\",\"$source\"]}]}",
+            "tableKeys": [
+                "_original_result.groups.$group",
+                "_original_result.groups.$source"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "in_intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group",
+                    "$in_intf",
+                    "$source"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "groups",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "out_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "keep_alive",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "source",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "in_intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$in_intf",
+                    "$out_intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "rates",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "70bc8c6f0af3562fe2ffd97b1ffcd0a6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "groups",
+            "dataType": "paragraph",
+            "desc": "Group table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$in_intf",
+                    "$group",
+                    "$source"
+                ],
+                "hashSort": false
+            },
+            "fullName": "groups",
+            "intfKey": false,
+            "name": "groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "groups.$group",
+            "dataType": "string",
+            "desc": "The multicast group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$source",
+            "dataType": "string",
+            "desc": "The multicast source.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$in_intf",
+            "dataType": "string",
+            "desc": "The inbound interface of multicast IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$in_intf",
+            "intfKey": false,
+            "name": "$in_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "rates",
+            "dataType": "paragraph",
+            "desc": "Out-interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$in_intf",
+                    "$out_intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "groups.rates",
+            "intfKey": false,
+            "name": "rates",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "rates.$out_intf",
+            "dataType": "string",
+            "desc": "The outbound interface of multicast IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$out_intf",
+            "intfKey": false,
+            "name": "$out_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "rates.$keep_alive",
+            "dataType": "string",
+            "desc": "The multicast activity times.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$keep_alive",
+            "intfKey": false,
+            "name": "$keep_alive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$group",
+            "dataType": "string",
+            "desc": "The multicast group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$source",
+            "dataType": "string",
+            "desc": "The multicast source.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$source",
+            "intfKey": false,
+            "name": "$source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rates.$in_intf",
+            "dataType": "string",
+            "desc": "The inbound interface of multicast IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rates.$in_intf",
+            "intfKey": false,
+            "name": "$in_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

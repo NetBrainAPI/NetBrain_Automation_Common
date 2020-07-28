@@ -1,0 +1,288 @@
+{
+    "_id": "29fc2968-377d-4bd6-ac25-ff9f1380858a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show run vrf $vrf_name",
+    "createTime": {
+        "$date": 1562009233312
+    },
+    "description": "",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [
+        {
+            "name": "$vrf_name"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "CSR4#show run vrf IOS6-OSPF\r\nBuilding configuration...\r\n\r\nCurrent configuration : 762 bytes\r\nvrf definition IOS6-OSPF\r\n rd 100:100\r\n !\r\n address-family ipv4\r\n  export map IOS6-OSPF-EXPORT-MAP\r\n  route-target export 100:100\r\n  route-target import 100:100\r\n  route-target import 200:200\r\n exit-address-family\r\n!\r\n!\r\ninterface GigabitEthernet2\r\n no ip address\r\n negotiation auto\r\n!\r\ninterface GigabitEthernet2.6\r\n description To vIOS6 OSPF\r\n encapsulation dot1Q 6\r\n vrf forwarding IOS6-OSPF\r\n ip address 100.1.1.1 255.255.255.252\r\n ip pim sparse-mode\r\n ip ospf network point-to-point\r\n!\r\nrouter ospf 10 vrf IOS6-OSPF\r\n redistribute bgp 100 subnets route-map BLOCK-BGP-INTO-OSPF-LOOP\r\n network 100.1.1.0 0.0.0.3 area 0\r\n!\r\n!\r\nrouter bgp 100\r\n !\r\n address-family ipv4 vrf IOS6-OSPF\r\n  redistribute static\r\n exit-address-family\r\n!\r\nip route vrf IOS6-OSPF 172.16.8.0 255.255.252.0 100.1.1.2\r\nend\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.interface.$vrf_intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"rd $rd$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$rd:string\"]},\"xxid\":\"e493d3e6-ce1f-d524-4ec4-b1b68c97e343\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"export map $exp_map$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$exp_map:string\"]},\"xxid\":\"63858303-5d87-76b8-2f6d-d630e2faf6b6\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"import map $imp_map$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$imp_map:string\"]},\"xxid\":\"f695ac12-bffc-cdf7-1640-5beac2b5a125\"},{\"type\":\"4\",\"name\":\"rt_export\",\"keyVariables\":\"\",\"startLine\":\"route-target export\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$exp_rt]:route-target export\\\\s(\\\\d+\\\\:\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$exp_rt:string\"]},\"xxid\":\"c916ffab-f9c6-0ba1-aca2-f654a3398de3\"}]},\"xxid\":\"b6d1309d-4123-6f58-2e32-4197beefda91\",\"hashColumns\":[\"$exp_rt\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"rt_import\",\"keyVariables\":\"\",\"startLine\":\"route-target import\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$exp_rt]:route-target import\\\\s(\\\\d+\\\\:\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$exp_rt:string\"]},\"xxid\":\"5a920e36-2894-5f77-d5a9-ebf0a5e15e7d\"}]},\"xxid\":\"ec7293db-bc41-b39e-d0b6-28ccf1a16482\"},{\"type\":\"4\",\"name\":\"interface\",\"keyVariables\":\"\",\"startLine\":\"regex:^Interface\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vrf_intf]:^Interface (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vrf_intf:string\"]},\"xxid\":\"a131e374-4ead-99e4-2adc-5398857beaa5\"}]},\"xxid\":\"a604026f-e800-3a75-95ba-39c3cbe68f8a\",\"interfaceKey\":\"$vrf_intf\",\"hashColumns\":[\"$vrf_intf\"]}]}",
+            "tableKeys": [
+                "_original_result.rt_export.$exp_rt"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "rd",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "exp_map",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "imp_map",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "exp_rt",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$exp_rt"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "rt_export",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "exp_rt",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "rt_import",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vrf_intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vrf_intf"
+                ],
+                "hashSort": false,
+                "index": 5,
+                "name": "interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3f8dc03b021941dcf3ad27eaad41e33a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$exp_map",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$exp_map",
+            "intfKey": false,
+            "name": "$exp_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rt_export.$exp_rt",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "rt_export.$exp_rt",
+            "intfKey": false,
+            "name": "$exp_rt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rt_import.$exp_rt",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "rt_import.$exp_rt",
+            "intfKey": false,
+            "name": "$exp_rt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$imp_map",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$imp_map",
+            "intfKey": false,
+            "name": "$imp_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rd",
+            "intfKey": false,
+            "name": "$rd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface.$vrf_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface.$vrf_intf",
+            "intfKey": false,
+            "name": "$vrf_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interface",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vrf_intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "interface",
+            "intfKey": false,
+            "name": "interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "rt_export",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$exp_rt"
+                ],
+                "hashSort": false
+            },
+            "fullName": "rt_export",
+            "intfKey": false,
+            "name": "rt_export",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "rt_import",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "rt_import",
+            "intfKey": false,
+            "name": "rt_import",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

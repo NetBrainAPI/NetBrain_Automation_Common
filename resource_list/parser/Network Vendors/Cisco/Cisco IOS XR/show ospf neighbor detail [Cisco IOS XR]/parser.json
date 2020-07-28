@@ -1,0 +1,428 @@
+{
+    "_id": "4168f432-d82b-79b2-b26a-e5d416c84d84",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbor detail",
+    "createTime": {
+        "$date": 1579121699412
+    },
+    "description": "Device Type:\nCisco IOS XR\nCommand: \nshow ospf neighbor detail",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:xrv9#show ospf neighbor detail\r\n\r\nTue Jan 21 15:34:10.722 UTC\r\n\r\n* Indicates MADJ interface\r\n# Indicates Neighbor awaiting BFD session up\r\n\r\nNeighbors for OSPF 100\r\n\r\n Neighbor 75.75.75.5, interface address 30.1.1.1\r\n    In the area 0 via interface GigabitEthernet0/0/0/0 \r\n    Neighbor priority is 1, State is FULL, 6 state changes\r\n    DR is 0.0.0.0 BDR is 0.0.0.0\r\n    Options is 0x52  \r\n    LLS Options is 0x1 (LR)\r\n    Dead timer due in 00:00:32\r\n    Neighbor is up for 22w6d\r\n    Number of DBD retrans during last exchange 0\r\n    Index 2/2, retransmission queue length 0, number of retransmission 5\r\n    First 0(0)/0(0) Next 0(0)/0(0)\r\n    Last retransmission scan length is 1, maximum is 1\r\n    Last retransmission scan time is 0 msec, maximum is 0 msec\r\n    LS Ack list: NSR-sync pending 0, high water mark 0\r\n\r\n Neighbor 75.75.75.7, interface address 30.1.1.6\r\n    In the area 0 via interface GigabitEthernet0/0/0/1 \r\n    Neighbor priority is 1, State is FULL, 6 state changes\r\n    DR is 0.0.0.0 BDR is 0.0.0.0\r\n    Options is 0x52  \r\n    LLS Options is 0x1 (LR)\r\n    Dead timer due in 00:00:34\r\n    Neighbor is up for 22w6d\r\n    Number of DBD retrans during last exchange 0\r\n    Index 1/1, retransmission queue length 0, number of retransmission 6\r\n    First 0(0)/0(0) Next 0(0)/0(0)\r\n    Last retransmission scan length is 1, maximum is 1\r\n    Last retransmission scan time is 0 msec, maximum is 0 msec\r\n    LS Ack list: NSR-sync pending 0, high water mark 0\r\n\r\n Neighbor 75.75.75.2, interface address 20.1.1.5\r\n    In the area 0 via interface GigabitEthernet0/0/0/2 \r\n    Neighbor priority is 1, State is FULL, 6 state changes\r\n    DR is 0.0.0.0 BDR is 0.0.0.0\r\n    Options is 0x52  \r\n    LLS Options is 0x1 (LR)\r\n    Dead timer due in 00:00:37\r\n    Neighbor is up for 17w6d\r\n    Number of DBD retrans during last exchange 0\r\n    Index 3/3, retransmission queue length 0, number of retransmission 3\r\n    First 0(0)/0(0) Next 0(0)/0(0)\r\n    Last retransmission scan length is 1, maximum is 1\r\n    Last retransmission scan time is 0 msec, maximum is 0 msec\r\n    LS Ack list: NSR-sync pending 0, high water mark 0\r\n\r\n\r\nTotal neighbor count: 3\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.processes.ospf_nbrs.$local_interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"processes\",\"keyVariables\":null,\"startLine\":\"Neighbors for OSPF $process_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process_id:string\"]},\"xxid\":\"fb5f3d8d-011b-e997-25fb-0bb4d8f0bec1\"},{\"type\":\"4\",\"name\":\"ospf_nbrs\",\"keyVariables\":null,\"startLine\":\"Neighbor $neighbor, interface address $nbr_intf_address\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"In the area $area_id via interface $local_interface\",\"Neighbor priority is $int:neighbor_priority, State is $state, $int:state_change state changes\",\"DR is $dr BDR is $bdr\",\"Options is $options\",\"Dead timer due in $dead_due\",\"Neighbor is up for $uptime\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$neighbor:string\",\"$nbr_intf_address:string\",\"$area_id:string\",\"$local_interface:string\",\"$neighbor_priority:int\",\"$state:string\",\"$state_change:int\",\"$dr:string\",\"$bdr:string\",\"$options:string\",\"$dead_due:string\",\"$uptime:string\"]},\"xxid\":\"0b7d4c1a-78d2-8351-9d36-8af9295e1c81\"}]},\"xxid\":\"89844fa3-b045-c960-99f9-c7b6049a3812\",\"hashColumns\":[\"$neighbor\",\"$nbr_intf_address\",\"$area_id\",\"$local_interface\",\"$state\",\"$process_id\"],\"interfaceKey\":\"$local_interface\",\"hashSort\":false}]},\"xxid\":\"fc0e0bb6-88c7-1d97-e133-d0cf7aa9646f\"}]}",
+            "tableKeys": [
+                "_original_result.processes.ospf_nbrs.$neighbor",
+                "_original_result.processes.ospf_nbrs.$area_id",
+                "_original_result.processes.ospf_nbrs.$nbr_intf_address",
+                "_original_result.processes.ospf_nbrs.$state",
+                "_original_result.processes.ospf_nbrs.$process_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "nbr_intf_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "local_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "neighbor_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "state_change",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "options",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "dead_due",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$local_interface",
+                    "$nbr_intf_address",
+                    "$neighbor",
+                    "$process_id",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "78a932e06c48170aa4605827eb48241b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "processes",
+            "dataType": "paragraph",
+            "desc": "Processes Table\n",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "processes",
+            "intfKey": false,
+            "name": "processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "processes.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs",
+            "dataType": "paragraph",
+            "desc": "OSPF Nbrs Table\n",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor",
+                    "$nbr_intf_address",
+                    "$area_id",
+                    "$local_interface",
+                    "$state",
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs",
+            "intfKey": false,
+            "name": "ospf_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_nbrs.$neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$neighbor",
+            "intfKey": false,
+            "name": "$neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_intf_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$nbr_intf_address",
+            "intfKey": false,
+            "name": "$nbr_intf_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$local_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$local_interface",
+            "intfKey": false,
+            "name": "$local_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbrs.$neighbor_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$neighbor_priority",
+            "intfKey": false,
+            "name": "$neighbor_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$state_change",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$state_change",
+            "intfKey": false,
+            "name": "$state_change",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$dr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$bdr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$bdr",
+            "intfKey": false,
+            "name": "$bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$options",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$options",
+            "intfKey": false,
+            "name": "$options",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$dead_due",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$dead_due",
+            "intfKey": false,
+            "name": "$dead_due",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

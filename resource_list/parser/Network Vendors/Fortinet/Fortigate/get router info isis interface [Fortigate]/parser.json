@@ -1,0 +1,477 @@
+{
+    "_id": "46806244-6f16-6ddf-35f8-772e3b43de3e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "get router info isis interface",
+    "createTime": {
+        "$date": 1584370181735
+    },
+    "description": "",
+    "devTypes": [
+        10380
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "FGT2 # get router info isis interface\r\nport2 is up, line protocol is up\r\n  Routing Protocol: IS-IS ((null))\r\n    Network Type: Broadcast\r\n    Circuit Type: level-1-2\r\n    Local circuit ID: 0x01\r\n    Extended Local circuit ID: 0x00000003\r\n    Local SNPA: 0009.0f85.ad8c\r\n    IP interface address:\r\n      10.40.40.2/24\r\n    IPv6 interface address:\r\n    Level-1 Metric: 10/10, Priority: 64, Circuit ID: 1221.6818.2110.01\r\n    Number of active level-1 adjacencies: 0\r\n    Level-2 Metric: 10/10, Priority: 64, Circuit ID: 1221.6818.2110.01\r\n    Number of active level-2 adjacencies: 1\r\n    Next IS-IS LAN Level-1 Hello in 6 seconds\r\n    Next IS-IS LAN Level-2 Hello in 1 seconds\r\nport3 is up, line protocol is up\r\n  Routing Protocol: IS-IS ((null))\r\n    Network Type: Broadcast\r\n    Circuit Type: level-1\r\n    Local circuit ID: 0x02\r\n    Extended Local circuit ID: 0x00000004\r\n    Local SNPA: 0009.0f85.ad8d\r\n    IP interface address:\r\n      10.30.30.2/24\r\n    IPv6 interface address:\r\n    Level-1 Metric: 10/10, Priority: 64, Circuit ID: 1221.6818.2110.02\r\n    Number of active level-1 adjacencies: 1\r\n    Next IS-IS LAN Level-1 Hello in 2 seconds",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_interface.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_interface\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface,$interface_state,$line_protocol_state]:(^\\\\S+) is (\\\\S+), line protocol is (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$routing_protocol]:Routing Protocol: (.+)\",\"regex[$network_type]:Network Type: (.+)\",\"regex[$circuit_type]:Circuit Type: (.+)\",\"regex[$local_circuit_id]:Local circuit ID: (.+)\",\"regex[$extended_local_circuit_id]:Extended Local circuit ID: (.+)\",\"regex[$local_snpa]:Local SNPA: (.+)\",\"mregex[$ip_interface_address]:IP interface address:\\\\n\\\\s+(\\\\S+)\",\"regex[$level1_metric,$level1_priority,$level_1circuit_id]:Level-1 Metric: (\\\\S+), Priority: (\\\\d+), Circuit ID: (\\\\S+)\",\"regex[$level2_metric,$level2_priority,$level2_circuit_id]:Level-2 Metric: (\\\\S+), Priority: (\\\\d+), Circuit ID: (\\\\S+)\",\"regex[$active_level2_adjacencies]:Number of active level-2 adjacencies: (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$interface_state:string\",\"$line_protocol_state:string\",\"$routing_protocol:string\",\"$network_type:string\",\"$circuit_type:string\",\"$local_circuit_id:string\",\"$extended_local_circuit_id:string\",\"$local_snpa:string\",\"$ip_interface_address:string\",\"$level1_metric:string\",\"$level1_priority:string\",\"$level_1circuit_id:string\",\"$level2_metric:string\",\"$level2_priority:string\",\"$level2_circuit_id:string\",\"$active_level2_adjacencies:string\"]},\"xxid\":\"04bc3358-60c7-3f87-0d88-7602885dc651\"}]},\"xxid\":\"873a0747-7969-8bc6-58d2-f985dbf7cf87\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$interface_state\",\"$line_protocol_state\",\"$routing_protocol\",\"$network_type\",\"$circuit_type\",\"$local_circuit_id\",\"$extended_local_circuit_id\",\"$local_snpa\",\"$ip_interface_address\",\"$level1_metric\",\"$level1_priority\",\"$level_1circuit_id\",\"$level2_metric\",\"$level2_priority\",\"$level2_circuit_id\",\"$active_level2_adjacencies\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"0a7684f1-75b2-ec47-f2e6-cdfaffe61abc\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 17,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "line_protocol_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "routing_protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "network_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "circuit_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "local_circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "extended_local_circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "local_snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "ip_interface_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "level1_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "level1_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "level_1circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "level2_metric",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "level2_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "level2_circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "active_level2_adjacencies",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$active_level2_adjacencies",
+                    "$circuit_type",
+                    "$extended_local_circuit_id",
+                    "$interface",
+                    "$interface_state",
+                    "$ip_interface_address",
+                    "$level1_metric",
+                    "$level1_priority",
+                    "$level2_circuit_id",
+                    "$level2_metric",
+                    "$level2_priority",
+                    "$level_1circuit_id",
+                    "$line_protocol_state",
+                    "$local_circuit_id",
+                    "$local_snpa",
+                    "$network_type",
+                    "$routing_protocol"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "64b6b0441a7a8f19d915754a62a0eacc",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_interface",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$interface_state",
+                    "$line_protocol_state",
+                    "$routing_protocol",
+                    "$network_type",
+                    "$circuit_type",
+                    "$local_circuit_id",
+                    "$extended_local_circuit_id",
+                    "$local_snpa",
+                    "$ip_interface_address",
+                    "$level1_metric",
+                    "$level1_priority",
+                    "$level_1circuit_id",
+                    "$level2_metric",
+                    "$level2_priority",
+                    "$level2_circuit_id",
+                    "$active_level2_adjacencies"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_interface",
+            "intfKey": false,
+            "name": "isis_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_interface.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_interface.$interface_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$interface_state",
+            "intfKey": false,
+            "name": "$interface_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$line_protocol_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$line_protocol_state",
+            "intfKey": false,
+            "name": "$line_protocol_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$routing_protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$routing_protocol",
+            "intfKey": false,
+            "name": "$routing_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$network_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$network_type",
+            "intfKey": false,
+            "name": "$network_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$circuit_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$circuit_type",
+            "intfKey": false,
+            "name": "$circuit_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$local_circuit_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$local_circuit_id",
+            "intfKey": false,
+            "name": "$local_circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$extended_local_circuit_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$extended_local_circuit_id",
+            "intfKey": false,
+            "name": "$extended_local_circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$local_snpa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$local_snpa",
+            "intfKey": false,
+            "name": "$local_snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$ip_interface_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$ip_interface_address",
+            "intfKey": false,
+            "name": "$ip_interface_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$level1_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$level1_metric",
+            "intfKey": false,
+            "name": "$level1_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$level1_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$level1_priority",
+            "intfKey": false,
+            "name": "$level1_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$level_1circuit_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$level_1circuit_id",
+            "intfKey": false,
+            "name": "$level_1circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$level2_metric",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$level2_metric",
+            "intfKey": false,
+            "name": "$level2_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$level2_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$level2_priority",
+            "intfKey": false,
+            "name": "$level2_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$level2_circuit_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$level2_circuit_id",
+            "intfKey": false,
+            "name": "$level2_circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_interface.$active_level2_adjacencies",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_interface.$active_level2_adjacencies",
+            "intfKey": false,
+            "name": "$active_level2_adjacencies",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

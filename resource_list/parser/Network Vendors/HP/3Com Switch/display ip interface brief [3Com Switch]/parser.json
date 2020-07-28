@@ -1,0 +1,252 @@
+{
+    "_id": "5895ac98-8e73-976b-8a9b-b1d6f910c462",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display ip interface brief",
+    "createTime": {
+        "$date": 1590768977981
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay ip interface brief",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<H3C>display ip interface brief\r\n*down: administratively down\r\n(s): spoofing  (l): loopback\r\nInterface                Physical Protocol IP Address      Description\r\nGE0/0                    down     down     --              --\r\nGE0/1                    down     down     --              --\r\nGE0/2                    down     down     --              --\r\nGE5/0                    down     down     --              --\r\nGE5/1                    down     down     --              --\r\nGE6/0                    down     down     --              --\r\nGE6/1                    down     down     --              --\r\nSer1/0                   down     down     --              --\r\nSer2/0                   down     down     --              --\r\nSer3/0                   down     down     --              --\r\nSer4/0                   down     down     --              --\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_brief_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$admin_status]:\\\\*down: (.+)\",\"regex[$spoofing_status]:\\\\(s\\\\): (\\\\S+)\",\"regex[$loopback_status]:\\\\(l\\\\): (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$admin_status:string\",\"$spoofing_status:string\",\"$loopback_status:string\"]},\"xxid\":\"da16952f-5852-075c-ff8b-5b6554bf3fa2\"},{\"type\":\"3\",\"name\":\"intf_brief_table\",\"headers\":\"Interface;Physical;Protocol;IP Address;Description\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Interface:$string:intf;Physical:$string:physical;Protocol:$string:protocol;IP Address:$string:ip_addr;Description:$string:description\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$physical:string\",\"$protocol:string\",\"$ip_addr:string\",\"$description:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"0d031148-ce21-e6e5-ed40-0a25e9bc8a21\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$protocol\",\"$physical\"]}]}",
+            "tableKeys": [
+                "_original_result.intf_brief_table.$protocol",
+                "_original_result.intf_brief_table.$physical"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "admin_status",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "spoofing_status",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "loopback_status",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "physical",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$physical",
+                    "$protocol"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "intf_brief_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "33dcb9ecc57aaed51ab0abc2142016d4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$admin_status",
+            "dataType": "string",
+            "desc": "The status of administration.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$admin_status",
+            "intfKey": false,
+            "name": "$admin_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$spoofing_status",
+            "dataType": "string",
+            "desc": "The status of spoofing.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$spoofing_status",
+            "intfKey": false,
+            "name": "$spoofing_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$loopback_status",
+            "dataType": "string",
+            "desc": "The status of loopback.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$loopback_status",
+            "intfKey": false,
+            "name": "$loopback_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_brief_table",
+            "dataType": "table",
+            "desc": "The IP interface brief table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$protocol",
+                    "$physical"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intf_brief_table",
+            "intfKey": false,
+            "name": "intf_brief_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intf_brief_table.$intf",
+            "dataType": "string",
+            "desc": "The interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_brief_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intf_brief_table.$physical",
+            "dataType": "string",
+            "desc": "The physical status of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_brief_table.$physical",
+            "intfKey": false,
+            "name": "$physical",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_brief_table.$protocol",
+            "dataType": "string",
+            "desc": "The protocol status of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_brief_table.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_brief_table.$ip_addr",
+            "dataType": "string",
+            "desc": "The ip address of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_brief_table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_brief_table.$description",
+            "dataType": "string",
+            "desc": "The description of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_brief_table.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

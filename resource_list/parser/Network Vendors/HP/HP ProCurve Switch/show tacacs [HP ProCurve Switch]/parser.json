@@ -1,0 +1,265 @@
+{
+    "_id": "df2fbbc1-b46e-9c59-edef-a92ef3b9c488",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show tacacs",
+    "createTime": {
+        "$date": 1590608876906
+    },
+    "description": "Device Type:\nHP ProCurve Switch\nCommand:\nshow tacacs",
+    "devTypes": [
+        2011
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "HP Switch# show tacacs\r\nStatus and Counters - TACACS Information\r\nTimeout : 5\r\nEncryption Key : paris-1\r\n\r\nServer IP Addr  Opens  Closes Aborts Errors Pkts Rx Pkts Tx\r\n--------------- ------ ------ ------ ------ ------- -------\r\n10.30.248.100   0      0      0      0      0       0\r\n10.30.248.156   0      0      0      0      0       0\r\n10.30.248.105   0      0      0      0      0       0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:timeout]:Timeout :\\\\s+(\\\\d+)\",\"regex[$encryption_key]:Encryption Key :\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$timeout:int\",\"$encryption_key:string\"]},\"xxid\":\"3f8da383-66ae-aa3f-ecce-d160f8ac8a6f\"},{\"type\":\"3\",\"name\":\"tacacs_server_table\",\"headers\":\"Server IP Addr;Opens;Closes;Aborts;Errors;Pkts Rx;Pkts Tx\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Server IP Addr:$string:server_ip_addr;Opens:$int:opens;Closes:$int:closes;Aborts:$int:aborts;Errors:$int:errors;Pkts Rx:$int:pkts_rx;Pkts Tx:$int:pkts_tx\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$server_ip_addr:string\",\"$opens:int\",\"$closes:int\",\"$aborts:int\",\"$errors:int\",\"$pkts_rx:int\",\"$pkts_tx:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"d47759ee-abf0-b510-6439-6c2a518d0598\",\"hashColumns\":[\"$server_ip_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.tacacs_server_table.$server_ip_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "timeout",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "encryption_key",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "server_ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "opens",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "closes",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "aborts",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "pkts_rx",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "pkts_tx",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$server_ip_addr"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "tacacs_server_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "93ef835bdbd6fe502687c54f08729281",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$timeout",
+            "dataType": "int",
+            "desc": "Timeout.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$timeout",
+            "intfKey": false,
+            "name": "$timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$encryption_key",
+            "dataType": "string",
+            "desc": "Key string name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$encryption_key",
+            "intfKey": false,
+            "name": "$encryption_key",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table",
+            "dataType": "table",
+            "desc": "Tacacs server table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$server_ip_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table",
+            "intfKey": false,
+            "name": "tacacs_server_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "tacacs_server_table.$server_ip_addr",
+            "dataType": "string",
+            "desc": "The server ip address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$server_ip_addr",
+            "intfKey": false,
+            "name": "$server_ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table.$opens",
+            "dataType": "int",
+            "desc": "The number of open packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$opens",
+            "intfKey": false,
+            "name": "$opens",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table.$closes",
+            "dataType": "int",
+            "desc": "The number of close packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$closes",
+            "intfKey": false,
+            "name": "$closes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table.$aborts",
+            "dataType": "int",
+            "desc": "The number of abort packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$aborts",
+            "intfKey": false,
+            "name": "$aborts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table.$errors",
+            "dataType": "int",
+            "desc": "The number of errors packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$errors",
+            "intfKey": false,
+            "name": "$errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table.$pkts_rx",
+            "dataType": "int",
+            "desc": "The number of receive packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$pkts_rx",
+            "intfKey": false,
+            "name": "$pkts_rx",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table.$pkts_tx",
+            "dataType": "int",
+            "desc": "The number of sent packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$pkts_tx",
+            "intfKey": false,
+            "name": "$pkts_tx",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

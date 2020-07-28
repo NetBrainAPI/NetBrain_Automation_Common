@@ -1,0 +1,219 @@
+{
+    "_id": "4339b384-a190-c508-74af-3836e1da8868",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys performance system",
+    "createTime": {
+        "$date": 1579705221691
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys performance system",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip1)(cfg-sync In Sync)(Standby)(/)(tmos)#show sys performance system\r\n\r\nSys::Performance System\r\n-------------------------------------------------------------------\r\nSystem CPU Usage(%)  Current  Average  Max(since 05/22/17 12:19:48)\r\n-------------------------------------------------------------------\r\nUtilization               12       11                            73\r\n                   \r\n-------------------------------------------------------------------\r\nMemory Used(bytes)   Current  Average  Max(since 05/22/17 12:19:48)\r\n-------------------------------------------------------------------\r\nTotal Phys Memory       1.9G     1.9G                          1.9G\r\nOS Used Memory          1.8G     1.9G                          1.9G\r\nTMM Alloc Memory      276.0M   276.0M                        276.0M\r\nTMM Used Memory       178.5M   178.5M                        178.5M\r\nOS Used Swap               0        0                             0\r\n                   \r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:current_cpu_usage, $int:average_cpu_usage, $int:max_cpu_usage]:Utilization\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$current_cpu_usage:int\",\"$average_cpu_usage:int\",\"$max_cpu_usage:int\"]},\"xxid\":\"22af8a01-0395-3b4e-988a-b4467da8c110\"},{\"type\":\"4\",\"name\":\"memory_used_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$memory_used, $current, $average, $max]:^(\\\\w+\\\\s+\\\\w+\\\\s+\\\\w+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$memory_used:string\",\"$current:string\",\"$average:string\",\"$max:string\"]},\"xxid\":\"04221080-e96f-ce91-7627-4da3b9da3198\"}]},\"xxid\":\"ee4f0f40-629c-9564-066e-8722ec684b40\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "current_cpu_usage",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "average_cpu_usage",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "max_cpu_usage",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "memory_used",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "current",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "average",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "max",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "memory_used_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ff4c6994e9aa2dfe2d3c93ff9e13bcb2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$current_cpu_usage",
+            "dataType": "int",
+            "desc": "Current CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$current_cpu_usage",
+            "intfKey": false,
+            "name": "$current_cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$average_cpu_usage",
+            "dataType": "int",
+            "desc": "Average CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$average_cpu_usage",
+            "intfKey": false,
+            "name": "$average_cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_cpu_usage",
+            "dataType": "int",
+            "desc": "Max CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_cpu_usage",
+            "intfKey": false,
+            "name": "$max_cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_used_info",
+            "dataType": "paragraph",
+            "desc": "Memory used table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "memory_used_info",
+            "intfKey": false,
+            "name": "memory_used_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "memory_used_info.$memory_used",
+            "dataType": "string",
+            "desc": "Memory used (bytes).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_used_info.$memory_used",
+            "intfKey": false,
+            "name": "$memory_used",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_used_info.$current",
+            "dataType": "string",
+            "desc": "Current memory used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_used_info.$current",
+            "intfKey": false,
+            "name": "$current",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_used_info.$average",
+            "dataType": "string",
+            "desc": "Average memory used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_used_info.$average",
+            "intfKey": false,
+            "name": "$average",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_used_info.$max",
+            "dataType": "string",
+            "desc": "Max memory used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_used_info.$max",
+            "intfKey": false,
+            "name": "$max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

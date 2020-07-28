@@ -1,0 +1,235 @@
+{
+    "_id": "961ce9a4-49ef-6fe1-bb3e-92d8289f59a9",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show service fdb-mac",
+    "createTime": {
+        "$date": 1587668871061
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "ALU-01#show service fdb-mac \n\n===============================================================================\nService Forwarding Database\n===============================================================================\nServId    MAC               Source-Identifier        Type     Last Change\n                                                     Age      \n-------------------------------------------------------------------------------\n104001    00:0f:bb:de:c5:7e sap:1/1/2:4001           L/0      02/28/20 20:27:52\n104001    54:e3:f6:54:cf:f5 cpm                      Intf     10/29/19 04:10:49\n104001    54:e3:f6:54:cf:f6 sap:1/1/12               L/0      10/29/19 04:11:35\n503027    54:e3:f6:54:cf:f5 cpm                      Intf     10/29/19 04:10:49\n603027    00:0f:bb:de:c5:7e sap:1/1/2:3027           L/0      02/28/20 20:27:52\n603027    54:e3:f6:54:cf:f5 cpm                      Intf     10/29/19 04:10:49\n903027    54:e3:f6:54:cf:f5 cpm                      Intf     10/29/19 04:10:49\n-------------------------------------------------------------------------------\nNo. of Entries: 7\n-------------------------------------------------------------------------------\nLegend:  L=Learned O=Oam P=Protected-MAC C=Conditional S=Static\n===============================================================================\n\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"No. of Entries: $int:number_of_mac_entries$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$number_of_mac_entries:int\"]},\"xxid\":\"08572bf7-9949-f190-c58b-d9ac92df4b66\"},{\"type\":\"4\",\"name\":\"mac_addresses\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:serv_id,$mac_address,$source_identifier,$type_age,$last_change_date,$last_change_time]:(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$serv_id:int\",\"$mac_address:string\",\"$source_identifier:string\",\"$type_age:string\",\"$last_change_date:string\",\"$last_change_time:string\"]},\"xxid\":\"1cbc2c06-68c0-53cd-422d-645bf98ef641\"}]},\"xxid\":\"0a9df4ba-0158-12e0-2eb1-0c8b0ec2dbb3\",\"hashColumns\":[\"$serv_id\",\"$mac_address\",\"$source_identifier\",\"$type_age\",\"$last_change_date\",\"$last_change_time\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.mac_addresses.$serv_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "number_of_mac_entries",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "serv_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "mac_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "source_identifier",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "type_age",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "last_change_date",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "last_change_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$last_change_date",
+                    "$last_change_time",
+                    "$mac_address",
+                    "$serv_id",
+                    "$source_identifier",
+                    "$type_age"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "mac_addresses",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fe25c558ef5a8c0dbf3fb4993cf42d7e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$number_of_mac_entries",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$number_of_mac_entries",
+            "intfKey": false,
+            "name": "$number_of_mac_entries",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mac_addresses",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$serv_id",
+                    "$mac_address",
+                    "$source_identifier",
+                    "$type_age",
+                    "$last_change_date",
+                    "$last_change_time"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mac_addresses",
+            "intfKey": false,
+            "name": "mac_addresses",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mac_addresses.$serv_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mac_addresses.$serv_id",
+            "intfKey": false,
+            "name": "$serv_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mac_addresses.$mac_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mac_addresses.$mac_address",
+            "intfKey": false,
+            "name": "$mac_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mac_addresses.$source_identifier",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mac_addresses.$source_identifier",
+            "intfKey": false,
+            "name": "$source_identifier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mac_addresses.$type_age",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mac_addresses.$type_age",
+            "intfKey": false,
+            "name": "$type_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mac_addresses.$last_change_date",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mac_addresses.$last_change_date",
+            "intfKey": false,
+            "name": "$last_change_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mac_addresses.$last_change_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mac_addresses.$last_change_time",
+            "intfKey": false,
+            "name": "$last_change_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

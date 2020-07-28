@@ -1,0 +1,145 @@
+{
+    "_id": "6b77db50-46bb-24f8-b79e-ff1a62469579",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show usernames",
+    "createTime": {
+        "$date": 1590508377182
+    },
+    "description": "Device Type:\nRiverbed WAN Optimizer\nCommand:\nshow usernames",
+    "devTypes": [
+        10466
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "nbRiverbed # show usernames\r\nUser                          Comment\r\n---------------------------------------------------------------\r\n@admin                                                                 \r\n-monitor                                                               \r\n shark                                                                 \r\n---------------------------------------------------------------\r\n@ = current user, * = also logged in, - = disabled",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"user_table_filter\",\"startLine\":\"regex:^\\\\s*user\\\\s*comment\",\"endLine\":\"regex:@\\\\s*\\\\=\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"68fddb62-782d-7284-a398-22b16f86abe2\"},{\"type\":\"3\",\"name\":\"user_table\",\"headers\":\"User;Comment\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"User:$string:user;Comment:$string:comment\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$user:string\",\"$comment:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"e904f7e5-ea1c-a04b-5887-e4085de6d5e4\",\"hashColumns\":[\"$user\"]}]},\"xxid\":\"5577ead2-aa28-d4ca-fefd-23b5b557afb7\"}]}",
+            "tableKeys": [
+                "_original_result.user_table_filter.user_table.$user"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "user_table_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "user",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "comment",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$user"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "user_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fee907980d3f950941bdc03981a19f0e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "user_table_filter",
+            "dataType": "filter",
+            "desc": "User table filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table_filter",
+            "intfKey": false,
+            "name": "user_table_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table",
+            "dataType": "table",
+            "desc": "User table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$user"
+                ],
+                "hashSort": false
+            },
+            "fullName": "user_table_filter.user_table",
+            "intfKey": false,
+            "name": "user_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "user_table.$user",
+            "dataType": "string",
+            "desc": "User name.\n@ = current user, * = also logged in, - = disabled",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table_filter.user_table.$user",
+            "intfKey": false,
+            "name": "$user",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$comment",
+            "dataType": "string",
+            "desc": "Comment.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table_filter.user_table.$comment",
+            "intfKey": false,
+            "name": "$comment",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

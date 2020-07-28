@@ -1,0 +1,416 @@
+{
+    "_id": "03100351-524c-93c0-40bb-5b97308cbc1d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show bgp neighbor",
+    "createTime": {
+        "$date": 1591074697460
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow bgp neighbor",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB_Ex_Sw # show bgp neighbor            \r\n\r\nPeer                AS    Weight      State        InMsgs OutMsgs(InQ)   Up/Down   \r\n-------------------------------------------------------------------------------   \r\nIe-- 10.0.0.2       100   0           OPENSENT     0      9      (0    ) 0:8:27:21 \r\nIe-- 3001::1        100   0           ESTABLISEHD  4      3      (0    ) 0:8:27:21           \r\n\r\nFlags:  (d) disabled, (e) enabled, (E) external peer, (I) internal peer          \r\n        (m) EBGP multihop, (r) route reflector client       \r\n\r\nBGP Peer Statistics     \r\nTotal Peers      : 2     \r\nEBGP Peers       : 0                 \r\nIBGP Peers       : 2     \r\nRR Client        : 0                 \r\nEBGP Multihop    : 0     \r\nEnabled          : 2                 \r\nDisabled         : 0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"nbr_filter\",\"startLine\":\"regex:peer\",\"endLine\":\"regex:flags\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"72fcfb42-60ac-59f6-b20e-029b38d201dd\"},{\"type\":\"3\",\"name\":\"bgp_nbr_table\",\"headers\":\"Peer;AS;Weight;State;InMsgs;OutMsgs;(InQ);Up/Down\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Peer:$string:peer;AS:$string:as;Weight:$string:weight;State:$string:state;InMsgs:$string:inmsgs;OutMsgs:$string:outmsgs;(InQ):$string:in_q;Up/Down:$string:up_down\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$peer:string\",\"$as:string\",\"$weight:string\",\"$state:string\",\"$inmsgs:string\",\"$outmsgs:string\",\"$in_q:string\",\"$up_down:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"663edf5e-f74e-c72b-0050-80f31e6f6d64\",\"hashColumns\":[\"$peer\"],\"interfaceKey\":\"\",\"HashSort\":false}]},\"xxid\":\"524f0c13-2021-bbe7-a209-a46512504720\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_peers]:total peers\\\\s*:\\\\s*(\\\\d+)\",\"regex[$int:ebgp_peers]:ebgp peers\\\\s*:\\\\s*(\\\\d+)\",\"regex[$int:ibgp_peers]:ibgp peers\\\\s*:\\\\s*(\\\\d+)\",\"regex[$int:rr_client]:rr client\\\\s*:\\\\s*(\\\\d+)\",\"regex[$int:ebgp_multihop]:ebgp multihop\\\\s*:\\\\s*(\\\\d+)\",\"regex[$int:enabled]:enabled\\\\s*:\\\\s*(\\\\d+)\",\"regex[$int:disabled]:disabled\\\\s*:\\\\s*(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_peers:int\",\"$ebgp_peers:int\",\"$ibgp_peers:int\",\"$rr_client:int\",\"$ebgp_multihop:int\",\"$enabled:int\",\"$disabled:int\"]},\"xxid\":\"0bdd8af0-d223-0784-0f20-3396bf6009fd\"}]}",
+            "tableKeys": [
+                "_original_result.nbr_filter.bgp_nbr_table.$peer"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "nbr_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "total_peers",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "ebgp_peers",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "ibgp_peers",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "rr_client",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "ebgp_multihop",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "enabled",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "disabled",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "peer",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "as",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "weight",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "inmsgs",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "outmsgs",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "in_q",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "up_down",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$peer"
+                ],
+                "hashSort": false,
+                "index": 8,
+                "name": "bgp_nbr_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d5905b73519936a89ecc572550681953",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "nbr_filter",
+            "dataType": "filter",
+            "desc": "Neighbor table filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter",
+            "intfKey": false,
+            "name": "nbr_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table",
+            "dataType": "table",
+            "desc": "BGP neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$peer"
+                ],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table",
+            "intfKey": false,
+            "name": "bgp_nbr_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_nbr_table.$peer",
+            "dataType": "string",
+            "desc": "BGP peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$peer",
+            "intfKey": false,
+            "name": "$peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table.$as",
+            "dataType": "string",
+            "desc": "AS number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table.$weight",
+            "dataType": "string",
+            "desc": "Weight.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$weight",
+            "intfKey": false,
+            "name": "$weight",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table.$state",
+            "dataType": "string",
+            "desc": "State.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table.$inmsgs",
+            "dataType": "string",
+            "desc": "Input message numbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$inmsgs",
+            "intfKey": false,
+            "name": "$inmsgs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table.$outmsgs",
+            "dataType": "string",
+            "desc": "Output message numbers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$outmsgs",
+            "intfKey": false,
+            "name": "$outmsgs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table.$in_q",
+            "dataType": "string",
+            "desc": "Input queue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$in_q",
+            "intfKey": false,
+            "name": "$in_q",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbr_table.$up_down",
+            "dataType": "string",
+            "desc": "The establish time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "nbr_filter.bgp_nbr_table.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_peers",
+            "dataType": "int",
+            "desc": "The numbers of total peers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_peers",
+            "intfKey": false,
+            "name": "$total_peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ebgp_peers",
+            "dataType": "int",
+            "desc": "The numbers of EBGP peers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ebgp_peers",
+            "intfKey": false,
+            "name": "$ebgp_peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ibgp_peers",
+            "dataType": "int",
+            "desc": "The numbers of IBGP peers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ibgp_peers",
+            "intfKey": false,
+            "name": "$ibgp_peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$rr_client",
+            "dataType": "int",
+            "desc": "The numbers of RR client.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$rr_client",
+            "intfKey": false,
+            "name": "$rr_client",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ebgp_multihop",
+            "dataType": "int",
+            "desc": "The numbers of EBGP multihop.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ebgp_multihop",
+            "intfKey": false,
+            "name": "$ebgp_multihop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$enabled",
+            "dataType": "int",
+            "desc": "The numbers of enabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$enabled",
+            "intfKey": false,
+            "name": "$enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$disabled",
+            "dataType": "int",
+            "desc": "The numbers of disabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$disabled",
+            "intfKey": false,
+            "name": "$disabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

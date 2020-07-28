@@ -1,0 +1,238 @@
+{
+    "_id": "ab112b30-2bac-3e78-09b0-3c51af1dcd16",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mpls ldp discovery",
+    "createTime": {
+        "$date": 1579122375755
+    },
+    "description": "Device Type:\nCisco IOS XR\nCommand:\nshow mpls ldp discovery\n",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:xrv10#show mpls ldp discovery\r\n\r\nTue Jan 21 21:01:08.778 UTC\r\n\r\nLocal LDP Identifier: 75.75.75.7:0\r\nDiscovery Sources:\r\n  Interfaces:\r\n    GigabitEthernet0/0/0/0 : xmit/recv\r\n      VRF: 'default' (0x60000000)\r\n      LDP Id: 75.75.75.6:0, Transport address: 75.75.75.6\r\n          Hold time: 15 sec (local:15 sec, peer:15 sec)\r\n\r\n    GigabitEthernet0/0/0/2 : xmit/recv\r\n      VRF: 'default' (0x60000000)\r\n      LDP Id: 75.75.75.3:0, Transport address: 75.75.75.3\r\n          Hold time: 15 sec (local:15 sec, peer:15 sec)\r\n\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ldp_discovery_table.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Local LDP Identifier: $local_ldp_id:\"]},\"statements\":null,\"variableTypes\":{\"variableType\":\"$local_ldp_id:string\"},\"xxid\":\"014d9aa8-b658-ce23-fd48-30ed6f61d76e\"},{\"type\":\"4\",\"name\":\"ldp_discovery_table\",\"keyVariables\":null,\"startLine\":\"regex[$interface,$state]:^ {4}(\\\\S+) : (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"LDP Id: $peer_ldp_id:\",\"Transport address: $transport_address\",\"Hold time: $int:hold_time sec\",\"VRF: '$vrf'\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$state:string\",\"$peer_ldp_id:string\",\"$transport_address:string\",\"$hold_time:int\",\"$vrf:string\"]},\"xxid\":\"c38d3c66-43ed-04cd-7dba-15999cf42c94\"}]},\"xxid\":\"a1d2e0fc-2902-5b33-8136-5dffdb708ef5\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$state\",\"$peer_ldp_id\",\"$transport_address\",\"$vrf\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.ldp_discovery_table.$peer_ldp_id",
+                "_original_result.ldp_discovery_table.$transport_address",
+                "_original_result.ldp_discovery_table.$vrf",
+                "_original_result.ldp_discovery_table.$state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "local_ldp_id",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "peer_ldp_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "transport_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "vrf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$peer_ldp_id",
+                    "$state",
+                    "$transport_address",
+                    "$vrf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ldp_discovery_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "09fdd62e0a6d60f6943a1ed06f118c39",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$local_ldp_id",
+            "dataType": "string",
+            "desc": "Local LDP ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_ldp_id",
+            "intfKey": false,
+            "name": "$local_ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$state",
+                    "$peer_ldp_id",
+                    "$transport_address",
+                    "$vrf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ldp_discovery_table",
+            "intfKey": false,
+            "name": "ldp_discovery_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ldp_discovery_table.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_discovery_table.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ldp_discovery_table.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_discovery_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_table.$peer_ldp_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_discovery_table.$peer_ldp_id",
+            "intfKey": false,
+            "name": "$peer_ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_table.$transport_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_discovery_table.$transport_address",
+            "intfKey": false,
+            "name": "$transport_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_table.$hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_discovery_table.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_discovery_table.$vrf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_discovery_table.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

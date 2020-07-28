@@ -1,0 +1,514 @@
+{
+    "_id": "86210279-00e5-9c5e-2804-897beb433500",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show route summary",
+    "createTime": {
+        "$date": 1580500827095
+    },
+    "description": "Device Type:\nJuniper Router \nJuniper EX Switch\nCommand:\nshow route summary",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@P2-MX> show route summary      \nAutonomous system number: 65000\nRouter ID: 10.100.100.2\n\ninet.0: 49 destinations, 49 routes (49 active, 0 holddown, 0 hidden)\n              Direct:      7 routes,      7 active\n               Local:      6 routes,      6 active\n                OSPF:     28 routes,     28 active\n              Static:      5 routes,      5 active\n                IGMP:      1 routes,      1 active\n                 PIM:      2 routes,      2 active\n\ninet.1: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)\n                 PIM:      1 routes,      1 active\n           Multicast:      3 routes,      3 active\n\ninet.3: 6 destinations, 7 routes (6 active, 0 holddown, 0 hidden)\n                RSVP:      1 routes,      1 active\n                 LDP:      6 routes,      5 active\n\nmpls.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)\n                MPLS:      6 routes,      6 active\n                 LDP:      9 routes,      9 active\n\nbgp.l3vpn.0: 4 destinations, 4 routes (4 active, 0 holddown, 0 hidden)\n                 BGP:      4 routes,      4 active\n\ninet6.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)\n                 PIM:      2 routes,      2 active\n\ninet6.1: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)\n           Multicast:      1 routes,      1 active\n                                        \nbgp.l2vpn.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)\n                 BGP:     13 routes,     13 active\n\nbgp.rtarget.0: 5 destinations, 12 routes (5 active, 0 holddown, 0 hidden)\n                 BGP:     12 routes,      5 active\n\nadmin@P2-MX> ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Autonomous system number: $local_autonomous_system_number\",\"Router ID: $router_id\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$local_autonomous_system_number:string\",\"$router_id:string\"]},\"xxid\":\"cde6db76-dd7c-51b3-32d7-4d39e0f1f0f0\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"b8ad77e8-6044-39c3-392a-189407649142\"},{\"type\":\"4\",\"name\":\"routing_tables\",\"keyVariables\":\"\",\"startLine\":\"regex[$route_table,$int:destination_count,$int:route_count,$int:active_route_count,$int:holddown_route_count,$int:hidden_route_count]:^(\\\\S+):\\\\s+(\\\\d+)\\\\s+destinations,\\\\s+(\\\\d+)\\\\s+routes\\\\s+\\\\((\\\\d+)\\\\s+active,\\\\s+(\\\\d+)\\\\s+holddown,\\\\s+(\\\\d+)\\\\s+hidden\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$route_table:string\",\"$destination_count:int\",\"$route_count:int\",\"$active_route_count:int\",\"$holddown_route_count:int\",\"$hidden_route_count:int\"]},\"xxid\":\"e50e33c6-58a9-dd5e-dbcb-9fde2ecb06b5\"},{\"type\":\"4\",\"name\":\"routes_per_protocol\",\"keyVariables\":\"\",\"startLine\":\"regex[$protocol,$int:protocol_route_count,$int:protocol_active_route_count]:^\\\\s+(\\\\S+):\\\\s+(\\\\d+)\\\\s+routes,\\\\s+(\\\\d+)\\\\s+active\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$protocol:string\",\"$protocol_route_count:int\",\"$protocol_active_route_count:int\"]},\"xxid\":\"08a7c519-9760-9d19-95e2-e7d3ba17a5f2\"}]},\"xxid\":\"29877f46-2680-b601-6cb3-1536bb324249\",\"hashColumns\":[\"$protocol\",\"$protocol_route_count\",\"$protocol_active_route_count\",\"$route_table\",\"$destination_count\",\"$route_count\",\"$active_route_count\",\"$holddown_route_count\",\"$hidden_route_count\"],\"hashSort\":false}]},\"xxid\":\"265b724d-7d95-6546-edba-a8acaac73afd\",\"hashColumns\":[\"$route_table\",\"$destination_count\",\"$route_count\",\"$active_route_count\",\"$holddown_route_count\",\"$hidden_route_count\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.routing_tables.$route_table",
+                "_original_result.routing_tables.routes_per_protocol.$protocol"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "local_autonomous_system_number",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "router_id",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "route_table",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "destination_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "active_route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "holddown_route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "hidden_route_count",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$active_route_count",
+                    "$destination_count",
+                    "$hidden_route_count",
+                    "$holddown_route_count",
+                    "$route_count",
+                    "$route_table"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "routing_tables",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "protocol_route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol_active_route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "route_table",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "destination_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "active_route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "holddown_route_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "hidden_route_count",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$active_route_count",
+                    "$destination_count",
+                    "$hidden_route_count",
+                    "$holddown_route_count",
+                    "$protocol",
+                    "$protocol_active_route_count",
+                    "$protocol_route_count",
+                    "$route_count",
+                    "$route_table"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "routes_per_protocol",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f81154fd8113e4c10ced32f56fbbb19c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$local_autonomous_system_number",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_autonomous_system_number",
+            "intfKey": false,
+            "name": "$local_autonomous_system_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_tables",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$route_table",
+                    "$destination_count",
+                    "$route_count",
+                    "$active_route_count",
+                    "$holddown_route_count",
+                    "$hidden_route_count"
+                ],
+                "hashSort": false
+            },
+            "fullName": "routing_tables",
+            "intfKey": false,
+            "name": "routing_tables",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "routing_tables.$route_table",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.$route_table",
+            "intfKey": false,
+            "name": "$route_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_tables.$destination_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.$destination_count",
+            "intfKey": false,
+            "name": "$destination_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_tables.$route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.$route_count",
+            "intfKey": false,
+            "name": "$route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_tables.$active_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.$active_route_count",
+            "intfKey": false,
+            "name": "$active_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_tables.$holddown_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.$holddown_route_count",
+            "intfKey": false,
+            "name": "$holddown_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_tables.$hidden_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.$hidden_route_count",
+            "intfKey": false,
+            "name": "$hidden_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$protocol",
+                    "$protocol_route_count",
+                    "$protocol_active_route_count",
+                    "$route_table",
+                    "$destination_count",
+                    "$route_count",
+                    "$active_route_count",
+                    "$holddown_route_count",
+                    "$hidden_route_count"
+                ],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol",
+            "intfKey": false,
+            "name": "routes_per_protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "routes_per_protocol.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$protocol_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$protocol_route_count",
+            "intfKey": false,
+            "name": "$protocol_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$protocol_active_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$protocol_active_route_count",
+            "intfKey": false,
+            "name": "$protocol_active_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$route_table",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$route_table",
+            "intfKey": false,
+            "name": "$route_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$destination_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$destination_count",
+            "intfKey": false,
+            "name": "$destination_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$route_count",
+            "intfKey": false,
+            "name": "$route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$active_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$active_route_count",
+            "intfKey": false,
+            "name": "$active_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$holddown_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$holddown_route_count",
+            "intfKey": false,
+            "name": "$holddown_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routes_per_protocol.$hidden_route_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "routing_tables.routes_per_protocol.$hidden_route_count",
+            "intfKey": false,
+            "name": "$hidden_route_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,380 @@
+{
+    "_id": "6c039721-e527-4f66-98ae-c46c9a2146d9",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis neighbors detail",
+    "createTime": {
+        "$date": 1590777871541
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow isis neighbors detail",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell#show isis neighbors detail\r\nSystem Id Interface State Type Priority Uptime Circuit Id\r\nTEST Te 7/1 Up L1L2(M) 127 09:28:04 TEST.02 Area Address(es):\r\n49.0000.0001\r\n IP Address(es): 25.1.1.3*\r\n MAC Address: 0000.0000.0000\r\n Hold Time: 28\r\n Link Local Address: fe80::201:e8ff:fe00:492c\r\n Topology: IPv4 IPv6 , Common (IPv4 IPv6 )\r\n Adjacency being used for MTs: IPv4 IPv6\r\nDell#",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[$sys_id, $intf, $state, $type, $priority, $uptime, $circuit_id]:^(\\\\S+)\\\\s+(\\\\S+ \\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$area_addr]:area address\\\\(es\\\\):.*?(\\\\S+)\",\"regex[$ip_addr]:ip address\\\\(es\\\\):\\\\s+(.+?)$\",\"regex[$mac_addr]:mac address:\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"regex[$int:hold_time]:hold time:\\\\s+(.+?)$\",\"regex[$link_local_addr]:link local address:\\\\s+(\\\\S+)\",\"regex[$topology]:topology:\\\\s+(.+?)\\\\s*,\",\"regex[$adj_mts]:adjacency being used for mts:\\\\s+(.+?)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sys_id:string\",\"$intf:string\",\"$state:string\",\"$type:string\",\"$priority:string\",\"$uptime:string\",\"$circuit_id:string\",\"$area_addr:string\",\"$ip_addr:string\",\"$mac_addr:string\",\"$hold_time:int\",\"$link_local_addr:string\",\"$topology:string\",\"$adj_mts:string\"]},\"xxid\":\"ac8cb843-1bec-85a2-53e3-14334102562e\"}]},\"xxid\":\"4416eaa8-530a-a471-147f-5d4a35267a6c\",\"hashColumns\":[\"$sys_id\",\"$intf\"],\"interfaceKey\":\"$intf\"}]}",
+            "tableKeys": [
+                "_original_result.isis_nbrs.$sys_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sys_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "link_local_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "topology",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "adj_mts",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$sys_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "be1c483f84ae7c38955f4c4744d0dc25",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_nbrs",
+            "dataType": "paragraph",
+            "desc": "ISIS neighbors table detail.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$sys_id",
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs",
+            "intfKey": false,
+            "name": "isis_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_nbrs.$sys_id",
+            "dataType": "string",
+            "desc": "The value that identifies a system in an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$sys_id",
+            "intfKey": false,
+            "name": "$sys_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$intf",
+            "dataType": "string",
+            "desc": "The interface, slot, and port in which the router was discovered.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_nbrs.$state",
+            "dataType": "string",
+            "desc": "The value providing status about the adjacency state. The range is Up and Init",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$type",
+            "dataType": "string",
+            "desc": "This value displays the adjacency type (Layer 2, Layer 2 or both).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$priority",
+            "dataType": "string",
+            "desc": "IS-IS priority the neighbor advertises. The neighbor with highest priority becomes the designated router for the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$uptime",
+            "dataType": "string",
+            "desc": "Displays the interfaces uptime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$circuit_id",
+            "dataType": "string",
+            "desc": "The neighbor???s interpretation of the designated router for the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$circuit_id",
+            "intfKey": false,
+            "name": "$circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$area_addr",
+            "dataType": "string",
+            "desc": "Area addresses.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$area_addr",
+            "intfKey": false,
+            "name": "$area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$ip_addr",
+            "dataType": "string",
+            "desc": "IP addresses",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$mac_addr",
+            "dataType": "string",
+            "desc": "MAC address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$mac_addr",
+            "intfKey": false,
+            "name": "$mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$hold_time",
+            "dataType": "int",
+            "desc": "Hold time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$link_local_addr",
+            "dataType": "string",
+            "desc": "Link local address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$link_local_addr",
+            "intfKey": false,
+            "name": "$link_local_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$topology",
+            "dataType": "string",
+            "desc": "Topology type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$topology",
+            "intfKey": false,
+            "name": "$topology",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$adj_mts",
+            "dataType": "string",
+            "desc": "Adjacency being used for MTs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$adj_mts",
+            "intfKey": false,
+            "name": "$adj_mts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

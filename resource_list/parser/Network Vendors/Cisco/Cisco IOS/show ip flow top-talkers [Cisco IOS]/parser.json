@@ -1,0 +1,266 @@
+{
+    "_id": "dc72e1fc-7797-2e88-cce4-6397ad1828d4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip flow top-talkers",
+    "createTime": {
+        "$date": 1580828392386
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow ip flow top-talkers",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ST-PE4#show ip flow top-talkers \r\n\r\nSrcIf         SrcIPaddress    DstIf         DstIPaddress    Pr SrcP DstP Bytes\r\nEt0/2         123.10.14.1     Null          224.0.0.2       11 0286 0286    17K\r\nEt0/2         123.10.14.1     Null          224.0.0.5       59 0000 0000  9464 \r\nEt0/0         123.10.24.2     Null          224.0.0.2       11 0286 0286  5890 \r\nEt0/1         123.10.45.5     Null          224.0.0.2       11 0286 0286  5456 \r\nEt0/0         123.10.24.2     Null          224.0.0.5       59 0000 0000  3804 \r\nEt0/1         123.10.45.5     Null          224.0.0.5       59 0000 0000  3480 \r\nEt0/2         123.1.1.1       Local         123.4.4.4       06 0286 B4FB    98 \r\nEt0/1         123.5.5.5       Local         123.4.4.4       06 DEBE 0286    98 \r\n8 of 10 top talkers shown. 8 flows processed.",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.top_talkers.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"top_talkers\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf, $src_addr, $dst_intf, $dst_addr, $pr, $src_port, $dst_port, $bytes]:(\\\\S+)\\\\s+(\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$src_addr:string\",\"$dst_intf:string\",\"$dst_addr:string\",\"$pr:string\",\"$src_port:string\",\"$dst_port:string\",\"$bytes:string\"]},\"xxid\":\"e03ab964-7f12-47e3-f593-ff5afdb06242\"}]},\"xxid\":\"fbbdd41b-f3a4-8f8e-1399-054dc3e494aa\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$netflow_ios_top_tlk_cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$netflow_ios_top_tlk_cli_output:string\"]},\"xxid\":\"6a59b07f-d5a7-e506-c18f-e8caec8a1d14\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "netflow_ios_top_tlk_cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "src_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dst_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dst_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "pr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "src_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "dst_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "bytes",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "top_talkers",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2d2aea09ccee46226223a88251a44c5b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "top_talkers",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "top_talkers",
+            "intfKey": false,
+            "name": "top_talkers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "top_talkers.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "top_talkers.$src_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$src_addr",
+            "intfKey": false,
+            "name": "$src_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "top_talkers.$dst_intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$dst_intf",
+            "intfKey": false,
+            "name": "$dst_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "top_talkers.$dst_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$dst_addr",
+            "intfKey": false,
+            "name": "$dst_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "top_talkers.$pr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$pr",
+            "intfKey": false,
+            "name": "$pr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "top_talkers.$src_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$src_port",
+            "intfKey": false,
+            "name": "$src_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "top_talkers.$dst_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$dst_port",
+            "intfKey": false,
+            "name": "$dst_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "top_talkers.$bytes",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "top_talkers.$bytes",
+            "intfKey": false,
+            "name": "$bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$netflow_ios_top_tlk_cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$netflow_ios_top_tlk_cli_output",
+            "intfKey": false,
+            "name": "$netflow_ios_top_tlk_cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

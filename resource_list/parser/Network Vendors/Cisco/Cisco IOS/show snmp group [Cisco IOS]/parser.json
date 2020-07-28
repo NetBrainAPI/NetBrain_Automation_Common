@@ -1,0 +1,169 @@
+{
+    "_id": "3d1ce6b1-c568-6e3e-90b2-d35acad76605",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show snmp group",
+    "createTime": {
+        "$date": 1580149859828
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router \nCommand: \nshow snmp group",
+    "devTypes": [
+        2001
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "wszR1#show snmp group \ngroupname: nb                               security model:v1 \ncontextname: <no context specified>         storage-type: permanent\nreadview : v1default                        writeview: v1default                       \nnotifyview: <no notifyview specified>       \nrow status: active\n\ngroupname: nb                               security model:v2c \ncontextname: <no context specified>         storage-type: permanent\nreadview : v1default                        writeview: v1default                       \nnotifyview: <no notifyview specified>       \nrow status: active\n\ngroupname: ILMI                             security model:v1 \ncontextname: <no context specified>         storage-type: permanent\nreadview : *ilmi                            writeview: *ilmi                           \nnotifyview: <no notifyview specified>       \nrow status: active\n\ngroupname: ILMI                             security model:v2c \ncontextname: <no context specified>         storage-type: permanent\nreadview : *ilmi                            writeview: *ilmi                           \nnotifyview: <no notifyview specified>       \nrow status: active\n\nwszR1#show snmp group \ngroupname: nb                               security model:v1 \ncontextname: <no context specified>         storage-type: permanent\nreadview : v1default                        writeview: v1default                       \nnotifyview: <no notifyview specified>       \nrow status: active\n\ngroupname: nb                               security model:v2c \ncontextname: <no context specified>         storage-type: permanent\nreadview : v1default                        writeview: v1default                       \nnotifyview: <no notifyview specified>       \nrow status: active\n\ngroupname: ILMI                             security model:v1 \ncontextname: <no context specified>         storage-type: permanent\nreadview : *ilmi                            writeview: *ilmi                           \nnotifyview: <no notifyview specified>       \nrow status: active\n\ngroupname: ILMI                             security model:v2c \ncontextname: <no context specified>         storage-type: permanent\nreadview : *ilmi                            writeview: *ilmi                           \nnotifyview: <no notifyview specified>       \nrow status: active\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"snmp_group\",\"keyVariables\":\"\",\"startLine\":\"groupname:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$groupname]:groupname:\\\\s+(\\\\S+)\",\"regex[$security_model]:security model:(\\\\S+)\",\"regex[$row_status]:row status:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$groupname:string\",\"$security_model:string\",\"$row_status:string\"]},\"xxid\":\"a1915253-4441-b3a8-c1ba-493ceff774f7\"}]},\"xxid\":\"7c848b9c-31ac-42af-a1c3-a293d87a3265\",\"hashColumns\":[\"$row_status\",\"$security_model\",\"$groupname\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"d6620717-1f4e-5da7-d526-62bc2c628938\"}]}",
+            "tableKeys": [
+                "_original_result.snmp_group.$groupname"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "groupname",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "security_model",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "row_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$groupname",
+                    "$row_status",
+                    "$security_model"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "snmp_group",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "732c32e15373757b38d3993808aca88a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "snmp_group",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$row_status",
+                    "$security_model",
+                    "$groupname"
+                ],
+                "hashSort": false
+            },
+            "fullName": "snmp_group",
+            "intfKey": false,
+            "name": "snmp_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "snmp_group.$groupname",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp_group.$groupname",
+            "intfKey": false,
+            "name": "$groupname",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_group.$security_model",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp_group.$security_model",
+            "intfKey": false,
+            "name": "$security_model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "snmp_group.$row_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "snmp_group.$row_status",
+            "intfKey": false,
+            "name": "$row_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

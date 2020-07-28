@@ -1,0 +1,285 @@
+{
+    "_id": "2ff99f80-8f3c-1ff9-5984-e05a94443e89",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560884243352
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n[\r\n]\r\nEnd Declare\r\n\r\nFor sample\r\n[\r\n    {\"name\": \"$param1\"},\r\n    {\"name\": \"$param2\"}\r\n]\r\n'''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    res = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'Logical', 'params' : ['_id'] })\r\n    apiServerId = res['params']['_id']\r\n    rtn_params = {}\r\n    rtn_params['apiServerId'] = apiServerId\r\n    temp = device_name.split('/uni/')\r\n    temp1 ='/uni/'+temp[1]\r\n    rtn_params['dn'] = temp1\r\n    return rtn_params\r\n\r\n\t\r\ndef RetrieveData(rtn_params):\r\n    dn = rtn_params['dn']\r\n    qry = \"query-target=subtree&rsp-prop-include=config-only&target-subtree-class=l2extRsPathL2OutAtt,l2extRsEBd,l2extLIfP,l2extLNodeP\"\r\n    dn = dn.split('/instP-')\r\n    dn = dn[0]\r\n    url = '/api/mo/' + dn + '.json?' + qry\r\n    rtn_params['url'] = url\r\n    data = getData(rtn_params)\r\n    data = json.loads(data)\r\n    url = '/api/node/class/fabricNode.json?' \r\n    rtn_params['url'] = url\r\n    data1 = getData(rtn_params)\r\n    data1 = json.loads(data1)\r\n    data += data1\r\n    return data\r\n    \r\n    \r\n",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"l2extRsEBd\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/l2out-APP-EPG-L2OUT-EBN/rseBd\",\n                \"encap\": \"vlan-551\",\n                \"tnFvBDName\": \"APP.Server-BD\"\n            }\n        }\n    },\n    {\n        \"l2extLNodeP\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/l2out-APP-EPG-L2OUT-EBN/lnodep-APP-L2OUT-NODE-PROFILE\",\n                \"name\": \"APP-L2OUT-NODE-PROFILE\",\n                \"nameAlias\": \"\",\n                \"ownerKey\": \"\",\n                \"ownerTag\": \"\",\n                \"tag\": \"yellow-green\"\n            }\n        }\n    },\n    {\n        \"l2extLNodeP\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/l2out-APP-EPG-L2OUT-EBN/lnodep-default\",\n                \"name\": \"default\",\n                \"nameAlias\": \"\",\n                \"ownerKey\": \"\",\n                \"ownerTag\": \"\",\n                \"tag\": \"yellow-green\"\n            }\n        }\n    },\n    {\n        \"l2extLIfP\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/l2out-APP-EPG-L2OUT-EBN/lnodep-default/lifp-default\",\n                \"name\": \"default\",\n                \"nameAlias\": \"\",\n                \"ownerKey\": \"\",\n                \"ownerTag\": \"\",\n                \"tag\": \"yellow-green\"\n            }\n        }\n    },\n    {\n        \"l2extLIfP\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/l2out-APP-EPG-L2OUT-EBN/lnodep-APP-L2OUT-NODE-PROFILE/lifp-APP-L2OUT-INTF-PROFILE\",\n                \"name\": \"APP-L2OUT-INTF-PROFILE\",\n                \"nameAlias\": \"\",\n                \"ownerKey\": \"\",\n                \"ownerTag\": \"\",\n                \"tag\": \"yellow-green\"\n            }\n        }\n    },\n    {\n        \"l2extRsPathL2OutAtt\": {\n            \"attributes\": {\n                \"annotation\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/l2out-APP-EPG-L2OUT-EBN/lnodep-APP-L2OUT-NODE-PROFILE/lifp-APP-L2OUT-INTF-PROFILE/rspathL2OutAtt-[topology/pod-1/paths-102/pathep-[eth1/5]]\",\n                \"tDn\": \"topology/pod-1/paths-102/pathep-[eth1/5]\",\n                \"targetDscp\": \"unspecified\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-2/node-104\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"104\",\n                \"lastStateModTs\": \"2019-01-22T12:54:59.559+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-22T12:56:49.108+00:00\",\n                \"model\": \"N9K-C9372PX-E\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBLEAF-4\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"leaf\",\n                \"serial\": \"FDO222719JT\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-1/node-101\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"101\",\n                \"lastStateModTs\": \"2019-01-22T12:54:59.564+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-22T12:56:49.109+00:00\",\n                \"model\": \"N9K-C9372PX-E\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBLEAF-1\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"leaf\",\n                \"serial\": \"FDO21331LDV\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-1/node-102\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"102\",\n                \"lastStateModTs\": \"2019-01-22T12:54:59.570+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-22T12:56:49.125+00:00\",\n                \"model\": \"N9K-C9372PX-E\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBLEAF-2\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"leaf\",\n                \"serial\": \"FDO21331NPY\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-2/node-103\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"103\",\n                \"lastStateModTs\": \"2019-01-22T12:55:02.782+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-22T12:56:49.121+00:00\",\n                \"model\": \"N9K-C9372PX-E\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBLEAF-3\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"leaf\",\n                \"serial\": \"FDO222719G2\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-1/node-201\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"201\",\n                \"lastStateModTs\": \"2019-01-22T12:54:59.572+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-22T12:56:49.120+00:00\",\n                \"model\": \"N9K-C9336PQ\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBSPINE-1\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"spine\",\n                \"serial\": \"FDO212900KN\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-2/node-203\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"203\",\n                \"lastStateModTs\": \"2019-05-28T19:17:40.975+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-05-28T19:18:37.693+00:00\",\n                \"model\": \"N9K-C9336PQ\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBSPINE-3\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"spine\",\n                \"serial\": \"FDO22212GVQ\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-1/node-202\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"202\",\n                \"lastStateModTs\": \"2019-01-22T12:54:59.587+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-22T12:56:49.124+00:00\",\n                \"model\": \"N9K-C9336PQ\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBSPINE-2\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"spine\",\n                \"serial\": \"FDO22212GWG\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-1/node-2\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"unknown\",\n                \"id\": \"2\",\n                \"lastStateModTs\": \"1970-01-01T00:00:00.000+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-22T12:56:31.853+00:00\",\n                \"model\": \"\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"apic2\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"controller\",\n                \"serial\": \"FCH2226V6WX\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"A0\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-1/node-1\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"unknown\",\n                \"id\": \"1\",\n                \"lastStateModTs\": \"1970-01-01T00:00:00.000+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-01-24T08:02:39.054+00:00\",\n                \"model\": \"\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"apic1\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"controller\",\n                \"serial\": \"FCH2131V0SZ\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"A0\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-2/node-204\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"active\",\n                \"id\": \"204\",\n                \"lastStateModTs\": \"2019-05-15T13:17:09.262+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-05-15T13:18:08.938+00:00\",\n                \"model\": \"N9K-C9336PQ\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"NBSPINE-4\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"spine\",\n                \"serial\": \"FDO22212GXE\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"\"\n            }\n        }\n    },\n    {\n        \"fabricNode\": {\n            \"attributes\": {\n                \"adSt\": \"on\",\n                \"annotation\": \"\",\n                \"childAction\": \"\",\n                \"delayedHeartbeat\": \"no\",\n                \"dn\": \"topology/pod-1/node-3\",\n                \"extMngdBy\": \"\",\n                \"fabricSt\": \"inactive\",\n                \"id\": \"3\",\n                \"lastStateModTs\": \"1970-01-01T00:00:00.000+00:00\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2018-11-13T13:10:52.164+00:00\",\n                \"model\": \"APIC-SERVER-M2\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"apic3\",\n                \"nameAlias\": \"\",\n                \"nodeType\": \"unspecified\",\n                \"role\": \"controller\",\n                \"serial\": \"FCH2226V6JX\",\n                \"status\": \"\",\n                \"uid\": \"0\",\n                \"vendor\": \"Cisco Systems, Inc\",\n                \"version\": \"A0\"\n            }\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"fabricNode_table\\\",  \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\n        {\\\"name\\\": \\\"nodeID\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"nodeName\\\", \\\"type\\\": \\\"string\\\"}]\\n        },\\n    {\\\"name\\\": \\\"node_intf_table\\\",  \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\n        {\\\"name\\\": \\\"switch\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"interface\\\", \\\"type\\\": \\\"string\\\"}]\\n        },\\n    {\\\"name\\\": \\\"BD_extended\\\",  \\\"type\\\": \\\"table\\\", \\\"columns\\\": [\\n        {\\\"name\\\": \\\"encapExtended\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"BDName\\\", \\\"type\\\": \\\"string\\\"}]\\n        }\\n]\\nEnd Declare\\n'''\\n\\nimport json \\nimport re\\n\\ndef ParseText(_original_result):\\n    \\n    result = json.loads(_original_result)\\n    value = {}\\n    nodeName = []\\n    nodeID = []\\n    \\n    switch = []\\n    interface = []\\n    \\n    encapExtended = []\\n    BDName = []\\n    \\n    data= result\\n    #testing variable\\n    i = 0\\n    # Search & store interesting network data units\\n    for m in range(len(data)):\\n        temp = str(data[m].keys())\\n        temp = temp.replace('dict_keys([\\\\'', '')\\n        temp = temp.replace('\\\\'])','')\\n        \\n        # change i to view ith network object\\n        #if i == 0:\\n        #    raise NameError(temp)\\n\\n        # Match key and retrieve interesting network data units \\n        if temp == 'fabricNode':\\n            nodeName.append(data[m][temp]['attributes']['name'])\\n            nodeID.append(data[m][temp]['attributes']['id'])\\n    \\n    for m in range(len(data)):\\n        temp = str(data[m].keys())\\n        temp = temp.replace('dict_keys([\\\\'', '')\\n        temp = temp.replace('\\\\'])','')        \\n        if temp == 'l2extRsPathL2OutAtt':\\n            temp1 = data[m][temp]['attributes']['tDn']\\n            temp1 = temp1.split('/paths-')\\n            temp1 = temp1[1].split('/')\\n            temp1 = temp1[0]\\n            for n in range(len(nodeID)):\\n                if nodeID[n] == temp1:\\n                    switch.append(nodeName[n])\\n            \\n            temp1 = data[m][temp]['attributes']['tDn']\\n            temp1 = temp1.split('/pathep-[')\\n            temp1 = temp1[1].split(']')\\n            temp1 = temp1[0]\\n            interface.append(temp1)\\n        if temp == 'l2extRsEBd':\\n             encapExtended.append(data[m][temp]['attributes']['encap'])\\n             BDName.append(data[m][temp]['attributes']['tnFvBDName'])\\n\\n\\n        #testing variable\\n        i +=1\\n\\n    value['fabricNode_table']= {'nodeName': nodeName, 'nodeID':nodeID}\\n    value['node_intf_table']={'switch':switch,'interface':interface}\\n    value['BD_extended']={'encapExtended':encapExtended,'BDName':BDName}\\n      \\n    \\n    \\n    return value\\n\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$BD_extended\",\"variableTypes\":{\"variableType\":[{\"name\":\"$encapExtended\",\"type\":\"string\"},{\"name\":\"$BDName\",\"type\":\"string\"}]}},{\"name\":\"$fabricNode_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$nodeID\",\"type\":\"string\"},{\"name\":\"$nodeName\",\"type\":\"string\"}]}},{\"name\":\"$node_intf_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$switch\",\"type\":\"string\"},{\"name\":\"$interface\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"d40b6a1c-c734-d6a2-b5da-c1a295c3e9cb\",\"hashColumns\":[\"$BDName\",\"$nodeID\",\"$switch\"],\"tableKeys\":{\"node_intf_table\":[\"$interface\"],\"BD_extended\":[\"$encapExtended\"]},\"hashSort\":{\"BD_extended\":false,\"node_intf_table\":false}}]}",
+            "tableKeys": [
+                "_original_result.$BD_extended.$BDName",
+                "_original_result.$fabricNode_table.$nodeID",
+                "_original_result.$node_intf_table.$switch",
+                "_original_result.$node_intf_table.$interface",
+                "_original_result.$BD_extended.$encapExtended"
+            ]
+        }
+    ],
+    "schemaList": [
+        "ACI.topRoot.children.polUni.children.fvTenant.children.l2extOut.children.l2extInstP"
+    ],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "BDName",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "encapExtended",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "BD_extended",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nodeID",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "nodeName",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "fabricNode_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "switch",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "node_intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fb923d128babeb280af2dbdbe1eb636d",
+    "supportNodeType": 1,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$BD_extended.$BDName",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$BD_extended.$BDName",
+            "intfKey": false,
+            "name": "$BDName",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$BD_extended",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$encapExtended",
+                    "$BDName"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$BD_extended",
+            "intfKey": false,
+            "name": "$BD_extended",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$BD_extended.$encapExtended",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$BD_extended.$encapExtended",
+            "intfKey": false,
+            "name": "$encapExtended",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fabricNode_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fabricNode_table",
+            "intfKey": false,
+            "name": "$fabricNode_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$node_intf_table.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$node_intf_table.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fabricNode_table.$nodeID",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fabricNode_table.$nodeID",
+            "intfKey": false,
+            "name": "$nodeID",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fabricNode_table.$nodeName",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fabricNode_table.$nodeName",
+            "intfKey": false,
+            "name": "$nodeName",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$node_intf_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$switch",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$node_intf_table",
+            "intfKey": false,
+            "name": "$node_intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$node_intf_table.$switch",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$node_intf_table.$switch",
+            "intfKey": false,
+            "name": "$switch",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

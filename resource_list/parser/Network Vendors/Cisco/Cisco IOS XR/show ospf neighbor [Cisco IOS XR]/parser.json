@@ -1,0 +1,325 @@
+{
+    "_id": "923893ea-fb5c-6a1d-b5b4-de51687efc2e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbor",
+    "createTime": {
+        "$date": 1579121835505
+    },
+    "description": null,
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:OSPF-XR#show ospf neighbor\n\nWed May 13 17:16:13.627 UTC\n\n* Indicates MADJ interface\n\nNeighbors for OSPF 1\n\nNeighbor ID     Pri   State           Dead Time   Address         Interface\n111.1.2.1       1     FULL/  -        00:00:19    192.168.2.1     OSPF_VL0\n    Neighbor is up for 1w0d\n111.1.1.1       1     FULL/DR         00:00:34    192.168.1.1     GigabitEthernet0/0/0/0\n    Neighbor is up for 1w0d\n5.5.5.5         1     FULL/BDR        00:00:37    172.16.57.5     GigabitEthernet0/0/0/1\n    Neighbor is up for 1w0d\n\nTotal neighbor count: 3\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.processes.ospf_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"processes\",\"keyVariables\":null,\"startLine\":\"Neighbors for OSPF $process_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process_id:string\"]},\"xxid\":\"664c5141-c82c-2332-27d0-3aa9a3f47abd\"},{\"type\":\"4\",\"name\":\"ospf_nbrs\",\"keyVariables\":null,\"startLine\":\"regex[$nbr_id,$int:priority,$state,$dead_time,$nbr_addr,$intf]:(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\d+)\\\\s+(.*)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Neighbor is up for $up_time\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$priority:int\",\"$state:string\",\"$dead_time:string\",\"$nbr_addr:string\",\"$intf:string\",\"$up_time:string\"]},\"xxid\":\"de8ca1dd-c5b4-8bc7-7976-0645c28253a6\"}]},\"xxid\":\"fee5329e-6326-3639-e764-719a4ced7c9b\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$nbr_addr\",\"$state\",\"$priority\",\"$process_id\"]}]},\"xxid\":\"e7c8415f-e6e1-ac8a-a304-6c5910363534\"}]}",
+            "tableKeys": [
+                "_original_result.processes.ospf_nbrs.$nbr_addr",
+                "_original_result.processes.ospf_nbrs.$state",
+                "_original_result.processes.ospf_nbrs.$priority",
+                "_original_result.processes.ospf_nbrs.$process_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "nbr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$nbr_addr",
+                    "$priority",
+                    "$process_id",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "be71309e925cda6dbe15aa4289af8372",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "processes",
+            "dataType": "paragraph",
+            "desc": "Processes Table\n",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "processes",
+            "intfKey": false,
+            "name": "processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "processes.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs",
+            "dataType": "paragraph",
+            "desc": "OSPF Nbrs Table\n",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$nbr_addr",
+                    "$state",
+                    "$priority",
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs",
+            "intfKey": false,
+            "name": "ospf_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$dead_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$dead_time",
+            "intfKey": false,
+            "name": "$dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$nbr_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$nbr_addr",
+            "intfKey": false,
+            "name": "$nbr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_nbrs.$up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$up_time",
+            "intfKey": false,
+            "name": "$up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_nbrs.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.ospf_nbrs.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

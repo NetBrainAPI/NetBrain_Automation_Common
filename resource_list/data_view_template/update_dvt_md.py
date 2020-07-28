@@ -46,7 +46,7 @@ vendor_readme_template ='''
 {% for vendor in vendor_tree %}
 ## {{vendor}}
 {% for feature in vendor_tree[vendor] %}
-#### {{feature}}
+* {{feature}}
 {% endfor %}
 {% endfor %}
 '''
@@ -59,7 +59,7 @@ feature_readme_template ='''
 {% for feature in feature_tree %}
 ## {{feature}}
 {% for vendor in feature_tree[feature] %}
-#### {{vendor}}
+* {{vendor}}
 {% endfor %}
 {% endfor %}
 '''

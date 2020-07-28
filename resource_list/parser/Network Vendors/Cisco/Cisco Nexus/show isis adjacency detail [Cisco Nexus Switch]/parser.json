@@ -1,0 +1,641 @@
+{
+    "_id": "5282c3f2-42f6-5a41-67cf-41e83208be00",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis adjacency detail",
+    "createTime": {
+        "$date": 1579820725111
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand: \nshow isis adjacency detail",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K#show isis adjacency detail\n\nIS-IS process: 1 VRF: default\nIS-IS adjacency database:\nSystem ID       SNPA            Level  State  Hold Time  Interface\njunr1           000c.293c.2998  1      UP     00:00:19   Ethernet2/1\n  Up/Down transitions: 1, Last transition: 01:28:01 ago\n  Circuit Type: L1-2\n  IPv4 Address: 163.0.15.1\n  IPv6 Address: 0::\n  Circuit ID: N7K.01, Priority: 64\n  BFD session not requested \n  Restart capable: 1; ack 0;\n  Restart mode: 0; seen(ra 0; csnp(0; l1 0; l2 0)); suppress 0\n\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.processes.isis_nbrs.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"processes\",\"keyVariables\":\"\",\"startLine\":\"IS-IS process: $isis_as\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$isis_as:string\"]},\"xxid\":\"a8056994-f0c9-e94a-b05a-4fa4769acd9b\"},{\"type\":\"4\",\"name\":\"isis_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[$system_id,$snpa,$type,$state,$holdtime,$interface]:(.*?)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Circuit Type: $circuit_type\",\"IPv4 Address: $ip_address\",\"IPv6 Address: $nbr_ipv6_addr\",\"Up/Down transitions: $int:up_down_transition, Last transition: $last_transition ago\",\"Circuit ID: $ciruit_id, Priority: $int:priority\",\"BFD session $bfd_state\",\"Restart capable: $int:restart_capable; ack $int:restart_ack;\",\"Restart mode: $restart_mode; seen(ra $seen_ra; csnp($csnp; l1 $level_1_csnp; l2 $level_2_csnp)); suppress $suppress\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$system_id:string\",\"$snpa:string\",\"$type:string\",\"$state:string\",\"$holdtime:string\",\"$interface:string\",\"$circuit_type:string\",\"$ip_address:string\",\"$nbr_ipv6_addr:string\",\"$up_down_transition:int\",\"$last_transition:string\",\"$ciruit_id:string\",\"$priority:int\",\"$bfd_state:string\",\"$restart_capable:int\",\"$restart_ack:int\",\"$restart_mode:string\",\"$seen_ra:string\",\"$csnp:string\",\"$level_1_csnp:string\",\"$level_2_csnp:string\",\"$suppress:string\"]},\"xxid\":\"792a4f7f-7e41-31a9-c664-8b2cc4f0acab\"}]},\"xxid\":\"0376453f-b7ec-bf09-03d0-428730b7d50b\",\"hashColumns\":[\"$system_id\",\"$interface\"],\"interfaceKey\":\"$interface\"}]},\"xxid\":\"db46eae8-0cbf-7ac4-ae5a-c6ebe76cfb8c\",\"hashColumns\":[\"$isis_as\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"666cb55d-e7cc-32d6-f90b-40fd752faea9\"}]}",
+            "tableKeys": [
+                "_original_result.processes.$isis_as",
+                "_original_result.processes.isis_nbrs.$system_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "isis_as",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$isis_as"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 23,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "holdtime",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "circuit_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "nbr_ipv6_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "up_down_transition",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "last_transition",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "ciruit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "bfd_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "restart_capable",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "restart_ack",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "restart_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "seen_ra",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "csnp",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "level_1_csnp",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "level_2_csnp",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "suppress",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "isis_as",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$system_id"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "062f6e774b35fa70942004bc79793ba0",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "processes",
+            "dataType": "paragraph",
+            "desc": "ISIS process id table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$isis_as"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes",
+            "intfKey": false,
+            "name": "processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "processes.$isis_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$isis_as",
+            "intfKey": false,
+            "name": "$isis_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs",
+            "dataType": "paragraph",
+            "desc": "ISIS neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$system_id",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs",
+            "intfKey": false,
+            "name": "isis_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_nbrs.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$snpa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$holdtime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$holdtime",
+            "intfKey": false,
+            "name": "$holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_nbrs.$circuit_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$circuit_type",
+            "intfKey": false,
+            "name": "$circuit_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$nbr_ipv6_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$nbr_ipv6_addr",
+            "intfKey": false,
+            "name": "$nbr_ipv6_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$up_down_transition",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$up_down_transition",
+            "intfKey": false,
+            "name": "$up_down_transition",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$last_transition",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$last_transition",
+            "intfKey": false,
+            "name": "$last_transition",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$ciruit_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$ciruit_id",
+            "intfKey": false,
+            "name": "$ciruit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$bfd_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$bfd_state",
+            "intfKey": false,
+            "name": "$bfd_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$restart_capable",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$restart_capable",
+            "intfKey": false,
+            "name": "$restart_capable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$restart_ack",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$restart_ack",
+            "intfKey": false,
+            "name": "$restart_ack",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$restart_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$restart_mode",
+            "intfKey": false,
+            "name": "$restart_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$seen_ra",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$seen_ra",
+            "intfKey": false,
+            "name": "$seen_ra",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$csnp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$csnp",
+            "intfKey": false,
+            "name": "$csnp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$level_1_csnp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$level_1_csnp",
+            "intfKey": false,
+            "name": "$level_1_csnp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$level_2_csnp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$level_2_csnp",
+            "intfKey": false,
+            "name": "$level_2_csnp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$suppress",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$suppress",
+            "intfKey": false,
+            "name": "$suppress",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$isis_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_nbrs.$isis_as",
+            "intfKey": false,
+            "name": "$isis_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

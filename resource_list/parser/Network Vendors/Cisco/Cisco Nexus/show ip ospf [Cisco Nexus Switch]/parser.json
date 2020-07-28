@@ -1,0 +1,1462 @@
+{
+    "_id": "4fcfad83-0370-f3a8-72dc-0cf379e8af7e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf",
+    "createTime": {
+        "$date": 1579710003392
+    },
+    "description": "Device Type: \nCisco Nexus Switch\nCommand:\nshow ip ospf",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "OSPF-N7K#show ip ospf\n\n Routing Process 1 with ID 111.1.1.1 VRF default\n Stateful High Availability enabled\n Graceful-restart is configured\n   Grace period: 60 state: Inactive \n   Last graceful restart exit status: None\n Supports only single TOS(TOS0) routes\n Supports opaque LSA\n This router is an area border\n Administrative distance 110\n Reference Bandwidth is 40000 Mbps\n Initial SPF schedule delay 200.000 msecs,\n   minimum inter SPF delay of 1000.000 msecs, \n   maximum inter SPF delay of 5000.000 msecs\n Initial LSA generation delay 0.000 msecs,\n   minimum inter LSA delay of 5000.000 msecs, \n   maximum inter LSA delay of 5000.000 msecs\n Minimum LSA arrival 1000.000 msec\n LSA group pacing timer 10 secs\n Maximum paths to destination 8\n Number of external LSAs 2, checksum sum 0x4a8\n Number of opaque AS LSAs 0, checksum sum 0\n Number of areas is 3, 3 normal, 0 stub, 0 nssa\n Number of active areas is 3, 3 normal, 0 stub, 0 nssa\n   Area BACKBONE(0.0.0.0) \n        Area has existed for 1w1d\n        Interfaces in this area: 3 Active interfaces: 3\n        Passive interfaces: 0  Loopback interfaces: 0\n        No authentication available\n        SPF calculation has run 28 times\n         Last SPF ran for 0.000950s\n        Area ranges are\n        Number of LSAs: 26, checksum sum 0xea7d3\n   Area (0.0.0.2) \n        Area has existed for 1w1d\n        Interfaces in this area: 1 Active interfaces: 1\n        Passive interfaces: 0  Loopback interfaces: 0\n        Message-digest authentication\n        SPF calculation has run 28 times\n         Last SPF ran for 0.000431s\n        Area ranges are\n        Number of LSAs: 18, checksum sum 0x98d69\n   Area (0.0.0.3) \n        Area has existed for 1w1d\n        Interfaces in this area: 2 Active interfaces: 2\n        Passive interfaces: 1  Loopback interfaces: 1\n        No authentication available\n        SPF calculation has run 28 times\n         Last SPF ran for 0.000512s\n        Area ranges are\n        Number of LSAs: 23, checksum sum 0xadad7\n Routing Process 3 with ID 111.1.3.1 VRF default\n Stateful High Availability enabled\n Graceful-restart is configured\n   Grace period: 60 state: Inactive \n   Last graceful restart exit status: None\n Supports only single TOS(TOS0) routes\n Supports opaque LSA\n This router is an area border\n Administrative distance 110\n Reference Bandwidth is 40000 Mbps\n Initial SPF schedule delay 200.000 msecs,\n   minimum inter SPF delay of 1000.000 msecs, \n   maximum inter SPF delay of 5000.000 msecs\n Initial LSA generation delay 0.000 msecs,\n   minimum inter LSA delay of 5000.000 msecs, \n   maximum inter LSA delay of 5000.000 msecs\n Minimum LSA arrival 1000.000 msec\n LSA group pacing timer 10 secs\n Maximum paths to destination 8\n Number of external LSAs 2, checksum sum 0x4a8\n Number of opaque AS LSAs 0, checksum sum 0\n Number of areas is 3, 3 normal, 0 stub, 0 nssa\n Number of active areas is 3, 3 normal, 0 stub, 0 nssa\n   Area BACKBONE(0.0.0.0) \n        Area has existed for 1w1d\n        Interfaces in this area: 3 Active interfaces: 3\n        Passive interfaces: 0  Loopback interfaces: 0\n        No authentication available\n        SPF calculation has run 28 times\n         Last SPF ran for 0.000950s\n        Area ranges are\n        Number of LSAs: 26, checksum sum 0xea7d3\n   Area (0.0.0.2) \n        Area has existed for 1w1d\n        Interfaces in this area: 1 Active interfaces: 1\n        Passive interfaces: 0  Loopback interfaces: 0\n        Message-digest authentication\n        SPF calculation has run 28 times\n         Last SPF ran for 0.000431s\n        Area ranges are\n        Number of LSAs: 18, checksum sum 0x98d69\n   Area (0.0.0.3) \n        Area has existed for 1w1d\n        Interfaces in this area: 2 Active interfaces: 2\n        Passive interfaces: 1  Loopback interfaces: 1\n        No authentication available\n        SPF calculation has run 28 times\n         Last SPF ran for 0.000512s\n        Area ranges are\n        Number of LSAs: 23, checksum sum 0xadad7",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"processes\",\"keyVariables\":null,\"startLine\":\"Routing Process $process_id with ID $router_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Stateful High Availability $stateful_high_availability_state\",\"Graceful-restart is $graceful_restart_state\",\"Grace period: $grace_period state: $grace_state\",\"Last graceful restart exit status: $last_graceful_restart_exit_status\",\"regex[$router_role]:This router is an (.*)\",\"Administrative distance $int:administrative_distance\",\"Reference Bandwidth is $int:reference_bandwidth Mbps\",\"Initial SPF schedule delay $initial_spf_schedule_delay msecs,\",\"minimum inter SPF delay of $min_inter_spf_delay msecs,\",\"maximum inter SPF delay of $max_inter_spf_delay msecs\",\"Initial LSA generation delay $initial_lsa_generation_delay msecs,\",\"minimum inter LSA delay of $min_inter_lsa_delay msecs,\",\"maximum inter LSA delay of $max_inter_lsa_delay msecs\",\"Minimum LSA arrival $min_lsa_arrival msec\",\"LSA group pacing timer $int:lsa_group_pacing_timer secs\",\"Maximum paths to destination $int:max_paths_dest\",\"Number of external LSAs $int:num_of_external_lsa, checksum sum $external_lsa_checksum\",\"Number of opaque AS LSAs $int:num_of_opaque_as_lsa, checksum sum $opaque_as_lsa_checksum\",\"Number of active areas is $int:num__of_active_areas, $int:normal_areas normal, $int:stub_areas stub, $int:nssa_areas nssa\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process_id:string\",\"$router_id:string\",\"$stateful_high_availability_state:string\",\"$graceful_restart_state:string\",\"$grace_period:string\",\"$grace_state:string\",\"$last_graceful_restart_exit_status:string\",\"$router_role:string\",\"$administrative_distance:int\",\"$reference_bandwidth:int\",\"$initial_spf_schedule_delay:string\",\"$min_inter_spf_delay:string\",\"$max_inter_spf_delay:string\",\"$initial_lsa_generation_delay:string\",\"$min_inter_lsa_delay:string\",\"$max_inter_lsa_delay:string\",\"$min_lsa_arrival:string\",\"$lsa_group_pacing_timer:int\",\"$max_paths_dest:int\",\"$num_of_external_lsa:int\",\"$external_lsa_checksum:string\",\"$num_of_opaque_as_lsa:int\",\"$opaque_as_lsa_checksum:string\",\"$num__of_active_areas:int\",\"$normal_areas:int\",\"$stub_areas:int\",\"$nssa_areas:int\"]},\"xxid\":\"bca730b1-b82f-3626-e999-533543080ac0\"},{\"type\":\"4\",\"name\":\"area\",\"keyVariables\":null,\"startLine\":\"regex[$area_id]:Area\\\\s+(?:\\\\S+)?(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Area has existed for $area_existed_time\",\"Interfaces in this area: $int:intf_count Active interfaces: $int:active_intf_count\",\"Passive interfaces: $int:passive_intf  Loopback interfaces: $int:loopback_intf\",\"SPF calculation has run $int:spf_times times\",\"Last SPF ran for $last_spf_rans\",\"Number of LSAs: $int:num_lsa, checksum sum $lsa_checksum\",\"regex[$area_auth_text]:(.*authentication.*)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$area_existed_time:string\",\"$intf_count:int\",\"$active_intf_count:int\",\"$passive_intf:int\",\"$loopback_intf:int\",\"$spf_times:int\",\"$last_spf_rans:string\",\"$num_lsa:int\",\"$lsa_checksum:string\",\"$area_auth_text:string\"]},\"xxid\":\"9145d5da-5a5b-1278-8b5f-d6e9c7f967a7\"}]},\"xxid\":\"d2f7bf94-96ef-e2bf-04d5-dcec24816a26\"}]},\"xxid\":\"c1679f89-191f-3573-a321-aab26c56ffa6\",\"hashColumns\":[\"$process_id\",\"$router_id\",\"$router_role\",\"$normal_areas\",\"$stub_areas\",\"$nssa_areas\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"e541060d-5e9e-6176-f4df-4ad5b73a81fe\"}]}",
+            "tableKeys": [
+                "_original_result.processes.$process_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 27,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "stateful_high_availability_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "graceful_restart_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "grace_period",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "grace_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "last_graceful_restart_exit_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "router_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "administrative_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "reference_bandwidth",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "initial_spf_schedule_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "min_inter_spf_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "max_inter_spf_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "initial_lsa_generation_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "min_inter_lsa_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "max_inter_lsa_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "min_lsa_arrival",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "lsa_group_pacing_timer",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "max_paths_dest",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "num_of_external_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "external_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "num_of_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "opaque_as_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "num__of_active_areas",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "normal_areas",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "stub_areas",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "nssa_areas",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$normal_areas",
+                    "$nssa_areas",
+                    "$process_id",
+                    "$router_id",
+                    "$router_role",
+                    "$stub_areas"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 38,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 39,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "area_existed_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "active_intf_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "passive_intf",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "loopback_intf",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "spf_times",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "last_spf_rans",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "num_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "area_auth_text",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "process_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "stateful_high_availability_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "graceful_restart_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "grace_period",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "grace_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "last_graceful_restart_exit_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "router_role",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "administrative_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "reference_bandwidth",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "initial_spf_schedule_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "min_inter_spf_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "max_inter_spf_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "initial_lsa_generation_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "min_inter_lsa_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 26,
+                        "name": "max_inter_lsa_delay",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "min_lsa_arrival",
+                        "type": 4
+                    },
+                    {
+                        "index": 28,
+                        "name": "lsa_group_pacing_timer",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "max_paths_dest",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "num_of_external_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 31,
+                        "name": "external_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 32,
+                        "name": "num_of_opaque_as_lsa",
+                        "type": 1
+                    },
+                    {
+                        "index": 33,
+                        "name": "opaque_as_lsa_checksum",
+                        "type": 4
+                    },
+                    {
+                        "index": 34,
+                        "name": "num__of_active_areas",
+                        "type": 1
+                    },
+                    {
+                        "index": 35,
+                        "name": "normal_areas",
+                        "type": 1
+                    },
+                    {
+                        "index": 36,
+                        "name": "stub_areas",
+                        "type": 1
+                    },
+                    {
+                        "index": 37,
+                        "name": "nssa_areas",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "area",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5044347f1a30145c5ac66bbd7b249df2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "processes",
+            "dataType": "paragraph",
+            "desc": "Processes Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id",
+                    "$router_id",
+                    "$router_role",
+                    "$normal_areas",
+                    "$stub_areas",
+                    "$nssa_areas"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes",
+            "intfKey": false,
+            "name": "processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "processes.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$stateful_high_availability_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$stateful_high_availability_state",
+            "intfKey": false,
+            "name": "$stateful_high_availability_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$graceful_restart_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$graceful_restart_state",
+            "intfKey": false,
+            "name": "$graceful_restart_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$grace_period",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$grace_period",
+            "intfKey": false,
+            "name": "$grace_period",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$grace_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$grace_state",
+            "intfKey": false,
+            "name": "$grace_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$last_graceful_restart_exit_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$last_graceful_restart_exit_status",
+            "intfKey": false,
+            "name": "$last_graceful_restart_exit_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$router_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$router_role",
+            "intfKey": false,
+            "name": "$router_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$administrative_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$administrative_distance",
+            "intfKey": false,
+            "name": "$administrative_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$reference_bandwidth",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$reference_bandwidth",
+            "intfKey": false,
+            "name": "$reference_bandwidth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$initial_spf_schedule_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$initial_spf_schedule_delay",
+            "intfKey": false,
+            "name": "$initial_spf_schedule_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$min_inter_spf_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$min_inter_spf_delay",
+            "intfKey": false,
+            "name": "$min_inter_spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$max_inter_spf_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$max_inter_spf_delay",
+            "intfKey": false,
+            "name": "$max_inter_spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$initial_lsa_generation_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$initial_lsa_generation_delay",
+            "intfKey": false,
+            "name": "$initial_lsa_generation_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$min_inter_lsa_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$min_inter_lsa_delay",
+            "intfKey": false,
+            "name": "$min_inter_lsa_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$max_inter_lsa_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$max_inter_lsa_delay",
+            "intfKey": false,
+            "name": "$max_inter_lsa_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$min_lsa_arrival",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$min_lsa_arrival",
+            "intfKey": false,
+            "name": "$min_lsa_arrival",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$lsa_group_pacing_timer",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$lsa_group_pacing_timer",
+            "intfKey": false,
+            "name": "$lsa_group_pacing_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$max_paths_dest",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$max_paths_dest",
+            "intfKey": false,
+            "name": "$max_paths_dest",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$num_of_external_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$num_of_external_lsa",
+            "intfKey": false,
+            "name": "$num_of_external_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$external_lsa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$external_lsa_checksum",
+            "intfKey": false,
+            "name": "$external_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$num_of_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$num_of_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_of_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$opaque_as_lsa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$opaque_as_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_as_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$num__of_active_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$num__of_active_areas",
+            "intfKey": false,
+            "name": "$num__of_active_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$normal_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$normal_areas",
+            "intfKey": false,
+            "name": "$normal_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$stub_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$stub_areas",
+            "intfKey": false,
+            "name": "$stub_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "processes.$nssa_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$nssa_areas",
+            "intfKey": false,
+            "name": "$nssa_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area",
+            "dataType": "paragraph",
+            "desc": "Area Table",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "processes.area",
+            "intfKey": false,
+            "name": "area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$area_existed_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$area_existed_time",
+            "intfKey": false,
+            "name": "$area_existed_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$intf_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$intf_count",
+            "intfKey": false,
+            "name": "$intf_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$active_intf_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$active_intf_count",
+            "intfKey": false,
+            "name": "$active_intf_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$passive_intf",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$passive_intf",
+            "intfKey": false,
+            "name": "$passive_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$loopback_intf",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$loopback_intf",
+            "intfKey": false,
+            "name": "$loopback_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$spf_times",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$spf_times",
+            "intfKey": false,
+            "name": "$spf_times",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$last_spf_rans",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$last_spf_rans",
+            "intfKey": false,
+            "name": "$last_spf_rans",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$num_lsa",
+            "intfKey": false,
+            "name": "$num_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$lsa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$lsa_checksum",
+            "intfKey": false,
+            "name": "$lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$area_auth_text",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$area_auth_text",
+            "intfKey": false,
+            "name": "$area_auth_text",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$stateful_high_availability_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$stateful_high_availability_state",
+            "intfKey": false,
+            "name": "$stateful_high_availability_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$graceful_restart_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$graceful_restart_state",
+            "intfKey": false,
+            "name": "$graceful_restart_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$grace_period",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$grace_period",
+            "intfKey": false,
+            "name": "$grace_period",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$grace_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$grace_state",
+            "intfKey": false,
+            "name": "$grace_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$last_graceful_restart_exit_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$last_graceful_restart_exit_status",
+            "intfKey": false,
+            "name": "$last_graceful_restart_exit_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$router_role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$router_role",
+            "intfKey": false,
+            "name": "$router_role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$administrative_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$administrative_distance",
+            "intfKey": false,
+            "name": "$administrative_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$reference_bandwidth",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$reference_bandwidth",
+            "intfKey": false,
+            "name": "$reference_bandwidth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$initial_spf_schedule_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$initial_spf_schedule_delay",
+            "intfKey": false,
+            "name": "$initial_spf_schedule_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$min_inter_spf_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$min_inter_spf_delay",
+            "intfKey": false,
+            "name": "$min_inter_spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$max_inter_spf_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$max_inter_spf_delay",
+            "intfKey": false,
+            "name": "$max_inter_spf_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$initial_lsa_generation_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$initial_lsa_generation_delay",
+            "intfKey": false,
+            "name": "$initial_lsa_generation_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$min_inter_lsa_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$min_inter_lsa_delay",
+            "intfKey": false,
+            "name": "$min_inter_lsa_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$max_inter_lsa_delay",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$max_inter_lsa_delay",
+            "intfKey": false,
+            "name": "$max_inter_lsa_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$min_lsa_arrival",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$min_lsa_arrival",
+            "intfKey": false,
+            "name": "$min_lsa_arrival",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$lsa_group_pacing_timer",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$lsa_group_pacing_timer",
+            "intfKey": false,
+            "name": "$lsa_group_pacing_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$max_paths_dest",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$max_paths_dest",
+            "intfKey": false,
+            "name": "$max_paths_dest",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_of_external_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$num_of_external_lsa",
+            "intfKey": false,
+            "name": "$num_of_external_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$external_lsa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$external_lsa_checksum",
+            "intfKey": false,
+            "name": "$external_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num_of_opaque_as_lsa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$num_of_opaque_as_lsa",
+            "intfKey": false,
+            "name": "$num_of_opaque_as_lsa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$opaque_as_lsa_checksum",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$opaque_as_lsa_checksum",
+            "intfKey": false,
+            "name": "$opaque_as_lsa_checksum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$num__of_active_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$num__of_active_areas",
+            "intfKey": false,
+            "name": "$num__of_active_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$normal_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$normal_areas",
+            "intfKey": false,
+            "name": "$normal_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$stub_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$stub_areas",
+            "intfKey": false,
+            "name": "$stub_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area.$nssa_areas",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.area.$nssa_areas",
+            "intfKey": false,
+            "name": "$nssa_areas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

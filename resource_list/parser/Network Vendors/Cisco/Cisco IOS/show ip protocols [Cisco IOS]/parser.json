@@ -1,0 +1,538 @@
+{
+    "_id": "6fec98ac-e0c7-49eb-9ef9-f660344d4d0f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip protocols",
+    "createTime": {
+        "$date": 1580129157852
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router\nCommand: \nshow ip protocols",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Core-SW1>show ip protocols\n*** IP Routing is NSF aware ***\n\nRouting Protocol is \"eigrp 1\"\n  Outgoing update filter list for all interfaces is not set\n  Incoming update filter list for all interfaces is not set\n  Default networks flagged in outgoing updates\n  Default networks accepted from incoming updates\n  EIGRP-IPv4 Protocol for AS(1)\n    Metric weight K1=1, K2=0, K3=1, K4=0, K5=0\n    NSF-aware route hold timer is 240\n    Router-ID: 192.168.9.101\n    Topology : 0 (base) \n      Active Timer: 3 min\n      Distance: internal 90 external 170\n      Maximum path: 4\n      Maximum hopcount 100\n      Maximum metric variance 1\n\n  Automatic Summarization: disabled\n  Maximum path: 4\n  Routing for Networks:\n    3.3.3.0/24\n  Routing Information Sources:\n    Gateway         Distance      Last Update\n  Distance: internal 90 external 170\n\nRouting Protocol is \"isis\"\n  Outgoing update filter list for all interfaces is not set\n  Incoming update filter list for all interfaces is not set\n  Redistributing: isis\n  Address Summarization:\n    None\n  Maximum path: 4\n  Routing for Networks:\n    Loopback1\n    Ethernet0/3\n  Routing Information Sources:\n    Gateway         Distance      Last Update\n  Distance: (default is 115)\n\nRouting Protocol is \"ospf 1\"\n  Outgoing update filter list for all interfaces is not set\n  Incoming update filter list for all interfaces is not set\n  Router ID 1.1.1.1\n  Number of areas in this router is 0. 0 normal 0 stub 0 nssa\n  Maximum path: 4\n  Routing for Networks:\n  Routing Information Sources:\n    Gateway         Distance      Last Update\n  Distance: (default is 110)\n\nRouting Protocol is \"ospf 2\"\n  Outgoing update filter list for all interfaces is not set\n  Incoming update filter list for all interfaces is not set\n  Router ID 192.168.9.101\n  Number of areas in this router is 0. 0 normal 0 stub 0 nssa\n  Maximum path: 4\n  Routing for Networks:\n  Routing Information Sources:\n    Gateway         Distance      Last Update\n  Distance: (default is 110)\n\nRouting Protocol is \"bgp 64555\"\n  Outgoing update filter list for all interfaces is not set\n  Incoming update filter list for all interfaces is not set\n  IGP synchronization is disabled\n  Automatic route summarization is disabled\n  Redistributing: connected\n  Neighbor(s):\n    Address          FiltIn FiltOut DistIn DistOut Weight RouteMap\n    10.88.250.6                                          \n  Maximum path: 1\n  Routing Information Sources:\n    Gateway         Distance      Last Update\n    10.88.250.6           20      00:41:25\n  Distance: external 20 internal 200 local 200\n\n",
+            "devName": "Core-SW1",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"protocols\",\"keyVariables\":null,\"startLine\":\"regex[$protocol]:Routing Protocol is \\\"(.*)\\\"\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$outgoing_update_filter_list]:Outgoing update filter list for all interfaces is (.*)\",\"regex[$incoming_update_filter_list]:Incoming update filter list for all interfaces is (.*)\",\"regex[$router_id]:(?:Router-ID:\\\\s+|Router ID )(\\\\S+)\",\"regex[$int:internal_distance,$int:external_distance]:Distance: internal (\\\\d+) external (\\\\d+)\",\"Maximum path: $int:maximum_path\",\"regex[$int:default_distance]:Distance:\\\\s+\\\\(default is (\\\\d+)\\\\)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$protocol:string\",\"$outgoing_update_filter_list:string\",\"$incoming_update_filter_list:string\",\"$router_id:string\",\"$internal_distance:int\",\"$external_distance:int\",\"$maximum_path:int\",\"$default_distance:int\"]},\"child\":{\"parseRule\":[{\"type\":\"1\",\"name\":\"networks_filter\",\"startLine\":\"Routing for Networks:\",\"endLine\":\"Routing Information Sources:\",\"skipLines\":null,\"includeLines\":null,\"excludeLines\":null,\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"child\":{\"parseRule\":{\"type\":\"0\",\"keyWords\":null,\"statements\":null,\"variableTypes\":null}}},{\"type\":\"1\",\"name\":\"network_filters\",\"startLine\":\"Routing for Networks:\",\"endLine\":\"Routing Information Sources:\",\"skipLines\":null,\"includeLines\":null,\"excludeLines\":null,\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"child\":{\"parseRule\":{\"type\":\"0\",\"keyWords\":null,\"statements\":null,\"variableTypes\":null}}}]},\"xxid\":\"b49ea4e2-8c1f-822f-dd17-3cb557922f18\"},{\"type\":\"1\",\"name\":\"network_filter\",\"startLine\":\"Routing for Networks:\",\"endLine\":\"Routing Information Sources:\",\"skipLines\":null,\"includeLines\":null,\"excludeLines\":null,\"filterLoop\":\"1\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"cf140e01-293b-42a1-17a6-a714eee648b6\"}]},\"xxid\":\"f979894d-8402-bb4d-dce1-785aa89885a7\"},{\"type\":\"4\",\"name\":\"routing_information_sources\",\"keyVariables\":\"\",\"startLine\":\"Routing Information Sources:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$gateway,$distance,$last_update]:\\\\s+(\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$gateway:string\",\"$distance:string\",\"$last_update:string\"]},\"xxid\":\"4f90f59b-a0c0-514e-fdf8-020887c9ceec\"}]},\"xxid\":\"7dc2bbb3-bcb4-ba36-26a5-dab15af639c5\"}]},\"xxid\":\"abd972c3-fecb-98c7-d14d-79d08d25ac7f\",\"hashColumns\":[]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"4d249445-3eda-75c4-74e4-ce9fa91db1ae\"}]}",
+            "tableKeys": [
+                "_original_result.protocols.$protocol"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "outgoing_update_filter_list",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "incoming_update_filter_list",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "internal_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "external_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "maximum_path",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "default_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "network_filter",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "protocols",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "gateway",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "distance",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "last_update",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "outgoing_update_filter_list",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "incoming_update_filter_list",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "internal_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "external_distance",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "maximum_path",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "default_distance",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "routing_information_sources",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "741f8c787b1e9f786a2480b99e84c95b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "protocols",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols",
+            "intfKey": false,
+            "name": "protocols",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "protocols.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$outgoing_update_filter_list",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$outgoing_update_filter_list",
+            "intfKey": false,
+            "name": "$outgoing_update_filter_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$incoming_update_filter_list",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$incoming_update_filter_list",
+            "intfKey": false,
+            "name": "$incoming_update_filter_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$internal_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$internal_distance",
+            "intfKey": false,
+            "name": "$internal_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$external_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$external_distance",
+            "intfKey": false,
+            "name": "$external_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$maximum_path",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$maximum_path",
+            "intfKey": false,
+            "name": "$maximum_path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.$default_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.$default_distance",
+            "intfKey": false,
+            "name": "$default_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "protocols.network_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.network_filter",
+            "intfKey": false,
+            "name": "network_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources",
+            "intfKey": false,
+            "name": "routing_information_sources",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "routing_information_sources.$gateway",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$gateway",
+            "intfKey": false,
+            "name": "$gateway",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$distance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$distance",
+            "intfKey": false,
+            "name": "$distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$last_update",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$last_update",
+            "intfKey": false,
+            "name": "$last_update",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$protocol",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$outgoing_update_filter_list",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$outgoing_update_filter_list",
+            "intfKey": false,
+            "name": "$outgoing_update_filter_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$incoming_update_filter_list",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$incoming_update_filter_list",
+            "intfKey": false,
+            "name": "$incoming_update_filter_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$internal_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$internal_distance",
+            "intfKey": false,
+            "name": "$internal_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$external_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$external_distance",
+            "intfKey": false,
+            "name": "$external_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$maximum_path",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$maximum_path",
+            "intfKey": false,
+            "name": "$maximum_path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "routing_information_sources.$default_distance",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "protocols.routing_information_sources.$default_distance",
+            "intfKey": false,
+            "name": "$default_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

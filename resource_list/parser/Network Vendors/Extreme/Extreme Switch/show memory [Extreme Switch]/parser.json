@@ -1,0 +1,205 @@
+{
+    "_id": "c4b7392a-106c-0c23-7429-7cc3490364ad",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show memory",
+    "createTime": {
+        "$date": 1591075485398
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow memory",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB# show memory\r\n\r\nSystem Memory Information\r\n-------------------------\r\nTotal DRAM (KB): 262144\r\nSystem     (KB): 25852\r\nUser       (KB): 96608\r\nFree       (KB): 139684\r\nMemory Utilization Statistics\r\n-----------------------------\r\nProcess Name     Memory (KB)\r\n-----------------------------\r\naaa              13468\r\nacl              11420\r\nbgp              0\r\ncfgmgr           8336\r\ncli              41040\r\ncna              0\r\ndevmgr           8452\r\ndirser           7068\r\ndosprotect       8264\r\neaps             18784\r\nedp              9780\r\nelrp             10040\r\nems              10672\r\nepm              15520\r\nesrp             16728\r\netmon            18924\r\nexacl            30\r\nexdos            8\r\nexfib            3\r\nexosmc           29\r\nexosnvram        4\r\nexosq            36\r\nexsflow          10\r\nexsnoop          20\r\nexsshd           9272\r\nexvlan           290\r\nfdb              12908\r\nhal              64768\r\nlldp             8816\r\nmcmgr            17836\r\nmsgsrv           6960\r\nnetLogin         8924\r\nnetTools         11524\r\nnettx            70\r\nnodemgr          9636\r\nospf             18124\r\nospfv3           0\r\npim              15996\r\npoe              8936\r\npolMgr           7576\r\nrip              17736\r\nripng            0\r\nrtmgr            16016\r\nsnmpMaster       15416\r\nsnmpSubagent     26428\r\nstp              10768\r\ntelnetd          8464\r\ntftpd            7584\r\nthttpd           11344\r\nvlan             9660\r\nvrrp             11184\r\nxmld             9148",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_dram_kb]:total dram\\\\s*\\\\(\\\\S+\\\\):\\\\s+(\\\\d+)\",\"regex[$int:system_kb]:system\\\\s*\\\\(\\\\S+\\\\):\\\\s+(\\\\d+)\",\"regex[$int:user_kb]:user\\\\s*\\\\(\\\\S+\\\\):\\\\s+(\\\\d+)\",\"regex[$int:free_kb]:free\\\\s*\\\\(\\\\S+\\\\):\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_dram_kb:int\",\"$system_kb:int\",\"$user_kb:int\",\"$free_kb:int\"]},\"xxid\":\"a293dc98-bec6-8237-d144-38f9efc164ef\"},{\"type\":\"3\",\"name\":\"memory_utilization_table\",\"headers\":\"Process Name;Memory (KB)\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Process Name:$string:process_name;Memory (KB):$string:memory_kb\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$process_name:string\",\"$memory_kb:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"13c9c2c6-0e34-6d5c-cadf-050fdb461314\",\"hashColumns\":[\"$process_name\"]}]}",
+            "tableKeys": [
+                "_original_result.memory_utilization_table.$process_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_dram_kb",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "system_kb",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "user_kb",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "free_kb",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "memory_kb",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_name"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "memory_utilization_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8c18ed413006df12761f303f9334c218",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total_dram_kb",
+            "dataType": "int",
+            "desc": "System memory of total dram (KB).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_dram_kb",
+            "intfKey": false,
+            "name": "$total_dram_kb",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$system_kb",
+            "dataType": "int",
+            "desc": "System memory of system (KB).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$system_kb",
+            "intfKey": false,
+            "name": "$system_kb",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$user_kb",
+            "dataType": "int",
+            "desc": "System memory of user (KB).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$user_kb",
+            "intfKey": false,
+            "name": "$user_kb",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$free_kb",
+            "dataType": "int",
+            "desc": "System memory of free (KB).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$free_kb",
+            "intfKey": false,
+            "name": "$free_kb",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_utilization_table",
+            "dataType": "table",
+            "desc": "Memory utilization table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "memory_utilization_table",
+            "intfKey": false,
+            "name": "memory_utilization_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "memory_utilization_table.$process_name",
+            "dataType": "string",
+            "desc": "Process name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_utilization_table.$process_name",
+            "intfKey": false,
+            "name": "$process_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "memory_utilization_table.$memory_kb",
+            "dataType": "string",
+            "desc": "Memory (KB).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "memory_utilization_table.$memory_kb",
+            "intfKey": false,
+            "name": "$memory_kb",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

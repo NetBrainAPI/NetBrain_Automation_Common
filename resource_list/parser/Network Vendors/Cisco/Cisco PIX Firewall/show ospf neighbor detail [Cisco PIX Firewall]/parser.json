@@ -1,0 +1,518 @@
+{
+    "_id": "7ecf508b-861e-02bc-7863-8faf4b4bca44",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbor detail",
+    "createTime": {
+        "$date": 1591049215834
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow ospf neighbor detail",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "pixfirewall# show ospf neighbor detail \r\n\r\n Neighbor 1.1.1.1, interface address 13.1.1.1\r\n    In the area 0 via interface inside \r\n    Neighbor priority is 1, State is FULL, 6 state changes\r\n    DR is 13.1.1.1 BDR is 13.1.1.3\r\n    Options is 0x52\r\n    Dead timer due in 0:00:32\r\n    Neighbor is up for 44:50:26\r\n    Index 1/1, retransmission queue length 0, number of retransmission 0\r\n    First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)\r\n    Last retransmission scan length is 0, maximum is 0\r\n    Last retransmission scan time is 0 msec, maximum is 0 msec\r\n Neighbor 2.2.2.2, interface address 23.1.1.2\r\n    In the area 0 via interface outside \r\n    Neighbor priority is 1, State is FULL, 6 state changes\r\n    DR is 23.1.1.2 BDR is 23.1.1.3\r\n    Options is 0x52\r\n    Dead timer due in 0:00:37\r\n    Neighbor is up for 44:50:16\r\n    Index 2/2, retransmission queue length 0, number of retransmission 0\r\n    First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)\r\n    Last retransmission scan length is 0, maximum is 0\r\n    Last retransmission scan time is 0 msec, maximum is 0 msec",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_neighbor_detail_table.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_neighbor_detail_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$neighbor_id,$interface_address]:Neighbor\\\\s+(\\\\S+), interface address\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$area_id,$interface]:In the area\\\\s+(\\\\S+) via interface\\\\s+(\\\\S+)\",\"regex[$neighbor_priority]:Neighbor priority is\\\\s+(\\\\S+),\",\"regex[$neighbor_state]:State is\\\\s+(\\\\S+),\",\"regex[$int:neighbor_state_change_count]:(\\\\S+) state changes\",\"regex[$dr_id]:DR is\\\\s+(\\\\S+)\",\"regex[$bdr_id]:BDR is\\\\s+(\\\\S+)\",\"regex[$options]:Options is\\\\s+(\\\\S+)\",\"regex[$dead_time_due_in]:Dead timer due in\\\\s+(\\\\S+)\",\"regex[$neighbor_up_time]:Neighbor is up for\\\\s+(\\\\S+)\",\"regex[$index]:Index\\\\s+(\\\\S+),\",\"regex[$int:retransmission_queue_length]:retransmission queue length\\\\s+(\\\\S+),\",\"regex[$int:num_of_retransmission]:number of retransmission\\\\s+(\\\\S+)\",\"regex[$first]:First\\\\s+(\\\\S+)\",\"regex[$next]:Next\\\\s+(\\\\S+)\",\"regex[$int:last_retransmission_scan_length,$int:last_retransmission_scan_length_maximum]:Last retransmission scan length is\\\\s+(\\\\S+), maximum is (\\\\S+)\",\"regex[$int:last_retransmission_scan_time,$int:last_retransmission_scan_time_maximum]:Last retransmission scan time is (\\\\S+) msec, maximum is (\\\\S+) msec\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbor_id:string\",\"$interface_address:string\",\"$area_id:string\",\"$interface:string\",\"$neighbor_priority:string\",\"$neighbor_state:string\",\"$neighbor_state_change_count:int\",\"$dr_id:string\",\"$bdr_id:string\",\"$options:string\",\"$dead_time_due_in:string\",\"$neighbor_up_time:string\",\"$index:string\",\"$retransmission_queue_length:int\",\"$num_of_retransmission:int\",\"$first:string\",\"$next:string\",\"$last_retransmission_scan_length:int\",\"$last_retransmission_scan_length_maximum:int\",\"$last_retransmission_scan_time:int\",\"$last_retransmission_scan_time_maximum:int\"]},\"xxid\":\"0855c29d-26c9-b161-18dd-866c6c299c06\"}]},\"xxid\":\"d49bb3ab-d987-af42-eca1-6cf3c4e1f165\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$intf\",\"$interface\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 21,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "neighbor_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "neighbor_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "neighbor_state_change_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "dr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "bdr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "options",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "dead_time_due_in",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "neighbor_up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "index",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "retransmission_queue_length",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "num_of_retransmission",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "first",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "next",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "last_retransmission_scan_length",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "last_retransmission_scan_length_maximum",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "last_retransmission_scan_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "last_retransmission_scan_time_maximum",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_neighbor_detail_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "01e84c7780aefa56d16d98e500ca0ede",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_neighbor_detail_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table",
+            "intfKey": false,
+            "name": "ospf_neighbor_detail_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$neighbor_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$neighbor_id",
+            "intfKey": false,
+            "name": "$neighbor_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$interface_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$interface_address",
+            "intfKey": false,
+            "name": "$interface_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$neighbor_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$neighbor_priority",
+            "intfKey": false,
+            "name": "$neighbor_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$neighbor_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$neighbor_state",
+            "intfKey": false,
+            "name": "$neighbor_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$neighbor_state_change_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$neighbor_state_change_count",
+            "intfKey": false,
+            "name": "$neighbor_state_change_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$dr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$dr_id",
+            "intfKey": false,
+            "name": "$dr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$bdr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$bdr_id",
+            "intfKey": false,
+            "name": "$bdr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$options",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$options",
+            "intfKey": false,
+            "name": "$options",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$dead_time_due_in",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$dead_time_due_in",
+            "intfKey": false,
+            "name": "$dead_time_due_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$neighbor_up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$neighbor_up_time",
+            "intfKey": false,
+            "name": "$neighbor_up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$index",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$index",
+            "intfKey": false,
+            "name": "$index",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$retransmission_queue_length",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$retransmission_queue_length",
+            "intfKey": false,
+            "name": "$retransmission_queue_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$num_of_retransmission",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$num_of_retransmission",
+            "intfKey": false,
+            "name": "$num_of_retransmission",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$first",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$first",
+            "intfKey": false,
+            "name": "$first",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$next",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$next",
+            "intfKey": false,
+            "name": "$next",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$last_retransmission_scan_length",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$last_retransmission_scan_length",
+            "intfKey": false,
+            "name": "$last_retransmission_scan_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$last_retransmission_scan_length_maximum",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$last_retransmission_scan_length_maximum",
+            "intfKey": false,
+            "name": "$last_retransmission_scan_length_maximum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$last_retransmission_scan_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$last_retransmission_scan_time",
+            "intfKey": false,
+            "name": "$last_retransmission_scan_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor_detail_table.$last_retransmission_scan_time_maximum",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor_detail_table.$last_retransmission_scan_time_maximum",
+            "intfKey": false,
+            "name": "$last_retransmission_scan_time_maximum",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

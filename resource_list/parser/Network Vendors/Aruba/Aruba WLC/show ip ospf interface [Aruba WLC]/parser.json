@@ -1,0 +1,952 @@
+{
+    "_id": "75217e85-d5fb-0b61-3d05-926014722fb0",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf interface",
+    "createTime": {
+        "$date": 1591104083150
+    },
+    "description": "Device Type:\nAruba WLC\nCommand:\nshow ip ospf interface",
+    "devTypes": [
+        3035
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "(qapp-aruba3200) #show ip ospf interface \r\n\r\nVlan 104 is up, line protocol is up\r\nInternet Address 172.27.1.254, Mask 255.255.255.240, Area 0.0.0.0\r\nRouter ID 172.27.0.7, Network Type BROADCAST, Cost: 1\r\nTransmit Delay is 1 sec, State DR, Priority 1\r\nDesignated Router id 172.27.0.7, Interface Address 172.27.1.254\r\nBackup designated Router id 0.0.0.0, Interface Address 172.27.1.254\r\nTimer intervals configured, Hello 10, Dead 40, Retransmit 5\r\nNeighbor Count is 0\r\nTx Stat: Hellos 386228 DbDescr 0 LsReq 0 LsUpdate 0 LsAck 0 Pkts 386228\r\nRx Stat: Hellos 0 DbDescr 0 LsReq 0 LsUpdate 0 LsAck 0 Pkts 0\r\n         DisCd 0 BadVer 0 BadNet 0 BadArea 0 BadDstAdr 0 BadAuType 0\r\n         BadAuth 0 BadNeigh 0 BadPckType 0 BadVirtLink 0\r\n\r\n\r\nVlan 103 is up, line protocol is up\r\nInternet Address 172.27.1.238, Mask 255.255.255.240, Area 0.0.0.0\r\nRouter ID 172.27.0.7, Network Type BROADCAST, Cost: 1\r\nTransmit Delay is 1 sec, State DR, Priority 1     \r\nDesignated Router id 172.27.0.7, Interface Address 172.27.1.238\r\nBackup designated Router id 0.0.0.0, Interface Address 172.27.1.238\r\nTimer intervals configured, Hello 10, Dead 40, Retransmit 5\r\nNeighbor Count is 0\r\nTx Stat: Hellos 386228 DbDescr 0 LsReq 0 LsUpdate 0 LsAck 0 Pkts 386228\r\nRx Stat: Hellos 0 DbDescr 0 LsReq 0 LsUpdate 0 LsAck 0 Pkts 0\r\n         DisCd 0 BadVer 0 BadNet 0 BadArea 0 BadDstAdr 0 BadAuType 0\r\n         BadAuth 0 BadNeigh 0 BadPckType 0 BadVirtLink 0\r\n\r\n\r\nVlan 1 is up, line protocol is up\r\nInternet Address 172.27.0.7, Mask 255.255.255.0, Area 0.0.0.0\r\nRouter ID 172.27.0.7, Network Type BROADCAST, Cost: 1\r\nTransmit Delay is 1 sec, State BACKUP, Priority 1\r\nDesignated Router id 192.168.10.2, Interface Address 172.27.0.2\r\nBackup designated Router id 172.27.0.7, Interface Address 172.27.0.7\r\nTimer intervals configured, Hello 10, Dead 40, Retransmit 5\r\nNeighbor Count is 3                               \r\nTx Stat: Hellos 386228 DbDescr 241 LsReq 14 LsUpdate 2267 LsAck 10985 Pkts 399735\r\nRx Stat: Hellos 1199038 DbDescr 234 LsReq 55 LsUpdate 19950 LsAck 12743 Pkts 1244136\r\n         DisCd 0 BadVer 0 BadNet 0 BadArea 0 BadDstAdr 0 BadAuType 0\r\n         BadAuth 0 BadNeigh 0 BadPckType 0 BadVirtLink 0\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$physical_state,$protocol_state]:^(.+?) is (\\\\S+), line protocol is (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ip,$mask,$area_id]:Internet Address (\\\\S+), mask (\\\\S+), Area (\\\\S+)\",\"regex[$rid, $network_type, $int:cost]:router id (\\\\S+), network type (\\\\S+), cost: (\\\\d+)\",\"regex[$int:transmit_delay, $state, $int:priority]:transmit delay is (\\\\d+) sec, state (\\\\S+), priority (\\\\d+)\",\"regex[$dr_id, $dr_intf_addr]:designated router id (\\\\S+), interface address (\\\\S+)\",\"regex[$bdr_id, $bdr_intf_addr]:backup designated router id (\\\\S+), interface address (\\\\S+)\",\"regex[$int:hello, $int:dead, $int:retransmit]:timer intervals configured, hello (\\\\d+), dead (\\\\d+), retransmit (\\\\d+)\",\"regex[$int:nbr_count]:neighbor count is (\\\\d+)\",\"regex[$int:tx_hellos, $int:tx_dbdescr, $int:tx_lsreq, $int:tx_lsupdate, $int:tx_lsack, $int:tx_pkts]:tx stat: hellos (\\\\d+) dbdescr (\\\\d+) lsreq (\\\\d+) lsupdate (\\\\d+) lsack (\\\\d+) pkts (\\\\d+)\",\"regex[$int:rx_hellos, $int:rx_dbdescr, $int:rx_lsreq, $int:rx_lsupdate, $int:rx_lsack, $int:rx_pkts]:rx stat: hellos (\\\\d+) dbdescr (\\\\d+) lsreq (\\\\d+) lsupdate (\\\\d+) lsack (\\\\d+) pkts (\\\\d+)\",\"regex[$int:discd, $int:badver, $int:badnet, $int:badarea, $int:baddstadr, $int:badautype]:discd (\\\\d+) badver (\\\\d+) badnet (\\\\d+) badarea (\\\\d+) baddstadr (\\\\d+) badautype (\\\\d+)\",\"regex[$int:badauth, $int:badneigh, $int:badpcktype, $int:badvirtlink]:badauth (\\\\d+) badneigh (\\\\d+) badpcktype (\\\\d+) badvirtlink (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$physical_state:string\",\"$protocol_state:string\",\"$ip:string\",\"$mask:string\",\"$area_id:string\",\"$rid:string\",\"$network_type:string\",\"$cost:int\",\"$transmit_delay:int\",\"$state:string\",\"$priority:int\",\"$dr_id:string\",\"$dr_intf_addr:string\",\"$bdr_id:string\",\"$bdr_intf_addr:string\",\"$hello:int\",\"$dead:int\",\"$retransmit:int\",\"$nbr_count:int\",\"$tx_hellos:int\",\"$tx_dbdescr:int\",\"$tx_lsreq:int\",\"$tx_lsupdate:int\",\"$tx_lsack:int\",\"$tx_pkts:int\",\"$rx_hellos:int\",\"$rx_dbdescr:int\",\"$rx_lsreq:int\",\"$rx_lsupdate:int\",\"$rx_lsack:int\",\"$rx_pkts:int\",\"$discd:int\",\"$badver:int\",\"$badnet:int\",\"$badarea:int\",\"$baddstadr:int\",\"$badautype:int\",\"$badauth:int\",\"$badneigh:int\",\"$badpcktype:int\",\"$badvirtlink:int\"]},\"xxid\":\"1b3eee29-8429-768e-0e52-9f66e2d74115\"}]},\"xxid\":\"40ad53af-78e7-3b07-1b98-a7186b0819d8\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$ip\",\"$mask\",\"$area_id\",\"$rid\",\"$network_type\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_intfs.$ip",
+                "_original_result.ospf_intfs.$mask",
+                "_original_result.ospf_intfs.$area_id",
+                "_original_result.ospf_intfs.$rid",
+                "_original_result.ospf_intfs.$network_type"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 42,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 43,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "physical_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "network_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "transmit_delay",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "dr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "dr_intf_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "bdr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "bdr_intf_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "hello",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "dead",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "retransmit",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "nbr_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "tx_hellos",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "tx_dbdescr",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "tx_lsreq",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "tx_lsupdate",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "tx_lsack",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "tx_pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "rx_hellos",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "rx_dbdescr",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "rx_lsreq",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "rx_lsupdate",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "rx_lsack",
+                        "type": 1
+                    },
+                    {
+                        "index": 31,
+                        "name": "rx_pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 32,
+                        "name": "discd",
+                        "type": 1
+                    },
+                    {
+                        "index": 33,
+                        "name": "badver",
+                        "type": 1
+                    },
+                    {
+                        "index": 34,
+                        "name": "badnet",
+                        "type": 1
+                    },
+                    {
+                        "index": 35,
+                        "name": "badarea",
+                        "type": 1
+                    },
+                    {
+                        "index": 36,
+                        "name": "baddstadr",
+                        "type": 1
+                    },
+                    {
+                        "index": 37,
+                        "name": "badautype",
+                        "type": 1
+                    },
+                    {
+                        "index": 38,
+                        "name": "badauth",
+                        "type": 1
+                    },
+                    {
+                        "index": 39,
+                        "name": "badneigh",
+                        "type": 1
+                    },
+                    {
+                        "index": 40,
+                        "name": "badpcktype",
+                        "type": 1
+                    },
+                    {
+                        "index": 41,
+                        "name": "badvirtlink",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$intf",
+                    "$ip",
+                    "$mask",
+                    "$network_type",
+                    "$rid"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "df5521960200d6ca4c34a6ce954452e6",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_intfs",
+            "dataType": "paragraph",
+            "desc": "Ospf interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$ip",
+                    "$mask",
+                    "$area_id",
+                    "$rid",
+                    "$network_type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs",
+            "intfKey": false,
+            "name": "ospf_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_intfs.$intf",
+            "dataType": "string",
+            "desc": "Identifies that the interface type and ID are up and functional.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_intfs.$physical_state",
+            "dataType": "string",
+            "desc": "The physical state of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$physical_state",
+            "intfKey": false,
+            "name": "$physical_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$protocol_state",
+            "dataType": "string",
+            "desc": "The protocol state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$protocol_state",
+            "intfKey": false,
+            "name": "$protocol_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$ip",
+            "dataType": "string",
+            "desc": "Internet address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$ip",
+            "intfKey": false,
+            "name": "$ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$mask",
+            "dataType": "string",
+            "desc": "Network mask.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$mask",
+            "intfKey": false,
+            "name": "$mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$area_id",
+            "dataType": "string",
+            "desc": "Area assigned to the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rid",
+            "dataType": "string",
+            "desc": "The router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$network_type",
+            "dataType": "string",
+            "desc": "The network type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$network_type",
+            "intfKey": false,
+            "name": "$network_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$cost",
+            "dataType": "int",
+            "desc": "The cost value.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$transmit_delay",
+            "dataType": "int",
+            "desc": "Details of the transmit delay.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$transmit_delay",
+            "intfKey": false,
+            "name": "$transmit_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$state",
+            "dataType": "string",
+            "desc": "Details of the state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$priority",
+            "dataType": "int",
+            "desc": "Details of the priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dr_id",
+            "dataType": "string",
+            "desc": "Details of the designated router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dr_id",
+            "intfKey": false,
+            "name": "$dr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dr_intf_addr",
+            "dataType": "string",
+            "desc": "Details of the interface address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dr_intf_addr",
+            "intfKey": false,
+            "name": "$dr_intf_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$bdr_id",
+            "dataType": "string",
+            "desc": "Details of the backup router ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$bdr_id",
+            "intfKey": false,
+            "name": "$bdr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$bdr_intf_addr",
+            "dataType": "string",
+            "desc": "Details of the interface address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$bdr_intf_addr",
+            "intfKey": false,
+            "name": "$bdr_intf_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$hello",
+            "dataType": "int",
+            "desc": "Details of elapse time intervals for Hello.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$hello",
+            "intfKey": false,
+            "name": "$hello",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$dead",
+            "dataType": "int",
+            "desc": "Details of elapse time intervals for Dead.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$dead",
+            "intfKey": false,
+            "name": "$dead",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$retransmit",
+            "dataType": "int",
+            "desc": "Details of elapse time intervals for Transmit (wait), and retransmit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$retransmit",
+            "intfKey": false,
+            "name": "$retransmit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$nbr_count",
+            "dataType": "int",
+            "desc": "Details the number of neighbors and adjacent neighbors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$nbr_count",
+            "intfKey": false,
+            "name": "$nbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$tx_hellos",
+            "dataType": "int",
+            "desc": "Number of transmitted hello packets. These packets are sent every hello interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$tx_hellos",
+            "intfKey": false,
+            "name": "$tx_hellos",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$tx_dbdescr",
+            "dataType": "int",
+            "desc": "Number of transmitted database description packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$tx_dbdescr",
+            "intfKey": false,
+            "name": "$tx_dbdescr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$tx_lsreq",
+            "dataType": "int",
+            "desc": "Number of transmitted link state request packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$tx_lsreq",
+            "intfKey": false,
+            "name": "$tx_lsreq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$tx_lsupdate",
+            "dataType": "int",
+            "desc": "Number of transmitted link state update packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$tx_lsupdate",
+            "intfKey": false,
+            "name": "$tx_lsupdate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$tx_lsack",
+            "dataType": "int",
+            "desc": "Number of transmitted link state acknowledgment packets",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$tx_lsack",
+            "intfKey": false,
+            "name": "$tx_lsack",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$tx_pkts",
+            "dataType": "int",
+            "desc": "Total number of transmitted packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$tx_pkts",
+            "intfKey": false,
+            "name": "$tx_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rx_hellos",
+            "dataType": "int",
+            "desc": "Number of received hello packets. These packets are sent every hello interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rx_hellos",
+            "intfKey": false,
+            "name": "$rx_hellos",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rx_dbdescr",
+            "dataType": "int",
+            "desc": "Number of received database description packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rx_dbdescr",
+            "intfKey": false,
+            "name": "$rx_dbdescr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rx_lsreq",
+            "dataType": "int",
+            "desc": "Number of received link state request packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rx_lsreq",
+            "intfKey": false,
+            "name": "$rx_lsreq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rx_lsupdate",
+            "dataType": "int",
+            "desc": "Number of received link state update packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rx_lsupdate",
+            "intfKey": false,
+            "name": "$rx_lsupdate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rx_lsack",
+            "dataType": "int",
+            "desc": "Number of received link state acknowledgment  packets",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rx_lsack",
+            "intfKey": false,
+            "name": "$rx_lsack",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$rx_pkts",
+            "dataType": "int",
+            "desc": "Total number of received packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$rx_pkts",
+            "intfKey": false,
+            "name": "$rx_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$discd",
+            "dataType": "int",
+            "desc": "Number of received packets that are discarded.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$discd",
+            "intfKey": false,
+            "name": "$discd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badver",
+            "dataType": "int",
+            "desc": "Number of received packets that have bad OSPF version number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badver",
+            "intfKey": false,
+            "name": "$badver",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badnet",
+            "dataType": "int",
+            "desc": "Number of received packets that belong to different network than the local interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badnet",
+            "intfKey": false,
+            "name": "$badnet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badarea",
+            "dataType": "int",
+            "desc": "Number of received packets that belong to different area than the local interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badarea",
+            "intfKey": false,
+            "name": "$badarea",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$baddstadr",
+            "dataType": "int",
+            "desc": "Number of received packets that have wrong destination address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$baddstadr",
+            "intfKey": false,
+            "name": "$baddstadr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badautype",
+            "dataType": "int",
+            "desc": "Number of received packets that have different authentication type than the local interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badautype",
+            "intfKey": false,
+            "name": "$badautype",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badauth",
+            "dataType": "int",
+            "desc": "Number of received packets where authentication failed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badauth",
+            "intfKey": false,
+            "name": "$badauth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badneigh",
+            "dataType": "int",
+            "desc": "Number of received packets which didn???t have a valid neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badneigh",
+            "intfKey": false,
+            "name": "$badneigh",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badpcktype",
+            "dataType": "int",
+            "desc": "Number of received packets that have wrong OSPF packet type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badpcktype",
+            "intfKey": false,
+            "name": "$badpcktype",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_intfs.$badvirtlink",
+            "dataType": "int",
+            "desc": "Number of received packets that didn???t match have a valid virtual link.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_intfs.$badvirtlink",
+            "intfKey": false,
+            "name": "$badvirtlink",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

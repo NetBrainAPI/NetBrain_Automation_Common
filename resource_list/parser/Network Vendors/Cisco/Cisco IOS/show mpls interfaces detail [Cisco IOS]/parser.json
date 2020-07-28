@@ -1,0 +1,170 @@
+{
+    "_id": "3afd069a-1e6d-95a7-6c83-b5d489c2e627",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mpls interfaces detail",
+    "createTime": {
+        "$date": 1580492810611
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow mpls interface detail",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "PE-ASR1K-02#show mpls interfaces detail\r\nInterface Te0/0/0:\r\n\tType Unknown\r\n\tIP labeling enabled (ldp) :\r\n\t  Interface config\r\n\tLSP Tunnel labeling enabled\r\n\tIP FRR labeling not enabled\r\n\tBGP labeling not enabled\r\n\tMPLS operational\r\n\tMTU = 1500\r\nInterface GigabitEthernet0/0/0:\r\n\tType Unknown\r\n\tIP labeling enabled (ldp) :\r\n\t  Interface config\r\n\tLSP Tunnel labeling enabled\r\n\tIP FRR labeling not enabled\r\n\tBGP labeling not enabled\r\n\tMPLS operational\r\n\tMTU = 1500\r\nInterface GigabitEthernet0/0/3:\r\n\tType Unknown\r\n\tIP labeling enabled \r\n\tLSP Tunnel labeling enabled\r\n\tIP FRR labeling not enabled\r\n\tBGP labeling not enabled\r\n\tMPLS not operational\r\n\tMTU = 1580\r\nInterface GigabitEthernet0/0/5:\r\n\tType Unknown\r\n\tIP labeling enabled (ldp) :\r\n\t  Interface config\r\n\tLSP Tunnel labeling enabled\r\n\tIP FRR labeling not enabled\r\n\tBGP labeling not enabled\r\n\tMPLS operational\r\n\tMTU = 1500\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.mpls_intfs.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"mpls_intfs\",\"keyVariables\":null,\"startLine\":\"regex[$interface]:^Interface (\\\\S+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"IP labeling enabled ($protocol)\",\"MTU = $int:mpls_mtu\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$protocol:string\",\"$mpls_mtu:int\"]},\"xxid\":\"825d3c58-f811-53f6-ff72-fb21f189d4a6\"}]},\"xxid\":\"b8a07674-5731-8e1a-6561-119d4b21ec5d\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$intf\",\"$interface\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"1d25edc1-ff8e-d4d7-b123-38cbd1afc489\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "mpls_mtu",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "mpls_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1a70a6961e62cfa70963c3cf9473a26b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mpls_intfs",
+            "dataType": "paragraph",
+            "desc": "MPLS interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mpls_intfs",
+            "intfKey": false,
+            "name": "mpls_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "mpls_intfs.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intfs.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "mpls_intfs.$protocol",
+            "dataType": "string",
+            "desc": "Protocol in the mpls interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intfs.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_intfs.$mpls_mtu",
+            "dataType": "int",
+            "desc": "MPLS Maximum Transmission Unit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_intfs.$mpls_mtu",
+            "intfKey": false,
+            "name": "$mpls_mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

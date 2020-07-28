@@ -1,0 +1,715 @@
+{
+    "_id": "4ba80824-2901-7dc4-de2f-06729cc09071",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interfaces all",
+    "createTime": {
+        "$date": 1579138368165
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow interfaces all",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-checkpoint-2> show interfaces all \r\nInterface eth0\r\n    state on\r\n    mac-addr 50:00:00:1a:00:00\r\n    type ethernet\r\n    link-state link up\r\n    mtu 1500\r\n    auto-negotiation on\r\n    speed 1000M\r\n    ipv6-autoconfig Not configured\r\n    duplex full\r\n    monitor-mode Not configured\r\n    link-speed 1000M/full\r\n    comments \r\n    ipv4-address 172.27.129.51/28\r\n    ipv6-address Not Configured\r\n    ipv6-local-link-address Not Configured\r\n    \r\nStatistics: \r\n    TX bytes:13511466 packets:63508 errors:0 dropped:0 overruns:0 carrier:0\r\n    RX bytes:5115657 packets:61000 errors:0 dropped:0 overruns:0 frame:0\r\nInterface eth1\r\n    state on\r\n    mac-addr 50:00:00:1a:00:01\r\n    type ethernet\r\n    link-state link up\r\n    mtu 1500\r\n    auto-negotiation Not configured\r\n    speed 1000M\r\n    ipv6-autoconfig Not configured\r\n    duplex full\r\n    monitor-mode Not configured\r\n    link-speed 1000M/full\r\n    comments \r\n    ipv4-address 172.27.129.66/28\r\n    ipv6-address Not Configured\r\n    ipv6-local-link-address Not Configured\r\n    \r\nStatistics: \r\n    TX bytes:4456918 packets:55122 errors:0 dropped:0 overruns:0 carrier:0\r\n    RX bytes:4434550 packets:54760 errors:0 dropped:0 overruns:0 frame:0\r\nInterface eth2\r\n    state off\r\n    mac-addr 50:00:00:1a:00:02\r\n    type ethernet\r\n    link-state link down\r\n    mtu 1500\r\n    auto-negotiation Not configured\r\n    speed 1000M\r\n    ipv6-autoconfig Not configured\r\n    duplex full\r\n    monitor-mode Not configured\r\n    link-speed Not configured\r\n    comments \r\n    ipv4-address Not Configured\r\n    ipv6-address Not Configured\r\n    ipv6-local-link-address Not Configured\r\n    \r\nStatistics: \r\n    TX bytes:0 packets:0 errors:0 dropped:0 overruns:0 carrier:0\r\n    RX bytes:0 packets:0 errors:0 dropped:0 overruns:0 frame:0\r\nInterface eth3\r\n    state on\r\n    mac-addr 50:00:00:1a:00:03\r\n    type ethernet\r\n    link-state link up\r\n    mtu 1500\r\n    auto-negotiation on\r\n    speed 1000M\r\n    ipv6-autoconfig Not configured\r\n    duplex full\r\n    monitor-mode off\r\n    link-speed 1000M/full\r\n    comments \r\n    ipv4-address 192.168.1.2/24\r\n    ipv6-address Not Configured\r\n    ipv6-local-link-address Not Configured\r\n    \r\nStatistics: \r\n    TX bytes:10450053 packets:126268 errors:0 dropped:0 overruns:0 carrier:0\r\n    RX bytes:10955776 packets:125907 errors:0 dropped:0 overruns:0 frame:0\r\nInterface lo\r\n    state on\r\n    mac-addr Not configured\r\n    type loopback\r\n    link-state not available\r\n    mtu 16436\r\n    auto-negotiation Not configured\r\n    speed N/A\r\n    ipv6-autoconfig Not configured\r\n    duplex N/A\r\n    monitor-mode Not configured\r\n    link-speed Not configured\r\n    comments \r\n    ipv4-address 127.0.0.1/8\r\n    ipv6-address Not Configured\r\n    ipv6-local-link-address Not Configured\r\n    \r\nStatistics: \r\n    TX bytes:7874840 packets:28995 errors:0 dropped:0 overruns:0 carrier:0\r\n    RX bytes:7874840 packets:28995 errors:0 dropped:0 overruns:0 frame:0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf]:Interface\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"state $status\",\"regex[$ip_addr,$mask]:ipv4-address\\\\s+(\\\\d+.\\\\d+.\\\\d+.\\\\d+)/(\\\\d+)\",\"regex[$ipv6_addr]:ipv6-address\\\\s+(.*)\",\"regex[$ipv6_local_link_addr]:ipv6-local-link-address (.*)\",\"mac-addr $mac_addr\",\"type $type\",\"regex[$link_state]:link-state (.*)\",\"mtu $int:mtu\",\"auto-negotiation $auto_negotiation\",\"speed $speed\",\"regex[$ipv6_autoconfig]:ipv6-autoconfig (.*)\",\"duplex $duplex\",\"regex[$monitor_mode]:monitor-mode (.*)\",\"regex[$link_speed]:link-speed (.*)\",\"regex[$int:tx_bytes,$int:tx_pkts,$int:tx_errors,$int:tx_dropped,$int:tx_overruns,$int:carrier_transitions]:TX bytes:(\\\\d+) packets:(\\\\d+) errors:(\\\\d+) dropped:(\\\\d+) overruns:(\\\\d+) carrier:(\\\\d+)\",\"regex[$int:rx_bytes,$int:rx_pkts,$int:rx_errors,$int:rx_dropped,$int:rx_overruns,$int:frame]:RX bytes:(\\\\d+) packets:(\\\\d+) errors:(\\\\d+) dropped:(\\\\d+) overruns:(\\\\d+) frame:(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$status:string\",\"$ip_addr:string\",\"$mask:string\",\"$ipv6_addr:string\",\"$ipv6_local_link_addr:string\",\"$mac_addr:string\",\"$type:string\",\"$link_state:string\",\"$mtu:int\",\"$auto_negotiation:string\",\"$speed:string\",\"$ipv6_autoconfig:string\",\"$duplex:string\",\"$monitor_mode:string\",\"$link_speed:string\",\"$tx_bytes:int\",\"$tx_pkts:int\",\"$tx_errors:int\",\"$tx_dropped:int\",\"$tx_overruns:int\",\"$carrier_transitions:int\",\"$rx_bytes:int\",\"$rx_pkts:int\",\"$rx_errors:int\",\"$rx_dropped:int\",\"$rx_overruns:int\",\"$frame:int\"]},\"xxid\":\"1ce6d44f-fb7b-5810-d03e-93072d12b019\"}]},\"xxid\":\"d3f33676-96f8-71c1-8cba-86d11e71f162\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$status\",\"$ip_addr\",\"$mask\",\"$ipv6_addr\",\"$ipv6_local_link_addr\",\"$mac_addr\",\"$type\",\"$link_state\",\"$mtu\",\"$auto_negotiation\",\"$speed\",\"$ipv6_autoconfig\",\"$duplex\",\"$monitor_mode\",\"$link_speed\",\"$tx_errors\",\"$tx_dropped\",\"$tx_overruns\",\"$carrier_transitions\",\"$rx_errors\",\"$rx_dropped\",\"$rx_overruns\",\"$frame\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"0ebce3f7-2cc0-d092-b3bb-9f80339550c9\"}]}",
+            "tableKeys": [
+                "_original_result.intfs.$status",
+                "_original_result.intfs.$ip_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 28,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "ipv6_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ipv6_local_link_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "link_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "auto_negotiation",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "speed",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "ipv6_autoconfig",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "duplex",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "monitor_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "link_speed",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "tx_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "tx_pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "tx_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "tx_dropped",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "tx_overruns",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "carrier_transitions",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "rx_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "rx_pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "rx_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "rx_dropped",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "rx_overruns",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "frame",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$auto_negotiation",
+                    "$carrier_transitions",
+                    "$duplex",
+                    "$frame",
+                    "$intf",
+                    "$ip_addr",
+                    "$ipv6_addr",
+                    "$ipv6_autoconfig",
+                    "$ipv6_local_link_addr",
+                    "$link_speed",
+                    "$link_state",
+                    "$mac_addr",
+                    "$mask",
+                    "$monitor_mode",
+                    "$mtu",
+                    "$rx_dropped",
+                    "$rx_errors",
+                    "$rx_overruns",
+                    "$speed",
+                    "$status",
+                    "$tx_dropped",
+                    "$tx_errors",
+                    "$tx_overruns",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "6f54ca2fc74b6fd69ab60f562825198c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intfs",
+            "dataType": "paragraph",
+            "desc": "Interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$status",
+                    "$ip_addr",
+                    "$mask",
+                    "$ipv6_addr",
+                    "$ipv6_local_link_addr",
+                    "$mac_addr",
+                    "$type",
+                    "$link_state",
+                    "$mtu",
+                    "$auto_negotiation",
+                    "$speed",
+                    "$ipv6_autoconfig",
+                    "$duplex",
+                    "$monitor_mode",
+                    "$link_speed",
+                    "$tx_errors",
+                    "$tx_dropped",
+                    "$tx_overruns",
+                    "$carrier_transitions",
+                    "$rx_errors",
+                    "$rx_dropped",
+                    "$rx_overruns",
+                    "$frame"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intfs",
+            "intfKey": false,
+            "name": "intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intfs.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intfs.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$ip_addr",
+            "dataType": "string",
+            "desc": "IPv4 address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$mask",
+            "dataType": "string",
+            "desc": "IPv4 address mask.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$mask",
+            "intfKey": false,
+            "name": "$mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$ipv6_addr",
+            "dataType": "string",
+            "desc": "IPv6 address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$ipv6_addr",
+            "intfKey": false,
+            "name": "$ipv6_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$ipv6_local_link_addr",
+            "dataType": "string",
+            "desc": "IPv6 local link address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$ipv6_local_link_addr",
+            "intfKey": false,
+            "name": "$ipv6_local_link_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$mac_addr",
+            "dataType": "string",
+            "desc": "MAC address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$mac_addr",
+            "intfKey": false,
+            "name": "$mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$type",
+            "dataType": "string",
+            "desc": "Interface type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$link_state",
+            "dataType": "string",
+            "desc": "Interface link state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$link_state",
+            "intfKey": false,
+            "name": "$link_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$mtu",
+            "dataType": "int",
+            "desc": "The MTU is the maximum packet size that can be transmitted over the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$auto_negotiation",
+            "dataType": "string",
+            "desc": "Auto negotiation on or off.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$auto_negotiation",
+            "intfKey": false,
+            "name": "$auto_negotiation",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$speed",
+            "dataType": "string",
+            "desc": "Speed at which the interface is running.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$speed",
+            "intfKey": false,
+            "name": "$speed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$ipv6_autoconfig",
+            "dataType": "string",
+            "desc": "IPv6 auto-config.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$ipv6_autoconfig",
+            "intfKey": false,
+            "name": "$ipv6_autoconfig",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$duplex",
+            "dataType": "string",
+            "desc": "Type of link connection configured for the physical interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$duplex",
+            "intfKey": false,
+            "name": "$duplex",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$monitor_mode",
+            "dataType": "string",
+            "desc": "Monitor mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$monitor_mode",
+            "intfKey": false,
+            "name": "$monitor_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$link_speed",
+            "dataType": "string",
+            "desc": "Link speed.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$link_speed",
+            "intfKey": false,
+            "name": "$link_speed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$tx_bytes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$tx_bytes",
+            "intfKey": false,
+            "name": "$tx_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$tx_pkts",
+            "dataType": "int",
+            "desc": "Total number of TX packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$tx_pkts",
+            "intfKey": false,
+            "name": "$tx_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$tx_errors",
+            "dataType": "int",
+            "desc": "Number of TX packet errors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$tx_errors",
+            "intfKey": false,
+            "name": "$tx_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$tx_dropped",
+            "dataType": "int",
+            "desc": "Number of TX packet droped.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$tx_dropped",
+            "intfKey": false,
+            "name": "$tx_dropped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$tx_overruns",
+            "dataType": "int",
+            "desc": "Number of TX overrun errors experienced by the interface. Overruns represent the number of times that the receiver hardware is unable to send received data to a hardware buffer because the input rate exceeds the receiver's ability to handle the data.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$tx_overruns",
+            "intfKey": false,
+            "name": "$tx_overruns",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$carrier_transitions",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$carrier_transitions",
+            "intfKey": false,
+            "name": "$carrier_transitions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$rx_bytes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$rx_bytes",
+            "intfKey": false,
+            "name": "$rx_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$rx_pkts",
+            "dataType": "int",
+            "desc": "Total number of RX packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$rx_pkts",
+            "intfKey": false,
+            "name": "$rx_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$rx_errors",
+            "dataType": "int",
+            "desc": "Number of RX packet errors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$rx_errors",
+            "intfKey": false,
+            "name": "$rx_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$rx_dropped",
+            "dataType": "int",
+            "desc": "Number of RX packet droped.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$rx_dropped",
+            "intfKey": false,
+            "name": "$rx_dropped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$rx_overruns",
+            "dataType": "int",
+            "desc": "Number of RX overrun errors experienced by the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$rx_overruns",
+            "intfKey": false,
+            "name": "$rx_overruns",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$frame",
+            "dataType": "int",
+            "desc": "Number of packets with bad framing bytes.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$frame",
+            "intfKey": false,
+            "name": "$frame",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

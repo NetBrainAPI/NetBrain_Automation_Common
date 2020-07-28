@@ -1,0 +1,267 @@
+{
+    "_id": "75f93347-e94b-7d32-423a-2066a5a734f8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ltm pool recursive",
+    "createTime": {
+        "$date": 1583183101801
+    },
+    "description": "",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "root@(bigip1)(cfg-sync In Sync)(Active)(/Common)(tmos)# show ltm pool recursive\n\n---------------------------------------------------------------------\nLtm::Pool: netbrain\n---------------------------------------------------------------------\nStatus\n  Availability : offline\n  State        : enabled\n  Reason       : The children pool member(s) are down\n  Monitor      : http\n  Minimum Active Members : 0\n  Current Active Members : 0\n       Available Members : 0\n       Total Members : 1\n          Total Requests : 0\n        Current Sessions : 0\n\nTraffic                                  ServerSide\n  Bits In                                         0\n  Bits Out                                        0\n  Packets In                                      0\n  Packets Out                                     0\n  Current Connections                             0\n  Maximum Connections                             0\n  Total Connections                               0\n\nConnection Queue                               Pool  Pool and members\n  Number of connections queued now                0                 0\n  Number of connections serviced                  0                 0\n  Queue head entry age (ms)                       0                 0\n  Maximum queue entry age ever (ms)               0                 0\n  Maximum queue entry age recently (ms)           0                 0\n  Average queue entry age (ms)                    0                 0\n\n---------------------------------------------------------------------\nLtm::Pool: www_pool\n---------------------------------------------------------------------\nStatus\n  Availability : available\n  State        : enabled\n  Reason       : The pool is available\n  Monitor      : http\n  Minimum Active Members : 0\n  Current Active Members : 3\n       Available Members : 3\n       Total Members : 3\n          Total Requests : 0\n        Current Sessions : 0\n\nTraffic                                  ServerSide\n  Bits In                                         0\n  Bits Out                                        0\n  Packets In                                      0\n  Packets Out                                     0\n  Current Connections                             0\n  Maximum Connections                             0\n  Total Connections                               0\n\nConnection Queue                               Pool  Pool and members\n  Number of connections queued now                0                 0\n  Number of connections serviced                  0                 0\n  Queue head entry age (ms)                       0                 0\n  Maximum queue entry age ever (ms)               0                 0\n  Maximum queue entry age recently (ms)           0                 0\n  Average queue entry age (ms)                    0                 0\n\n---------------------------------------------------------------------\nLtm::Pool: www_vs_https_pool\n---------------------------------------------------------------------\nStatus\n  Availability : available\n  State        : enabled\n  Reason       : The pool is available\n  Monitor      : https\n  Minimum Active Members : 0\n  Current Active Members : 3\n       Available Members : 3\n       Total Members : 3\n          Total Requests : 0\n        Current Sessions : 0\n\nTraffic                                  ServerSide\n  Bits In                                         0\n  Bits Out                                        0\n  Packets In                                      0\n  Packets Out                                     0\n  Current Connections                             0\n  Maximum Connections                             0\n  Total Connections                               0\n\nConnection Queue                               Pool  Pool and members\n  Number of connections queued now                0                 0\n  Number of connections serviced                  0                 0\n  Queue head entry age (ms)                       0                 0\n  Maximum queue entry age ever (ms)               0                 0\n  Maximum queue entry age recently (ms)           0                 0\n  Average queue entry age (ms)                    0                 0\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"3ec330f0-91b7-9ebb-3625-f67605247ad0\"}]},\"xxid\":\"a28a8358-013a-9061-4221-8de6fe3d7371\"},{\"type\":\"4\",\"name\":\"ltm_pool\",\"keyVariables\":\"\",\"startLine\":\"Ltm::Pool: $pool_name\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Availability : $availability\",\"State        : $state\",\"regex[$availability_reason]:Reason\\\\s+: (.+)\",\"Monitor      : $monitor_name\",\"Current Active Members : $int:current_active_members\",\"Available Members : $int:available_member\",\"Total Members : $int:total_member\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$pool_name:string\",\"$availability:string\",\"$state:string\",\"$availability_reason:string\",\"$monitor_name:string\",\"$current_active_members:int\",\"$available_member:int\",\"$total_member:int\"]},\"xxid\":\"c20b2461-f315-e0df-c814-3a4214d2194a\"}]},\"xxid\":\"e1493311-65e4-e182-a18e-199c3d8b3155\",\"hashColumns\":[\"$lpoolName\",\"$pool_name\"],\"interfaceKey\":\"\"}]}",
+            "tableKeys": [
+                "_original_result.ltm_pool.$pool_name"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "pool_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "availability",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "availability_reason",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "monitor_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "current_active_members",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "available_member",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "total_member",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$lpoolName",
+                    "$pool_name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ltm_pool",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e32dc700208d23530050baa9fa229149",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$lpoolName",
+                    "$pool_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool",
+            "intfKey": false,
+            "name": "ltm_pool",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ltm_pool.$pool_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$pool_name",
+            "intfKey": false,
+            "name": "$pool_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool.$availability",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$availability",
+            "intfKey": false,
+            "name": "$availability",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool.$availability_reason",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$availability_reason",
+            "intfKey": false,
+            "name": "$availability_reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool.$monitor_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$monitor_name",
+            "intfKey": false,
+            "name": "$monitor_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool.$current_active_members",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$current_active_members",
+            "intfKey": false,
+            "name": "$current_active_members",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool.$available_member",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$available_member",
+            "intfKey": false,
+            "name": "$available_member",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ltm_pool.$total_member",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ltm_pool.$total_member",
+            "intfKey": false,
+            "name": "$total_member",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

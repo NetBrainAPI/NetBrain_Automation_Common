@@ -1,0 +1,326 @@
+{
+    "_id": "4ff9ab42-2f10-b7af-1b86-d12bbd0ace37",
+    "author": "NetBrain",
+    "bizType": "81134e79-841f-4e59-b72b-0e41da2035a5",
+    "command": "",
+    "createTime": {
+        "$date": 1560793184400
+    },
+    "description": "",
+    "devTypes": [
+        21011
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\nimport time\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    node_dn = GetDeviceProperties(context, device_name, {'techName': 'NSX', 'paramType': 'SDN', 'params':['id', 'nbPathSchema']})\r\n    controller_id = node_dn['params'].get('id')\r\n    dev_schema = node_dn['params'].get('nbPathSchema')\r\n    rtn_params = { 'name':device_name, 'controller_id' : controller_id, 'dev_schema': dev_schema}\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    controller_id = rtn_params['controller_id']\r\n    dev_schema = rtn_params['dev_schema']\r\n    dev_name = rtn_params['name']\r\n    if not controller_id:\r\n        return {'error:':'params not correct', 'rtn_params':rtn_params}\r\n    controller_url = 'api/2.0/vdn/controller'\r\n    controller_state_url = 'api/2.0/vdn/controller/%s/systemStats'%controller_id\r\n    rtn_params['url'] = controller_url\r\n    controller_data = json.loads(getData(rtn_params))\r\n    controller_dict = json.loads(controller_data)\r\n    rtn_params['url'] = controller_state_url\r\n    controller_state_data = json.loads(getData(rtn_params))\r\n    controller_state_dict = json.loads(controller_state_data)\r\n    rtn = {}\r\n    rtn['totalMemory'] = controller_state_dict.get('totalMemory')\r\n    rtn['usedMemory'] = controller_state_dict.get('usedMemory')\r\n    rtn['cachedMemory'] = controller_state_dict.get('cachedMemory')\r\n    rtn['usedSwap'] = controller_state_dict.get('usedSwap')\r\n    rtn['nodeFailoverReady'] = controller_state_dict.get('nodeFailoverReady')\r\n    for contrl in controller_dict.get(\"controllers\", {}):\r\n        if contrl.get('name') == dev_name:\r\n            rtn['status'] = contrl.get('status', '').lower()\r\n            rtn['upgradeStatus'] = contrl.get('upgradeStatus', '').lower()\r\n            rtn['upgradeAvailable'] = contrl.get('upgradeAvailable', False)\r\n            rtn[\"controllerClusterStatus\"] = contrl.get('controllerClusterStatus', {})\r\n            break\r\n    return rtn\r\n",
+    "samples": [
+        {
+            "content": "{\n    \"cachedMemory\": 1758192,\n    \"controllerClusterStatus\": {\n        \"controllerConnectivityList\": [\n            {\n                \"destControllerIp\": \"192.168.48.108\",\n                \"isDestActive\": true,\n                \"lastRefreshedAt\": 1556223465244,\n                \"pingStatus\": \"SUCCESS\",\n                \"srcControllerId\": \"controller-21\",\n                \"srcControllerIp\": \"192.168.48.107\"\n            },\n            {\n                \"destControllerIp\": \"192.168.48.109\",\n                \"isDestActive\": true,\n                \"lastRefreshedAt\": 1556223465244,\n                \"pingStatus\": \"SUCCESS\",\n                \"srcControllerId\": \"controller-21\",\n                \"srcControllerIp\": \"192.168.48.107\"\n            }\n        ]\n    },\n    \"nodeFailoverReady\": false,\n    \"status\": \"running\",\n    \"totalMemory\": 3926488,\n    \"upgradeAvailable\": true,\n    \"upgradeStatus\": \"not_started\",\n    \"usedMemory\": 3111856,\n    \"usedSwap\": 0\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n        {\\\"name\\\": \\\"cachedMemory\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"nodeFailoverReady\\\", \\\"type\\\": \\\"bool\\\"},\\n        {\\\"name\\\": \\\"status\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"totalMemory\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"upgradeAvailable\\\", \\\"type\\\": \\\"bool\\\"},\\n        {\\\"name\\\": \\\"upgradeStatus\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"usedMemory\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"usedSwap\\\", \\\"type\\\": \\\"int\\\"},\\n    {\\\"name\\\": \\\"connectivity_table\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"destControllerIp\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"isDestActive\\\", \\\"type\\\": \\\"bool\\\"},\\n        {\\\"name\\\": \\\"lastRefreshedAt\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"pingStatus\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"srcControllerId\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"srcControllerIp\\\", \\\"type\\\": \\\"string\\\"}\\n        \\n    ]}\\n]\\nEnd Declare\\n\\n'''\\nimport re \\nimport json\\ndef ParseText(_original_result):\\n    value = {\\n        'connectivity_table':{\\n            'destControllerIp':[],\\n            'isDestActive':[],\\n            'lastRefreshedAt':[],\\n            'pingStatus':[],\\n            'srcControllerId':[],\\n            'srcControllerIp':[]\\n            }\\n        }\\n    original_result = json.loads(_original_result)\\n    for k,v in original_result.items():\\n        if isinstance(v, str):\\n            value[k] = v.lower()\\n        elif k == 'controllerClusterStatus':\\n            for ctrl_state in v.get('controllerConnectivityList', []):\\n                for sub_key, sub_value in ctrl_state.items():\\n                    if sub_key in value['connectivity_table']:\\n                        value['connectivity_table'][sub_key].append(sub_value.lower() if isinstance(sub_value, str) else sub_value)\\n        else:\\n            value[k] = v\\n    return value\",\"variableTypes\":{\"variableType\":[{\"name\":\"$cachedMemory\",\"type\":\"int\"},{\"name\":\"$nodeFailoverReady\",\"type\":\"bool\"},{\"name\":\"$status\",\"type\":\"string\"},{\"name\":\"$totalMemory\",\"type\":\"int\"},{\"name\":\"$upgradeAvailable\",\"type\":\"bool\"},{\"name\":\"$upgradeStatus\",\"type\":\"string\"},{\"name\":\"$usedMemory\",\"type\":\"int\"},{\"name\":\"$usedSwap\",\"type\":\"int\"}]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$connectivity_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$destControllerIp\",\"type\":\"string\"},{\"name\":\"$isDestActive\",\"type\":\"bool\"},{\"name\":\"$lastRefreshedAt\",\"type\":\"int\"},{\"name\":\"$pingStatus\",\"type\":\"string\"},{\"name\":\"$srcControllerId\",\"type\":\"string\"},{\"name\":\"$srcControllerIp\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"de38efb6-6fc9-e7e7-2f08-e898f73017f2\",\"interfaceKey\":{},\"tableKeys\":{\"connectivity_table\":[\"$destControllerIp\"]},\"hashColumns\":{\"connectivity_table\":[\"$destControllerIp\"]}}]}",
+            "tableKeys": [
+                "_original_result.$connectivity_table.$destControllerIp"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cachedMemory",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "nodeFailoverReady",
+                "type": 3
+            },
+            {
+                "index": 2,
+                "name": "status",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "totalMemory",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "upgradeAvailable",
+                "type": 3
+            },
+            {
+                "index": 5,
+                "name": "upgradeStatus",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "usedMemory",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "usedSwap",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "destControllerIp",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "isDestActive",
+                        "type": 3
+                    },
+                    {
+                        "index": 2,
+                        "name": "lastRefreshedAt",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "pingStatus",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "srcControllerId",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "srcControllerIp",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "destControllerIp"
+                ],
+                "hashSort": false,
+                "index": 8,
+                "name": "connectivity_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d38f225cf8852815d08da89b17de1d24",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$cachedMemory",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cachedMemory",
+            "intfKey": false,
+            "name": "$cachedMemory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$connectivity_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$destControllerIp"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$connectivity_table",
+            "intfKey": false,
+            "name": "$connectivity_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$connectivity_table.$destControllerIp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$connectivity_table.$destControllerIp",
+            "intfKey": false,
+            "name": "$destControllerIp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$connectivity_table.$isDestActive",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$connectivity_table.$isDestActive",
+            "intfKey": false,
+            "name": "$isDestActive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$connectivity_table.$lastRefreshedAt",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$connectivity_table.$lastRefreshedAt",
+            "intfKey": false,
+            "name": "$lastRefreshedAt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$nodeFailoverReady",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$nodeFailoverReady",
+            "intfKey": false,
+            "name": "$nodeFailoverReady",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$connectivity_table.$pingStatus",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$connectivity_table.$pingStatus",
+            "intfKey": false,
+            "name": "$pingStatus",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$connectivity_table.$srcControllerId",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$connectivity_table.$srcControllerId",
+            "intfKey": false,
+            "name": "$srcControllerId",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$connectivity_table.$srcControllerIp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$connectivity_table.$srcControllerIp",
+            "intfKey": false,
+            "name": "$srcControllerIp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$totalMemory",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$totalMemory",
+            "intfKey": false,
+            "name": "$totalMemory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$upgradeAvailable",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$upgradeAvailable",
+            "intfKey": false,
+            "name": "$upgradeAvailable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$upgradeStatus",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$upgradeStatus",
+            "intfKey": false,
+            "name": "$upgradeStatus",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$usedMemory",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$usedMemory",
+            "intfKey": false,
+            "name": "$usedMemory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$usedSwap",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": null,
+            "fullName": "$usedSwap",
+            "intfKey": false,
+            "name": "$usedSwap",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

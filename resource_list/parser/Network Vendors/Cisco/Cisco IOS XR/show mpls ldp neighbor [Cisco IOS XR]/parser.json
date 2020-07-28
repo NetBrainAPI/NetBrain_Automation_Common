@@ -1,0 +1,254 @@
+{
+    "_id": "7f5e334e-dba6-44ad-9f07-e186fb4f39ac",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mpls ldp neighbor",
+    "createTime": {
+        "$date": 1561995269882
+    },
+    "description": "",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "show mpls ldp neighbor\r\n\r\nWed Jun 19 16:31:35.516 UTC\r\n\r\nPeer LDP Identifier: 75.75.75.2:0\r\n  TCP connection: 75.75.75.2:646 - 75.75.75.6:34835\r\n  Graceful Restart: No\r\n  Session Holdtime: 180 sec\r\n  State: Oper; Msgs sent/rcvd: 13579/13587; Downstream-Unsolicited\r\n  Up time: 1w1d\r\n  LDP Discovery Sources:\r\n    IPv4: (1)\r\n      GigabitEthernet0/0/0/2\r\n    IPv6: (0)\r\n  Addresses bound to this peer:\r\n    IPv4: (5)\r\n      10.1.1.2       10.1.1.9       20.1.1.5       40.1.1.1       \r\n      75.75.75.2     \r\n    IPv6: (0)\r\n\r\nPeer LDP Identifier: 75.75.75.5:0\r\n  TCP connection: 75.75.75.5:646 - 75.75.75.6:48175; MD5 on\r\n  Graceful Restart: No\r\n  Session Holdtime: 180 sec\r\n  State: Oper; Msgs sent/rcvd: 20/20; Downstream-Unsolicited\r\n  Up time: 00:09:12\r\n  LDP Discovery Sources:\r\n    IPv4: (1)\r\n      GigabitEthernet0/0/0/0\r\n    IPv6: (0)\r\n  Addresses bound to this peer:\r\n    IPv4: (3)\r\n      20.1.1.2       30.1.1.1       75.75.75.5     \r\n    IPv6: (0)\r\n\r\nPeer LDP Identifier: 75.75.75.7:0\r\n  TCP connection: 75.75.75.7:18376 - 75.75.75.6:646; MD5 on\r\n  Graceful Restart: No\r\n  Session Holdtime: 180 sec\r\n  State: Oper; Msgs sent/rcvd: 10/10; Downstream-Unsolicited\r\n  Up time: 00:00:23\r\n  LDP Discovery Sources:\r\n    IPv4: (1)\r\n      GigabitEthernet0/0/0/1\r\n    IPv6: (0)\r\n  Addresses bound to this peer:\r\n    IPv4: (3)\r\n      20.1.1.10      30.1.1.6       75.75.75.7     \r\n    IPv6: (0)\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ldp_nbrs.$ldp_peer_int"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ldp_nbrs\",\"keyVariables\":\"\",\"startLine\":\"Peer LDP Identifier:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ldp_peer_id]:(\\\\s\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+):\",\"regex[$grace_rest]:Graceful Restart:(.+)$\",\"regex[$hold_time]:Session Holdtime:(.+)$\",\"regex[$state]:  State:(.+); Msgs\",\"regex[$msg_snt_rcvd]:sent\\\\/rcvd:(.+);\",\"regex[$up_time]:Up time:(.+)\",\"regex[$md5_auth]:\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\:\\\\d+; (.+)$\",\"regex[$ldp_peer_int]:\\\\s+([A-Z][a-z]+[A-Z][a-z]+\\\\d\\\\/\\\\d\\\\/\\\\d\\\\/\\\\d)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ldp_peer_id:string\",\"$grace_rest:string\",\"$hold_time:string\",\"$state:string\",\"$msg_snt_rcvd:string\",\"$up_time:string\",\"$md5_auth:string\",\"$ldp_peer_int:string\"]},\"xxid\":\"317ed642-5bda-9eae-4b3b-1d958f7ecd62\"}]},\"xxid\":\"9e1e2f5e-72fd-b6a5-c481-b54439801dfc\",\"hashColumns\":[\"$ldp_peer_id\",\"$state\",\"$md5_auth\",\"$ldp_peer_int\"],\"interfaceKey\":\"$ldp_peer_int\",\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.ldp_nbrs.$ldp_peer_id",
+                "_original_result.ldp_nbrs.$state"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ldp_peer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "grace_rest",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "hold_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "msg_snt_rcvd",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "md5_auth",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "ldp_peer_int",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ldp_peer_id",
+                    "$ldp_peer_int",
+                    "$md5_auth",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ldp_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fbb1c6b9ad87adad8cc6e45e9f2d1cae",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ldp_nbrs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ldp_peer_id",
+                    "$state",
+                    "$md5_auth",
+                    "$ldp_peer_int"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs",
+            "intfKey": false,
+            "name": "ldp_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ldp_nbrs.$ldp_peer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$ldp_peer_id",
+            "intfKey": false,
+            "name": "$ldp_peer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$grace_rest",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$grace_rest",
+            "intfKey": false,
+            "name": "$grace_rest",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$hold_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$msg_snt_rcvd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$msg_snt_rcvd",
+            "intfKey": false,
+            "name": "$msg_snt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$up_time",
+            "intfKey": false,
+            "name": "$up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$md5_auth",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$md5_auth",
+            "intfKey": false,
+            "name": "$md5_auth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_nbrs.$ldp_peer_int",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_nbrs.$ldp_peer_int",
+            "intfKey": false,
+            "name": "$ldp_peer_int",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        }
+    ],
+    "version": "7.1"
+}

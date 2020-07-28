@@ -1,0 +1,414 @@
+{
+    "_id": "2c5f2191-3860-4b18-be7f-e6ba1a9429ed",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show global-protect-gateway current-user",
+    "createTime": {
+        "$date": 1585240898649
+    },
+    "description": "",
+    "devTypes": [
+        2130
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "COPIED> show global-protect-gateway current-user\r\nGlobalProtect Gateway: gp-gateway (1 users)\r\n\r\nTunnel Name          : gp-gateway-N\r\n        Domain-User Name          : :test\r\n        Computer                  : HOST17-WIN7-64\r\n        Client                    : Microsoft Windows 7 Enterprise Edition Service Pack 1, 64-bit\r\n        Private IP                : 172.16.148.1\r\n        Public IP                 : 10.30.6.83\r\n        ESP                       : removed\r\n        SSL                       : exist\r\n        Login Time                : Aug.12 17:12:34\r\n        Logout/Expiration         : Sep.11 17:12:34\r\n        TTL                       : 2591960\r\n        Inactivity TTL            : 10760\r\n        \r\n        Domain-User Name          : :test1\r\n        Computer                  : HOST17-WIN7-64\r\n        Client                    : Microsoft Windows 7 Enterprise Edition Service Pack 1, 64-bit\r\n        Private IP                : 172.16.148.1\r\n        Public IP                 : 10.30.6.83\r\n        ESP                       : removed\r\n        SSL                       : exist\r\n        Login Time                : Aug.12 17:12:34\r\n        Logout/Expiration         : Sep.11 17:12:34\r\n        TTL                       : 2591960\r\n        Inactivity TTL            : 10760",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:num_of_user]:GlobalProtect Gateway:.+\\\\((\\\\d+) users\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$num_of_user:int\"]},\"xxid\":\"b836ab27-b852-34ed-c554-358d820ddf15\"},{\"type\":\"4\",\"name\":\"tunn_name\",\"keyVariables\":\"\",\"startLine\":\"regex[$tunnel_name]:Tunnel Name\\\\s+: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$tunnel_name:string\"]},\"xxid\":\"7389613c-460e-8103-29f6-2b8d517e5e0d\"},{\"type\":\"4\",\"name\":\"user\",\"keyVariables\":\"\",\"startLine\":\"regex[$username]:Domain-User Name\\\\s+: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$computer]:Computer\\\\s+: (\\\\S+)\",\"regex[$private_ip]:Private IP\\\\s+: (\\\\S+)\",\"regex[$public_ip]:Public IP\\\\s+: (\\\\S+)\",\"regex[$esp]:ESP\\\\s+: (\\\\S+)\",\"regex[$ssl]:SSL\\\\s+: (\\\\S+)\",\"regex[$login_time]:Login Time\\\\s+: (.+)\",\"regex[$logout_expiration]:Logout/Expiration\\\\s+: (.+)\",\"regex[$client]:Client\\\\s+: (.+)\",\"regex[$int:ttl]:TTL\\\\s+: (\\\\d+)\",\"regex[$int:inactivity_ttl]:Inactivity TTL\\\\s+: (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$username:string\",\"$computer:string\",\"$private_ip:string\",\"$public_ip:string\",\"$esp:string\",\"$ssl:string\",\"$login_time:string\",\"$logout_expiration:string\",\"$client:string\",\"$ttl:int\",\"$inactivity_ttl:int\"]},\"xxid\":\"f86c70a3-bcc0-5189-4d50-8f24b2ec1619\"}]},\"xxid\":\"a643c061-3add-e436-4aaa-617a754a4d3e\",\"hashColumns\":[\"$username\",\"$computer\",\"$private_ip\",\"$public_ip\",\"$esp\",\"$ssl\"],\"hashSort\":false}]},\"xxid\":\"f905c699-d357-89cd-b24d-af1887b21a76\"}]}",
+            "tableKeys": [
+                "_original_result.tunn_name.user.$username",
+                "_original_result.tunn_name.user.$private_ip",
+                "_original_result.tunn_name.user.$public_ip",
+                "_original_result.tunn_name.user.$computer"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "num_of_user",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "tunnel_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "tunn_name",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "username",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "computer",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "private_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "public_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "esp",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ssl",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "login_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "logout_expiration",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "client",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "ttl",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "inactivity_ttl",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "tunnel_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$computer",
+                    "$esp",
+                    "$private_ip",
+                    "$public_ip",
+                    "$ssl",
+                    "$username"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "user",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ae3041c1b08361bc65fc2b3c84e1b982",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$num_of_user",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$num_of_user",
+            "intfKey": false,
+            "name": "$num_of_user",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tunn_name",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "tunn_name",
+            "intfKey": false,
+            "name": "tunn_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "tunn_name.$tunnel_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.$tunnel_name",
+            "intfKey": false,
+            "name": "$tunnel_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$username",
+                    "$computer",
+                    "$private_ip",
+                    "$public_ip",
+                    "$esp",
+                    "$ssl"
+                ],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user",
+            "intfKey": false,
+            "name": "user",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "user.$username",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$username",
+            "intfKey": false,
+            "name": "$username",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$computer",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$computer",
+            "intfKey": false,
+            "name": "$computer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$private_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$private_ip",
+            "intfKey": false,
+            "name": "$private_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$public_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$public_ip",
+            "intfKey": false,
+            "name": "$public_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$esp",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$esp",
+            "intfKey": false,
+            "name": "$esp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$ssl",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$ssl",
+            "intfKey": false,
+            "name": "$ssl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$login_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$login_time",
+            "intfKey": false,
+            "name": "$login_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$logout_expiration",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$logout_expiration",
+            "intfKey": false,
+            "name": "$logout_expiration",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$client",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$client",
+            "intfKey": false,
+            "name": "$client",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$ttl",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$ttl",
+            "intfKey": false,
+            "name": "$ttl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$inactivity_ttl",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$inactivity_ttl",
+            "intfKey": false,
+            "name": "$inactivity_ttl",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user.$tunnel_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tunn_name.user.$tunnel_name",
+            "intfKey": false,
+            "name": "$tunnel_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

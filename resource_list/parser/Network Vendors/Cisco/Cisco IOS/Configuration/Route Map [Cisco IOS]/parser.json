@@ -1,0 +1,120 @@
+{
+    "_id": "51930357-428b-7afc-1f2e-17035a39d95a",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585841386473
+    },
+    "description": "",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": null,
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "Building configuration...\n\nCurrent configuration : 2348 bytes\n!\nupgrade fpd auto\nversion 15.2\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname R2\n!\nboot-start-marker\nboot-end-marker\n!\n!\nenable secret 4 NZ/rxQdR6AQbfBm1R/8Y9FbybgU.EKJmNN8ZGuJiMcg\n!\naaa new-model\n!\naaa user profile WWW\n!\naaa group server radius NB\n!\naaa authentication login default group radius group tacacs+ local\naaa authorization network for_network group radius group tacacs+ local none \naaa accounting network default start-stop group radius group tacacs+\n!\n!\n!\n!\n!\naaa session-id common\naaa traceback recording\naaa max-sessions 1024\nno ip icmp rate-limit unreachable\n!\n!\n!\n!\n!\n!\nno ip domain lookup\nip cef\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n!         \n!\n!\n!\n!\n!\n!\n!\n!\nusername nb password 0 nb\n!\nredundancy\n!\n!\nip tcp synwait-time 5\nip ssh version 1\n! \n!\n!\n!\n!\n!\n!\n!         \n!\n!\ninterface FastEthernet0/0\n ip address 12.1.1.2 255.255.255.0\n duplex half\n!\ninterface FastEthernet1/0\n ip address 1.255.0.22 255.255.255.0\n duplex half\n!\ninterface FastEthernet2/0\n no ip address\n shutdown\n duplex auto\n speed auto\n!\ninterface FastEthernet2/1\n no ip address\n shutdown\n duplex auto\n speed auto\n!\ninterface Serial3/0\n no ip address\n shutdown\n serial restart-delay 0\n!\ninterface Serial3/1\n no ip address\n shutdown\n serial restart-delay 0\n!\ninterface Serial3/2\n no ip address\n shutdown\n serial restart-delay 0\n!\ninterface Serial3/3\n no ip address\n shutdown\n serial restart-delay 0\n!\nip forward-protocol nd\nno ip http server\nno ip http secure-server\n!         \n!\n!\n!\nip prefix-list pre1 description This is a sample \nip prefix-list pre1 seq 5 permit 192.168.0.0/22 ge 23\n!\nip prefix-list pre2 seq 5 permit 192.168.1.0/24\nip prefix-list pre2 seq 10 deny 192.168.3.0/25\naccess-list 1 permit 1.1.1.1\naccess-list 1 deny   1.1.1.0 0.0.0.255\naccess-list 100 deny   ospf any any\naccess-list 100 permit ospf any any\nno cdp log mismatch duplex\n!\nroute-map ac permit 100\n match ip address 123\n set ip next-hop 2.2.2.2\n!\nroute-map ac permit 200\n match ip address 123\n set ip next-hop 2.2.2.2\n!\nsnmp-server community nb RW\nsnmp-server enable traps entity-sensor threshold\n!\n!\n!         \n!\ncontrol-plane\n!\n!\n!\nmgcp profile default\n!\n!\n!\ngatekeeper\n shutdown\n!\n!\nline con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline vty 0 4\n password nb\n transport input telnet\n!\n!\nend\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"route_map\",\"keyVariables\":\"\",\"startLine\":\"mregex[$routemap_config,$routemap_name]:(^route-map\\\\s+(\\\\S+).+?)(?:^\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$routemap_config:string\",\"$routemap_name:string\"]},\"xxid\":\"258c3cd8-a580-49d1-82aa-8678f3781061\"}]},\"xxid\":\"edd37431-3e5a-df7a-8d7e-27956e32ee67\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "routemap_config",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "routemap_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "route_map",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3442743c8db6c70091169b8e111008b4",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "route_map",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "route_map",
+            "intfKey": false,
+            "name": "route_map",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "route_map.$routemap_config",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "route_map.$routemap_config",
+            "intfKey": false,
+            "name": "$routemap_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "route_map.$routemap_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "route_map.$routemap_name",
+            "intfKey": false,
+            "name": "$routemap_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

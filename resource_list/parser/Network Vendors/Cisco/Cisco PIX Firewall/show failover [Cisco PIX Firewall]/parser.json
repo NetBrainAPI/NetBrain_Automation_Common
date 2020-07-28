@@ -1,0 +1,1244 @@
+{
+    "_id": "5d47b7e8-f37d-9875-e51d-9b00c0e9756f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show failover",
+    "createTime": {
+        "$date": 1590764974812
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow failover",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "PIX#show failover\r\nFailover On\r\nCable status: N/A - LAN-based failover enabled\r\nFailover unit Primary\r\nFailover LAN Interface: folink Ethernet2 (up)\r\nUnit Poll frequency 1 seconds, holdtime 3 seconds\r\nInterface Poll frequency 15 seconds\r\nInterface Policy 1\r\nMonitored Interfaces 2 of 250 maximum\r\nfailover replication http\r\nLast Failover at: 22:44:03 UTC Dec 8 2004\r\n    This host: Primary - Active\r\n        Active time: 13434 (sec)\r\n          slot 0: ASA5520 hw/sw rev (1.0/7.1(0)10) status (Up Sys)\r\n            Interface inside (10.130.9.3/FE80::20d:29ff:fe1d:69f0): Normal\r\n            Interface outside (10.132.9.3): Normal\r\n            Interface folink (0.0.0.0/fe80::2a0:c9ff:fe03:101): Normal\r\n          slot 1: ASA-SSM-20 hw/sw rev (1.0/CSC-SSM 5.0 (Build#1176)) status (Up/Up)\r\n\r\n    Other host: Secondary - Standby Ready\r\n        Active time: 0 (sec)\r\n          slot 0: ASA5520 hw/sw rev (1.0/7.1(0)10) status (Up Sys)\r\n            Interface inside (10.130.9.4/FE80::20d:29ff:fe2b:7ba6): Normal\r\n            Interface outside (10.132.9.4): Normal\r\n            Interface folink (0.0.0.0/fe80::2e0:b6ff:fe07:3096): Normal\r\n          slot 1: ASA-SSM-20 hw/sw rev (1.0/CSC-SSM 5.0 (Build#1176)) status (Up/Up)\r\n\r\nStateful Failover Logical Update Statistics\r\n\tLink : lan1 Ethernet0/0 (up)\r\n\tStateful Obj \txmit       xerr       rcv        rerr      \r\n\tGeneral\t\t249513     0          197389     0         \r\n\tsys cmd  \t197389     0          197389     0         \r\n\tup time  \t0          0          0          0         \r\n\tRPC services  \t0          0          0          0         \r\n\tTCP conn \t0          0          0          0         \r\n\tUDP conn \t0          0          0          0         \r\n\tARP tbl  \t43059      0          0          0         \r\n\tXlate_Timeout  \t0          0          0          0         \r\n\tIPv6 ND tbl  \t0          0          0          0         \r\n\tVPN IKEv1 SA \t0          0          0          0         \r\n\tVPN IKEv1 P2 \t0          0          0          0         \r\n\tVPN IKEv2 SA \t0          0          0          0         \r\n\tVPN IKEv2 P2 \t0          0          0          0         \r\n\tVPN CTCP upd \t0          0          0          0         \r\n\tVPN SDI upd \t0          0          0          0         \r\n\tVPN DHCP upd \t0          0          0          0         \r\n\tSIP Session \t0          0          0          0         \r\n\tRoute Session \t9062       0          0          0         \r\n\tUser-Identity \t3          0          0          0         \r\n\tCTS SGTNAME \t0          0          0          0         \r\n\tCTS PAC \t0          0          0          0         \r\n\tTrustSec-SXP \t0          0          0          0         \r\n\tIPv6 Route \t0          0          0          0         \r\n\r\n\tLogical Update Queue Information\r\n\t \t \tCur \tMax \tTotal\r\n\tRecv Q: \t0 \t1 \t197390\r\n\tXmit Q: \t0 \t3 \t3364617\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Failover $failover_status\",\"regex[$cable_status]:Cable status: (.+)\",\"regex[$last_failover]:Last Failover at: (.*)\",\"regex[$faiover_lan_interface_nameif,$failover_lan_interface_name,$failover_lan_interface_status]:\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+\\\\((\\\\S+)\\\\)\",\"Unit Poll frequency $unit_poll_frequency seconds, holdtime $hold_time seconds\",\"regex[$fail_over_unit]:Failover unit (.+)\",\"regex[$int:interface_poll_freq]:Interface Poll frequency (\\\\d+) seconds\",\"regex[$int:interface_policy]:Interface Policy (\\\\d+)\",\"regex[$int:monitor_interface_count, $int:max_monitor_interface_count]:Monitored Interfaces (\\\\d+) of (\\\\d+) maximum\",\"regex[$failover_replication]:failover replication (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$failover_status:string\",\"$cable_status:string\",\"$last_failover:string\",\"$faiover_lan_interface_nameif:string\",\"$failover_lan_interface_name:string\",\"$failover_lan_interface_status:string\",\"$unit_poll_frequency:string\",\"$hold_time:string\",\"$fail_over_unit:string\",\"$interface_poll_freq:int\",\"$interface_policy:int\",\"$monitor_interface_count:int\",\"$max_monitor_interface_count:int\",\"$failover_replication:string\"]},\"xxid\":\"7cc49c32-3b2f-95e9-1cfd-b8f21e829b29\"},{\"type\":\"4\",\"name\":\"state_failover_statistics\",\"keyVariables\":\"\",\"startLine\":\"Stateful Failover Logical Update Statistics\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$link_interface, $link_status]:Link : (.+?) \\\\((.+?)\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$link_interface:string\",\"$link_status:string\"]},\"xxid\":\"d986ac96-8aa5-8cf7-12c8-285f72f4359e\"},{\"type\":\"4\",\"name\":\"state_failover_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$state_obj, $int:xmit, $int:xerr, $int:rcv, $int:rerr]:\\\\s+(.+?)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$state_obj:string\",\"$xmit:int\",\"$xerr:int\",\"$rcv:int\",\"$rerr:int\"]},\"xxid\":\"9a62d9f8-5458-978d-6483-1add4771556c\"}]},\"xxid\":\"08b2402a-9e66-d86c-b769-0c79737023ff\",\"hashColumns\":[\"$state_obj\"]}]},\"xxid\":\"cce5ac43-48c0-e882-be0f-13c33388c569\"},{\"type\":\"4\",\"name\":\"logical_queue_info\",\"keyVariables\":\"\",\"startLine\":\"Logical Update Queue Information\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"a23cc714-a8b0-50e5-71cf-17120a79b8c7\"},{\"type\":\"4\",\"name\":\"logical_queue_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$queue_name, $int:current, $int:max, $int:total]:\\\\s+(.+):\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$queue_name:string\",\"$current:int\",\"$max:int\",\"$total:int\"]},\"xxid\":\"3c858995-07e6-1c52-5e77-43a4b7e939bc\"}]},\"xxid\":\"41bdad6e-f9c6-eb4e-025e-8535d2132a9a\",\"hashColumns\":[\"$queue_name\"]}]},\"xxid\":\"84033f65-0d13-ec89-4d0f-a2584c27adb7\"},{\"type\":\"4\",\"name\":\"host_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$host, $status]:host:\\\\s+(.+)\\\\s+-\\\\s+(.+)\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:active_time]:Active time: (\\\\d+) \\\\(sec\\\\)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$host:string\",\"$status:string\",\"$active_time:int\"]},\"xxid\":\"8f0b6b88-2ca3-ccd0-965f-40c599c54c54\"},{\"type\":\"4\",\"name\":\"slot_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$slot,$hardware,$slot_status]:(slot\\\\s+\\\\d+):\\\\s+(.*)\\\\s+status\\\\s+\\\\((.*)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$slot:string\",\"$hardware:string\",\"$slot_status:string\"]},\"xxid\":\"d9ceaa2b-f428-af25-c9dc-ccaccc55b1e1\"},{\"type\":\"4\",\"name\":\"intf_info\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface,$ip_addr,$mac_addr,$syn_status]:Interface (\\\\S+) \\\\((\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)(?:/(.+?))*\\\\): (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$ip_addr:string\",\"$mac_addr:string\",\"$syn_status:string\"]},\"xxid\":\"a5c9c86e-7ce5-f659-e1fc-a6f09d3628f5\"}]},\"xxid\":\"f74cefe8-ed94-a372-d707-26f5a1b6e3d2\",\"hashColumns\":[\"$intf\",\"$interface_nameif\",\"$interface\"]}]},\"xxid\":\"4c57093c-b98e-81de-6e7e-4483c0f5bbb0\",\"hashColumns\":[\"$slot\"]}]},\"xxid\":\"772166ed-679d-5306-f557-4497e11f5336\",\"hashColumns\":[\"$host\"]}]}",
+            "tableKeys": [
+                "_original_result.state_failover_statistics.state_failover_table.$state_obj",
+                "_original_result.logical_queue_info.logical_queue_table.$queue_name",
+                "_original_result.host_info.$host",
+                "_original_result.host_info.slot_info.$slot",
+                "_original_result.host_info.slot_info.intf_info.$interface"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "failover_status",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cable_status",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "last_failover",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "faiover_lan_interface_nameif",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "failover_lan_interface_name",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "failover_lan_interface_status",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "unit_poll_frequency",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "hold_time",
+                "type": 4
+            },
+            {
+                "index": 8,
+                "name": "fail_over_unit",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "interface_poll_freq",
+                "type": 1
+            },
+            {
+                "index": 10,
+                "name": "interface_policy",
+                "type": 1
+            },
+            {
+                "index": 11,
+                "name": "monitor_interface_count",
+                "type": 1
+            },
+            {
+                "index": 12,
+                "name": "max_monitor_interface_count",
+                "type": 1
+            },
+            {
+                "index": 13,
+                "name": "failover_replication",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "link_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "link_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 14,
+                "name": "state_failover_statistics",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "state_obj",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "xmit",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "xerr",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "rcv",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "rerr",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "link_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "link_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$state_obj"
+                ],
+                "hashSort": false,
+                "index": 15,
+                "name": "state_failover_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 16,
+                "name": "logical_queue_info",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "queue_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "current",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "max",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "total",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$queue_name"
+                ],
+                "hashSort": false,
+                "index": 17,
+                "name": "logical_queue_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "host",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "active_time",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$host"
+                ],
+                "hashSort": false,
+                "index": 18,
+                "name": "host_info",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "slot",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "hardware",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "slot_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "host",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "active_time",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$slot"
+                ],
+                "hashSort": false,
+                "index": 19,
+                "name": "slot_info",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "syn_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "slot",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "hardware",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "slot_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "host",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "active_time",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$interface_nameif",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 20,
+                "name": "intf_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3e3bf1770ce47ba69a7786beeb75d36e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$failover_status",
+            "dataType": "string",
+            "desc": "Failover status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$failover_status",
+            "intfKey": false,
+            "name": "$failover_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cable_status",
+            "dataType": "string",
+            "desc": "The cable status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cable_status",
+            "intfKey": false,
+            "name": "$cable_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$last_failover",
+            "dataType": "string",
+            "desc": "Last failover time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$last_failover",
+            "intfKey": false,
+            "name": "$last_failover",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$faiover_lan_interface_nameif",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$faiover_lan_interface_nameif",
+            "intfKey": false,
+            "name": "$faiover_lan_interface_nameif",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$failover_lan_interface_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$failover_lan_interface_name",
+            "intfKey": false,
+            "name": "$failover_lan_interface_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$failover_lan_interface_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$failover_lan_interface_status",
+            "intfKey": false,
+            "name": "$failover_lan_interface_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$unit_poll_frequency",
+            "dataType": "string",
+            "desc": "Unit poll frequency.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$unit_poll_frequency",
+            "intfKey": false,
+            "name": "$unit_poll_frequency",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hold_time",
+            "dataType": "string",
+            "desc": "Unit poll holdtime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$fail_over_unit",
+            "dataType": "string",
+            "desc": "The failover unit.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$fail_over_unit",
+            "intfKey": false,
+            "name": "$fail_over_unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$interface_poll_freq",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$interface_poll_freq",
+            "intfKey": false,
+            "name": "$interface_poll_freq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$interface_policy",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$interface_policy",
+            "intfKey": false,
+            "name": "$interface_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$monitor_interface_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$monitor_interface_count",
+            "intfKey": false,
+            "name": "$monitor_interface_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_monitor_interface_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_monitor_interface_count",
+            "intfKey": false,
+            "name": "$max_monitor_interface_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$failover_replication",
+            "dataType": "string",
+            "desc": "The failover replication.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$failover_replication",
+            "intfKey": false,
+            "name": "$failover_replication",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_statistics",
+            "dataType": "paragraph",
+            "desc": "Stateful failover logical update statistics.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics",
+            "intfKey": false,
+            "name": "state_failover_statistics",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "state_failover_statistics.$link_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.$link_interface",
+            "intfKey": false,
+            "name": "$link_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_statistics.$link_status",
+            "dataType": "string",
+            "desc": "The link interface status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.$link_status",
+            "intfKey": false,
+            "name": "$link_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_table",
+            "dataType": "paragraph",
+            "desc": "Stateful failover logical update statistics.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$state_obj"
+                ],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table",
+            "intfKey": false,
+            "name": "state_failover_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "state_failover_table.$state_obj",
+            "dataType": "string",
+            "desc": "The stateful object name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table.$state_obj",
+            "intfKey": false,
+            "name": "$state_obj",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_table.$xmit",
+            "dataType": "int",
+            "desc": "The number of xmit packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table.$xmit",
+            "intfKey": false,
+            "name": "$xmit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_table.$xerr",
+            "dataType": "int",
+            "desc": "The number of xerr packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table.$xerr",
+            "intfKey": false,
+            "name": "$xerr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_table.$rcv",
+            "dataType": "int",
+            "desc": "The number of rcv packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table.$rcv",
+            "intfKey": false,
+            "name": "$rcv",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_table.$rerr",
+            "dataType": "int",
+            "desc": "The number of rerr packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table.$rerr",
+            "intfKey": false,
+            "name": "$rerr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_table.$link_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table.$link_interface",
+            "intfKey": false,
+            "name": "$link_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "state_failover_table.$link_status",
+            "dataType": "string",
+            "desc": "The link interface status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "state_failover_statistics.state_failover_table.$link_status",
+            "intfKey": false,
+            "name": "$link_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logical_queue_info",
+            "dataType": "paragraph",
+            "desc": "Logical update queue information.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "logical_queue_info",
+            "intfKey": false,
+            "name": "logical_queue_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "logical_queue_table",
+            "dataType": "paragraph",
+            "desc": "Logical update queue information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$queue_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "logical_queue_info.logical_queue_table",
+            "intfKey": false,
+            "name": "logical_queue_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "logical_queue_table.$queue_name",
+            "dataType": "string",
+            "desc": "The queue name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "logical_queue_info.logical_queue_table.$queue_name",
+            "intfKey": false,
+            "name": "$queue_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logical_queue_table.$current",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "logical_queue_info.logical_queue_table.$current",
+            "intfKey": false,
+            "name": "$current",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logical_queue_table.$max",
+            "dataType": "int",
+            "desc": "The number of max packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "logical_queue_info.logical_queue_table.$max",
+            "intfKey": false,
+            "name": "$max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logical_queue_table.$total",
+            "dataType": "int",
+            "desc": "The number of total packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "logical_queue_info.logical_queue_table.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_info",
+            "dataType": "paragraph",
+            "desc": "The host information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$host"
+                ],
+                "hashSort": false
+            },
+            "fullName": "host_info",
+            "intfKey": false,
+            "name": "host_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "host_info.$host",
+            "dataType": "string",
+            "desc": "The host name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.$host",
+            "intfKey": false,
+            "name": "$host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_info.$status",
+            "dataType": "string",
+            "desc": "This host status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_info.$active_time",
+            "dataType": "int",
+            "desc": "This host arrive time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.$active_time",
+            "intfKey": false,
+            "name": "$active_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slot_info",
+            "dataType": "paragraph",
+            "desc": "Slot information.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$slot"
+                ],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info",
+            "intfKey": false,
+            "name": "slot_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "slot_info.$slot",
+            "dataType": "string",
+            "desc": "Slot name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.$slot",
+            "intfKey": false,
+            "name": "$slot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slot_info.$hardware",
+            "dataType": "string",
+            "desc": "Slot hardware information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.$hardware",
+            "intfKey": false,
+            "name": "$hardware",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slot_info.$slot_status",
+            "dataType": "string",
+            "desc": "Slot status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.$slot_status",
+            "intfKey": false,
+            "name": "$slot_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slot_info.$host",
+            "dataType": "string",
+            "desc": "The host name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.$host",
+            "intfKey": false,
+            "name": "$host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slot_info.$status",
+            "dataType": "string",
+            "desc": "This host status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slot_info.$active_time",
+            "dataType": "int",
+            "desc": "This host arrive time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.$active_time",
+            "intfKey": false,
+            "name": "$active_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info",
+            "dataType": "paragraph",
+            "desc": "Interface information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$interface_nameif",
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info",
+            "intfKey": false,
+            "name": "intf_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "intf_info.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$ip_addr",
+            "dataType": "string",
+            "desc": "Interface IPv4 address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$mac_addr",
+            "dataType": "string",
+            "desc": "The mac address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$mac_addr",
+            "intfKey": false,
+            "name": "$mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$syn_status",
+            "dataType": "string",
+            "desc": "The syn status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$syn_status",
+            "intfKey": false,
+            "name": "$syn_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$slot",
+            "dataType": "string",
+            "desc": "Slot name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$slot",
+            "intfKey": false,
+            "name": "$slot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$hardware",
+            "dataType": "string",
+            "desc": "Slot hardware information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$hardware",
+            "intfKey": false,
+            "name": "$hardware",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$slot_status",
+            "dataType": "string",
+            "desc": "Slot status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$slot_status",
+            "intfKey": false,
+            "name": "$slot_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$host",
+            "dataType": "string",
+            "desc": "The host name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$host",
+            "intfKey": false,
+            "name": "$host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$status",
+            "dataType": "string",
+            "desc": "This host status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_info.$active_time",
+            "dataType": "int",
+            "desc": "This host arrive time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_info.slot_info.intf_info.$active_time",
+            "intfKey": false,
+            "name": "$active_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

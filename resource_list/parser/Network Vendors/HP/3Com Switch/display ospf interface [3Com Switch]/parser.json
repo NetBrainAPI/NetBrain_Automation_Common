@@ -1,0 +1,496 @@
+{
+    "_id": "a3e4a918-9326-7c66-cc7f-5e572bf8e936",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display ospf interface",
+    "createTime": {
+        "$date": 1590773936287
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay ospf interface",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<h3c-2>display ospf interface\r\n\r\n\r\n         OSPF Process 1 with Router ID 2.2.2.2\r\n                 Interfaces\r\n\r\n\r\n Area: 0.0.0.0\r\n IP Address      Type      State    Cost  Pri   DR              BDR\r\n 12.1.1.2        Broadcast BDR      1     1     12.1.1.1        12.1.1.2\r\n 2.2.2.2         PTP       Loopback 0     1     0.0.0.0         0.0.0.0\r\n\r\n Area: 0.0.0.1\r\n IP Address      Type      State    Cost  Pri   DR              BDR\r\n 23.1.1.2        Broadcast DR       1     1     23.1.1.2        23.1.1.3\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_process\",\"keyVariables\":\"\",\"startLine\":\"OSPF Process $process with Router ID $rid\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process:string\",\"$rid:string\"]},\"xxid\":\"476fc20f-bae2-e7cc-096c-935a22864258\"},{\"type\":\"4\",\"name\":\"area_id_paragraph\",\"keyVariables\":\"\",\"startLine\":\"regex[$area_id]:Area:\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\"]},\"xxid\":\"d311dd19-e25a-61e6-affd-d30cbffa3833\"},{\"type\":\"3\",\"name\":\"ospf_interface_table\",\"headers\":\"IP Address;Type;State;Cost;Pri;DR;BDR\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"IP Address:$string:ip_addr;Type:$string:type;State:$string:state;Cost:$int:cost;Pri:$int:pri;DR:$string:dr;BDR:$string:bdr\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$ip_addr:string\",\"$type:string\",\"$state:string\",\"$cost:int\",\"$pri:int\",\"$dr:string\",\"$bdr:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"408a004b-4cfa-71f0-a3f7-6b5a406cb57c\",\"hashColumns\":[\"$state\",\"$ip_addr\",\"$type\",\"$cost\",\"$dr\",\"$process\",\"$area_id\"]}]},\"xxid\":\"9fe091a7-bb65-9777-8a8f-be8227144fdd\",\"hashColumns\":[\"$area_id\"]}]},\"xxid\":\"2ab3fbd2-72fe-52e2-efe8-4383195dbf6b\",\"hashColumns\":[\"$process\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_process.area_id_paragraph.ospf_interface_table.$state",
+                "_original_result.ospf_process.area_id_paragraph.ospf_interface_table.$ip_addr",
+                "_original_result.ospf_process.area_id_paragraph.ospf_interface_table.$type",
+                "_original_result.ospf_process.area_id_paragraph.ospf_interface_table.$cost",
+                "_original_result.ospf_process.area_id_paragraph.ospf_interface_table.$dr",
+                "_original_result.ospf_process.area_id_paragraph.ospf_interface_table.$process",
+                "_original_result.ospf_process.area_id_paragraph.ospf_interface_table.$area_id",
+                "_original_result.ospf_process.area_id_paragraph.$area_id",
+                "_original_result.ospf_process.$process"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "rid",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_process",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "rid",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "area_id_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "pri",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "rid",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$cost",
+                    "$dr",
+                    "$ip_addr",
+                    "$process",
+                    "$state",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "ospf_interface_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "97967d5ba243bed7bc1789e161452c90",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_process",
+            "dataType": "paragraph",
+            "desc": "OSPF process table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process",
+            "intfKey": false,
+            "name": "ospf_process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_process.$process",
+            "dataType": "string",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.$rid",
+            "dataType": "string",
+            "desc": "Router id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph",
+            "dataType": "paragraph",
+            "desc": "Area id table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph",
+            "intfKey": false,
+            "name": "area_id_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area_id_paragraph.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$process",
+            "dataType": "string",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$rid",
+            "dataType": "string",
+            "desc": "Router id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table",
+            "dataType": "table",
+            "desc": "OSPF interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$state",
+                    "$ip_addr",
+                    "$type",
+                    "$cost",
+                    "$dr",
+                    "$process",
+                    "$area_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table",
+            "intfKey": false,
+            "name": "ospf_interface_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_interface_table.$ip_addr",
+            "dataType": "string",
+            "desc": "Interface ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$type",
+            "dataType": "string",
+            "desc": "Network type",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$state",
+            "dataType": "string",
+            "desc": "Interface state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$cost",
+            "dataType": "int",
+            "desc": "Interface cost",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$pri",
+            "dataType": "int",
+            "desc": "Interface priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$pri",
+            "intfKey": false,
+            "name": "$pri",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$dr",
+            "dataType": "string",
+            "desc": "DR ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$bdr",
+            "dataType": "string",
+            "desc": "BDR ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$bdr",
+            "intfKey": false,
+            "name": "$bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$process",
+            "dataType": "string",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interface_table.$rid",
+            "dataType": "string",
+            "desc": "Router id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.area_id_paragraph.ospf_interface_table.$rid",
+            "intfKey": false,
+            "name": "$rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

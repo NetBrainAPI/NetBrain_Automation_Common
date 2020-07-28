@@ -1,0 +1,517 @@
+{
+    "_id": "6df4681a-6d5a-5aab-9bde-1409c023c355",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf neighbor detail",
+    "createTime": {
+        "$date": 1579722979752
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch \nCommand: \n       show ip ospf neighbor detail",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ospf-R1#show ip ospf neighbor detail\n Neighbor 111.1.1.1, interface address 10.1.1.2\n    In the area 0 via interface OSPF_VL0\n    Neighbor priority is 0, State is FULL, 10 state changes\n    DR is 0.0.0.0 BDR is 0.0.0.0\n    Options is 0x2 in Hello (E-bit)\n    Options is 0x42 in DBD (E-bit, O-bit)\n    Dead timer due in 00:00:33\n    Neighbor is up for 2w1d    \n    Index 1/3, retransmission queue length 0, number of retransmission 0\n    First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)\n    Last retransmission scan length is 0, maximum is 0\n    Last retransmission scan time is 0 msec, maximum is 0 msec\n Neighbor 111.1.1.3, interface address 10.1.1.6\n    In the area 2 via interface FastEthernet1/0\n    Neighbor priority is 1, State is FULL, 6 state changes\n    DR is 10.1.1.2 BDR is 10.1.1.1\n    Options is 0x2 in Hello (E-bit)\n    Options is 0x42 in DBD (E-bit, O-bit)\n    Dead timer due in 00:00:31\n    Neighbor is up for 2w1d    \n    Index 1/2, retransmission queue length 0, number of retransmission 3\n    First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)\n    Last retransmission scan length is 1, maximum is 1\n    Last retransmission scan time is 4 msec, maximum is 4 msec\n Neighbor 4.4.4.4, interface address 172.16.14.4\n    In the area 5 via interface FastEthernet0/1\n    Neighbor priority is 1, State is FULL, 6 state changes\n    DR is 172.16.14.4 BDR is 172.16.14.1\n    Options is 0x12 in Hello (E-bit, L-bit)\n    Options is 0x52 in DBD (E-bit, L-bit, O-bit)\n    LLS Options is 0x1 (LR)\n    Dead timer due in 00:00:39\n    Neighbor is up for 2w1d    \n    Index 1/1, retransmission queue length 0, number of retransmission 36\n    First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)\n    Last retransmission scan length is 13, maximum is 14\n    Last retransmission scan time is 4 msec, maximum is 4 msec\n\n\n Neighbor 172.27.128.129, interface address 172.27.128.129\n    In the area 0 via interface inside\n    Neighbor priority is 1, State is FULL, 6 state changes\n    DR is 172.27.128.130 BDR is 172.27.128.129\n    Options is 0x12 in Hello (E-bit, L-bit)\n    Options is 0x52 in DBD (E-bit, L-bit, O-bit)\n    LLS Options is 0x1 (LR)\n    Dead timer due in 0:00:34\n    Neighbor is up for 00:03:59\n    Index 1/1, retransmission queue length 0, number of retransmission 0\n    First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)\n    Last retransmission scan length is 0, maximum is 0\n    Last retransmission scan time is 0 msec, maximum is 0 msec\n Neighbor 172.27.128.130, interface address 172.27.128.130\n    In the area 0 via interface inside\n    Neighbor priority is 1, State is FULL, 6 state changes\n    DR is 172.27.128.130 BDR is 172.27.128.129\n    Options is 0x12 in Hello (E-bit, L-bit)\n    Options is 0x52 in DBD (E-bit, L-bit, O-bit)\n    LLS Options is 0x1 (LR)\n    Dead timer due in 0:00:33\n    Neighbor is up for 00:03:59\n    Index 2/2, retransmission queue length 0, number of retransmission 0\n    First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)\n    Last retransmission scan length is 0, maximum is 0\n    Last retransmission scan time is 0 msec, maximum is 0 msec",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_neighbor\",\"keyVariables\":null,\"startLine\":\"Neighbor $neighbor_id, interface address $interface_address\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"In the area $area_id via interface $interface\",\"Neighbor priority is $int:priority, State is $state, $int:state_changes state changes\",\"DR is $dr BDR is $bdr\",\"Options is $hello_options in Hello \",\"Options is $dbd_options in DBD \",\"Dead timer due in $dead_time\",\"Neighbor is up for $up_time\",\"Index $int:indexes/$int:total_indexes, retransmission queue length $int:retransmission_queue_length, number of retransmission $int:number_of_retransmission\",\"Last retransmission scan length is $int:last_restransmission_scan_length, maximum is $int:last_restransmission_scan_max\",\"Last retransmission scan time is $last_retransmission_scan_time msec, maximum is $last_retransmission_scan_time_max msec\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$neighbor_id:string\",\"$interface_address:string\",\"$area_id:string\",\"$interface:string\",\"$priority:int\",\"$state:string\",\"$state_changes:int\",\"$dr:string\",\"$bdr:string\",\"$hello_options:string\",\"$dbd_options:string\",\"$dead_time:string\",\"$up_time:string\",\"$indexes:int\",\"$total_indexes:int\",\"$retransmission_queue_length:int\",\"$number_of_retransmission:int\",\"$last_restransmission_scan_length:int\",\"$last_restransmission_scan_max:int\",\"$last_retransmission_scan_time:string\",\"$last_retransmission_scan_time_max:string\"]},\"xxid\":\"87c31a79-02d1-1268-2226-75f059a487f8\"}]},\"xxid\":\"e16dc8e5-3abf-e87f-5f17-f2621397eba2\",\"hashColumns\":[\"$neighbor_id\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_neighbor.$neighbor_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 21,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "state_changes",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "hello_options",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "dbd_options",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "dead_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "indexes",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "total_indexes",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "retransmission_queue_length",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "number_of_retransmission",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "last_restransmission_scan_length",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "last_restransmission_scan_max",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "last_retransmission_scan_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "last_retransmission_scan_time_max",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$neighbor_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_neighbor",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ad3ca742bbda7251ec7f0cf1b0fde686",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_neighbor",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor",
+            "intfKey": false,
+            "name": "ospf_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_neighbor.$neighbor_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$neighbor_id",
+            "intfKey": false,
+            "name": "$neighbor_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$interface_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$interface_address",
+            "intfKey": false,
+            "name": "$interface_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$state_changes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$state_changes",
+            "intfKey": false,
+            "name": "$state_changes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$dr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$bdr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$bdr",
+            "intfKey": false,
+            "name": "$bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$hello_options",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$hello_options",
+            "intfKey": false,
+            "name": "$hello_options",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$dbd_options",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$dbd_options",
+            "intfKey": false,
+            "name": "$dbd_options",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$dead_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$dead_time",
+            "intfKey": false,
+            "name": "$dead_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$up_time",
+            "intfKey": false,
+            "name": "$up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$indexes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$indexes",
+            "intfKey": false,
+            "name": "$indexes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$total_indexes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$total_indexes",
+            "intfKey": false,
+            "name": "$total_indexes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$retransmission_queue_length",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$retransmission_queue_length",
+            "intfKey": false,
+            "name": "$retransmission_queue_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$number_of_retransmission",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$number_of_retransmission",
+            "intfKey": false,
+            "name": "$number_of_retransmission",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$last_restransmission_scan_length",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$last_restransmission_scan_length",
+            "intfKey": false,
+            "name": "$last_restransmission_scan_length",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$last_restransmission_scan_max",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$last_restransmission_scan_max",
+            "intfKey": false,
+            "name": "$last_restransmission_scan_max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$last_retransmission_scan_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$last_retransmission_scan_time",
+            "intfKey": false,
+            "name": "$last_retransmission_scan_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_neighbor.$last_retransmission_scan_time_max",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_neighbor.$last_retransmission_scan_time_max",
+            "intfKey": false,
+            "name": "$last_retransmission_scan_time_max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

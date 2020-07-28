@@ -1,0 +1,319 @@
+{
+    "_id": "f01e6380-2323-96b6-2167-7356949c516e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show eigrp interfaces",
+    "createTime": {
+        "$date": 1579788503002
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow eigrp interfaces",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasEIGRPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-asav-952# show eigrp interfaces \r\nEIGRP-IPv4 Interfaces for AS(1)\r\n                        Xmit Queue   Mean   Pacing Time   Multicast    Pending\r\nInterface        Peers  Un/Reliable  SRTT   Un/Reliable   Flow Timer   Routes\r\ninside           0        0  /  0   0        0   /   1      0          0    \r\noutside          0        0  /  0   0        0   /   1      0          0    \r\nEIGRP-IPv4 Interfaces for AS(2)\r\n                        Xmit Queue   Mean   Pacing Time   Multicast    Pending\r\nInterface        Peers  Un/Reliable  SRTT   Un/Reliable   Flow Timer   Routes\r\ninside           0        0  /  0   0        0   /   1      0          0    \r\noutside          0        0  /  0   0        0   /   1      0          0    \r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.eigrp_as.eigrp_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"eigrp_as\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:as]:EIGRP-IPv4\\\\s+Interfaces\\\\s+for\\\\s+AS\\\\((\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$as:int\"]},\"xxid\":\"3b505182-a855-e4ad-65c8-544383ce5f72\"},{\"type\":\"4\",\"name\":\"eigrp_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$int:peers,$xmit_queue_un_reliable,$int:mean_srtt,$pacing_time_un_reliable,$int:multicast_flow_timer,$int:pending_routes]:^\\\\s*(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+\\\\s+/\\\\s+\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+\\\\s+/\\\\s+\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$peers:int\",\"$xmit_queue_un_reliable:string\",\"$mean_srtt:int\",\"$pacing_time_un_reliable:string\",\"$multicast_flow_timer:int\",\"$pending_routes:int\"]},\"xxid\":\"882f9cf5-ca73-10ea-086a-be3abd2b66a6\"}]},\"xxid\":\"f6fca9fe-fb2e-e53f-598a-498946142113\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$xmit_queue_un_reliable\",\"$pending_routes\"]}]},\"xxid\":\"e3d6422a-68a2-e508-f85d-cb4e97cd9796\",\"hashColumns\":[]}]}",
+            "tableKeys": [
+                "_original_result.eigrp_as.eigrp_intfs.$xmit_queue_un_reliable",
+                "_original_result.eigrp_as.eigrp_intfs.$pending_routes"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "as",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "eigrp_as",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "peers",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "xmit_queue_un_reliable",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mean_srtt",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "pacing_time_un_reliable",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "multicast_flow_timer",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "pending_routes",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "as",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$pending_routes",
+                    "$xmit_queue_un_reliable"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "eigrp_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "63ffcc1c11f3acd37de0e7fb2f6b5d92",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "eigrp_as",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as",
+            "intfKey": false,
+            "name": "eigrp_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "eigrp_as.$as",
+            "dataType": "int",
+            "desc": "AS number of EIGRP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$xmit_queue_un_reliable",
+                    "$pending_routes"
+                ],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs",
+            "intfKey": false,
+            "name": "eigrp_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "eigrp_intfs.$intf",
+            "dataType": "string",
+            "desc": "Interface over which EIGRP is configured.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "eigrp_intfs.$peers",
+            "dataType": "int",
+            "desc": "Number of directly connected EIGRP neighbors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$peers",
+            "intfKey": false,
+            "name": "$peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$xmit_queue_un_reliable",
+            "dataType": "string",
+            "desc": "Number of packets remaining in the Unreliable and Reliable transmit queues.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$xmit_queue_un_reliable",
+            "intfKey": false,
+            "name": "$xmit_queue_un_reliable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$mean_srtt",
+            "dataType": "int",
+            "desc": "Mean smooth round-trip time (SRTT) interval (in milliseconds).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$mean_srtt",
+            "intfKey": false,
+            "name": "$mean_srtt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$pacing_time_un_reliable",
+            "dataType": "string",
+            "desc": "Pacing time used to determine when EIGRP packets should be sent out the interface (unreliable and reliable packets).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$pacing_time_un_reliable",
+            "intfKey": false,
+            "name": "$pacing_time_un_reliable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$multicast_flow_timer",
+            "dataType": "int",
+            "desc": "Maximum number of seconds in which the router will send multicast EIGRP packets.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$multicast_flow_timer",
+            "intfKey": false,
+            "name": "$multicast_flow_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$pending_routes",
+            "dataType": "int",
+            "desc": "Number of routes in the packets in the transmit queue waiting to be sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$pending_routes",
+            "intfKey": false,
+            "name": "$pending_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$as",
+            "dataType": "int",
+            "desc": "AS number of EIGRP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_as.eigrp_intfs.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,280 @@
+{
+    "_id": "116ae95a-cacf-87f3-cc8d-1457e50ca5c2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys connection",
+    "createTime": {
+        "$date": 1579626914580
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys connection",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip1)(cfg-sync In Sync)(Standby)(/Common)(tmos)# show sys connection\r\n\r\nSys::Connections\r\n127.1.1.1:any  127.1.1.3:3  127.1.1.3:any  127.1.1.3:3  icmp  1  (tmm: 1)  none\r\n127.1.1.1:any  127.1.1.2:3  127.1.1.2:41201  127.1.1.2:3  icmp  0  (tmm: 0)  none\r\nTotal records returned: 2\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"sys_connections\",\"keyVariables\":\"\",\"startLine\":\"regex[$src_ip, $src_port, $ss_server_ip, $ss_server_port, $dst_ip, $dst_port, $cs_server_ip, $cs_server_port, $protocol]:^(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\:(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\:(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\:(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\:(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$src_ip:string\",\"$src_port:string\",\"$ss_server_ip:string\",\"$ss_server_port:string\",\"$dst_ip:string\",\"$dst_port:string\",\"$cs_server_ip:string\",\"$cs_server_port:string\",\"$protocol:string\"]},\"xxid\":\"8f0d2224-8dc0-5ef3-6bdd-30af4b9dbbfd\"}]},\"xxid\":\"e47bee9e-71ba-169a-1251-b56eb108f05d\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"474c76a0-7abf-a23c-2f0c-dda1ff08a740\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "src_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "src_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ss_server_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ss_server_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "dst_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "dst_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "cs_server_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "cs_server_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "protocol",
+                        "type": 4
+                    }
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "sys_connections",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "afee1840a9ea039b71e68d4b9d0322bb",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "sys_connections",
+            "dataType": "paragraph",
+            "desc": "System connections.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "sys_connections",
+            "intfKey": false,
+            "name": "sys_connections",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sys_connections.$src_ip",
+            "dataType": "string",
+            "desc": "Source IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$src_ip",
+            "intfKey": false,
+            "name": "$src_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$src_port",
+            "dataType": "string",
+            "desc": "Source port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$src_port",
+            "intfKey": false,
+            "name": "$src_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$ss_server_ip",
+            "dataType": "string",
+            "desc": "serverside remote address of the active connections.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$ss_server_ip",
+            "intfKey": false,
+            "name": "$ss_server_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$ss_server_port",
+            "dataType": "string",
+            "desc": "serverside remote port of the active connections",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$ss_server_port",
+            "intfKey": false,
+            "name": "$ss_server_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$dst_ip",
+            "dataType": "string",
+            "desc": "Destination IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$dst_ip",
+            "intfKey": false,
+            "name": "$dst_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$dst_port",
+            "dataType": "string",
+            "desc": "Destination port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$dst_port",
+            "intfKey": false,
+            "name": "$dst_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$cs_server_ip",
+            "dataType": "string",
+            "desc": "clientside remote address of the active connections",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$cs_server_ip",
+            "intfKey": false,
+            "name": "$cs_server_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$cs_server_port",
+            "dataType": "string",
+            "desc": "clientside remote port of the active connections",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$cs_server_port",
+            "intfKey": false,
+            "name": "$cs_server_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sys_connections.$protocol",
+            "dataType": "string",
+            "desc": "Specifies the protocol used for specified connections (for example: tcp, udp).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sys_connections.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

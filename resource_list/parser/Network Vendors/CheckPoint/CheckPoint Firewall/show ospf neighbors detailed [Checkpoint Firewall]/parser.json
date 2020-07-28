@@ -1,0 +1,787 @@
+{
+    "_id": "1a39f63a-13be-db7b-a0a6-ce7299f1cace",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf neighbors detailed",
+    "createTime": {
+        "$date": 1579138779532
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow ospf neighbors detailed",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "CP_HA1> show ospf neighbors detailed  \n\n\nNeighbor ID: 1.1.1.246 \n\n    Area: 0.0.0.52\n    State: FULL/BDR\n    Priority: 1\n    IP Address:          10.8.11.42        Interface:           10.8.11.33    \n    Designated Rtr:      10.8.11.33        Backup Designated Rtr: 10.8.11.42    \n    Error Count:         0                 MTU Errors:          0             \n    ASE In Stub Errors:  0                 Type7 in non-NSSA:   0             \n    Master Seq Errors:   0                 Slave Seq Errors:    0             \n    Next Seq:            0x5d31d545        Last Seq:            0x5d31d544    \n    Options:             ASE,EA,O          Last Options:        ASE,EA,O      \n    IMMS:                Master,Init       Last IMMS:           none          \n    Link State Req:      0                 Req Outstanding:     0             \n    Retrans List:        0                 DB Summary List:     0             \n    Request List:        0                 CryptoSeq:           0             \n    Timers:   \n        Next DD: inactive\n        Next LSR: inactive          Next LSU: inactive\n        Router dead timer due in: 40 seconds\n    Time since neighbor reached FULL state: 14370417\n    Lost Full Adjacency with neighbor  3 time(s)\n\nNeighbor ID: 192.168.0.59 \n\n    Area: 0.0.0.52\n    State: FULL/DR\n    Priority: 1\n    IP Address:          10.8.11.52        Interface:           10.8.11.49    \n    Designated Rtr:      10.8.11.52        Backup Designated Rtr: 10.8.11.49    \n    Error Count:         0                 MTU Errors:          0             \n    ASE In Stub Errors:  0                 Type7 in non-NSSA:   0             \n    Master Seq Errors:   0                 Slave Seq Errors:    0             \n    Next Seq:            0x2163            Last Seq:            0x2163        \n    Options:             ASE,EA,O          Last Options:        ASE,EA,O      \n    IMMS:                Init              Last IMMS:           Master        \n    Link State Req:      0                 Req Outstanding:     0             \n    Retrans List:        0                 DB Summary List:     0             \n    Request List:        0                 CryptoSeq:           0             \n    Timers:   \n        Next DD: inactive\n        Next LSR: inactive          Next LSU: inactive\n        Router dead timer due in: 35 seconds\n    Time since neighbor reached FULL state: 16073614\n    Lost Full Adjacency with neighbor  0 time(s)\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"OSPF_Neighbors\",\"keyVariables\":\"\",\"startLine\":\"regex:Neighbor ID: +\\\\S+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$neighbor_id]:Neighbor ID: +(\\\\S+)\",\"regex[$area_id]:Area: +(\\\\S+)\",\"regex[$state]:State: +(\\\\S+)\",\"regex[$ip_addr]:IP Address: +(\\\\S+)\",\"regex[$intf_addr]:Interface: +(\\\\S+)\",\"regex[$dr_addr]:Designated Rtr: +(\\\\S+)\",\"regex[$bdr_addr]:Backup Designated Rtr: +(\\\\S+)\",\"regex[$int:error_count]:Error Count: +(\\\\d+)\",\"regex[$int:mtu_error]:MTU Errors: +(\\\\d+)\",\"regex[$int:ase_error]:ASE In Stub Errors: +(\\\\d+)\",\"regex[$int:type7_non_nssa]:Type7 in non-NSSA: +(\\\\d+)\",\"regex[$int:master_seq_error]:Master Seq Errors:\\\\s+(\\\\S+)\",\"regex[$int:slave_seq_error]:Slave Seq Errors: +(\\\\S+)\",\"regex[$next_seq]:Next Seq: +(\\\\S+)\",\"regex[$last_seq]:Last Seq: +(\\\\S+)\",\"regex[$last_option]:Last Options: +(\\\\S+)\",\"regex[$imms]:IMMS: +(\\\\S+)\",\"regex[$last_imms]:Last IMMS: +(\\\\S+)\",\"regex[$link_state_req]:Link State Req: +(\\\\S+)\",\"regex[$req_out]:Req Outstanding: +(\\\\S+)\",\"regex[$retrans_list]:Retrans List: +(\\\\S+)\",\"regex[$db_summary]:DB Summary List: +(\\\\S+)\",\"regex[$request_list]:Request List: +(\\\\S+)\",\"regex[$cryptoseq]:CryptoSeq: +(\\\\S+)\",\"regex[$next_dd]:Next DD: +(\\\\S+)\",\"regex[$next_lsr]:Next LSR: +(\\\\S+)\",\"regex[$next_lsu]:Next LSU: +(\\\\S+)\",\"regex[$int:dead_timer]:Router dead timer due in: +(\\\\d+) +seconds\",\"regex[$int:full_state_timer]:Time since neighbor reached FULL state: +(\\\\d+)\",\"regex[$int:full_lost_counter]:Lost Full Adjacency with neighbor +(\\\\d+) +time\",\"regex[$option]:^ +Options: +(\\\\S+)\",\"regex[$int:priority]:^ +Priority: +(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbor_id:string\",\"$area_id:string\",\"$state:string\",\"$ip_addr:string\",\"$intf_addr:string\",\"$dr_addr:string\",\"$bdr_addr:string\",\"$error_count:int\",\"$mtu_error:int\",\"$ase_error:int\",\"$type7_non_nssa:int\",\"$master_seq_error:int\",\"$slave_seq_error:int\",\"$next_seq:string\",\"$last_seq:string\",\"$last_option:string\",\"$imms:string\",\"$last_imms:string\",\"$link_state_req:string\",\"$req_out:string\",\"$retrans_list:string\",\"$db_summary:string\",\"$request_list:string\",\"$cryptoseq:string\",\"$next_dd:string\",\"$next_lsr:string\",\"$next_lsu:string\",\"$dead_timer:int\",\"$full_state_timer:int\",\"$full_lost_counter:int\",\"$option:string\",\"$priority:int\"]},\"xxid\":\"e9a178d5-7fd9-d603-dd4b-40372fc8b7fb\"}]},\"xxid\":\"a4383e94-14e5-5a2f-e44e-d9c90cfc43d8\",\"hashColumns\":[\"$neighbor_id\",\"$area_id\",\"$state\",\"$ip_addr\",\"$intf_addr\",\"$dr_addr\",\"$bdr_addr\",\"$error_count\",\"$mtu_error\",\"$ase_error\",\"$master_seq_error\",\"$slave_seq_error\",\"$full_lost_counter\",\"$option\",\"$priority\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"1a199573-38ac-ca57-bd89-73eec7cffa89\"}]}",
+            "tableKeys": [
+                "_original_result.OSPF_Neighbors.$neighbor_id",
+                "_original_result.OSPF_Neighbors.$state",
+                "_original_result.OSPF_Neighbors.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 32,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 33,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "intf_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "dr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "bdr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "error_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "mtu_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "ase_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "type7_non_nssa",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "master_seq_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "slave_seq_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "next_seq",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "last_seq",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "last_option",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "imms",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "last_imms",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "link_state_req",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "req_out",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "retrans_list",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "db_summary",
+                        "type": 4
+                    },
+                    {
+                        "index": 22,
+                        "name": "request_list",
+                        "type": 4
+                    },
+                    {
+                        "index": 23,
+                        "name": "cryptoseq",
+                        "type": 4
+                    },
+                    {
+                        "index": 24,
+                        "name": "next_dd",
+                        "type": 4
+                    },
+                    {
+                        "index": 25,
+                        "name": "next_lsr",
+                        "type": 4
+                    },
+                    {
+                        "index": 26,
+                        "name": "next_lsu",
+                        "type": 4
+                    },
+                    {
+                        "index": 27,
+                        "name": "dead_timer",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "full_state_timer",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "full_lost_counter",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "option",
+                        "type": 4
+                    },
+                    {
+                        "index": 31,
+                        "name": "priority",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$ase_error",
+                    "$bdr_addr",
+                    "$dr_addr",
+                    "$error_count",
+                    "$full_lost_counter",
+                    "$intf_addr",
+                    "$ip_addr",
+                    "$master_seq_error",
+                    "$mtu_error",
+                    "$neighbor_id",
+                    "$option",
+                    "$priority",
+                    "$slave_seq_error",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "OSPF_Neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4ec28863b937abc6a3fead5317de4a95",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "OSPF_Neighbors",
+            "dataType": "paragraph",
+            "desc": "OSPF neighbor detail table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor_id",
+                    "$area_id",
+                    "$state",
+                    "$ip_addr",
+                    "$intf_addr",
+                    "$dr_addr",
+                    "$bdr_addr",
+                    "$error_count",
+                    "$mtu_error",
+                    "$ase_error",
+                    "$master_seq_error",
+                    "$slave_seq_error",
+                    "$full_lost_counter",
+                    "$option",
+                    "$priority"
+                ],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors",
+            "intfKey": false,
+            "name": "OSPF_Neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "OSPF_Neighbors.$neighbor_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$neighbor_id",
+            "intfKey": false,
+            "name": "$neighbor_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$area_id",
+            "dataType": "string",
+            "desc": "Identifier of the area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$state",
+            "dataType": "string",
+            "desc": "The functional state of the neighbor router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$ip_addr",
+            "dataType": "string",
+            "desc": "The IP address of the neighbor interface which is directly connected to local.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$intf_addr",
+            "dataType": "string",
+            "desc": "The IP address of the interface to which this neighbor is directly connected.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$intf_addr",
+            "intfKey": false,
+            "name": "$intf_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$dr_addr",
+            "dataType": "string",
+            "desc": "Designated Router (ID).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$dr_addr",
+            "intfKey": false,
+            "name": "$dr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$bdr_addr",
+            "dataType": "string",
+            "desc": "Backup Designated router (ID).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$bdr_addr",
+            "intfKey": false,
+            "name": "$bdr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$error_count",
+            "dataType": "int",
+            "desc": "The error count of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$error_count",
+            "intfKey": false,
+            "name": "$error_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$mtu_error",
+            "dataType": "int",
+            "desc": "MTU error count of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$mtu_error",
+            "intfKey": false,
+            "name": "$mtu_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$ase_error",
+            "dataType": "int",
+            "desc": "Autonomous system external error in stub area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$ase_error",
+            "intfKey": false,
+            "name": "$ase_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$type7_non_nssa",
+            "dataType": "int",
+            "desc": "The number of Type 7 LSA in none NSSA area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$type7_non_nssa",
+            "intfKey": false,
+            "name": "$type7_non_nssa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$master_seq_error",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$master_seq_error",
+            "intfKey": false,
+            "name": "$master_seq_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$slave_seq_error",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$slave_seq_error",
+            "intfKey": false,
+            "name": "$slave_seq_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$next_seq",
+            "dataType": "string",
+            "desc": "The next sequence number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$next_seq",
+            "intfKey": false,
+            "name": "$next_seq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$last_seq",
+            "dataType": "string",
+            "desc": "The last sequence number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$last_seq",
+            "intfKey": false,
+            "name": "$last_seq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$last_option",
+            "dataType": "string",
+            "desc": "The last option.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$last_option",
+            "intfKey": false,
+            "name": "$last_option",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$imms",
+            "dataType": "string",
+            "desc": "IMMS value.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$imms",
+            "intfKey": false,
+            "name": "$imms",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$last_imms",
+            "dataType": "string",
+            "desc": "Last IMMS value.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$last_imms",
+            "intfKey": false,
+            "name": "$last_imms",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$link_state_req",
+            "dataType": "string",
+            "desc": "The number of link state request.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$link_state_req",
+            "intfKey": false,
+            "name": "$link_state_req",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$req_out",
+            "dataType": "string",
+            "desc": "The number of link state request outstanding.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$req_out",
+            "intfKey": false,
+            "name": "$req_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$retrans_list",
+            "dataType": "string",
+            "desc": "The LSA retransmissions list.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$retrans_list",
+            "intfKey": false,
+            "name": "$retrans_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$db_summary",
+            "dataType": "string",
+            "desc": "Database summary LSA List.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$db_summary",
+            "intfKey": false,
+            "name": "$db_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$request_list",
+            "dataType": "string",
+            "desc": "The link state request list.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$request_list",
+            "intfKey": false,
+            "name": "$request_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$cryptoseq",
+            "dataType": "string",
+            "desc": "Crypto sequence value.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$cryptoseq",
+            "intfKey": false,
+            "name": "$cryptoseq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$next_dd",
+            "dataType": "string",
+            "desc": "Next DD timers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$next_dd",
+            "intfKey": false,
+            "name": "$next_dd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$next_lsr",
+            "dataType": "string",
+            "desc": "Next LSR timers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$next_lsr",
+            "intfKey": false,
+            "name": "$next_lsr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$next_lsu",
+            "dataType": "string",
+            "desc": "Next LSU timers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$next_lsu",
+            "intfKey": false,
+            "name": "$next_lsu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$dead_timer",
+            "dataType": "int",
+            "desc": "Router dead timers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$dead_timer",
+            "intfKey": false,
+            "name": "$dead_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$full_state_timer",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$full_state_timer",
+            "intfKey": false,
+            "name": "$full_state_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$full_lost_counter",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$full_lost_counter",
+            "intfKey": false,
+            "name": "$full_lost_counter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$option",
+            "dataType": "string",
+            "desc": "Option sequence value.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$option",
+            "intfKey": false,
+            "name": "$option",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Neighbors.$priority",
+            "dataType": "int",
+            "desc": "The priority of the neighbor router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Neighbors.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

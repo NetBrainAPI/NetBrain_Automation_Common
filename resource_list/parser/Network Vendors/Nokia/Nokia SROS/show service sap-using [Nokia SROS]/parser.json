@@ -1,0 +1,279 @@
+{
+    "_id": "8510f333-ce3b-483d-c075-828fe3fa4f94",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show service sap-using",
+    "createTime": {
+        "$date": 1587667893271
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "ALU-01#show service sap-using\n\n===============================================================================\nService Access Points \n===============================================================================\nPortId                          SvcId      Ing.  Ing.    Egr.  Egr.   Adm  Opr\n                                           QoS   Fltr    QoS   Fltr        \n-------------------------------------------------------------------------------\n1/1/2:4001                      104001     1     none    1     none   Up   Up\n1/1/3:4001                      104001     1     none    1     none   Up   Down\n1/1/4:4001                      104001     1     none    1     none   Up   Down\n1/1/5:4001                      104001     1     none    1     none   Up   Down\n1/1/6:4001                      104001     1     none    1     none   Up   Down\n1/1/7:4001                      104001     1     none    1     none   Up   Down\n1/1/8:4001                      104001     1     none    1     none   Up   Down\n1/1/9:4001                      104001     1     none    1     none   Up   Down\n1/1/10:4001                     104001     1     none    1     none   Up   Down\n1/1/12                          104001     1     none    1     none   Up   Up\n1/1/25:3027                     503027     10    none    1     none   Up   Down\n1/1/2:3027                      603027     10    none    10    none   Up   Up\n1/1/7:3027                      603027     10    none    10    none   Up   Down\n1/1/8:3027                      603027     10    none    10    none   Up   Down\n1/1/9:3027                      603027     10    none    10    none   Up   Down\n1/1/10:3027                     603027     10    none    10    none   Up   Down\n1/1/3:3027                      903027     10    none    10    none   Up   Down\n1/1/4:3027                      903027     10    none    10    none   Up   Down\n1/1/5:3027                      903027     10    none    10    none   Up   Down\n1/1/6:3027                      903027     10    none    10    none   Up   Down\n-------------------------------------------------------------------------------\nNumber of SAPs : 20\n-------------------------------------------------------------------------------\n===============================================================================\n\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Number of SAPs : $int:number_of_saps$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$number_of_saps:int\"]},\"xxid\":\"08572bf7-9949-f190-c58b-d9ac92df4b66\"},{\"type\":\"4\",\"name\":\"sap_services\",\"keyVariables\":\"\",\"startLine\":\"regex[$port_id,$int:svc_id,$ingress_qos,$ingress_filter,$egress_qos,$egress_filter,$admin_status,$opr_status]:(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$port_id:string\",\"$svc_id:int\",\"$ingress_qos:string\",\"$ingress_filter:string\",\"$egress_qos:string\",\"$egress_filter:string\",\"$admin_status:string\",\"$opr_status:string\"]},\"xxid\":\"1cbc2c06-68c0-53cd-422d-645bf98ef641\"}]},\"xxid\":\"0a9df4ba-0158-12e0-2eb1-0c8b0ec2dbb3\",\"hashColumns\":[\"$port_id\",\"$svc_id\",\"$ingress_qos\",\"$ingress_filter\",\"$egress_qos\",\"$egress_filter\",\"$admin_status\",\"$opr_status\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.sap_services.$port_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "number_of_saps",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "svc_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "ingress_qos",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ingress_filter",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "egress_qos",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "egress_filter",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "admin_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "opr_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_status",
+                    "$egress_filter",
+                    "$egress_qos",
+                    "$ingress_filter",
+                    "$ingress_qos",
+                    "$opr_status",
+                    "$port_id",
+                    "$svc_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "sap_services",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7a4e1d1a7da0249952011fac68211e9e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$number_of_saps",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$number_of_saps",
+            "intfKey": false,
+            "name": "$number_of_saps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port_id",
+                    "$svc_id",
+                    "$ingress_qos",
+                    "$ingress_filter",
+                    "$egress_qos",
+                    "$egress_filter",
+                    "$admin_status",
+                    "$opr_status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sap_services",
+            "intfKey": false,
+            "name": "sap_services",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sap_services.$port_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$port_id",
+            "intfKey": false,
+            "name": "$port_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services.$svc_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$svc_id",
+            "intfKey": false,
+            "name": "$svc_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services.$ingress_qos",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$ingress_qos",
+            "intfKey": false,
+            "name": "$ingress_qos",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services.$ingress_filter",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$ingress_filter",
+            "intfKey": false,
+            "name": "$ingress_filter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services.$egress_qos",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$egress_qos",
+            "intfKey": false,
+            "name": "$egress_qos",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services.$egress_filter",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$egress_filter",
+            "intfKey": false,
+            "name": "$egress_filter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services.$admin_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$admin_status",
+            "intfKey": false,
+            "name": "$admin_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_services.$opr_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_services.$opr_status",
+            "intfKey": false,
+            "name": "$opr_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

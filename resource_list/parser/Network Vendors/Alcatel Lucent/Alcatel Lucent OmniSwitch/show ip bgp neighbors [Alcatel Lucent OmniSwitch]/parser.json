@@ -1,0 +1,216 @@
+{
+    "_id": "7c4f4280-f0ab-28b5-9680-ab26595b7fa0",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip bgp neighbors",
+    "createTime": {
+        "$date": 1590606092830
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip bgp neighbors",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip bgp neighbors\r\nLegends:Nbr = Neighbor\r\n   As = Autonomous System\r\nNbr address       As    Admin state Oper state   BgpId           Up/Down\r\n---------------+-----+-----------+------------+---------------+-----------\r\n192.40.4.29     3     enabled     estab        192.40.4.29     00h:14m:48s\r\n192.40.4.121    5     disabled    idle         0.0.0.0         00h:00m:00s",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"bgp_neighbor_table\",\"headers\":\"Nbr address;As;Admin state;Oper state;BgpId;Up/Down\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Nbr address:$string:nbr_addr;As:$int:as;Admin state:$string:admin_state;Oper state:$string:oper_state;BgpId:$string:bgpid;Up/Down:$string:up_down\",\"leftAlign\":\"1\",\"alignType\":\"3\",\"alignRange\":\"1;1;1;1;1;1\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$nbr_addr:string\",\"$as:int\",\"$admin_state:string\",\"$oper_state:string\",\"$bgpid:string\",\"$up_down:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"26f1a94c-7f9f-4e96-fece-be863c37470e\",\"hashColumns\":[\"$nbr_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.bgp_neighbor_table.$nbr_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "as",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "bgpid",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "up_down",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nbr_addr"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "bgp_neighbor_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ea5520a83fdaf28a1f371970f680a996",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "bgp_neighbor_table",
+            "dataType": "table",
+            "desc": "BGP neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbor_table",
+            "intfKey": false,
+            "name": "bgp_neighbor_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_neighbor_table.$nbr_addr",
+            "dataType": "string",
+            "desc": "The IP address for this BGP peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbor_table.$nbr_addr",
+            "intfKey": false,
+            "name": "$nbr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbor_table.$as",
+            "dataType": "int",
+            "desc": "The autonomous system to which this peer belongs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbor_table.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbor_table.$admin_state",
+            "dataType": "string",
+            "desc": "Indicates whether this peer has been enabled or disabled through the??ip bgp neighbor admin-state??command.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbor_table.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbor_table.$oper_state",
+            "dataType": "string",
+            "desc": "The current BGP state for this peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbor_table.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbor_table.$bgpid",
+            "dataType": "string",
+            "desc": "The unique BGP identifier of the peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbor_table.$bgpid",
+            "intfKey": false,
+            "name": "$bgpid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbor_table.$up_down",
+            "dataType": "string",
+            "desc": "The time since this peer has transitioned to its current UP or DOWN state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_neighbor_table.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

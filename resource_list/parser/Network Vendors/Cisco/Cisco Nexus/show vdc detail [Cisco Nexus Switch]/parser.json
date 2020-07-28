@@ -1,0 +1,294 @@
+{
+    "_id": "3b259fdd-362d-524b-fe4c-4ed612dff117",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vdc detail",
+    "createTime": {
+        "$date": 1579646488680
+    },
+    "description": "",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "switch# show vdc detail\r\nvdc id: 1\r\nvdc name: switch\r\nvdc state: active\r\nvdc mac address: 00:22:55:79:a4:c1\r\nvdc ha policy: RELOAD\r\nvdc dual-sup ha policy: SWITCHOVER\r\nvdc boot Order: 1\r\nvdc create time: Thu May 14 08:14:39 2009\r\nvdc restart count: 0\r\n\r\nvdc id: 2\r\nvdc name: payroll\r\nvdc state: active\r\nvdc mac address: 00:22:55:79:a4:c2\r\nvdc ha policy: RESTART\r\nvdc dual-sup ha policy: SWITCHOVER\r\nvdc boot Order: 1\r\nvdc create time: Thu May 14 08:15:22 2009\r\nvdc restart count: 0\r\n\r\nvdc id: 3\r\nvdc name: test\r\nvdc state: active\r\nvdc mac address: 00:22:55:79:a4:c3\r\nvdc ha policy: RESTART\r\nvdc dual-sup ha policy: SWITCHOVER\r\nvdc boot Order: 1\r\nvdc create time: Thu May 14 08:15:29 2009\r\nvdc restart count: 0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"2ac42402-16d4-b815-a508-d995d8c8ab54\"},{\"type\":\"4\",\"name\":\"vdc_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:vdc_id]:vdc id:\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"vdc name: $vdc_name\",\"vdc state: $vdc_state\",\"vdc mac address: $vdc_mac_addr\",\"vdc ha policy: $vdc_ha_policy\",\"vdc dual-sup ha policy: $vdc_dual_sup_ha_policy\",\"vdc boot Order: $int:vdc_boot_order\",\"regex[$vdc_create_time]:^vdc create time\\\\: (.*)\",\"vdc restart count: $int:vdc_restart_count\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vdc_id:int\",\"$vdc_name:string\",\"$vdc_state:string\",\"$vdc_mac_addr:string\",\"$vdc_ha_policy:string\",\"$vdc_dual_sup_ha_policy:string\",\"$vdc_boot_order:int\",\"$vdc_create_time:string\",\"$vdc_restart_count:int\"]},\"xxid\":\"ad713083-b529-a38a-ca05-5eeb60cbab41\"}]},\"xxid\":\"9522b16c-6722-a3ee-a050-d453981a2361\",\"hashColumns\":[\"$vdc_id\",\"$vdc_name\",\"$vdc_state\",\"$vdc_mac_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.vdc_detail.$vdc_id",
+                "_original_result.vdc_detail.$vdc_name",
+                "_original_result.vdc_detail.$vdc_state",
+                "_original_result.vdc_detail.$vdc_mac_addr"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vdc_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "vdc_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vdc_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vdc_mac_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "vdc_ha_policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "vdc_dual_sup_ha_policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "vdc_boot_order",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "vdc_create_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "vdc_restart_count",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$vdc_id",
+                    "$vdc_mac_addr",
+                    "$vdc_name",
+                    "$vdc_state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "vdc_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "33cd0c911d7de13fcb67120f5eb5008a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vdc_id",
+                    "$vdc_name",
+                    "$vdc_state",
+                    "$vdc_mac_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail",
+            "intfKey": false,
+            "name": "vdc_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vdc_detail.$vdc_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_id",
+            "intfKey": false,
+            "name": "$vdc_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_name",
+            "intfKey": false,
+            "name": "$vdc_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_state",
+            "intfKey": false,
+            "name": "$vdc_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_mac_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_mac_addr",
+            "intfKey": false,
+            "name": "$vdc_mac_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_ha_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_ha_policy",
+            "intfKey": false,
+            "name": "$vdc_ha_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_dual_sup_ha_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_dual_sup_ha_policy",
+            "intfKey": false,
+            "name": "$vdc_dual_sup_ha_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_boot_order",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_boot_order",
+            "intfKey": false,
+            "name": "$vdc_boot_order",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_create_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_create_time",
+            "intfKey": false,
+            "name": "$vdc_create_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vdc_detail.$vdc_restart_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vdc_detail.$vdc_restart_count",
+            "intfKey": false,
+            "name": "$vdc_restart_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

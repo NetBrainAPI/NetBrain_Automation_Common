@@ -1,0 +1,189 @@
+{
+    "_id": "039bc4ad-3f57-2245-f01d-3a4e01658f50",
+    "author": "NetBrain",
+    "bizType": "d198c0de-1232-499e-8cc2-91f316cefbe3",
+    "command": "",
+    "createTime": {
+        "$date": 1560793434753
+    },
+    "description": "",
+    "devTypes": [
+        13002
+    ],
+    "params": [
+        {
+            "name": "$intf_name"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n    {\"name\": \"$intf_name\"}\r\n ]\r\n End Declare\r\n '''\r\nimport time\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    intf_name = params['intf_name']\r\n    node_dn = GetDeviceProperties(context, device_name, {'techName': 'ESXI', 'paramType': 'SDN', 'params':['moid', 'nbPathSchema']})\r\n    # intf_dn = GetInterfaceProperties(context, device_name, intf_name, {'techName': 'NSX', 'paramType': 'SDN', 'params' : ['label', 'index', 'nbPathSchema'] })\r\n    moid = node_dn['params'].get('moid')\r\n    vmi_type = node_dn['params'].get('nbPathSchema').split('.')[-1]\r\n    rtn_params = { 'name':device_name, 'moid' : moid, 'intf_name':intf_name, 'vmi_type': vmi_type}\r\n    return rtn_params\r\n\r\n\r\ndef RetrieveData(rtn_params):\r\n    property_paths = [\"config\", \"hardware\"]\r\n    rtn_params['property_paths'] = property_paths\r\n    resp = get_vmi_object_json_data(rtn_params)\r\n    intf_name = rtn_params['intf_name']\r\n    config_dict = json.loads(resp)\r\n    rtn = {'intf_name':intf_name}\r\n    for hardware_dev in config_dict.get('device', []):\r\n        if 'connectable' in hardware_dev and hardware_dev.get('deviceInfo',{}).get('label', '') == intf_name:\r\n            rtn['connected'] = hardware_dev['connectable'].get('connected')\r\n            rtn['startConnected'] = hardware_dev['connectable'].get('startConnected')\r\n            rtn['status'] = hardware_dev['connectable'].get('status')\r\n            rtn['intf_status'] = 'Up' if rtn['connected'] else 'Down'\r\n            \r\n    return json.dumps(rtn)\r\n",
+    "samples": [
+        {
+            "content": "{\n    \"intf_name\": \"Network adapter 1\",\n    \"connected\": true,\n    \"startConnected\": true,\n    \"status\": \"ok\",\n    \"intf_status\": \"Up\"\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_table.$intf_name"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"intf_table\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"intf_name\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"connected\\\", \\\"type\\\": \\\"bool\\\"},\\n        {\\\"name\\\": \\\"startConnected\\\", \\\"type\\\": \\\"bool\\\"},\\n        {\\\"name\\\": \\\"status\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"intf_status\\\", \\\"type\\\": \\\"string\\\"},\\n    ]}\\n]\\nEnd Declare\\n\\n'''\\nimport json\\ndef ParseText(_original_result):\\n    resp = json.loads(_original_result)\\n    intfs = {\\n        \\\"intf_name\\\": [],\\n        \\\"connected\\\": [],\\n        \\\"startConnected\\\": [],\\n        \\\"status\\\": [],\\n        \\\"intf_status\\\": []\\n        }\\n    for key, value in resp.items():\\n        if key == 'error log':\\n            continue\\n        for k, v in intfs.items():\\n            if k == key:\\n                intfs[k].append(value)\\n    rtn = {}\\n    rtn['intf_table']= intfs\\n    return rtn\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$intf_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$intf_name\",\"type\":\"string\"},{\"name\":\"$connected\",\"type\":\"bool\"},{\"name\":\"$startConnected\",\"type\":\"bool\"},{\"name\":\"$status\",\"type\":\"string\"},{\"name\":\"$intf_status\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"de38efb6-6fc9-e7e7-2f08-e898f73017f2\",\"interfaceKey\":{\"intf_table\":\"$intf_name\"},\"hashColumns\":{\"intf_table\":[\"$intf_name\"]}}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "connected",
+                        "type": 3
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "startConnected",
+                        "type": 3
+                    },
+                    {
+                        "index": 4,
+                        "name": "status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "intf_name"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "35e575672b53e60899557ff45b8f099b",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$intf_table.$connected",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$connected",
+            "intfKey": false,
+            "name": "$connected",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$intf_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf_name",
+            "intfKey": false,
+            "name": "$intf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$intf_table.$intf_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf_status",
+            "intfKey": false,
+            "name": "$intf_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$intf_table",
+            "intfKey": false,
+            "name": "$intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$intf_table.$startConnected",
+            "dataType": "bool",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$startConnected",
+            "intfKey": false,
+            "name": "$startConnected",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

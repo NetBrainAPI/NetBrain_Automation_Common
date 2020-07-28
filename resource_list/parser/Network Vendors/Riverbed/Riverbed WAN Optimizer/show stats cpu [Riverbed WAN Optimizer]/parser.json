@@ -1,0 +1,191 @@
+{
+    "_id": "71839a1a-91cd-a147-5308-c94f2365d495",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show stats cpu",
+    "createTime": {
+        "$date": 1585329208972
+    },
+    "description": "Device Type:\nRiverbed WAN Optimizer\nCommand:\nshow stats cpu",
+    "devTypes": [
+        10466
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "nbRiverbed > show stats cpu\n\n\nCPU 1 Utilization\n  Most recent average:      7% over 10 seconds \n  Average for last hour:    6%\n  Peak for last hour:       32% over 5 seconds \n  Peak Time:                2017/06/26 02:43:30\nCPU 2 Utilization\n  Most recent average:      8% over 10 seconds \n  Average for last hour:    6%\n  Peak for last hour:       55% over 5 seconds \n  Peak Time:                2017/06/26 02:43:30",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"cpu_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$cpu_num]:CPU (\\\\d+) Utilization\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$most_recent_ave]:Most recent average:\\\\s+(.+)\",\"regex[$double:ave_last_hour]:Average for last hour:\\\\s+[\\\\W]*([\\\\d\\\\.]+)%\",\"regex[$peak_last_hour]:Peak for last hour:\\\\s+(.+)\",\"regex[$peak_time]:Peak Time:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cpu_num:string\",\"$most_recent_ave:string\",\"$ave_last_hour:double\",\"$peak_last_hour:string\",\"$peak_time:string\"]},\"xxid\":\"531b4e0f-4891-7c4a-37ba-ee761d78193a\"}]},\"xxid\":\"2f247c6f-f624-b349-c300-9a43485101d4\",\"hashColumns\":[\"$cpu_num\",\"$ave_last_hour\",\"$peak_last_hour\"]}]}",
+            "tableKeys": [
+                "_original_result.cpu_table.$cpu_num",
+                "_original_result.cpu_table.$ave_last_hour",
+                "_original_result.cpu_table.$peak_last_hour"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "cpu_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "most_recent_ave",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ave_last_hour",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "peak_last_hour",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "peak_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ave_last_hour",
+                    "$cpu_num",
+                    "$peak_last_hour"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "cpu_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "b079772616fccc137822ef657865d8e7",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "cpu_table",
+            "dataType": "paragraph",
+            "desc": "CPU table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$cpu_num",
+                    "$ave_last_hour",
+                    "$peak_last_hour"
+                ],
+                "hashSort": false
+            },
+            "fullName": "cpu_table",
+            "intfKey": false,
+            "name": "cpu_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "cpu_table.$cpu_num",
+            "dataType": "string",
+            "desc": "The number of CPU.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_table.$cpu_num",
+            "intfKey": false,
+            "name": "$cpu_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_table.$most_recent_ave",
+            "dataType": "string",
+            "desc": "The most recent average.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_table.$most_recent_ave",
+            "intfKey": false,
+            "name": "$most_recent_ave",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_table.$ave_last_hour",
+            "dataType": "double",
+            "desc": "The average for last hour.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_table.$ave_last_hour",
+            "intfKey": false,
+            "name": "$ave_last_hour",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_table.$peak_last_hour",
+            "dataType": "string",
+            "desc": "The peak for last hour.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_table.$peak_last_hour",
+            "intfKey": false,
+            "name": "$peak_last_hour",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_table.$peak_time",
+            "dataType": "string",
+            "desc": "The peak time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cpu_table.$peak_time",
+            "intfKey": false,
+            "name": "$peak_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

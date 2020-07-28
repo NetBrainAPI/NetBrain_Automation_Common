@@ -1,0 +1,952 @@
+{
+    "_id": "362fbd25-83e8-395e-0410-30f1c511c032",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show high-availability state",
+    "createTime": {
+        "$date": 1579626698565
+    },
+    "description": "",
+    "devTypes": [
+        2130
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "admin@PA-VM(active)> show high-availability state\r\n\r\nGroup 33:\r\n  Mode: Active-Passive\r\n  Local Information:\r\n    Version: 1\r\n    Mode: Active-Passive\r\n    State: active (last 13 minutes)\r\n    Device Information:\r\n      Management IPv4 Address: 65.65.65.54/30\r\n      Management IPv6 Address:\r\n      Jumbo-Frames disabled; MTU 1500\r\n    HA1 Control Links Joint Configuration:\r\n      Encryption Enabled: no\r\n    Election Option Information:\r\n      Priority: 77\r\n      Preemptive: no\r\n    Version Compatibility:\r\n      Software Version: Match\r\n      Application Content Compatibility: Match\r\n      Anti-Virus Compatibility: Match\r\n      Threat Content Compatibility: Match\r\n      VPN Client Software Compatibility: Match\r\n      Global Protect Client Software Compatibility: Match\r\n    State Synchronization: Complete; type: ethernet\r\n  Peer Information:\r\n    Connection status: up\r\n    Version: 1\r\n    Mode: Active-Passive\r\n    State: passive (last 11 minutes)\r\n    Device Information:\r\n      Management IPv4 Address: 65.65.65.62/30\r\n      Management IPv6 Address:\r\n      Jumbo-Frames disabled; MTU 1500\r\n      Connection up; Primary HA1 link\r\n      Connection up\r\n    Election Option Information:\r\n      Priority: 77\r\n      Preemptive: no\r\n  Configuration Synchronization:\r\n    Enabled: yes\r\n    Running Configuration: not synchronized\r\n      Out-of-sync Reason: Started with config out-of-sync",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ha_group\",\"keyVariables\":\"\",\"startLine\":\"Group $int:group\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$configuration_sync_enabled,$running_configuration,$out_of_sync_reason]:Configuration Synchronization:\\\\n\\\\s+Enabled: (\\\\w+)\\\\n\\\\s+Running Configuration: (.+)\\\\n\\\\s+Out-of-sync Reason: (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$group:int\",\"$configuration_sync_enabled:string\",\"$running_configuration:string\",\"$out_of_sync_reason:string\"]},\"xxid\":\"0e408d56-31ef-009c-11bd-b0c3d3eb965a\"},{\"type\":\"4\",\"name\":\"local_information\",\"keyVariables\":\"\",\"startLine\":\"Local Information:\",\"endLine\":\"Peer Information:\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Version: $int:local_version\",\"Mode: $local_mode\",\"State: $local_state\",\"Management IPv4 Address: $local_management_ipv4_address\",\"Management IPv6 Address: $local_management_ipv6_address\",\"Encryption Enabled: $ha1_control_link_encryption\",\"Priority: $int:local_priority\",\"Preemptive: $local_preemptive\",\"Software Version: $software_version\",\"Application Content Compatibility: $application_content_compatibility\",\"Anti-Virus Compatibility: $antivirus_compatibility\",\"Threat Content Compatibility: $threat_content_compatibility\",\"VPN Client Software Compatibility: $vpn_client_software_compatibility\",\"Global Protect Client Software Compatibility: $global_protect_client_software_compatibility\",\"State Synchronization: $state_synchronization;\",\"; type: $state_synchronization_type\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$local_version:int\",\"$local_mode:string\",\"$local_state:string\",\"$local_management_ipv4_address:string\",\"$local_management_ipv6_address:string\",\"$ha1_control_link_encryption:string\",\"$local_priority:int\",\"$local_preemptive:string\",\"$software_version:string\",\"$application_content_compatibility:string\",\"$antivirus_compatibility:string\",\"$threat_content_compatibility:string\",\"$vpn_client_software_compatibility:string\",\"$global_protect_client_software_compatibility:string\",\"$state_synchronization:string\",\"$state_synchronization_type:string\"]},\"xxid\":\"99debb8c-49e4-abfe-afe3-7192deb506c8\"}]},\"xxid\":\"ebecf50e-27ac-16f1-4dc8-f9d43cce28d3\",\"hashColumns\":[\"$local_version\",\"$local_mode\",\"$local_state\",\"$local_management_ipv4_address\",\"$local_management_ipv6_address\",\"$ha1_control_link_encryption\",\"$local_priority\",\"$local_preemptive\",\"$software_version\",\"$application_content_compatibility\",\"$antivirus_compatibility\",\"$threat_content_compatibility\",\"$vpn_client_software_compatibility\",\"$global_protect_client_software_compatibility\",\"$state_synchronization\",\"$state_synchronization_type\",\"$group\",\"$configuration_sync_enabled\",\"$running_configuration\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"peer_information\",\"keyVariables\":\"\",\"startLine\":\"Peer Information:\",\"endLine\":\"Configuration Synchronization:\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Connection status: $peer_connection_status\",\"Version: $int:peer_version\",\"Mode: $peer_mode\",\"State: $peer_state\",\"Management IPv4 Address: $peer_management_ipv4_address\",\"Management IPv6 Address: $peer_management_ipv6_address\",\"Priority: $int:peer_priority\",\"Preemptive: $peer_preemptive\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$peer_connection_status:string\",\"$peer_version:int\",\"$peer_mode:string\",\"$peer_state:string\",\"$peer_management_ipv4_address:string\",\"$peer_management_ipv6_address:string\",\"$peer_priority:int\",\"$peer_preemptive:string\"]},\"xxid\":\"5847bd82-ef68-5459-e3c3-5526151acc40\"}]},\"xxid\":\"95c8f154-f4a9-3a9e-691a-e340bc56c0ac\",\"hashColumns\":[\"$peer_connection_status\",\"$peer_version\",\"$peer_mode\",\"$peer_state\",\"$peer_management_ipv4_address\",\"$peer_management_ipv6_address\",\"$peer_priority\",\"$peer_preemptive\",\"$group\",\"$configuration_sync_enabled\",\"$running_configuration\"],\"hashSort\":false}]},\"xxid\":\"d4100e01-fa26-6e5a-e8a5-1e71540665de\",\"hashColumns\":[\"$group\",\"$configuration_sync_enabled\",\"$running_configuration\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.ha_group.$group",
+                "_original_result.ha_group.local_information.$local_state",
+                "_original_result.ha_group.peer_information.$peer_state",
+                "_original_result.ha_group.local_information.$local_priority",
+                "_original_result.ha_group.local_information.$local_preemptive",
+                "_original_result.ha_group.peer_information.$peer_connection_status",
+                "_original_result.ha_group.peer_information.$group",
+                "_original_result.ha_group.peer_information.$configuration_sync_enabled"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "configuration_sync_enabled",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "running_configuration",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "out_of_sync_reason",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$configuration_sync_enabled",
+                    "$group",
+                    "$running_configuration"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ha_group",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 20,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "local_version",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "local_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "local_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "local_management_ipv4_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "local_management_ipv6_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ha1_control_link_encryption",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "local_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "local_preemptive",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "software_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "application_content_compatibility",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "antivirus_compatibility",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "threat_content_compatibility",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "vpn_client_software_compatibility",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "global_protect_client_software_compatibility",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "state_synchronization",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "state_synchronization_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "group",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "configuration_sync_enabled",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "running_configuration",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "out_of_sync_reason",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$antivirus_compatibility",
+                    "$application_content_compatibility",
+                    "$configuration_sync_enabled",
+                    "$global_protect_client_software_compatibility",
+                    "$group",
+                    "$ha1_control_link_encryption",
+                    "$local_management_ipv4_address",
+                    "$local_management_ipv6_address",
+                    "$local_mode",
+                    "$local_preemptive",
+                    "$local_priority",
+                    "$local_state",
+                    "$local_version",
+                    "$running_configuration",
+                    "$software_version",
+                    "$state_synchronization",
+                    "$state_synchronization_type",
+                    "$threat_content_compatibility",
+                    "$vpn_client_software_compatibility"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "local_information",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "peer_connection_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "peer_version",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "peer_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "peer_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "peer_management_ipv4_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "peer_management_ipv6_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "peer_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "peer_preemptive",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "group",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "configuration_sync_enabled",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "running_configuration",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "out_of_sync_reason",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$configuration_sync_enabled",
+                    "$group",
+                    "$peer_connection_status",
+                    "$peer_management_ipv4_address",
+                    "$peer_management_ipv6_address",
+                    "$peer_mode",
+                    "$peer_preemptive",
+                    "$peer_priority",
+                    "$peer_state",
+                    "$peer_version",
+                    "$running_configuration"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "peer_information",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "db2e87c55dcf0484755ad1eaed28c47e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ha_group",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group",
+                    "$configuration_sync_enabled",
+                    "$running_configuration"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ha_group",
+            "intfKey": false,
+            "name": "ha_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ha_group.$group",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_group.$configuration_sync_enabled",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.$configuration_sync_enabled",
+            "intfKey": false,
+            "name": "$configuration_sync_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_group.$running_configuration",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.$running_configuration",
+            "intfKey": false,
+            "name": "$running_configuration",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_group.$out_of_sync_reason",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.$out_of_sync_reason",
+            "intfKey": false,
+            "name": "$out_of_sync_reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$local_version",
+                    "$local_mode",
+                    "$local_state",
+                    "$local_management_ipv4_address",
+                    "$local_management_ipv6_address",
+                    "$ha1_control_link_encryption",
+                    "$local_priority",
+                    "$local_preemptive",
+                    "$software_version",
+                    "$application_content_compatibility",
+                    "$antivirus_compatibility",
+                    "$threat_content_compatibility",
+                    "$vpn_client_software_compatibility",
+                    "$global_protect_client_software_compatibility",
+                    "$state_synchronization",
+                    "$state_synchronization_type",
+                    "$group",
+                    "$configuration_sync_enabled",
+                    "$running_configuration"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information",
+            "intfKey": false,
+            "name": "local_information",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "local_information.$local_version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$local_version",
+            "intfKey": false,
+            "name": "$local_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$local_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$local_mode",
+            "intfKey": false,
+            "name": "$local_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$local_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$local_state",
+            "intfKey": false,
+            "name": "$local_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$local_management_ipv4_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$local_management_ipv4_address",
+            "intfKey": false,
+            "name": "$local_management_ipv4_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$local_management_ipv6_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$local_management_ipv6_address",
+            "intfKey": false,
+            "name": "$local_management_ipv6_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$ha1_control_link_encryption",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$ha1_control_link_encryption",
+            "intfKey": false,
+            "name": "$ha1_control_link_encryption",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$local_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$local_priority",
+            "intfKey": false,
+            "name": "$local_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$local_preemptive",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$local_preemptive",
+            "intfKey": false,
+            "name": "$local_preemptive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$software_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$software_version",
+            "intfKey": false,
+            "name": "$software_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$application_content_compatibility",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$application_content_compatibility",
+            "intfKey": false,
+            "name": "$application_content_compatibility",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$antivirus_compatibility",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$antivirus_compatibility",
+            "intfKey": false,
+            "name": "$antivirus_compatibility",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$threat_content_compatibility",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$threat_content_compatibility",
+            "intfKey": false,
+            "name": "$threat_content_compatibility",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$vpn_client_software_compatibility",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$vpn_client_software_compatibility",
+            "intfKey": false,
+            "name": "$vpn_client_software_compatibility",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$global_protect_client_software_compatibility",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$global_protect_client_software_compatibility",
+            "intfKey": false,
+            "name": "$global_protect_client_software_compatibility",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$state_synchronization",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$state_synchronization",
+            "intfKey": false,
+            "name": "$state_synchronization",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$state_synchronization_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$state_synchronization_type",
+            "intfKey": false,
+            "name": "$state_synchronization_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$group",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$configuration_sync_enabled",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$configuration_sync_enabled",
+            "intfKey": false,
+            "name": "$configuration_sync_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$running_configuration",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$running_configuration",
+            "intfKey": false,
+            "name": "$running_configuration",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "local_information.$out_of_sync_reason",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.local_information.$out_of_sync_reason",
+            "intfKey": false,
+            "name": "$out_of_sync_reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$peer_connection_status",
+                    "$peer_version",
+                    "$peer_mode",
+                    "$peer_state",
+                    "$peer_management_ipv4_address",
+                    "$peer_management_ipv6_address",
+                    "$peer_priority",
+                    "$peer_preemptive",
+                    "$group",
+                    "$configuration_sync_enabled",
+                    "$running_configuration"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information",
+            "intfKey": false,
+            "name": "peer_information",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "peer_information.$peer_connection_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_connection_status",
+            "intfKey": false,
+            "name": "$peer_connection_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$peer_version",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_version",
+            "intfKey": false,
+            "name": "$peer_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$peer_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_mode",
+            "intfKey": false,
+            "name": "$peer_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$peer_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_state",
+            "intfKey": false,
+            "name": "$peer_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$peer_management_ipv4_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_management_ipv4_address",
+            "intfKey": false,
+            "name": "$peer_management_ipv4_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$peer_management_ipv6_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_management_ipv6_address",
+            "intfKey": false,
+            "name": "$peer_management_ipv6_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$peer_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_priority",
+            "intfKey": false,
+            "name": "$peer_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$peer_preemptive",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$peer_preemptive",
+            "intfKey": false,
+            "name": "$peer_preemptive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$group",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$configuration_sync_enabled",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$configuration_sync_enabled",
+            "intfKey": false,
+            "name": "$configuration_sync_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$running_configuration",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$running_configuration",
+            "intfKey": false,
+            "name": "$running_configuration",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "peer_information.$out_of_sync_reason",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_group.peer_information.$out_of_sync_reason",
+            "intfKey": false,
+            "name": "$out_of_sync_reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

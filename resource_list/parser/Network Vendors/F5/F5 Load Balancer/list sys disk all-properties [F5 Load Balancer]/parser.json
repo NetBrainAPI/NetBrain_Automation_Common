@@ -1,0 +1,165 @@
+{
+    "_id": "4252a2ba-3fff-576d-a41b-ae6057cb0a4b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "list sys disk all-properties",
+    "createTime": {
+        "$date": 1583183138427
+    },
+    "description": "",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "root@(BIG-IP_VE1)(cfg-sync In Sync)(Standby)(/)(tmos)#list sys disk all-properties\r\nsys disk logical-disk HD1 {\r\n    mode mixed\r\n    size 83968\r\n    vg-free 22584\r\n    vg-in-use 61156\r\n    vg-reserved 0\r\n}\r\nsys disk logical-disk HD2 {\r\n    mode none\r\n    size 20480\r\n    vg-free 0\r\n    vg-in-use 0\r\n    vg-reserved 4096\r\n}\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"ad78189c-ec03-d018-5937-a9fc0dbee3fd\"}]},\"xxid\":\"25efd753-eb63-f638-7ddd-e0028eafb597\"},{\"type\":\"4\",\"name\":\"logical_disk\",\"keyVariables\":\"\",\"startLine\":\"sys disk logical-disk $logical_disk\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"size $double:disk_size\",\"vg-in-use $double:disk_in_use\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$logical_disk:string\",\"$disk_size:double\",\"$disk_in_use:double\"]},\"xxid\":\"0092f400-d687-3d21-e3a9-024c506ad00d\"}]},\"xxid\":\"91516c74-c580-1b59-a80e-1888b8dc5a8e\",\"hashColumns\":[\"$logical_disk\"]}]}",
+            "tableKeys": [
+                "_original_result.logical_disk.$logical_disk"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "logical_disk",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "disk_size",
+                        "type": 2
+                    },
+                    {
+                        "index": 2,
+                        "name": "disk_in_use",
+                        "type": 2
+                    }
+                ],
+                "hashColumns": [
+                    "$logical_disk"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "logical_disk",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d6ae6eff3abc5ec881f67a973b7aa9ba",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logical_disk",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$logical_disk"
+                ],
+                "hashSort": false
+            },
+            "fullName": "logical_disk",
+            "intfKey": false,
+            "name": "logical_disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "logical_disk.$logical_disk",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "logical_disk.$logical_disk",
+            "intfKey": false,
+            "name": "$logical_disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logical_disk.$disk_size",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "logical_disk.$disk_size",
+            "intfKey": false,
+            "name": "$disk_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "logical_disk.$disk_in_use",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "logical_disk.$disk_in_use",
+            "intfKey": false,
+            "name": "$disk_in_use",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

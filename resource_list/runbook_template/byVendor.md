@@ -3,442 +3,442 @@
 
 ## [(Alcatel OmniSwitch)(Alcatel OmniStack)]
 
-#### aaa 
+* aaa 
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### interface 
+* interface 
 
-#### inventory 
+* inventory 
 
-#### ipsec-vpn 
+* ipsec-vpn 
 
-#### isis 
+* isis 
 
-#### multicast 
+* multicast 
 
-#### ntp 
+* ntp 
 
-#### ospf 
+* ospf 
 
-#### routing-general 
+* routing-general 
 
-#### sflow 
+* sflow 
 
-#### spanning-tree 
+* spanning-tree 
 
-#### vlan 
+* vlan 
 
-#### vrf 
+* vrf 
 
 
 ## [Arista Switch]
 
-#### aaa 
+* aaa 
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### igmp 
+* igmp 
 
-#### interfaces 
+* interfaces 
 
-#### inventory 
+* inventory 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### spanning-tree 
+* spanning-tree 
 
-#### vlan 
+* vlan 
 
 
 ## [(Cisco IOS Switch)(Cisco Router)]
 
-#### acl 
+* acl 
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### hsrp 
+* hsrp 
 
-#### interfaces 
+* interfaces 
 
-#### inventory 
+* inventory 
 
-#### isis 
+* isis 
 
-#### mpls 
+* mpls 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### spanning-tree 
+* spanning-tree 
 
-#### vlan 
+* vlan 
 
-#### vrf 
+* vrf 
 
-#### vrrp 
+* vrrp 
 
-#### vtp 
+* vtp 
 
 
 ## [Cisco ASA Firewall]
 
-#### anyconnect 
+* anyconnect 
 
-#### bgp 
+* bgp 
 
-#### eigrp 
+* eigrp 
 
-#### general 
+* general 
 
-#### ha 
+* ha 
 
-#### interfaces 
+* interfaces 
 
-#### inventory 
+* inventory 
 
-#### ipsec-vpn 
+* ipsec-vpn 
 
-#### isis 
+* isis 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
 
 ## [F5 Load Balancer]
 
-#### apm 
+* apm 
 
-#### general 
+* general 
 
-#### ha 
+* ha 
 
-#### inventory 
+* inventory 
 
-#### ltm 
+* ltm 
 
 
 ## [Alcatel Lucent Service Router]
 
-#### bfd 
+* bfd 
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### interface 
+* interface 
 
-#### isis 
+* isis 
 
-#### ldp 
+* ldp 
 
-#### mpls 
+* mpls 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### qos 
+* qos 
 
-#### routing-general 
+* routing-general 
 
-#### rsvp 
+* rsvp 
 
-#### services 
+* services 
 
-#### vpls 
+* vpls 
 
-#### vrrp 
+* vrrp 
 
 
 ## [(Checkpoint Gaia)(Checkpoint Gaia R80)]
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### ha 
+* ha 
 
-#### igmp 
+* igmp 
 
-#### interfaces 
+* interfaces 
 
-#### inventory 
+* inventory 
 
-#### netflow 
+* netflow 
 
-#### ospf 
+* ospf 
 
-#### pim 
+* pim 
 
-#### virtual-system 
+* virtual-system 
 
 
 ## [(Dell Networking Switch)(Dell Force10 Switch)]
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### interface 
+* interface 
 
-#### inventory 
+* inventory 
 
-#### isis 
+* isis 
 
-#### multicast 
+* multicast 
 
-#### ntp 
+* ntp 
 
-#### ospfv2 
+* ospfv2 
 
-#### overall-health 
+* overall-health 
 
-#### routing-general 
+* routing-general 
 
-#### sflow 
+* sflow 
 
-#### spanning-tree 
+* spanning-tree 
 
-#### vrf 
+* vrf 
 
 
 ## [(Juniper Router)(Juniper EX Switch)(Juniper SRX Firewall)]
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### ha 
+* ha 
 
-#### igmp 
+* igmp 
 
-#### interfaces 
+* interfaces 
 
-#### inventory 
+* inventory 
 
-#### isis 
+* isis 
 
-#### ldp 
+* ldp 
 
-#### mpls 
+* mpls 
 
-#### ospf 
+* ospf 
 
-#### pim 
+* pim 
 
 
 ## [3Com Switch]
 
-#### bgp 
+* bgp 
 
-#### interface 
+* interface 
 
-#### isis 
+* isis 
 
-#### mpls 
+* mpls 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### process 
+* process 
 
-#### sflow 
+* sflow 
 
-#### tacacs 
+* tacacs 
 
-#### vlan 
+* vlan 
 
 
 ## [Cisco IOS XR]
 
-#### bgp 
+* bgp 
 
-#### eigrp 
+* eigrp 
 
-#### general 
+* general 
 
-#### glbp 
+* glbp 
 
-#### hsrp 
+* hsrp 
 
-#### igmp 
+* igmp 
 
-#### interface 
+* interface 
 
-#### isis 
+* isis 
 
-#### mpls-ldp 
+* mpls-ldp 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### pim 
+* pim 
 
-#### vrf 
+* vrf 
 
-#### vrrp 
+* vrrp 
 
 
 ## [Cisco Nexus Switch]
 
-#### bgp 
+* bgp 
 
-#### eigrp 
+* eigrp 
 
-#### generic 
+* generic 
 
-#### glbp 
+* glbp 
 
-#### hsrp 
+* hsrp 
 
-#### igmp 
+* igmp 
 
-#### interfaces 
+* interfaces 
 
-#### ospf 
+* ospf 
 
-#### pim 
+* pim 
 
-#### vlan 
+* vlan 
 
 
 ## [Extreme Switch]
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### interface 
+* interface 
 
-#### isis 
+* isis 
 
-#### multicast 
+* multicast 
 
-#### ospfv2 
+* ospfv2 
 
 
 ## [Fortinet Fortigate Firewall]
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### ha 
+* ha 
 
-#### interfaces 
+* interfaces 
 
-#### isis 
+* isis 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### vrrp 
+* vrrp 
 
 
 ## [Palo Alto Firewall]
 
-#### bgp 
+* bgp 
 
-#### general 
+* general 
 
-#### ha 
+* ha 
 
-#### interfaces 
+* interfaces 
 
-#### inventory 
+* inventory 
 
-#### ipsec-vpn 
+* ipsec-vpn 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### vlan 
+* vlan 
 
 
 ## [Cisco WLC]
 
-#### cdp 
+* cdp 
 
-#### general 
+* general 
 
 
 ## [Riverbed WAN Optimizer]
 
-#### failover 
+* failover 
 
-#### general 
+* general 
 
-#### inventory 
+* inventory 
 
-#### ntp 
+* ntp 
 
-#### sessions 
+* sessions 
 
 
 ## [Aruba WLC]
 
-#### general 
+* general 
 
-#### interface 
+* interface 
 
-#### inventory 
+* inventory 
 
-#### multicast 
+* multicast 
 
-#### ospf 
+* ospf 
 
-#### trunk 
+* trunk 
 
 
 ## [Cisco PIX Firewall]
 
-#### general 
+* general 
 
-#### ha 
+* ha 
 
-#### interface 
+* interface 
 
-#### inventory 
+* inventory 
 
-#### ospf 
+* ospf 
 
 
 ## [Cisco WAAS]
 
-#### general 
+* general 
 
 
 ## [Cisco Catalyst Switch]
 
-#### igmp 
+* igmp 
 
-#### interface 
+* interface 
 
-#### spanning-tree 
+* spanning-tree 
 
 
 ## [HP ProCurve Switch]
 
-#### interface 
+* interface 
 
-#### inventory 
+* inventory 
 
-#### spanning-tree 
+* spanning-tree 
 
-#### vlan 
+* vlan 
 

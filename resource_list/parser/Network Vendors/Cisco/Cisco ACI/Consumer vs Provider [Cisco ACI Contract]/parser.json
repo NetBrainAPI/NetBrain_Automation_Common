@@ -1,0 +1,85 @@
+{
+    "_id": "a88fc189-a1a2-0a0e-d054-dd8748f82959",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560795134378
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n\n[\n]\n\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\nimport re\ndef BuildParameters(context, device_name, params):\n    res = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'Logical', 'params' : ['_id'] })\n    apiServerId = res['params']['_id']\n    rtn_params = {}\n    rtn_params['apiServerId'] = apiServerId\n    temp = device_name.split('/uni/')\n    temp1 ='/uni/'+temp[1]\n    rtn_params['dn'] = temp1\n    return rtn_params\n\n\t\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    data1= []\n    contract_name = dn.split('/')\n    contract_name = contract_name[3]\n    qry = \"rsp-subtree=full\"\n    url = '/api/node/class/fvCollectionCont.json?' + qry\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    data = json.loads(data)\n    for m in range(len(data)):\n        if contract_name in str(data[m]['fvCollectionCont']['attributes']['collectionDn']):\n            data1.append(data[m])\n         \n    return data1",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"fvCollectionCont\": {\n            \"attributes\": {\n                \"childAction\": \"\",\n                \"collectionDn\": \"uni/tn-NB.BOS/brc-APP-Contract\",\n                \"dn\": \"uni/tn-NB.BOS/ap-APP.DEV-AP/epg-WEB-EPG/rscons-APP-Contract/collectionDn-[uni/tn-NB.BOS/brc-APP-Contract]\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2018-11-16T09:35:18.992+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"\",\n                \"nameAlias\": \"\",\n                \"status\": \"\"\n            }\n        }\n    },\n    {\n        \"fvCollectionCont\": {\n            \"attributes\": {\n                \"childAction\": \"\",\n                \"collectionDn\": \"uni/tn-NB.BOS/brc-APP-Contract\",\n                \"dn\": \"uni/tn-NB.BOS/ap-APP.DEV-AP/epg-APP-EPG/rsprov-APP-Contract/collectionDn-[uni/tn-NB.BOS/brc-APP-Contract]\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2018-11-16T09:35:18.992+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"\",\n                \"nameAlias\": \"\",\n                \"status\": \"\"\n            }\n        }\n    },\n    {\n        \"fvCollectionCont\": {\n            \"attributes\": {\n                \"childAction\": \"\",\n                \"collectionDn\": \"uni/tn-NB.BOS/brc-APP-Contract\",\n                \"dn\": \"uni/tn-NB.BOS/l2out-APP-EPG-L2OUT-EBN/instP-APP-L2OUT-EPG/rscons-APP-Contract/collectionDn-[uni/tn-NB.BOS/brc-APP-Contract]\",\n                \"lcOwn\": \"local\",\n                \"modTs\": \"2019-04-03T13:44:55.959+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"name\": \"\",\n                \"nameAlias\": \"\",\n                \"status\": \"\"\n            }\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"consumer_epg\\\", \\\"type\\\": \\\"string\\\"},\\n    {\\\"name\\\": \\\"provider_epg\\\", \\\"type\\\": \\\"string\\\"},\\n    \\n]\\nEnd Declare\\n'''\\n\\nimport json \\nimport re\\n\\ndef ParseText(_original_result):\\n    result = json.loads(_original_result)\\n    value ={}\\n    \\n    consumer_epg =''\\n    provider_epg =''\\n    \\n    try:\\n        for m in range(len(result)):\\n            if 'rscons-' in result[m]['fvCollectionCont']['attributes']['dn']:\\n                temp = result[m]['fvCollectionCont']['attributes']['dn'].split('/')\\n                consumer_epg += temp[3] + ', '\\n            else:\\n                temp = result[m]['fvCollectionCont']['attributes']['dn'].split('/')\\n                provider_epg += temp[3] + ', '\\n                \\n    except Exception as ex:\\n        print(str(ex))\\n        \\n    value['consumer_epg']= consumer_epg\\n    value['provider_epg']= provider_epg\\n    return value\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$consumer_epg\",\"type\":\"string\"},{\"name\":\"$provider_epg\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"d2c6e724-cdd6-8e82-8be9-9b045dffafaf\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [
+        "ACI.topRoot.children.polUni.children.fvTenant.children.vzBrCP"
+    ],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "consumer_epg",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "provider_epg",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "7e4227906d6d13fca28a23cc9c0039cb",
+    "supportNodeType": 1,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$consumer_epg",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$consumer_epg",
+            "intfKey": false,
+            "name": "$consumer_epg",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$provider_epg",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$provider_epg",
+            "intfKey": false,
+            "name": "$provider_epg",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

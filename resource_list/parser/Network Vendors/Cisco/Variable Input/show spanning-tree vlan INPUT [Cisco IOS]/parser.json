@@ -1,0 +1,289 @@
+{
+    "_id": "a952f9f0-4af2-e1d1-dc47-8c929706a102",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree vlan $vlan_id",
+    "createTime": {
+        "$date": 1560808618557
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow spanning-tree vlan $InputVlanId.vlan_id detail",
+    "devTypes": [
+        2001
+    ],
+    "params": [
+        {
+            "name": "$vlan_id"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Scl-Dist-3750-01#show spanning-tree vlan 40\r\n\r\nVLAN0040\r\n  Spanning tree enabled protocol ieee\r\n  Root ID    Priority    24616\r\n             Address     001b.0c7c.1d80\r\n             This bridge is the root\r\n             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec\r\n\r\n  Bridge ID  Priority    24616  (priority 24576 sys-id-ext 40)\r\n             Address     001b.0c7c.1d80\r\n             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec\r\n             Aging Time  300 sec\r\n\r\nInterface           Role Sts Cost      Prio.Nbr Type\r\n------------------- ---- --- --------- -------- --------------------------------\r\nFa1/0/21            Desg FWD 19        128.23   P2p \r\nFa1/0/23            Desg FWD 19        128.25   P2p \r\nFa1/0/24            Desg FWD 19        128.26   P2p \r\n\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.stp_vlan.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$root_bridge]:(This bridge is the root)\",\"mregex[$bridge_priority, $bridge_address]:Bridge ID  Priority\\\\s+(\\\\d+).+?(\\\\S+\\\\.\\\\S+\\\\.\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$root_bridge:string\",\"$bridge_priority:string\",\"$bridge_address:string\"]},\"xxid\":\"3ec130fc-d775-3e66-ee80-d078e3fccfdb\"},{\"type\":\"3\",\"name\":\"stp_vlan\",\"headers\":\"Interface;Role;Sts;Cost;Prio.Nbr;Type\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"Interface:$string:interface;Role:$string:role;Sts:$string:state;Cost:$string:cost;Prio.Nbr:$string:prio_nbr;Type:$string:type\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$role:string\",\"$state:string\",\"$cost:string\",\"$prio_nbr:string\",\"$type:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"a2b33a55-84a8-2852-0586-10f049108662\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"1d677305-d0b4-3e05-2312-1ef797e1e2e7\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "root_bridge",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "bridge_priority",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "bridge_address",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "role",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "cost",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "prio_nbr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "stp_vlan",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "9fe0d353cfedfdfe4ab41b63f8bd829d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$bridge_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_address",
+            "intfKey": false,
+            "name": "$bridge_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bridge_priority",
+            "dataType": "string",
+            "desc": "Bridge priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bridge_priority",
+            "intfKey": false,
+            "name": "$bridge_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_vlan.$cost",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_vlan.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_vlan.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_vlan.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "stp_vlan.$prio_nbr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_vlan.$prio_nbr",
+            "intfKey": false,
+            "name": "$prio_nbr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_vlan.$role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_vlan.$role",
+            "intfKey": false,
+            "name": "$role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_bridge",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_bridge",
+            "intfKey": false,
+            "name": "$root_bridge",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_vlan.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_vlan.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_vlan.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "stp_vlan.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "stp_vlan",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "stp_vlan",
+            "intfKey": false,
+            "name": "stp_vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        }
+    ],
+    "version": "7.1"
+}

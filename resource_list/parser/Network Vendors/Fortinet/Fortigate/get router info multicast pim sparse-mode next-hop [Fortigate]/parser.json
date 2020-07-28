@@ -1,0 +1,301 @@
+{
+    "_id": "bf24595b-4518-e4ee-62e6-dac1f42d6f75",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "get router info multicast pim sparse-mode next-hop",
+    "createTime": {
+        "$date": 1584374373012
+    },
+    "description": "",
+    "devTypes": [
+        10380
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "(R3) # get router info multicast pim sparse-mode next-hop\r\nFlags: N = New, R = RP, S = Source, U = Unreachable\r\nDestination     Type  Nexthop   Nexthop         Nexthop  Nexthop Metric Pref  Refcnt\r\n                        Num     Addr            Ifindex  Name\r\n____________________________________________________________________________________\r\n2.2.2.2         .R..  1         10.2.3.2        24               200    110   4\r\n10.1.3.1        ..S.  1         0.0.0.0         22               0      0     2\r\n10.1.3.3        ..S.  1         0.0.0.0         22               0      0     2\r\n10.2.3.2        ..S.  1         0.0.0.0         24               0      0     2\r\n10.2.3.3        ..S.  1         0.0.0.0         24               0      0     2\r\n10.144.10.33    ..S.  1         0.0.0.0         3                0      0     2",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"pim_nexthop\",\"headers\":\"Destination;Type;Nexthop Num;Nexthop Addr;Nexthop Ifindex;Nexthop Name;Metric;Pref;Refcnt\",\"endLine\":\"^$\",\"isSkipLine\":\"1\",\"skipLine\":2,\"headerToVariables\":\"Destination:$string:destination;Type:$string:type;Nexthop Num:$int:nexthop_num;Nexthop Addr:$string:nexthop_addr;Nexthop Ifindex:$int:nexthop_ifindex;Nexthop Name:$string:nexthop_name;Metric:$int:metric;Pref:$int:pref;Refcnt:$int:refcnt\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$destination:string\",\"$type:string\",\"$nexthop_num:int\",\"$nexthop_addr:string\",\"$nexthop_ifindex:int\",\"$nexthop_name:string\",\"$metric:int\",\"$pref:int\",\"$refcnt:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"14fac3c3-ef02-156e-956b-0521c040dd1f\",\"hashColumns\":[\"$destination\",\"$type\",\"$nexthop_num\",\"$nexthop_addr\",\"$nexthop_ifindex\",\"$nexthop_name\",\"$metric\",\"$pref\",\"$refcnt\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"b7fd1d42-425f-7e89-054e-5677fdeb21a2\"}]}",
+            "tableKeys": [
+                "_original_result.pim_nexthop.$destination"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "destination",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "nexthop_num",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "nexthop_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "nexthop_ifindex",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "nexthop_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "pref",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "refcnt",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$destination",
+                    "$metric",
+                    "$nexthop_addr",
+                    "$nexthop_ifindex",
+                    "$nexthop_name",
+                    "$nexthop_num",
+                    "$pref",
+                    "$refcnt",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_nexthop",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1ed3b02079c389a12d04c16feb6a478b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_nexthop",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$destination",
+                    "$type",
+                    "$nexthop_num",
+                    "$nexthop_addr",
+                    "$nexthop_ifindex",
+                    "$nexthop_name",
+                    "$metric",
+                    "$pref",
+                    "$refcnt"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop",
+            "intfKey": false,
+            "name": "pim_nexthop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "pim_nexthop.$destination",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$destination",
+            "intfKey": false,
+            "name": "$destination",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$nexthop_num",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$nexthop_num",
+            "intfKey": false,
+            "name": "$nexthop_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$nexthop_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$nexthop_addr",
+            "intfKey": false,
+            "name": "$nexthop_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$nexthop_ifindex",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$nexthop_ifindex",
+            "intfKey": false,
+            "name": "$nexthop_ifindex",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$nexthop_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$nexthop_name",
+            "intfKey": false,
+            "name": "$nexthop_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$metric",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$metric",
+            "intfKey": false,
+            "name": "$metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$pref",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$pref",
+            "intfKey": false,
+            "name": "$pref",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nexthop.$refcnt",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nexthop.$refcnt",
+            "intfKey": false,
+            "name": "$refcnt",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

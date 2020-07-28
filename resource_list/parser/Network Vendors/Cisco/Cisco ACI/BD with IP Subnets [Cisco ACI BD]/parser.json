@@ -1,0 +1,125 @@
+{
+    "_id": "6943bd89-2aa4-0e38-8929-94988f83265b",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560794357506
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\nBegin Declare Input Parameters\n\n[\n]\n\nEnd Declare\n\nFor sample\n[\n    {\"name\": \"$param1\"},\n    {\"name\": \"$param2\"}\n]\n'''\n\n\ndef BuildParameters(context, device_name, params):\n    res = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'Logical', 'params' : ['_id'] })\n    apiServerId = res['params']['_id']\n    rtn_params = {}\n    rtn_params['apiServerId'] = apiServerId\n    temp = device_name.split('/uni/')\n    temp1 ='/uni/'+temp[1]\n    rtn_params['dn'] = temp1\n    return rtn_params\n\n\t\ndef RetrieveData(rtn_params):\n    dn = rtn_params['dn']\n    qry = \"rsp-subtree=full&rsp-subtree-class=fvSubnet\"\n    url = '/api/mo/' + dn + '.json?' + qry\n    rtn_params['url'] = url\n    data = getData(rtn_params)\n    return data\n    \n    \n",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"fvBD\": {\n            \"attributes\": {\n                \"OptimizeWanBandwidth\": \"no\",\n                \"annotation\": \"\",\n                \"arpFlood\": \"no\",\n                \"bcastP\": \"225.0.89.224\",\n                \"childAction\": \"\",\n                \"configIssues\": \"\",\n                \"descr\": \"\",\n                \"dn\": \"uni/tn-NB.BOS/BD-APP.Server-BD\",\n                \"epClear\": \"no\",\n                \"epMoveDetectMode\": \"\",\n                \"extMngdBy\": \"\",\n                \"intersiteBumTrafficAllow\": \"no\",\n                \"intersiteL2Stretch\": \"no\",\n                \"ipLearning\": \"yes\",\n                \"lcOwn\": \"local\",\n                \"limitIpLearnToSubnets\": \"yes\",\n                \"llAddr\": \"::\",\n                \"mac\": \"00:22:BD:F8:19:FF\",\n                \"mcastAllow\": \"no\",\n                \"modTs\": \"2018-11-16T09:23:10.923+00:00\",\n                \"monPolDn\": \"uni/tn-common/monepg-default\",\n                \"mtu\": \"inherit\",\n                \"multiDstPktAct\": \"bd-flood\",\n                \"name\": \"APP.Server-BD\",\n                \"nameAlias\": \"\",\n                \"ownerKey\": \"\",\n                \"ownerTag\": \"\",\n                \"pcTag\": \"49153\",\n                \"scope\": \"3112960\",\n                \"seg\": \"16351138\",\n                \"status\": \"\",\n                \"type\": \"regular\",\n                \"uid\": \"15374\",\n                \"unicastRoute\": \"yes\",\n                \"unkMacUcastAct\": \"proxy\",\n                \"unkMcastAct\": \"flood\",\n                \"vmac\": \"not-applicable\"\n            },\n            \"children\": [\n                {\n                    \"fvSubnet\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"\",\n                            \"ctrl\": \"\",\n                            \"descr\": \"\",\n                            \"extMngdBy\": \"\",\n                            \"ip\": \"20.20.20.2/24\",\n                            \"lcOwn\": \"local\",\n                            \"modTs\": \"2019-04-18T09:21:25.154+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"\",\n                            \"nameAlias\": \"\",\n                            \"preferred\": \"no\",\n                            \"rn\": \"subnet-[20.20.20.2/24]\",\n                            \"scope\": \"public,shared\",\n                            \"status\": \"\",\n                            \"uid\": \"15374\",\n                            \"virtual\": \"no\"\n                        }\n                    }\n                },\n                {\n                    \"fvSubnet\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"\",\n                            \"ctrl\": \"\",\n                            \"descr\": \"\",\n                            \"extMngdBy\": \"\",\n                            \"ip\": \"30.1.0.1/24\",\n                            \"lcOwn\": \"local\",\n                            \"modTs\": \"2019-01-09T20:17:29.790+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"\",\n                            \"nameAlias\": \"\",\n                            \"preferred\": \"no\",\n                            \"rn\": \"subnet-[30.1.0.1/24]\",\n                            \"scope\": \"private\",\n                            \"status\": \"\",\n                            \"uid\": \"14363\",\n                            \"virtual\": \"no\"\n                        }\n                    }\n                },\n                {\n                    \"fvSubnet\": {\n                        \"attributes\": {\n                            \"annotation\": \"\",\n                            \"childAction\": \"\",\n                            \"ctrl\": \"nd\",\n                            \"descr\": \"\",\n                            \"extMngdBy\": \"\",\n                            \"ip\": \"20.0.1.1/24\",\n                            \"lcOwn\": \"local\",\n                            \"modTs\": \"2018-11-16T09:24:00.462+00:00\",\n                            \"monPolDn\": \"uni/tn-common/monepg-default\",\n                            \"name\": \"\",\n                            \"nameAlias\": \"\",\n                            \"preferred\": \"yes\",\n                            \"rn\": \"subnet-[20.0.1.1/24]\",\n                            \"scope\": \"public\",\n                            \"status\": \"\",\n                            \"uid\": \"15374\",\n                            \"virtual\": \"no\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"# Declare variable struture, type and name.\\r\\n'''\\r\\nBegin Declare Variable\\r\\n[\\r\\n    {\\\"name\\\": \\\"bd_name\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"tn_name\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"bd_mac\\\", \\\"type\\\": \\\"string\\\"},\\r\\n    {\\\"name\\\": \\\"subnets\\\", \\\"type\\\": \\\"string\\\"}\\r\\n    \\r\\n]\\r\\nEnd Declare\\r\\n'''\\r\\n\\r\\nimport json \\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    result = json.loads(_original_result)\\r\\n    value ={}\\r\\n    temp = result[0]['fvBD']['attributes']['dn'].split('/')\\r\\n    value['bd_name'] = temp[2].replace('BD-','')\\r\\n    value['tn_name'] = temp[1].replace('tn-','')\\r\\n    value['bd_mac'] = result[0]['fvBD']['attributes']['mac']\\r\\n    subnets = ''\\r\\n    \\r\\n    \\r\\n    try:\\r\\n        for m in range(len(result[0]['fvBD']['children'])):\\r\\n            subnets += result[0]['fvBD']['children'][m]['fvSubnet']['attributes']['ip']\\r\\n            subnets += ', '\\r\\n    except Exception as ex:\\r\\n        print(str(ex))\\r\\n    value['subnets'] = subnets \\r\\n    return value\\r\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$bd_mac\",\"type\":\"string\"},{\"name\":\"$bd_name\",\"type\":\"string\"},{\"name\":\"$subnets\",\"type\":\"string\"},{\"name\":\"$tn_name\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"5ebbf4c6-52aa-6ce5-9348-dbb46a645b84\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [
+        "ACI.topRoot.children.polUni.children.fvTenant.children.fvBD"
+    ],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bd_mac",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "bd_name",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "subnets",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "tn_name",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "bc481bf738fea7e6c79972e5af3eb3e8",
+    "supportNodeType": 1,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$bd_mac",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bd_mac",
+            "intfKey": false,
+            "name": "$bd_mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bd_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bd_name",
+            "intfKey": false,
+            "name": "$bd_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$subnets",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$subnets",
+            "intfKey": false,
+            "name": "$subnets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$tn_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$tn_name",
+            "intfKey": false,
+            "name": "$tn_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

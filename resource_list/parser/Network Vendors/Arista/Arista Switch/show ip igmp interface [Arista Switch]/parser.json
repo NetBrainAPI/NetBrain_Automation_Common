@@ -1,0 +1,734 @@
+{
+    "_id": "8479e6bb-39e5-58e5-e745-26603ee800a5",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip igmp interface",
+    "createTime": {
+        "$date": 1581006882583
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow ip igmp interface",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "AristaR1#show ip igmp interface \r\n! Ethernet3: IGMP is configured or implicitly enabled by another agent but is effectively disabled\r\n! Ethernet4: IGMP is configured or implicitly enabled by another agent but is effectively disabled\r\nVlan26 is up\r\n  Interface address: 172.17.26.1/23\r\n  IGMP on this interface: enabled\r\n  Multicast routing on this interface: enabled\r\n  Multicast TTL threshold: 1\r\n  Current IGMP router version: 2\r\n  IGMP query interval: 125 seconds\r\n  IGMP max query response time: 100 deciseconds\r\n  Last member query response interval: 10 deciseconds\r\n  Last member query response count: 2\r\n  IGMP querier: 172.17.26.1\r\n  Robustness: 2\r\n  Require router alert: enabled\r\n  Startup query interval: 312 deciseconds\r\n  Startup query count: 2\r\n  General query timer expiry: 00:00:22\r\n  Multicast groups joined:\r\n    239.255.255.250\r\n\r\nEthernet2 is up\r\n  Interface address: 123.10.1.1\r\n  IGMP on this interface: enabled\r\n  Multicast routing on this interface: enabled\r\n  Multicast TTL threshold: 1\r\n  Current IGMP router version: 3\r\n  IGMP query interval: 125 seconds\r\n  IGMP max query response time: 100 deciseconds\r\n  Last member query response interval: 10 deciseconds\r\n  Last member query response count: 2\r\n  IGMP querier: 123.10.1.1\r\n  Robustness: 2\r\n  Require router alert: routerAlertOptionalConnected\r\n  Startup query interval: 312 deciseconds\r\n  Startup query count: 2\r\n  General query timer expiry: 0:01:59\r\n  Multicast groups joined:\r\n  \r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.igmp_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"igmp_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$state]:^(\\\\S+\\\\d) is (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Interface address: $ip_addr\",\"Multicast TTL threshold: $int:multicast_ttl_threshold\",\"Current IGMP router version: $igmp_router_version\",\"IGMP query interval: $int:igmp_query_interval seconds\",\"IGMP max query response time:  $int:igmp_max_query_response_time\",\"Last member query response interval: $int:member_query_response_interval\",\"Last member query response count: $int:member_query_count\",\"IGMP querier: $igmp_querying_router\",\"Robustness: $robustness\",\"Startup query interval: $int:startup_query_interval\",\"Startup query count: $int:startup_query_count\",\"General query timer expiry: $general_query_timer_expriy\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$state:string\",\"$ip_addr:string\",\"$multicast_ttl_threshold:int\",\"$igmp_router_version:string\",\"$igmp_query_interval:int\",\"$igmp_max_query_response_time:int\",\"$member_query_response_interval:int\",\"$member_query_count:int\",\"$igmp_querying_router:string\",\"$robustness:string\",\"$startup_query_interval:int\",\"$startup_query_count:int\",\"$general_query_timer_expriy:string\"]},\"xxid\":\"ac356e5d-32c1-1f60-6a2f-9714e15c4f21\"},{\"type\":\"4\",\"name\":\"groups\",\"keyVariables\":\"\",\"startLine\":\"regex[$group_addr]:^\\\\s+(\\\\d+.\\\\d+.\\\\d+.\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$group_addr:string\"]},\"xxid\":\"eade36ab-4a24-382e-0bc6-e8b33c50764f\"}]},\"xxid\":\"4552958d-f167-c8c1-3b63-0f3dd9b5d018\",\"interfaceKey\":\"\",\"hashColumns\":[]}]},\"xxid\":\"36bf01c5-9ddc-9da3-f56b-4cb012385180\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$state\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"d9bf2bb5-1b29-9f79-9f9a-b6f8aae9bd03\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "multicast_ttl_threshold",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "igmp_router_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "igmp_query_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "igmp_max_query_response_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "member_query_response_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "member_query_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "igmp_querying_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "robustness",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "startup_query_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "startup_query_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "general_query_timer_expriy",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "igmp_intfs",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 15,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "multicast_ttl_threshold",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "igmp_router_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "igmp_query_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "igmp_max_query_response_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "member_query_response_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "member_query_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "igmp_querying_router",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "robustness",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "startup_query_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "startup_query_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "general_query_timer_expriy",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "groups",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c1c116b113c485a414aa3728838d5f0f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_intfs",
+            "dataType": "paragraph",
+            "desc": "IGMP Interfaces Table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs",
+            "intfKey": false,
+            "name": "igmp_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_intfs.$intf",
+            "dataType": "string",
+            "desc": "Interface type, number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_intfs.$state",
+            "dataType": "string",
+            "desc": "Interface status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$ip_addr",
+            "dataType": "string",
+            "desc": "Internet address of the interface and subnet mask being applied to the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$multicast_ttl_threshold",
+            "dataType": "int",
+            "desc": "Packet time-to-live threshold.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$multicast_ttl_threshold",
+            "intfKey": false,
+            "name": "$multicast_ttl_threshold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$igmp_router_version",
+            "dataType": "string",
+            "desc": "Current IGMP router version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$igmp_router_version",
+            "intfKey": false,
+            "name": "$igmp_router_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$igmp_query_interval",
+            "dataType": "int",
+            "desc": "Interval at which the software sends Protocol Independent Multicast (PIM) router query messages.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$igmp_query_interval",
+            "intfKey": false,
+            "name": "$igmp_query_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$igmp_max_query_response_time",
+            "dataType": "int",
+            "desc": "IGMP max query response time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$igmp_max_query_response_time",
+            "intfKey": false,
+            "name": "$igmp_max_query_response_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$member_query_response_interval",
+            "dataType": "int",
+            "desc": "Last member query response interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$member_query_response_interval",
+            "intfKey": false,
+            "name": "$member_query_response_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$member_query_count",
+            "dataType": "int",
+            "desc": "Last member query response count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$member_query_count",
+            "intfKey": false,
+            "name": "$member_query_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$igmp_querying_router",
+            "dataType": "string",
+            "desc": "IGMP querier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$igmp_querying_router",
+            "intfKey": false,
+            "name": "$igmp_querying_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$robustness",
+            "dataType": "string",
+            "desc": "Robustness.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$robustness",
+            "intfKey": false,
+            "name": "$robustness",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$startup_query_interval",
+            "dataType": "int",
+            "desc": "Startup query interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$startup_query_interval",
+            "intfKey": false,
+            "name": "$startup_query_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$startup_query_count",
+            "dataType": "int",
+            "desc": "Startup query count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$startup_query_count",
+            "intfKey": false,
+            "name": "$startup_query_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$general_query_timer_expriy",
+            "dataType": "string",
+            "desc": "General query timer expiry.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$general_query_timer_expriy",
+            "intfKey": false,
+            "name": "$general_query_timer_expriy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups",
+            "dataType": "paragraph",
+            "desc": "Groups Table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups",
+            "intfKey": false,
+            "name": "groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "groups.$group_addr",
+            "dataType": "string",
+            "desc": "Multicast group joined.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$group_addr",
+            "intfKey": false,
+            "name": "$group_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$intf",
+            "dataType": "string",
+            "desc": "Interface type, number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$state",
+            "dataType": "string",
+            "desc": "Interface status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$ip_addr",
+            "dataType": "string",
+            "desc": "Internet address of the interface and subnet mask being applied to the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$multicast_ttl_threshold",
+            "dataType": "int",
+            "desc": "Packet time-to-live threshold.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$multicast_ttl_threshold",
+            "intfKey": false,
+            "name": "$multicast_ttl_threshold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$igmp_router_version",
+            "dataType": "string",
+            "desc": "Current IGMP router version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$igmp_router_version",
+            "intfKey": false,
+            "name": "$igmp_router_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$igmp_query_interval",
+            "dataType": "int",
+            "desc": "Interval at which the software sends Protocol Independent Multicast (PIM) router query messages.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$igmp_query_interval",
+            "intfKey": false,
+            "name": "$igmp_query_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$igmp_max_query_response_time",
+            "dataType": "int",
+            "desc": "IGMP max query response time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$igmp_max_query_response_time",
+            "intfKey": false,
+            "name": "$igmp_max_query_response_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$member_query_response_interval",
+            "dataType": "int",
+            "desc": "Last member query response interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$member_query_response_interval",
+            "intfKey": false,
+            "name": "$member_query_response_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$member_query_count",
+            "dataType": "int",
+            "desc": "Last member query response count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$member_query_count",
+            "intfKey": false,
+            "name": "$member_query_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$igmp_querying_router",
+            "dataType": "string",
+            "desc": "IGMP querier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$igmp_querying_router",
+            "intfKey": false,
+            "name": "$igmp_querying_router",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$robustness",
+            "dataType": "string",
+            "desc": "Robustness.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$robustness",
+            "intfKey": false,
+            "name": "$robustness",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$startup_query_interval",
+            "dataType": "int",
+            "desc": "Startup query interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$startup_query_interval",
+            "intfKey": false,
+            "name": "$startup_query_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$startup_query_count",
+            "dataType": "int",
+            "desc": "Startup query count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$startup_query_count",
+            "intfKey": false,
+            "name": "$startup_query_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "groups.$general_query_timer_expriy",
+            "dataType": "string",
+            "desc": "General query timer expiry.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.groups.$general_query_timer_expriy",
+            "intfKey": false,
+            "name": "$general_query_timer_expriy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

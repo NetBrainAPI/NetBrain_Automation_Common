@@ -1,0 +1,231 @@
+{
+    "_id": "008ca7c7-ff1d-6d71-1cb8-250afe8698c1",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router pim neighbor",
+    "createTime": {
+        "$date": 1583525842243
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "ALA-1# show router pim neighbor\r\n===============================================================================\r\nPIM Neighbors\r\n===============================================================================\r\nInterface          Nbr DR     Nbr Address     Up Time       Expiry Time   Hold\r\n                   Priority                                               Time\r\n-------------------------------------------------------------------------------\r\nip-10.1.7.1        5          10.1.7.7        0d 00:10:39   0d 00:01:36   105\r\nip-10.1.2.1        5          10.1.2.2        0d 00:10:39   0d 00:01:35   105\r\nip-100.111.1.1     3          100.111.1.2     0d 00:09:31   0d 00:01:15   105\r\n-------------------------------------------------------------------------------\r\nNeighbors : 3\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.pim_neighbor.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"pim_neighbor\",\"headers\":\"Interface;Nbr DR Priority;Nbr Address;Up Time;Expiry Time;Hold Time\",\"endLine\":\"----------\",\"isSkipLine\":\"1\",\"skipLine\":2,\"headerToVariables\":\"Interface:$string:interface;Nbr DR Priority:$int:nbr_dr_priority;Nbr Address:$string:nbr_address;Up Time:$string:up_time;Expiry Time:$string:expiry_time;Hold Time:$int:hold_time\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$nbr_dr_priority:int\",\"$nbr_address:string\",\"$up_time:string\",\"$expiry_time:string\",\"$hold_time:int\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"117f4a08-d527-6c8e-26e9-11dd45d4e27f\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$nbr_dr_priority\",\"$nbr_address\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"6e467c63-ebec-4bef-2e25-81adcb1af5e9\"}]}",
+            "tableKeys": [
+                "_original_result.pim_neighbor.$nbr_address"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "nbr_dr_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "nbr_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "expiry_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "hold_time",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface",
+                    "$nbr_address",
+                    "$nbr_dr_priority"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_neighbor",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3a51e019ce72ca0b851f8ea6caf800bb",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_neighbor",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$nbr_dr_priority",
+                    "$nbr_address"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbor",
+            "intfKey": false,
+            "name": "pim_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "pim_neighbor.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbor.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "pim_neighbor.$nbr_dr_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbor.$nbr_dr_priority",
+            "intfKey": false,
+            "name": "$nbr_dr_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbor.$nbr_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbor.$nbr_address",
+            "intfKey": false,
+            "name": "$nbr_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbor.$up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbor.$up_time",
+            "intfKey": false,
+            "name": "$up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbor.$expiry_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbor.$expiry_time",
+            "intfKey": false,
+            "name": "$expiry_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbor.$hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbor.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

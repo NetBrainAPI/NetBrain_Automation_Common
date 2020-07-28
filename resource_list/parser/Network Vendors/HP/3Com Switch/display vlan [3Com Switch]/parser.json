@@ -1,0 +1,105 @@
+{
+    "_id": "990215e7-b013-e56a-bb51-0f139a72c8fb",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display vlan",
+    "createTime": {
+        "$date": 1590771968825
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay vlan",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<SW1>display vlan\r\n Total VLANs: 9\r\n The VLANs include:\r\n 1(default), 2-7, 10-11\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vlan_table\",\"keyVariables\":\"\",\"startLine\":\"The VLANs include:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$vid]:The VLANs include:(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vid:string\"]},\"xxid\":\"25a99167-a160-630d-2324-7f24d1016358\"}]},\"xxid\":\"488c7429-5b59-6bb7-f388-9970a72a8ed0\",\"hashColumns\":[\"$vid\"]}]}",
+            "tableKeys": [
+                "_original_result.vlan_table.$vid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vid",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vid"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vlan_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d3a0475aeaca4c151c61f7c2a5baa6e1",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vlan_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlan_table",
+            "intfKey": false,
+            "name": "vlan_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vlan_table.$vid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$vid",
+            "intfKey": false,
+            "name": "$vid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

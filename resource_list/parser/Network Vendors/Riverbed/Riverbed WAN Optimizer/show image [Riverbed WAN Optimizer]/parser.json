@@ -1,0 +1,128 @@
+{
+    "_id": "4d5c2e05-05ee-6b9e-bc0b-fd0f86803f11",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show image",
+    "createTime": {
+        "$date": 1590508197478
+    },
+    "description": "Device Type:\nRiverbed WAN Optimizer\nCommand:\nshow image",
+    "devTypes": [
+        10466
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "nbRiverbed > show image\nNo image files are available to be installed.\n\nInstalled images:\n  Partition 1:\n  rbt_sh 7.0.5a #529_13 2012-10-31 14:30:40 i386 root@kaunas:svn://svn/mgmt/branches/malta_529_fix_branch\n\n  Partition 2:\n  rbt_sh 6.5.3b #130_10 2011-12-07 15:05:08 i386 root@naples:svn://svn/mgmt/branches/canary_130_fix_branch",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"image_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$part]:Partition (\\\\d+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$image]:Partition \\\\d+:\\\\s+(\\\\S+.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$part:string\",\"$image:string\"]},\"xxid\":\"427e8736-8a4c-9081-9084-ebaccb450fc2\"}]},\"xxid\":\"878ba0d0-0384-0c8d-a50c-fbc5047b6e7c\",\"hashColumns\":[\"$part\",\"$image\"]}]}",
+            "tableKeys": [
+                "_original_result.image_table.$part",
+                "_original_result.image_table.$image"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "part",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "image",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$image",
+                    "$part"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "image_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4e37bbea768a5e09563eae3cdd4afc1b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "image_table",
+            "dataType": "paragraph",
+            "desc": "The image table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$part",
+                    "$image"
+                ],
+                "hashSort": false
+            },
+            "fullName": "image_table",
+            "intfKey": false,
+            "name": "image_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "image_table.$part",
+            "dataType": "string",
+            "desc": "The number of partition.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "image_table.$part",
+            "intfKey": false,
+            "name": "$part",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "image_table.$image",
+            "dataType": "string",
+            "desc": "The information of installed image.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "image_table.$image",
+            "intfKey": false,
+            "name": "$image",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

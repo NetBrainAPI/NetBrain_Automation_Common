@@ -1,0 +1,581 @@
+{
+    "_id": "484b8424-8ce6-bc18-32a4-9883b7733688",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router ldp peer detail",
+    "createTime": {
+        "$date": 1584025692612
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router ldp peer detail",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "*A:AS500_P# show router ldp peer detail \n\n===============================================================================\nLDP Peers (Detail)\n===============================================================================\n-------------------------------------------------------------------------------\nPeer 158.7.1.92\n-------------------------------------------------------------------------------\nAdmin State        : Up              Oper State           : Up\nUp Time            : 0d 00:10:47     \nHold Time          : 2500            Hello Factor         : 100\nOper Hold Time     : 2500            \nHello Reduction    : Disabled        Hello Reduction Fact*: 3\nKeepalive Timeout  : 15              Keepalive Factor     : 3\nPassive Mode       : Disabled        Last Modified        : 06/12/17 02:59:05\nActive Adjacencies : 1               Auto Created         : No\nCreator            : manual          Template Name        : N/A\nTunneling          : Disabled        \nLsp Name           : None\nLocal LSR          : None\nBFD Status         : Disabled        \nMulticast Traffic  : Disabled        \n-------------------------------------------------------------------------------\nPeer 158.7.1.94                       \n-------------------------------------------------------------------------------\nAdmin State        : Up              Oper State           : Up\nUp Time            : 0d 00:00:37     \nHold Time          : 2500            Hello Factor         : 104\nOper Hold Time     : 2500            \nHello Reduction    : Disabled        Hello Reduction Fact*: 3\nKeepalive Timeout  : 15              Keepalive Factor     : 3\nPassive Mode       : Disabled        Last Modified        : 06/12/17 03:09:15\nActive Adjacencies : 1               Auto Created         : No\nCreator            : manual          Template Name        : N/A\nTunneling          : Disabled        \nLsp Name           : None\nLocal LSR          : None\nBFD Status         : Disabled        \nMulticast Traffic  : Disabled        \n===============================================================================\n* indicates that the corresponding row element may have been truncated.",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ldp_peer_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$peer]:Peer\\\\s+([\\\\d.]+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$admin_state, $oper_state, $up_time]:Admin State\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Oper State\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Up Time\\\\s+\\\\:\\\\s+(\\\\S+\\\\s+[0-9\\\\:]+)\",\"mregex[$int:hold_time, $int:hello_factor, $int:oper_hold_time]:Hold Time\\\\s+\\\\:\\\\s+(\\\\d+)\\\\s+Hello Factor\\\\s+\\\\:\\\\s+(\\\\d+)\\\\s+Oper Hold Time\\\\s+\\\\:\\\\s+(\\\\d+)\",\"mregex[$hello_reduction, $int:hello_reduction_fact, $int:keepalive_timeout, $int:keepalive_factor]:Hello Reduction\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Hello Reduction Fact.+\\\\:\\\\s+(\\\\d+)\\\\s+Keepalive Timeout\\\\s+\\\\:\\\\s+(\\\\d+)\\\\s+Keepalive Factor\\\\s+\\\\:\\\\s+(\\\\d+)\",\"mregex[$passive_mode, $last_modified, $active_adjacencies, $auto_created]:Passive Mode\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Last Modified\\\\s+\\\\:\\\\s+([0-9/]+\\\\s+[0-9\\\\:]+)\\\\s+Active Adjacencies\\\\s+\\\\:\\\\s+(\\\\d+)\\\\s+Auto Created\\\\s+\\\\:\\\\s+(\\\\S+)\",\"mregex[$creator, $template_name, $tunneling, $lsp_name]:Creator\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Template Name\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Tunneling\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Lsp Name\\\\s+\\\\:\\\\s+(\\\\S+)\",\"mregex[$local_lsr, $bfd_status, $multicast_traffic]:Local LSR\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+BFD Status\\\\s+\\\\:\\\\s+(\\\\S+)\\\\s+Multicast Traffic\\\\s+:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$peer:string\",\"$admin_state:string\",\"$oper_state:string\",\"$up_time:string\",\"$hold_time:int\",\"$hello_factor:int\",\"$oper_hold_time:int\",\"$hello_reduction:string\",\"$hello_reduction_fact:int\",\"$keepalive_timeout:int\",\"$keepalive_factor:int\",\"$passive_mode:string\",\"$last_modified:string\",\"$active_adjacencies:string\",\"$auto_created:string\",\"$creator:string\",\"$template_name:string\",\"$tunneling:string\",\"$lsp_name:string\",\"$local_lsr:string\",\"$bfd_status:string\",\"$multicast_traffic:string\"]},\"xxid\":\"343fa6c7-11fc-1abf-bb2c-0215852c59bd\"}]},\"xxid\":\"923f6781-5c83-0a58-99cb-d39cf207857d\",\"hashColumns\":[\"$peer\",\"$admin_state\",\"$oper_state\",\"$up_time\",\"$hold_time\",\"$hello_factor\",\"$oper_hold_time\",\"$hello_reduction\",\"$keepalive_timeout\",\"$passive_mode\",\"$active_adjacencies\",\"$auto_created\",\"$creator\",\"$template_name\",\"$tunneling\",\"$lsp_name\",\"$local_lsr\",\"$bfd_status\",\"$multicast_traffic\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"9b65003b-9d0a-0427-5e00-6b30c58ff2d7\"}]}",
+            "tableKeys": [
+                "_original_result.ldp_peer_detail.$peer"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 22,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "peer",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "hello_factor",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "oper_hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "hello_reduction",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "hello_reduction_fact",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "keepalive_timeout",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "keepalive_factor",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "passive_mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "last_modified",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "active_adjacencies",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "auto_created",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "creator",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "template_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "tunneling",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "lsp_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "local_lsr",
+                        "type": 4
+                    },
+                    {
+                        "index": 20,
+                        "name": "bfd_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 21,
+                        "name": "multicast_traffic",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$active_adjacencies",
+                    "$admin_state",
+                    "$auto_created",
+                    "$bfd_status",
+                    "$creator",
+                    "$hello_factor",
+                    "$hello_reduction",
+                    "$hold_time",
+                    "$keepalive_timeout",
+                    "$local_lsr",
+                    "$lsp_name",
+                    "$multicast_traffic",
+                    "$oper_hold_time",
+                    "$oper_state",
+                    "$passive_mode",
+                    "$peer",
+                    "$template_name",
+                    "$tunneling",
+                    "$up_time"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ldp_peer_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0f5d6965e6123a03281716a150f5412a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ldp_peer_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$peer",
+                    "$admin_state",
+                    "$oper_state",
+                    "$up_time",
+                    "$hold_time",
+                    "$hello_factor",
+                    "$oper_hold_time",
+                    "$hello_reduction",
+                    "$keepalive_timeout",
+                    "$passive_mode",
+                    "$active_adjacencies",
+                    "$auto_created",
+                    "$creator",
+                    "$template_name",
+                    "$tunneling",
+                    "$lsp_name",
+                    "$local_lsr",
+                    "$bfd_status",
+                    "$multicast_traffic"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail",
+            "intfKey": false,
+            "name": "ldp_peer_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ldp_peer_detail.$peer",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$peer",
+            "intfKey": false,
+            "name": "$peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$up_time",
+            "intfKey": false,
+            "name": "$up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$hello_factor",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$hello_factor",
+            "intfKey": false,
+            "name": "$hello_factor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$oper_hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$oper_hold_time",
+            "intfKey": false,
+            "name": "$oper_hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$hello_reduction",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$hello_reduction",
+            "intfKey": false,
+            "name": "$hello_reduction",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$hello_reduction_fact",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$hello_reduction_fact",
+            "intfKey": false,
+            "name": "$hello_reduction_fact",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$keepalive_timeout",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$keepalive_timeout",
+            "intfKey": false,
+            "name": "$keepalive_timeout",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$keepalive_factor",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$keepalive_factor",
+            "intfKey": false,
+            "name": "$keepalive_factor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$passive_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$passive_mode",
+            "intfKey": false,
+            "name": "$passive_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$last_modified",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$last_modified",
+            "intfKey": false,
+            "name": "$last_modified",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$active_adjacencies",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$active_adjacencies",
+            "intfKey": false,
+            "name": "$active_adjacencies",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$auto_created",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$auto_created",
+            "intfKey": false,
+            "name": "$auto_created",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$creator",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$creator",
+            "intfKey": false,
+            "name": "$creator",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$template_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$template_name",
+            "intfKey": false,
+            "name": "$template_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$tunneling",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$tunneling",
+            "intfKey": false,
+            "name": "$tunneling",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$lsp_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$lsp_name",
+            "intfKey": false,
+            "name": "$lsp_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$local_lsr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$local_lsr",
+            "intfKey": false,
+            "name": "$local_lsr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$bfd_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$bfd_status",
+            "intfKey": false,
+            "name": "$bfd_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_peer_detail.$multicast_traffic",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_peer_detail.$multicast_traffic",
+            "intfKey": false,
+            "name": "$multicast_traffic",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

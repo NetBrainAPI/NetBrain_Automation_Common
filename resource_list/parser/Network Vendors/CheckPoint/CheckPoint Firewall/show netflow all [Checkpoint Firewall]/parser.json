@@ -1,0 +1,215 @@
+{
+    "_id": "0d073c48-8338-d716-278e-97b28da734be",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show netflow all",
+    "createTime": {
+        "$date": 1579138424468
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow netflow all",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-checkpoint-2> show netflow all \r\nAddress           Port    Format      Src Addr          Enable  \r\n8.8.8.8           65534   Netflow_V9  172.27.129.51     yes     \r\n8.8.8.9           65534   Netflow_V9  172.27.129.51     yes     \r\n8.8.8.10          65534   Netflow_V9  172.27.129.51     yes ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"netflow_collector\",\"headers\":\"Address;Port;Format;Src Addr;Enable\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Address:$string:collector_address;Port:$string:port;Format:$string:format;Src Addr:$string:src_addr;Enable:$string:enable\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$collector_address:string\",\"$port:string\",\"$format:string\",\"$src_addr:string\",\"$enable:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"8df9c7ee-bb77-c50a-e3dd-383b0fa40b3f\",\"hashColumns\":[\"$collector_address\",\"$port\",\"$format\",\"$src_addr\",\"$enable\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"3b1a2d69-7570-b765-c90f-ca6e9174deb8\"}]}",
+            "tableKeys": [
+                "_original_result.netflow_collector.$collector_address",
+                "_original_result.netflow_collector.$enable"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "collector_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "format",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "src_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "enable",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$collector_address",
+                    "$enable",
+                    "$format",
+                    "$port",
+                    "$src_addr"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "netflow_collector",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "9530b2bfdfdfc99a40e6d60dbf2424ac",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "netflow_collector",
+            "dataType": "table",
+            "desc": "Netflow collector table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$collector_address",
+                    "$port",
+                    "$format",
+                    "$src_addr",
+                    "$enable"
+                ],
+                "hashSort": false
+            },
+            "fullName": "netflow_collector",
+            "intfKey": false,
+            "name": "netflow_collector",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "netflow_collector.$collector_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "netflow_collector.$collector_address",
+            "intfKey": false,
+            "name": "$collector_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "netflow_collector.$port",
+            "dataType": "string",
+            "desc": "The UDP port number on which the collector is listening.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "netflow_collector.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "netflow_collector.$format",
+            "dataType": "string",
+            "desc": "The NetFlow protocol version to send: 5 or 9.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "netflow_collector.$format",
+            "intfKey": false,
+            "name": "$format",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "netflow_collector.$src_addr",
+            "dataType": "string",
+            "desc": "The IPv4 address of the NetFlow packets source.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "netflow_collector.$src_addr",
+            "intfKey": false,
+            "name": "$src_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "netflow_collector.$enable",
+            "dataType": "string",
+            "desc": "Enable state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "netflow_collector.$enable",
+            "intfKey": false,
+            "name": "$enable",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

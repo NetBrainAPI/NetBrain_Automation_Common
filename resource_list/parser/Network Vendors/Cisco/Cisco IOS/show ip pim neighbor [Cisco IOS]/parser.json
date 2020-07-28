@@ -1,0 +1,252 @@
+{
+    "_id": "0dd8d82e-3252-41a8-8521-36f096f275a3",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip pim neighbor",
+    "createTime": {
+        "$date": 1561130868946
+    },
+    "description": "",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "sw13#show ip pim neighbor\r\nPIM Neighbor Table\r\nMode: B - Bidir Capable, DR - Designated Router, N - Default DR Priority,\r\n      P - Proxy Capable, S - State Refresh Capable, G - GenID Capable,\r\n      L - DR Load-balancing Capable\r\nNeighbor          Interface                Uptime/Expires    Ver   DR\r\nAddress                                                            Prio/Mode\r\n10.4.40.11        Vlan227                  3d23h/00:01:35    v2    1 / DR S P G\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"pim_neighbors\",\"keyVariables\":\"\",\"startLine\":\"regex[$neighbor_ip,$interface,$uptime,$expires,$version,$int:dr_priority,$mode]:(^\\\\d+.\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\/(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+\\\\/(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbor_ip:string\",\"$interface:string\",\"$uptime:string\",\"$expires:string\",\"$version:string\",\"$dr_priority:int\",\"$mode:string\"]},\"xxid\":\"ee28aeef-8ef1-8be7-ea93-2f917d178f29\"}]},\"xxid\":\"2040fa47-5ae6-17f6-7638-54aecc698ea8\",\"hashColumns\":[\"$neighbor_ip\",\"$version\",\"$dr_priority\",\"$mode\"],\"hashSort\":false},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"7353ce85-8953-5c97-4ab3-539d1bb23388\"}]},\"xxid\":\"1cf1985f-d1b5-7f12-8a37-40c5c8c32b65\"}]}",
+            "tableKeys": [
+                "_original_result.pim_neighbors.$neighbor_ip"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "version",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "dr_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "mode",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$dr_priority",
+                    "$mode",
+                    "$neighbor_ip",
+                    "$version"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c9f7d801fdd9769048e8a5e0c510663c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_neighbors.$dr_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors.$dr_priority",
+            "intfKey": false,
+            "name": "$dr_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbors.$expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbors.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbors.$mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbors.$neighbor_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors.$neighbor_ip",
+            "intfKey": false,
+            "name": "$neighbor_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbors.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbors.$version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_neighbors",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor_ip",
+                    "$version",
+                    "$dr_priority",
+                    "$mode"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_neighbors",
+            "intfKey": false,
+            "name": "pim_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        }
+    ],
+    "version": "7.1"
+}

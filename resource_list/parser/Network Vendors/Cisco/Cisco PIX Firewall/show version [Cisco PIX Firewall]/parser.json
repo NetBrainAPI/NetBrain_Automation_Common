@@ -1,0 +1,641 @@
+{
+    "_id": "77fb86c9-8458-642e-06d7-17ca0f49b82a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show version",
+    "createTime": {
+        "$date": 1591050805759
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow version",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BST-FW-PIX# show version\r\n\r\nCisco PIX Firewall Version 6.3(5)\r\nCisco PIX Device Manager Version 3.0(4)\r\n\r\nCompiled on Thu 04-Aug-05 21:40 by morlee\r\n\r\nBST-FW-PIX up 57 days 20 hours\r\n\r\nHardware:   SE440BX2, 128 MB RAM, CPU Pentium II 350 MHz\r\nFlash i28F640J5 @ 0x300, 16MB\r\nBIOS Flash AT29C257 @ 0xfffd8000, 32KB\r\n\r\n0: ethernet0: address is 0090.279d.1533, irq 11\r\n1: ethernet1: address is 0090.279d.137e, irq 10\r\n2: ethernet2: address is 0090.2757.05e4, irq 9\r\nLicensed Features:\r\nFailover:                    Enabled\r\nVPN-DES:                     Enabled\r\nVPN-3DES-AES:                Enabled\r\nMaximum Physical Interfaces: 6\r\nMaximum Interfaces:          12\r\nCut-through Proxy:           Enabled\r\nGuards:                      Enabled\r\nURL-filtering:               Enabled\r\nInside Hosts:                Unlimited\r\nThroughput:                  Unlimited\r\nIKE peers:                   Unlimited\r\n\r\nThis PIX has an Unrestricted (UR) license.\r\n\r\nSerial Number: 18041975 (0x1134c77)\r\nRunning Activation Key: 0xd4baf84a 0x46d2c22f 0xc2ae0c6a 0xd3613186 \r\nConfiguration last modified by enable_15 at 09:54:24.942 UTC Mon Jun 19 2017\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.interface_para.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$version]:Cisco PIX Firewall Version (.+)\",\"regex[$device_manager_version]:Cisco PIX Device Manager Version (.+)\",\"regex[$compiled_date, $compiled_user]:Compiled on (.+) by (.+)\",\"regex[$device_up_time]:BST-FW-PIX up (.+)\",\"regex[$hardware]:Hardware:\\\\s+(.+)\",\"regex[$flash]:Flash (.+)\",\"regex[$bios_flash]:BIOS Flash (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$version:string\",\"$device_manager_version:string\",\"$compiled_date:string\",\"$compiled_user:string\",\"$device_up_time:string\",\"$hardware:string\",\"$flash:string\",\"$bios_flash:string\"]},\"xxid\":\"dc60d834-b400-9b41-8f90-1c8eb626b1e0\"},{\"type\":\"4\",\"name\":\"interface_para\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface, $interface_addr, $int:irq]:\\\\d+:\\\\s+(.+):\\\\s+address is (.+), irq\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$interface_addr:string\",\"$irq:int\"]},\"xxid\":\"e14cac28-ef9f-9c0a-ec3f-fc64b0635efb\"}]},\"xxid\":\"b0571816-cb62-d67d-b97a-8a1786c2265d\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\"]},{\"type\":\"4\",\"name\":\"licensed_feature\",\"keyVariables\":\"\",\"startLine\":\"Licensed Features:\",\"endLine\":\"^$\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"16b408a5-05d5-d618-f787-0cbbdd691d2b\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$failover_status]:Failover:\\\\s+(.+)\",\"regex[$vpn_des_status]:VPN-DES:\\\\s+(.+)\",\"regex[$vpn_aes_status]:VPN-3DES-AES:\\\\s+(.+)\",\"regex[$int:max_physical_interfaces]:Maximum Physical Interfaces: \\\\s*(\\\\d+)\",\"regex[$int:max_interfaces]:Maximum Interfaces:\\\\s*(\\\\d+)\",\"regex[$cut_through_proxy_stauts]:Cut-through Proxy:\\\\s+(.+)\",\"regex[$guards_status]:Guards:\\\\s+(.+)\",\"regex[$url_filtering_status]:URL-filtering:\\\\s+(.+)\",\"regex[$inside_host]:Inside Hosts:\\\\s+(.+)\",\"regex[$throughput]:Throughput:\\\\s*(.+)\",\"regex[$ike_peers]:IKE peers:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$failover_status:string\",\"$vpn_des_status:string\",\"$vpn_aes_status:string\",\"$max_physical_interfaces:int\",\"$max_interfaces:int\",\"$cut_through_proxy_stauts:string\",\"$guards_status:string\",\"$url_filtering_status:string\",\"$inside_host:string\",\"$throughput:string\",\"$ike_peers:string\"]},\"xxid\":\"4441780e-da06-1393-d858-692355bc30db\"}]},\"xxid\":\"ea70f90f-9bfa-1bcb-2b0d-c93fc494ec04\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$license_type]:This PIX has an (.+) license.\",\"regex[$serial_number]:Serial Number: (.+)\",\"regex[$activation_key]:Running Activation Key: (.+\\\\S)\",\"regex[$last_modified_date]:Configuration last modified by (.+\\\\S)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$license_type:string\",\"$serial_number:string\",\"$activation_key:string\",\"$last_modified_date:string\"]},\"xxid\":\"152098c8-7079-7f12-b652-cb38957bcedd\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "version",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "device_manager_version",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "compiled_date",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "compiled_user",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "device_up_time",
+                "type": 4
+            },
+            {
+                "index": 5,
+                "name": "hardware",
+                "type": 4
+            },
+            {
+                "index": 6,
+                "name": "flash",
+                "type": 4
+            },
+            {
+                "index": 7,
+                "name": "bios_flash",
+                "type": 4
+            },
+            {
+                "index": 8,
+                "name": "license_type",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "serial_number",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "activation_key",
+                "type": 4
+            },
+            {
+                "index": 11,
+                "name": "last_modified_date",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "irq",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false,
+                "index": 12,
+                "name": "interface_para",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "failover_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vpn_des_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vpn_aes_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "max_physical_interfaces",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "max_interfaces",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "cut_through_proxy_stauts",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "guards_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "url_filtering_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "inside_host",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "throughput",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "ike_peers",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 13,
+                "name": "licensed_feature",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e2ce0219d7948d5ad1f09a62e3ffc2e9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$version",
+            "dataType": "string",
+            "desc": "AT29C257 @ 0xfffd8000, 32KB",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$device_manager_version",
+            "dataType": "string",
+            "desc": "Device manager's version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$device_manager_version",
+            "intfKey": false,
+            "name": "$device_manager_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$compiled_date",
+            "dataType": "string",
+            "desc": "Software's compile date.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$compiled_date",
+            "intfKey": false,
+            "name": "$compiled_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$compiled_user",
+            "dataType": "string",
+            "desc": "The username who compile hte software.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$compiled_user",
+            "intfKey": false,
+            "name": "$compiled_user",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$device_up_time",
+            "dataType": "string",
+            "desc": "The device up time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$device_up_time",
+            "intfKey": false,
+            "name": "$device_up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hardware",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$hardware",
+            "intfKey": false,
+            "name": "$hardware",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$flash",
+            "dataType": "string",
+            "desc": "The flash.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$flash",
+            "intfKey": false,
+            "name": "$flash",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bios_flash",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bios_flash",
+            "intfKey": false,
+            "name": "$bios_flash",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_para",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "interface_para",
+            "intfKey": false,
+            "name": "interface_para",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "interface_para.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_para.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interface_para.$interface_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_para.$interface_addr",
+            "intfKey": false,
+            "name": "$interface_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interface_para.$irq",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_para.$irq",
+            "intfKey": false,
+            "name": "$irq",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature",
+            "dataType": "paragraph",
+            "desc": "The license information.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "licensed_feature",
+            "intfKey": false,
+            "name": "licensed_feature",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "licensed_feature.$failover_status",
+            "dataType": "string",
+            "desc": "The failover status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$failover_status",
+            "intfKey": false,
+            "name": "$failover_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$vpn_des_status",
+            "dataType": "string",
+            "desc": "The VPN-DES status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$vpn_des_status",
+            "intfKey": false,
+            "name": "$vpn_des_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$vpn_aes_status",
+            "dataType": "string",
+            "desc": "The VPN-3DES-AES status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$vpn_aes_status",
+            "intfKey": false,
+            "name": "$vpn_aes_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$max_physical_interfaces",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$max_physical_interfaces",
+            "intfKey": false,
+            "name": "$max_physical_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$max_interfaces",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$max_interfaces",
+            "intfKey": false,
+            "name": "$max_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$cut_through_proxy_stauts",
+            "dataType": "string",
+            "desc": "The cut-through proxy status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$cut_through_proxy_stauts",
+            "intfKey": false,
+            "name": "$cut_through_proxy_stauts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$guards_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$guards_status",
+            "intfKey": false,
+            "name": "$guards_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$url_filtering_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$url_filtering_status",
+            "intfKey": false,
+            "name": "$url_filtering_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$inside_host",
+            "dataType": "string",
+            "desc": "The inside host status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$inside_host",
+            "intfKey": false,
+            "name": "$inside_host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$throughput",
+            "dataType": "string",
+            "desc": "The throughput status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$throughput",
+            "intfKey": false,
+            "name": "$throughput",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "licensed_feature.$ike_peers",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "licensed_feature.$ike_peers",
+            "intfKey": false,
+            "name": "$ike_peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$license_type",
+            "dataType": "string",
+            "desc": "The license type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$license_type",
+            "intfKey": false,
+            "name": "$license_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$serial_number",
+            "dataType": "string",
+            "desc": "The serial number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$serial_number",
+            "intfKey": false,
+            "name": "$serial_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$activation_key",
+            "dataType": "string",
+            "desc": "The activation key.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$activation_key",
+            "intfKey": false,
+            "name": "$activation_key",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$last_modified_date",
+            "dataType": "string",
+            "desc": "Last modified date.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$last_modified_date",
+            "intfKey": false,
+            "name": "$last_modified_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

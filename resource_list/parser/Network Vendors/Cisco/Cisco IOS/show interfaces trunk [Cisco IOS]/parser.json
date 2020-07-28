@@ -1,0 +1,489 @@
+{
+    "_id": "1041f93c-18a9-6ab5-2de7-ee8238610478",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interfaces trunk",
+    "createTime": {
+        "$date": 1580124169922
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router\nCommand:\n       show interface trunk",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BJ-L2-coreB>show interface trunk\r\n\r\nPort        Mode             Encapsulation  Status        Native vlan\r\nFa0/5       on               802.1q         trunking      1\r\nPo2         on               802.1q         trunking      1\r\n\r\nPort        Vlans allowed on trunk\r\nFa0/5       10,700\r\nPo2         1-4094\r\n\r\nPort        Vlans allowed and active in management domain\r\nFa0/5       10,700\r\nPo2         1-2,5-6,10-11,20-24,30-32,40,45,60,70,80-81,100,203,250,300,700-701,800,1000-1001\r\n\r\nPort        Vlans in spanning tree forwarding state and not pruned\r\nFa0/5       10,700\r\nPo2         1-2,5-6,10-11,20-24,30-32,40,45,60,70,80-81,100,203,250,300,700-701,800,1000-1001\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.native_vlan.$port",
+                "_original_result.vlan_allowed_filter.allowed_table.$port",
+                "_original_result.allowed_manage_filter.allowed_management_table.$port",
+                "_original_result.port_STP_forwarding_filter.spanning_tree_forwarding_table.$port"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"native_vlan\",\"keyVariables\":\"\",\"startLine\":\"regex[$port,$mode,$encapsulation,$status,$native_vlan]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$port:string\",\"$mode:string\",\"$encapsulation:string\",\"$status:string\",\"$native_vlan:string\"]},\"xxid\":\"13bb1038-a9c1-6813-6f81-47782e88f3ec\"}]},\"xxid\":\"94c68656-4d9b-e14f-a2a0-5aabac2b1b67\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\"]},{\"type\":\"1\",\"name\":\"vlan_allowed_filter\",\"startLine\":\"Port        Vlans allowed on trunk\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"06144634-927a-5953-db74-d931f04ebc0e\"},{\"type\":\"3\",\"name\":\"allowed_table\",\"headers\":\"Port;Vlans allowed on trunk\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Port:$string:port;Vlans allowed on trunk:$string:vlan\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$port:string\",\"$vlan:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"0446f334-f373-632c-6cb0-c848674e1819\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\"]}]},\"xxid\":\"54f197d9-ba0b-94c5-a2af-ad080ef7acc3\"},{\"type\":\"1\",\"name\":\"allowed_manage_filter\",\"startLine\":\"Port        Vlans allowed and active in management domain\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"410db6fa-49b6-f0bc-8fd8-2c87e085c3ca\"},{\"type\":\"3\",\"name\":\"allowed_management_table\",\"headers\":\"Port;Vlans allowed and active in management domain\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Port:$string:port;Vlans allowed and active in management domain:$string:vlan\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$port:string\",\"$vlan:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"f6a7e630-ca71-6198-5a99-2162097bd747\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\"]}]},\"xxid\":\"b18d73d2-cfbe-bd0a-8238-99430a3561ef\"},{\"type\":\"1\",\"name\":\"port_STP_forwarding_filter\",\"startLine\":\"Port        Vlans in spanning tree forwarding state and not pruned\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"1f51f8f9-c9db-2c85-63a0-a6785ab95f4b\"},{\"type\":\"3\",\"name\":\"spanning_tree_forwarding_table\",\"headers\":\"Port;Vlans in spanning tree forwarding state and not pruned\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Port:$string:port;Vlans in spanning tree forwarding state and not pruned:$string:vlan\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$port:string\",\"$vlan:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"2cf6dcbf-a5d3-052f-194e-1863ba4b1719\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\"]}]},\"xxid\":\"d4211279-731c-aefb-162f-8d46d27e51cf\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "vlan_allowed_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "allowed_manage_filter",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "port_STP_forwarding_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "encapsulation",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "native_vlan",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "native_vlan",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "allowed_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false,
+                "index": 5,
+                "name": "allowed_management_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "spanning_tree_forwarding_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "4f05e41de0d9254b3e0eb3b6fa137d1e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "native_vlan",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "native_vlan",
+            "intfKey": false,
+            "name": "native_vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "native_vlan.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "native_vlan.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "native_vlan.$mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "native_vlan.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "native_vlan.$encapsulation",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "native_vlan.$encapsulation",
+            "intfKey": false,
+            "name": "$encapsulation",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "native_vlan.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "native_vlan.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "native_vlan.$native_vlan",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "native_vlan.$native_vlan",
+            "intfKey": false,
+            "name": "$native_vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_allowed_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_allowed_filter",
+            "intfKey": false,
+            "name": "vlan_allowed_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "allowed_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlan_allowed_filter.allowed_table",
+            "intfKey": false,
+            "name": "allowed_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "allowed_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_allowed_filter.allowed_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "allowed_table.$vlan",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_allowed_filter.allowed_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "allowed_manage_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "allowed_manage_filter",
+            "intfKey": false,
+            "name": "allowed_manage_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "allowed_management_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "allowed_manage_filter.allowed_management_table",
+            "intfKey": false,
+            "name": "allowed_management_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "allowed_management_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "allowed_manage_filter.allowed_management_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "allowed_management_table.$vlan",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "allowed_manage_filter.allowed_management_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "port_STP_forwarding_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_STP_forwarding_filter",
+            "intfKey": false,
+            "name": "port_STP_forwarding_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spanning_tree_forwarding_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "port_STP_forwarding_filter.spanning_tree_forwarding_table",
+            "intfKey": false,
+            "name": "spanning_tree_forwarding_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "spanning_tree_forwarding_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_STP_forwarding_filter.spanning_tree_forwarding_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "spanning_tree_forwarding_table.$vlan",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "port_STP_forwarding_filter.spanning_tree_forwarding_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

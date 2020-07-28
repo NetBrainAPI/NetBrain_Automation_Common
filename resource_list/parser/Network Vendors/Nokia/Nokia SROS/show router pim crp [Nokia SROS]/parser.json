@@ -1,0 +1,211 @@
+{
+    "_id": "e93d0339-70f5-8e6f-f107-92f6e59bc822",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router pim crp",
+    "createTime": {
+        "$date": 1583523807929
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:WAS# show router pim crp\r\n============================================================================\r\nPIM Candidate RPs\r\n============================================================================\r\nRP Address      Group Address      Priority    Holdtime  Expiry Time\r\n----------------------------------------------------------------------------\r\n2.22.187.236    224.0.0.0/4        192         150       0d 00:02:19\r\n2.22.187.239    224.0.0.0/4        192         150       0d 00:02:19\r\n2.22.187.240    224.0.0.0/4        192         150       0d 00:02:09\r\n----------------------------------------------------------------------------\r\nCandidate RPs : 3\r\n============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"pim_candidate\",\"headers\":\"RP Address;Group Address;Priority;Holdtime;Expiry Time\",\"endLine\":\"----------------\",\"isSkipLine\":\"1\",\"skipLine\":1,\"headerToVariables\":\"RP Address:$string:rp_address;Group Address:$string:group_address;Priority:$int:priority;Holdtime:$int:holdtime;Expiry Time:$string:expiry_time\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$rp_address:string\",\"$group_address:string\",\"$priority:int\",\"$holdtime:int\",\"$expiry_time:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"7b7191e2-f89b-7168-45ba-09c227732f66\",\"hashColumns\":[\"$rp_address\",\"$group_address\",\"$priority\",\"$holdtime\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"fbd8c6d7-76f9-61c4-e91c-f5f08eb06bd1\"}]}",
+            "tableKeys": [
+                "_original_result.pim_candidate.$rp_address"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "rp_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "holdtime",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "expiry_time",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group_address",
+                    "$holdtime",
+                    "$priority",
+                    "$rp_address"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_candidate",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8e541ac15fc174ec91936035c881fa9c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_candidate",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$rp_address",
+                    "$group_address",
+                    "$priority",
+                    "$holdtime"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_candidate",
+            "intfKey": false,
+            "name": "pim_candidate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "pim_candidate.$rp_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_candidate.$rp_address",
+            "intfKey": false,
+            "name": "$rp_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_candidate.$group_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_candidate.$group_address",
+            "intfKey": false,
+            "name": "$group_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_candidate.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_candidate.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_candidate.$holdtime",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_candidate.$holdtime",
+            "intfKey": false,
+            "name": "$holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_candidate.$expiry_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_candidate.$expiry_time",
+            "intfKey": false,
+            "name": "$expiry_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

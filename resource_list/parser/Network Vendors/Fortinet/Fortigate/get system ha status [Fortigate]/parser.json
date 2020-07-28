@@ -1,0 +1,490 @@
+{
+    "_id": "0336e841-9e2a-9ea4-3c11-d9b3987136fd",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "get system ha status",
+    "createTime": {
+        "$date": 1584390378705
+    },
+    "description": "",
+    "devTypes": [
+        10380
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "FW1 # get system ha status\r\nHA Health Status: OK\r\nModel: FortiGate-600D\r\nMode: HA A-P\r\nGroup: 0\r\nDebug: 0\r\nCluster Uptime: 88 days 07:55:15\r\nMaster selected using:\r\n    <2016/09/20 11:45:53> FGT6HD3916800525 is selected as the master because it has the largest value of override priority.\r\nses_pickup: disable\r\noverride: disable\r\nConfiguration Status:\r\n    FGT6HD3916800525(updated 4 seconds ago): in-sync\r\n    FGT6HD3916801195(updated 4 seconds ago): out-of-sync\r\nSystem Usage stats:\r\n    FGT6HD3916800525(updated 4 seconds ago):\r\n        sessions=91, average-cpu-user/nice/system/idle=0%/0%/0%/100%, memory=25%\r\n    FGT6HD3916801195(updated 4 seconds ago):\r\n        sessions=4, average-cpu-user/nice/system/idle=0%/0%/0%/100%, memory=24%\r\nHBDEV stats:\r\n    FGT6HD3916800525(updated 4 seconds ago):\r\n        port3: physical/1000full, up, rx-bytes/packets/dropped/errors=7188802679/14764658/121/0, tx=14537036237/17393987/0/0\r\n        port4: physical/1000full, up, rx-bytes/packets/dropped/errors=6599589671/9550781/122/0, tx=6599535969/9550705/0/0\r\n    FGT6HD3916801195(updated 4 seconds ago):\r\n        port3: physical/1000full, up, rx-bytes/packets/dropped/errors=14537164810/17394279/118/0, tx=7188884284/14764852/0/0\r\n        port4: physical/1000full, up, rx-bytes/packets/dropped/errors=6599649293/9550869/118/0, tx=6599632709/9550845/0/0\r\nMaster: External-Primary, FGT6HD3916800525\r\nSlave : External-Backup , FGT6HD3916801195\r\nnumber of vcluster: 1\r\nvcluster 1: work 169.254.0.2\r\nMaster:0 FGT6HD3916800525\r\nSlave :1 FGT6HD3916801195",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ha_status\",\"keyVariables\":\"\",\"startLine\":\"HA Health Status: $ha_health_status\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Model: $model\",\"regex[$mode]:Mode: (.+)\",\"Group: $group\",\"Debug: $debug\",\"regex[$cluster_uptime]:Cluster Uptime: (.+)\",\"ses_pickup: $ses_pickup\",\"override: $override\",\"regex[$master]:Master: (.+)\",\"regex[$slave]:Slave : (.+)\",\"number of vcluster: $int:number_of_vcluster\",\"vcluster $vcluster_number: work $work\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ha_health_status:string\",\"$model:string\",\"$mode:string\",\"$group:string\",\"$debug:string\",\"$cluster_uptime:string\",\"$ses_pickup:string\",\"$override:string\",\"$master:string\",\"$slave:string\",\"$number_of_vcluster:int\",\"$vcluster_number:string\",\"$work:string\"]},\"xxid\":\"fa24ffc7-570c-b20a-c826-cba9a6131915\"}]},\"xxid\":\"541b33cd-3d8d-c5a4-9260-41b14eda283e\",\"hashColumns\":[\"$ha_health_status\",\"$model\",\"$mode\",\"$group\",\"$debug\",\"$ses_pickup\",\"$override\",\"$master\",\"$slave\",\"$number_of_vcluster\",\"$vcluster_number\",\"$work\"],\"hashSort\":false},{\"type\":\"1\",\"name\":\"config_status\",\"startLine\":\"Configuration Status:\",\"endLine\":\"System Usage stats:\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"cd4af37d-54be-8c15-605e-e25521918389\"},{\"type\":\"4\",\"name\":\"devices_status\",\"keyVariables\":\"\",\"startLine\":\"regex[$device,$config_sync_status]:\\\\s+(\\\\S+)\\\\(.+\\\\): (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$device:string\",\"$config_sync_status:string\"]},\"xxid\":\"434af9f9-1a54-0299-7047-dc54a71b3d4b\"}]},\"xxid\":\"10c80fc9-6abe-d464-1b34-f6bd5e52163a\",\"hashColumns\":[\"$device\",\"$config_sync_status\"],\"hashSort\":false}]},\"xxid\":\"4564b2cc-89e3-ca1f-b33f-721a281fec5e\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"3c05a9bb-1c9f-c202-55f7-8de385d89367\"}]}",
+            "tableKeys": [
+                "_original_result.ha_status.$ha_health_status",
+                "_original_result.config_status.devices_status.$device"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "config_status",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ha_health_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "model",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "group",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "debug",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "cluster_uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ses_pickup",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "override",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "master",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "slave",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "number_of_vcluster",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "vcluster_number",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "work",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$debug",
+                    "$group",
+                    "$ha_health_status",
+                    "$master",
+                    "$mode",
+                    "$model",
+                    "$number_of_vcluster",
+                    "$override",
+                    "$ses_pickup",
+                    "$slave",
+                    "$vcluster_number",
+                    "$work"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "ha_status",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "device",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "config_sync_status",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$config_sync_status",
+                    "$device"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "devices_status",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1cbd1e3f4429c7849ea9d13fd4abf72b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ha_status",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ha_health_status",
+                    "$model",
+                    "$mode",
+                    "$group",
+                    "$debug",
+                    "$ses_pickup",
+                    "$override",
+                    "$master",
+                    "$slave",
+                    "$number_of_vcluster",
+                    "$vcluster_number",
+                    "$work"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ha_status",
+            "intfKey": false,
+            "name": "ha_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ha_status.$ha_health_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$ha_health_status",
+            "intfKey": false,
+            "name": "$ha_health_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$model",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$model",
+            "intfKey": false,
+            "name": "$model",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$debug",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$debug",
+            "intfKey": false,
+            "name": "$debug",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$cluster_uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$cluster_uptime",
+            "intfKey": false,
+            "name": "$cluster_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$ses_pickup",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$ses_pickup",
+            "intfKey": false,
+            "name": "$ses_pickup",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$override",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$override",
+            "intfKey": false,
+            "name": "$override",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$master",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$master",
+            "intfKey": false,
+            "name": "$master",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$slave",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$slave",
+            "intfKey": false,
+            "name": "$slave",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$number_of_vcluster",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$number_of_vcluster",
+            "intfKey": false,
+            "name": "$number_of_vcluster",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$vcluster_number",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$vcluster_number",
+            "intfKey": false,
+            "name": "$vcluster_number",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ha_status.$work",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ha_status.$work",
+            "intfKey": false,
+            "name": "$work",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "config_status",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "config_status",
+            "intfKey": false,
+            "name": "config_status",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "devices_status",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$device",
+                    "$config_sync_status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "config_status.devices_status",
+            "intfKey": false,
+            "name": "devices_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "devices_status.$device",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "config_status.devices_status.$device",
+            "intfKey": false,
+            "name": "$device",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "devices_status.$config_sync_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "config_status.devices_status.$config_sync_status",
+            "intfKey": false,
+            "name": "$config_sync_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

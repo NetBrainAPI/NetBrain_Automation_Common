@@ -1,0 +1,176 @@
+{
+    "_id": "40d0a138-71f4-0322-2a98-75e8615886f3",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip isis spf",
+    "createTime": {
+        "$date": 1590696119448
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip isis spf",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip isis spf\n============================================================\nISIS Path Table\n============================================================\nNode                VlanId          Nexthop\n------------------------------------------------------------\n0000.0000.0001.00   6               0000.0000.0001\n------------------------------------------------------------\nSPF count: 1\n====================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"path_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$node, $vlanid, $nexthop]:([\\\\d.]+)\\\\s+(\\\\d+)\\\\s+([\\\\d.]+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$node:string\",\"$vlanid:string\",\"$nexthop:string\"]},\"xxid\":\"05a14a2a-4fed-b385-ce05-94e025f481b9\"}]},\"xxid\":\"3fcecca3-0b57-6e43-4f3d-467c6326930b\",\"hashColumns\":[\"$node\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:spf_count]:SPF\\\\s+count:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$spf_count:int\"]},\"xxid\":\"360b333e-b913-1a51-f35e-014d278b201c\"}]}",
+            "tableKeys": [
+                "_original_result.path_table.$node"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "spf_count",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "node",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlanid",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "nexthop",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$node"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "path_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "81a57a9d6917759a617bebdb1a39da5d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "path_table",
+            "dataType": "paragraph",
+            "desc": "The level info table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$node"
+                ],
+                "hashSort": false
+            },
+            "fullName": "path_table",
+            "intfKey": false,
+            "name": "path_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "path_table.$node",
+            "dataType": "string",
+            "desc": "The system ID of the routers.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "path_table.$node",
+            "intfKey": false,
+            "name": "$node",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "path_table.$vlanid",
+            "dataType": "string",
+            "desc": "The VLAN ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "path_table.$vlanid",
+            "intfKey": false,
+            "name": "$vlanid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "path_table.$nexthop",
+            "dataType": "string",
+            "desc": "The system ID of the Next Hop router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "path_table.$nexthop",
+            "intfKey": false,
+            "name": "$nexthop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$spf_count",
+            "dataType": "int",
+            "desc": "The number of total spf.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$spf_count",
+            "intfKey": false,
+            "name": "$spf_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

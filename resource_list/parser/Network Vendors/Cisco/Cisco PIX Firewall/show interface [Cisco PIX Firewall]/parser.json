@@ -1,0 +1,967 @@
+{
+    "_id": "c8a60d93-69e8-65f6-c60f-254baab7b0a6",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interface",
+    "createTime": {
+        "$date": 1591030883928
+    },
+    "description": "Device Type:\nCisco PIX Firewall\nCommand:\nshow interface",
+    "devTypes": [
+        2002
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BST-FW-PIX# show interface\ninterface ethernet0 \"inside\" is up, line protocol is up\n  Hardware is i82559 ethernet, address is 0090.279d.1533\n  IP address 172.24.101.42, subnet mask 255.255.255.0\n  MTU 1500 bytes, BW 100000 Kbit full duplex\n        950523 packets input, 72264588 bytes, 0 no buffer\n        Received 748577 broadcasts, 0 runts, 0 giants\n        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort\n        251797 packets output, 32562871 bytes, 0 underruns\n        0 output errors, 0 collisions, 0 interface resets\n        0 babbles, 0 late collisions, 0 deferred\n        7 lost carrier, 0 no carrier\n        input queue (curr/max blocks): hardware (128/128) software (0/76)\n        output queue (curr/max blocks): hardware (2/15) software (0/1)\ninterface ethernet1 \"outside\" is up, line protocol is up\n  Hardware is i82559 ethernet, address is 0090.279d.137e\n  IP address 192.168.3.19, subnet mask 255.255.255.0\n  MTU 1500 bytes, BW 10000 Kbit half duplex\n        449 packets input, 37038 bytes, 0 no buffer\n        Received 17 broadcasts, 0 runts, 0 giants\n        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort\n        499503 packets output, 38963412 bytes, 0 underruns\n        0 output errors, 0 collisions, 0 interface resets\n        0 babbles, 0 late collisions, 6 deferred\n        0 lost carrier, 0 no carrier\n        input queue (curr/max blocks): hardware (128/128) software (0/1)\n        output queue (curr/max blocks): hardware (0/2) software (0/1)\ninterface ethernet2 \"intf2\" is up, line protocol is down\n  Hardware is i82558 ethernet, address is 0090.2757.05e4\n  IP address 192.168.77.2, subnet mask 255.255.255.0\n  MTU 1500 bytes, BW 10000 Kbit half duplex\n        0 packets input, 0 bytes, 0 no buffer\n        Received 0 broadcasts, 0 runts, 0 giants\n        0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort\n        7 packets output, 420 bytes, 0 underruns\n        0 output errors, 0 collisions, 0 interface resets\n        0 babbles, 0 late collisions, 0 deferred\n        7 lost carrier, 0 no carrier\n        input queue (curr/max blocks): hardware (128/128) software (0/0)\n        output queue (curr/max blocks): hardware (0/1) software (0/1)",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_table.$physical_interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intf_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$physical_interface,$interface_nameif,$status]:Interface\\\\s+(\\\\S+)\\\\s+\\\"(\\\\S+)\\\"(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$hardware, $mac_address]:Hardware is (\\\\S+) ethernet, address is ([a-f\\\\d.]+)\",\"regex[$ip_address, $subet_mask]:IP address ([\\\\d.]+), subnet mask ([\\\\d.]+)\",\"regex[$mtu, $duplex]:MTU (\\\\d+) bytes, BW \\\\d+ Kbit (\\\\S+) duplex\",\"regex[$int:input_packets, $int:input_bytes, $int:input_bufferd]:(\\\\d+) packets input, (\\\\d+) bytes, (\\\\d+) no buffer\",\"regex[$int:received_broadcast, $int:received_runts, $int:received_giants]:Received (\\\\d+) broadcasts, (\\\\d+) runts, (\\\\d+) giants\",\"regex[$int:input_errors, $int:input_crc, $int:input_frame, $int:input_overrun, $int:input_ignore, $int:input_abort]:(\\\\d+) input errors, (\\\\d+) CRC, (\\\\d+) frame, (\\\\d+) overrun, (\\\\d+) ignored, (\\\\d+) abort\",\"regex[$int:output_packets, $int:output_bytes, $int:output_underruns]:(\\\\d+) packets output, (\\\\d+) bytes, (\\\\d+) underruns\",\"regex[$int:output_errors, $int:output_collisions, $int:interface_resets]:(\\\\d+) output errors, (\\\\d+) collisions, (\\\\d+) interface resets\",\"regex[$int:babbles, $int:late_collisions, $int:deferred]:(\\\\d+) babbles, (\\\\d+) late collisions, (\\\\d+) deferred\",\"regex[$int:lost_carrier, $int:no_carrier]:(\\\\d+) lost carrier, (\\\\d+) no carrier\",\"regex[$int:input_queue_hardware_current, $int:input_queue_hardware_max, $int:input_queue_software_current, $int:input_queue_software_max]:input queue \\\\(curr/max blocks\\\\): hardware \\\\((\\\\d+)\\\\/(\\\\d+)\\\\) software \\\\((\\\\d+)\\\\/(\\\\d+)\\\\)\",\"regex[$int:output_queue_hardware_current, $int:output_queue_hardware_max, $int:output_queue_software_current, $int:output_queue_software_max]:output queue \\\\(curr/max blocks\\\\): hardware \\\\((\\\\d+)\\\\/(\\\\d+)\\\\) software \\\\((\\\\d+)\\\\/(\\\\d+)\\\\)\",\"regex[$interface_admin_state, $interface_protocol_status]:interface \\\\S+ \\\"\\\\S+\\\" is (\\\\S+), line protocol is (\\\\S+)\",\"regex[$int:bandwidth,$bandwidth_unit]:BW\\\\s+(\\\\d+)\\\\s+([^,|^\\\\s]+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$physical_interface:string\",\"$interface_nameif:string\",\"$status:string\",\"$hardware:string\",\"$mac_address:string\",\"$ip_address:string\",\"$subet_mask:string\",\"$mtu:string\",\"$duplex:string\",\"$input_packets:int\",\"$input_bytes:int\",\"$input_bufferd:int\",\"$received_broadcast:int\",\"$received_runts:int\",\"$received_giants:int\",\"$input_errors:int\",\"$input_crc:int\",\"$input_frame:int\",\"$input_overrun:int\",\"$input_ignore:int\",\"$input_abort:int\",\"$output_packets:int\",\"$output_bytes:int\",\"$output_underruns:int\",\"$output_errors:int\",\"$output_collisions:int\",\"$interface_resets:int\",\"$babbles:int\",\"$late_collisions:int\",\"$deferred:int\",\"$lost_carrier:int\",\"$no_carrier:int\",\"$input_queue_hardware_current:int\",\"$input_queue_hardware_max:int\",\"$input_queue_software_current:int\",\"$input_queue_software_max:int\",\"$output_queue_hardware_current:int\",\"$output_queue_hardware_max:int\",\"$output_queue_software_current:int\",\"$output_queue_software_max:int\",\"$interface_admin_state:string\",\"$interface_protocol_status:string\",\"$bandwidth:int\",\"$bandwidth_unit:string\"]},\"xxid\":\"b0d795bf-26a4-d86f-2a42-213ae09dfb16\"}]},\"xxid\":\"c1cd5c5b-e0e0-f402-cfe6-4cc7d941fa8f\",\"interfaceKey\":\"$physical_interface\",\"hashColumns\":[\"$intf\",\"$physical_interface\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 44,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 45,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "physical_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface_nameif",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "hardware",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "mac_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "subet_mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "duplex",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "input_packets",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "input_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "input_bufferd",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "received_broadcast",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "received_runts",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "received_giants",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "input_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "input_crc",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "input_frame",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "input_overrun",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "input_ignore",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "input_abort",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "output_packets",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "output_bytes",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "output_underruns",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "output_errors",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "output_collisions",
+                        "type": 1
+                    },
+                    {
+                        "index": 26,
+                        "name": "interface_resets",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "babbles",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "late_collisions",
+                        "type": 1
+                    },
+                    {
+                        "index": 29,
+                        "name": "deferred",
+                        "type": 1
+                    },
+                    {
+                        "index": 30,
+                        "name": "lost_carrier",
+                        "type": 1
+                    },
+                    {
+                        "index": 31,
+                        "name": "no_carrier",
+                        "type": 1
+                    },
+                    {
+                        "index": 32,
+                        "name": "input_queue_hardware_current",
+                        "type": 1
+                    },
+                    {
+                        "index": 33,
+                        "name": "input_queue_hardware_max",
+                        "type": 1
+                    },
+                    {
+                        "index": 34,
+                        "name": "input_queue_software_current",
+                        "type": 1
+                    },
+                    {
+                        "index": 35,
+                        "name": "input_queue_software_max",
+                        "type": 1
+                    },
+                    {
+                        "index": 36,
+                        "name": "output_queue_hardware_current",
+                        "type": 1
+                    },
+                    {
+                        "index": 37,
+                        "name": "output_queue_hardware_max",
+                        "type": 1
+                    },
+                    {
+                        "index": 38,
+                        "name": "output_queue_software_current",
+                        "type": 1
+                    },
+                    {
+                        "index": 39,
+                        "name": "output_queue_software_max",
+                        "type": 1
+                    },
+                    {
+                        "index": 40,
+                        "name": "interface_admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 41,
+                        "name": "interface_protocol_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 42,
+                        "name": "bandwidth",
+                        "type": 1
+                    },
+                    {
+                        "index": 43,
+                        "name": "bandwidth_unit",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$physical_interface"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "346d46569cf2303ea583db3469803088",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intf_table",
+            "dataType": "paragraph",
+            "desc": "Interface information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$physical_interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intf_table",
+            "intfKey": false,
+            "name": "intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intf_table.$physical_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$physical_interface",
+            "intfKey": false,
+            "name": "$physical_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intf_table.$interface_nameif",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$interface_nameif",
+            "intfKey": false,
+            "name": "$interface_nameif",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$hardware",
+            "dataType": "string",
+            "desc": "Hardware name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$hardware",
+            "intfKey": false,
+            "name": "$hardware",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$mac_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$mac_address",
+            "intfKey": false,
+            "name": "$mac_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$subet_mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$subet_mask",
+            "intfKey": false,
+            "name": "$subet_mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$mtu",
+            "dataType": "string",
+            "desc": "MTU of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$duplex",
+            "dataType": "string",
+            "desc": "The duplex mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$duplex",
+            "intfKey": false,
+            "name": "$duplex",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_packets",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_packets",
+            "intfKey": false,
+            "name": "$input_packets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_bytes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_bytes",
+            "intfKey": false,
+            "name": "$input_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_bufferd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_bufferd",
+            "intfKey": false,
+            "name": "$input_bufferd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$received_broadcast",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$received_broadcast",
+            "intfKey": false,
+            "name": "$received_broadcast",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$received_runts",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$received_runts",
+            "intfKey": false,
+            "name": "$received_runts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$received_giants",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$received_giants",
+            "intfKey": false,
+            "name": "$received_giants",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_errors",
+            "intfKey": false,
+            "name": "$input_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_crc",
+            "dataType": "int",
+            "desc": "Number of CRC input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_crc",
+            "intfKey": false,
+            "name": "$input_crc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_frame",
+            "dataType": "int",
+            "desc": "Number of frame input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_frame",
+            "intfKey": false,
+            "name": "$input_frame",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_overrun",
+            "dataType": "int",
+            "desc": "Number of overrun input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_overrun",
+            "intfKey": false,
+            "name": "$input_overrun",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_ignore",
+            "dataType": "int",
+            "desc": "Number of ignore input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_ignore",
+            "intfKey": false,
+            "name": "$input_ignore",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_abort",
+            "dataType": "int",
+            "desc": "Number of abort input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_abort",
+            "intfKey": false,
+            "name": "$input_abort",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_packets",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_packets",
+            "intfKey": false,
+            "name": "$output_packets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_bytes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_bytes",
+            "intfKey": false,
+            "name": "$output_bytes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_underruns",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_underruns",
+            "intfKey": false,
+            "name": "$output_underruns",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_errors",
+            "intfKey": false,
+            "name": "$output_errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_collisions",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_collisions",
+            "intfKey": false,
+            "name": "$output_collisions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$interface_resets",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$interface_resets",
+            "intfKey": false,
+            "name": "$interface_resets",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$babbles",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$babbles",
+            "intfKey": false,
+            "name": "$babbles",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$late_collisions",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$late_collisions",
+            "intfKey": false,
+            "name": "$late_collisions",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$deferred",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$deferred",
+            "intfKey": false,
+            "name": "$deferred",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$lost_carrier",
+            "dataType": "int",
+            "desc": "Number of lost carrier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$lost_carrier",
+            "intfKey": false,
+            "name": "$lost_carrier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$no_carrier",
+            "dataType": "int",
+            "desc": "Number of no carrier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$no_carrier",
+            "intfKey": false,
+            "name": "$no_carrier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_queue_hardware_current",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_queue_hardware_current",
+            "intfKey": false,
+            "name": "$input_queue_hardware_current",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_queue_hardware_max",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_queue_hardware_max",
+            "intfKey": false,
+            "name": "$input_queue_hardware_max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_queue_software_current",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_queue_software_current",
+            "intfKey": false,
+            "name": "$input_queue_software_current",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$input_queue_software_max",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$input_queue_software_max",
+            "intfKey": false,
+            "name": "$input_queue_software_max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_queue_hardware_current",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_queue_hardware_current",
+            "intfKey": false,
+            "name": "$output_queue_hardware_current",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_queue_hardware_max",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_queue_hardware_max",
+            "intfKey": false,
+            "name": "$output_queue_hardware_max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_queue_software_current",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_queue_software_current",
+            "intfKey": false,
+            "name": "$output_queue_software_current",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$output_queue_software_max",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$output_queue_software_max",
+            "intfKey": false,
+            "name": "$output_queue_software_max",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$interface_admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$interface_admin_state",
+            "intfKey": false,
+            "name": "$interface_admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$interface_protocol_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$interface_protocol_status",
+            "intfKey": false,
+            "name": "$interface_protocol_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$bandwidth",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$bandwidth",
+            "intfKey": false,
+            "name": "$bandwidth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$bandwidth_unit",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$bandwidth_unit",
+            "intfKey": false,
+            "name": "$bandwidth_unit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

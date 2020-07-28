@@ -1,0 +1,301 @@
+{
+    "_id": "65a3f198-da88-ebb2-6055-2dea497b7edd",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "dir",
+    "createTime": {
+        "$date": 1590768065888
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndir",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<SW2>dir\r\nDirectory of flash:\r\n   0 drw-           - Jun 07 2017 04:59:06   diagfile\r\n   1 -rw-        1554 Jun 07 2017 05:27:52   ifindex.dat\r\n   2 -rw-       21632 Jun 07 2017 04:59:06   licbackup\r\n   3 drw-           - Jun 07 2017 04:59:06   license\r\n   4 -rw-       21632 Jun 07 2017 04:59:06   licnormal\r\n   5 drw-           - Jun 07 2017 04:59:06   logfile\r\n   6 -rw-           0 Jun 07 2017 04:59:06   s5820v2_5830v2-cmw710-boot-a5901.bin\r\n   7 -rw-           0 Jun 07 2017 04:59:06   s5820v2_5830v2-cmw710-system-a5901.bin\r\n   8 drw-           - Jun 07 2017 04:59:06   seclog\r\n   9 -rw-        6091 Jun 07 2017 05:27:52   startup.cfg\r\n  10 -rw-      101632 Jun 07 2017 05:27:52   startup.mdb\r\n\r\n1046512 KB total (1046320 KB free)\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"disk\",\"keyVariables\":\"\",\"startLine\":\"regex[$disk]:Directory of (\\\\S+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$disk:string\"]},\"xxid\":\"9c358924-4413-b098-073a-ec46c3aa3fdf\"},{\"type\":\"4\",\"name\":\"dir_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$id,$status,$size,$time,$file_name]:^\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\d+|-)\\\\s+(.*)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$id:string\",\"$status:string\",\"$size:string\",\"$time:string\",\"$file_name:string\"]},\"xxid\":\"e9f59303-50d8-bd4c-e78b-f800700ab61a\"}]},\"xxid\":\"99d639ef-d4ca-2573-11a8-eabef496c114\"}]},\"xxid\":\"8e4327f0-fa38-fc0d-6ddb-f23eb8bb9885\",\"hashColumns\":[\"$disk\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"$int:total KB total ($int:free KB free)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\",\"$free:int\"]},\"xxid\":\"42737f70-c625-67f3-9874-dcdcf713fe4a\"}]}",
+            "tableKeys": [
+                "_original_result.disk.$disk"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "free",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "disk",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$disk"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "disk",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "size",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "file_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "disk",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 3,
+                "name": "dir_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "81c3fef20d7b094bb03aee98eec71ac1",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "disk",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$disk"
+                ],
+                "hashSort": false
+            },
+            "fullName": "disk",
+            "intfKey": false,
+            "name": "disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "disk.$disk",
+            "dataType": "string",
+            "desc": "Name of directory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.$disk",
+            "intfKey": false,
+            "name": "$disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table",
+            "dataType": "paragraph",
+            "desc": "Dir Table",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table",
+            "intfKey": false,
+            "name": "dir_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "dir_table.$id",
+            "dataType": "string",
+            "desc": "Number of files??? ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$id",
+            "intfKey": false,
+            "name": "$id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$status",
+            "dataType": "string",
+            "desc": "The status of memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$size",
+            "dataType": "string",
+            "desc": "Number of files size.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$size",
+            "intfKey": false,
+            "name": "$size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$time",
+            "dataType": "string",
+            "desc": "Time of last modify.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$file_name",
+            "dataType": "string",
+            "desc": "File???s name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$file_name",
+            "intfKey": false,
+            "name": "$file_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "dir_table.$disk",
+            "dataType": "string",
+            "desc": "Name of directory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "disk.dir_table.$disk",
+            "intfKey": false,
+            "name": "$disk",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Number of total memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$free",
+            "dataType": "int",
+            "desc": "Number of free memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$free",
+            "intfKey": false,
+            "name": "$free",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

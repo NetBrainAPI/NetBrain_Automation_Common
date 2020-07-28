@@ -1,0 +1,719 @@
+{
+    "_id": "089acb3e-5378-9da1-294e-35b973816421",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display ospf peer verbose",
+    "createTime": {
+        "$date": 1590773672020
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay ospf peer verbose",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<h3c-2>display ospf peer verbose\r\n\r\n         OSPF Process 1 with Router ID 2.2.2.2\r\n                 Neighbors\r\n\r\n Area 0.0.0.0 interface 12.1.1.2(GigabitEthernet1/0/5)'s neighbors\r\n Router ID: 1.1.1.1          Address: 12.1.1.1         GR State: Normal\r\n   State: Full  Mode: Nbr is slave  Priority: 1\r\n   DR: 12.1.1.1  BDR: 12.1.1.2  MTU: 0\r\n   Options is 0x42 (-|O|-|-|-|-|E|-)\r\n   Dead timer due in 34  sec\r\n   Neighbor is up for 02:15:31\r\n   Authentication Sequence: [ 0 ]\r\n   Neighbor state change count: 6\r\n   BFD status: Disabled\r\n\r\n Area 0.0.0.1 interface 23.1.1.2(GigabitEthernet1/0/6)'s neighbors\r\n Router ID: 3.3.3.3          Address: 23.1.1.3         GR State: Normal\r\n   State: Full  Mode: Nbr is master  Priority: 1\r\n   DR: 23.1.1.2  BDR: 23.1.1.3  MTU: 0\r\n   Options is 0x42 (-|O|-|-|-|-|E|-)\r\n   Dead timer due in 39  sec\r\n   Neighbor is up for 02:05:51\r\n   Authentication Sequence: [ 0 ]\r\n   Neighbor state change count: 5\r\n   BFD status: Disabled\r\n\r\n Last Neighbor Down Event:\r\n Router ID: 3.3.3.3\r\n Local Address: 23.1.1.2\r\n Remote Address: 23.1.1.3\r\n Time: Jun  7 03:24:03 2017\r\n Reason: Undo network\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_process_paragraph\",\"keyVariables\":\"\",\"startLine\":\"OSPF Process $process with Router ID $rid_local\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process:string\",\"$rid_local:string\"]},\"xxid\":\"bffdd6d1-a3a5-fbf9-1e93-66b67cd3e506\"},{\"type\":\"4\",\"name\":\"area_id_paragraph\",\"keyVariables\":\"\",\"startLine\":\"regex[$area_id]:Area\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ip_addr]:interface\\\\s+(\\\\S+)(?=\\\\()\",\"regex[$intf]:interface\\\\s+\\\\S+\\\\((\\\\S+)\\\\)\",\"regex[$rid_remote]:Router ID:\\\\s+(\\\\S+)\",\"regex[$ip_addr_remote]:Address:\\\\s+(\\\\S+)\",\"regex[$gr_state]:GR State:\\\\s+(\\\\S+)\",\"regex[$state]:State:\\\\s+(\\\\S+)\",\"regex[$mode]: Mode:\\\\s+(\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+)\",\"regex[$priority]:Priority:\\\\s+(\\\\S+)\",\"regex[$dr]:DR:\\\\s+(\\\\S+)\",\"regex[$bdr]:BDR:\\\\s+(\\\\S+)\",\"regex[$mtu]:MTU:\\\\s+(\\\\S+)\",\"regex[$options]:Options is\\\\s+(.+)\",\"regex[$dead_timer]:Dead timer due in\\\\s+(\\\\S+)\",\"regex[$nbr_uptime]:Neighbor is up for\\\\s+(\\\\S+)\",\"regex[$authentication_sequence]:Authentication Sequence:\\\\s+\\\\[ (\\\\d+) ]\",\"regex[$nbr_state_change_count]:Neighbor state change count:\\\\s+(\\\\S+)\",\"regex[$bfd_status]:BFD status:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$ip_addr:string\",\"$intf:string\",\"$rid_remote:string\",\"$ip_addr_remote:string\",\"$gr_state:string\",\"$state:string\",\"$mode:string\",\"$priority:string\",\"$dr:string\",\"$bdr:string\",\"$mtu:string\",\"$options:string\",\"$dead_timer:string\",\"$nbr_uptime:string\",\"$authentication_sequence:string\",\"$nbr_state_change_count:string\",\"$bfd_status:string\"]},\"xxid\":\"5bc11057-8679-0d1a-194c-62e66ee2d3f5\"}]},\"xxid\":\"a54fdca5-380c-2dde-01b3-94922e51f5e9\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$ip_addr\",\"$area_id\",\"$rid_remote\",\"$state\",\"$dr\",\"$priority\",\"$mode\"]},{\"type\":\"1\",\"name\":\"last_neighbor_down_filter\",\"startLine\":\"Last Neighbor Down Event:\",\"endLine\":\"^$\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"bedffd9d-7661-59a8-490c-356b74789dbf\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Router ID: $last_nbr_down_rid\",\"Local Address: $local_address\",\"Remote Address: $remote_address\",\"regex[$time]:Time:\\\\s+(.+)\",\"regex[$reason]:Reason:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$last_nbr_down_rid:string\",\"$local_address:string\",\"$remote_address:string\",\"$time:string\",\"$reason:string\"]},\"xxid\":\"f54fc0ec-f24c-94ef-74f3-d7bbe70254b0\"}]},\"xxid\":\"c9c73451-aae1-01bb-7ea5-ad103892eefe\"}]},\"xxid\":\"9875cf81-faa3-a7ab-893a-d59c29cb9f01\",\"hashColumns\":[\"$process\"]}]}",
+            "tableKeys": [
+                "_original_result.ospf_process_paragraph.$process",
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$ip_addr",
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$area_id",
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$rid_remote",
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$state",
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$dr",
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$priority",
+                "_original_result.ospf_process_paragraph.area_id_paragraph.$mode"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "rid_local",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "last_neighbor_down_filter",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "last_nbr_down_rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "local_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "remote_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "time",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "reason",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "ospf_process_paragraph",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 20,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "rid_remote",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "ip_addr_remote",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "gr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "options",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "dead_timer",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "nbr_uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "authentication_sequence",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "nbr_state_change_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "bfd_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 19,
+                        "name": "rid_local",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$dr",
+                    "$intf",
+                    "$ip_addr",
+                    "$mode",
+                    "$priority",
+                    "$rid_remote",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "area_id_paragraph",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1faecdf9c9fbcd7f004ce7adae78ce95",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_process_paragraph",
+            "dataType": "paragraph",
+            "desc": "OSPF process table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph",
+            "intfKey": false,
+            "name": "ospf_process_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_process_paragraph.$process",
+            "dataType": "string",
+            "desc": "Process id",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_paragraph.$rid_local",
+            "dataType": "string",
+            "desc": "Router ID number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.$rid_local",
+            "intfKey": false,
+            "name": "$rid_local",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph",
+            "dataType": "paragraph",
+            "desc": "Area id table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$ip_addr",
+                    "$area_id",
+                    "$rid_remote",
+                    "$state",
+                    "$dr",
+                    "$priority",
+                    "$mode"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph",
+            "intfKey": false,
+            "name": "area_id_paragraph",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "area_id_paragraph.$area_id",
+            "dataType": "string",
+            "desc": "Disabled",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$ip_addr",
+            "dataType": "string",
+            "desc": "Interface ip address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$intf",
+            "dataType": "string",
+            "desc": "Interface name",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "area_id_paragraph.$rid_remote",
+            "dataType": "string",
+            "desc": "Neighbor router ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$rid_remote",
+            "intfKey": false,
+            "name": "$rid_remote",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$ip_addr_remote",
+            "dataType": "string",
+            "desc": "Neighbor router address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$ip_addr_remote",
+            "intfKey": false,
+            "name": "$ip_addr_remote",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$gr_state",
+            "dataType": "string",
+            "desc": "GR state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$gr_state",
+            "intfKey": false,
+            "name": "$gr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$state",
+            "dataType": "string",
+            "desc": "Neighbor state",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$mode",
+            "dataType": "string",
+            "desc": "Neighbor mode for LSDB synchronization",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$priority",
+            "dataType": "string",
+            "desc": "Neighboring router priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$dr",
+            "dataType": "string",
+            "desc": "The DR on the interface???s network segment",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$bdr",
+            "dataType": "string",
+            "desc": "The BDR on the interface???s network segment",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$bdr",
+            "intfKey": false,
+            "name": "$bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$mtu",
+            "dataType": "string",
+            "desc": "Interface MTU",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$options",
+            "dataType": "string",
+            "desc": "Options",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$options",
+            "intfKey": false,
+            "name": "$options",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$dead_timer",
+            "dataType": "string",
+            "desc": "Dead timer times out in 34 seconds",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$dead_timer",
+            "intfKey": false,
+            "name": "$dead_timer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$nbr_uptime",
+            "dataType": "string",
+            "desc": "The neighbor has been up for 2:15:31",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$nbr_uptime",
+            "intfKey": false,
+            "name": "$nbr_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$authentication_sequence",
+            "dataType": "string",
+            "desc": "Authentication sequence number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$authentication_sequence",
+            "intfKey": false,
+            "name": "$authentication_sequence",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$nbr_state_change_count",
+            "dataType": "string",
+            "desc": "Count of neighbor state changes",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$nbr_state_change_count",
+            "intfKey": false,
+            "name": "$nbr_state_change_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$bfd_status",
+            "dataType": "string",
+            "desc": "BFD status",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$bfd_status",
+            "intfKey": false,
+            "name": "$bfd_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$process",
+            "dataType": "string",
+            "desc": "The router id of the neighbor down",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_id_paragraph.$rid_local",
+            "dataType": "string",
+            "desc": "Router ID number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.area_id_paragraph.$rid_local",
+            "intfKey": false,
+            "name": "$rid_local",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process_paragraph.last_neighbor_down_filter",
+            "dataType": "filter",
+            "desc": "Last neighbor down filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.last_neighbor_down_filter",
+            "intfKey": false,
+            "name": "last_neighbor_down_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$last_nbr_down_rid",
+            "dataType": "string",
+            "desc": "The router id of the neighbor down",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.last_neighbor_down_filter.$last_nbr_down_rid",
+            "intfKey": false,
+            "name": "$last_nbr_down_rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_address",
+            "dataType": "string",
+            "desc": "The local interface address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.last_neighbor_down_filter.$local_address",
+            "intfKey": false,
+            "name": "$local_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$remote_address",
+            "dataType": "string",
+            "desc": "Neighbor interface address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.last_neighbor_down_filter.$remote_address",
+            "intfKey": false,
+            "name": "$remote_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$time",
+            "dataType": "string",
+            "desc": "The time neighbor down",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.last_neighbor_down_filter.$time",
+            "intfKey": false,
+            "name": "$time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$reason",
+            "dataType": "string",
+            "desc": "The reason neighbor down",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process_paragraph.last_neighbor_down_filter.$reason",
+            "intfKey": false,
+            "name": "$reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

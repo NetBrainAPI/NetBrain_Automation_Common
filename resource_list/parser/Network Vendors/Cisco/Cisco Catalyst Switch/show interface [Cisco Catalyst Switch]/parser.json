@@ -1,0 +1,272 @@
+{
+    "_id": "1135e8d3-f77c-5683-788b-08cc11b680e2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interface",
+    "createTime": {
+        "$date": 1591100721931
+    },
+    "description": "Device Type:\nCisco Catalyst Switch\nCommand:\nshow interface",
+    "devTypes": [
+        2060
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BJ-Cat-5000> show interface\r\nsl0: flags=51<UP,POINTOPOINT,RUNNING>\r\n        slip 192.168.254.100 dest 192.168.255.255\r\nsc0: flags=63<UP,BROADCAST,RUNNING>\r\n        vlan 10 inet 172.24.101.52 netmask 255.255.255.0 broadcast 172.24.101.255\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intfs_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intfs_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf]:^(\\\\S+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$state, $type]:<(\\\\S+),(\\\\S+),.+\",\"regex[$slip_addr, $dest_addr]:slip (\\\\S+) dest (\\\\S+)\",\"regex[$int:vlan, $ipaddr, $subnet, $broadcast]:vlan (\\\\d+) inet (\\\\S+) netmask (\\\\S+) broadcast (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$state:string\",\"$type:string\",\"$slip_addr:string\",\"$dest_addr:string\",\"$vlan:int\",\"$ipaddr:string\",\"$subnet:string\",\"$broadcast:string\"]},\"xxid\":\"973e0936-d426-8ffb-c949-6cdb2d669012\"}]},\"xxid\":\"1fb93063-6283-89ab-f9fd-1520608622ff\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$state\",\"$type\"]}]}",
+            "tableKeys": [
+                "_original_result.intfs_table.$state",
+                "_original_result.intfs_table.$type"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "slip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "dest_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "vlan",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "ipaddr",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "subnet",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "broadcast",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$state",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "intfs_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5b60c9780d13a64d7e52cbbdda3bfbc3",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intfs_table",
+            "dataType": "paragraph",
+            "desc": "Interface information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$state",
+                    "$type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intfs_table",
+            "intfKey": false,
+            "name": "intfs_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intfs_table.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intfs_table.$state",
+            "dataType": "string",
+            "desc": "Interface's state, up or down",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_table.$type",
+            "dataType": "string",
+            "desc": "The type of interface, pointtopoint or broadcast",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_table.$slip_addr",
+            "dataType": "string",
+            "desc": "The slip address of Interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$slip_addr",
+            "intfKey": false,
+            "name": "$slip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_table.$dest_addr",
+            "dataType": "string",
+            "desc": "The dest address of interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$dest_addr",
+            "intfKey": false,
+            "name": "$dest_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_table.$vlan",
+            "dataType": "int",
+            "desc": "The vlan id of interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_table.$ipaddr",
+            "dataType": "string",
+            "desc": "IP address of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$ipaddr",
+            "intfKey": false,
+            "name": "$ipaddr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_table.$subnet",
+            "dataType": "string",
+            "desc": "Subnet of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$subnet",
+            "intfKey": false,
+            "name": "$subnet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs_table.$broadcast",
+            "dataType": "string",
+            "desc": "Broadcast of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs_table.$broadcast",
+            "intfKey": false,
+            "name": "$broadcast",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

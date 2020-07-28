@@ -1,0 +1,249 @@
+{
+    "_id": "2878024e-f248-2503-473a-c20b605d7f86",
+    "author": "NetBrain",
+    "bizType": "d198c0de-1232-499e-8cc2-91f316cefbe3",
+    "command": "",
+    "createTime": {
+        "$date": 1560793361822
+    },
+    "description": "",
+    "devTypes": [
+        13004
+    ],
+    "params": [
+        {
+            "name": "$intf_name"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n    {\"name\": \"$intf_name\"}\r\n ]\r\n End Declare\r\n '''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    intf_name = params['intf_name']\r\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'ESXI', 'paramType': 'Legacy', 'params':['nbPathValue']})\r\n    nbpathvalue = get_dn['params']['nbPathValue']\r\n    moid = nbpathvalue.split('/')[-1]\r\n    rtn_params = { 'name':device_name, 'moid' : moid, 'vmi_type': \"VmwareDistributedVirtualSwitch\", 'intf_name':intf_name }\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    return get_vds_interface_static(rtn_params)\r\n",
+    "samples": [
+        {
+            "content": "{\n    \"0\": {\n        \"intf\": \"0\",\n        \"intf_status\": \"Up\",\n        \"bytesInBroadcast\": 40408320,\n        \"bytesInMulticast\": 3674,\n        \"bytesInUnicast\": 3674,\n        \"packetsInDropped\": 3674,\n        \"packetsInException\": 3674,\n        \"bytesOutBroadcast\": 3674,\n        \"bytesOutMulticast\": 3674,\n        \"bytesOutUnicast\": 3674,\n        \"packetsOutDropped\": 3674,\n        \"packetsOutException\": 3674\n    },\n    \"error log\": \"cannot connect to controller \\r\\n\"\n}",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n    {\\\"name\\\": \\\"intf_table\\\", \\\"type\\\": \\\"table\\\",\\\"columns\\\": [\\n        {\\\"name\\\": \\\"intf\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"intf_status\\\", \\\"type\\\": \\\"string\\\"},\\n        {\\\"name\\\": \\\"traffic_in_byte\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"traffic_out_byte\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"link_error_in\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"link_error_out\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"bandwidth\\\", \\\"type\\\": \\\"int\\\"},\\n        {\\\"name\\\": \\\"sys_uptime\\\", \\\"type\\\": \\\"int\\\"}\\n    ]}\\n]\\nEnd Declare\\n\\n'''\\nimport json\\nimport time\\ndef ParseText(_original_result):\\n    resp = json.loads(_original_result)\\n    intfs = {\\n        \\\"intf\\\": [],\\n        \\\"intf_status\\\": [],\\n        \\\"traffic_in_byte\\\": [],\\n        \\\"link_error_in\\\": [],\\n        \\\"traffic_out_byte\\\": [],\\n        \\\"link_error_out\\\": [],\\n        \\\"bandwidth\\\":[],\\n        \\\"sys_uptime\\\":[]\\n        }\\n    for key, value in resp.items():\\n        if key == 'error log':\\n            continue\\n        for k, v in intfs.items():\\n            if k in value:\\n                intfs[k].append(value[k])\\n            elif k == \\\"traffic_in_byte\\\":\\n                intfs[k].append(value[\\\"bytesInBroadcast\\\"] + value[\\\"bytesInMulticast\\\"] + value[\\\"bytesInUnicast\\\"])\\n            elif k == \\\"traffic_out_byte\\\":\\n                intfs[k].append(value[\\\"bytesOutBroadcast\\\"] + value[\\\"bytesOutMulticast\\\"] + value[\\\"bytesOutUnicast\\\"])\\n            elif k == \\\"link_error_in\\\":\\n                intfs[k].append(value[\\\"packetsInDropped\\\"] + value[\\\"packetsInException\\\"])\\n            elif k == \\\"link_error_out\\\":\\n                intfs[k].append(value[\\\"packetsOutDropped\\\"] + value[\\\"packetsOutException\\\"])\\n            intfs['bandwidth'] = 1000000000\\n            current_time = int(time.time())\\n            intfs[\\\"sys_uptime\\\"] = current_time\\n    rtn = {}\\n    rtn['intf_table']= intfs\\n    return rtn\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$intf_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$intf\",\"type\":\"string\"},{\"name\":\"$intf_status\",\"type\":\"string\"},{\"name\":\"$traffic_in_byte\",\"type\":\"int\"},{\"name\":\"$traffic_out_byte\",\"type\":\"int\"},{\"name\":\"$link_error_in\",\"type\":\"int\"},{\"name\":\"$link_error_out\",\"type\":\"int\"},{\"name\":\"$bandwidth\",\"type\":\"int\"},{\"name\":\"$sys_uptime\",\"type\":\"int\"}]}}]},\"name\":\"\",\"xxid\":\"de38efb6-6fc9-e7e7-2f08-e898f73017f2\",\"interfaceKey\":{\"intf_table\":\"$intf\"},\"hashColumns\":{\"intf_table\":[\"$intf\"]}}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "bandwidth",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "link_error_in",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "link_error_out",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "sys_uptime",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "traffic_in_byte",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "traffic_out_byte",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "454fee2d6926e9a0cf5470e0f4e5bc68",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$intf_table.$bandwidth",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$bandwidth",
+            "intfKey": false,
+            "name": "$bandwidth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$intf_table.$intf_status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$intf_status",
+            "intfKey": false,
+            "name": "$intf_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$intf_table",
+            "intfKey": false,
+            "name": "$intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$intf_table.$link_error_in",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$link_error_in",
+            "intfKey": false,
+            "name": "$link_error_in",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$link_error_out",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$link_error_out",
+            "intfKey": false,
+            "name": "$link_error_out",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$sys_uptime",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$sys_uptime",
+            "intfKey": false,
+            "name": "$sys_uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$traffic_in_byte",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$traffic_in_byte",
+            "intfKey": false,
+            "name": "$traffic_in_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$intf_table.$traffic_out_byte",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$intf_table.$traffic_out_byte",
+            "intfKey": false,
+            "name": "$traffic_out_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

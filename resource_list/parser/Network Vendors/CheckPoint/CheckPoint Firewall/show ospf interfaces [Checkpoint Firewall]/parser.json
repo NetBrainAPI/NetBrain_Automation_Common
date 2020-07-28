@@ -1,0 +1,315 @@
+{
+    "_id": "8ad244a1-16cf-1459-574b-2c75b0a781ae",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf interfaces",
+    "createTime": {
+        "$date": 1579138597712
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow ospf interfaces",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "\nCP_HA1> show ospf interfaces\n\nName                            IP Address         Area ID       State         NC    DR Address       BDR Address      Errors  \neth1                            10.8.11.33         0.0.0.52      DR            1     10.8.11.33       10.8.11.42       0  \neth3                            10.8.11.49         0.0.0.52      BDR           1     10.8.11.52       10.8.11.49       0  \n\nCP_HA1> ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.OSPF_Interface.OSPF_Interface_Table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"e2dbd3d7-8782-c36a-b0bc-11d22d536c75\"},{\"type\":\"1\",\"name\":\"OSPF_Interface\",\"startLine\":\"Name\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"383c44b0-7fe5-ae15-9224-c3bc176b2373\"},{\"type\":\"4\",\"name\":\"OSPF_Interface_Table\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$ip_addr,$area_id,$state,$int:nc,$dr,$bdr,$int:errors]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$ip_addr:string\",\"$area_id:string\",\"$state:string\",\"$nc:int\",\"$dr:string\",\"$bdr:string\",\"$errors:int\"]},\"xxid\":\"f21ad199-ccc9-4898-6e0d-0898f52faa26\"}]},\"xxid\":\"71de558c-741b-265d-d005-b9da90925d62\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$ip_addr\",\"$area_id\",\"$state\",\"$nc\",\"$dr\",\"$bdr\",\"$errors\"],\"hashSort\":false}]},\"xxid\":\"85c54f85-71fe-d4b3-1f39-d0ee0848e3e9\"}]}",
+            "tableKeys": [
+                "_original_result.OSPF_Interface.OSPF_Interface_Table.$ip_addr",
+                "_original_result.OSPF_Interface.OSPF_Interface_Table.$area_id",
+                "_original_result.OSPF_Interface.OSPF_Interface_Table.$state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "OSPF_Interface",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 8,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "nc",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "dr",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "bdr",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "errors",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$bdr",
+                    "$dr",
+                    "$errors",
+                    "$intf",
+                    "$ip_addr",
+                    "$nc",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "OSPF_Interface_Table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "dc16857e7bc4483c0f519d24fe98be88",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface",
+            "intfKey": false,
+            "name": "OSPF_Interface",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface_Table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$ip_addr",
+                    "$area_id",
+                    "$state",
+                    "$nc",
+                    "$dr",
+                    "$bdr",
+                    "$errors"
+                ],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table",
+            "intfKey": false,
+            "name": "OSPF_Interface_Table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "OSPF_Interface_Table.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "OSPF_Interface_Table.$ip_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface_Table.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface_Table.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface_Table.$nc",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$nc",
+            "intfKey": false,
+            "name": "$nc",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface_Table.$dr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$dr",
+            "intfKey": false,
+            "name": "$dr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface_Table.$bdr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$bdr",
+            "intfKey": false,
+            "name": "$bdr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "OSPF_Interface_Table.$errors",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "OSPF_Interface.OSPF_Interface_Table.$errors",
+            "intfKey": false,
+            "name": "$errors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

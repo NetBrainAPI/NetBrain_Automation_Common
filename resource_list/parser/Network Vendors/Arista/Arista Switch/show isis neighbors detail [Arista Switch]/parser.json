@@ -1,0 +1,393 @@
+{
+    "_id": "e67d5c79-c4c9-358e-d074-b7bbffc76a6f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis neighbors detail",
+    "createTime": {
+        "$date": 1581007285852
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow isis neighbors detail",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "switch(config)#show isis neighbors detail\r\n \r\nInst Id   System Id            Type Interface       SNPA              State Hold time\r\n10        2222.2222.2222       L2   Vlan20          2:1:0:c:0:0       UP    26\r\n  Area Address(es): 49.0001\r\n  SNPA: 2:1:0:c:0:0\r\n  Advertised Hold Time: 30\r\n  State Changed: -\r\n  LAN Priority: 64\r\n  IPv4 Interface Address: 10.1.1.3\r\n  IPv6 Interface Address: fe80::1:ff:fe0c:0\r\n  Interface name: Vlan20\r\n10        1212.1212.1212       L2   Vlan20          2:1:0:d:0:0       UP    7\r\n  Area Address(es): 49.0001\r\n  SNPA: 2:1:0:d:0:0\r\n  Advertised Hold Time: 9\r\n  State Changed: -\r\n  LAN Priority: 64\r\n  IPv4 Interface Address: 10.1.1.2\r\n  IPv6 Interface Address: fe80::1:ff:fe0d:0\r\n  Interface name: Vlan20",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis\",\"keyVariables\":\"\",\"startLine\":\"Inst Id   System Id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"12ac096d-0c26-f6f1-e80c-fd1e5431f3d6\"},{\"type\":\"4\",\"name\":\"isis_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^\\\\S+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$inst_id, $system_id, $type, $intf, $snpa, $state, $hold_time]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"regex[$area_addr]:^\\\\s+Area Address\\\\S+\\\\s+(\\\\S+)\",\"regex[$state_changed]:State Changed:\\\\s+(\\\\S+)\",\"regex[$int:lan_priority]:LAN Priority:\\\\s+(\\\\S+)\",\"regex[$ipv4_addr]:IPv4 Interface Address:\\\\s+(\\\\S+)\",\"regex[$ipv6_addr]:IPv6 Interface Address:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$inst_id:string\",\"$system_id:string\",\"$type:string\",\"$intf:string\",\"$snpa:string\",\"$state:string\",\"$hold_time:string\",\"$area_addr:string\",\"$state_changed:string\",\"$lan_priority:int\",\"$ipv4_addr:string\",\"$ipv6_addr:string\"]},\"xxid\":\"a71bf7ae-3321-f0bd-b7ae-93d89aa3be2f\"}]},\"xxid\":\"b4791bd5-8313-f97c-ba61-e113197a019a\",\"hashColumns\":[\"$system_id\",\"$state\"],\"hashSort\":false}]},\"xxid\":\"88746202-9cb8-03f7-d136-afb9d93473ec\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"5d1c20bd-3bd3-9eb2-d347-6855e2b266a7\"}]}",
+            "tableKeys": [
+                "_original_result.isis.isis_nbrs.$system_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "isis",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "inst_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "hold_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "state_changed",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "lan_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "ipv4_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "ipv6_addr",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$state",
+                    "$system_id"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3340018253de15df48d6579463261176",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis",
+            "intfKey": false,
+            "name": "isis",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_nbrs",
+            "dataType": "paragraph",
+            "desc": "ISIS neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$system_id",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs",
+            "intfKey": false,
+            "name": "isis_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_nbrs.$inst_id",
+            "dataType": "string",
+            "desc": "ISIS Process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$inst_id",
+            "intfKey": false,
+            "name": "$inst_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$system_id",
+            "dataType": "string",
+            "desc": "ISIS system ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$type",
+            "dataType": "string",
+            "desc": "Levels the interface is running on (circuit-type configuration) which may be a subset of levels on the router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$intf",
+            "dataType": "string",
+            "desc": "Interface through which the adjacency is made.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$snpa",
+            "dataType": "string",
+            "desc": "Data-link address (also known as the Subnetwork Point of Attachment [SNPA]) of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$state",
+            "dataType": "string",
+            "desc": "ISIS neighbor status",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$hold_time",
+            "dataType": "string",
+            "desc": "ISIS neighbor hold time",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$area_addr",
+            "dataType": "string",
+            "desc": "Area ID",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$area_addr",
+            "intfKey": false,
+            "name": "$area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$state_changed",
+            "dataType": "string",
+            "desc": "ISIS status change number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$state_changed",
+            "intfKey": false,
+            "name": "$state_changed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$lan_priority",
+            "dataType": "int",
+            "desc": "LAN priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$lan_priority",
+            "intfKey": false,
+            "name": "$lan_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$ipv4_addr",
+            "dataType": "string",
+            "desc": "IPv4 address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$ipv4_addr",
+            "intfKey": false,
+            "name": "$ipv4_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$ipv6_addr",
+            "dataType": "string",
+            "desc": "IPv6 address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis.isis_nbrs.$ipv6_addr",
+            "intfKey": false,
+            "name": "$ipv6_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

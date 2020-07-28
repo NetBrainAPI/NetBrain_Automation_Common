@@ -1,0 +1,240 @@
+{
+    "_id": "07775519-6571-199b-3b59-a79c81095f09",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis neighbors",
+    "createTime": {
+        "$date": 1591075368493
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow isis neighbors",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "System(rw)->show isis neighbors\r\nSystem ID       Type   Interface     IP Address                         State   Holdtime   Circuit Id\r\n4444.4444.4444   L1    vlan.0.500    23.0.0.44                         UP        24      AAAAAAAAAAAA\r\n4444.4444.4444   L1    vlan.0.500    fe80::21f:45ff:fe4d:8768       UP        24      AAAAAAAAAAAA\r\nBBBB.BBBB.BBBB   L1    vlan.0.500    23.0.0.8                          UP        25      AAAAAAAAAAAA\r\nBBBB.BBBB.BBBB   L1    vlan.0.500    fe80::21f:45ff:fe62:98ee      UP        25      AAAAAAAAAAAA\r\n4444.4444.4444   L2    vlan.0.500    23.0.0.44                     UP        29      AAAAAAAAAAAA\r\n4444.4444.4444   L2    vlan.0.500    fe80::21f:45ff:fe4d:8768      UP        29      AAAAAAAAAAAA\r\nBBBB.BBBB.BBBB   L2    vlan.0.500    23.0.0.8                          UP        26      AAAAAAAAAAAA\r\nBBBB.BBBB.BBBB   L2    vlan.0.500    fe80::21f:45ff:fe62:98ee      UP        26      AAAAAAAAAAAA\r\nBBBB.BBAA.AAAA   L1    vlan.0.700    6.6.6.88                          UP        7       BBBBBBAAAAAA\r\nBBBB.BBAA.AAAA   L1    vlan.0.700    fe80::a8bb:ccff:fe06:688      UP        7       BBBBBBAAAAAA\r\nSystem(rw)->",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_nbrs_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_nbrs_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$sys_id, $type, $intf, $ip_addr, $state, $hold_time, $circuit_id]:(\\\\S+\\\\.\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sys_id:string\",\"$type:string\",\"$intf:string\",\"$ip_addr:string\",\"$state:string\",\"$hold_time:string\",\"$circuit_id:string\"]},\"xxid\":\"2411b70f-88d1-1fea-8566-c959f32d8a37\"}]},\"xxid\":\"2dcf122c-829c-a048-c477-93910067230f\",\"hashColumns\":[\"$sys_id\",\"$intf\"],\"interfaceKey\":\"$intf\"}]}",
+            "tableKeys": [
+                "_original_result.isis_nbrs_table.$sys_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sys_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "hold_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "circuit_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$sys_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_nbrs_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "fae6a55405f2c7690ad5554639484e6d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_nbrs_table",
+            "dataType": "paragraph",
+            "desc": "ISIS neighbors table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$sys_id",
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table",
+            "intfKey": false,
+            "name": "isis_nbrs_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_nbrs_table.$sys_id",
+            "dataType": "string",
+            "desc": "System ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table.$sys_id",
+            "intfKey": false,
+            "name": "$sys_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs_table.$type",
+            "dataType": "string",
+            "desc": "Type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs_table.$intf",
+            "dataType": "string",
+            "desc": "Interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_nbrs_table.$ip_addr",
+            "dataType": "string",
+            "desc": "IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs_table.$state",
+            "dataType": "string",
+            "desc": "State.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs_table.$hold_time",
+            "dataType": "string",
+            "desc": "Hold time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs_table.$circuit_id",
+            "dataType": "string",
+            "desc": "Circuit ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs_table.$circuit_id",
+            "intfKey": false,
+            "name": "$circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

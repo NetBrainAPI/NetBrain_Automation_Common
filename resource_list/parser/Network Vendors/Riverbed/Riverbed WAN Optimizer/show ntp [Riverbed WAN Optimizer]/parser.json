@@ -1,0 +1,168 @@
+{
+    "_id": "3a3e17c3-dab9-85a0-64b7-63cb393f0f09",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ntp",
+    "createTime": {
+        "$date": 1585329906657
+    },
+    "description": "Device Type:\nRiverbed WAN Optimizer\nCommand:\nshow ntp",
+    "devTypes": [
+        10466
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "nbRiverbed # show ntp\r\nNTP enabled: yes\r\nNo NTP peers configured.\r\nNTP server: 0.riverbed.pool.ntp.org (version 4) Enabled: yes\r\nNTP server: 1.riverbed.pool.ntp.org (version 4) Enabled: yes\r\nNTP server: 2.riverbed.pool.ntp.org (version 4) Enabled: yes\r\nNTP server: 208.70.196.25 (version 4)   Enabled: yes\r\nNTP server: 3.riverbed.pool.ntp.org (version 4) Enabled: yes",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ntp_enabled]:ntp enabled:\\\\s*(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ntp_enabled:string\"]},\"xxid\":\"9130cd4d-2e87-8272-63c1-4e620211f9b8\"},{\"type\":\"4\",\"name\":\"ntp_server_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$ntp_server_addr, $ntp_server_ver, $ntp_server_enabled]:ntp server:\\\\s*(\\\\S+)\\\\s*\\\\(version (\\\\S+)\\\\)\\\\s*enabled:\\\\s*(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ntp_server_addr:string\",\"$ntp_server_ver:string\",\"$ntp_server_enabled:string\"]},\"xxid\":\"7a502080-d652-1cc6-a4a2-df310e3f6ff5\"}]},\"xxid\":\"db924b82-7fdc-0324-ea54-956f33687b5c\",\"hashColumns\":[\"$ntp_server_enabled\",\"$ntp_server_addr\"]}]}",
+            "tableKeys": [
+                "_original_result.ntp_server_table.$ntp_server_enabled",
+                "_original_result.ntp_server_table.$ntp_server_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ntp_enabled",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ntp_server_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ntp_server_ver",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ntp_server_enabled",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ntp_server_addr",
+                    "$ntp_server_enabled"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ntp_server_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1e5ca9dedd1480dff5c04f868169fabf",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$ntp_enabled",
+            "dataType": "string",
+            "desc": "NTP enabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ntp_enabled",
+            "intfKey": false,
+            "name": "$ntp_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_server_table",
+            "dataType": "paragraph",
+            "desc": "NTP server table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$ntp_server_enabled",
+                    "$ntp_server_addr"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ntp_server_table",
+            "intfKey": false,
+            "name": "ntp_server_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ntp_server_table.$ntp_server_addr",
+            "dataType": "string",
+            "desc": "NTP server domain IP.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_server_table.$ntp_server_addr",
+            "intfKey": false,
+            "name": "$ntp_server_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_server_table.$ntp_server_ver",
+            "dataType": "string",
+            "desc": "NTP server version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_server_table.$ntp_server_ver",
+            "intfKey": false,
+            "name": "$ntp_server_ver",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ntp_server_table.$ntp_server_enabled",
+            "dataType": "string",
+            "desc": "NTP server enabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ntp_server_table.$ntp_server_enabled",
+            "intfKey": false,
+            "name": "$ntp_server_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

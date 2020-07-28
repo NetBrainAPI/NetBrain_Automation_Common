@@ -1,0 +1,1096 @@
+{
+    "_id": "0ea32dfb-e23c-f5d5-c50c-805aabc2c045",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip bgp neighbors",
+    "createTime": {
+        "$date": 1590598124023
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow ip bgp neighbors",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show ip bgp neighbors\r\nBGP neighbor is 172.16.0.2, remote AS 200, external link\r\n  Member of peer-group port0 for session parameters\r\n  BGP remote router ID 172.16.0.2\r\n  BGP state ESTABLISHED, in this state for 00:13:55\r\n  Last read 00:00:03, Last write 00:00:55\r\n  Hold time is 180, keepalive interval is 60 seconds\r\n  Received 50 messages, 0 in queue\r\n    1 opens, 0 notifications, 34 updates\r\n    15 keepalives, 0 route refresh requests\r\n  Sent 18 messages, 0 in queue\r\n    1 opens, 0 notifications, 0 updates\r\n    16 keepalives, 0 route refresh requests\r\n  Route refresh request: received 0, sent messages 1\r\n  Minimum time between advertisement runs is 30 seconds\r\n  Minimum time before advertisements start is 0 seconds\r\n \r\n  Capabilities received from neighbor for IPv4 Unicast :\r\n    MULTIPROTO_EXT(1)\r\n    ROUTE_REFRESH(2)\r\n\r\n  Capabilities advertised to neighbor for IPv4 Unicast :\r\n    MULTIPROTO_EXT(1)\r\n    ROUTE_REFRESH(2)\r\n    ADD_PATH(69)\r\n    CISCO_ROUTE_REFRESH(128)\r\n  For address family: IPv4 Unicast\r\n  BGP local RIB : Routes to be Added 0, Replaced 0, Withdrawn 0\r\n  InQ : Added 0, Replaced 0, Withdrawn 0\r\n  OutQ : Added 0, Withdrawn 0\r\n  Allow local AS number 0 times in AS-PATH attribute\r\n  Prefixes accepted 2, withdrawn 15 by peer, martian prefixes ignored 0\r\n  Prefixes advertised 0, denied 0, withdrawn 0 from peer\r\n\r\n  Connections established 1; dropped 0\r\n  Last reset never\r\nLocal host: 172.16.0.1, Local port: 58145\r\nForeign host: 172.16.0.2, Foreign port: 179\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"bgp_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[$nbr_id,$remote_as,$nbr_type]:BGP neighbor is (\\\\S+), remote AS (\\\\S+), (.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"BGP remote router ID $remote_rid\",\"BGP state $state, in this state for $up_time\",\"Last read $last_read, last write $last_write\",\"hold time is $holdtime, keepalive interval is $int:keepalive seconds\",\"Received $double:total_pkts_rcvd messages, $double:rcvd_pkts_in_queue in queue\",\"mregex[$double:open_pkts_rcvd,$double:notifications_pkt_rcvd,$double:updates_pkt_rcvd,$double:keeplives_pkt_rcvd,$double:route_refresh_pkt_rcvd]:Received\\\\s+\\\\d+\\\\s+messages.+?\\\\s+(\\\\d+)\\\\s+opens,\\\\s+(\\\\d+)\\\\s+notifications,\\\\s+(\\\\d+)\\\\s+updates.+?\\\\s+(\\\\d+)\\\\s+keepalives,\\\\s+(\\\\d+)\\\\s+route refresh requests\",\"Sent $double:total_pkts_sent messages, $double:sent_pkts_in_queue in queue\",\"mregex[$double:open_pkts_sent,$double:notifications_pkt_sent,$double:updates_pkt_sent,$double:keeplives_pkt_sent,$double:route_refresh_pkt_sent]:Sent\\\\s+\\\\d+\\\\s+messages.+?\\\\s+(\\\\d+)\\\\s+opens,\\\\s+(\\\\d+)\\\\s+notifications,\\\\s+(\\\\d+)\\\\s+updates.+?\\\\s+(\\\\d+)\\\\s+keepalives,\\\\s+(\\\\d+)\\\\s+route refresh requests\",\"Route refresh request: received $double:route_refresh_request_pkts_rcvd, sent messages $double:route_refresh_request_pkts_sent\",\"Minimum time between advertisement runs is $int:min_advertisement_runs seconds\",\"Minimum time before advertisements start is $int:min_advertisement_start seconds\",\"BGP local RIB : Routes to be Added $double:routes_added, Replaced $double:routes_replaced, Withdrawn $double:routes_withdrawn\",\"InQ : Added $double:inq_added, Replaced $double:inq_replaced, Withdrawn $double:inq_withdrawn\",\"OutQ : Added $outq_added, Withdrawn $double:outq_withdrawn\",\"Prefixes accepted $double:pfxs_accepted, withdrawn $double:pfxs_withdrawn_by_peer by peer, martian prefixes ignored $double:martian_pfxs_ignored\",\"Prefixes advertised $double:pfxs_advertised, denied $double:pfxs_denied, withdrawn $double:pfxs_withdrawn_from_peer from peer\",\"Connections established $int:conn_estab; dropped $int:conn_dropped\",\"Last reset $last_reset\",\"Local host: $local_host, Local port: $int:local_port\",\"Foreign host: $foreign_host, Foreign port: $int:foreign_port\",\"regex[$addr_family]:For address family: (.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_id:string\",\"$remote_as:string\",\"$nbr_type:string\",\"$remote_rid:string\",\"$state:string\",\"$up_time:string\",\"$last_read:string\",\"$last_write:string\",\"$holdtime:string\",\"$keepalive:int\",\"$total_pkts_rcvd:double\",\"$rcvd_pkts_in_queue:double\",\"$open_pkts_rcvd:double\",\"$notifications_pkt_rcvd:double\",\"$updates_pkt_rcvd:double\",\"$keeplives_pkt_rcvd:double\",\"$route_refresh_pkt_rcvd:double\",\"$total_pkts_sent:double\",\"$sent_pkts_in_queue:double\",\"$open_pkts_sent:double\",\"$notifications_pkt_sent:double\",\"$updates_pkt_sent:double\",\"$keeplives_pkt_sent:double\",\"$route_refresh_pkt_sent:double\",\"$route_refresh_request_pkts_rcvd:double\",\"$route_refresh_request_pkts_sent:double\",\"$min_advertisement_runs:int\",\"$min_advertisement_start:int\",\"$routes_added:double\",\"$routes_replaced:double\",\"$routes_withdrawn:double\",\"$inq_added:double\",\"$inq_replaced:double\",\"$inq_withdrawn:double\",\"$outq_added:string\",\"$outq_withdrawn:double\",\"$pfxs_accepted:double\",\"$pfxs_withdrawn_by_peer:double\",\"$martian_pfxs_ignored:double\",\"$pfxs_advertised:double\",\"$pfxs_denied:double\",\"$pfxs_withdrawn_from_peer:double\",\"$conn_estab:int\",\"$conn_dropped:int\",\"$last_reset:string\",\"$local_host:string\",\"$local_port:int\",\"$foreign_host:string\",\"$foreign_port:int\",\"$addr_family:string\"]},\"xxid\":\"c8ca270b-40be-a854-56e3-9e25a4af1c05\"}]},\"xxid\":\"5effa1ce-1170-f46e-10e7-fc55d4b50efa\",\"hashColumns\":[\"$nbr_id\"]}]}",
+            "tableKeys": [
+                "_original_result.bgp_nbrs.$nbr_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 50,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 51,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "remote_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "nbr_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "remote_rid",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "last_read",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "last_write",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "holdtime",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "keepalive",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "total_pkts_rcvd",
+                        "type": 2
+                    },
+                    {
+                        "index": 11,
+                        "name": "rcvd_pkts_in_queue",
+                        "type": 2
+                    },
+                    {
+                        "index": 12,
+                        "name": "open_pkts_rcvd",
+                        "type": 2
+                    },
+                    {
+                        "index": 13,
+                        "name": "notifications_pkt_rcvd",
+                        "type": 2
+                    },
+                    {
+                        "index": 14,
+                        "name": "updates_pkt_rcvd",
+                        "type": 2
+                    },
+                    {
+                        "index": 15,
+                        "name": "keeplives_pkt_rcvd",
+                        "type": 2
+                    },
+                    {
+                        "index": 16,
+                        "name": "route_refresh_pkt_rcvd",
+                        "type": 2
+                    },
+                    {
+                        "index": 17,
+                        "name": "total_pkts_sent",
+                        "type": 2
+                    },
+                    {
+                        "index": 18,
+                        "name": "sent_pkts_in_queue",
+                        "type": 2
+                    },
+                    {
+                        "index": 19,
+                        "name": "open_pkts_sent",
+                        "type": 2
+                    },
+                    {
+                        "index": 20,
+                        "name": "notifications_pkt_sent",
+                        "type": 2
+                    },
+                    {
+                        "index": 21,
+                        "name": "updates_pkt_sent",
+                        "type": 2
+                    },
+                    {
+                        "index": 22,
+                        "name": "keeplives_pkt_sent",
+                        "type": 2
+                    },
+                    {
+                        "index": 23,
+                        "name": "route_refresh_pkt_sent",
+                        "type": 2
+                    },
+                    {
+                        "index": 24,
+                        "name": "route_refresh_request_pkts_rcvd",
+                        "type": 2
+                    },
+                    {
+                        "index": 25,
+                        "name": "route_refresh_request_pkts_sent",
+                        "type": 2
+                    },
+                    {
+                        "index": 26,
+                        "name": "min_advertisement_runs",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "min_advertisement_start",
+                        "type": 1
+                    },
+                    {
+                        "index": 28,
+                        "name": "routes_added",
+                        "type": 2
+                    },
+                    {
+                        "index": 29,
+                        "name": "routes_replaced",
+                        "type": 2
+                    },
+                    {
+                        "index": 30,
+                        "name": "routes_withdrawn",
+                        "type": 2
+                    },
+                    {
+                        "index": 31,
+                        "name": "inq_added",
+                        "type": 2
+                    },
+                    {
+                        "index": 32,
+                        "name": "inq_replaced",
+                        "type": 2
+                    },
+                    {
+                        "index": 33,
+                        "name": "inq_withdrawn",
+                        "type": 2
+                    },
+                    {
+                        "index": 34,
+                        "name": "outq_added",
+                        "type": 4
+                    },
+                    {
+                        "index": 35,
+                        "name": "outq_withdrawn",
+                        "type": 2
+                    },
+                    {
+                        "index": 36,
+                        "name": "pfxs_accepted",
+                        "type": 2
+                    },
+                    {
+                        "index": 37,
+                        "name": "pfxs_withdrawn_by_peer",
+                        "type": 2
+                    },
+                    {
+                        "index": 38,
+                        "name": "martian_pfxs_ignored",
+                        "type": 2
+                    },
+                    {
+                        "index": 39,
+                        "name": "pfxs_advertised",
+                        "type": 2
+                    },
+                    {
+                        "index": 40,
+                        "name": "pfxs_denied",
+                        "type": 2
+                    },
+                    {
+                        "index": 41,
+                        "name": "pfxs_withdrawn_from_peer",
+                        "type": 2
+                    },
+                    {
+                        "index": 42,
+                        "name": "conn_estab",
+                        "type": 1
+                    },
+                    {
+                        "index": 43,
+                        "name": "conn_dropped",
+                        "type": 1
+                    },
+                    {
+                        "index": 44,
+                        "name": "last_reset",
+                        "type": 4
+                    },
+                    {
+                        "index": 45,
+                        "name": "local_host",
+                        "type": 4
+                    },
+                    {
+                        "index": 46,
+                        "name": "local_port",
+                        "type": 1
+                    },
+                    {
+                        "index": 47,
+                        "name": "foreign_host",
+                        "type": 4
+                    },
+                    {
+                        "index": 48,
+                        "name": "foreign_port",
+                        "type": 1
+                    },
+                    {
+                        "index": 49,
+                        "name": "addr_family",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nbr_id"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "bgp_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "48ea745eaeb3030b3203b6dcd6d47706",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "bgp_nbrs",
+            "dataType": "paragraph",
+            "desc": "BGP neighbors table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs",
+            "intfKey": false,
+            "name": "bgp_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_nbrs.$nbr_id",
+            "dataType": "string",
+            "desc": "IP address of the BGP neighbor and its autonomous system number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$remote_as",
+            "dataType": "string",
+            "desc": "Autonomous system number of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$remote_as",
+            "intfKey": false,
+            "name": "$remote_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$nbr_type",
+            "dataType": "string",
+            "desc": "'internal link'is displayed for iBGP neighbors; 'external link' is displayed for external BGP (eBGP) neighbors.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$nbr_type",
+            "intfKey": false,
+            "name": "$nbr_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$remote_rid",
+            "dataType": "string",
+            "desc": "IP address of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$remote_rid",
+            "intfKey": false,
+            "name": "$remote_rid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$state",
+            "dataType": "string",
+            "desc": "Finite state machine (FSM) stage of session negotiation.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$up_time",
+            "dataType": "string",
+            "desc": "Time, in hh:mm:ss, that the underlying TCP connection has been in existence.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$up_time",
+            "intfKey": false,
+            "name": "$up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$last_read",
+            "dataType": "string",
+            "desc": "Time, in hh:mm:ss, since BGP last received a message from this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$last_read",
+            "intfKey": false,
+            "name": "$last_read",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$last_write",
+            "dataType": "string",
+            "desc": "Time, in hh:mm:ss, since BGP last sent a message to this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$last_write",
+            "intfKey": false,
+            "name": "$last_write",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$holdtime",
+            "dataType": "string",
+            "desc": "Time, in seconds, that BGP will maintain the session with this neighbor without receiving messages.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$holdtime",
+            "intfKey": false,
+            "name": "$holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$keepalive",
+            "dataType": "int",
+            "desc": "Time interval, in seconds, at which keepalive messages are transmitted to this neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$keepalive",
+            "intfKey": false,
+            "name": "$keepalive",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$total_pkts_rcvd",
+            "dataType": "double",
+            "desc": "Total number of messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$total_pkts_rcvd",
+            "intfKey": false,
+            "name": "$total_pkts_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$rcvd_pkts_in_queue",
+            "dataType": "double",
+            "desc": "Number of messages received in queue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$rcvd_pkts_in_queue",
+            "intfKey": false,
+            "name": "$rcvd_pkts_in_queue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$open_pkts_rcvd",
+            "dataType": "double",
+            "desc": "Number of open messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$open_pkts_rcvd",
+            "intfKey": false,
+            "name": "$open_pkts_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$notifications_pkt_rcvd",
+            "dataType": "double",
+            "desc": "Number of notification (error) messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$notifications_pkt_rcvd",
+            "intfKey": false,
+            "name": "$notifications_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$updates_pkt_rcvd",
+            "dataType": "double",
+            "desc": "Number of update messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$updates_pkt_rcvd",
+            "intfKey": false,
+            "name": "$updates_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$keeplives_pkt_rcvd",
+            "dataType": "double",
+            "desc": "Number of keepalive messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$keeplives_pkt_rcvd",
+            "intfKey": false,
+            "name": "$keeplives_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$route_refresh_pkt_rcvd",
+            "dataType": "double",
+            "desc": "Number of route refresh messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$route_refresh_pkt_rcvd",
+            "intfKey": false,
+            "name": "$route_refresh_pkt_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$total_pkts_sent",
+            "dataType": "double",
+            "desc": "Total number of messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$total_pkts_sent",
+            "intfKey": false,
+            "name": "$total_pkts_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$sent_pkts_in_queue",
+            "dataType": "double",
+            "desc": "Number of messages sent in queue.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$sent_pkts_in_queue",
+            "intfKey": false,
+            "name": "$sent_pkts_in_queue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$open_pkts_sent",
+            "dataType": "double",
+            "desc": "Number of open messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$open_pkts_sent",
+            "intfKey": false,
+            "name": "$open_pkts_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$notifications_pkt_sent",
+            "dataType": "double",
+            "desc": "Number of notification (error) messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$notifications_pkt_sent",
+            "intfKey": false,
+            "name": "$notifications_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$updates_pkt_sent",
+            "dataType": "double",
+            "desc": "Number of update messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$updates_pkt_sent",
+            "intfKey": false,
+            "name": "$updates_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$keeplives_pkt_sent",
+            "dataType": "double",
+            "desc": "Number of keepalive messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$keeplives_pkt_sent",
+            "intfKey": false,
+            "name": "$keeplives_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$route_refresh_pkt_sent",
+            "dataType": "double",
+            "desc": "Number of route refresh messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$route_refresh_pkt_sent",
+            "intfKey": false,
+            "name": "$route_refresh_pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$route_refresh_request_pkts_rcvd",
+            "dataType": "double",
+            "desc": "Number of route refresh request messages received.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$route_refresh_request_pkts_rcvd",
+            "intfKey": false,
+            "name": "$route_refresh_request_pkts_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$route_refresh_request_pkts_sent",
+            "dataType": "double",
+            "desc": "Number of route refresh request messages sent.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$route_refresh_request_pkts_sent",
+            "intfKey": false,
+            "name": "$route_refresh_request_pkts_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$min_advertisement_runs",
+            "dataType": "int",
+            "desc": "Displays the minimum time, in seconds, between\nadvertisements.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$min_advertisement_runs",
+            "intfKey": false,
+            "name": "$min_advertisement_runs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$min_advertisement_start",
+            "dataType": "int",
+            "desc": "Displays the minimum time, in seconds, between\nadvertisements.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$min_advertisement_start",
+            "intfKey": false,
+            "name": "$min_advertisement_start",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$routes_added",
+            "dataType": "double",
+            "desc": "Number of routes to be added in BGP local RIB.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$routes_added",
+            "intfKey": false,
+            "name": "$routes_added",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$routes_replaced",
+            "dataType": "double",
+            "desc": "Number of routes to be replaced in BGP local RIB.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$routes_replaced",
+            "intfKey": false,
+            "name": "$routes_replaced",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$routes_withdrawn",
+            "dataType": "double",
+            "desc": "Number of routes to be withdrawn in BGP local RIB.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$routes_withdrawn",
+            "intfKey": false,
+            "name": "$routes_withdrawn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$inq_added",
+            "dataType": "double",
+            "desc": "Number of InQ added.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$inq_added",
+            "intfKey": false,
+            "name": "$inq_added",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$inq_replaced",
+            "dataType": "double",
+            "desc": "Number of InQ replaced.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$inq_replaced",
+            "intfKey": false,
+            "name": "$inq_replaced",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$inq_withdrawn",
+            "dataType": "double",
+            "desc": "Number of InQ withdrawn.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$inq_withdrawn",
+            "intfKey": false,
+            "name": "$inq_withdrawn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$outq_added",
+            "dataType": "string",
+            "desc": "Number of outq added.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$outq_added",
+            "intfKey": false,
+            "name": "$outq_added",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$outq_withdrawn",
+            "dataType": "double",
+            "desc": "Number of outq withdrawn.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$outq_withdrawn",
+            "intfKey": false,
+            "name": "$outq_withdrawn",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$pfxs_accepted",
+            "dataType": "double",
+            "desc": "Displays the number of network prefixes the router accepts.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$pfxs_accepted",
+            "intfKey": false,
+            "name": "$pfxs_accepted",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$pfxs_withdrawn_by_peer",
+            "dataType": "double",
+            "desc": "Displays the number of network prefixes the router withdrawn by peer.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$pfxs_withdrawn_by_peer",
+            "intfKey": false,
+            "name": "$pfxs_withdrawn_by_peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$martian_pfxs_ignored",
+            "dataType": "double",
+            "desc": "Displays the number of network prefixes the router martian prefixes ignored.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$martian_pfxs_ignored",
+            "intfKey": false,
+            "name": "$martian_pfxs_ignored",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$pfxs_advertised",
+            "dataType": "double",
+            "desc": "Displays the number of network prefixes advertised.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$pfxs_advertised",
+            "intfKey": false,
+            "name": "$pfxs_advertised",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$pfxs_denied",
+            "dataType": "double",
+            "desc": "Displays the number of network prefixes rejected.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$pfxs_denied",
+            "intfKey": false,
+            "name": "$pfxs_denied",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$pfxs_withdrawn_from_peer",
+            "dataType": "double",
+            "desc": "Displays the number of network prefixes withdrawn from the BGP routing table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$pfxs_withdrawn_from_peer",
+            "intfKey": false,
+            "name": "$pfxs_withdrawn_from_peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$conn_estab",
+            "dataType": "int",
+            "desc": "Displays the number of TCP connections established  between the two peers to exchange BGP information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$conn_estab",
+            "intfKey": false,
+            "name": "$conn_estab",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$conn_dropped",
+            "dataType": "int",
+            "desc": "Displays the number of TCP connections dropped between the two peers to exchange BGP information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$conn_dropped",
+            "intfKey": false,
+            "name": "$conn_dropped",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$last_reset",
+            "dataType": "string",
+            "desc": "Displays the amount of time since the peering session was last reset.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$last_reset",
+            "intfKey": false,
+            "name": "$last_reset",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$local_host",
+            "dataType": "string",
+            "desc": "Displays the peering address of the local router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$local_host",
+            "intfKey": false,
+            "name": "$local_host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$local_port",
+            "dataType": "int",
+            "desc": "Displays the peering address TCP port number of the local router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$local_port",
+            "intfKey": false,
+            "name": "$local_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$foreign_host",
+            "dataType": "string",
+            "desc": "Displays the peering address of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$foreign_host",
+            "intfKey": false,
+            "name": "$foreign_host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$foreign_port",
+            "dataType": "int",
+            "desc": "Displays the peering address TCP port number of the neighbor.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$foreign_port",
+            "intfKey": false,
+            "name": "$foreign_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_nbrs.$addr_family",
+            "dataType": "string",
+            "desc": "Address family.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_nbrs.$addr_family",
+            "intfKey": false,
+            "name": "$addr_family",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

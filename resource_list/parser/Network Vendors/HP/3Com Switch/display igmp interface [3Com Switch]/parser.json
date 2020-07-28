@@ -1,0 +1,246 @@
+{
+    "_id": "344fd7de-8e66-b536-ec38-44a6a08723aa",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display igmp interface",
+    "createTime": {
+        "$date": 1590768206145
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay igmp interface",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<SW2>display igmp interface\r\n Vlan-interface10(192.168.1.2):\r\n   IGMP is enabled.\r\n   IGMP version: 2\r\n   Query interval for IGMP: 125s\r\n   Other querier present time for IGMP: 255s\r\n   Maximum query response time for IGMP: 10s\r\n   Querier for IGMP: 192.168.1.2 (This router)\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.igmp_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"igmp_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$ip_addr]: (\\\\S+)\\\\((\\\\S+)\\\\):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"IGMP version: $version\",\"Query interval for IGMP: $query_interval\",\"Other querier present time for IGMP: $querier_present_time\",\"Maximum query response time for IGMP: $max_query_response_time\",\"Querier for IGMP: $querier\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$ip_addr:string\",\"$version:string\",\"$query_interval:string\",\"$querier_present_time:string\",\"$max_query_response_time:string\",\"$querier:string\"]},\"xxid\":\"de722049-7669-70ab-1b9e-51514c442567\"}]},\"xxid\":\"abc51fde-45ad-4b5e-c1b3-30d16bf11312\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$query_interval\",\"$querier_present_time\",\"$querier\"]}]}",
+            "tableKeys": [
+                "_original_result.igmp_intfs.$query_interval",
+                "_original_result.igmp_intfs.$querier_present_time",
+                "_original_result.igmp_intfs.$querier"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "version",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "query_interval",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "querier_present_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "max_query_response_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "querier",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$querier",
+                    "$querier_present_time",
+                    "$query_interval"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "igmp_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7b06bc6c240492abd20bc4811b720fc4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_intfs",
+            "dataType": "paragraph",
+            "desc": "IGMP interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$query_interval",
+                    "$querier_present_time",
+                    "$querier"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs",
+            "intfKey": false,
+            "name": "igmp_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_intfs.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_intfs.$ip_addr",
+            "dataType": "string",
+            "desc": "IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$version",
+            "dataType": "string",
+            "desc": "Current IGMP router version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$query_interval",
+            "dataType": "string",
+            "desc": "Interval at which the software sends Protocol Independent Multicast (PIM) router query messages.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$query_interval",
+            "intfKey": false,
+            "name": "$query_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$querier_present_time",
+            "dataType": "string",
+            "desc": "Other querier present time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$querier_present_time",
+            "intfKey": false,
+            "name": "$querier_present_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$max_query_response_time",
+            "dataType": "string",
+            "desc": "Maximum query response time.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$max_query_response_time",
+            "intfKey": false,
+            "name": "$max_query_response_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intfs.$querier",
+            "dataType": "string",
+            "desc": "Querier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intfs.$querier",
+            "intfKey": false,
+            "name": "$querier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

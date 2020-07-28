@@ -1,0 +1,373 @@
+{
+    "_id": "5e2099c5-e31f-c091-16f6-b69ec07a4c80",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show users",
+    "createTime": {
+        "$date": 1579141121696
+    },
+    "description": "Device Type:\nCheckpoint Firewall\nCommand:\nshow asset all",
+    "devTypes": [
+        2007,
+        30080
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-checkpoint-1> show users\r\nUser             Uid       Gid       Home Dir.        Shell            Real Name                                 \r\nadmin            0         0         /home/admin      /etc/cli.sh      n/a                                       \r\nmonitor          102       100       /home/monitor    /etc/cli.sh      Monitor   ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"user_table\",\"headers\":\"User;Uid;Gid;Home Dir.;Shell;Real Name\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"User:$string:user;Uid:$int:uid;Gid:$int:gid;Home Dir.:$string:home_dir;Shell:$string:shell;Real Name:$string:real_name\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$user:string\",\"$uid:int\",\"$gid:int\",\"$home_dir:string\",\"$shell:string\",\"$real_name:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"35b6f20c-5c2a-2fcb-8db7-cba139616351\",\"hashColumns\":[\"$user\",\"$uid\",\"$gid\",\"$home_dir\",\"$shell\",\"$real_name\"],\"HashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"9bf4edc5-5d81-d813-ed4a-b1a47a82457f\"}]}",
+            "tableKeys": [
+                "_original_result.user_table.$user"
+            ]
+        },
+        {
+            "content": "CP_HA1> show users\nUser             Uid       Gid       Home Dir.        Shell            Real Name                                 Privileges                 \nadmin            0         0         /home/admin      /etc/cli.sh      n/a                                       Access to Expert features  \nmonitor          102       100       /home/monitor    /etc/cli.sh      Monitor                                   None                       \n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 2,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample2",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"user_table\",\"headers\":\"User;Uid;Gid;Home Dir.;Shell;Real Name;Privileges\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"User:$string:user;Uid:$string:uid;Gid:$string:gid;Home Dir.:$string:home_dir;Shell:$string:shell;Real Name:$string:real_name;Privileges:$string:privileges\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$user:string\",\"$uid:string\",\"$gid:string\",\"$home_dir:string\",\"$shell:string\",\"$real_name:string\",\"$privileges:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"a87b39f9-3980-da05-3210-11d72971e2cc\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1,
+        2
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "user",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "uid",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "gid",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "home_dir",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "shell",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "real_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "privileges",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$gid",
+                    "$home_dir",
+                    "$real_name",
+                    "$shell",
+                    "$uid",
+                    "$user"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "user_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "bf62bbef42464d9e33fe4317f575e172",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "user_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$user",
+                    "$uid",
+                    "$gid",
+                    "$home_dir",
+                    "$shell",
+                    "$real_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "user_table",
+            "intfKey": false,
+            "name": "user_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "user_table.$user",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$user",
+            "intfKey": false,
+            "name": "$user",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$uid",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$uid",
+            "intfKey": false,
+            "name": "$uid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$gid",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$gid",
+            "intfKey": false,
+            "name": "$gid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$home_dir",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$home_dir",
+            "intfKey": false,
+            "name": "$home_dir",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$shell",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$shell",
+            "intfKey": false,
+            "name": "$shell",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$real_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$real_name",
+            "intfKey": false,
+            "name": "$real_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "user_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "user_table",
+            "intfKey": false,
+            "name": "user_table",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 3
+        },
+        {
+            "capName": "user_table.$user",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$user",
+            "intfKey": false,
+            "name": "$user",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$uid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$uid",
+            "intfKey": false,
+            "name": "$uid",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$gid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$gid",
+            "intfKey": false,
+            "name": "$gid",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$home_dir",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$home_dir",
+            "intfKey": false,
+            "name": "$home_dir",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$shell",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$shell",
+            "intfKey": false,
+            "name": "$shell",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$real_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$real_name",
+            "intfKey": false,
+            "name": "$real_name",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "user_table.$privileges",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "user_table.$privileges",
+            "intfKey": false,
+            "name": "$privileges",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

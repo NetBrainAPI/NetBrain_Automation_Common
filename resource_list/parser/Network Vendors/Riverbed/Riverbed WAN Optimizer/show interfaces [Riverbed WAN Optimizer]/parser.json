@@ -1,0 +1,624 @@
+{
+    "_id": "a9cf99eb-9e5b-6b0e-af3e-a76320125f35",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interfaces",
+    "createTime": {
+        "$date": 1585329404328
+    },
+    "description": "Device Type:\nRiverbed WAN Optimizer\nCommand:\nshow interfaces",
+    "devTypes": [
+        10466
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "nbRiverbed > show interfaces\n\nInterface lan0_0 state\n   Up:                 yes\n   Interface type:     ethernet\n   Speed:              UNKNOWN\n   Duplex:             UNKNOWN\n   MTU:                1500\n   HW address:         00:0E:B6:96:9F:7A\n   Link:               no\n\n   RX bytes:           0\n   RX packets:         0\n   RX mcast packets:   0\n   RX discards:        0\n   RX errors:          0\n   RX overruns:        0\n   RX frame:           0\n\n   TX bytes:           0\n   TX packets:         0\n   TX discards:        0\n   TX errors:          0\n   TX overruns:        0\n   TX carrier:         0\n   TX collisions:      0\n\nInterface wan0_0 state\n   Up:                 no\n   Interface type:     ethernet\n   Speed:              UNKNOWN\n   Duplex:             UNKNOWN\n   MTU:                1500\n   HW address:         00:0E:B6:96:9F:7B\n   Link:               no\n\n   RX bytes:           0\n   RX packets:         0\n   RX mcast packets:   0\n   RX discards:        0\n   RX errors:          0\n   RX overruns:        0\n   RX frame:           0\n\n   TX bytes:           0\n   TX packets:         0\n   TX discards:        0\n   TX errors:          0\n   TX overruns:        0\n   TX carrier:         0\n   TX collisions:      0\n\nInterface aux state\n   Up:                 no\n   Interface type:     ethernet\n   IP address:         \n   Netmask:            \n   Speed:              UNKNOWN\n   Duplex:             UNKNOWN\n   MTU:                1500\n   HW address:         00:0E:B6:43:7A:59\n   Link:               no\n\n   RX bytes:           0\n   RX packets:         0\n   RX mcast packets:   0\n   RX discards:        0\n   RX errors:          0\n   RX overruns:        0\n   RX frame:           0\n\n   TX bytes:           0\n   TX packets:         0\n   TX discards:        0\n   TX errors:          0\n   TX overruns:        0\n   TX carrier:         0\n   TX collisions:      0\n\nInterface inpath0_0 state\n   Up:                 yes\n   Interface type:     ethernet\n   IP address:         \n   Netmask:            \n   MTU:                1500\n   HW address:         00:0E:B6:96:9F:7A\n   Traffic status:     Bypass\n   HW blockable:       yes\n\n   RX bytes:           0\n   RX packets:         0\n   RX mcast packets:   0\n   RX discards:        0\n   RX errors:          0\n   RX overruns:        0\n   RX frame:           0\n\n   TX bytes:           0\n   TX packets:         0\n   TX discards:        0\n   TX errors:          0\n   TX overruns:        0\n   TX carrier:         0\n   TX collisions:      0\n\nInterface primary state\n   Up:                 yes\n   Interface type:     ethernet\n   IP address:         192.168.20.65\n   Netmask:            255.255.252.0\n   Speed:              1000Mb/s (auto)\n   Duplex:             full (auto)\n   MTU:                1500\n   HW address:         00:0E:B6:43:7A:58\n   Link:               yes\n\n   RX bytes:           1647669093\n   RX packets:         17280772\n   RX mcast packets:   0\n   RX discards:        0\n   RX errors:          1\n   RX overruns:        0\n   RX frame:           1\n\n   TX bytes:           8244823\n   TX packets:         72682\n   TX discards:        0\n   TX errors:          0\n   TX overruns:        0\n   TX carrier:         0\n   TX collisions:      0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intf_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intf_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf]:Interface (\\\\S+) state\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$up, $intf_type]:UP:\\\\s+(\\\\S+)\\\\s+Interface type:\\\\s+(\\\\S+)\",\"mregex[$ip_add, $netmask]:IP address:\\\\s+([\\\\d.]+)\\\\s+Netmask:\\\\s+([\\\\d.]+)\",\"regex[$speed]:Speed:\\\\s+(.+)\",\"regex[$duplex]:Duplex:\\\\s+(.+)\",\"mregex[$mtu, $hw_addr]:MTU:\\\\s+(\\\\S+)\\\\s+HW address:\\\\s+(\\\\S+)\",\"regex[$hw_block]:HW blockable:\\\\s+(\\\\S+)\",\"regex[$link]:Link:\\\\s+(\\\\S+)\",\"mregex[$int:rx_byte, $int:rx_packet, $int:rx_mcast_packet, $int:rx_discard, $int:rx_error, $int:rx_overrun, $int:rx_frame]:RX bytes:\\\\s+(\\\\d+)\\\\s+RX packets:\\\\s+(\\\\d+)\\\\s+RX mcast packets:\\\\s+(\\\\d+)\\\\s+RX discards:\\\\s+(\\\\d+)\\\\s+RX errors:\\\\s+(\\\\d+)\\\\s+RX overruns:\\\\s+(\\\\d+)\\\\s+RX frame:\\\\s+(\\\\d+)\",\"mregex[$int:tx_byte, $int:tx_packet, $int:tx_discard, $int:tx_error, $int:tx_overrun, $int:tx_carrier, $int:tx_collision]:TX bytes:\\\\s+(\\\\d+)\\\\s+TX packets:\\\\s+(\\\\d+)\\\\s+TX discards:\\\\s+(\\\\d+)\\\\s+TX errors:\\\\s+(\\\\d+)\\\\s+TX overruns:\\\\s+(\\\\d+)\\\\s+TX carrier:\\\\s+(\\\\d+)\\\\s+TX collisions:\\\\s+(\\\\d+)\",\"regex[$traffic_state]:Traffic status:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$up:string\",\"$intf_type:string\",\"$ip_add:string\",\"$netmask:string\",\"$speed:string\",\"$duplex:string\",\"$mtu:string\",\"$hw_addr:string\",\"$hw_block:string\",\"$link:string\",\"$rx_byte:int\",\"$rx_packet:int\",\"$rx_mcast_packet:int\",\"$rx_discard:int\",\"$rx_error:int\",\"$rx_overrun:int\",\"$rx_frame:int\",\"$tx_byte:int\",\"$tx_packet:int\",\"$tx_discard:int\",\"$tx_error:int\",\"$tx_overrun:int\",\"$tx_carrier:int\",\"$tx_collision:int\",\"$traffic_state:string\"]},\"xxid\":\"9df83c94-1056-1500-814a-da2dfa0e8e79\"}]},\"xxid\":\"f76d8c12-449d-dad3-38a0-58cfdf7ace27\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$up\",\"$ip_add\",\"$netmask\",\"$tx_error\",\"$rx_error\",\"$traffic_state\"]}]}",
+            "tableKeys": [
+                "_original_result.intf_table.$up",
+                "_original_result.intf_table.$ip_add",
+                "_original_result.intf_table.$netmask",
+                "_original_result.intf_table.$tx_error",
+                "_original_result.intf_table.$rx_error",
+                "_original_result.intf_table.$traffic_state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 26,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 27,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "up",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "ip_add",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "netmask",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "speed",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "duplex",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "mtu",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "hw_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "hw_block",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "link",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "rx_byte",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "rx_packet",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "rx_mcast_packet",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "rx_discard",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "rx_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "rx_overrun",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "rx_frame",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "tx_byte",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "tx_packet",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "tx_discard",
+                        "type": 1
+                    },
+                    {
+                        "index": 21,
+                        "name": "tx_error",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "tx_overrun",
+                        "type": 1
+                    },
+                    {
+                        "index": 23,
+                        "name": "tx_carrier",
+                        "type": 1
+                    },
+                    {
+                        "index": 24,
+                        "name": "tx_collision",
+                        "type": 1
+                    },
+                    {
+                        "index": 25,
+                        "name": "traffic_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$ip_add",
+                    "$netmask",
+                    "$rx_error",
+                    "$traffic_state",
+                    "$tx_error",
+                    "$up"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f68225edcfbc0ca1ba386495a2aa0e61",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intf_table",
+            "dataType": "paragraph",
+            "desc": "Interface information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$up",
+                    "$ip_add",
+                    "$netmask",
+                    "$tx_error",
+                    "$rx_error",
+                    "$traffic_state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intf_table",
+            "intfKey": false,
+            "name": "intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intf_table.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intf_table.$up",
+            "dataType": "string",
+            "desc": "Interface status",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$up",
+            "intfKey": false,
+            "name": "$up",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$intf_type",
+            "dataType": "string",
+            "desc": "Interface type (Ethernet/Fast Ethernet/Gigabit Ethernet)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$intf_type",
+            "intfKey": false,
+            "name": "$intf_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$ip_add",
+            "dataType": "string",
+            "desc": "IP address of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$ip_add",
+            "intfKey": false,
+            "name": "$ip_add",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$netmask",
+            "dataType": "string",
+            "desc": "Subnet mask of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$netmask",
+            "intfKey": false,
+            "name": "$netmask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$speed",
+            "dataType": "string",
+            "desc": "Speed of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$speed",
+            "intfKey": false,
+            "name": "$speed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$duplex",
+            "dataType": "string",
+            "desc": "The duplex mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$duplex",
+            "intfKey": false,
+            "name": "$duplex",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$mtu",
+            "dataType": "string",
+            "desc": "MTU of interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$hw_addr",
+            "dataType": "string",
+            "desc": "Hardware address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$hw_addr",
+            "intfKey": false,
+            "name": "$hw_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$hw_block",
+            "dataType": "string",
+            "desc": "The HW blockable mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$hw_block",
+            "intfKey": false,
+            "name": "$hw_block",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$link",
+            "dataType": "string",
+            "desc": "The link mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$link",
+            "intfKey": false,
+            "name": "$link",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$rx_byte",
+            "dataType": "int",
+            "desc": "Number of bytes input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$rx_byte",
+            "intfKey": false,
+            "name": "$rx_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$rx_packet",
+            "dataType": "int",
+            "desc": "Number of packets input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$rx_packet",
+            "intfKey": false,
+            "name": "$rx_packet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$rx_mcast_packet",
+            "dataType": "int",
+            "desc": "Number of multicase packets input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$rx_mcast_packet",
+            "intfKey": false,
+            "name": "$rx_mcast_packet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$rx_discard",
+            "dataType": "int",
+            "desc": "Number of discard input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$rx_discard",
+            "intfKey": false,
+            "name": "$rx_discard",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$rx_error",
+            "dataType": "int",
+            "desc": "Number of error input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$rx_error",
+            "intfKey": false,
+            "name": "$rx_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$rx_overrun",
+            "dataType": "int",
+            "desc": "Number of overrun input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$rx_overrun",
+            "intfKey": false,
+            "name": "$rx_overrun",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$rx_frame",
+            "dataType": "int",
+            "desc": "Number of frame input.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$rx_frame",
+            "intfKey": false,
+            "name": "$rx_frame",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tx_byte",
+            "dataType": "int",
+            "desc": "Number of bytes output.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$tx_byte",
+            "intfKey": false,
+            "name": "$tx_byte",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tx_packet",
+            "dataType": "int",
+            "desc": "Number of packets output.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$tx_packet",
+            "intfKey": false,
+            "name": "$tx_packet",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tx_discard",
+            "dataType": "int",
+            "desc": "Number of discard output.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$tx_discard",
+            "intfKey": false,
+            "name": "$tx_discard",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tx_error",
+            "dataType": "int",
+            "desc": "Number of error output.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$tx_error",
+            "intfKey": false,
+            "name": "$tx_error",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tx_overrun",
+            "dataType": "int",
+            "desc": "Number of overrun output.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$tx_overrun",
+            "intfKey": false,
+            "name": "$tx_overrun",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tx_carrier",
+            "dataType": "int",
+            "desc": "Number of carrier output.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$tx_carrier",
+            "intfKey": false,
+            "name": "$tx_carrier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$tx_collision",
+            "dataType": "int",
+            "desc": "Number of collision output.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$tx_collision",
+            "intfKey": false,
+            "name": "$tx_collision",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intf_table.$traffic_state",
+            "dataType": "string",
+            "desc": "The traffic state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intf_table.$traffic_state",
+            "intfKey": false,
+            "name": "$traffic_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

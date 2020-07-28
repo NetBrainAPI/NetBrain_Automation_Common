@@ -1,0 +1,268 @@
+{
+    "_id": "8426472d-0c78-4e45-861d-9ef1dba3b6c2",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vpn-sessiondb anyconnect",
+    "createTime": {
+        "$date": 1584564479791
+    },
+    "description": "",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "ASA#show vpn-sessiondb anyconnect\r\n\r\nSession Type: AnyConnect\r\n\r\nUsername     : user                   Index        : 7407\r\nAssigned IP  : 172.16.10.55           Public IP    : 114.254.177.249\r\nProtocol     : AnyConnect-Parent SSL-Tunnel DTLS-Tunnel\r\nLicense      : AnyConnect Essentials\r\nEncryption   : AnyConnect-Parent: (1)none  SSL-Tunnel: (1)AES256  DTLS-Tunnel: (1)AES128\r\nHashing      : AnyConnect-Parent: (1)none  SSL-Tunnel: (1)SHA256  DTLS-Tunnel: (1)SHA1\r\nBytes Tx     : 99097959               Bytes Rx     : 28747208\r\nGroup Policy : AnyConnect-Policy      Tunnel Group : AnyConnect-Tunnel\r\nLogin Time   : 21:45:57 EDT Mon Mar 9 2020\r\nDuration     : 11h:16m:53s\r\nInactivity   : 0h:00m:00s\r\nVLAN Mapping : N/A                    VLAN         : none\r\nAudt Sess ID : c0a8fc0101cef0005e66f155\r\nSecurity Grp : none                   \r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vpn_sessiondb_anyconnect\",\"keyVariables\":\"\",\"startLine\":\"Username     : $username\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Assigned IP  : $assigned_ip\",\"Public IP    : $public_ip\",\"Bytes Tx     : $double:bytes_tx\",\"Bytes Rx     : $double:bytes_rx\",\"regex[$login_time]:Login Time \\\\s+\\\\:(.+)\",\"Duration     : $duration\",\"Inactivity   : $inactivity\",\"Group Policy : $group_policy\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$username:string\",\"$assigned_ip:string\",\"$public_ip:string\",\"$bytes_tx:double\",\"$bytes_rx:double\",\"$login_time:string\",\"$duration:string\",\"$inactivity:string\",\"$group_policy:string\"]},\"xxid\":\"d5aec736-9912-20ae-f3fc-b9746a9490a2\"}]},\"xxid\":\"c2e7504f-7028-62c3-0849-c471fc964831\",\"hashColumns\":[\"$username\",\"$group_policy\"]}]}",
+            "tableKeys": [
+                "_original_result.vpn_sessiondb_anyconnect.$username",
+                "_original_result.vpn_sessiondb_anyconnect.$group_policy"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "username",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "assigned_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "public_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "bytes_tx",
+                        "type": 2
+                    },
+                    {
+                        "index": 4,
+                        "name": "bytes_rx",
+                        "type": 2
+                    },
+                    {
+                        "index": 5,
+                        "name": "login_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "duration",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "inactivity",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "group_policy",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group_policy",
+                    "$username"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vpn_sessiondb_anyconnect",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "734c1d94abdfea13ee095014416839be",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vpn_sessiondb_anyconnect",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$username",
+                    "$group_policy"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect",
+            "intfKey": false,
+            "name": "vpn_sessiondb_anyconnect",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$username",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$username",
+            "intfKey": false,
+            "name": "$username",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$assigned_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$assigned_ip",
+            "intfKey": false,
+            "name": "$assigned_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$public_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$public_ip",
+            "intfKey": false,
+            "name": "$public_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$bytes_tx",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$bytes_tx",
+            "intfKey": false,
+            "name": "$bytes_tx",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$bytes_rx",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$bytes_rx",
+            "intfKey": false,
+            "name": "$bytes_rx",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$login_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$login_time",
+            "intfKey": false,
+            "name": "$login_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$duration",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$duration",
+            "intfKey": false,
+            "name": "$duration",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$inactivity",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$inactivity",
+            "intfKey": false,
+            "name": "$inactivity",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vpn_sessiondb_anyconnect.$group_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vpn_sessiondb_anyconnect.$group_policy",
+            "intfKey": false,
+            "name": "$group_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,135 @@
+{
+    "_id": "1929fce2-0feb-adf6-5782-e6989757df76",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show watchdog memory-state",
+    "createTime": {
+        "$date": 1580761004643
+    },
+    "description": "",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "RP/0/RP1/CPU0:router#sh watchdog memory-state\r\n\r\n\t\t\t\t\t\t   \r\n\t\t\t\t\t\t\r\nMemory information:\r\n    Physical Memory: 4096     MB\r\n    Free Memory:     3447.226 MB\r\n    Memory State:         Normal",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$physical_memory]:\\\\s+Physical Memory\\\\s*: (.+)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$physical_memory:string\"]},\"xxid\":\"0422b66f-e5e8-ba61-94da-22a85feb9e0e\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$free_memory]:\\\\s+Free Memory\\\\s*:\\\\s+(.+)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$free_memory:string\"]},\"xxid\":\"5780b01d-99b7-f64a-6712-d6f95a6f2eb8\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$memory_state]:\\\\s+Memory State\\\\s*:\\\\s+(.+)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$memory_state:string\"]},\"xxid\":\"7295410a-70d0-3d77-d3d9-5230653ec145\"},{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[\\n            {\\\"name\\\": \\\"memory_usage\\\", \\\"type\\\": \\\"int\\\"}\\n\\n]\\nEnd Declare\\n\\n'''\\nimport re \\nimport json\\ndef ParseText(_original_result):\\n    value = {}\\n    data = _original_result\\n    data = data.split('\\\\n')\\n    a = 1\\n    b = 0\\n    for m in range(len(data)-1):\\n        x = re.findall('\\\\s+Physical Memory\\\\s*:\\\\s*(\\\\S+)\\\\s+\\\\S+',data[m])\\n        if x:\\n            a  = float(x[0])\\n       \\n        y = re.findall('\\\\s+Free Memory:\\\\s*(\\\\S+)\\\\s+\\\\S+',data[m])\\n        if y:\\n            b = float(y[0])\\n            \\n            \\n\\n    value['memory_usage'] = int((1-(b/a))*100)\\n    return value\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$memory_usage\",\"type\":\"int\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"3bcf4410-7afc-be56-3635-d018ed63f092\"}]}",
+            "tableKeys": []
+        },
+        {
+            "content": "RP/0/RP0/CPU0:BR752#show watchdog memory-state\r\n\r\nTue Feb 18 09:05:59.887 PST\r\n---- node0_RP0_CPU0 ----\r\nMemory information:\r\n    Physical Memory         : 8192.0   MB\r\n    Free Memory                : 5158.246 MB\r\n    Memory State               :   Normal",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 2,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample2",
+            "parserRules": "{\"parseRule\":[]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1,
+        2
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "physical_memory",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "free_memory",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "memory_state",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "memory_usage",
+                "type": 1
+            }
+        ]
+    },
+    "structureId": "3868e2127ec783eb216fa8ecc495407e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$physical_memory",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$physical_memory",
+            "intfKey": false,
+            "name": "$physical_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$free_memory",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$free_memory",
+            "intfKey": false,
+            "name": "$free_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$memory_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$memory_state",
+            "intfKey": false,
+            "name": "$memory_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$memory_usage",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$memory_usage",
+            "intfKey": false,
+            "name": "$memory_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

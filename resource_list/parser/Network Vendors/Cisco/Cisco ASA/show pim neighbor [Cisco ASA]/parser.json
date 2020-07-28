@@ -1,0 +1,220 @@
+{
+    "_id": "0050516f-e9c1-bd8c-331b-e1653d27f0aa",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show pim neighbor",
+    "createTime": {
+        "$date": 1590434853939
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow pim neighbor",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ciscoasa#show pim neighbor\r\n\r\nNeighbor Address  Interface          Uptime    Expires DR pri Bidir\r\n\r\n172.16.1.2        outside            04:06:37  00:01:27 1 (DR)",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.pim_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"pim_nbrs\",\"keyVariables\":\"\",\"startLine\":\"Neighbor Address  Interface          Uptime    Expires DR pri Bidir\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$nbr_addr, $intf, $uptime, $expires, $int:dr_priority, $bidir]:(\\\\S+\\\\d+\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$nbr_addr:string\",\"$intf:string\",\"$uptime:string\",\"$expires:string\",\"$dr_priority:int\",\"$bidir:string\"]},\"xxid\":\"48454c04-ec81-d7ee-5861-a5c7a2b355d3\"}]},\"xxid\":\"8e83de36-9fe7-dbce-c1ee-8511a62dad00\",\"hashColumns\":[\"$nbr_addr\",\"$intf\"],\"interfaceKey\":\"$intf\"}]}",
+            "tableKeys": [
+                "_original_result.pim_nbrs.$nbr_addr"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "dr_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "bidir",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$nbr_addr"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "pim_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0d3b0076a36985ef662336dd418df1af",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_nbrs",
+            "dataType": "paragraph",
+            "desc": "PIM neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_addr",
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_nbrs",
+            "intfKey": false,
+            "name": "pim_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "pim_nbrs.$nbr_addr",
+            "dataType": "string",
+            "desc": "PIM neighbor address",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbrs.$nbr_addr",
+            "intfKey": false,
+            "name": "$nbr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbrs.$intf",
+            "dataType": "string",
+            "desc": "PIM neighbor interface",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "pim_nbrs.$uptime",
+            "dataType": "string",
+            "desc": "PIM neighbor uptime",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbrs.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbrs.$expires",
+            "dataType": "string",
+            "desc": "PIM neighbor expires",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbrs.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbrs.$dr_priority",
+            "dataType": "int",
+            "desc": "PIM neighbor DR priority",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbrs.$dr_priority",
+            "intfKey": false,
+            "name": "$dr_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_nbrs.$bidir",
+            "dataType": "string",
+            "desc": "PIM neighbor flags",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_nbrs.$bidir",
+            "intfKey": false,
+            "name": "$bidir",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

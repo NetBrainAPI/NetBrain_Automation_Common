@@ -1,0 +1,779 @@
+{
+    "_id": "89677813-c0c5-a269-4d36-6b8dec7247d4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip bgp vpnv4 all summary",
+    "createTime": {
+        "$date": 1579698175853
+    },
+    "description": "Device Type:\nCisco IOS Switch  \nCisco Router\nCommand:\nshow ip bgp vpnv4 all summary ",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasBGPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R1#show ip bgp vpnv4 all summary\nBGP router identifier 1.1.1.1, local AS number 1\nBGP table version is 4, main routing table version 4\n2 network entries using 312 bytes of memory\n2 path entries using 160 bytes of memory\n2/2 BGP path/bestpath attribute entries using 288 bytes of memory\n2 BGP extended community entries using 48 bytes of memory\n0 BGP route-map cache entries using 0 bytes of memory\n0 BGP filter-list cache entries using 0 bytes of memory\nBGP using 808 total bytes of memory\nBGP activity 4/0 prefixes, 4/0 paths, scan interval 60 secs\n\nNeighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd\n5.5.5.5         4            1     291     289        4    0    0 04:20:22        1\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"BGP router identifier $bgp_router_identifier, local AS number $local_as\",\"BGP table version is $table_version, main routing table version $main_routing_table_version\",\"$int:network_entries network entries using $int:network_entries_using_memory bytes of memory\",\"$int:path_entries path entries using $int:path_entries_using_memory bytes of memory\",\"$int:bgp_path/$int:bgp_bestpath BGP path/bestpath attribute entries using $int:bgp_attribute_using_memory bytes of memory\",\"$int:bgp_extended_community_entries BGP extended community entries using $int:bgp_extended_community_entries_using_memory bytes of memory\",\"$int:bgp_route_map_cache_entries BGP route-map cache entries using $int:bgp_route_map_cache_entries_using_memory bytes of memory\",\"$int:bgp_filterlist_cache_entries BGP filter-list cache entries using  $int:bgp_filterlist_cache_entries_using_memory bytes of memory\",\"BGP using $int:bgp_using_memory total bytes of memory\",\"BGP activity $int:bgp_activity_prefixes/$int:bgp_prefixes prefixes, $int:bgp_activity_paths/$int:bgp_paths paths, scan interval $scan_interval secs\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$bgp_router_identifier:string\",\"$local_as:string\",\"$table_version:string\",\"$main_routing_table_version:string\",\"$network_entries:int\",\"$network_entries_using_memory:int\",\"$path_entries:int\",\"$path_entries_using_memory:int\",\"$bgp_path:int\",\"$bgp_bestpath:int\",\"$bgp_attribute_using_memory:int\",\"$bgp_extended_community_entries:int\",\"$bgp_extended_community_entries_using_memory:int\",\"$bgp_route_map_cache_entries:int\",\"$bgp_route_map_cache_entries_using_memory:int\",\"$bgp_filterlist_cache_entries:int\",\"$bgp_filterlist_cache_entries_using_memory:int\",\"$bgp_using_memory:int\",\"$bgp_activity_prefixes:int\",\"$bgp_prefixes:int\",\"$bgp_activity_paths:int\",\"$bgp_paths:int\",\"$scan_interval:string\"]},\"xxid\":\"8d31c3ad-54e9-5277-3e3a-da3e30b1a34d\"},{\"type\":\"3\",\"name\":\"bgp_vpnv4_neigbors\",\"headers\":\"Neighbor;V;AS;MsgRcvd;MsgSent;TblVer;InQ;OutQ;Up/Down;State/PfxRcd\",\"endLine\":null,\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Neighbor:$string:neighbor;InQ:$int:in_q;MsgRcvd:$int:msg_rcvd;MsgSent:$int:msg_sent;AS:$string:as;OutQ:$int:out_q;State/PfxRcd:$string:state_pfx_rcvd;TblVer:$string:tbl_ver;Up/Down:$string:up_down;V:$string:version\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$neighbor:string\",\"$in_q:int\",\"$msg_rcvd:int\",\"$msg_sent:int\",\"$as:string\",\"$out_q:int\",\"$state_pfx_rcvd:string\",\"$tbl_ver:string\",\"$up_down:string\",\"$version:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"36574e12-d86e-6c4a-f9a6-6f1d15f76b16\",\"hashColumns\":[\"$nbr_id\",\"$neighbor\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"2d5e624e-bfa2-2ec7-7e29-ee2bb73717e5\"}]}",
+            "tableKeys": [
+                "_original_result.bgp_vpnv4_neigbors.$neighbor"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bgp_router_identifier",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "local_as",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "table_version",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "main_routing_table_version",
+                "type": 4
+            },
+            {
+                "index": 4,
+                "name": "network_entries",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "network_entries_using_memory",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "path_entries",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "path_entries_using_memory",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "bgp_path",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "bgp_bestpath",
+                "type": 1
+            },
+            {
+                "index": 10,
+                "name": "bgp_attribute_using_memory",
+                "type": 1
+            },
+            {
+                "index": 11,
+                "name": "bgp_extended_community_entries",
+                "type": 1
+            },
+            {
+                "index": 12,
+                "name": "bgp_extended_community_entries_using_memory",
+                "type": 1
+            },
+            {
+                "index": 13,
+                "name": "bgp_route_map_cache_entries",
+                "type": 1
+            },
+            {
+                "index": 14,
+                "name": "bgp_route_map_cache_entries_using_memory",
+                "type": 1
+            },
+            {
+                "index": 15,
+                "name": "bgp_filterlist_cache_entries",
+                "type": 1
+            },
+            {
+                "index": 16,
+                "name": "bgp_filterlist_cache_entries_using_memory",
+                "type": 1
+            },
+            {
+                "index": 17,
+                "name": "bgp_using_memory",
+                "type": 1
+            },
+            {
+                "index": 18,
+                "name": "bgp_activity_prefixes",
+                "type": 1
+            },
+            {
+                "index": 19,
+                "name": "bgp_prefixes",
+                "type": 1
+            },
+            {
+                "index": 20,
+                "name": "bgp_activity_paths",
+                "type": 1
+            },
+            {
+                "index": 21,
+                "name": "bgp_paths",
+                "type": 1
+            },
+            {
+                "index": 22,
+                "name": "scan_interval",
+                "type": 4
+            },
+            {
+                "index": 23,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 10,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "version",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "as",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "msg_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "msg_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "tbl_ver",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "in_q",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "out_q",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "up_down",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "state_pfx_rcvd",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$nbr_id",
+                    "$neighbor"
+                ],
+                "hashSort": false,
+                "index": 24,
+                "name": "bgp_vpnv4_neigbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "1c266fd024755a1d6bf1d5ec86f937c1",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$bgp_router_identifier",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_router_identifier",
+            "intfKey": false,
+            "name": "$bgp_router_identifier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "string",
+            "desc": "Autonomous system number set by the router bgp command.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$table_version",
+            "dataType": "string",
+            "desc": "BGP database identifier.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$table_version",
+            "intfKey": false,
+            "name": "$table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$main_routing_table_version",
+            "dataType": "string",
+            "desc": "Last version of the BGP database that was injected into the main routing table.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$main_routing_table_version",
+            "intfKey": false,
+            "name": "$main_routing_table_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$network_entries",
+            "dataType": "int",
+            "desc": "Number of sets of prefix information held in the specified BGP process for the specified address family.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$network_entries",
+            "intfKey": false,
+            "name": "$network_entries",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$network_entries_using_memory",
+            "dataType": "int",
+            "desc": "Number of sets of prefix information held in the specified BGP process for the specified address family.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$network_entries_using_memory",
+            "intfKey": false,
+            "name": "$network_entries_using_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_entries",
+            "dataType": "int",
+            "desc": "path entries using.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_entries",
+            "intfKey": false,
+            "name": "$path_entries",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$path_entries_using_memory",
+            "dataType": "int",
+            "desc": "path entries using.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$path_entries_using_memory",
+            "intfKey": false,
+            "name": "$path_entries_using_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_path",
+            "dataType": "int",
+            "desc": "BGP path/bestpath attribute entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_path",
+            "intfKey": false,
+            "name": "$bgp_path",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_bestpath",
+            "dataType": "int",
+            "desc": "BGP path/bestpath attribute entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_bestpath",
+            "intfKey": false,
+            "name": "$bgp_bestpath",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_attribute_using_memory",
+            "dataType": "int",
+            "desc": "Number of unique sets of attribute information stored in the specified process and the amount of memory used by the attribute information.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_attribute_using_memory",
+            "intfKey": false,
+            "name": "$bgp_attribute_using_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_extended_community_entries",
+            "dataType": "int",
+            "desc": "BGP extended community entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_extended_community_entries",
+            "intfKey": false,
+            "name": "$bgp_extended_community_entries",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_extended_community_entries_using_memory",
+            "dataType": "int",
+            "desc": "BGP extended community entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_extended_community_entries_using_memory",
+            "intfKey": false,
+            "name": "$bgp_extended_community_entries_using_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_route_map_cache_entries",
+            "dataType": "int",
+            "desc": "BGP route-map cache entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_route_map_cache_entries",
+            "intfKey": false,
+            "name": "$bgp_route_map_cache_entries",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_route_map_cache_entries_using_memory",
+            "dataType": "int",
+            "desc": "BGP route-map cache entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_route_map_cache_entries_using_memory",
+            "intfKey": false,
+            "name": "$bgp_route_map_cache_entries_using_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_filterlist_cache_entries",
+            "dataType": "int",
+            "desc": "BGP filter-list cache entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_filterlist_cache_entries",
+            "intfKey": false,
+            "name": "$bgp_filterlist_cache_entries",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_filterlist_cache_entries_using_memory",
+            "dataType": "int",
+            "desc": "BGP filter-list cache entries.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_filterlist_cache_entries_using_memory",
+            "intfKey": false,
+            "name": "$bgp_filterlist_cache_entries_using_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_using_memory",
+            "dataType": "int",
+            "desc": "BGP using  total bytes of memory.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_using_memory",
+            "intfKey": false,
+            "name": "$bgp_using_memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_activity_prefixes",
+            "dataType": "int",
+            "desc": "Number of sets of prefix information for the specified address family that have been allocated and freed during the lifetime of the process.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_activity_prefixes",
+            "intfKey": false,
+            "name": "$bgp_activity_prefixes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_prefixes",
+            "dataType": "int",
+            "desc": "Number of sets of prefix information currently allocated for the specified address family, and the amount of memory used by them.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_prefixes",
+            "intfKey": false,
+            "name": "$bgp_prefixes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_activity_paths",
+            "dataType": "int",
+            "desc": "Number of sets of route information for the specified address family that have been allocated and freed during the lifetime of the process.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_activity_paths",
+            "intfKey": false,
+            "name": "$bgp_activity_paths",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$bgp_paths",
+            "dataType": "int",
+            "desc": "Number of sets of route information currently allocated for the specified address family, and the amount of memory used by them.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_paths",
+            "intfKey": false,
+            "name": "$bgp_paths",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$scan_interval",
+            "dataType": "string",
+            "desc": "Interval (in seconds) between BGP scans for address family-independent tasks. This is controlled by the bgp scan-time command.\n",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$scan_interval",
+            "intfKey": false,
+            "name": "$scan_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_id",
+                    "$neighbor"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors",
+            "intfKey": false,
+            "name": "bgp_vpnv4_neigbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$neighbor",
+            "intfKey": false,
+            "name": "$neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$in_q",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$in_q",
+            "intfKey": false,
+            "name": "$in_q",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$msg_rcvd",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$msg_rcvd",
+            "intfKey": false,
+            "name": "$msg_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$msg_sent",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$msg_sent",
+            "intfKey": false,
+            "name": "$msg_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$out_q",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$out_q",
+            "intfKey": false,
+            "name": "$out_q",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$state_pfx_rcvd",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$state_pfx_rcvd",
+            "intfKey": false,
+            "name": "$state_pfx_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$tbl_ver",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$tbl_ver",
+            "intfKey": false,
+            "name": "$tbl_ver",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$up_down",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$up_down",
+            "intfKey": false,
+            "name": "$up_down",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_vpnv4_neigbors.$version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_vpnv4_neigbors.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

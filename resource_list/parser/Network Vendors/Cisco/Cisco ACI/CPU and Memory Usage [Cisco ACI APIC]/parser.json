@@ -1,0 +1,94 @@
+{
+    "_id": "eac4332a-6cc6-cc22-5592-ad00f62a45a8",
+    "author": "NetBrain",
+    "bizType": "cd0243d2-fbda-4003-89f4-906b01c1def6",
+    "command": "",
+    "createTime": {
+        "$date": 1560792805555
+    },
+    "description": "Device Type:\nAll Device Type\nCommand:\n       SNMP",
+    "devTypes": [
+        30001
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "'''\r\nBegin Declare Input Parameters\r\n [\r\n ]\r\n End Declare\r\n '''\r\n\r\ndef BuildParameters(context, device_name, params):\r\n    get_dn = GetDeviceProperties(context, device_name, {'techName': 'Cisco ACI', 'paramType': 'SDN', 'params' : ['dn','role'] })\r\n    dn = get_dn['params']['dn']\r\n    role = get_dn['params']['role']\r\n    rtn_params = [{ 'devName' : device_name, 'dn' : dn, 'role': role }]\r\n    return rtn_params\r\n\r\ndef RetrieveData(rtn_params):\r\n    dn = rtn_params['dn']\r\n    role = rtn_params['role']\r\n    url = '/api/mo/' + dn + '/sys/proc.json'\r\n    rtn_params['url'] = url\r\n    data = getData(rtn_params)\r\n    return data",
+    "samples": [
+        {
+            "content": "[\n    {\n        \"procEntity\": {\n            \"attributes\": {\n                \"adminSt\": \"enabled\",\n                \"childAction\": \"\",\n                \"cpuPct\": \"4\",\n                \"dn\": \"topology/pod-1/node-1/sys/proc\",\n                \"maxMemAlloc\": \"47799096\",\n                \"memFree\": \"17641468\",\n                \"modTs\": \"2018-05-07T12:49:08.851+00:00\",\n                \"monPolDn\": \"uni/fabric/monfab-default\",\n                \"name\": \"\",\n                \"operErr\": \"\",\n                \"operSt\": \"enabled\",\n                \"status\": \"\"\n            }\n        }\n    }\n]",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"'''\\nBegin Declare Variable\\n[    \\n    \\n    {\\\"name\\\": \\\"cpu\\\", \\\"type\\\": \\\"double\\\"},\\n    {\\\"name\\\": \\\"dev_status\\\", \\\"type\\\": \\\"string\\\"},\\n    {\\\"name\\\": \\\"memory\\\", \\\"type\\\": \\\"double\\\"}\\n\\n]\\nEnd Declare\\n'''\\n\\nimport json \\ndef ParseText(_original_result) :\\n    value ={'dev_status': 'Down'}\\n    try:\\n        node = json.loads(_original_result)\\n        procEntity = node[0]['procEntity']['attributes']\\n        value['dev_status'] = 'Up'\\n        value['cpu'] = 1.0 * int(procEntity['cpuPct'])\\n        used_memory = int(procEntity['maxMemAlloc'])\\n        free_memory = int(procEntity['memFree'])\\n        value['memory'] =  (100.0 * used_memory) / (used_memory + free_memory)\\n    except Exception as ex:\\n        print(str(ex))\\n    return value\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$cpu\",\"type\":\"double\"},{\"name\":\"$dev_status\",\"type\":\"string\"},{\"name\":\"$memory\",\"type\":\"double\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"358eb036-4e5a-cc04-a843-2a5518eea0b0\"}]}",
+            "tableKeys": null
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cpu",
+                "type": 2
+            },
+            {
+                "index": 1,
+                "name": "dev_status",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "memory",
+                "type": 2
+            }
+        ]
+    },
+    "structureId": "80517e4b7efc3c78a2cf55b9d0f860f3",
+    "supportNodeType": 0,
+    "type": 6,
+    "variables": [
+        {
+            "capName": "$cpu",
+            "dataType": "double",
+            "desc": "CPU.",
+            "extraInfo": null,
+            "fullName": "$cpu",
+            "intfKey": false,
+            "name": "$cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$dev_status",
+            "dataType": "string",
+            "desc": "Device Status.",
+            "extraInfo": null,
+            "fullName": "$dev_status",
+            "intfKey": false,
+            "name": "$dev_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$memory",
+            "dataType": "double",
+            "desc": "Memory.",
+            "extraInfo": null,
+            "fullName": "$memory",
+            "intfKey": false,
+            "name": "$memory",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

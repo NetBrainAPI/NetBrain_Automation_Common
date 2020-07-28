@@ -1,0 +1,83 @@
+{
+    "_id": "623210c6-2730-e945-aaf7-2479bc75f313",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys performance connection",
+    "createTime": {
+        "$date": 1583183207351
+    },
+    "description": "",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "root@(BIG-IP_VE1)(cfg-sync In Sync)(Standby)(/)(tmos)#show sys performance connection\r\n\r\nSys::Performance Connections\r\n---------------------------------------------------------------------------\r\nActive Connections           Current  Average  Max(since 08/08/19 08:12:16)\r\n---------------------------------------------------------------------------\r\nConnections                       12       11                            13\r\n                           \r\n---------------------------------------------------------------------------\r\nTotal New Connections(/sec)  Current  Average  Max(since 08/08/19 08:12:16)\r\n---------------------------------------------------------------------------\r\nClient Connections                 2        2                             2\r\nServer Connections                 2        2                             2\r\n                           \r\n---------------------------------------------------------------------------\r\nHTTP Requests(/sec)          Current  Average  Max(since 08/08/19 08:12:16)\r\n---------------------------------------------------------------------------\r\nHTTP Requests                      0        0                             0\r\n                           \r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"ad78189c-ec03-d018-5937-a9fc0dbee3fd\"}]},\"xxid\":\"25efd753-eb63-f638-7ddd-e0028eafb597\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$double:active_connection]:^Connections\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$active_connection:double\"]},\"xxid\":\"8bf915c1-9bdb-83af-8e88-de1e87de3544\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "active_connection",
+                "type": 2
+            }
+        ]
+    },
+    "structureId": "0486f990eb1b90fa191976d3991a8dae",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$active_connection",
+            "dataType": "double",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$active_connection",
+            "intfKey": false,
+            "name": "$active_connection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

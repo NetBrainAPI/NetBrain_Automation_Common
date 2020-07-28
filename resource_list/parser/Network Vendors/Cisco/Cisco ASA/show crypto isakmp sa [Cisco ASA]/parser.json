@@ -1,0 +1,225 @@
+{
+    "_id": "e7421648-4c0b-a8ad-cdd0-5156c39a54e4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show crypto isakmp sa",
+    "createTime": {
+        "$date": 1579803359347
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow crypto isakmp sa",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ASA5505#show crypto isakmp sa\r\n\r\n   Active SA: 1\r\n    Rekey SA: 0 (A tunnel will report 1 Active and 1 Rekey SA during rekey)\r\nTotal IKE SA: 1\r\n\r\n1   IKE Peer: 192.168.1.1\r\n    Type    : L2L             Role    : initiator\r\n    Rekey   : no              State   : MM_ACTIVE\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isakmp_sa\",\"keyVariables\":\"\",\"startLine\":\"regex:^\\\\d+\\\\s+IKE\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$peer]:IKE Peer:\\\\s+(\\\\S+)\",\"regex[$role]:Role\\\\s+:\\\\s+(\\\\S+)\",\"regex[$type]:Type\\\\s+:\\\\s+(\\\\S+)\",\"regex[$status]:State\\\\s+:\\\\s+(\\\\S+)\",\"regex[$rekey]:Rekey\\\\s+:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$peer:string\",\"$role:string\",\"$type:string\",\"$status:string\",\"$rekey:string\"]},\"xxid\":\"fdfc8150-a17d-534d-ceb0-f93176a1acff\"}]},\"xxid\":\"3e7a7352-1af3-dcb6-ba6f-c5a38e77e16f\",\"hashColumns\":[\"$status\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:active_sa]:Active SA:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$active_sa:int\"]},\"xxid\":\"36fa9be2-7f4d-265d-d976-a311841791f2\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_sa]:Total IKE SA:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_sa:int\"]},\"xxid\":\"ca64ffb8-bb6f-27e1-3148-c773ab1bbea4\"}]}",
+            "tableKeys": [
+                "_original_result.isakmp_sa.$status"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "active_sa",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "total_sa",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "peer",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "role",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "status",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rekey",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$status"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isakmp_sa",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "13e3391adb5586879f5886ccef2005dc",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isakmp_sa",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$status"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isakmp_sa",
+            "intfKey": false,
+            "name": "isakmp_sa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isakmp_sa.$peer",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isakmp_sa.$peer",
+            "intfKey": false,
+            "name": "$peer",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isakmp_sa.$role",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isakmp_sa.$role",
+            "intfKey": false,
+            "name": "$role",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isakmp_sa.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isakmp_sa.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isakmp_sa.$status",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isakmp_sa.$status",
+            "intfKey": false,
+            "name": "$status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isakmp_sa.$rekey",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isakmp_sa.$rekey",
+            "intfKey": false,
+            "name": "$rekey",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$active_sa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$active_sa",
+            "intfKey": false,
+            "name": "$active_sa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_sa",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_sa",
+            "intfKey": false,
+            "name": "$total_sa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

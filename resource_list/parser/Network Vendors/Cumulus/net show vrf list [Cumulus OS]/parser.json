@@ -1,0 +1,230 @@
+{
+    "_id": "2b6443f3-0c19-4ed7-f391-6077e4537aae",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "net show vrf list",
+    "createTime": {
+        "$date": 1580488016490
+    },
+    "description": "Device:\nCumulus OS\nCommand:\nnet show vrf list",
+    "devTypes": [
+        10674
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "cumulus@cumulus:~$net show vrf list\r\n\r\nVRF: rocket          \r\n--------------------\r\nswp1             UP             50:02:00:01:00:01 <BROADCAST,MULTICAST,UP,LOWER_UP> \r\n\r\nVRF: mgmt\r\n--------------------\r\neth0              UP     a0:00:00:00:00:11 <BROADCAST,MULTICAST,UP,LOWER_UP>\r\n\r\nVRF: turtle\r\n--------------------\r\nvlan13@bridge     UP     44:38:39:00:00:03 <BROADCAST,MULTICAST,UP,LOWER_UP>\r\nvlan13-v0@vlan13  UP     44:39:39:ff:00:13 <BROADCAST,MULTICAST,UP,LOWER_UP>\r\nvlan24@bridge     UP     44:38:39:00:00:03 <BROADCAST,MULTICAST,UP,LOWER_UP> \r\nvlan24-v0@vlan24  UP     44:39:39:ff:00:24 <BROADCAST,MULTICAST,UP,LOWER_UP>\r\nvlan4001@bridge   UP     44:39:39:ff:40:94 <BROADCAST,MULTICAST,UP,LOWER_UP>\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.int_vrf.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\ndef ParseText(_original_result):\\n    vrf = {\\n        'vrf_name'                      :[],\\n        'interfaces'                    :[],\\n        '$_columns':['vrf_name', 'interfaces']\\n        }\\n    #split each paragraph by the VRF: $vrf_name pattern\\n    vrfs=re.split(\\\"VRF: \\\", _original_result)\\n    for i in vrfs[1:]:\\n        vrf_name=re.match(\\\"^\\\\S+\\\", i)\\n        print(vrf_name)\\n        if vrf_name:\\n            int_list=''\\n            #go through each string line by line and skip the first two (i.e.,  the vrf name and the '----' )\\n            for j in i.splitlines()[2:]:\\n                int_name=re.match(\\\"^(\\\\S+)\\\", j)\\n                if int_name:\\n                    int_list+=int_name.group(0)+', '\\n            #remove the comma and space at the end of the interfaces string\\n            int_list = int_list.strip(', ')\\n        vrf['vrf_name'].append(vrf_name.group(0))\\n        vrf['interfaces'].append(int_list)\\n    dic={'vrf':vrf}\\n    return dic\\n    \",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$vrf\",\"variableTypes\":{\"variableType\":[{\"name\":\"$vrf_name\",\"type\":\"string\"},{\"name\":\"$interfaces\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"1b71f81c-cae7-859b-6acb-616b56550cfb\",\"interfaceKey\":{},\"hashColumns\":{\"vrf\":[\"$vrf_name\"]},\"hashSort\":{\"vrf\":false},\"tableKeys\":{\"vrf\":[\"$vrf_name\"]}},{\"type\":\"8\",\"script\":\"import re\\ndef ParseText(_original_result):\\n    int_vrf = {\\n        'interface'                     :[],\\n        'vrf_name'                      :[],\\n        '$_columns':['interface', 'vrf_name']\\n        }\\n    #split each paragraph by the VRF: $vrf_name pattern\\n    vrfs=re.split(\\\"VRF: \\\", _original_result)\\n    for i in vrfs[1:]:\\n        vrf_name=re.match(\\\"^\\\\S+\\\", i)\\n        print(vrf_name)\\n        if vrf_name:\\n            #go through each string line by line and skip the first two (i.e.,  the vrf name and the '----' )\\n            for j in i.splitlines()[2:]:\\n                int_name=re.match(\\\"^(\\\\S+)\\\", j)\\n                if int_name:\\n                        int_vrf['interface'].append(int_name.group(0))                \\n                        int_vrf['vrf_name'].append(vrf_name.group(0))\\n    \\n    dic={'int_vrf':int_vrf}\\n    return dic\\n    \",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$int_vrf\",\"variableTypes\":{\"variableType\":[{\"name\":\"$interface\",\"type\":\"string\"},{\"name\":\"$vrf_name\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"81570d4f-43ae-2ff7-3718-7cc5d823d3f9\",\"interfaceKey\":{\"int_vrf\":\"$interface\"},\"hashColumns\":{\"int_vrf\":[\"$interface\"]},\"tableKeys\":{\"int_vrf\":[\"$interface\"]}},{\"type\":\"8\",\"script\":\"import re\\ndef ParseText(_original_result):\\n    vrf_configured=False\\n    if re.search(r'VRF: \\\\S+', _original_result):\\n            vrf_configured=True\\n    dic = {'is_vrf_configured': vrf_configured}\\n    return dic\",\"variableTypes\":{\"variableType\":[{\"name\":\"$is_vrf_configured\",\"type\":\"bool\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"0318fed2-36a6-e5da-fe87-bf3057c9afd4\"}]}",
+            "tableKeys": [
+                "_original_result.$int_vrf.$interface",
+                "_original_result.$vrf.$vrf_name"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "hashSort": false,
+                "index": 0,
+                "name": "is_vrf_configured",
+                "type": 3
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interfaces",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "vrf_name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "vrf",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "interface"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "int_vrf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "3dfbad7ff489fb88aad83f253ea876d0",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$vrf",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vrf_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$vrf.$vrf_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$vrf_name",
+            "intfKey": false,
+            "name": "$vrf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrf.$interfaces",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$interfaces",
+            "intfKey": false,
+            "name": "$interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$int_vrf",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "$int_vrf",
+            "intfKey": false,
+            "name": "$int_vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "$int_vrf.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$int_vrf.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "$int_vrf.$vrf_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$int_vrf.$vrf_name",
+            "intfKey": false,
+            "name": "$vrf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$is_vrf_configured",
+            "dataType": "bool",
+            "desc": "checks if any VRFs are configured on the device",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$is_vrf_configured",
+            "intfKey": false,
+            "name": "$is_vrf_configured",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

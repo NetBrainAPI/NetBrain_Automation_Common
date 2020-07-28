@@ -1,0 +1,238 @@
+{
+    "_id": "e39477b5-bb80-f821-4388-cd1dc3c18e62",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show igmp",
+    "createTime": {
+        "$date": 1591074886783
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow igmp",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB# show igmp\r\nVLAN                 IP Address           Flags     nLRMA  nLeMA IGMPver\r\nDefault              0.0.0.0        / 0   ---izpt-      0      0       3\r\nisc                  50.50.50.1     /24   ---izpt-      0      0       3\r\nv1                   0.0.0.0        / 0   U--izpt-      0      2       3\r\nv3000                1.1.1.1        /24   ---izpt-      0      0       3\r\nv666                 6.0.0.1        /16   ---izpt-      0      0       3\r\nFlags: (f) Forwarding Enabled, i) IGMP Enabled\r\n(m) Multicast Forwarding Enabled, (p) IGMP Proxy Query Enabled\r\n(r) Receive Router Alert Required (t) Transmit Router Alert\r\n(U) Interface Up, (z) IGMP Snooping Enabled\r\n(nLeMA) Number of Learned Multicast Addresses\r\n(nLRMA) Number of Locally Registered Multicast Addresses",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.igmp_intf_filter.igmp_intf_table.$vlan"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"igmp_intf_filter\",\"startLine\":\"regex:^vlan\",\"endLine\":\"regex:^flags\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"78fed859-41c1-82ea-7809-cd2fb2ddce8f\"},{\"type\":\"3\",\"name\":\"igmp_intf_table\",\"headers\":\"VLAN;IP Address;Flags;nLRMA;nLeMA;IGMPver\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"VLAN:$string:vlan;IP Address:$string:ip_addr;Flags:$string:flags;nLRMA:$string:nlrma;nLeMA:$string:nlema;IGMPver:$string:igmp_version\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$vlan:string\",\"$ip_addr:string\",\"$flags:string\",\"$nlrma:string\",\"$nlema:string\",\"$igmp_version:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"d436600d-6512-bafd-d7fe-a6302fe41ea0\",\"hashColumns\":[\"$vlan\"],\"interfaceKey\":\"$vlan\"}]},\"xxid\":\"e5f39bc8-0403-ba3e-311e-dada39c27865\"}]}",
+            "tableKeys": [
+                "_original_result.igmp_intf_filter.igmp_intf_table.$vlan"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "igmp_intf_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ip_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "nlrma",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "nlema",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "igmp_version",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "igmp_intf_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "b6a0e7df7e49370e3a7c2ecef26cad61",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "igmp_intf_filter",
+            "dataType": "filter",
+            "desc": "IGMP filter.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter",
+            "intfKey": false,
+            "name": "igmp_intf_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intf_table",
+            "dataType": "table",
+            "desc": "IGMP table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter.igmp_intf_table",
+            "intfKey": false,
+            "name": "igmp_intf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_intf_table.$vlan",
+            "dataType": "string",
+            "desc": "Vlan.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter.igmp_intf_table.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_intf_table.$ip_addr",
+            "dataType": "string",
+            "desc": "IP address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter.igmp_intf_table.$ip_addr",
+            "intfKey": false,
+            "name": "$ip_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intf_table.$flags",
+            "dataType": "string",
+            "desc": "(f) Forwarding Enabled, i) IGMP Enabled",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter.igmp_intf_table.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intf_table.$nlrma",
+            "dataType": "string",
+            "desc": "Number of Locally Registered Multicast Addresses",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter.igmp_intf_table.$nlrma",
+            "intfKey": false,
+            "name": "$nlrma",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intf_table.$nlema",
+            "dataType": "string",
+            "desc": "Number of Learned Multicast Addresses",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter.igmp_intf_table.$nlema",
+            "intfKey": false,
+            "name": "$nlema",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_intf_table.$igmp_version",
+            "dataType": "string",
+            "desc": "IGMP version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_intf_filter.igmp_intf_table.$igmp_version",
+            "intfKey": false,
+            "name": "$igmp_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

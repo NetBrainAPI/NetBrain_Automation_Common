@@ -1,0 +1,235 @@
+{
+    "_id": "5353fbb0-dc1a-f7b1-2b1d-8363707858aa",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show flow-export counters",
+    "createTime": {
+        "$date": 1579885592723
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow flow-export counters",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "hostname (config)# show flow-export counters\r\ndestination: inside 209.165.200.225 2055\r\nStatistics:\r\n packets sent                 250\r\nErrors:\r\n block allocation errors        0\r\n invalid interface              0\r\n template send failure          0\r\n\r\ndestination: inside 209.165.200.225 2055\r\nStatistics:\r\n packets sent                 250\r\nErrors:\r\n block allocation errors        0\r\n invalid interface              0\r\n template send failure          0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.flows.$dest_intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"flows\",\"keyVariables\":\"\",\"startLine\":\"regex[]:^destination: +\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$dest_intf]:destination: +(\\\\S+) +\\\\d+\",\"regex[$dest_ip]:destination: +\\\\S+ +(\\\\S+) +\\\\d+\",\"regex[$dest_port]:destination: +\\\\S+ +\\\\S+ +(\\\\d+)\",\"regex[$int:pkt_sent]:sent +(\\\\d+)\",\"regex[$int:block_err]:block +allocation +errors +(\\\\d+)\",\"regex[$int:invalid_intf]:invalid +interface +(\\\\d+)\",\"regex[$int:send_fail]:template +send +failure +(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$dest_intf:string\",\"$dest_ip:string\",\"$dest_port:string\",\"$pkt_sent:int\",\"$block_err:int\",\"$invalid_intf:int\",\"$send_fail:int\"]},\"xxid\":\"1dfbeae7-80e2-a310-c20f-9224239b36a5\"}]},\"xxid\":\"50296f65-eca9-dcfe-9280-60b1eceb89e7\",\"interfaceKey\":\"$dest_intf\",\"hashColumns\":[\"$dest_intf\",\"$block_err\",\"$invalid_intf\",\"$send_fail\"]}]}",
+            "tableKeys": [
+                "_original_result.flows.$block_err",
+                "_original_result.flows.$invalid_intf",
+                "_original_result.flows.$send_fail"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "dest_intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "dest_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dest_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "pkt_sent",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "block_err",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "invalid_intf",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "send_fail",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$block_err",
+                    "$dest_intf",
+                    "$invalid_intf",
+                    "$send_fail"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "flows",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "115bbc39182a77ecd020e7794e27fe6d",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "flows",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$dest_intf",
+                    "$block_err",
+                    "$invalid_intf",
+                    "$send_fail"
+                ],
+                "hashSort": false
+            },
+            "fullName": "flows",
+            "intfKey": false,
+            "name": "flows",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "flows.$dest_intf",
+            "dataType": "string",
+            "desc": "Netflow export destination interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows.$dest_intf",
+            "intfKey": false,
+            "name": "$dest_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "flows.$dest_ip",
+            "dataType": "string",
+            "desc": "Netflow export destination IP .",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows.$dest_ip",
+            "intfKey": false,
+            "name": "$dest_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows.$dest_port",
+            "dataType": "string",
+            "desc": "Netflow export destination port.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows.$dest_port",
+            "intfKey": false,
+            "name": "$dest_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows.$pkt_sent",
+            "dataType": "int",
+            "desc": "Netflow export sent packets count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows.$pkt_sent",
+            "intfKey": false,
+            "name": "$pkt_sent",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows.$block_err",
+            "dataType": "int",
+            "desc": "Netflow export block allocation errors .",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows.$block_err",
+            "intfKey": false,
+            "name": "$block_err",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows.$invalid_intf",
+            "dataType": "int",
+            "desc": "Invalid netflow export interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows.$invalid_intf",
+            "intfKey": false,
+            "name": "$invalid_intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "flows.$send_fail",
+            "dataType": "int",
+            "desc": "Netflow export Template send failure error.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "flows.$send_fail",
+            "intfKey": false,
+            "name": "$send_fail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

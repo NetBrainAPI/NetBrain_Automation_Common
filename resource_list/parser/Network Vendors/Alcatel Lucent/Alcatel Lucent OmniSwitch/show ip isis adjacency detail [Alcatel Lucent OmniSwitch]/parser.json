@@ -1,0 +1,496 @@
+{
+    "_id": "33d02a03-7cd9-b74c-6e7f-513ad0109f31",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip isis adjacency detail",
+    "createTime": {
+        "$date": 1590695406654
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip isis adjacency detail",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip isis adjacency detail\r\n============================================================================\r\nISIS adjacency\r\n============================================================================\r\n-------------------------------------------------------------------------\r\nSystemID     : 0000.0000.0001         SNPA : 00:d0:95:f3:0f:08\r\nVlAN         : 20                  Up Time : WED JUN 05 05:18:51 2013\r\nState        : UP                 Priority : 64\r\nNbr Sys Type : L2               L.CircType : L1L2\r\nHold Time    : 6                  Max Hold : 9\r\nAdj Level    : L2                Host-name : Router-A\r\nMT IDs       : 0, 2                 NLPIDs : IPv4, IPv6\r\nIPv4 Neighbor      : 2.2.2.3\r\nIpv6 Neighbor      : FE80::C809:FFF:FEDC:0\r\nRestart Support    : Disabled\r\nRestart Status     : Not currently being helped\r\nRestart Suppressed : Disabled\r\n----------------------------------------------------------------------------\r\nSystemID     : 0000.0000.0002         SNPA : 00:d0:95:f3:0f:08\r\nVlAN         : 10                  Up Time : WED JUN 05 05:18:51 2013\r\nState        : UP                 Priority : 64\r\nNbr Sys Type : L1               L.CircType : L1L2\r\nHold Time    : 6                  Max Hold : 9\r\nAdj Level    : L2                Host-name : Router-B\r\nMT IDs       : None                 NLPIDs : IPv4\r\nIPv4 Neighbor      : 2.2.2.3\r\nIpv6 Neighbor      : FE80::C809:AFF:FEEC:0\r\nRestart Support    : Disabled\r\nRestart Status     : Not currently being helped\r\nRestart Suppressed : Disabled\r\n----------------------------------------------------------------------------\r\nAdjacency : 2\r\n============================================================================\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Adjacency : $total\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:string\"]},\"xxid\":\"01fb8c67-2f09-7c38-5841-ba4aa49b512e\"},{\"type\":\"4\",\"name\":\"adjacency\",\"keyVariables\":\"\",\"startLine\":\"regex[$systemid,$snpa]:SystemID\\\\s*:\\\\s*(\\\\S+)\\\\s+SNPA\\\\s*:\\\\s*(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vlan,$uptime]:VLAN\\\\s*:\\\\s*(\\\\S+)\\\\s*Up Time\\\\s*:\\\\s*(.+)\",\"regex[$state,$int:priority]:State\\\\s*:\\\\s*(\\\\S+)\\\\s*Priority\\\\s*:\\\\s*(.+)\",\"regex[$nbr_sys_type,$lcirctype]:Nbr Sys Type\\\\s*:\\\\s*(\\\\S+)\\\\s*L\\\\.CircType\\\\s*:\\\\s*(.+)\",\"regex[$int:hold_time,$int:max_hold]:Hold Time\\\\s*:\\\\s*(\\\\S+)\\\\s*Max Hold\\\\s*:\\\\s*(.+)\",\"regex[$adj_level,$hostname]:Adj Level\\\\s*:\\\\s*(\\\\S+)\\\\s*Host-name\\\\s*:\\\\s*(.+)\",\"regex[$mt_ids,$nlpids]:MT IDs\\\\s*:\\\\s*(.+?)\\\\s*NLPIDs\\\\s*:\\\\s*(.+)\",\"regex[$ipv4_neighbor]:IPv4 Neighbor\\\\s*:\\\\s*(.+)\",\"regex[$ipv6_neighbor]:IPv6 Neighbor\\\\s*:\\\\s*(.+)\",\"regex[$restart_support]:Restart Support\\\\s*:\\\\s*(.+)\",\"regex[$restart_status]:Restart Status\\\\s*:\\\\s*(.+)\",\"regex[$restart_suppressed]:Restart Suppressed\\\\s*:\\\\s*(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$systemid:string\",\"$snpa:string\",\"$vlan:string\",\"$uptime:string\",\"$state:string\",\"$priority:int\",\"$nbr_sys_type:string\",\"$lcirctype:string\",\"$hold_time:int\",\"$max_hold:int\",\"$adj_level:string\",\"$hostname:string\",\"$mt_ids:string\",\"$nlpids:string\",\"$ipv4_neighbor:string\",\"$ipv6_neighbor:string\",\"$restart_support:string\",\"$restart_status:string\",\"$restart_suppressed:string\"]},\"xxid\":\"95f74d2a-1b23-55ed-e6a5-422f779516bf\"}]},\"xxid\":\"090e10ef-de7c-8382-1f48-97de37941c63\",\"hashColumns\":[\"$systemid\"]}]}",
+            "tableKeys": [
+                "_original_result.adjacency.$systemid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 19,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "systemid",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vlan",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "nbr_sys_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "lcirctype",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "max_hold",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "adj_level",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "hostname",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "mt_ids",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "nlpids",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "ipv4_neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 15,
+                        "name": "ipv6_neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 16,
+                        "name": "restart_support",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "restart_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "restart_suppressed",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$systemid"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "adjacency",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "735b8c89411a014c408e0d04dfea3399",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total",
+            "dataType": "string",
+            "desc": "The total number of adjacent routers",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency",
+            "dataType": "paragraph",
+            "desc": "Adjacency table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$systemid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "adjacency",
+            "intfKey": false,
+            "name": "adjacency",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "adjacency.$systemid",
+            "dataType": "string",
+            "desc": "The system ID of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$systemid",
+            "intfKey": false,
+            "name": "$systemid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$snpa",
+            "dataType": "string",
+            "desc": "The system ID is a fixed size, six octet field in the NSAP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$vlan",
+            "dataType": "string",
+            "desc": "The Vlan ID in which the adjacency is present",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$vlan",
+            "intfKey": false,
+            "name": "$vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$uptime",
+            "dataType": "string",
+            "desc": "Indicates the time period in seconds, during which the router was in the adjacency",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$state",
+            "dataType": "string",
+            "desc": "The state of the adjacent router (Up or Down)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$priority",
+            "dataType": "int",
+            "desc": "The priority of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$nbr_sys_type",
+            "dataType": "string",
+            "desc": "The type of the neighboring router(L1, L2 or L1L2)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$nbr_sys_type",
+            "intfKey": false,
+            "name": "$nbr_sys_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$lcirctype",
+            "dataType": "string",
+            "desc": "Indicates the level circuit type (L1, L2 or L1L2) of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$lcirctype",
+            "intfKey": false,
+            "name": "$lcirctype",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$hold_time",
+            "dataType": "int",
+            "desc": "The Hold time of the adjacent router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$max_hold",
+            "dataType": "int",
+            "desc": "Indicates the maximum Hold time of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$max_hold",
+            "intfKey": false,
+            "name": "$max_hold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$adj_level",
+            "dataType": "string",
+            "desc": "The adjacency level (L1 or L2) of the router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$adj_level",
+            "intfKey": false,
+            "name": "$adj_level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$hostname",
+            "dataType": "string",
+            "desc": "The host name of the adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$hostname",
+            "intfKey": false,
+            "name": "$hostname",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$mt_ids",
+            "dataType": "string",
+            "desc": "MT IDs sent by MT enabled ISIS neighbour",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$mt_ids",
+            "intfKey": false,
+            "name": "$mt_ids",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$nlpids",
+            "dataType": "string",
+            "desc": "The IP address families supported by IS-IS neighbor: IPv4 or IPv6",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$nlpids",
+            "intfKey": false,
+            "name": "$nlpids",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$ipv4_neighbor",
+            "dataType": "string",
+            "desc": "The 32-bit IP address of the neighbor",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$ipv4_neighbor",
+            "intfKey": false,
+            "name": "$ipv4_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$ipv6_neighbor",
+            "dataType": "string",
+            "desc": "The 32-bit IPv6 address of the neighbor",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$ipv6_neighbor",
+            "intfKey": false,
+            "name": "$ipv6_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$restart_support",
+            "dataType": "string",
+            "desc": "Indicates if graceful restart is enabled or disabled",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$restart_support",
+            "intfKey": false,
+            "name": "$restart_support",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$restart_status",
+            "dataType": "string",
+            "desc": "Indicates whether the router is currently helping an adjacent router to restart",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$restart_status",
+            "intfKey": false,
+            "name": "$restart_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "adjacency.$restart_suppressed",
+            "dataType": "string",
+            "desc": "Indicates whether the advertisement of LSPs are suppressed (enabled) or not (disabled) as per the request of adjacent router",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "adjacency.$restart_suppressed",
+            "intfKey": false,
+            "name": "$restart_suppressed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

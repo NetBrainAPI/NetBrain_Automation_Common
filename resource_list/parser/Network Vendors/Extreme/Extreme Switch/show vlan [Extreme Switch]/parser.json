@@ -1,0 +1,225 @@
+{
+    "_id": "863cc06e-0c71-3e4c-2177-a859479fa1d4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vlan",
+    "createTime": {
+        "$date": 1591077046214
+    },
+    "description": "Device Type:\nExtreme Switch\nCommand:\nshow vlan",
+    "devTypes": [
+        2023
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "* Song sp:3 # show vlan\nName               VID  Protocol Addr        Flags        Proto   Ports\nDefault            1    ------------------ -----T--       ANY     0/24 \nMacVlanDiscover    4094 ------------------ --------       ANY     0/0  \nBJ-NetBrainMGMT    6    ------------------ --------       ANY     0/1  \nSw_InterConnected  10   172.24.101.35  /24 -------------- ANY     1/1  \n\nFlags: (C) Domain-masterVlan, (c) Domain-memberVlan, (d) DVMRP Enabled\n       (E) ESRP Slave, (f) IP Forwarding Enabled, (G) GVRP Enabled\n       (I) IP Forwarding lpm-routing Enabled, (L) Loopback Enabled\n       (M) ESRP Master, (m) IPmc Forwarding Enabled, (N) GNS Reply Enabled\n       (o) OSPF Enabled, (p) PIM Enabled, (r) RIP Enabled\n       (T) Member of STP Domain, (v) VRRP Enabled, (V) VPLS/TLS Enabled\n       (Z) Translation-Vlan, (z) Member-Vlan\n/BP: Waiting for bootp reply.\n\nTotal number of Vlan(s) : 4",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vlan_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$name, $vid, $protocol_addr, $flags, $proto, $ports]:(\\\\S+)\\\\s+(\\\\d+)\\\\s+((?:[\\\\d.]+\\\\s+[\\\\d/]+)|\\\\-+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$name:string\",\"$vid:string\",\"$protocol_addr:string\",\"$flags:string\",\"$proto:string\",\"$ports:string\"]},\"xxid\":\"b54566e0-c288-edb4-323d-35a0aae456aa\"}]},\"xxid\":\"4e564b3e-10c7-198a-4118-c9b0d58fd1dc\",\"hashColumns\":[\"$vid\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$total_vlan]:Total number of Vlan\\\\(s\\\\) :\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_vlan:string\"]},\"xxid\":\"a8375dc8-ec0b-9654-46e9-bd39fac941af\"}]}",
+            "tableKeys": [
+                "_original_result.vlan_table.$vid"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_vlan",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "name",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vid",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "flags",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "proto",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ports",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vid"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "vlan_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0c7531d653a3525787bed493b01d922e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vlan_table",
+            "dataType": "paragraph",
+            "desc": "VLAN table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vid"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlan_table",
+            "intfKey": false,
+            "name": "vlan_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vlan_table.$name",
+            "dataType": "string",
+            "desc": "The name of VLAN.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$name",
+            "intfKey": false,
+            "name": "$name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$vid",
+            "dataType": "string",
+            "desc": "The vlan id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$vid",
+            "intfKey": false,
+            "name": "$vid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$protocol_addr",
+            "dataType": "string",
+            "desc": "The vlan protocol address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$protocol_addr",
+            "intfKey": false,
+            "name": "$protocol_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$flags",
+            "dataType": "string",
+            "desc": "The flags.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$flags",
+            "intfKey": false,
+            "name": "$flags",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$proto",
+            "dataType": "string",
+            "desc": "The protocol.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$proto",
+            "intfKey": false,
+            "name": "$proto",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$ports",
+            "dataType": "string",
+            "desc": "The ports in vlan.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$total_vlan",
+            "dataType": "string",
+            "desc": "The total number of vlan.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_vlan",
+            "intfKey": false,
+            "name": "$total_vlan",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

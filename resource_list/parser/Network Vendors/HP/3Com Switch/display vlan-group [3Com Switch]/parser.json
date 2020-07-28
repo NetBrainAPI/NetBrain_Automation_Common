@@ -1,0 +1,128 @@
+{
+    "_id": "427bba1d-81fe-ff74-19fa-e681b34e83fb",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display vlan-group",
+    "createTime": {
+        "$date": 1590771750513
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay vlan-group",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<SW1>display vlan-group\r\nVLAN group: VG1\r\n     VLAN list: 2 4 6 8 10\r\nVLAN group: VG2\r\n     VLAN list: 3",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vlan_groups\",\"keyVariables\":\"\",\"startLine\":\"regex[$vlan_group]:VLAN group: (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$vlan_list]:\\\\s+VLAN list:(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vlan_group:string\",\"$vlan_list:string\"]},\"xxid\":\"54ff8c9f-4d2d-220e-251a-0bbda000dd35\"}]},\"xxid\":\"862d0e08-a5e5-9b29-0a01-6a6475b2e145\",\"hashColumns\":[\"$vlan_list\",\"$vlan_group\"]}]}",
+            "tableKeys": [
+                "_original_result.vlan_groups.$vlan_list",
+                "_original_result.vlan_groups.$vlan_group"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vlan_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vlan_list",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vlan_group",
+                    "$vlan_list"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vlan_groups",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c6caee77dac10f253cb3f3891b2e4d9e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vlan_groups",
+            "dataType": "paragraph",
+            "desc": "VLAN Group Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vlan_list",
+                    "$vlan_group"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlan_groups",
+            "intfKey": false,
+            "name": "vlan_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vlan_groups.$vlan_group",
+            "dataType": "string",
+            "desc": "VLAN group name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_groups.$vlan_group",
+            "intfKey": false,
+            "name": "$vlan_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_groups.$vlan_list",
+            "dataType": "string",
+            "desc": "VLAN list.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_groups.$vlan_list",
+            "intfKey": false,
+            "name": "$vlan_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

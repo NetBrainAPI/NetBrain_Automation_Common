@@ -1,0 +1,304 @@
+{
+    "_id": "99ad2798-b7ce-c32a-df31-d41fa4b7ede7",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip igmp groups",
+    "createTime": {
+        "$date": 1579796286435
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\nshow ip igmp groups",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "MCR4#show ip igmp group\nIGMP Connected Group Membership\nGroup Address    Interface                Uptime    Expires   Last Reporter   Group Accounted\n239.1.1.1        Serial2/1                00:16:15  stopped   212.196.1.2     \n224.0.1.40       Serial2/1                00:16:15  stopped   212.196.1.2     ",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[{\"@Value\":\"Group Accounted\",\"@Type\":1,\"@Index\":1}]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.table1.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[{\"@index\":0,\"@type\":1,\"@value\":\"Group Accounted\"}]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"table1\",\"headers\":\"Group Address;Interface;Uptime;Expires;Last Reporter;Group Accounted\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Expires:$string:expires;Group Address:$string:group_addr;Interface:$string:interface;Last Reporter:$string:reporter;Uptime:$string:uptime\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$expires:string\",\"$group_addr:string\",\"$interface:string\",\"$reporter:string\",\"$uptime:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"989f022d-21fa-e317-fff4-3d3b4a2c49e9\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\"]}]}",
+            "tableKeys": []
+        },
+        {
+            "content": "SF-WAN2>show ip igmp groups\nIGMP Connected Group Membership\nGroup Address    Interface                Uptime    Expires   Last Reporter\n239.255.255.250  FastEthernet0/1          7w0d      00:02:05  10.10.12.10\n224.0.1.40       FastEthernet0/1          7w0d      00:02:57  10.10.12.1\n224.0.1.40       Serial0/1                7w0d      00:02:32  10.2.5.5\n224.0.1.40       FastEthernet0/0          7w0d      00:02:49  10.10.23.2\n239.255.255.23   FastEthernet0/1          2w5d      00:01:57  10.10.12.10\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[{\"@Value\":\"Group Accounted\",\"@Type\":2,\"@Index\":2}]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 2,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[{\"@index\":0,\"@type\":2,\"@value\":\"Group Accounted\"}]}",
+            "name": "Sample2",
+            "parserRules": "{\"parseRule\":[{\"type\":\"3\",\"name\":\"table1\",\"headers\":\"Group Address;Interface;Uptime;Expires;Last Reporter\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Expires:$string:expires;Group Address:$string:group_addr;Interface:$string:intf;Last Reporter:$string:reporter;Uptime:$string:uptime\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$expires:string\",\"$group_addr:string\",\"$intf:string\",\"$reporter:string\",\"$uptime:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"9cd5fd67-27fe-e413-d01d-91770bed3c7a\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1,
+        2
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "expires",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "reporter",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "intf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "table1",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "57a582c00b607876b1d4c077685be778",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "table1",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface"
+                ],
+                "hashSort": false
+            },
+            "fullName": "table1",
+            "intfKey": false,
+            "name": "table1",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "table1.$expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table1.$group_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$group_addr",
+            "intfKey": false,
+            "name": "$group_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table1.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "table1.$reporter",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$reporter",
+            "intfKey": false,
+            "name": "$reporter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table1.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "table1",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "table1",
+            "intfKey": false,
+            "name": "table1",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 3
+        },
+        {
+            "capName": "table1.$expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$expires",
+            "intfKey": false,
+            "name": "$expires",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "table1.$group_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$group_addr",
+            "intfKey": false,
+            "name": "$group_addr",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "table1.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "table1.$reporter",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$reporter",
+            "intfKey": false,
+            "name": "$reporter",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        },
+        {
+            "capName": "table1.$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "table1.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 2,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

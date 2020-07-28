@@ -1,0 +1,429 @@
+{
+    "_id": "55b7c79f-64e9-9e17-f38f-531209a52406",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router isis adjacency detail",
+    "createTime": {
+        "$date": 1583855846985
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "raro*A:Dut-A# show router isis adjacency detail \r\n===============================================================================\r\nRtr Base ISIS Instance 0 Adjacency\r\n===============================================================================\r\nSystemID    : Dut-B                            SNPA        : 20:81:01:01:00:01 \r\nInterface   : ip-3FFE::A0A:101                 Up Time     : 0d 00:56:10       \r\nState       : Up                               Priority    : 64                \r\nNbr Sys Typ : L1                               L. Circ Typ : L1                \r\nHold Time   : 2                                Max Hold    : 2                 \r\nAdj Level   : L1                               MT Enabled  : Yes               \r\nTopology    : Unicast, IPv6-Unicast                                            \r\n \r\nIPv6 Neighbor     : FE80::2281:1FF:FE01:1\r\nIPv4 Neighbor     : 10.10.1.2\r\nRestart Support   : Disabled\r\nRestart Status    : Not currently being helped\r\nRestart Supressed : Disabled\r\nNumber of Restarts: 0\r\nLast Restart at   : Never\r\n \r\nSystemID    : Dut-B                            SNPA        : 20:81:01:01:00:02 \r\nInterface   : ip-3FFE::A0A:101                 Up Time     : 0d 00:56:10       \r\nState       : Up                               Priority    : 64                \r\nNbr Sys Typ : L2                               L. Circ Typ : L2                \r\nHold Time   : 2                                Max Hold    : 2                 \r\nAdj Level   : L2                               MT Enabled  : Yes               \r\nTopology    : Unicast, IPv6-Unicast                                            \r\n \r\nIPv6 Neighbor     : FE80::2281:1FF:FE01:1\r\nIPv4 Neighbor     : 10.10.1.2\r\nRestart Support   : Disabled\r\nRestart Status    : Not currently being helped\r\nRestart Supressed : Disabled\r\nNumber of Restarts: 0\r\nLast Restart at   : Never\r\n                                      \r\nSystemID    : Dut-F                            SNPA        : 00:00:00:00:00:00 \r\nInterface   : ies-1-3FFE::A0A:1501             Up Time     : 0d 01:18:34       \r\nState       : Up                               Priority    : 0                 \r\nNbr Sys Typ : L1L2                             L. Circ Typ : L1L2              \r\nHold Time   : 5                                Max Hold    : 6                 \r\nAdj Level   : L1L2                             MT Enabled  : Yes               \r\nTopology    : Unicast, IPv6-Unicast                                            \r\n \r\nIPv6 Neighbor     : FE80::2285:FFFF:FE00:0\r\nIPv4 Neighbor     : 10.10.21.6\r\nRestart Support   : Disabled\r\nRestart Status    : Not currently being helped\r\nRestart Supressed : Disabled\r\nNumber of Restarts: 0\r\nLast Restart at   : Never\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_adjacency_detail.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_adjacency_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$system_id,$snpa]:SystemID\\\\s+: (.+)\\\\b\\\\s+SNPA\\\\s+: (.+)\\\\b\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$interface,$up_time]:Interface\\\\s+: (.+)\\\\b\\\\s+Up Time\\\\s+: (.+)\\\\b\",\"regex[$state,$int:priority]:State\\\\s+: (.+)\\\\b\\\\s+Priority\\\\s+: (.+)\\\\b\",\"regex[$nbr_sys_typ,$l_circ_typ]:Nbr Sys Typ\\\\s+: (.+)\\\\b\\\\s+L. Circ Typ\\\\s+: (.+)\\\\b\",\"regex[$int:hold_time,$int:max_hold]:Hold Time\\\\s+: (.+)\\\\b\\\\s+Max Hold\\\\s+: (.+)\\\\b\",\"regex[$adj_level,$mt_enabled]:Adj Level\\\\s+: (.+)\\\\b\\\\s+MT Enabled\\\\s+: (.+)\\\\b\",\"regex[$topology]:Topology\\\\s+: (.+)\\\\b\",\"regex[$ipv6_neighbor]:IPv6 Neighbor\\\\s+: (.+)\",\"regex[$ipv4_neighbor]:IPv4 Neighbor\\\\s+: (.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$system_id:string\",\"$snpa:string\",\"$interface:string\",\"$up_time:string\",\"$state:string\",\"$priority:int\",\"$nbr_sys_typ:string\",\"$l_circ_typ:string\",\"$hold_time:int\",\"$max_hold:int\",\"$adj_level:string\",\"$mt_enabled:string\",\"$topology:string\",\"$ipv6_neighbor:string\",\"$ipv4_neighbor:string\"]},\"xxid\":\"0b335120-0a9d-2587-f80e-aa906693d8aa\"}]},\"xxid\":\"dba58a20-f44b-c006-7748-ed9b2f69f5ee\",\"hashColumns\":[\"$system_id\",\"$snpa\",\"$interface\",\"$state\",\"$priority\",\"$nbr_sys_typ\",\"$l_circ_typ\",\"$adj_level\",\"$mt_enabled\",\"$topology\",\"$ipv6_neighbor\",\"$ipv4_neighbor\"],\"interfaceKey\":\"$interface\",\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"627e8dde-638d-981b-d109-0c9adc818894\"}]}",
+            "tableKeys": [
+                "_original_result.isis_adjacency_detail.$system_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 15,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "up_time",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "nbr_sys_typ",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "l_circ_typ",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "hold_time",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "max_hold",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "adj_level",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "mt_enabled",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "topology",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "ipv6_neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "ipv4_neighbor",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$adj_level",
+                    "$interface",
+                    "$ipv4_neighbor",
+                    "$ipv6_neighbor",
+                    "$l_circ_typ",
+                    "$mt_enabled",
+                    "$nbr_sys_typ",
+                    "$priority",
+                    "$snpa",
+                    "$state",
+                    "$system_id",
+                    "$topology"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_adjacency_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f7e3c2f166898338e3b40cf09c07d2db",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_adjacency_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$system_id",
+                    "$snpa",
+                    "$interface",
+                    "$state",
+                    "$priority",
+                    "$nbr_sys_typ",
+                    "$l_circ_typ",
+                    "$adj_level",
+                    "$mt_enabled",
+                    "$topology",
+                    "$ipv6_neighbor",
+                    "$ipv4_neighbor"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail",
+            "intfKey": false,
+            "name": "isis_adjacency_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_adjacency_detail.$system_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$snpa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_adjacency_detail.$up_time",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$up_time",
+            "intfKey": false,
+            "name": "$up_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$nbr_sys_typ",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$nbr_sys_typ",
+            "intfKey": false,
+            "name": "$nbr_sys_typ",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$l_circ_typ",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$l_circ_typ",
+            "intfKey": false,
+            "name": "$l_circ_typ",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$hold_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$hold_time",
+            "intfKey": false,
+            "name": "$hold_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$max_hold",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$max_hold",
+            "intfKey": false,
+            "name": "$max_hold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$adj_level",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$adj_level",
+            "intfKey": false,
+            "name": "$adj_level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$mt_enabled",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$mt_enabled",
+            "intfKey": false,
+            "name": "$mt_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$topology",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$topology",
+            "intfKey": false,
+            "name": "$topology",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$ipv6_neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$ipv6_neighbor",
+            "intfKey": false,
+            "name": "$ipv6_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_adjacency_detail.$ipv4_neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_adjacency_detail.$ipv4_neighbor",
+            "intfKey": false,
+            "name": "$ipv4_neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

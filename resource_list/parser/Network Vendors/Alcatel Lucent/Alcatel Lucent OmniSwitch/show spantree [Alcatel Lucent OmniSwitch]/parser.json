@@ -1,0 +1,185 @@
+{
+    "_id": "92809b8e-ffcc-4ae4-fbac-4ec06b18d5ec",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spantree",
+    "createTime": {
+        "$date": 1590759553275
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow spantree",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show spantree\r\n\r\nSpanning Tree Path Cost Mode : AUTO\r\nMsti  STP Status Protocol Priority (Prio:SysID)\r\n-----+----------+--------+---------------------\r\n    0      ON      MSTP   32768 (0x8000:0x0000)\r\n    2      ON      MSTP   32770 (0x8000:0x0002)\r\n    3      ON      MSTP   32771 (0x8000:0x0003)\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Spanning Tree Path Cost Mode : $mode\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mode:string\"]},\"xxid\":\"6ffdf460-51a7-039c-99c3-48267af70335\"},{\"type\":\"4\",\"name\":\"spantree\",\"keyVariables\":\"\",\"startLine\":\"regex[$instance,$stp_status,$protocol,$int:priority]:\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$instance:string\",\"$stp_status:string\",\"$protocol:string\",\"$priority:int\"]},\"xxid\":\"65071210-83c8-d2c1-e69c-aafac520d355\"}]},\"xxid\":\"794fa7ae-9b0c-63d9-bade-59e558134149\",\"hashColumns\":[\"$instance\"]}]}",
+            "tableKeys": [
+                "_original_result.spantree.$instance"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "mode",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "instance",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "stp_status",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "priority",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$instance"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "spantree",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "df8bcb89cc6d30a9dabb5721664826e8",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$mode",
+            "dataType": "string",
+            "desc": "The Spanning Tree path cost mode for the switch (32 BIT or AUTO)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spantree",
+            "dataType": "paragraph",
+            "desc": "Spanning-tree paragraph",
+            "extraInfo": {
+                "hashColumns": [
+                    "$instance"
+                ],
+                "hashSort": false
+            },
+            "fullName": "spantree",
+            "intfKey": false,
+            "name": "spantree",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "spantree.$instance",
+            "dataType": "string",
+            "desc": "The CIST instance, referred to as bridge 1 when either STP (802.1D) or RSTP (802.1W) is the active protocol",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spantree.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spantree.$stp_status",
+            "dataType": "string",
+            "desc": "The Spanning Tree state for the CIST instance (ON or OFF)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spantree.$stp_status",
+            "intfKey": false,
+            "name": "$stp_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spantree.$protocol",
+            "dataType": "string",
+            "desc": "The Spanning Tree protocol applied to the instance (STP or RSTP)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spantree.$protocol",
+            "intfKey": false,
+            "name": "$protocol",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "spantree.$priority",
+            "dataType": "int",
+            "desc": "The Spanning Tree bridge priority for the instance.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "spantree.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

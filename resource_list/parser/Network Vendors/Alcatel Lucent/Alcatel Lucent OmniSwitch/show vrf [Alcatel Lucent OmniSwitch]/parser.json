@@ -1,0 +1,185 @@
+{
+    "_id": "b36d53db-c007-01f5-464d-cd86c80499b5",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show vrf",
+    "createTime": {
+        "$date": 1590760492210
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow vrf",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show vrf\r\n\r\n Virtual Routers     Profile Protocols\r\n--------------------+-------+-------------------\r\ndefault              default BGP PIM VRRP\r\ncustomer1            max     RIP OSPF\r\ncustomer2            max     RIP OSPF\r\ncustomer3            low\r\n\r\nTotal Number of Virtual Routers: 4\r\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total Number of Virtual Routers: $int:total\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total:int\"]},\"xxid\":\"adef1f89-9ed6-fa00-4125-f69b6f2c021f\"},{\"type\":\"1\",\"name\":\"vrf_filter\",\"startLine\":\"--------\",\"endLine\":\"Total Number of Virtual Routers\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"cc8415b4-e537-0e1b-ec35-b3be6735c725\"},{\"type\":\"4\",\"name\":\"vrf\",\"keyVariables\":\"\",\"startLine\":\"regex[$virtual_routers,$profile,$protocols]:(\\\\S+)\\\\s+(\\\\S+)\\\\s*(.*)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$virtual_routers:string\",\"$profile:string\",\"$protocols:string\"]},\"xxid\":\"24bc7880-94ff-0297-ab95-4f93a0d0d0b0\"}]},\"xxid\":\"46de5b4a-25c1-a0e8-0fd6-cd310dcbdee7\",\"hashColumns\":[\"$virtual_routers\"]}]},\"xxid\":\"dfc4a1a3-8944-e999-dc0e-630fb668352c\"}]}",
+            "tableKeys": [
+                "_original_result.vrf_filter.vrf.$virtual_routers"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "vrf_filter",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "virtual_routers",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "profile",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocols",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$virtual_routers"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "vrf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8ea0e95c6528c96b5b43ab9d70162fd9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total",
+            "dataType": "int",
+            "desc": "Total number of virtual routers",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrf_filter",
+            "dataType": "filter",
+            "desc": "VRF filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrf_filter",
+            "intfKey": false,
+            "name": "vrf_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrf",
+            "dataType": "paragraph",
+            "desc": "VRF paragraph",
+            "extraInfo": {
+                "hashColumns": [
+                    "$virtual_routers"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vrf_filter.vrf",
+            "intfKey": false,
+            "name": "vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "vrf.$virtual_routers",
+            "dataType": "string",
+            "desc": "The name of the VRF instance",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrf_filter.vrf.$virtual_routers",
+            "intfKey": false,
+            "name": "$virtual_routers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrf.$profile",
+            "dataType": "string",
+            "desc": "The type of profile applied to this instance (low or max)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrf_filter.vrf.$profile",
+            "intfKey": false,
+            "name": "$profile",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vrf.$protocols",
+            "dataType": "string",
+            "desc": "The protocols loaded within the context of this instance",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vrf_filter.vrf.$protocols",
+            "intfKey": false,
+            "name": "$protocols",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

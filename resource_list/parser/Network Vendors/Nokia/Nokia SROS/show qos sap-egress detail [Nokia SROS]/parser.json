@@ -1,0 +1,660 @@
+{
+    "_id": "0658dcf7-7008-1957-2300-4953c9859113",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show qos sap-egress detail",
+    "createTime": {
+        "$date": 1587674964534
+    },
+    "description": "",
+    "devTypes": [
+        0
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "Alcatel#show qos sap-egress detail \n\n===============================================================================\nQoS Sap Egress\n===============================================================================\n-------------------------------------------------------------------------------\nDefault Sap Egress Policy (1)\n-------------------------------------------------------------------------------\nPolicy-id      : 1                            Scope        : Template\nDescription    : Default SAP egress QoS policy.\n \n-------------------------------------------------------------------------------\nQueue CIR Admin PIR Admin CBS    HiPrio Slope-Policy\n      CIR Rule  PIR Rule  MBS\n-------------------------------------------------------------------------------\n1     0         max       def     def    default                          \n      closest   closest   def                                             \n \n \n-------------------------------------------------------------------------------\nFC Name   Queue-id  Dot1p Explicit/Default        DSCP Marking     \n-------------------------------------------------------------------------------\nNo Matching Entries\n \n \n-------------------------------------------------------------------------------\nAssociations\n-------------------------------------------------------------------------------\nService-Id     : 104001 (VPLS)                Customer-Id  : 1\n - SAP : 1/2/1                     \n - SAP : 1/2/2:4001                \n - SAP : 1/2/3:4001                \n - SAP : 1/2/5:4001                \n - SAP : 1/2/6:4001                \n - SAP : 1/2/7:4001                \nService-Id     : 603035 (VPLS)                Customer-Id  : 1\n - SAP : 1/2/2:3035                \n - SAP : 1/2/5:3035                \n - SAP : 1/2/6:3035                \nService-Id     : 1004001 (IES)                Customer-Id  : 1\n - SAP : 1/2/4:4001                \nService-Id     : 6003035 (IES)                Customer-Id  : 1\n - SAP : 1/2/4:3035                \nService-Id     : 9003035 (IES)                Customer-Id  : 1\n - SAP : 1/2/7:3035                \nService-Id     : 10303501 (Cpipe)             Customer-Id  : 1\n - SAP : 1/1/1.1                   \nService-Id     : 10303502 (Cpipe)             Customer-Id  : 1\n - SAP : 1/1/2.1                   \n \n-------------------------------------------------------------------------------\nStandard Sap Egress Policy (10)\n-------------------------------------------------------------------------------\nPolicy-id      : 10                           Scope        : Template\nDescription    : sap-egress for VPLS on Freedom Hook\n \n-------------------------------------------------------------------------------\nQueue CIR Admin PIR Admin CBS    HiPrio Slope-Policy\n      CIR Rule  PIR Rule  MBS\n-------------------------------------------------------------------------------\n1     0         max       def     def    default                          \n      closest   closest   def                                             \n2     0         1         def     def    default                          \n      closest   closest   def                                             \n3     0         max       def     def    default                          \n      closest   closest   def                                             \n4     max       max       def     def    default                          \n      closest   closest   def                                             \n5     max       max       def     def    default                          \n      closest   closest   def                                             \n6     max       max       def     def    default                          \n      closest   closest   def                                             \n7     max       max       def     def    default                          \n      closest   closest   def                                             \n8     50        50        def     def    default                          \n      closest   closest   def                                             \n \n-------------------------------------------------------------------------------\nFC Name   Queue-id  Dot1p Explicit/Default        DSCP Marking     \n-------------------------------------------------------------------------------\nbe        1         Default                       default              \nl2        2         Default                       default              \naf        3         Default                       default              \nh2        4         Default                       default              \nef        5         Default                       default              \nh1        6         Default                       default              \nnc        7         Default                       default              \n \n-------------------------------------------------------------------------------\nAssociations\n-------------------------------------------------------------------------------\nService-Id     : 603035 (VPLS)                Customer-Id  : 1\n - SAP : 1/2/3:3035                \n \n===============================================================================\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"sap_egress_policy\",\"keyVariables\":\"\",\"startLine\":\"Sap Egress Policy ($policy_id)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$scope]:Scope\\\\s+\\\\:\\\\s+(\\\\S+)\",\"regex[$description]:Description\\\\s+\\\\:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$policy_id:string\",\"$scope:string\",\"$description:string\"]},\"xxid\":\"70e03a5c-2218-0728-f98d-93d37248cc03\"},{\"type\":\"4\",\"name\":\"sap_egress_policy_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$service_id,$customer_id]:Service\\\\-Id\\\\s+\\\\:\\\\s+(\\\\d+).+Customer-Id\\\\s+\\\\:\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$service_id:string\",\"$customer_id:string\"]},\"xxid\":\"9c7c229b-060f-b725-acbc-9e2333bd8057\"},{\"type\":\"4\",\"name\":\"qos_sap_egress_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$sap_id]:(SAP : \\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sap_id:string\"]},\"xxid\":\"8aeff43e-0fad-4eb8-c267-46f7d9c52f74\"}]},\"xxid\":\"8894c071-a6d2-5481-f884-d0260977a0c1\",\"hashColumns\":[\"$service_id\",\"$policy_id\"],\"interfaceKey\":\"\"}]},\"xxid\":\"7a2d4e81-f317-396c-6ffb-19b4f9ce3032\"},{\"type\":\"3\",\"name\":\"egress_queue\",\"headers\":\"Queue;CIR Admin;PIR Admin;CBS;HiPrio;Slope-Policy\",\"endLine\":\"----------------\",\"isSkipLine\":\"1\",\"skipLine\":2,\"headerToVariables\":\"Queue:$string:queue;CIR Admin:$string:cir_admin;PIR Admin:$string:pir_admin;CBS:$string:cbs;HiPrio:$string:hiprio;Slope-Policy:$string:slope_policy\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"1\",\"usePrevars\":\"$queue;$cir_admin;$pir_admin;$cbs;$hiprio;$slope_policy\",\"variableTypes\":{\"variableType\":[\"$queue:string\",\"$cir_admin:string\",\"$pir_admin:string\",\"$cbs:string\",\"$hiprio:string\",\"$slope_policy:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"1010a71e-894a-8253-e6dc-59b870574fac\",\"hashColumns\":[\"$policy_id\"]}]},\"xxid\":\"baeb5161-dfd0-4254-51ac-e6383aeaee94\",\"hashColumns\":[],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.sap_egress_policy.egress_queue.$policy_id",
+                "_original_result.sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail.$policy_id"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "sap_egress_policy",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "service_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "customer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "sap_egress_policy_detail",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "sap_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "service_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "customer_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$policy_id",
+                    "$service_id"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "qos_sap_egress_detail",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "queue",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "cir_admin",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "pir_admin",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "cbs",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hiprio",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "slope_policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "policy_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "scope",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "description",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "egress_queue",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0bb9fe0e381967f9c5b12697246e7777",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "sap_egress_policy",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy",
+            "intfKey": false,
+            "name": "sap_egress_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sap_egress_policy.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_egress_policy.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_egress_policy.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_egress_policy_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail",
+            "intfKey": false,
+            "name": "sap_egress_policy_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sap_egress_policy_detail.$service_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.$service_id",
+            "intfKey": false,
+            "name": "$service_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_egress_policy_detail.$customer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.$customer_id",
+            "intfKey": false,
+            "name": "$customer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_egress_policy_detail.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_egress_policy_detail.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sap_egress_policy_detail.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_egress_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$service_id",
+                    "$policy_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail",
+            "intfKey": false,
+            "name": "qos_sap_egress_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "qos_sap_egress_detail.$sap_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail.$sap_id",
+            "intfKey": false,
+            "name": "$sap_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_egress_detail.$service_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail.$service_id",
+            "intfKey": false,
+            "name": "$service_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_egress_detail.$customer_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail.$customer_id",
+            "intfKey": false,
+            "name": "$customer_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_egress_detail.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_egress_detail.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "qos_sap_egress_detail.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.sap_egress_policy_detail.qos_sap_egress_detail.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$policy_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue",
+            "intfKey": false,
+            "name": "egress_queue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "egress_queue.$queue",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$queue",
+            "intfKey": false,
+            "name": "$queue",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$cir_admin",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$cir_admin",
+            "intfKey": false,
+            "name": "$cir_admin",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$pir_admin",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$pir_admin",
+            "intfKey": false,
+            "name": "$pir_admin",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$cbs",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$cbs",
+            "intfKey": false,
+            "name": "$cbs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$hiprio",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$hiprio",
+            "intfKey": false,
+            "name": "$hiprio",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$slope_policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$slope_policy",
+            "intfKey": false,
+            "name": "$slope_policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$policy_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$policy_id",
+            "intfKey": false,
+            "name": "$policy_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$scope",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$scope",
+            "intfKey": false,
+            "name": "$scope",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "egress_queue.$description",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sap_egress_policy.egress_queue.$description",
+            "intfKey": false,
+            "name": "$description",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

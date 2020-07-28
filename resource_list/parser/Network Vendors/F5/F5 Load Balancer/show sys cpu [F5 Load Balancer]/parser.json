@@ -1,0 +1,431 @@
+{
+    "_id": "cb0bc1d6-f8c6-edb8-8277-f6bdb3071e20",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys cpu",
+    "createTime": {
+        "$date": 1579626976716
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys cpu",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "root@(qapp-f5-bigip1)(cfg-sync In Sync)(Standby)(/)(tmos)#show sys cpu\r\n\r\nSys::System CPU Information\r\n-------------------------------------------------------------------\r\nSystem CPU Usage(%)  Current  Average  Max(since 05/22/17 10:48:33)\r\n-------------------------------------------------------------------\r\nUtilization               13       11                            40\r\n\r\n-----------------------------------------------------------------\r\nSys::Host CPUs       \r\n-----------------------------------------------------------------\r\nHost: 0              \r\n\r\nCPU: 0 (clock ticks)   Last 5 sec  Last 1 min  Last 5 min   Total\r\n  -                     (avg/sec)   (avg/sec)   (avg/sec)       -\r\n  User                          3           2           3    4.6M\r\n  Niced                         0           0           0   79.2K\r\n  System                        3           1           1    1.6M\r\n  Idle                         90          94          93  243.4M\r\n  Irq                           0           0           0   10.4K\r\n  Softirq                       0           0           0    1.0M\r\n  Iowait                        1           1           1    1.7M\r\n  Stolen                        0           0           0       0\r\n  Util% (last 10 sec)           -           -           -       5\r\n\r\nCPU: 1 (clock ticks)   Last 5 sec  Last 1 min  Last 5 min   Total\r\n  -                     (avg/sec)   (avg/sec)   (avg/sec)       -\r\n  User                          3           2           2    4.8M\r\n  Niced                         0           0           0   78.8K\r\n  System                        2           1           1    1.4M\r\n  Idle                         91          95          95  246.1M\r\n  Irq                           0           0           0      20\r\n  Softirq                       0           0           0   37.1K\r\n  Iowait                        1           0           0  973.5K\r\n  Stolen                        0           0           0       0\r\n  Util% (last 10 sec)           -           -           -       4\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:current_cpu_usage, $int:average_cpu_usage, $int:max_cpu_usage]:Utilization\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$current_cpu_usage:int\",\"$average_cpu_usage:int\",\"$max_cpu_usage:int\"]},\"xxid\":\"0d6a5b13-4c88-7320-45a5-4c3ff9d410fa\"},{\"type\":\"4\",\"name\":\"host_cpus\",\"keyVariables\":\"\",\"startLine\":\"regex[$host]:^Host:\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$host:string\"]},\"xxid\":\"277d494c-db04-ac40-19ab-804b9d8af8c7\"},{\"type\":\"4\",\"name\":\"cpus\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:cpu_id]:^CPU:\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cpu_id:int\"]},\"xxid\":\"32b62c42-ad95-65c0-d879-0324ab1cca52\"},{\"type\":\"4\",\"name\":\"cpu_usage\",\"keyVariables\":\"\",\"startLine\":\"regex[$process,$double:last_five_sec,$double:last_one_min,$double:last_five_min,$total]:^\\\\s+(.*?)\\\\s+(\\\\d+|-)\\\\s+(\\\\d+|-)\\\\s+(\\\\d+|-)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$process:string\",\"$last_five_sec:double\",\"$last_one_min:double\",\"$last_five_min:double\",\"$total:string\"]},\"xxid\":\"54cac66c-bf4c-56e4-e49f-43a4c9c36554\"}]},\"xxid\":\"c985405e-c369-1af7-245d-787077bf5bb9\",\"hashColumns\":[],\"hashSort\":false}]},\"xxid\":\"0b2b8ed1-50c9-4a20-6728-fe8c81b3b150\"}]},\"xxid\":\"8db454db-8f7d-538c-8cae-0db5d8d8db53\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"d5806515-b87e-6126-2b23-31e4a6b31279\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "current_cpu_usage",
+                "type": 1
+            },
+            {
+                "index": 1,
+                "name": "average_cpu_usage",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "max_cpu_usage",
+                "type": 1
+            },
+            {
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "host",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "host_cpus",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "cpu_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "host",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 5,
+                "name": "cpus",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "last_five_sec",
+                        "type": 2
+                    },
+                    {
+                        "index": 2,
+                        "name": "last_one_min",
+                        "type": 2
+                    },
+                    {
+                        "index": 3,
+                        "name": "last_five_min",
+                        "type": 2
+                    },
+                    {
+                        "index": 4,
+                        "name": "total",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "cpu_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "host",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 6,
+                "name": "cpu_usage",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "9aa5ff8bebd92a76b63fb7b6e86ce863",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$current_cpu_usage",
+            "dataType": "int",
+            "desc": "Current CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$current_cpu_usage",
+            "intfKey": false,
+            "name": "$current_cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$average_cpu_usage",
+            "dataType": "int",
+            "desc": "Average CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$average_cpu_usage",
+            "intfKey": false,
+            "name": "$average_cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_cpu_usage",
+            "dataType": "int",
+            "desc": "Max CPU utilization (%).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_cpu_usage",
+            "intfKey": false,
+            "name": "$max_cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "host_cpus",
+            "dataType": "paragraph",
+            "desc": "Host CPU table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "host_cpus",
+            "intfKey": false,
+            "name": "host_cpus",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "host_cpus.$host",
+            "dataType": "string",
+            "desc": "Host.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.$host",
+            "intfKey": false,
+            "name": "$host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpus",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus",
+            "intfKey": false,
+            "name": "cpus",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "cpus.$cpu_id",
+            "dataType": "int",
+            "desc": "CPU ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.$cpu_id",
+            "intfKey": false,
+            "name": "$cpu_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpus.$host",
+            "dataType": "string",
+            "desc": "Host.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.$host",
+            "intfKey": false,
+            "name": "$host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_usage",
+            "dataType": "paragraph",
+            "desc": "CPU Usage Table.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage",
+            "intfKey": false,
+            "name": "cpu_usage",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "cpu_usage.$process",
+            "dataType": "string",
+            "desc": "Process name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage.$process",
+            "intfKey": false,
+            "name": "$process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_usage.$last_five_sec",
+            "dataType": "double",
+            "desc": "Last 5 sec (avg/sec) CPU utilization.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage.$last_five_sec",
+            "intfKey": false,
+            "name": "$last_five_sec",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_usage.$last_one_min",
+            "dataType": "double",
+            "desc": "Last 1 Min (avg/sec) CPU utilization.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage.$last_one_min",
+            "intfKey": false,
+            "name": "$last_one_min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_usage.$last_five_min",
+            "dataType": "double",
+            "desc": "Last 5 Min (avg/sec) CPU utilization.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage.$last_five_min",
+            "intfKey": false,
+            "name": "$last_five_min",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_usage.$total",
+            "dataType": "string",
+            "desc": "Total.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage.$total",
+            "intfKey": false,
+            "name": "$total",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_usage.$cpu_id",
+            "dataType": "int",
+            "desc": "CPU ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage.$cpu_id",
+            "intfKey": false,
+            "name": "$cpu_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cpu_usage.$host",
+            "dataType": "string",
+            "desc": "Host.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "host_cpus.cpus.cpu_usage.$host",
+            "intfKey": false,
+            "name": "$host",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

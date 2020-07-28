@@ -1,0 +1,242 @@
+{
+    "_id": "dd51e839-4f0b-9f18-d415-7498322f034b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show glbp",
+    "createTime": {
+        "$date": 1579796850495
+    },
+    "description": "Device Type:\nCisco Nexus Switch \nCommand:\nshow glbp",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K-2# show glbp\r\n\r\nExtended-hold (NSF) is Disabled\r\n\r\nEthernet2/1 - Group 30\r\n   State is Active \r\n     4 state change(s), last state change(s) 00:05:45\r\n   Virtual IP address is 1.255.255.130\r\n   Hello time 3 sec, hold time 10 sec\r\n     Next hello sent in 50 msec \r\n   Redirect time 600 sec, forwarder time-out 14400 sec\r\n   Preemption enabled, min delay 0 sec\r\n   Active is local\r\n   Standby is unknown\r\n   Priority 130 (configured)\r\n   Weighting 100 (default 100), thresholds: lower 1, upper 100\r\n   Load balancing: round-robin\r\n   Group members:\r\n     0000.0000.0008 (1.255.255.72) local\r\n   There is 1 forwarder (1 active)\r\n   Forwarder 1\r\n    State is Active\r\n       2 state change(s), last state change 00:05:35\r\n    MAC address is 0007.B400.1E01 (default)\r\n    Owner ID is 0000.0000.0008\r\n    Preemption enabled, min delay 30 sec\r\n    Active is local, weighting 100",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$int:group_id]:^(\\\\S+) - group\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:priority]:priority (\\\\d+)\",\"regex[$virtual_ip]:Virtual (?:ip|ipv6) address is (\\\\S+)\",\"regex[$virtual_mac]:MAC address is (\\\\S+) \\\\(default\\\\)\",\"regex[$active_ip]:active is ([^\\\\s,]+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$group_id:int\",\"$priority:int\",\"$virtual_ip:string\",\"$virtual_mac:string\",\"$active_ip:string\"]},\"xxid\":\"ed03107f-c472-c7b8-75fc-66396859d7d4\"}]},\"xxid\":\"806739a9-6b78-3539-60cb-fd18aa136fd2\",\"hashColumns\":[\"$intf\",\"$virtual_ip\",\"$virtual_mac\",\"$priority\",\"$group_id\",\"$active_ip\"],\"interfaceKey\":\"$intf\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"b3bb2b38-d9ca-2439-86c8-f9dff87e9312\"}]}",
+            "tableKeys": [
+                "_original_result.intfs.$intf",
+                "_original_result.intfs.$virtual_ip",
+                "_original_result.intfs.$virtual_mac",
+                "_original_result.intfs.$priority",
+                "_original_result.intfs.$group_id",
+                "_original_result.intfs.$active_ip"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "group_id",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "virtual_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "virtual_mac",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "active_ip",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$active_ip",
+                    "$group_id",
+                    "$intf",
+                    "$priority",
+                    "$virtual_ip",
+                    "$virtual_mac"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "150536d85da4a31920e9fee07e1423ef",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "intfs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$virtual_ip",
+                    "$virtual_mac",
+                    "$priority",
+                    "$group_id",
+                    "$active_ip"
+                ],
+                "hashSort": false
+            },
+            "fullName": "intfs",
+            "intfKey": false,
+            "name": "intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "intfs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "intfs.$group_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$group_id",
+            "intfKey": false,
+            "name": "$group_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$virtual_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$virtual_ip",
+            "intfKey": false,
+            "name": "$virtual_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$virtual_mac",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$virtual_mac",
+            "intfKey": false,
+            "name": "$virtual_mac",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "intfs.$active_ip",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "intfs.$active_ip",
+            "intfKey": false,
+            "name": "$active_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

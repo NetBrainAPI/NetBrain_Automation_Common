@@ -1,0 +1,165 @@
+{
+    "_id": "9a3989f8-f8ee-4e43-99c4-c3d8bb31222f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show interfaces switchport",
+    "createTime": {
+        "$date": 1590779913959
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow interfaces switchport",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show interfaces switchport\r\nName: TenGigabitEthernet 1/1\r\n802.1QTagged: Hybrid\r\nVlan membership:\r\nVlan 2, Vlan 20\r\nNative VlanId: 20\r\n\r\nName: TenGigabitEthernet 1/2\r\n802.1QTagged: True\r\nVlan membership:\r\nVlan 2\r\n\r\nName: TenGigabitEthernet 1/3\r\n802.1QTagged: True\r\nVlan membership:\r\nVlan 2\r\n\r\nName: TenGigabitEthernet 1/4\r\n802.1QTagged: True\r\nVlan membership:\r\nVlan 2\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.switchport_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"switchport_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf]:Name: (.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$tag802]:802.1QTagged:\\\\s+(.+)\",\"regex[$vlan_member]:^(Vlan \\\\d+.*)\",\"regex[$int:native_vlan_id]:Native VlanId: (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$tag802:string\",\"$vlan_member:string\",\"$native_vlan_id:int\"]},\"xxid\":\"53ef5dab-fdf6-18a5-cb26-1270fe6a3c1b\"}]},\"xxid\":\"ab39b0e3-b1b9-8028-3e1f-38a6b2c5f6d6\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "tag802",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "vlan_member",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "native_vlan_id",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "switchport_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "30a3e0df193763fd8c63914c4094b1c9",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "switchport_table.$intf",
+            "dataType": "string",
+            "desc": "The interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "switchport_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "switchport_table.$native_vlan_id",
+            "dataType": "int",
+            "desc": "The native vlan id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "switchport_table.$native_vlan_id",
+            "intfKey": false,
+            "name": "$native_vlan_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "switchport_table.$tag802",
+            "dataType": "string",
+            "desc": "802.1QTag state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "switchport_table.$tag802",
+            "intfKey": false,
+            "name": "$tag802",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "switchport_table.$vlan_member",
+            "dataType": "string",
+            "desc": "The vlan number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "switchport_table.$vlan_member",
+            "intfKey": false,
+            "name": "$vlan_member",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "switchport_table",
+            "dataType": "paragraph",
+            "desc": "Interface switchport information.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "switchport_table",
+            "intfKey": false,
+            "name": "switchport_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        }
+    ],
+    "version": "7.1"
+}

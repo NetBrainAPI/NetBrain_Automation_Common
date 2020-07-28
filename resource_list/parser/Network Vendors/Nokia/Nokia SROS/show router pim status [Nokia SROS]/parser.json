@@ -1,0 +1,1078 @@
+{
+    "_id": "396709eb-7bb9-82b8-5d2e-bfdba42284b0",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router pim status",
+    "createTime": {
+        "$date": 1583527663445
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:dut-d# show router pim status \r\n===============================================================================\r\nPIM Status\r\n===============================================================================\r\nAdmin State                       : Up                                         \r\nOper State                        : Up                                         \r\n \r\nBSR State                         : Accept Any                                 \r\n \r\nElected BSR\r\n    Address                       : None                                       \r\n    Expiry Time                   : N/A                                        \r\n    Priority                      : N/A                                        \r\n    Hash Mask Length              : N/A                                        \r\n    Up Time                       : N/A                                        \r\n    RPF Intf towards E-BSR        : N/A                                        \r\n \r\nCandidate BSR\r\n    Admin State                   : Down                                       \r\n    Oper State                    : Down                                       \r\n    Address                       : None                                       \r\n    Priority                      : 0                                          \r\n    Hash Mask Length              : 30                                         \r\n \r\nCandidate RP\r\n    Admin State                   : Down                                       \r\n    Oper State                    : Down                                       \r\n    Address                       : None                                       \r\n    Priority                      : 192                                        \r\n    Holdtime                      : 150                                        \r\n \r\nMC-ECMP-Hashing                   : Enabled\r\n \r\nPolicy                            : None\r\n \r\nDefault Group                 : 239.1.1.1\r\n \r\nRPF Table                         : rtable-m                                   \r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"pim_status\",\"keyVariables\":\"\",\"startLine\":\"PIM Status\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Admin State                       : $admin_state\",\"Oper State                        : $oper_state\",\"regex[$bsr_state]:BSR State\\\\s+: (\\\\w+\\\\s\\\\w+)\",\"MC-ECMP-Hashing                   : $mc_ecmp_hashing\",\"Policy                            : $policy\",\"Default Group                 : $default_group\",\"RPF Table                         : $rpf_table\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$admin_state:string\",\"$oper_state:string\",\"$bsr_state:string\",\"$mc_ecmp_hashing:string\",\"$policy:string\",\"$default_group:string\",\"$rpf_table:string\"]},\"xxid\":\"72ce030f-2d58-4e60-036c-65abc47c365b\"},{\"type\":\"4\",\"name\":\"elected_bsr\",\"keyVariables\":\"\",\"startLine\":\"Elected BSR\",\"endLine\":\"RPF\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"0\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Address                       : $elected_bsr_address\",\"Priority                      : $elected_bsr_priority\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$elected_bsr_address:string\",\"$elected_bsr_priority:string\"]},\"xxid\":\"36144fb7-b755-2ad5-e035-7958cf243ec7\"}]},\"xxid\":\"d41be36d-0d92-0425-9fae-84534048a8bf\",\"hashColumns\":[\"$elected_bsr_address\",\"$elected_bsr_priority\",\"$admin_state\",\"$oper_state\",\"$bsr_state\",\"$mc_ecmp_hashing\",\"$policy\",\"$default_group\",\"$rpf_table\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"candidate_bsr\",\"keyVariables\":\"\",\"startLine\":\"Candidate BSR\",\"endLine\":\"Hash\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"0\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Admin State                   : $candidate_bsr_admin_state\",\"Oper State                    : $candidate_bsr_oper_state\",\"Address                       : $candidate_bsr_address\",\"Priority                      :$candidate_bsr_priority\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$candidate_bsr_admin_state:string\",\"$candidate_bsr_oper_state:string\",\"$candidate_bsr_address:string\",\"$candidate_bsr_priority:string\"]},\"xxid\":\"e4bff956-8c38-8d4b-28a4-e8d2e617854a\"}]},\"xxid\":\"53862a18-61e5-6b6b-8a29-8178af605577\",\"hashColumns\":[\"$candidate_bsr_admin_state\",\"$candidate_bsr_oper_state\",\"$candidate_bsr_address\",\"$candidate_bsr_priority\",\"$admin_state\",\"$oper_state\",\"$bsr_state\",\"$mc_ecmp_hashing\",\"$policy\",\"$default_group\",\"$rpf_table\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"candidate_rp\",\"keyVariables\":\"\",\"startLine\":\"Candidate RP\",\"endLine\":\"Holdtime\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"0\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Admin State                   : $candidate_rp_admin_state\",\"Oper State                    : $candidate_rp_oper_state\",\"Address                       : $candidate_rp_address\",\"Priority                      : $candidate_rp_priority\",\"Holdtime                      : $candidate_rp_holdtime\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$candidate_rp_admin_state:string\",\"$candidate_rp_oper_state:string\",\"$candidate_rp_address:string\",\"$candidate_rp_priority:string\",\"$candidate_rp_holdtime:string\"]},\"xxid\":\"8e4f248a-1403-29ba-ff28-d3ce5f2dfcb8\"}]},\"xxid\":\"d8017831-770c-1af7-9358-ff2cf2a4dfb1\",\"hashColumns\":[\"$candidate_rp_admin_state\",\"$candidate_rp_oper_state\",\"$candidate_rp_address\",\"$candidate_rp_priority\",\"$candidate_rp_holdtime\",\"$admin_state\",\"$oper_state\",\"$bsr_state\",\"$mc_ecmp_hashing\",\"$policy\",\"$default_group\",\"$rpf_table\"],\"hashSort\":false}]},\"xxid\":\"e3904aab-7453-758e-328a-6da4756b9fbb\",\"hashColumns\":[\"$admin_state\",\"$oper_state\",\"$bsr_state\",\"$mc_ecmp_hashing\",\"$policy\",\"$default_group\",\"$rpf_table\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"9542c2a3-abbc-66bf-e841-7fd69b8a4811\"}]}",
+            "tableKeys": [
+                "_original_result.pim_status.$admin_state",
+                "_original_result.pim_status.elected_bsr.$elected_bsr_address",
+                "_original_result.pim_status.candidate_bsr.$candidate_bsr_address",
+                "_original_result.pim_status.candidate_rp.$candidate_rp_address"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "bsr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mc_ecmp_hashing",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "default_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "rpf_table",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_state",
+                    "$bsr_state",
+                    "$default_group",
+                    "$mc_ecmp_hashing",
+                    "$oper_state",
+                    "$policy",
+                    "$rpf_table"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "pim_status",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "elected_bsr_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "elected_bsr_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "bsr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "mc_ecmp_hashing",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "default_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "rpf_table",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_state",
+                    "$bsr_state",
+                    "$default_group",
+                    "$elected_bsr_address",
+                    "$elected_bsr_priority",
+                    "$mc_ecmp_hashing",
+                    "$oper_state",
+                    "$policy",
+                    "$rpf_table"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "elected_bsr",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "candidate_bsr_admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "candidate_bsr_oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "candidate_bsr_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "candidate_bsr_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "bsr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "mc_ecmp_hashing",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "default_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "rpf_table",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_state",
+                    "$bsr_state",
+                    "$candidate_bsr_address",
+                    "$candidate_bsr_admin_state",
+                    "$candidate_bsr_oper_state",
+                    "$candidate_bsr_priority",
+                    "$default_group",
+                    "$mc_ecmp_hashing",
+                    "$oper_state",
+                    "$policy",
+                    "$rpf_table"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "candidate_bsr",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 12,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "candidate_rp_admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "candidate_rp_oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "candidate_rp_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "candidate_rp_priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "candidate_rp_holdtime",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "bsr_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "mc_ecmp_hashing",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "policy",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "default_group",
+                        "type": 4
+                    },
+                    {
+                        "index": 11,
+                        "name": "rpf_table",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$admin_state",
+                    "$bsr_state",
+                    "$candidate_rp_address",
+                    "$candidate_rp_admin_state",
+                    "$candidate_rp_holdtime",
+                    "$candidate_rp_oper_state",
+                    "$candidate_rp_priority",
+                    "$default_group",
+                    "$mc_ecmp_hashing",
+                    "$oper_state",
+                    "$policy",
+                    "$rpf_table"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "candidate_rp",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f6604d5f620634d4443681ed1fdecac4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "pim_status",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$admin_state",
+                    "$oper_state",
+                    "$bsr_state",
+                    "$mc_ecmp_hashing",
+                    "$policy",
+                    "$default_group",
+                    "$rpf_table"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_status",
+            "intfKey": false,
+            "name": "pim_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "pim_status.$admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_status.$oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_status.$bsr_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.$bsr_state",
+            "intfKey": false,
+            "name": "$bsr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_status.$mc_ecmp_hashing",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.$mc_ecmp_hashing",
+            "intfKey": false,
+            "name": "$mc_ecmp_hashing",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_status.$policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.$policy",
+            "intfKey": false,
+            "name": "$policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_status.$default_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.$default_group",
+            "intfKey": false,
+            "name": "$default_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "pim_status.$rpf_table",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.$rpf_table",
+            "intfKey": false,
+            "name": "$rpf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$elected_bsr_address",
+                    "$elected_bsr_priority",
+                    "$admin_state",
+                    "$oper_state",
+                    "$bsr_state",
+                    "$mc_ecmp_hashing",
+                    "$policy",
+                    "$default_group",
+                    "$rpf_table"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr",
+            "intfKey": false,
+            "name": "elected_bsr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "elected_bsr.$elected_bsr_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$elected_bsr_address",
+            "intfKey": false,
+            "name": "$elected_bsr_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$elected_bsr_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$elected_bsr_priority",
+            "intfKey": false,
+            "name": "$elected_bsr_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$bsr_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$bsr_state",
+            "intfKey": false,
+            "name": "$bsr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$mc_ecmp_hashing",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$mc_ecmp_hashing",
+            "intfKey": false,
+            "name": "$mc_ecmp_hashing",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$policy",
+            "intfKey": false,
+            "name": "$policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$default_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$default_group",
+            "intfKey": false,
+            "name": "$default_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "elected_bsr.$rpf_table",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.elected_bsr.$rpf_table",
+            "intfKey": false,
+            "name": "$rpf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$candidate_bsr_admin_state",
+                    "$candidate_bsr_oper_state",
+                    "$candidate_bsr_address",
+                    "$candidate_bsr_priority",
+                    "$admin_state",
+                    "$oper_state",
+                    "$bsr_state",
+                    "$mc_ecmp_hashing",
+                    "$policy",
+                    "$default_group",
+                    "$rpf_table"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr",
+            "intfKey": false,
+            "name": "candidate_bsr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "candidate_bsr.$candidate_bsr_admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$candidate_bsr_admin_state",
+            "intfKey": false,
+            "name": "$candidate_bsr_admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$candidate_bsr_oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$candidate_bsr_oper_state",
+            "intfKey": false,
+            "name": "$candidate_bsr_oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$candidate_bsr_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$candidate_bsr_address",
+            "intfKey": false,
+            "name": "$candidate_bsr_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$candidate_bsr_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$candidate_bsr_priority",
+            "intfKey": false,
+            "name": "$candidate_bsr_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$bsr_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$bsr_state",
+            "intfKey": false,
+            "name": "$bsr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$mc_ecmp_hashing",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$mc_ecmp_hashing",
+            "intfKey": false,
+            "name": "$mc_ecmp_hashing",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$policy",
+            "intfKey": false,
+            "name": "$policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$default_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$default_group",
+            "intfKey": false,
+            "name": "$default_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_bsr.$rpf_table",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_bsr.$rpf_table",
+            "intfKey": false,
+            "name": "$rpf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$candidate_rp_admin_state",
+                    "$candidate_rp_oper_state",
+                    "$candidate_rp_address",
+                    "$candidate_rp_priority",
+                    "$candidate_rp_holdtime",
+                    "$admin_state",
+                    "$oper_state",
+                    "$bsr_state",
+                    "$mc_ecmp_hashing",
+                    "$policy",
+                    "$default_group",
+                    "$rpf_table"
+                ],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp",
+            "intfKey": false,
+            "name": "candidate_rp",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "candidate_rp.$candidate_rp_admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$candidate_rp_admin_state",
+            "intfKey": false,
+            "name": "$candidate_rp_admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$candidate_rp_oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$candidate_rp_oper_state",
+            "intfKey": false,
+            "name": "$candidate_rp_oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$candidate_rp_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$candidate_rp_address",
+            "intfKey": false,
+            "name": "$candidate_rp_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$candidate_rp_priority",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$candidate_rp_priority",
+            "intfKey": false,
+            "name": "$candidate_rp_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$candidate_rp_holdtime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$candidate_rp_holdtime",
+            "intfKey": false,
+            "name": "$candidate_rp_holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$bsr_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$bsr_state",
+            "intfKey": false,
+            "name": "$bsr_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$mc_ecmp_hashing",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$mc_ecmp_hashing",
+            "intfKey": false,
+            "name": "$mc_ecmp_hashing",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$policy",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$policy",
+            "intfKey": false,
+            "name": "$policy",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$default_group",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$default_group",
+            "intfKey": false,
+            "name": "$default_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "candidate_rp.$rpf_table",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "pim_status.candidate_rp.$rpf_table",
+            "intfKey": false,
+            "name": "$rpf_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

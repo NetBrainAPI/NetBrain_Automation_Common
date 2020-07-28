@@ -1,0 +1,267 @@
+{
+    "_id": "21135534-c287-81d1-cb98-468ae742b87c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show access-lists",
+    "createTime": {
+        "$date": 1560796452113
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router\nCommand:\nshow access-lists",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "US-BOS-R1>show access-lists\r\nStandard IP access list 1\r\n    10 permit 10.8.1.26 (1284 matches)\r\n    20 permit 10.8.2.200 (22 matches)\r\n    30 permit 10.8.3.200 (160 matches)\r\nExtended IP access list 101\r\n    10 permit ip host 10.8.1.26 any\r\nExtended IP access list 190\r\n    10 permit tcp any host 10.1.1.1 eq telnet\r\nExtended IP access list 191\r\n    10 permit tcp any any gt 1023 established (3270 matches)\r\nExtended IP access list 192\r\n    10 permit tcp any any eq www\r\nExtended IP access list 193\r\n    10 permit tcp any any eq smtp\r\nExtended IP access list 194\r\n    10 permit tcp any any eq pop3\r\nExtended IP access list 195\r\n    10 permit udp any any eq domain\r\n    20 permit udp any eq domain any\r\n    30 permit tcp any any eq domain\r\n    40 permit tcp any eq domain any\r\nIPv6 access list preauth_ipv6_acl (per-user)\r\n    permit udp any any eq domain sequence 10\r\n    permit tcp any any eq domain sequence 20\r\n    permit icmp any any nd-ns sequence 30\r\n    permit icmp any any nd-na sequence 40\r\n    permit icmp any any router-solicitation sequence 50\r\n    permit icmp any any router-advertisement sequence 60\r\n    permit icmp any any redirect sequence 70\r\n    permit udp any eq 547 any eq 546 sequence 80\r\n    permit udp any eq 546 any eq 547 sequence 90\r\n    deny ipv6 any any sequence 100",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"acl_list\",\"keyVariables\":\"\",\"startLine\":\"regex[$acl_type, $acl_name]:(.+?)access list\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$acl_type:string\",\"$acl_name:string\"]},\"xxid\":\"646cc607-8a3b-5f0e-044d-9fe195b5fbbb\"},{\"type\":\"4\",\"name\":\"acl_detail\",\"keyVariables\":\"\",\"startLine\":\"regex[$acl_rule]:^\\\\s+(.+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:match]:(\\\\d+)\\\\s+match\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$acl_rule:string\",\"$match:int\"]},\"xxid\":\"d8060c53-d301-ca42-e5e4-86042344ce53\"}]},\"xxid\":\"dbebd837-b2b2-99a2-a2cb-a2ca8ef35bda\",\"hashColumns\":[\"$acl_name\"]}]},\"xxid\":\"34a7b0ad-0668-767b-0036-a4e266627102\",\"hashColumns\":[\"$acl_name\"]},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"show access\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"1e616636-0eef-86ec-a4e2-2bb65c998cba\"}]},\"xxid\":\"9490e9b9-d1ef-c74d-14e1-0dad5e9c1e0c\"}]}",
+            "tableKeys": [
+                "_original_result.acl_list.$acl_name",
+                "_original_result.acl_list.acl_detail.$acl_name"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "acl_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "acl_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$acl_name"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "acl_list",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "acl_rule",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "match",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "acl_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "acl_name",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$acl_name"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "acl_detail",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c8c5aa52344e78f03e5867566240d957",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "acl_list.$acl_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "acl_list.$acl_name",
+            "intfKey": false,
+            "name": "$acl_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "acl_detail.$acl_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "acl_list.acl_detail.$acl_name",
+            "intfKey": false,
+            "name": "$acl_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "acl_detail.$acl_rule",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "acl_list.acl_detail.$acl_rule",
+            "intfKey": false,
+            "name": "$acl_rule",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "acl_list.$acl_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "acl_list.$acl_type",
+            "intfKey": false,
+            "name": "$acl_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "acl_detail.$acl_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "acl_list.acl_detail.$acl_type",
+            "intfKey": false,
+            "name": "$acl_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "acl_detail.$match",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "acl_list.acl_detail.$match",
+            "intfKey": false,
+            "name": "$match",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "acl_detail",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$acl_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "acl_list.acl_detail",
+            "intfKey": false,
+            "name": "acl_detail",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "acl_list",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$acl_name"
+                ],
+                "hashSort": false
+            },
+            "fullName": "acl_list",
+            "intfKey": false,
+            "name": "acl_list",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

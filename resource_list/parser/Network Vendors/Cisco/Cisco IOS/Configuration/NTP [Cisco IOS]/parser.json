@@ -1,0 +1,64 @@
+{
+    "_id": "254a95bd-79b1-a65d-7a05-ea832cb5fc84",
+    "author": "NetBrain",
+    "bizType": "ConfigB",
+    "command": "::Current Baseline<>",
+    "createTime": {
+        "$date": 1585838129131
+    },
+    "description": "Device Type:\nCisco Router\nCisco IOS Switch\nCommand:\n       <Configuration>",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": null,
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R5#show run\r\nBuilding configuration...\r\n\r\nCurrent configuration : 9553 bytes\r\n!\r\n! Last configuration change at 09:43:59 UTC Tue Feb 7 2017\r\n!\r\nupgrade fpd auto\r\nversion 15.0\r\nservice timestamps debug datetime msec\r\nservice timestamps log datetime msec\r\nno service password-encryption\r\n!\r\nhostname R5\r\n!\r\nboot-start-marker\r\nboot-end-marker\r\n!\r\nenable password nb\r\n!\r\nno aaa new-model\r\n!\r\n!\r\n!\r\nip source-route\r\nno ip icmp rate-limit unreachable\r\nip cef\r\n!\r\n!\r\nip vrf MSITE\r\n rd 65532:100\r\n route-target export 100:100\r\n route-target import 100:100\r\n!\r\n!\r\n!\r\nno ip domain lookup\r\nno ipv6 cef\r\n!\r\nmultilink bundle-name authenticated\r\nno mpls ip propagate-ttl \r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\nredundancy\r\n!\r\n!\r\nip tcp synwait-time 5\r\nip ssh version 1\r\n!\r\nclass-map match-any PRIORITY4-REALTIME\r\n match  dscp af42  af43  cs6  cs7 \r\nclass-map match-any PRIORITY2\r\n match  dscp cs2  af21  af22  af23 \r\n match mpls experimental topmost 2 \r\n match  precedence 2 \r\nclass-map match-any PRIORITY3\r\n match  dscp cs3  af31  af32  af33 \r\n match mpls experimental topmost 3 \r\n match  precedence 3 \r\nclass-map match-any PRIORITY1\r\n match  dscp cs1  af11  af12  af13 \r\n match mpls experimental topmost 1 \r\n match  precedence 1 \r\nclass-map match-any PRIORITY4\r\n match mpls experimental topmost 4  6 \r\n match  dscp af41  35  af42  37  af43 \r\n match  precedence 4 \r\nclass-map match-any PRIORITY5\r\n match  dscp cs5  ef \r\n match mpls experimental topmost 5 \r\n match  precedence 5 \r\nclass-map match-all ATT\r\n match mpls experimental topmost 5 \r\nclass-map match-any PRIORITY4-INTERACTIVE\r\n match  dscp cs4  af41 \r\nclass-map match-any PRIORITY3-V2\r\n match mpls experimental topmost 3 \r\nclass-map match-any PRIORITY2-V2\r\n match mpls experimental topmost 2 \r\nclass-map match-any PRIORITY1-V2\r\n match mpls experimental topmost 1 \r\nclass-map match-all QoS\r\n match input-interface FastEthernet0/1\r\n match access-group 101\r\nclass-map match-any PRIORITY5-V2\r\n match mpls experimental topmost 5 \r\nclass-map match-any PRIORITY4-V2\r\n match mpls experimental topmost 4  6 \r\n match  dscp 23  25  af32  29  af33  af42  cs6  cs7 \r\n match  dscp 39  cs5  50  51  52  54  55  57 \r\n match  dscp 49  53  58  59  60  61  62  63 \r\nclass-map match-all shape\r\nclass-map match-all ATT1\r\n match mpls experimental topmost 1 \r\nclass-map match-all ATT2\r\n match mpls experimental topmost 4 \r\n!\r\n!\r\npolicy-map TO_CORE\r\n class PRIORITY5\r\n   police rate percent 20\r\n     conform-action transmit \r\n     exceed-action drop \r\n    priority\r\n class PRIORITY4\r\n    bandwidth remaining percent 25\r\n     random-detect\r\n class PRIORITY3\r\n    bandwidth remaining percent 30\r\n class PRIORITY1\r\n    bandwidth remaining percent 5\r\n class PRIORITY2\r\n    bandwidth remaining percent 30\r\n class class-default\r\n    bandwidth remaining percent 10\r\npolicy-map QoS\r\n class QoS\r\n  set ip dscp 1\r\n class ATT\r\n    priority\r\n   police cir percent 20\r\n     conform-action transmit \r\n     exceed-action drop \r\n     violate-action drop \r\n class ATT1\r\n   police rate percent 20\r\n     conform-action transmit \r\n     exceed-action drop \r\n class ATT2\r\n    shape average percent 30\r\n class PRIORITY4\r\n!\r\n! \r\n!\r\ncrypto isakmp policy 10\r\n hash md5\r\n authentication pre-share\r\ncrypto isakmp key cisco address 0.0.0.0 0.0.0.0\r\n!\r\n!\r\ncrypto ipsec transform-set beyond esp-des esp-md5-hmac \r\n mode transport\r\n!\r\ncrypto ipsec profile dmvpn-profile\r\n set transform-set beyond \r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\n!\r\ninterface Loopback0\r\n ip address 123.5.5.5 255.255.255.255\r\n !\r\n!\r\ninterface Tunnel0\r\n description DMVPN_TUNNEL_TEST\r\n ip address 10.0.156.253 255.255.255.0\r\n no ip redirects\r\n ip mtu 1400\r\n ip nhrp map multicast dynamic\r\n ip nhrp network-id 10\r\n ip nhrp redirect\r\n ip ospf network broadcast\r\n ip ospf priority 254\r\n ip ospf mtu-ignore\r\n tunnel source Ethernet1/3\r\n tunnel mode gre multipoint\r\n tunnel key 56789\r\n tunnel protection ipsec profile dmvpn-profile\r\n !\r\n!\r\ninterface FastEthernet0/0\r\n ip address 123.10.45.5 255.255.255.0\r\n duplex auto\r\n speed auto\r\n mpls label protocol ldp\r\n mpls ip\r\n !\r\n service-policy output QoS\r\n!\r\ninterface FastEthernet0/1\r\n ip address 123.10.35.5 255.255.255.0\r\n duplex auto\r\n speed auto\r\n mpls ip\r\n !\r\n!\r\ninterface Ethernet1/0\r\n ip address 192.168.8.205 255.255.255.0\r\n duplex half\r\n !\r\n!\r\ninterface Ethernet1/1\r\n ip vrf forwarding MSITE\r\n ip address 105.105.105.5 255.255.255.0\r\n duplex half\r\n !\r\n!\r\ninterface Ethernet1/2\r\n ip address 123.10.15.5 255.255.255.0\r\n duplex half\r\n mpls ip\r\n !\r\n service-policy input TO_CORE\r\n service-policy output TO_CORE\r\n!\r\ninterface Ethernet1/3\r\n ip address 123.10.156.5 255.255.255.0\r\n duplex full\r\n !\r\n!\r\nrouter ospf 1\r\n router-id 5.5.5.5\r\n log-adjacency-changes\r\n network 10.0.156.0 0.0.0.255 area 0\r\n network 123.0.0.0 0.255.255.255 area 0\r\n!\r\nrouter bgp 10000\r\n bgp router-id 123.5.5.5\r\n no bgp default ipv4-unicast\r\n bgp log-neighbor-changes\r\n neighbor 123.1.1.1 remote-as 10000\r\n neighbor 123.1.1.1 update-source Loopback0\r\n neighbor 200.200.56.2 remote-as 20000\r\n !\r\n address-family ipv4\r\n  no synchronization\r\n  neighbor 123.1.1.1 activate\r\n  no auto-summary\r\n exit-address-family\r\n !\r\n address-family vpnv4\r\n  neighbor 123.1.1.1 activate\r\n  neighbor 123.1.1.1 send-community both\r\n exit-address-family\r\n !\r\n address-family ipv4 vrf MSITE\r\n  no synchronization\r\n  neighbor 105.105.105.10 remote-as 65532\r\n  neighbor 105.105.105.10 activate\r\n  neighbor 105.105.105.10 default-originate\r\n exit-address-family\r\n!\r\nip forward-protocol nd\r\nno ip http server\r\nno ip http secure-server\r\n!\r\n!\r\n!\r\naccess-list 101 permit ip host 123.3.3.3 any\r\nno cdp log mismatch duplex\r\n!\r\n!\r\n!\r\n!\r\nsnmp-server community nb RO\r\nsnmp-server enable traps snmp authentication linkdown linkup coldstart warmstart\r\nsnmp-server enable traps vrrp\r\nsnmp-server enable traps ds1\r\nsnmp-server enable traps call-home message-send-fail server-fail\r\nsnmp-server enable traps tty\r\nsnmp-server enable traps gatekeeper\r\nsnmp-server enable traps eigrp\r\nsnmp-server enable traps ospf state-change\r\nsnmp-server enable traps ospf errors\r\nsnmp-server enable traps ospf retransmit\r\nsnmp-server enable traps ospf lsa\r\nsnmp-server enable traps ospf cisco-specific state-change nssa-trans-change\r\nsnmp-server enable traps ospf cisco-specific state-change shamlink interface\r\nsnmp-server enable traps ospf cisco-specific state-change shamlink neighbor\r\nsnmp-server enable traps ospf cisco-specific errors\r\nsnmp-server enable traps ospf cisco-specific retransmit\r\nsnmp-server enable traps ospf cisco-specific lsa\r\nsnmp-server enable traps xgcp\r\nsnmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config\r\nsnmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up\r\nsnmp-server enable traps flash insertion removal\r\nsnmp-server enable traps srp\r\nsnmp-server enable traps ds3\r\nsnmp-server enable traps envmon\r\nsnmp-server enable traps isdn call-information\r\nsnmp-server enable traps isdn layer2\r\nsnmp-server enable traps isdn chan-not-avail\r\nsnmp-server enable traps isdn ietf\r\nsnmp-server enable traps ima\r\nsnmp-server enable traps diameter\r\nsnmp-server enable traps channel\r\nsnmp-server enable traps ip local pool\r\nsnmp-server enable traps rf\r\nsnmp-server enable traps aaa_server\r\nsnmp-server enable traps atm subif\r\nsnmp-server enable traps bgp\r\nsnmp-server enable traps bstun\r\nsnmp-server enable traps bulkstat collection transfer\r\nsnmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency\r\nsnmp-server enable traps memory bufferpeak\r\nsnmp-server enable traps cnpd\r\nsnmp-server enable traps config-copy\r\nsnmp-server enable traps config\r\nsnmp-server enable traps config-ctid\r\nsnmp-server enable traps dial\r\nsnmp-server enable traps dlsw\r\nsnmp-server enable traps dsp card-status\r\nsnmp-server enable traps dsp oper-state\r\nsnmp-server enable traps entity\r\nsnmp-server enable traps fru-ctrl\r\nsnmp-server enable traps resource-policy\r\nsnmp-server enable traps frame-relay multilink bundle-mismatch\r\nsnmp-server enable traps frame-relay\r\nsnmp-server enable traps frame-relay subif\r\nsnmp-server enable traps hsrp\r\nsnmp-server enable traps ipmobile\r\nsnmp-server enable traps ipmulticast\r\nsnmp-server enable traps isis\r\nsnmp-server enable traps mpls traffic-eng\r\nsnmp-server enable traps mpls fast-reroute protected\r\nsnmp-server enable traps mpls rfc ldp\r\nsnmp-server enable traps mpls ldp\r\nsnmp-server enable traps msdp\r\nsnmp-server enable traps mvpn\r\nsnmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message\r\nsnmp-server enable traps pppoe\r\nsnmp-server enable traps cpu threshold\r\nsnmp-server enable traps nhrp nhs\r\nsnmp-server enable traps nhrp nhc\r\nsnmp-server enable traps nhrp nhp\r\nsnmp-server enable traps nhrp quota-exceeded\r\nsnmp-server enable traps rsvp\r\nsnmp-server enable traps ipsla\r\nsnmp-server enable traps stun\r\nsnmp-server enable traps syslog\r\nsnmp-server enable traps l2tun session\r\nsnmp-server enable traps l2tun pseudowire status\r\nsnmp-server enable traps pw vc\r\nsnmp-server enable traps event-manager\r\nsnmp-server enable traps firewall serverstatus\r\nsnmp-server enable traps isakmp policy add\r\nsnmp-server enable traps isakmp policy delete\r\nsnmp-server enable traps isakmp tunnel start\r\nsnmp-server enable traps isakmp tunnel stop\r\nsnmp-server enable traps ipsec cryptomap add\r\nsnmp-server enable traps ipsec cryptomap delete\r\nsnmp-server enable traps ipsec cryptomap attach\r\nsnmp-server enable traps ipsec cryptomap detach\r\nsnmp-server enable traps ipsec tunnel start\r\nsnmp-server enable traps ipsec tunnel stop\r\nsnmp-server enable traps ipsec too-many-sas\r\nsnmp-server enable traps alarms informational\r\nsnmp-server enable traps ccme\r\nsnmp-server enable traps srst\r\nsnmp-server enable traps mpls vpn\r\nsnmp-server enable traps voice\r\nsnmp-server enable traps dnis\r\nsnmp-server host 192.168.8.100 nb \r\n!\r\n!\r\ncontrol-plane\r\n !\r\n!\r\n!\r\n!\r\n!\r\n!\r\ngatekeeper\r\n shutdown\r\n!\r\n!\r\nline con 0\r\n exec-timeout 0 0\r\n privilege level 15\r\n logging synchronous\r\n stopbits 1\r\nline aux 0\r\n exec-timeout 0 0\r\n privilege level 15\r\n logging synchronous\r\n stopbits 1\r\nline vty 0 4\r\n password nb\r\n login\r\n!\r\nntp clock-period 36029284\r\nntp server 172.18.33.225\r\nntp server 172.21.128.95\r\n!\r\nend\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$ntp_config]:(^ntp.+?!)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ntp_config:string\"]},\"xxid\":\"3964690b-aa75-cf8d-c3a8-c7ddc7ac1783\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ntp_config",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "45dd7eb79456d55fbc7152def14012b7",
+    "supportNodeType": 0,
+    "type": 2,
+    "variables": [
+        {
+            "capName": "$ntp_config",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ntp_config",
+            "intfKey": false,
+            "name": "$ntp_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

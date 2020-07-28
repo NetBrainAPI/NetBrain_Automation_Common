@@ -1,0 +1,400 @@
+{
+    "_id": "852c6b5a-f327-d29c-bead-443559f6565b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show eigrp accounting",
+    "createTime": {
+        "$date": 1579116128793
+    },
+    "description": "Device Type: \nCisco IOS XR \nCommand:\nshow eigrp accounting ",
+    "devTypes": [
+        2999
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasEIGRPConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "RP/0/0/CPU0:ios#show eigrp accounting\nFri Jun 27 15:31:56.752 UTC\n\nIPv4-EIGRP Accounting for AS(100)/ID(12.12.12.12)\n\nTotal Prefix Count: 152  States: A-Adjacency, P-Pending, D-Down\nState Address/Source       Interface        Prefix   Restart  Restart/\n                                            Count     Count   Reset(s)\n A    10.12.1.111          Gi0/0/0/0             0        0        0\nIPv4-EIGRP Accounting for AS(200)/ID(12.12.12.12)\n\nTotal Prefix Count: 200  States: A-Adjacency, P-Pending, D-Down\nState Address/Source       Interface        Prefix   Restart  Restart/\n                                            Count     Count   Reset(s)\n A    10.12.1.111          Gi0/0/0/0             0        0        0",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.eigrp_accounting.eigrp_nbrs_account.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"eigrp_accounting\",\"keyVariables\":null,\"startLine\":\"regex[$as,$id]:IPv4-EIGRP\\\\s+Accounting\\\\s+for\\\\s+AS\\\\((\\\\S+)\\\\)\\\\/ID\\\\((\\\\S+)\\\\)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_prefix]:Total Prefix Count:\\\\s+(\\\\d+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$as:string\",\"$id:string\",\"$total_prefix:int\"]},\"xxid\":\"9fc1e0a4-1ee1-3782-932c-450b864ad5b8\"},{\"type\":\"4\",\"name\":\"eigrp_nbrs_account\",\"keyVariables\":null,\"startLine\":\"regex[$state,$address_source,$interface,$int:prefix_count,$int:restart_count,$int:restart_reset]:^\\\\s*(\\\\S)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$state:string\",\"$address_source:string\",\"$interface:string\",\"$prefix_count:int\",\"$restart_count:int\",\"$restart_reset:int\"]},\"xxid\":\"60efe716-a18e-837d-4891-2d6ca59e76a2\"}]},\"xxid\":\"02b94fbf-be8f-bac1-32fd-c1fb5e5cc1c9\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$state\",\"$interface\",\"$prefix_count\",\"$as\",\"$id\",\"$total_prefix\",\"$address_source\"],\"hashSort\":false}]},\"xxid\":\"b621c921-7c40-4c7e-e81f-853e2dda429a\",\"hashColumns\":[\"$as\",\"$id\",\"$total_prefix\"],\"hashSort\":false}]}",
+            "tableKeys": [
+                "_original_result.eigrp_accounting.$as",
+                "_original_result.eigrp_accounting.eigrp_nbrs_account.$prefix_count",
+                "_original_result.eigrp_accounting.eigrp_nbrs_account.$state",
+                "_original_result.eigrp_accounting.eigrp_nbrs_account.$address_source",
+                "_original_result.eigrp_accounting.eigrp_nbrs_account.$as",
+                "_original_result.eigrp_accounting.eigrp_nbrs_account.$id",
+                "_original_result.eigrp_accounting.eigrp_nbrs_account.$total_prefix"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "as",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "total_prefix",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$as",
+                    "$id",
+                    "$total_prefix"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "eigrp_accounting",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "address_source",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "prefix_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "restart_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "restart_reset",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "as",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "id",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "total_prefix",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$address_source",
+                    "$as",
+                    "$id",
+                    "$interface",
+                    "$prefix_count",
+                    "$state",
+                    "$total_prefix"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "eigrp_nbrs_account",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5299dc447882c234ccd68300370d8047",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "eigrp_accounting",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$as",
+                    "$id",
+                    "$total_prefix"
+                ],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting",
+            "intfKey": false,
+            "name": "eigrp_accounting",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "eigrp_accounting.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_accounting.$id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.$id",
+            "intfKey": false,
+            "name": "$id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_accounting.$total_prefix",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.$total_prefix",
+            "intfKey": false,
+            "name": "$total_prefix",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$state",
+                    "$interface",
+                    "$prefix_count",
+                    "$as",
+                    "$id",
+                    "$total_prefix",
+                    "$address_source"
+                ],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account",
+            "intfKey": false,
+            "name": "eigrp_nbrs_account",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "eigrp_nbrs_account.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account.$address_source",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$address_source",
+            "intfKey": false,
+            "name": "$address_source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "eigrp_nbrs_account.$prefix_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$prefix_count",
+            "intfKey": false,
+            "name": "$prefix_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account.$restart_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$restart_count",
+            "intfKey": false,
+            "name": "$restart_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account.$restart_reset",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$restart_reset",
+            "intfKey": false,
+            "name": "$restart_reset",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account.$id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$id",
+            "intfKey": false,
+            "name": "$id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_nbrs_account.$total_prefix",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_accounting.eigrp_nbrs_account.$total_prefix",
+            "intfKey": false,
+            "name": "$total_prefix",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

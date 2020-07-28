@@ -1,0 +1,383 @@
+{
+    "_id": "31a5af55-4489-4054-182d-75ddb54052a8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis neighbors detail",
+    "createTime": {
+        "$date": 1579803825140
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow isis neighbors detail",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "ciscoasa# show isis neighbors detail\r\n \r\nSystem Id Type Interface IP Address State Holdtime Circuit Id\r\nrouterA L1 subint 22.22.22.5 UP 23 c2.01\r\nArea Address(es): 49.0001\r\nSNPA: 0025.8407.f2b0\r\nState Changed: 00:03:03\r\nLAN Priority: 64\r\nFormat: Phase V\r\nRemote TID: 0\r\nLocal TID: 0\r\nInterface name: subint\r\nrouterA L2 subint 22.22.22.5 UP 22 c2.01\r\nArea Address(es): 49.0001\r\nSNPA: 0025.8407.f2b0\r\nState Changed: 00:03:03\r\nLAN Priority: 64\r\nFormat: Phase V\r\nRemote TID: 0\r\nLocal TID: 0\r\nInterface name: subint",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_nbrs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_nbrs\",\"keyVariables\":\"\",\"startLine\":\"regex[$system_id, $type, $intf, $nbr_addr, $state, $int:holdtime, $circuit_id]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+\\\\d+\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$area_addr]:Area Address\\\\(es\\\\):\\\\s+(\\\\S+)\",\"regex[$snpa]:SNPA:\\\\s+(\\\\S+)\",\"State Changed: $state_change\",\"LAN Priority: $int:lan_priority\",\"regex[$format]:Format:\\\\s+(.+)\",\"Remote TID: $remote_tid\",\"Local TID: $local_tid\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$system_id:string\",\"$type:string\",\"$intf:string\",\"$nbr_addr:string\",\"$state:string\",\"$holdtime:int\",\"$circuit_id:string\",\"$area_addr:string\",\"$snpa:string\",\"$state_change:string\",\"$lan_priority:int\",\"$format:string\",\"$remote_tid:string\",\"$local_tid:string\"]},\"xxid\":\"7d98cc55-3e36-50d0-eb86-e6ab40a4f567\"}]},\"xxid\":\"be05f77d-ff3a-9351-33d9-c7864d149ead\",\"hashColumns\":[\"$type\",\"$intf\",\"$state\"],\"interfaceKey\":\"$intf\"}]}",
+            "tableKeys": [
+                "_original_result.isis_nbrs.$type",
+                "_original_result.isis_nbrs.$state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 14,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "system_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "nbr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "holdtime",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "area_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "state_change",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "lan_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "format",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "remote_tid",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "local_tid",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$state",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_nbrs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2eb5f214de0a6232888558bc6f2f2da4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_nbrs",
+            "dataType": "paragraph",
+            "desc": "ISIS neighbor table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$type",
+                    "$intf",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs",
+            "intfKey": false,
+            "name": "isis_nbrs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_nbrs.$system_id",
+            "dataType": "string",
+            "desc": "Six-byte value that identifies a system in an area.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$system_id",
+            "intfKey": false,
+            "name": "$system_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$type",
+            "dataType": "string",
+            "desc": "Level type. Indicates whether the IS-IS neighbor is a Level 1, Level-1-2, or Level 2 router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$intf",
+            "dataType": "string",
+            "desc": "Interface from which the system was learned.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_nbrs.$nbr_addr",
+            "dataType": "string",
+            "desc": "IP address of the neighbor router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$nbr_addr",
+            "intfKey": false,
+            "name": "$nbr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$state",
+            "dataType": "string",
+            "desc": "Indicates whether the state of the IS-IS neighbor is up or down.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$holdtime",
+            "dataType": "int",
+            "desc": "Link-state packet (LSP) holdtime. Amount of time that the LSP remains valid (in seconds).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$holdtime",
+            "intfKey": false,
+            "name": "$holdtime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$circuit_id",
+            "dataType": "string",
+            "desc": "Port location for the IS-IS neighbor router that indicates how it is connected to the local router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$circuit_id",
+            "intfKey": false,
+            "name": "$circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$area_addr",
+            "dataType": "string",
+            "desc": "Reachable area addresses from the router. For Level 1 LSPs, these are the area addresses configured manually on the originating router. For Level 2 LSPs, these are all the area addresses for the area to which this router belongs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$area_addr",
+            "intfKey": false,
+            "name": "$area_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$snpa",
+            "dataType": "string",
+            "desc": "Subnetwork point of attachment. This is the data-link address.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$state_change",
+            "dataType": "string",
+            "desc": "State change.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$state_change",
+            "intfKey": false,
+            "name": "$state_change",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$lan_priority",
+            "dataType": "int",
+            "desc": "Priority of the LAN.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$lan_priority",
+            "intfKey": false,
+            "name": "$lan_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$format",
+            "dataType": "string",
+            "desc": "Format",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$format",
+            "intfKey": false,
+            "name": "$format",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$remote_tid",
+            "dataType": "string",
+            "desc": "Neighbor router topology ID(s).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$remote_tid",
+            "intfKey": false,
+            "name": "$remote_tid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_nbrs.$local_tid",
+            "dataType": "string",
+            "desc": "Local router topology ID(s).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_nbrs.$local_tid",
+            "intfKey": false,
+            "name": "$local_tid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

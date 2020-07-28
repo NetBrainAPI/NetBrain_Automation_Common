@@ -1,0 +1,261 @@
+{
+    "_id": "f8d27b42-3102-89b6-411f-63d686bb261e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mpls switching",
+    "createTime": {
+        "$date": 1579880963982
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:  \n       show mpls switching",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NEXUS# show mpls switching \r\rLegend:\r(P)=Protected, (F)=FRR active, (*)=more labels in stack.\r\rIn-Label   Out-Label  FEC name           Out-Interface      Next-Hop            \rVRF default\r17         Pop Label  4.4.4.4/32         Eth2/1             123.1.45.4         \r16         Pop Label  6.6.6.6/32         Eth2/2             123.1.56.6 ",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"mpls_switching\",\"keyVariables\":\"\",\"startLine\":\"regex[$vrf]:^VRF (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vrf:string\"]},\"xxid\":\"84cd4a04-aded-3f8d-fca7-26ac5774819d\"},{\"type\":\"4\",\"name\":\"mpls_forwarding_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$in_label,$out_label,$fec_name,$out_interface,$next_hop]:^(\\\\S+)\\\\s+(.+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\/\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$in_label:string\",\"$out_label:string\",\"$fec_name:string\",\"$out_interface:string\",\"$next_hop:string\"]},\"xxid\":\"953c0bd4-47fc-9ea0-b602-812c23058590\"}]},\"xxid\":\"b97e940b-a89e-bf12-9eca-c5ddbccbe925\",\"hashColumns\":[],\"hashSort\":false}]},\"xxid\":\"af4e16ae-a669-001b-4136-2d8b2cde8cc8\",\"hashColumns\":[\"$vrf\"]}]}",
+            "tableKeys": [
+                "_original_result.mpls_switching.$vrf"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "vrf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$vrf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "mpls_switching",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "in_label",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "out_label",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "fec_name",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "out_interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "next_hop",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "vrf",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "mpls_forwarding_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "faab4dce5499751aa7f5561d8e697add",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "mpls_switching",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$vrf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching",
+            "intfKey": false,
+            "name": "mpls_switching",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mpls_switching.$vrf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_forwarding_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.mpls_forwarding_table",
+            "intfKey": false,
+            "name": "mpls_forwarding_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "mpls_forwarding_table.$in_label",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.mpls_forwarding_table.$in_label",
+            "intfKey": false,
+            "name": "$in_label",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_forwarding_table.$out_label",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.mpls_forwarding_table.$out_label",
+            "intfKey": false,
+            "name": "$out_label",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_forwarding_table.$fec_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.mpls_forwarding_table.$fec_name",
+            "intfKey": false,
+            "name": "$fec_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_forwarding_table.$out_interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.mpls_forwarding_table.$out_interface",
+            "intfKey": false,
+            "name": "$out_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_forwarding_table.$next_hop",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.mpls_forwarding_table.$next_hop",
+            "intfKey": false,
+            "name": "$next_hop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "mpls_forwarding_table.$vrf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "mpls_switching.mpls_forwarding_table.$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

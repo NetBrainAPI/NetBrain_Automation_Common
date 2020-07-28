@@ -1,0 +1,183 @@
+{
+    "_id": "6a12ab5a-656f-6810-06fd-4e0d9194c036",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "net show route vrf $vrf_name",
+    "createTime": {
+        "$date": 1580488015619
+    },
+    "description": "",
+    "devTypes": [
+        10674
+    ],
+    "params": [
+        {
+            "name": "$vrf_name"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "cumulus@cumulus12:mgmt-vrf:~$net show route vrf mgmt\r\nshow ip route vrf mgmt \r\n=======================\r\nCodes: K - kernel route, C - connected, S - static, R - RIP,\r\n       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,\r\n       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,\r\n       F - PBR,\r\n       > - selected route, * - FIB route\r\n\r\n\r\nVRF mgmt:\r\nK * 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 01w2d23h\r\nK>* 0.0.0.0/0 [0/0] via 192.168.180.1, eth0, 01w2d23h\r\nC>* 192.168.180.0/24 is directly connected, eth0, 01w2d23h\r\n\r\n\r\n\r\nshow ipv6 route vrf mgmt \r\n=========================\r\nCodes: K - kernel route, C - connected, S - static, R - RIPng,\r\n       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,\r\n       v - VNC, V - VNC-Direct, A - Babel, D - SHARP, F - PBR,\r\n       > - selected route, * - FIB route\r\n\r\n\r\nVRF mgmt:\r\nK * ::/0 [255/8192] unreachable (ICMP unreachable), 01w2d23h\r\nC>* fe80::/64 is directly connected, eth0, 01w2d23h\r\nK>* ff00::/8 [0/256] is directly connected, eth0, 01w2d23h \r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"from function import get_data_from_source, strhasip, getmaskaddressbylen, set_result_to_dest\\nfrom routingtableutil import *\\nfrom pylib import intftrans\\nimport re\\n\\n\\ndef get_alg(pro):\\n    if pro == 'bgp':\\n        return 'B'\\n    elif pro == 'ospf':\\n        return 'O'\\n    else:\\n        return ''\\n\\n\\ndef parse_routing(devicename, source, option):\\n    if not source.strip():\\n        return ''\\n    lines = get_data_from_source(source)\\n    res = [gettitle(devicename)]\\n    trans = intftrans(devicename, 10674)\\n    rex_destip = re.compile(r'^(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+(\\\\/\\\\d+)?)', re.M).search\\n    rex_nexthop = re.compile(r'via +(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)').search\\n    rex_outif = re.compile(r'dev +(\\\\S+)').search\\n    rex_pro = re.compile(r'proto +(\\\\S+)').search\\n    rex_metric = re.compile(r'metric +(\\\\d+)').search\\n    ecmp_destip, ecmp_metric, ecmp_pro = '', '', ''\\n    index = 0\\n    for line in lines.splitlines():\\n        destip = rex_destip(line)\\n        outif = rex_outif(line)\\n        if not destip and not rex_outif:\\n            continue\\n        destip = destip.group(1) if destip else ecmp_destip\\n        ecmp_destip = destip\\n        mask = ''\\n        if '/' in destip:\\n            destip, mask = destip.split('/')\\n            mask = getmaskaddressbylen(int(mask))\\n        else:\\n            mask = '255.255.255.255'\\n        pro = rex_pro(line).group(1) if rex_pro(line) else ecmp_pro\\n        ecmp_pro = pro\\n        metric = rex_metric(line).group(1) if rex_metric(line) else ecmp_metric\\n        ecmp_metric = metric\\n        if not outif:\\n            continue\\n        outif = outif.group(1)\\n        outif = trans.getshortname(outif)\\n        nexthop = rex_nexthop(line).group(1) if rex_nexthop(line) else ''\\n        alg = get_alg(pro)\\n        index += 1\\n        res.append(csvparser.toCSV([index, destip, mask, nexthop, '', metric, '', alg, outif, '', '']))\\n    return set_result_to_dest(res, source)\\n\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$routing_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$admin_distance\",\"type\":\"string\"},{\"name\":\"$prefix\",\"type\":\"string\"},{\"name\":\"$route_source\",\"type\":\"string\"},{\"name\":\"$route_type\",\"type\":\"string\"},{\"name\":\"$via\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"a1312e6f-9821-08f3-4815-0677fec82b7f\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "admin_distance",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "prefix",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "route_source",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "route_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "via",
+                        "type": 4
+                    }
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "routing_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d9e872665e4a8c5ccbdaba82502ed4c4",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$routing_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routing_table",
+            "intfKey": false,
+            "name": "$routing_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$routing_table.$admin_distance",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routing_table.$admin_distance",
+            "intfKey": false,
+            "name": "$admin_distance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routing_table.$prefix",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routing_table.$prefix",
+            "intfKey": false,
+            "name": "$prefix",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routing_table.$route_source",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routing_table.$route_source",
+            "intfKey": false,
+            "name": "$route_source",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routing_table.$route_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routing_table.$route_type",
+            "intfKey": false,
+            "name": "$route_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$routing_table.$via",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$routing_table.$via",
+            "intfKey": false,
+            "name": "$via",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

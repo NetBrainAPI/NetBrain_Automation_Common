@@ -1,0 +1,373 @@
+{
+    "_id": "8cd86f91-5830-9e40-2600-e216e6a1a98a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sys license",
+    "createTime": {
+        "$date": 1579705224171
+    },
+    "description": "Device Type:\nF5 Load Balancer\nCommand:\nshow sys license",
+    "devTypes": [
+        2003
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@(NB-F5-02)(cfg-sync Standalone)(Active)(/Common)(tmos)# show sys license\r\n\r\nSys::License\r\nLicensed Version    11.5.1\r\nRegistration key    DPTEA-KFHOP-QRKEE-GCXYO-BREDTSW\r\nLicensed On         2009/06/19\r\nLicense Start Date  2009/06/18\r\nLicense End Date    2011/07/06\r\nService Check Date  2011/06/06\r\nPlatform ID         Z100\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"license_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$licensed_version]:Licensed Version\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$registration_key]:Registration key\\\\s+(\\\\S+)\",\"regex[$licensed_on_date]:Licensed On\\\\s+(\\\\S+)\",\"regex[$license_start_date]:License Start Date\\\\s+(\\\\S+)\",\"regex[$license_end_date]:License End Date\\\\s+(\\\\S+)\",\"regex[$platform_id]:Platform ID\\\\s+(\\\\S+)\",\"regex[$service_check_date]:Service Check Date\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$licensed_version:string\",\"$registration_key:string\",\"$licensed_on_date:string\",\"$license_start_date:string\",\"$license_end_date:string\",\"$platform_id:string\",\"$service_check_date:string\"]},\"xxid\":\"e3b49def-bc72-a4f0-4be2-781cdf2182c1\"}]},\"xxid\":\"cd76037a-ebff-4cdd-e679-43ab4968312c\",\"hashColumns\":[\"$licensed_version\",\"$registration_key\",\"$licensed_on_date\",\"$license_start_date\",\"$license_end_date\",\"$platform_id\",\"$service_check_date\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"b31b3205-157d-02db-b103-31a69b26557d\"},{\"type\":\"8\",\"script\":\"import re\\r\\nimport datetime\\r\\n\\r\\n\\r\\ndef ParseText(_original_result):\\r\\n\\r\\n    tempdic = {\\r\\n    'lic_end': '',\\r\\n    'day_left': 0,\\r\\n    }\\r\\n\\r\\n    output = _original_result.split('\\\\n') \\r\\n\\r\\n\\r\\n    temp1 = ''\\r\\n    temp2 = ''\\r\\n    \\r\\n    for m in range(len(output)):\\r\\n        if ' End ' in output[m]:\\r\\n            temp1 = re.findall(\\\"License End Date\\\\s+(\\\\S+)\\\",output[m])\\r\\n            #temp1 = output[m]\\r\\n            tempdic['lic_end'] = temp1[0]\\r\\n            \\r\\n            t1 = datetime.datetime.strptime(temp1[0], '%Y/%m/%d')\\r\\n            t2 = datetime.datetime.today()\\r\\n            \\r\\n            #t3 = datetime.datetime.strptime(str(t2)')\\r\\n            #t2 = datetime.datetime.strptime('2019/08/24', '%Y/%m/%d') \\r\\n            \\r\\n            temp2 = t1 - t2\\r\\n            \\r\\n            \\r\\n            #tempdic['test'] = str(t2)\\r\\n            tempdic['day_left'] = temp2.days\\r\\n            \\r\\n            day_left = temp2.days\\r\\n            end_date = temp1[0]\\r\\n        \\r\\n    dic = {\\r\\n    'lic_end_date': tempdic,\\r\\n    'lic_day_left': day_left,\\r\\n    'lic_expires': end_date\\r\\n    }\\r\\n   \\r\\n    return dic\",\"variableTypes\":{\"variableType\":[{\"name\":\"$lic_day_left\",\"type\":\"int\"},{\"name\":\"$lic_expires\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$lic_end_date\",\"variableTypes\":{\"variableType\":[{\"name\":\"$day_left\",\"type\":\"int\"},{\"name\":\"$lic_end\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"e3bdf695-7677-878d-58de-064214a57c87\"}]}",
+            "tableKeys": [
+                "_original_result.license_table.$licensed_version"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "lic_day_left",
+                "type": 1
+            },
+            {
+                "index": 2,
+                "name": "lic_expires",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "licensed_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "registration_key",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "licensed_on_date",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "license_start_date",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "license_end_date",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "platform_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "service_check_date",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$license_end_date",
+                    "$license_start_date",
+                    "$licensed_on_date",
+                    "$licensed_version",
+                    "$platform_id",
+                    "$registration_key",
+                    "$service_check_date"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "license_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "day_left",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "lic_end",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 4,
+                "name": "lic_end_date",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "e97f223d75c88153ddf5b89f16dfeb99",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "license_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$licensed_version",
+                    "$registration_key",
+                    "$licensed_on_date",
+                    "$license_start_date",
+                    "$license_end_date",
+                    "$platform_id",
+                    "$service_check_date"
+                ],
+                "hashSort": false
+            },
+            "fullName": "license_table",
+            "intfKey": false,
+            "name": "license_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "license_table.$licensed_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$licensed_version",
+            "intfKey": false,
+            "name": "$licensed_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$registration_key",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$registration_key",
+            "intfKey": false,
+            "name": "$registration_key",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$licensed_on_date",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$licensed_on_date",
+            "intfKey": false,
+            "name": "$licensed_on_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$license_start_date",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$license_start_date",
+            "intfKey": false,
+            "name": "$license_start_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$license_end_date",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$license_end_date",
+            "intfKey": false,
+            "name": "$license_end_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$platform_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$platform_id",
+            "intfKey": false,
+            "name": "$platform_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "license_table.$service_check_date",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "license_table.$service_check_date",
+            "intfKey": false,
+            "name": "$service_check_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$lic_day_left",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$lic_day_left",
+            "intfKey": false,
+            "name": "$lic_day_left",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$lic_expires",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$lic_expires",
+            "intfKey": false,
+            "name": "$lic_expires",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$lic_end_date",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$lic_end_date",
+            "intfKey": false,
+            "name": "$lic_end_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$lic_end_date.$day_left",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$lic_end_date.$day_left",
+            "intfKey": false,
+            "name": "$day_left",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$lic_end_date.$lic_end",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$lic_end_date.$lic_end",
+            "intfKey": false,
+            "name": "$lic_end",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

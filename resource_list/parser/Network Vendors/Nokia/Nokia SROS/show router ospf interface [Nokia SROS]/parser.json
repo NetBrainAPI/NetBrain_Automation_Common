@@ -1,0 +1,327 @@
+{
+    "_id": "6292fc26-98a1-caef-0bb9-d6e1ea35750d",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router ospf interface",
+    "createTime": {
+        "$date": 1584026305767
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router ospf interface",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "*A:ASBR5# show router ospf interface \r\n\r\n===============================================================================\r\nOSPFv2 (0) all interfaces\r\n===============================================================================\r\nIf Name               Area Id         Designated Rtr  Bkup Desig Rtr  Adm  Oper\r\n-------------------------------------------------------------------------------\r\nsystem                0.0.0.0         158.7.1.94      0.0.0.0         Up   DR\r\ng1/1/1                0.0.0.0         158.7.1.94      158.7.1.93      Up   DR\r\n-------------------------------------------------------------------------------\r\nNo. of OSPF Interfaces: 2\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_process\",\"keyVariables\":\"\",\"startLine\":\"regex[$ospf_area]:^ospf\\\\S*\\\\s+\\\\((\\\\S+)\\\\)\\\\s+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ospf_area:string\"]},\"xxid\":\"b696598f-2907-51d2-5fb4-05bc079de05a\"},{\"type\":\"1\",\"name\":\"ospf_interface_filter\",\"startLine\":\"mregex:^if name\\\\s+area id.+?^---+\",\"endLine\":\"regex:^---+\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"0\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"8f121587-1d61-7766-b8e1-8f8c772ffa90\"},{\"type\":\"3\",\"name\":\"interfaces\",\"headers\":\"If Name;Area Id;Designated Rtr;Bkup Desig Rtr;Adm;Oper\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"If Name:$string:interface;Area Id:$string:area_id;Designated Rtr:$string:designated_rtr;Bkup Desig Rtr:$string:bkup_desig_rtr;Adm:$string:adm;Oper:$string:oper\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":\"\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$area_id:string\",\"$designated_rtr:string\",\"$bkup_desig_rtr:string\",\"$adm:string\",\"$oper:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"6781f91f-bebe-a45a-a93d-d8f39b87d6fd\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$area_id\",\"$designated_rtr\",\"$bkup_desig_rtr\",\"$adm\",\"$oper\"],\"HashSort\":false}]},\"xxid\":\"95421b79-7fda-7ff1-5a8f-6a2e005637e6\"}]},\"xxid\":\"c7ce3c9f-8428-0165-336d-b2c69664f37a\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"edb1b855-fb1a-75f6-9f65-6ddafecc2d61\"}]}",
+            "tableKeys": [
+                "_original_result.ospf_process.ospf_interface_filter.interfaces.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ospf_area",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "ospf_interface_filter",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_process",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "designated_rtr",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "bkup_desig_rtr",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "adm",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "oper",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "ospf_area",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$adm",
+                    "$area_id",
+                    "$bkup_desig_rtr",
+                    "$designated_rtr",
+                    "$interface",
+                    "$oper"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "interfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "36157694e53b32ab55d6120308a636fc",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_process",
+            "dataType": "paragraph",
+            "desc": "OSPF process table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "ospf_process",
+            "intfKey": false,
+            "name": "ospf_process",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_process.$ospf_area",
+            "dataType": "string",
+            "desc": "OSPF process ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.$ospf_area",
+            "intfKey": false,
+            "name": "$ospf_area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_process.ospf_interface_filter",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter",
+            "intfKey": false,
+            "name": "ospf_interface_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$area_id",
+                    "$designated_rtr",
+                    "$bkup_desig_rtr",
+                    "$adm",
+                    "$oper"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter.interfaces",
+            "intfKey": false,
+            "name": "interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "interfaces.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter.interfaces.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "interfaces.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter.interfaces.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$designated_rtr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter.interfaces.$designated_rtr",
+            "intfKey": false,
+            "name": "$designated_rtr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$bkup_desig_rtr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter.interfaces.$bkup_desig_rtr",
+            "intfKey": false,
+            "name": "$bkup_desig_rtr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$adm",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter.interfaces.$adm",
+            "intfKey": false,
+            "name": "$adm",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "interfaces.$oper",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_process.ospf_interface_filter.interfaces.$oper",
+            "intfKey": false,
+            "name": "$oper",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

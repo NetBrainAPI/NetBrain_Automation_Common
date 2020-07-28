@@ -1,0 +1,512 @@
+{
+    "_id": "9b897ba3-5cd4-0f65-dab0-16a72d9b23f7",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf interface extensive",
+    "createTime": {
+        "$date": 1580672401759
+    },
+    "description": "Device Type:\nJuniper EX Switch\nJuniper Router\nJuniper SRX Firewall\nCommand:\nshow ospf interface",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "admin@P2-MX> show ospf interface extensive \nInterface           State   Area            DR ID           BDR ID          Nbrs\nae3.0               PtToPt  0.0.0.0         0.0.0.0         0.0.0.0            1\n  Type: P2P, Address: 10.10.13.1, Mask: 255.255.255.0, MTU: 1500, Cost: 1\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: Password\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\nge-0/0/0.0          PtToPt  0.0.0.0         0.0.0.0         0.0.0.0            1\n  Type: P2P, Address: 10.10.2.1, Mask: 255.255.255.0, MTU: 1500, Cost: 1\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: Password\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\nge-0/0/1.0          PtToPt  0.0.0.0         0.0.0.0         0.0.0.0            1\n  Type: P2P, Address: 10.10.1.2, Mask: 255.255.255.0, MTU: 1500, Cost: 1\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: Password\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\nge-0/0/2.0          PtToPt  0.0.0.0         0.0.0.0         0.0.0.0            0\n  Type: P2P, Address: 10.10.4.1, Mask: 255.255.255.0, MTU: 1500, Cost: 1\n  Adj count: 0\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: Password\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\nge-0/0/3.0          PtToPt  0.0.0.0         0.0.0.0         0.0.0.0            1\n  Type: P2P, Address: 10.10.8.2, Mask: 255.255.255.0, MTU: 1500, Cost: 1\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: Password\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\nlo0.0               DRother 0.0.0.0         0.0.0.0         0.0.0.0            0\n  Type: LAN, Address: 10.100.100.2, Mask: 255.255.255.255, MTU: 65535, Cost: 0\n  Adj count: 0, Passive\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: None\n  Protection type: None\n  Topology default (ID 0) -> Passive, Cost: 0\nem0.0               BDR     0.0.0.0         172.27.129.178  172.27.129.179     3\n  Type: LAN, Address: 172.27.129.179, Mask: 255.255.255.240, MTU: 1500, Cost: 1\n  DR addr: 172.27.129.178, BDR addr: 172.27.129.179, Priority: 128\n  Adj count: 3\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: None\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\nem1.0               DR      0.0.0.0         172.27.129.179  172.27.129.6       1\n  Type: LAN, Address: 172.27.129.195, Mask: 255.255.255.240, MTU: 1500, Cost: 1\n  DR addr: 172.27.129.195, BDR addr: 172.27.129.193, Priority: 128\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: None\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_interfaces.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_interfaces\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface,$state,$area,$dr_id,$bdr_id,$int:nbr_count]:^(\\\\S+)?\\\\s+(\\\\S+)?\\\\s+([\\\\d.]+)?\\\\s+([\\\\d.]+)?\\\\s+([\\\\d.]+)?\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$type,$address,$mask,$int:mtu,$int:cost]:Type:\\\\s+(\\\\S+),\\\\s+Address:\\\\s+(\\\\S+),\\\\s+Mask:\\\\s+(\\\\S+),\\\\s+MTU:\\\\s+(\\\\d+),\\\\s+Cost:\\\\s+(\\\\d+)\",\"regex[$int:adj_count]:Adj count:\\\\s+(\\\\d+).*\",\"regex[$dr_addr,$bdr_addr,$int:priority]:DR addr:\\\\s+(\\\\S+),\\\\s+BDR addr:\\\\s+(\\\\S+),\\\\s+Priority:\\\\s+(\\\\S+)\",\"regex[$int:hello,$int:dead]:Hello:\\\\s+(\\\\d+),\\\\s+Dead:\\\\s+(\\\\d+),\\\\s+[^,]+\",\"Auth type: $auth_type\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$state:string\",\"$area:string\",\"$dr_id:string\",\"$bdr_id:string\",\"$nbr_count:int\",\"$type:string\",\"$address:string\",\"$mask:string\",\"$mtu:int\",\"$cost:int\",\"$adj_count:int\",\"$dr_addr:string\",\"$bdr_addr:string\",\"$priority:int\",\"$hello:int\",\"$dead:int\",\"$auth_type:string\"]},\"xxid\":\"974c1f5a-24c3-d3cd-85e1-027fcbb007e3\"}]},\"xxid\":\"1ace38a6-f907-1f74-4e70-b0aa347137c2\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$state\",\"$area\",\"$dr_id\",\"$bdr_id\",\"$nbr_count\",\"$type\",\"$address\",\"$mask\",\"$mtu\",\"$cost\",\"$adj_count\",\"$dr_addr\",\"$bdr_addr\",\"$priority\",\"$hello\",\"$dead\",\"$auth_type\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"0dcfeb53-b99b-357e-1f20-8f159a730469\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 18,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "bdr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "nbr_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "address",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "adj_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "dr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "bdr_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 14,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "hello",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "dead",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "auth_type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$address",
+                    "$adj_count",
+                    "$area",
+                    "$auth_type",
+                    "$bdr_addr",
+                    "$bdr_id",
+                    "$cost",
+                    "$dead",
+                    "$dr_addr",
+                    "$dr_id",
+                    "$hello",
+                    "$interface",
+                    "$mask",
+                    "$mtu",
+                    "$nbr_count",
+                    "$priority",
+                    "$state",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_interfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "71b869c9014245b2d17e83b79811a54a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_interfaces",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$state",
+                    "$area",
+                    "$dr_id",
+                    "$bdr_id",
+                    "$nbr_count",
+                    "$type",
+                    "$address",
+                    "$mask",
+                    "$mtu",
+                    "$cost",
+                    "$adj_count",
+                    "$dr_addr",
+                    "$bdr_addr",
+                    "$priority",
+                    "$hello",
+                    "$dead",
+                    "$auth_type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces",
+            "intfKey": false,
+            "name": "ospf_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_interfaces.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_interfaces.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$area",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$area",
+            "intfKey": false,
+            "name": "$area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$dr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$dr_id",
+            "intfKey": false,
+            "name": "$dr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$bdr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$bdr_id",
+            "intfKey": false,
+            "name": "$bdr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$nbr_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$nbr_count",
+            "intfKey": false,
+            "name": "$nbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$address",
+            "intfKey": false,
+            "name": "$address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$mask",
+            "intfKey": false,
+            "name": "$mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$mtu",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$adj_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$adj_count",
+            "intfKey": false,
+            "name": "$adj_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$dr_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$dr_addr",
+            "intfKey": false,
+            "name": "$dr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$bdr_addr",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$bdr_addr",
+            "intfKey": false,
+            "name": "$bdr_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$hello",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$hello",
+            "intfKey": false,
+            "name": "$hello",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$dead",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$dead",
+            "intfKey": false,
+            "name": "$dead",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$auth_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$auth_type",
+            "intfKey": false,
+            "name": "$auth_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

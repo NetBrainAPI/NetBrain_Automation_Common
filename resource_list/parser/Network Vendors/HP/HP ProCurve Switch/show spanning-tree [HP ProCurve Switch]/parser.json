@@ -1,0 +1,485 @@
+{
+    "_id": "a2ebcf31-c949-6239-4add-5d70683248e4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show spanning-tree",
+    "createTime": {
+        "$date": 1590607806855
+    },
+    "description": "Device Type:\nHP ProCurve Switch\nCommand:\nshow spanning-tree",
+    "devTypes": [
+        2011
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "NB HP_ProCurve>show spanning-tree\n\n\n Status and Counters - Spanning Tree Information\n\n\n  Protocol Version : RSTP\n\n  STP Enabled : Yes\n\n  Force Version : RSTP-operation\n\n\n  Switch Priority : 32768               Hello Time : 2 \n\n  Max Age : 20                          Forward Delay : 15\n\n\n  Topology Change Count : 34          \n\n  Time Since Last Change : 95 secs     \n\n\n  Root MAC Address : 00100b-0e2400\n\n  Root Path Cost : 200019      \n\n  Root Port : 16                 \n\n  Root Priority : 24579       \n\n\n  Port Type      Cost      Priority State      | Designated Bridge\n\n  ---- --------- --------- -------- ---------- + -----------------\n\n  1    10/100TX  200000    128      Disabled   |\n\n  2    10/100TX  200000    128      Disabled   |\n\n  3    10/100TX  200000    128      Disabled   |\n  4    10/100TX  200000    128      Disabled   |\n\n  6    10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  9    10/100TX  200000    128      Disabled   |\n\n  10   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  11   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  12   10/100TX  200000    128      Disabled   |\n\n  13   10/100TX  200000    128      Disabled   |\n\n  14   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  15   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  16   10/100TX  200000    128      Forwarding | 0009b7-c73180    \n\n  17   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  18   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  19   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  20   10/100TX  200000    128      Disabled   |\n\n  21   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  22   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  23   10/100TX  200000    128      Disabled   |\n\n  24   10/100TX  200000    128      Forwarding | 000d9d-e46d40    \n\n  25   1000Stk   20000     128      Disabled   |\n\n  26   1000Stk   20000     128      Disabled   |\n\n  Trk1           2000000   64       Disabled   |\n\n \n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.filter_spanning_tree_intfs.vlan_intfs.$port"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$protocol_version]:Protocol\\\\s+Version\\\\s+:\\\\s+(\\\\S+)\",\"regex[$stp_enabled]:STP\\\\s+Enabled\\\\s+:\\\\s+(\\\\S+)\",\"regex[$force_version]:Force\\\\s+Version\\\\s+:\\\\s+(\\\\S+)\",\"regex[$int:switch_priority,$int:hello_time]:Switch\\\\s+Priority\\\\s+:\\\\s+(\\\\d+)\\\\s+Hello\\\\s+Time\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:max_age,$int:forward_delay]:Max\\\\s+Age\\\\s+:\\\\s+(\\\\d+)\\\\s+Forward\\\\s+Delay\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:topology_change_count]:Topology\\\\s+Change\\\\s+Count\\\\s+:\\\\s+(\\\\d+)\",\"regex[$int:time_since_last_change]:Time\\\\s+Since\\\\s+Last\\\\s+Change\\\\s+:\\\\s+(\\\\d+)\\\\s+secs\",\"regex[$root_mac_address]:Root\\\\s+MAC\\\\s+Address\\\\s+:\\\\s+(\\\\S+)\",\"regex[$int:root_path_cost]:Root\\\\s+Path\\\\s+Cost\\\\s+:\\\\s+(\\\\d+)\",\"regex[$root_port]:Root\\\\s+Port\\\\s+:\\\\s+(\\\\S+)\",\"regex[$int:root_priority]:Root\\\\s+Priority\\\\s+:\\\\s+(\\\\d+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$protocol_version:string\",\"$stp_enabled:string\",\"$force_version:string\",\"$switch_priority:int\",\"$hello_time:int\",\"$max_age:int\",\"$forward_delay:int\",\"$topology_change_count:int\",\"$time_since_last_change:int\",\"$root_mac_address:string\",\"$root_path_cost:int\",\"$root_port:string\",\"$root_priority:int\"]},\"xxid\":\"d1175582-84b3-6f09-e5cb-abc8636f1970\"},{\"type\":\"1\",\"name\":\"filter_spanning_tree_intfs\",\"startLine\":\"  Port Type      Cost      Priority State      | Designated Bridge\",\"endLine\":null,\"skipLines\":null,\"includeLines\":null,\"excludeLines\":{\"excludeline\":\"----\"},\"filterLoop\":\"0\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":null,\"variableTypes\":null,\"xxid\":\"9d34648a-a922-4844-29f3-22487a536dd7\"},{\"type\":\"4\",\"name\":\"vlan_intfs\",\"keyVariables\":null,\"startLine\":\"regex[$port]:^\\\\s+(\\\\d+|\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$type]:^\\\\s+\\\\S+\\\\s+(\\\\S+|\\\\s)\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+\\\\S+\",\"regex[$int:cost,$int:priority,$state]:\\\\s+(\\\\d+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\",\"regex[$designated_bridge]:\\\\|\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$port:string\",\"$type:string\",\"$cost:int\",\"$priority:int\",\"$state:string\",\"$designated_bridge:string\"]},\"xxid\":\"7451eb73-3a86-7a2a-ba53-f2560ce41d49\"}]},\"xxid\":\"55d11b03-0641-5b71-b20b-687c92279e14\",\"interfaceKey\":\"$port\",\"hashColumns\":[\"$port\"]}]},\"xxid\":\"c921bdd3-2ce0-41ae-79a5-631545135512\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "protocol_version",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "stp_enabled",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "force_version",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "switch_priority",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "hello_time",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "max_age",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "forward_delay",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "topology_change_count",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "time_since_last_change",
+                "type": 1
+            },
+            {
+                "index": 9,
+                "name": "root_mac_address",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "root_path_cost",
+                "type": 1
+            },
+            {
+                "index": 11,
+                "name": "root_port",
+                "type": 4
+            },
+            {
+                "index": 12,
+                "name": "root_priority",
+                "type": 1
+            },
+            {
+                "index": 13,
+                "name": "filter_spanning_tree_intfs",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "port",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "designated_bridge",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false,
+                "index": 14,
+                "name": "vlan_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "c0a849e84b6975480ec0d3fb0c648696",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$protocol_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$protocol_version",
+            "intfKey": false,
+            "name": "$protocol_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$stp_enabled",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$stp_enabled",
+            "intfKey": false,
+            "name": "$stp_enabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$force_version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$force_version",
+            "intfKey": false,
+            "name": "$force_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$switch_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$switch_priority",
+            "intfKey": false,
+            "name": "$switch_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$hello_time",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$hello_time",
+            "intfKey": false,
+            "name": "$hello_time",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$max_age",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$max_age",
+            "intfKey": false,
+            "name": "$max_age",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$forward_delay",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$forward_delay",
+            "intfKey": false,
+            "name": "$forward_delay",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$topology_change_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$topology_change_count",
+            "intfKey": false,
+            "name": "$topology_change_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$time_since_last_change",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$time_since_last_change",
+            "intfKey": false,
+            "name": "$time_since_last_change",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_mac_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_mac_address",
+            "intfKey": false,
+            "name": "$root_mac_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_path_cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_path_cost",
+            "intfKey": false,
+            "name": "$root_path_cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_port",
+            "intfKey": false,
+            "name": "$root_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$root_priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$root_priority",
+            "intfKey": false,
+            "name": "$root_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "filter_spanning_tree_intfs",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs",
+            "intfKey": false,
+            "name": "filter_spanning_tree_intfs",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs.vlan_intfs",
+            "intfKey": false,
+            "name": "vlan_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "vlan_intfs.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs.vlan_intfs.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "vlan_intfs.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs.vlan_intfs.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs.$cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs.vlan_intfs.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs.$priority",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs.vlan_intfs.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs.vlan_intfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_intfs.$designated_bridge",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "filter_spanning_tree_intfs.vlan_intfs.$designated_bridge",
+            "intfKey": false,
+            "name": "$designated_bridge",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

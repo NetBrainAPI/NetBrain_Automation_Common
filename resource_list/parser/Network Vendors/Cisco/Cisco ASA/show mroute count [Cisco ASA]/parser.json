@@ -1,0 +1,335 @@
+{
+    "_id": "87aa6492-6620-1674-2499-fa96220ba33c",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mroute count",
+    "createTime": {
+        "$date": 1579875638383
+    },
+    "description": "Device Type:\nCisco ASA Firewall\nCommand:\nshow mroute count",
+    "devTypes": [
+        2009
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-asav-952(config)# show mroute count \r\nIP Multicast Statistics\r\n6 routes, 3 groups, 0.00 average sources per group\r\nForwarding Counts: Pkt Count/Pkts per second/Avg Pkt Size/Kilobits per second\r\nOther counts: Total/RPF failed/Other drops(OIF-null, rate-limit etc)\r\nGroup: 224.0.1.39\r\n  RP-tree: \r\n   Forwarding: 0/0/0/0, Other: 0/0/0\r\n  Source: \r\n   Forwarding: 3807/1/1378/16, Other: 3807/0/0\r\nGroup: 224.0.1.40\r\n  RP-tree: \r\n   Forwarding: 0/0/0/0, Other: 0/0/0\r\nGroup: 232.0.0.0/8\r\n  RP-tree: \r\n   Forwarding: 0/0/0/0, Other: 0/0/0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"groups\",\"keyVariables\":\"\",\"startLine\":\"regex[$group]:^group:\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$group:string\"]},\"xxid\":\"1e4a29ff-a630-a36b-0629-c4bcf79a071a\"},{\"type\":\"4\",\"name\":\"rpf_fails\",\"keyVariables\":\"\",\"startLine\":\"regex[$type]:^\\\\s{2}(\\\\S+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:pkts_fwd, $int:pps, $int:avg_pkt_size, $int:kbps, $int:pkts_rcvd, $rpf_failed, $other_drops]:forwarding:\\\\s+(\\\\d+)\\\\/(\\\\d+)\\\\/(\\\\d+)\\\\/(\\\\d+),\\\\s+other:\\\\s+(\\\\d+)\\\\/(\\\\d+)\\\\/(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$type:string\",\"$pkts_fwd:int\",\"$pps:int\",\"$avg_pkt_size:int\",\"$kbps:int\",\"$pkts_rcvd:int\",\"$rpf_failed:string\",\"$other_drops:string\"]},\"xxid\":\"43576877-3770-8307-0de5-9fa5ea5be334\"}]},\"xxid\":\"2dd28eed-cfa6-f678-eb9b-113b2495fcdc\",\"hashColumns\":[\"$other_drops\",\"$rpf_failed\"]}]},\"xxid\":\"43fd7a1c-3f29-5790-b48c-ee5e56a08683\"}]}",
+            "tableKeys": [
+                "_original_result.groups.rpf_fails.$other_drops",
+                "_original_result.groups.rpf_fails.$rpf_failed"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 0,
+                "name": "groups",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 9,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "pkts_fwd",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "pps",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "avg_pkt_size",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "kbps",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "pkts_rcvd",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "rpf_failed",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "other_drops",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "group",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$other_drops",
+                    "$rpf_failed"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "rpf_fails",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "87ac69f7cb55326a801e6c4f983900d2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "groups",
+            "dataType": "paragraph",
+            "desc": "Group table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "groups",
+            "intfKey": false,
+            "name": "groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "groups.$group",
+            "dataType": "string",
+            "desc": "Summary statistics for traffic on an IP multicast group G. This row is displayed only for non-SSM groups.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails",
+            "dataType": "paragraph",
+            "desc": "Group type table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$other_drops",
+                    "$rpf_failed"
+                ],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails",
+            "intfKey": false,
+            "name": "rpf_fails",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "rpf_fails.$type",
+            "dataType": "string",
+            "desc": "The multicast type. (RP-tree or Source)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$pkts_fwd",
+            "dataType": "int",
+            "desc": "The sum of the packets detailed in the Forwarding Counts: fields for this IP multicast group G. This field is the sum of the RP-tree and all Source: fields for this group G.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$pkts_fwd",
+            "intfKey": false,
+            "name": "$pkts_fwd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$pps",
+            "dataType": "int",
+            "desc": "Number of packets received and forwarded per second. On an IP multicast fast-switching platform, this number is the number of packets during the last second. Other platforms may use a different approach to calculate this number. Please refer to the platform documentation for more information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$pps",
+            "intfKey": false,
+            "name": "$pps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$avg_pkt_size",
+            "dataType": "int",
+            "desc": "Total number of bytes divided by the total number of packets for this multicast forwarding state. There is no direct display for the total number of bytes. You can calculate the total number of bytes by multiplying the average packet size by the packet count.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$avg_pkt_size",
+            "intfKey": false,
+            "name": "$avg_pkt_size",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$kbps",
+            "dataType": "int",
+            "desc": "Bytes per second divided by packets per second divided by 1000. On an IP multicast fast switching platform, the number of packets per second is the number of packets during the last second. Other platforms may use a different approach to calculate this number. Please refer to the platform documentation for more information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$kbps",
+            "intfKey": false,
+            "name": "$kbps",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$pkts_rcvd",
+            "dataType": "int",
+            "desc": "The sum of packets detailed in the Other counts fields for this IP multicast group G. This field is the sum of the Other count: Pkt Count fields of the RP-tree: and Source: rows for this group G.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$pkts_rcvd",
+            "intfKey": false,
+            "name": "$pkts_rcvd",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$rpf_failed",
+            "dataType": "string",
+            "desc": "Number of packets not forwarded due to a failed RPF or acceptance check (when bidir-PIM is configured).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$rpf_failed",
+            "intfKey": false,
+            "name": "$rpf_failed",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$other_drops",
+            "dataType": "string",
+            "desc": "Number of packets not forwarded for reasons other than an RPF or acceptance check (such as the OIF list was empty or because the packets were discarded because of a configuration, such as ip multicast rate-limit, was enabled).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$other_drops",
+            "intfKey": false,
+            "name": "$other_drops",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "rpf_fails.$group",
+            "dataType": "string",
+            "desc": "Summary statistics for traffic on an IP multicast group G. This row is displayed only for non-SSM groups.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "groups.rpf_fails.$group",
+            "intfKey": false,
+            "name": "$group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

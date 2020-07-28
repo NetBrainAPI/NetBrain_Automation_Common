@@ -1,0 +1,216 @@
+{
+    "_id": "f5407ca2-6c29-4d4b-a2f2-41bb2a836b82",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip eigrp interface detail",
+    "createTime": {
+        "$date": 1561062855675
+    },
+    "description": "",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "Switch#show ip eigrp interfaces detail\r\nEIGRP-IPv4 VR(LAN) Address-Family Interfaces for AS(100)\r\n                              Xmit Queue   PeerQ        Mean   Pacing Time   Multicast    Pending\r\nInterface              Peers  Un/Reliable  Un/Reliable  SRTT   Un/Reliable   Flow Timer   Routes\r\nGi0/1                    0        0/0       0/0           0       0/0            0           0\r\n  Hello-interval is 5, Hold-time is 15\r\n  Split-horizon is enabled\r\n  Next xmit serial <none>\r\n  Packetized sent/expedited: 0/0\r\n  Hello's sent/expedited: 30/0\r\n  Un/reliable mcasts: 0/0  Un/reliable ucasts: 0/0\r\n  Mcast exceptions: 0  CR packets: 0  ACKs suppressed: 0\r\n  Retransmissions sent: 0  Out-of-sequence rcvd: 0\r\n  Topology-ids on interface - 0\r\n  Authentication mode is md5,  key-chain is \"EIGRP-KEY\"\r\n  Topologies advertised on this interface:  base\r\n  Topologies not advertised on this interface:\r\nVl227                    0        0/0       0/0           0       0/0            0           0\r\n  Hello-interval is 5, Hold-time is 15\r\n  Split-horizon is enabled\r\n  Next xmit serial <none>\r\n  Packetized sent/expedited: 0/0\r\n  Hello's sent/expedited: 50/0\r\n  Un/reliable mcasts: 0/0  Un/reliable ucasts: 0/0\r\n  Mcast exceptions: 0  CR packets: 0  ACKs suppressed: 0\r\n  Retransmissions sent: 0  Out-of-sequence rcvd: 0\r\n  Topology-ids on interface - 0\r\n  Authentication mode is not set\r\n  Topologies advertised on this interface:  base\r\n  Topologies not advertised on this interface:\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.eigrp_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"eigrp_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf,$int:peers,$pending_routes]:(^\\\\S+)\\\\s+(\\\\d+).+(\\\\d+)$\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Split-horizon is $split_horizon\",\"regex[$authentication_mode]:Authentication mode is(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$peers:int\",\"$pending_routes:string\",\"$split_horizon:string\",\"$authentication_mode:string\"]},\"xxid\":\"dae9a91e-ffa4-5b41-441e-01fed70d68dc\"}]},\"xxid\":\"2d87a671-4a68-b904-b311-5986f46488be\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$peers\",\"$pending_routes\",\"$split_horizon\",\"$authentication_mode\"],\"hashSort\":false},{\"type\":\"1\",\"name\":\"cli_output\",\"startLine\":\"show\",\"endLine\":\"\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":\"\",\"filterLoop\":\"0\",\"excludeEndLine\":\"0\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"0c3c92f5-dfc9-dba3-3c15-e1ac07434e1e\"}]},\"xxid\":\"b6826ae9-32bd-1ab1-84e0-1f8ea3a6304a\"}]}",
+            "tableKeys": [
+                "_original_result.eigrp_intfs.$peers"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "peers",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "pending_routes",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "split_horizon",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "authentication_mode",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$authentication_mode",
+                    "$intf",
+                    "$peers",
+                    "$pending_routes",
+                    "$split_horizon"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "eigrp_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "84f02ac62a9379e2930307536da37e5e",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "eigrp_intfs.$authentication_mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_intfs.$authentication_mode",
+            "intfKey": false,
+            "name": "$authentication_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "eigrp_intfs.$peers",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_intfs.$peers",
+            "intfKey": false,
+            "name": "$peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$pending_routes",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_intfs.$pending_routes",
+            "intfKey": false,
+            "name": "$pending_routes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs.$split_horizon",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "eigrp_intfs.$split_horizon",
+            "intfKey": false,
+            "name": "$split_horizon",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "cli_output",
+            "dataType": "filter",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "cli_output",
+            "intfKey": false,
+            "name": "cli_output",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "eigrp_intfs",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$peers",
+                    "$pending_routes",
+                    "$split_horizon",
+                    "$authentication_mode"
+                ],
+                "hashSort": false
+            },
+            "fullName": "eigrp_intfs",
+            "intfKey": false,
+            "name": "eigrp_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        }
+    ],
+    "version": "7.1"
+}

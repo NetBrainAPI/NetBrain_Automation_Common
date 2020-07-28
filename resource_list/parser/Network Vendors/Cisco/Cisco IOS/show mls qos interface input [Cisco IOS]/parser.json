@@ -1,0 +1,200 @@
+{
+    "_id": "a01d2eca-8f99-0372-23a8-a74d896f0312",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mls qos interface $intf",
+    "createTime": {
+        "$date": 1580849676375
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco IOS Router\nCommand:\nshow mls qos interface $intf",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [
+        {
+            "name": "$intf"
+        }
+    ],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "BJ_L2_Core_4>show mls qos interface\nFastEthernet2/0/19\ntrust state: trust cos\ntrust mode: trust cos\ntrust enabled flag: ena\nCOS override: dis\ndefault COS: 3\nDSCP Mutation Map: Default DSCP Mutation Map\nTrust device: none\nqos mode: port-based",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.per_interface_qos_trust_parag.$mls_qos_intf_ios"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"per_interface_qos_trust_parag\",\"keyVariables\":\"\",\"startLine\":\"regex:^.+?Ethernet\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$mls_qos_intf_ios]:^(.+Ethernet\\\\S+)\",\"regex[$qos_mode_ios]:^trust mode: (.+)\",\"regex[$qos_trust_ena_ios]:^trust enabled flag: (\\\\S+)\",\"regex[$int:def_qos_cos_ios]:^default COS: (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mls_qos_intf_ios:string\",\"$qos_mode_ios:string\",\"$qos_trust_ena_ios:string\",\"$def_qos_cos_ios:int\"]},\"xxid\":\"a2f5868b-de0f-8ae5-df7b-6aae54658830\"}]},\"xxid\":\"7988d6d0-750f-70ed-0c38-27f2b55e91e1\",\"interfaceKey\":\"$mls_qos_intf_ios\",\"hashColumns\":[\"$mls_qos_intf_ios\",\"$qos_trust_ena_ios\",\"$def_qos_cos_ios\",\"$qos_mode_ios\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$mls_qos_ios_cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$mls_qos_ios_cli_output:string\"]},\"xxid\":\"0f6a7c6c-00b3-08d5-d44d-2668679027a8\"}]}",
+            "tableKeys": [
+                "_original_result.per_interface_qos_trust_parag.$qos_trust_ena_ios",
+                "_original_result.per_interface_qos_trust_parag.$def_qos_cos_ios",
+                "_original_result.per_interface_qos_trust_parag.$qos_mode_ios"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "mls_qos_ios_cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "mls_qos_intf_ios",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "qos_mode_ios",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "qos_trust_ena_ios",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "def_qos_cos_ios",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$def_qos_cos_ios",
+                    "$mls_qos_intf_ios",
+                    "$qos_mode_ios",
+                    "$qos_trust_ena_ios"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "per_interface_qos_trust_parag",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "237e1cd872d794b064a54068b0c5673c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "per_interface_qos_trust_parag",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$mls_qos_intf_ios",
+                    "$qos_trust_ena_ios",
+                    "$def_qos_cos_ios",
+                    "$qos_mode_ios"
+                ],
+                "hashSort": false
+            },
+            "fullName": "per_interface_qos_trust_parag",
+            "intfKey": false,
+            "name": "per_interface_qos_trust_parag",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "per_interface_qos_trust_parag.$mls_qos_intf_ios",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_interface_qos_trust_parag.$mls_qos_intf_ios",
+            "intfKey": false,
+            "name": "$mls_qos_intf_ios",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "per_interface_qos_trust_parag.$qos_mode_ios",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_interface_qos_trust_parag.$qos_mode_ios",
+            "intfKey": false,
+            "name": "$qos_mode_ios",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_interface_qos_trust_parag.$qos_trust_ena_ios",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_interface_qos_trust_parag.$qos_trust_ena_ios",
+            "intfKey": false,
+            "name": "$qos_trust_ena_ios",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "per_interface_qos_trust_parag.$def_qos_cos_ios",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "per_interface_qos_trust_parag.$def_qos_cos_ios",
+            "intfKey": false,
+            "name": "$def_qos_cos_ios",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$mls_qos_ios_cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$mls_qos_ios_cli_output",
+            "intfKey": false,
+            "name": "$mls_qos_ios_cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

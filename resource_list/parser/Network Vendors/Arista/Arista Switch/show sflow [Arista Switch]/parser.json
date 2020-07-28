@@ -1,0 +1,468 @@
+{
+    "_id": "67061fbf-7304-c85b-5afd-783d9297789e",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sflow",
+    "createTime": {
+        "$date": 1590767577162
+    },
+    "description": "Device Type:\nArista Switch\nCommand:\nshow sflow",
+    "devTypes": [
+        2013
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "switch#show sflow\r\nWarning: displaying counters that may be stale\r\nsFlow Configuration\r\n-------------------\r\nDestination IP: 10.67.90.3\r\nDestination Port: 6343 ( default )\r\nSource IP: 0.0.0.0 ( default )\r\nSample Rate: 16384\r\nPolling Interval (sec): 2.0 ( default )\r\n \r\nStatus\r\n------\r\nRunning: Yes\r\nPolling On: Yes ( default )\r\nSampling On: Yes ( default )\r\nSend Datagrams: No ( default )\r\nHardware Sample Rate: 16384\r\n \r\nStatistics\r\n----------\r\nTotal Packets: 20334189\r\nNumber of Samples: 1201\r\nSample Pool: 19677184\r\nHardware Trigger: 1205\r\nNumber of Datagrams: 356",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"sflow_config\",\"keyVariables\":\"\",\"startLine\":\"sFlow Configuration\",\"endLine\":\"regex[]:^\\\\s\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$dst_ip]:Destination IP:\\\\s+(\\\\S+)\",\"regex[$dst_port]:Destination Port:\\\\s+(\\\\S+)\",\"regex[$source_ip]:Source IP:\\\\s+(\\\\S+)\",\"regex[$sample_rate]:Sample Rate:\\\\s+(\\\\S+)\",\"regex[$poll_interval]:Polling Interval \\\\(sec\\\\):\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$dst_ip:string\",\"$dst_port:string\",\"$source_ip:string\",\"$sample_rate:string\",\"$poll_interval:string\"]},\"xxid\":\"a4d607b2-08d6-b63c-c1d8-ed1eb4589a0c\"}]},\"xxid\":\"b0520524-0f35-06d0-2b08-5f8d5eeddb3e\",\"hashColumns\":[\"$dst_ip\",\"$dst_port\"]},{\"type\":\"4\",\"name\":\"sflow_status\",\"keyVariables\":\"\",\"startLine\":\"Status\",\"endLine\":\"regex[]:^\\\\s\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$running]:Running:\\\\s+(\\\\S+)\",\"Polling On: $poll\",\"Sampling On: $sample\",\"Send Datagrams: $send_datagrams\",\"Hardware Sample Rate: $int:hardware_sample_rate\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$running:string\",\"$poll:string\",\"$sample:string\",\"$send_datagrams:string\",\"$hardware_sample_rate:int\"]},\"xxid\":\"12f6b166-c713-f10f-b400-038dab7c8555\"}]},\"xxid\":\"c8652b6c-b6f4-66d0-0ec5-6a51d2cc3f9b\",\"hashColumns\":[\"$running\",\"$sample\"]},{\"type\":\"4\",\"name\":\"sflow_statistics\",\"keyVariables\":\"\",\"startLine\":\"Statistics\",\"endLine\":\"regex[]:^\\\\s\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:total_pkts]:Total Packets:\\\\s+(\\\\S+)\",\"Number of Samples: $int:sample_num\",\"Sample Pool: $int:sample_pool\",\"Hardware Trigger: $int:hardware_trigger\",\"Number of Datagrams: $int:datagrams_num\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_pkts:int\",\"$sample_num:int\",\"$sample_pool:int\",\"$hardware_trigger:int\",\"$datagrams_num:int\"]},\"xxid\":\"137a783f-bf08-e3db-11fd-f4331d083322\"}]},\"xxid\":\"efd9e314-8b20-9978-cbe4-559aa1cb16a4\"}]}",
+            "tableKeys": [
+                "_original_result.sflow_status.$running",
+                "_original_result.sflow_status.$sample",
+                "_original_result.sflow_config.$dst_ip",
+                "_original_result.sflow_config.$dst_port"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "dst_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "dst_port",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "source_ip",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "sample_rate",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "poll_interval",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$dst_ip",
+                    "$dst_port"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "sflow_config",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "running",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "poll",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "sample",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "send_datagrams",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hardware_sample_rate",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$running",
+                    "$sample"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "sflow_status",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "total_pkts",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "sample_num",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "sample_pool",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "hardware_trigger",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "datagrams_num",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 2,
+                "name": "sflow_statistics",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "ed46043570fae87f379de7acf37759ac",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "sflow_config",
+            "dataType": "paragraph",
+            "desc": "sFlow configuration table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$dst_ip",
+                    "$dst_port"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sflow_config",
+            "intfKey": false,
+            "name": "sflow_config",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sflow_config.$dst_ip",
+            "dataType": "string",
+            "desc": "Destination IP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_config.$dst_ip",
+            "intfKey": false,
+            "name": "$dst_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_config.$dst_port",
+            "dataType": "string",
+            "desc": "Destination Port",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_config.$dst_port",
+            "intfKey": false,
+            "name": "$dst_port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_config.$source_ip",
+            "dataType": "string",
+            "desc": "Source IP",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_config.$source_ip",
+            "intfKey": false,
+            "name": "$source_ip",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_config.$sample_rate",
+            "dataType": "string",
+            "desc": "Sample Rate",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_config.$sample_rate",
+            "intfKey": false,
+            "name": "$sample_rate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_config.$poll_interval",
+            "dataType": "string",
+            "desc": "Polling Interval (sec)",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_config.$poll_interval",
+            "intfKey": false,
+            "name": "$poll_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_status",
+            "dataType": "paragraph",
+            "desc": "sFlow status table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$running",
+                    "$sample"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sflow_status",
+            "intfKey": false,
+            "name": "sflow_status",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sflow_status.$running",
+            "dataType": "string",
+            "desc": "Running Status",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_status.$running",
+            "intfKey": false,
+            "name": "$running",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_status.$poll",
+            "dataType": "string",
+            "desc": "Polling On",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_status.$poll",
+            "intfKey": false,
+            "name": "$poll",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_status.$sample",
+            "dataType": "string",
+            "desc": "Sampling On",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_status.$sample",
+            "intfKey": false,
+            "name": "$sample",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_status.$send_datagrams",
+            "dataType": "string",
+            "desc": "Send Datagrams",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_status.$send_datagrams",
+            "intfKey": false,
+            "name": "$send_datagrams",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_status.$hardware_sample_rate",
+            "dataType": "int",
+            "desc": "Hardware Sample Rate",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_status.$hardware_sample_rate",
+            "intfKey": false,
+            "name": "$hardware_sample_rate",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_statistics",
+            "dataType": "paragraph",
+            "desc": "sFlow statistics table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "sflow_statistics",
+            "intfKey": false,
+            "name": "sflow_statistics",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sflow_statistics.$total_pkts",
+            "dataType": "int",
+            "desc": "Total Packets",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_statistics.$total_pkts",
+            "intfKey": false,
+            "name": "$total_pkts",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_statistics.$sample_num",
+            "dataType": "int",
+            "desc": "Number of Samples",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_statistics.$sample_num",
+            "intfKey": false,
+            "name": "$sample_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_statistics.$sample_pool",
+            "dataType": "int",
+            "desc": "Sample Pool",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_statistics.$sample_pool",
+            "intfKey": false,
+            "name": "$sample_pool",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_statistics.$hardware_trigger",
+            "dataType": "int",
+            "desc": "Hardware Trigger",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_statistics.$hardware_trigger",
+            "intfKey": false,
+            "name": "$hardware_trigger",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sflow_statistics.$datagrams_num",
+            "dataType": "int",
+            "desc": "Number of Datagrams",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sflow_statistics.$datagrams_num",
+            "intfKey": false,
+            "name": "$datagrams_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

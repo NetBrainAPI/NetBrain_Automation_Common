@@ -1,0 +1,145 @@
+{
+    "_id": "505cceda-c855-3156-007e-a53f76ece9ba",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show tacacs-server",
+    "createTime": {
+        "$date": 1579646942631
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:\n       show tacacs-server",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "nxos# show tacacs-server\n\ntimeout value:5\ndeadtime value:0\nsource interface:any available\ntotal number of servers:2\n\nfollowing TACACS+ servers are configured:\n        192.168.80.160:\n                available on port:49\n                TACACS+ shared secret:********\n        10.10.10.10:\n                available on port:49\n                TACACS+ shared secret:********\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"tacacs_server_table\",\"keyVariables\":null,\"startLine\":\"regex[$server]:^\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$port]:available on port:(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$server:string\",\"$port:string\"]},\"xxid\":\"6b124e57-e544-ffb5-b252-c637d96da7da\"}]},\"xxid\":\"0d4f9d20-f075-42ec-93bc-f1af3fd8f9ee\",\"hashColumns\":[\"$server\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"2a89e09a-3832-6ee4-9794-83c0ad7a829a\"}]}",
+            "tableKeys": [
+                "_original_result.tacacs_server_table.$server"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "server",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "port",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$server"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "tacacs_server_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "6f90963b71e038b62c4a86db221d3b71",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "tacacs_server_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$server"
+                ],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table",
+            "intfKey": false,
+            "name": "tacacs_server_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "tacacs_server_table.$server",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$server",
+            "intfKey": false,
+            "name": "$server",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "tacacs_server_table.$port",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "tacacs_server_table.$port",
+            "intfKey": false,
+            "name": "$port",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

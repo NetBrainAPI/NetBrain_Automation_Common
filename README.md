@@ -14,6 +14,7 @@ Decode Your Network
 * [DVT List Category by Vendor](resource_list/data_view_template/byVendor.md)
 * [DVT List Category by Feature](resource_list/data_view_template/byFeature.md)
 
+*Note: List is based on Auto_Data_View_Template folder.*
 
 ### [Runbook Template](https://www.netbraintech.com/docs/ie80/help/index.html?using-runbook.htm)
 Digitalize Your Procedure
@@ -22,12 +23,20 @@ Digitalize Your Procedure
 * [Runbook List Category by Vendor](resource_list/runbook_template/byVendor.md)
 * [Runbook List Category by Feature](resource_list/runbook_template/byFeature.md)
 
+*Note: List is based on Auto_Runbook_Template folder.*
+
 ### [Parser](https://www.netbraintech.com/docs/ie80/help/index.html?parser-library.htm)
 Automate Your Commands
 ![alt text](images/parser.png "NetBrain Parser")
-**(Total Number: 1407)**
+**(Total Number: 820)**
+* [Runbook List Category by Vendor](resource_list/parser/byVendor.md)
+
+*Note: List is based on path: [Built-in Parsers>Network Vendors].*
 
 ### [Golden Baseline](https://www.netbraintech.com/docs/ie80/help/index.html?golden-baseline.htm)
 Baseline Your Variables
 ![alt text](images/golden_baseline_variable.png "NetBrain Golden Baseline")
-**(Total Number: 360)**
+**(Total Number: 243)**
+* [Baseline CLI Category by Vendor](resource_list/golden_baseline/byVendor.md)
+
+*Note: List is based on new namespace with cli name.*

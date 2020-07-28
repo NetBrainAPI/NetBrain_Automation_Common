@@ -1,0 +1,64 @@
+{
+    "_id": "e7b48a3e-7bb8-175c-88dd-e9ef7a0aff4f",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show logging | in BADLSA",
+    "createTime": {
+        "$date": 1591364947917
+    },
+    "description": "",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "R1#show logging | in BADLSA\n00:48:51: %OSPF-4-BADLSATYPE: Invalid lsa: Bad LSA chksum Type 2, LSID 10.4.0.1 from 4.4.4.4, 10.3.0.2, Ethernet0/0\n00:48:51: %OSPF-4-BADLSATYPE: Invalid lsa: Bad LSA chksum Type 2, LSID 10.4.0.1 from 4.4.4.4, 10.3.0.2, Ethernet0/0\n00:48:51: %OSPF-4-BADLSATYPE: Invalid lsa: Bad LSA chksum Type 2, LSID 10.4.0.1 from 4.4.4.4, 10.3.0.2, Ethernet0/0\n00:48:51: %OSPF-4-BADLSATYPE: Invalid lsa: Bad LSA chksum Type 2, LSID 10.4.0.1 from 4.4.4.4, 10.3.0.2, Ethernet0/0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\ndef ParseText(config):\\n    badlsas = None\\n    command_filter = re.findall(r'([^\\\\n]+)',config,re.S)\\n    if len(command_filter) == 1:\\n        badlsas = None\\n    elif 1 < len(command_filter) <= 4:\\n        badlsas = config\\n    elif len(command_filter) > 4:\\n        command_list = command_filter[:4]\\n        badlsas = '\\\\n'.join(str(x) for x in command_list)\\n    else:\\n        badlsas = None\\n    dic = {\\n           'badlsas' : badlsas\\n           }\\n    return dic\\n\",\"variableTypes\":{\"variableType\":[{\"name\":\"$badlsas\",\"type\":\"string\"}]},\"tableVariableTypes\":{\"tableVariableType\":[]},\"name\":\"\",\"xxid\":\"e1763949-3167-bdf2-4407-7895449163c6\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "badlsas",
+                "type": 4
+            }
+        ]
+    },
+    "structureId": "8dd03108edd04eb40966cb90047d0862",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$badlsas",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$badlsas",
+            "intfKey": false,
+            "name": "$badlsas",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

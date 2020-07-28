@@ -1,0 +1,534 @@
+{
+    "_id": "cc286c64-8791-005d-beb1-8437061f00d7",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ospf interface detail",
+    "createTime": {
+        "$date": 1580671234076
+    },
+    "description": "Device Type:\nJuniper EX Switch\nJuniper Router\nJuniper SRX Firewall \nCommand:\n       show ospf interface detail",
+    "devTypes": [
+        2012,
+        102,
+        2018
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "liuweicai@OSPF-JR1>show ospf interface detail \nInterface           State   Area            DR ID           BDR ID          Nbrs\nvl-2.2.2.2          PtToPt  0.0.0.0         0.0.0.0         0.0.0.0            1\n  Type: Virtual, Address: 192.168.2.2, Mask: 0.0.0.0, MTU: 0, Cost: 1\n  Transit Area: 0.0.0.4, Destination: 192.168.2.1\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: None\n  Protection type: None, No eligible backup\n  Topology default (ID 0) -> Cost: 1\nem1.0               DR      0.0.0.4         66.6.6.6        2.2.2.2            1\n  Type: LAN, Address: 192.168.2.2, Mask: 255.255.255.0, MTU: 1500, Cost: 1\n  DR addr: 192.168.2.2, BDR addr: 192.168.2.1, Priority: 128\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: None\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\nlo0.0               DRother 0.0.0.4         0.0.0.0         0.0.0.0            0\n  Type: LAN, Address: 66.6.6.6, Mask: 255.255.255.255, MTU: 65535, Cost: 0\n  Adj count: 0, Passive\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: None\n  Protection type: None\n  Topology default (ID 0) -> Passive, Cost: 0\nem2.0               DR      0.0.0.6         66.6.6.6        6.6.6.6            1\n  Type: LAN, Address: 172.16.76.7, Mask: 255.255.255.0, MTU: 1500, Cost: 1\n  DR addr: 172.16.76.7, BDR addr: 172.16.76.6, Priority: 128\n  Adj count: 1\n  Hello: 10, Dead: 40, ReXmit: 5, Not Stub\n  Auth type: None\n  Protection type: None\n  Topology default (ID 0) -> Cost: 1\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ospf_interfaces.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_interfaces\",\"keyVariables\":null,\"startLine\":\"regex[$interface,$state,$area_id,$dr_id,$bdr_id,$int:nbr_count]:^(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\\\\s+(\\\\d+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Type: $type, Address: $address, Mask: $mask, MTU: $int:mtu, Cost: $int:cost\",\"Transit Area: $transit_area, Destination: $destination\",\"Adj count: $int:adj_count\",\"Hello: $int:hello, Dead: $int:dead, ReXmit: $int:rexmit,\",\"Auth type: $auth_type\",\"regex[$protection_type]:\\\\s+Protection type: (?:(\\\\S+),|(\\\\S+))\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$state:string\",\"$area_id:string\",\"$dr_id:string\",\"$bdr_id:string\",\"$nbr_count:int\",\"$type:string\",\"$address:string\",\"$mask:string\",\"$mtu:int\",\"$cost:int\",\"$transit_area:string\",\"$destination:string\",\"$adj_count:int\",\"$hello:int\",\"$dead:int\",\"$rexmit:int\",\"$auth_type:string\",\"$protection_type:string\"]},\"xxid\":\"9df7fa55-b625-59e2-4442-bd542be22953\"}]},\"xxid\":\"265977ce-85a4-a066-3942-518689e81359\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$state\",\"$area_id\",\"$dr_id\",\"$bdr_id\",\"$nbr_count\",\"$type\",\"$address\",\"$mask\",\"$mtu\",\"$cost\",\"$transit_area\",\"$destination\",\"$adj_count\",\"$hello\",\"$dead\",\"$rexmit\",\"$auth_type\",\"$protection_type\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"58003a0f-6858-1740-e27a-d4c9703940b5\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 19,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "dr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "bdr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "nbr_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "type",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "address",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "mask",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "cost",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "transit_area",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "destination",
+                        "type": 4
+                    },
+                    {
+                        "index": 13,
+                        "name": "adj_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "hello",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "dead",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "rexmit",
+                        "type": 1
+                    },
+                    {
+                        "index": 17,
+                        "name": "auth_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 18,
+                        "name": "protection_type",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$address",
+                    "$adj_count",
+                    "$area_id",
+                    "$auth_type",
+                    "$bdr_id",
+                    "$cost",
+                    "$dead",
+                    "$destination",
+                    "$dr_id",
+                    "$hello",
+                    "$interface",
+                    "$mask",
+                    "$mtu",
+                    "$nbr_count",
+                    "$protection_type",
+                    "$rexmit",
+                    "$state",
+                    "$transit_area",
+                    "$type"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_interfaces",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "347e7c9e3134e88fcede64574b8607f2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_interfaces",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$state",
+                    "$area_id",
+                    "$dr_id",
+                    "$bdr_id",
+                    "$nbr_count",
+                    "$type",
+                    "$address",
+                    "$mask",
+                    "$mtu",
+                    "$cost",
+                    "$transit_area",
+                    "$destination",
+                    "$adj_count",
+                    "$hello",
+                    "$dead",
+                    "$rexmit",
+                    "$auth_type",
+                    "$protection_type"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces",
+            "intfKey": false,
+            "name": "ospf_interfaces",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "ospf_interfaces.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ospf_interfaces.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$dr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$dr_id",
+            "intfKey": false,
+            "name": "$dr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$bdr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$bdr_id",
+            "intfKey": false,
+            "name": "$bdr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$nbr_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$nbr_count",
+            "intfKey": false,
+            "name": "$nbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$type",
+            "intfKey": false,
+            "name": "$type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$address",
+            "intfKey": false,
+            "name": "$address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$mask",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$mask",
+            "intfKey": false,
+            "name": "$mask",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$mtu",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$cost",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$cost",
+            "intfKey": false,
+            "name": "$cost",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$transit_area",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$transit_area",
+            "intfKey": false,
+            "name": "$transit_area",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$destination",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$destination",
+            "intfKey": false,
+            "name": "$destination",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$adj_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$adj_count",
+            "intfKey": false,
+            "name": "$adj_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$hello",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$hello",
+            "intfKey": false,
+            "name": "$hello",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$dead",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$dead",
+            "intfKey": false,
+            "name": "$dead",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$rexmit",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$rexmit",
+            "intfKey": false,
+            "name": "$rexmit",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$auth_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$auth_type",
+            "intfKey": false,
+            "name": "$auth_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_interfaces.$protection_type",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_interfaces.$protection_type",
+            "intfKey": false,
+            "name": "$protection_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

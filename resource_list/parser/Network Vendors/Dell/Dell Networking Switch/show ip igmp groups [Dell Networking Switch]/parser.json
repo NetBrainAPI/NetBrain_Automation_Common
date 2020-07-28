@@ -1,0 +1,238 @@
+{
+    "_id": "56222ae9-6b63-2bd7-bff9-586c9e5d1603",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip igmp groups",
+    "createTime": {
+        "$date": 1590599222666
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow ip igmp groups",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasMulticastConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell# show ip igmp groups\r\nTotal Number of Groups: 5\r\nIGMP Connected Group Membership\r\nGroup Address Interface Mode Uptime Expires Last Reporter\r\n225.0.0.0    Vlan 100 IGMPv2 00:00:05 00:02:04 3.0.0.51\r\n225.0.0.1    Vlan 100 IGMPv2 00:00:05 00:02:04 3.0.0.51\r\n225.0.0.2    Vlan 100 IGMPv2 00:00:05 00:02:04 3.0.0.51\r\n225.0.0.3    Vlan 100 IGMPv2 00:00:05 00:02:04 3.0.0.51\r\n225.0.0.4    Vlan 100 IGMPv2 00:00:05 00:02:04 3.0.0.51",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.igmp_groups.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Total Number of Groups: $int:total_igmp_groups\",\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$total_igmp_groups:int\"]},\"xxid\":\"9bd44ad3-d9d0-da37-63d5-0166d16f27f5\"},{\"type\":\"4\",\"name\":\"igmp_groups\",\"keyVariables\":\"\",\"startLine\":\"regex[$group_addr,$intf,$version,$uptime,$expries,$last_reporter]:(\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+(.+?)\\\\s+(IGMP\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$group_addr:string\",\"$intf:string\",\"$version:string\",\"$uptime:string\",\"$expries:string\",\"$last_reporter:string\"]},\"xxid\":\"1ab71710-30fa-a321-e25f-cccd0dfca7fc\"}]},\"xxid\":\"319a79db-debe-83c2-fd19-c30c304a5a7e\",\"hashColumns\":[\"$group_addr\",\"$intf\"],\"hashSort\":false,\"interfaceKey\":\"$intf\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "total_igmp_groups",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "group_addr",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "version",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "uptime",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "expries",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "last_reporter",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$group_addr",
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "igmp_groups",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "d79a28d137d89213c117273c94d4106b",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$total_igmp_groups",
+            "dataType": "int",
+            "desc": "Total Number of IGMP Groups.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$total_igmp_groups",
+            "intfKey": false,
+            "name": "$total_igmp_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups",
+            "dataType": "paragraph",
+            "desc": "IGMP Groups Table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$group_addr",
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups",
+            "intfKey": false,
+            "name": "igmp_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "igmp_groups.$group_addr",
+            "dataType": "string",
+            "desc": "Multicast address for the IGMP group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$group_addr",
+            "intfKey": false,
+            "name": "$group_addr",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$intf",
+            "dataType": "string",
+            "desc": "Interface type, slot and port number",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "igmp_groups.$version",
+            "dataType": "string",
+            "desc": "IGMP version used.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$uptime",
+            "dataType": "string",
+            "desc": "Amount of time the group has been operational.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$expries",
+            "dataType": "string",
+            "desc": "Amount of time until the entry expires.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$expries",
+            "intfKey": false,
+            "name": "$expries",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "igmp_groups.$last_reporter",
+            "dataType": "string",
+            "desc": "IP address of the last host to be a member of the\nIGMP group.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "igmp_groups.$last_reporter",
+            "intfKey": false,
+            "name": "$last_reporter",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

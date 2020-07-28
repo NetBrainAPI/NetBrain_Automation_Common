@@ -1,0 +1,282 @@
+{
+    "_id": "f06dba26-11f0-70d3-ddde-067583a883b8",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router isis topology",
+    "createTime": {
+        "$date": 1584023862170
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router isis topology",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:qapp-7750sr-1# show router isis topology \r\n\r\n===============================================================================\r\nRouter Base ISIS Instance 0 Topology Table\r\n===============================================================================\r\nNode                                Interface                  Nexthop\r\n-------------------------------------------------------------------------------\r\n-------------------------------------------------------------------------------\r\nIS-IS IP paths (MT-ID 0),   Level 1\r\n-------------------------------------------------------------------------------\r\nqapp-7750sr-2.00                    ge1/1/1                    qapp-7750sr-2\r\n-------------------------------------------------------------------------------\r\nIS-IS IP paths (MT-ID 0),   Level 2\r\n-------------------------------------------------------------------------------\r\nqapp-7750sr-2.00                    ge1/1/1                    qapp-7750sr-2\r\n===============================================================================\r\nA:qapp-7750sr-1#",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_instance.level_info.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_instance\",\"keyVariables\":\"\",\"startLine\":\"Router Base ISIS Instance $instance Topology Table\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$instance:string\"]},\"xxid\":\"d1d35bb9-7672-b22e-2b0a-c7e2dab3e34b\"},{\"type\":\"4\",\"name\":\"level_info\",\"keyVariables\":\"\",\"startLine\":\"IS-IS IP paths (MT-ID 0),   Level $level_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$node,$interface,$nexthop]:^(\\\\S+) +(\\\\S+) +(\\\\S+)$\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$level_id:string\",\"$node:string\",\"$interface:string\",\"$nexthop:string\"]},\"xxid\":\"0d64cfb8-762b-fd7a-9204-6ba7388e9292\"}]},\"xxid\":\"bc0654f9-d203-99d6-2154-08710a421910\",\"hashColumns\":[\"$level_id\",\"$node\",\"$interface\",\"$nexthop\",\"$instance\"],\"interfaceKey\":\"$interface\",\"hashSort\":false}]},\"xxid\":\"d2981615-918d-94c8-261e-06c7f38b80e8\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"bcbf0ff3-2d61-2ddc-b17a-a9ec109ccd91\"}]}",
+            "tableKeys": [
+                "_original_result.isis_instance.level_info.$level_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 1,
+                "name": "isis_instance",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 5,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "level_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "node",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "nexthop",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "instance",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$instance",
+                    "$interface",
+                    "$level_id",
+                    "$nexthop",
+                    "$node"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "level_info",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "5e42c46acec0a68daaf5be355bfa37f2",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_instance",
+            "dataType": "paragraph",
+            "desc": "ISIS topology table.",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "isis_instance",
+            "intfKey": false,
+            "name": "isis_instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "isis_instance.$instance",
+            "dataType": "string",
+            "desc": "ISIS Instance ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info",
+            "dataType": "paragraph",
+            "desc": "Level Detail information.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$level_id",
+                    "$node",
+                    "$interface",
+                    "$nexthop",
+                    "$instance"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_info",
+            "intfKey": false,
+            "name": "level_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "level_info.$level_id",
+            "dataType": "string",
+            "desc": "Level Detail information.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_info.$level_id",
+            "intfKey": false,
+            "name": "$level_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$node",
+            "dataType": "string",
+            "desc": "ISIS system name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_info.$node",
+            "intfKey": false,
+            "name": "$node",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$interface",
+            "dataType": "string",
+            "desc": "Interface from which the system was learned.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_info.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "level_info.$nexthop",
+            "dataType": "string",
+            "desc": "The address of the next hop router.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_info.$nexthop",
+            "intfKey": false,
+            "name": "$nexthop",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "level_info.$instance",
+            "dataType": "string",
+            "desc": "ISIS Instance ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_instance.level_info.$instance",
+            "intfKey": false,
+            "name": "$instance",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

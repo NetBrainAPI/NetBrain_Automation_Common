@@ -1,0 +1,265 @@
+{
+    "_id": "0fb7584c-e9dd-2fdf-c050-72170e92a169",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show sntp",
+    "createTime": {
+        "$date": 1590607620646
+    },
+    "description": "Device Type:\nHP ProCurve Switch\nCommand:\nshow sntp",
+    "devTypes": [
+        2011
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "SW1(config)# show sntp\r\n\r\nSNTP Configuration\r\n\r\nSNTP Authentication : Disabled \r\nTime Sync Mode: Sntp \r\nSNTP Mode : Unicast \r\nPoll Interval (sec) [720] : 720 \r\nSource IP Selection: Outgoing Interface\r\n\r\nPriority SNTP Server Address Version Key-id \r\n-------- --------------------------------------- ------- ---------- \r\n1 192.168.0.10 3 0",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$sntp_authentication]:SNTP Authentication :\\\\s+(\\\\S+)\",\"regex[$time_sync_mode]:Time Sync Mode:\\\\s+(\\\\S+)\",\"regex[$sntp_mode]:SNTP Mode :\\\\s+(\\\\S+)\",\"regex[$int:poll_interval]:Poll Interval \\\\(sec\\\\) \\\\[720\\\\] :\\\\s+(\\\\S+)\",\"regex[$source_ip_selection]:Source IP Selection:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$sntp_authentication:string\",\"$time_sync_mode:string\",\"$sntp_mode:string\",\"$poll_interval:int\",\"$source_ip_selection:string\"]},\"xxid\":\"9a9b4adc-5276-4519-409d-7ba37caa4caa\"},{\"type\":\"3\",\"name\":\"sntp_server_table\",\"headers\":\"Priority;SNTP Server Address;Version;Key-id\",\"endLine\":\"^$\",\"isSkipLine\":\"0\",\"skipLine\":0,\"headerToVariables\":\"Priority:$string:priority;SNTP Server Address:$string:sntp_server_address;Version:$string:version;Key-id:$string:key_id\",\"leftAlign\":\"1\",\"alignType\":\"3\",\"alignRange\":\"1;1;1;1\",\"keyVariables\":\"\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"variableTypes\":{\"variableType\":[\"$priority:string\",\"$sntp_server_address:string\",\"$version:string\",\"$key_id:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"268887e2-4055-55be-f9dc-7ed5ea930351\",\"hashColumns\":[\"$sntp_server_address\"]}]}",
+            "tableKeys": [
+                "_original_result.sntp_server_table.$sntp_server_address"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "sntp_authentication",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "time_sync_mode",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "sntp_mode",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "poll_interval",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "source_ip_selection",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "priority",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "sntp_server_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "version",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "key_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$sntp_server_address"
+                ],
+                "hashSort": false,
+                "index": 5,
+                "name": "sntp_server_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "f465932157c833a9d078ae84446e7b73",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$sntp_authentication",
+            "dataType": "string",
+            "desc": "Indicates whether NTP authentication is enabled or disabled.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$sntp_authentication",
+            "intfKey": false,
+            "name": "$sntp_authentication",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$time_sync_mode",
+            "dataType": "string",
+            "desc": "Time synchronize mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$time_sync_mode",
+            "intfKey": false,
+            "name": "$time_sync_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$sntp_mode",
+            "dataType": "string",
+            "desc": "Sntp mode.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$sntp_mode",
+            "intfKey": false,
+            "name": "$sntp_mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$poll_interval",
+            "dataType": "int",
+            "desc": "Sntp poll interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$poll_interval",
+            "intfKey": false,
+            "name": "$poll_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$source_ip_selection",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$source_ip_selection",
+            "intfKey": false,
+            "name": "$source_ip_selection",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sntp_server_table",
+            "dataType": "table",
+            "desc": "NTP server table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$sntp_server_address"
+                ],
+                "hashSort": false
+            },
+            "fullName": "sntp_server_table",
+            "intfKey": false,
+            "name": "sntp_server_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "sntp_server_table.$priority",
+            "dataType": "string",
+            "desc": "Priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sntp_server_table.$priority",
+            "intfKey": false,
+            "name": "$priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sntp_server_table.$sntp_server_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sntp_server_table.$sntp_server_address",
+            "intfKey": false,
+            "name": "$sntp_server_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sntp_server_table.$version",
+            "dataType": "string",
+            "desc": "Sntp version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sntp_server_table.$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "sntp_server_table.$key_id",
+            "dataType": "string",
+            "desc": "Sntp key id.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "sntp_server_table.$key_id",
+            "intfKey": false,
+            "name": "$key_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

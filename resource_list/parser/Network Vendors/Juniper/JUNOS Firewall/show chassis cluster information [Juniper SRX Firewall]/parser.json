@@ -1,0 +1,419 @@
+{
+    "_id": "319294e1-4fa1-bdbd-4e1b-5cd94def1c14",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show chassis cluster information",
+    "createTime": {
+        "$date": 1580501573431
+    },
+    "description": "Device Type:\nJuniper SRX Firewall\nCommand: \nshow chassis cluster information",
+    "devTypes": [
+        2018
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "netbrain@Qapp-vSRX-1> show chassis cluster information \r\nnode0:\r\n--------------------------------------------------------------------------\r\nRedundancy Group Information:\r\n\r\n    Redundancy Group 0 , Current State: primary, Weight: 255\r\n\r\n        Time            From           To             Reason\r\n        Jul  6 05:12:56 hold           secondary      Hold timer expired\r\n        Jul  6 05:12:59 secondary      primary        Only node present\r\n\r\n    Redundancy Group 1 , Current State: primary, Weight: 255\r\n\r\n        Time            From           To             Reason\r\n        Jul  6 05:12:57 hold           secondary      Hold timer expired\r\n        Jul  6 05:13:00 secondary      primary        Only node present\r\n\r\nChassis cluster LED information:\r\n    Current LED color: Green\r\n    Last LED change reason: No failures\r\n\r\nnode1:\r\n--------------------------------------------------------------------------\r\nRedundancy Group Information:\r\n                                        \r\n    Redundancy Group 0 , Current State: secondary, Weight: 255\r\n\r\n        Time            From           To             Reason\r\n        Jul  6 05:17:09 hold           secondary      Hold timer expired\r\n\r\n    Redundancy Group 1 , Current State: secondary, Weight: 255\r\n\r\n        Time            From           To             Reason\r\n        Jul  6 05:17:10 hold           secondary      Hold timer expired\r\n\r\nChassis cluster LED information:\r\n    Current LED color: Green\r\n    Last LED change reason: No failures\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"node_table\",\"keyVariables\":\"\",\"startLine\":\"mregex[$node]:^(\\\\S+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$node:string\"]},\"xxid\":\"c3c82f1a-3e9a-0e4c-c206-9a0bbf330515\"},{\"type\":\"4\",\"name\":\"redundancy_group_table\",\"keyVariables\":\"\",\"startLine\":\"Redundancy Group Information:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"cc5da791-55ce-8e8f-1ba0-1a7fd92cf5dc\"},{\"type\":\"4\",\"name\":\"redundancy_group\",\"keyVariables\":\"\",\"startLine\":\"regex[$int:redundancy_group]:Redundancy Group\\\\s+(\\\\S+)\\\\s+\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$current_state,$int:weight]:Current State:\\\\s+(\\\\S+),\\\\s+Weight:\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$redundancy_group:int\",\"$current_state:string\",\"$weight:int\"]},\"xxid\":\"4fcc98dd-c55b-5757-fdac-826fffe6df29\"}]},\"xxid\":\"0dc74fc5-84c9-d42d-8661-0bcef3f1238e\",\"hashColumns\":[\"$redundancy_group\",\"$current_state\",\"$weight\",\"$node\"]}]},\"xxid\":\"d52fb796-b246-acc4-48c9-9e17d7de2b9f\",\"hashColumns\":[\"$node\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"chassis_cluster_led_information_table\",\"keyVariables\":\"\",\"startLine\":\"Chassis cluster LED information:\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$current_led_color]:Current LED color:\\\\s+(\\\\S+)\",\"regex[$last_led_change_reason]:Last LED change reason:\\\\s+(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$current_led_color:string\",\"$last_led_change_reason:string\"]},\"xxid\":\"8f79ae50-320e-6377-432a-c9bd594ebbc8\"}]},\"xxid\":\"d97b2568-f899-d4c1-8ac1-d366b0cf336f\",\"hashColumns\":[\"$current_led_color\",\"$node\"],\"hashSort\":false}]},\"xxid\":\"2dd0d8fd-6290-49fb-1044-605fc0bfa439\",\"hashColumns\":[\"$node\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"579bc613-a8bc-5f4d-6cb1-35286db389c6\"}]}",
+            "tableKeys": [
+                "_original_result.node_table.$node",
+                "_original_result.node_table.redundancy_group_table.$node",
+                "_original_result.node_table.redundancy_group_table.redundancy_group.$redundancy_group",
+                "_original_result.node_table.chassis_cluster_led_information_table.$current_led_color",
+                "_original_result.node_table.redundancy_group_table.redundancy_group.$current_state",
+                "_original_result.node_table.redundancy_group_table.redundancy_group.$weight",
+                "_original_result.node_table.redundancy_group_table.redundancy_group.$node"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "node",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$node"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "node_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "node",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$node"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "redundancy_group_table",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "redundancy_group",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "current_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "weight",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "node",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$current_state",
+                    "$node",
+                    "$redundancy_group",
+                    "$weight"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "redundancy_group",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "current_led_color",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "last_led_change_reason",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "node",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$current_led_color",
+                    "$node"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "chassis_cluster_led_information_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "7ac309f3fa3a3c12164bed8416aa3204",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "node_table",
+            "dataType": "paragraph",
+            "desc": "Node table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$node"
+                ],
+                "hashSort": false
+            },
+            "fullName": "node_table",
+            "intfKey": false,
+            "name": "node_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "node_table.$node",
+            "dataType": "string",
+            "desc": "Cluster node.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.$node",
+            "intfKey": false,
+            "name": "$node",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_group_table",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$node"
+                ],
+                "hashSort": false
+            },
+            "fullName": "node_table.redundancy_group_table",
+            "intfKey": false,
+            "name": "redundancy_group_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "redundancy_group_table.$node",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.redundancy_group_table.$node",
+            "intfKey": false,
+            "name": "$node",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_group",
+            "dataType": "paragraph",
+            "desc": "Redundancy group table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$redundancy_group",
+                    "$current_state",
+                    "$weight",
+                    "$node"
+                ],
+                "hashSort": false
+            },
+            "fullName": "node_table.redundancy_group_table.redundancy_group",
+            "intfKey": false,
+            "name": "redundancy_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "redundancy_group.$redundancy_group",
+            "dataType": "int",
+            "desc": "Group number.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.redundancy_group_table.redundancy_group.$redundancy_group",
+            "intfKey": false,
+            "name": "$redundancy_group",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_group.$current_state",
+            "dataType": "string",
+            "desc": "Group current state.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.redundancy_group_table.redundancy_group.$current_state",
+            "intfKey": false,
+            "name": "$current_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_group.$weight",
+            "dataType": "int",
+            "desc": "Group weight.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.redundancy_group_table.redundancy_group.$weight",
+            "intfKey": false,
+            "name": "$weight",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "redundancy_group.$node",
+            "dataType": "string",
+            "desc": "Cluster node.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.redundancy_group_table.redundancy_group.$node",
+            "intfKey": false,
+            "name": "$node",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "chassis_cluster_led_information_table",
+            "dataType": "paragraph",
+            "desc": "Chassis cluster led information table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$current_led_color",
+                    "$node"
+                ],
+                "hashSort": false
+            },
+            "fullName": "node_table.chassis_cluster_led_information_table",
+            "intfKey": false,
+            "name": "chassis_cluster_led_information_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "chassis_cluster_led_information_table.$current_led_color",
+            "dataType": "string",
+            "desc": "Current led color.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.chassis_cluster_led_information_table.$current_led_color",
+            "intfKey": false,
+            "name": "$current_led_color",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "chassis_cluster_led_information_table.$last_led_change_reason",
+            "dataType": "string",
+            "desc": "Last led change reason.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.chassis_cluster_led_information_table.$last_led_change_reason",
+            "intfKey": false,
+            "name": "$last_led_change_reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "chassis_cluster_led_information_table.$node",
+            "dataType": "string",
+            "desc": "Cluster node.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "node_table.chassis_cluster_led_information_table.$node",
+            "intfKey": false,
+            "name": "$node",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

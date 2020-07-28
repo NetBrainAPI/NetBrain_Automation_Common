@@ -1,0 +1,150 @@
+{
+    "_id": "67d96064-692f-4d4c-aefd-86461dfff7ba",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show mpls ldp discovery detail",
+    "createTime": {
+        "$date": 1562009187101
+    },
+    "description": "",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "CSR5#show mpls ldp discovery detail\r\n Local LDP Identifier:\r\n    75.75.75.3:0\r\n    Discovery Sources:\r\n    Interfaces:\r\n\tGigabitEthernet1 (ldp): xmit/recv\r\n\t    Enabled: Interface config\r\n\t    Hello interval: 5000 ms; Transport IP addr: 75.75.75.3\r\n\t    LDP Id: 75.75.75.2:0\r\n\t      Src IP addr: 10.1.1.9; Transport IP addr: 75.75.75.2\r\n\t      Hold time: 15 sec; Proposed local/peer: 15/15 sec\r\n\t      Reachable via 75.75.75.2/32\r\n\t      Password: not required, none, in use\r\n            Clients: IPv4, mLDP \r\n\tGigabitEthernet3 (ldp): xmit/recv\r\n\t    Enabled: Interface config\r\n\t    Hello interval: 5000 ms; Transport IP addr: 75.75.75.3\r\n\t    LDP Id: 75.75.75.7:0\r\n\t      Src IP addr: 20.1.1.10; Transport IP addr: 75.75.75.7\r\n\t      Hold time: 15 sec; Proposed local/peer: 15/15 sec\r\n\t      Reachable via 75.75.75.7/32\r\n\t      Password: not required, none, in use\r\n            Clients: IPv4, mLDP \r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.ldp_authentication.$nbr_id"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ldp_authentication\",\"keyVariables\":\"\",\"startLine\":\"(ldp): xmit/recv\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ldp_auth]:Password: (.+)$\",\"regex[$nbr_id]:LDP Id:\\\\s(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ldp_auth:string\",\"$nbr_id:string\"]},\"xxid\":\"6d029e4f-ed59-2846-ea5d-c9fa6a8184e1\"}]},\"xxid\":\"ad193d07-6638-2d2b-8135-d2f59cb26b17\",\"interfaceKey\":\"$nbr_id\",\"hashColumns\":[\"$nbr_id\",\"$ldp_auth\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$ldp_id]:.+\\\\s(\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+):\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$ldp_id:string\"]},\"xxid\":\"75972172-de5b-1141-a9ce-5038d47d8a3e\"}]}",
+            "tableKeys": [
+                "_original_result.ldp_authentication.$ldp_auth"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "ldp_id",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "ldp_auth",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "nbr_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$ldp_auth",
+                    "$nbr_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ldp_authentication",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "21a1a9089b20f1fc18790f413c9f293f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ldp_authentication.$ldp_auth",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_authentication.$ldp_auth",
+            "intfKey": false,
+            "name": "$ldp_auth",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ldp_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ldp_id",
+            "intfKey": false,
+            "name": "$ldp_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ldp_authentication.$nbr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ldp_authentication.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "ldp_authentication",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$nbr_id",
+                    "$ldp_auth"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ldp_authentication",
+            "intfKey": false,
+            "name": "ldp_authentication",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,119 @@
+{
+    "_id": "5865f6ce-a2d6-ec67-25c4-91fa7a6740af",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "vrf task list",
+    "createTime": {
+        "$date": 1580488015330
+    },
+    "description": "",
+    "devTypes": [
+        10674
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "cumulus@cumulus:~$vrf task list\r\n\r\nVRF: rocket          \r\n-----------------------\r\ndhclient           2508\r\nsshd               2659\r\n\r\nVRF: management      \r\n-----------------------\r\nbash               2681\r\nsu                 2702\r\n\r\n\r\nVRF: distribution    \r\n-----------------------\r\nbash               2720\r\nvrf                2829\r\n\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"8\",\"script\":\"import re\\ndef ParseText(_original_result):\\n    vrf = {\\n        'vrf_name'                      :[],\\n        'tasks'                    :[],\\n        '$_columns':['vrf_name', 'tasks']\\n        }\\n    #split each paragraph by the VRF: $vrf_name pattern\\n    vrfs=re.split(\\\"VRF: \\\", _original_result)\\n    for i in vrfs[1:]:\\n        vrf_name=re.match(\\\"^\\\\S+\\\", i)\\n        print(vrf_name)\\n        if vrf_name:\\n            task_list=''\\n            #go through each line and skip the first two (i.e.,  the vrf name and the '----' )\\n            for j in i.splitlines()[2:]:\\n                task_name=re.match(\\\"^(\\\\S+)\\\", j)\\n                if task_name:\\n                    task_list+=task_name.group(0)+', '\\n            #remove the comma and space at the end of the interfaces string\\n            task_list = task_list.strip(', ')\\n        vrf['vrf_name'].append(vrf_name.group(0))\\n        vrf['tasks'].append(task_list)\\n    dic={'vrf':vrf}\\n    return dic\\n    \",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$vrf\",\"variableTypes\":{\"variableType\":[{\"name\":\"$vrf_name\",\"type\":\"string\"},{\"name\":\"$tasks\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"c126aa96-9261-ac99-1e06-c5762b1e88c4\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "name": null,
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "tasks",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "vrf_name",
+                        "type": 4
+                    }
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "vrf",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "8674f5774bae452d9f14b48b99dec357",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$vrf",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf",
+            "intfKey": false,
+            "name": "$vrf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$vrf.$vrf_name",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$vrf_name",
+            "intfKey": false,
+            "name": "$vrf_name",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vrf.$tasks",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vrf.$tasks",
+            "intfKey": false,
+            "name": "$tasks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

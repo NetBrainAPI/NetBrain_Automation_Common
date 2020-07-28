@@ -1,0 +1,260 @@
+{
+    "_id": "d82af1c0-6e0f-1b0e-868a-6a38b4df501b",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip isis vlan",
+    "createTime": {
+        "$date": 1590695623624
+    },
+    "description": "Device Type:\nAlcatel OmniSwitch\nCommand:\nshow ip isis vlan",
+    "devTypes": [
+        10418
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "-> show ip isis vlan\n===================================================================================\nISIS VLan\n===================================================================================\nInterface   Address-family  Level   VlanID  Oper-state  Admin-state     L1/L2-Metric\n-----------------------------------------------------------------------------------\nospf        ipv4            L1L2    11      DOWN        UP              10/10\nvlan11      ipv6            L1L2    11      DOWN        UP              10/10\n-----------------------------------------------------------------------------------\nVlans : 2\n===================================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.vlan_table.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"vlan_table\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf, $address_family, $level, $vlanid, $oper_state, $admin_state, $metric]:(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\d+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\\\\s+(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$address_family:string\",\"$level:string\",\"$vlanid:string\",\"$oper_state:string\",\"$admin_state:string\",\"$metric:string\"]},\"xxid\":\"d4c1da19-52fc-9b63-4b28-69efa0566c43\"}]},\"xxid\":\"36dae91b-7bbf-8644-c732-be6b821fc63d\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$oper_state\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:vlans]:Vlans\\\\s+:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$vlans:int\"]},\"xxid\":\"55d0e99d-69cd-d54b-b18d-04bfe570e14c\"}]}",
+            "tableKeys": [
+                "_original_result.vlan_table.$oper_state"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "vlans",
+                "type": 1
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "address_family",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "level",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "vlanid",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "metric",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$oper_state"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "vlan_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "a24181db668cfd896cec894a1061ca18",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "vlan_table",
+            "dataType": "paragraph",
+            "desc": "The isis interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$oper_state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "vlan_table",
+            "intfKey": false,
+            "name": "vlan_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "vlan_table.$intf",
+            "dataType": "string",
+            "desc": "The name of the IS-IS interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "vlan_table.$address_family",
+            "dataType": "string",
+            "desc": "The address family extension: IPv4 or IPv6.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$address_family",
+            "intfKey": false,
+            "name": "$address_family",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$level",
+            "dataType": "string",
+            "desc": "The level capability of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$vlanid",
+            "dataType": "string",
+            "desc": "The VLAN ID of the interface.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$vlanid",
+            "intfKey": false,
+            "name": "$vlanid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$oper_state",
+            "dataType": "string",
+            "desc": "The operational state of the interface (up or down).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$oper_state",
+            "intfKey": false,
+            "name": "$oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$admin_state",
+            "dataType": "string",
+            "desc": "The administrative state of the interface (up or down).",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$admin_state",
+            "intfKey": false,
+            "name": "$admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "vlan_table.$metric",
+            "dataType": "string",
+            "desc": "The metric value of the router for the corresponding capability level.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "vlan_table.$metric",
+            "intfKey": false,
+            "name": "$metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$vlans",
+            "dataType": "int",
+            "desc": "The total number of VLANs.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$vlans",
+            "intfKey": false,
+            "name": "$vlans",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,327 @@
+{
+    "_id": "5cb4802e-5c29-5924-09fa-df5ed5adb492",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis adjacency",
+    "createTime": {
+        "$date": 1579820707225
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:\nshow isis adjacency\n",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "N7K#show isis adjacency\n\nIS-IS process: 1 VRF: default\nIS-IS adjacency database:\nSystem ID       SNPA            Level  State  Hold Time  Interface\nxrroute1        000c.29d2.baae  1      UP     00:00:33   Ethernet2/1\nxrroute1        000c.29d2.baae  2      UP     00:00:29   Ethernet2/1\nsrx             000c.2931.735e  1      UP     00:00:29   Ethernet2/2\nsrx             000c.2931.735e  2      UP     00:00:26   Ethernet2/2\n\nIS-IS process: 2 VRF: default\nIS-IS adjacency database:\nSystem ID       SNPA            Level  State  Hold Time  Interface\n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.processes.isis_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"processes\",\"keyVariables\":null,\"startLine\":\"IS-IS process: $int:process_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$process_id:int\"]},\"xxid\":\"8cf79128-3c5f-beaf-8d8c-f522846552c0\"},{\"type\":\"3\",\"name\":\"isis_intfs\",\"headers\":\"System ID;SNPA;Level;State;Hold Time;Interface\",\"endLine\":null,\"isSkipLine\":\"0\",\"skipLine\":\"0\",\"headerToVariables\":\"Hold Time:$string:hold;Interface:$string:intf;Level:$int:level;SNPA:$string:snpa;State:$string:state;System ID:$string:nbr_id\",\"leftAlign\":\"1\",\"alignType\":\"0\",\"alignRange\":null,\"keyVariables\":null,\"isUsePrevars\":\"0\",\"usePrevars\":null,\"variableTypes\":{\"variableType\":[\"$hold:string\",\"$intf:string\",\"$level:int\",\"$snpa:string\",\"$state:string\",\"$nbr_id:string\"]},\"child\":{\"parseRule\":[]},\"xxid\":\"aea370eb-a75f-f156-63d9-bef6529ddfed\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\",\"$level\",\"$state\",\"$nbr_id\",\"$process_id\"],\"HashSort\":false}]},\"xxid\":\"f89efa6a-9161-18e8-53cf-0e97ce568abe\",\"hashColumns\":[\"$process_id\"]},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"22fb322f-3082-2eae-ce8b-2ff6072697dd\"}]}",
+            "tableKeys": [
+                "_original_result.processes.$process_id",
+                "_original_result.processes.isis_intfs.$nbr_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 1,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "process_id",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "nbr_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "snpa",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "level",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "state",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "hold",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "process_id",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$intf",
+                    "$level",
+                    "$nbr_id",
+                    "$process_id",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "isis_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2a8ef075c1d2281f766701a41e83ad15",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "processes",
+            "dataType": "paragraph",
+            "desc": "Processes id table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes",
+            "intfKey": false,
+            "name": "processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "processes.$process_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs",
+            "dataType": "table",
+            "desc": "ISIS interface table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf",
+                    "$level",
+                    "$state",
+                    "$nbr_id",
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs",
+            "intfKey": false,
+            "name": "isis_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_intfs.$hold",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs.$hold",
+            "intfKey": false,
+            "name": "$hold",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$intf",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_intfs.$level",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs.$level",
+            "intfKey": false,
+            "name": "$level",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$snpa",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs.$snpa",
+            "intfKey": false,
+            "name": "$snpa",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$nbr_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs.$nbr_id",
+            "intfKey": false,
+            "name": "$nbr_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$process_id",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "processes.isis_intfs.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

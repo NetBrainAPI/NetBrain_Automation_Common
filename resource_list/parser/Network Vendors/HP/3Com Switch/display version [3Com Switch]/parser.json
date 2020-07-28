@@ -1,0 +1,595 @@
+{
+    "_id": "9f45cbd8-253e-cb2d-258a-457edfe1b6f4",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "display version",
+    "createTime": {
+        "$date": 1590772094913
+    },
+    "description": "Device Type:\n3Com Switch\nCommand:\ndisplay version",
+    "devTypes": [
+        3333
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "<SW1>display version\r\nH3C Comware Software, Version 7.1.059, Alpha 7159\r\nCopyright (c) 2004-2014 Hangzhou H3C Tech. Co., Ltd. All rights reserved.\r\nH3C S5820V2-54QS-GE uptime is 0 weeks, 0 days, 2 hours, 24 minutes\r\nLast reboot reason: User reboot\r\nBoot image: flash:/s5820v2_5830v2-cmw710-boot-a5901.bin\r\nBoot image version: 7.1.059, Alpha 7159\r\n  Compiled Sep 24 2014 16:10:27\r\nBoot image: flash:/s5820v2_5830v2-cmw710-system-a5901.bin\r\nBoot image version: 7.1.059, Alpha 7159\r\n  Compiled Sep 24 2014 16:10:27\r\n\r\nSlot 1:\r\nS5820V2-54QS-GE with 2 Processors\r\nBOARD TYPE: S5820V2-54QS-GE\r\nDRAM:  512M bytes\r\nFLASH: 1024M bytes\r\nPCB 1 Version: VER.C\r\nBootrom Version: 908\r\nCPLD 1 Version: 002\r\nCPLD 2 Version: 002\r\nRelease Version: H3C S5820V2-54QS-GE\r\nPatch Version: None\r\nReboot Cause: User reboot\r\n[SubSlot 0] 48SFP Plus+4QSFP Plus\r\n\r\n",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Version $version, Alpha $alpha\",\"regex[$uptime]:uptime is (.*)\",\"uptime is $int:uptime_weeks weeks, $int:uptime_days days, $int:uptime_hours hours, $int:uptime_minutes minutes\",\"regex[$last_reboot_reason]:Last reboot reason: (.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$version:string\",\"$alpha:string\",\"$uptime:string\",\"$uptime_weeks:int\",\"$uptime_days:int\",\"$uptime_hours:int\",\"$uptime_minutes:int\",\"$last_reboot_reason:string\"]},\"xxid\":\"82a2c841-ef80-3d54-9850-9095646be2c4\"},{\"type\":\"4\",\"name\":\"boots\",\"keyVariables\":\"\",\"startLine\":\"regex[$boot_image]:^Boot image:\\\\s+(\\\\S+)\",\"endLine\":\"regex[]:^\\\\s+Com\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"0\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"Boot image version: $boot_image_version, Alpha $boot_image_alpha\",\"regex[$compiled_date]:Compiled\\\\s+(.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$boot_image:string\",\"$boot_image_version:string\",\"$boot_image_alpha:string\",\"$compiled_date:string\"]},\"xxid\":\"b06d37f1-4785-1dd6-6be5-5b23a569bdeb\"}]},\"xxid\":\"bc01628d-ee8a-e8dd-8010-538bf15c2a22\",\"hashColumns\":[\"$boot_image\",\"$boot_image_version\"]},{\"type\":\"4\",\"name\":\"slots\",\"keyVariables\":\"\",\"startLine\":\"regex[$slot_id]:Slot\\\\s+(\\\\d+):\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"BOARD TYPE: $board_type\",\"DRAM: $dram\",\"FLASH: $flash\",\"PCB 1 Version: $pcb_1_version\",\"Bootrom Version: $bootroom_version\",\"CPLD 1 Version: $cpld_1_version\",\"CPLD 2 Version: $cpld_2_version\",\"regex[$release_version]:Release Version:\\\\s+(.*)\",\"regex[$path_version]:Patch Version: (.*)\",\"regex[$reboot_cause]:Reboot Cause: (.*)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$slot_id:string\",\"$board_type:string\",\"$dram:string\",\"$flash:string\",\"$pcb_1_version:string\",\"$bootroom_version:string\",\"$cpld_1_version:string\",\"$cpld_2_version:string\",\"$release_version:string\",\"$path_version:string\",\"$reboot_cause:string\"]},\"xxid\":\"1db0182c-1383-13b8-21ff-3986ba4987ba\"}]},\"xxid\":\"ed59bc3c-0e23-490f-708e-c8d81353d6ee\",\"hashColumns\":[\"$slot_id\",\"$board_type\",\"$release_version\"]}]}",
+            "tableKeys": [
+                "_original_result.boots.$boot_image",
+                "_original_result.boots.$boot_image_version",
+                "_original_result.slots.$slot_id",
+                "_original_result.slots.$board_type",
+                "_original_result.slots.$release_version"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "version",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "alpha",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "uptime",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "uptime_weeks",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "uptime_days",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "uptime_hours",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "uptime_minutes",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "last_reboot_reason",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 4,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "boot_image",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "boot_image_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "boot_image_alpha",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "compiled_date",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$boot_image",
+                    "$boot_image_version"
+                ],
+                "hashSort": false,
+                "index": 8,
+                "name": "boots",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "slot_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "board_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "dram",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "flash",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "pcb_1_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "bootroom_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "cpld_1_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "cpld_2_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "release_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "path_version",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "reboot_cause",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$board_type",
+                    "$release_version",
+                    "$slot_id"
+                ],
+                "hashSort": false,
+                "index": 9,
+                "name": "slots",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "008e62458343990f77e6d31c2994c367",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$version",
+            "dataType": "string",
+            "desc": "Software version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$alpha",
+            "dataType": "string",
+            "desc": "Alpha.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$alpha",
+            "intfKey": false,
+            "name": "$alpha",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime",
+            "dataType": "string",
+            "desc": "Uptime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_weeks",
+            "dataType": "int",
+            "desc": "Weeks of uptime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_weeks",
+            "intfKey": false,
+            "name": "$uptime_weeks",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_days",
+            "dataType": "int",
+            "desc": "Days of uptime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_days",
+            "intfKey": false,
+            "name": "$uptime_days",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_hours",
+            "dataType": "int",
+            "desc": "Hours of uptime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_hours",
+            "intfKey": false,
+            "name": "$uptime_hours",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_minutes",
+            "dataType": "int",
+            "desc": "Minute of uptime.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_minutes",
+            "intfKey": false,
+            "name": "$uptime_minutes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$last_reboot_reason",
+            "dataType": "string",
+            "desc": "Last reboot reason.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$last_reboot_reason",
+            "intfKey": false,
+            "name": "$last_reboot_reason",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "boots",
+            "dataType": "paragraph",
+            "desc": "Boot images table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$boot_image",
+                    "$boot_image_version"
+                ],
+                "hashSort": false
+            },
+            "fullName": "boots",
+            "intfKey": false,
+            "name": "boots",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "boots.$boot_image",
+            "dataType": "string",
+            "desc": "Boot image name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "boots.$boot_image",
+            "intfKey": false,
+            "name": "$boot_image",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "boots.$boot_image_version",
+            "dataType": "string",
+            "desc": "Boot image version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "boots.$boot_image_version",
+            "intfKey": false,
+            "name": "$boot_image_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "boots.$boot_image_alpha",
+            "dataType": "string",
+            "desc": "Boot image alpha.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "boots.$boot_image_alpha",
+            "intfKey": false,
+            "name": "$boot_image_alpha",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "boots.$compiled_date",
+            "dataType": "string",
+            "desc": "Compiled date.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "boots.$compiled_date",
+            "intfKey": false,
+            "name": "$compiled_date",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots",
+            "dataType": "paragraph",
+            "desc": "Slots Table.",
+            "extraInfo": {
+                "hashColumns": [
+                    "$slot_id",
+                    "$board_type",
+                    "$release_version"
+                ],
+                "hashSort": false
+            },
+            "fullName": "slots",
+            "intfKey": false,
+            "name": "slots",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "slots.$slot_id",
+            "dataType": "string",
+            "desc": "Slot ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$slot_id",
+            "intfKey": false,
+            "name": "$slot_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$board_type",
+            "dataType": "string",
+            "desc": "Board type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$board_type",
+            "intfKey": false,
+            "name": "$board_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$dram",
+            "dataType": "string",
+            "desc": "Dram.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$dram",
+            "intfKey": false,
+            "name": "$dram",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$flash",
+            "dataType": "string",
+            "desc": "Flash.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$flash",
+            "intfKey": false,
+            "name": "$flash",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$pcb_1_version",
+            "dataType": "string",
+            "desc": "PCB 1 version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$pcb_1_version",
+            "intfKey": false,
+            "name": "$pcb_1_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$bootroom_version",
+            "dataType": "string",
+            "desc": "Bootrom version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$bootroom_version",
+            "intfKey": false,
+            "name": "$bootroom_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$cpld_1_version",
+            "dataType": "string",
+            "desc": "CPLD 1 version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$cpld_1_version",
+            "intfKey": false,
+            "name": "$cpld_1_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$cpld_2_version",
+            "dataType": "string",
+            "desc": "CPLD 2 version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$cpld_2_version",
+            "intfKey": false,
+            "name": "$cpld_2_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$release_version",
+            "dataType": "string",
+            "desc": "Release version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$release_version",
+            "intfKey": false,
+            "name": "$release_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$path_version",
+            "dataType": "string",
+            "desc": "Patch version.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$path_version",
+            "intfKey": false,
+            "name": "$path_version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "slots.$reboot_cause",
+            "dataType": "string",
+            "desc": "Reboot cause.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "slots.$reboot_cause",
+            "intfKey": false,
+            "name": "$reboot_cause",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,277 @@
+{
+    "_id": "74554b12-7e46-cdf3-7624-f88815bcd627",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router interface",
+    "createTime": {
+        "$date": 1583871259375
+    },
+    "description": "Device Type:\nAlcatel Lucent Service Router\nCommand:\nshow router interface",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "A:vRR# show router interface \r\n\r\n===============================================================================\r\nInterface Table (Router: Base)\r\n===============================================================================\r\nInterface-Name                   Adm         Opr(v4/v6)  Mode    Port/SapId\r\n   IP-Address                                                    PfxState\r\n-------------------------------------------------------------------------------\r\nsystem                           Up          Down/--     Network system\r\n   -                                                             -\r\nto-r2                            Up          Up/--       Network 1/1/1\r\n   12.1.1.1/24                                                   n/a\r\nto-r3                            Up          Up/--       Network 1/1/2\r\n   13.1.1.1/24                                                   n/a\r\n-------------------------------------------------------------------------------\r\nInterfaces : 3\r\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.interface_filter.router_interface.$interface"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"1\",\"name\":\"interface_filter\",\"startLine\":\"Interface-Name\",\"endLine\":\"Interfaces :\",\"skipLines\":\"\",\"includeLines\":\"\",\"excludeLines\":{\"excludeLine\":[\"IP-Address                                                    PfxState\",\"-------------------------------------------------------------------------------\"]},\"filterLoop\":\"1\",\"excludeEndLine\":\"1\",\"excludeBeginLine\":\"1\",\"asconfiglet\":\"0\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"56857608-8d3f-565d-e0a3-0281872b9540\"},{\"type\":\"4\",\"name\":\"router_interface\",\"keyVariables\":\"\",\"startLine\":\"regex[$interface]:^(\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$adm]:^\\\\S+\\\\s+(\\\\S+)\",\"regex[$opr_v4_v6]:^\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)\",\"regex[$mode]:^\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)\",\"regex[$port_sapid]:^\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+\\\\S+\\\\s+(\\\\S+)\",\"regex[$ip_address]:^\\\\s+(\\\\S+)\",\"regex[$pfx_state]:^\\\\s+\\\\S+\\\\s+(\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$interface:string\",\"$adm:string\",\"$opr_v4_v6:string\",\"$mode:string\",\"$port_sapid:string\",\"$ip_address:string\",\"$pfx_state:string\"]},\"xxid\":\"50998456-8090-1682-13f2-681e09dc9db8\"}]},\"xxid\":\"f89bd65c-4fea-d4e3-b27b-d8d5338bb970\",\"interfaceKey\":\"$interface\",\"hashColumns\":[\"$interface\",\"$adm\",\"$opr_v4_v6\",\"$mode\",\"$port_sapid\",\"$ip_address\",\"$pfx_state\"],\"hashSort\":false}]},\"xxid\":\"93965173-4058-1b27-8b37-41490ceee20f\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"7940cea9-8c1d-f477-abfc-63f1b4d5c3f0\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "interface_filter",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 7,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "interface",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "adm",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "opr_v4_v6",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mode",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "port_sapid",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "ip_address",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "pfx_state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$adm",
+                    "$interface",
+                    "$ip_address",
+                    "$mode",
+                    "$opr_v4_v6",
+                    "$pfx_state",
+                    "$port_sapid"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "router_interface",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "0249174c143848f94c781cd1ef43061a",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "interface_filter",
+            "dataType": "filter",
+            "desc": "Interface filter",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter",
+            "intfKey": false,
+            "name": "interface_filter",
+            "realType": "string",
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_interface",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$interface",
+                    "$adm",
+                    "$opr_v4_v6",
+                    "$mode",
+                    "$port_sapid",
+                    "$ip_address",
+                    "$pfx_state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface",
+            "intfKey": false,
+            "name": "router_interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "router_interface.$interface",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface.$interface",
+            "intfKey": false,
+            "name": "$interface",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "router_interface.$adm",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface.$adm",
+            "intfKey": false,
+            "name": "$adm",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_interface.$opr_v4_v6",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface.$opr_v4_v6",
+            "intfKey": false,
+            "name": "$opr_v4_v6",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_interface.$mode",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface.$mode",
+            "intfKey": false,
+            "name": "$mode",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_interface.$port_sapid",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface.$port_sapid",
+            "intfKey": false,
+            "name": "$port_sapid",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_interface.$ip_address",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface.$ip_address",
+            "intfKey": false,
+            "name": "$ip_address",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "router_interface.$pfx_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "interface_filter.router_interface.$pfx_state",
+            "intfKey": false,
+            "name": "$pfx_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

@@ -1,0 +1,516 @@
+{
+    "_id": "ad41b2f7-c2e4-419a-ab79-260ee2d03695",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show isis interface",
+    "createTime": {
+        "$date": 1590777871255
+    },
+    "description": "Device Type:\nDell Networking Switch\nCommand:\nshow isis interface",
+    "devTypes": [
+        10327
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasISISConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "Dell> show isis interface\r\nTenGigabitEthernet 1/7 is up, line protocol is up\r\n  MTU 1497, Encapsulation SAP\r\n  Routing Protocol: IS-IS\r\n  Circuit Type: Level-1-2\r\n  Interface Index 37847070, Local circuit ID 1\r\n  Level-1 Metric: 10, Priority: 64, Circuit ID: systest-3.01\r\n   Hello Interval: 10, Hello Multiplier: 3, CSNP Interval: 10\r\n  Number of active level-1 adjacencies: 1\r\n  Level-2 Metric: 10, Priority: 64, Circuit ID: systest-3.01\r\n   Hello Interval: 10, Hello Multiplier: 3, CSNP Interval: 10\r\n  Number of active level-2 adjacencies: 1\r\n  Next IS-IS LAN Level-1 Hello in 2 seconds\r\n  Next IS-IS LAN Level-2 Hello in 1 seconds\r\n  LSP Interval: 33\r\nTenGigabitEthernet 1/8 is up, line protocol is up\r\n  MTU 1497, Encapsulation SAP\r\n  Routing Protocol: IS-IS\r\n  Circuit Type: Level-1-2\r\n  Interface Index 38371358, Local circuit ID 2\r\n  Level-1 Metric: 10, Priority: 64, Circuit ID: systest-3.02\r\n   Hello Interval: 10, Hello Multiplier: 3, CSNP Interval: 10\r\n  Number of active level-1 adjacencies: 1\r\n  Level-2 Metric: 10, Priority: 64, Circuit ID: systest-3.02\r\n   Hello Interval: 10, Hello Multiplier: 3, CSNP Interval: 10",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [
+                "_original_result.isis_intfs.$intf"
+            ],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"isis_intfs\",\"keyVariables\":\"\",\"startLine\":\"regex[$intf, $intf_state, $protocol_state]:^(\\\\S+ \\\\d+\\\\S+) is (\\\\S+),\\\\s+line protocol is (\\\\S+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:mtu, $encap]:mtu (\\\\d+),\\\\s+encapsulation\\\\s+(\\\\S+)\",\"regex[$circuit_type]:circuit type:\\\\s+(\\\\S+)\",\"regex[$local_circuit_id]:local circuit id (\\\\S+)\",\"regex[$int:lv1_metric, $int:lv1_priority, $lv1_circuit_id]:level-1 metric:\\\\s+(\\\\d+), priority:\\\\s+(\\\\d+), circuit id:\\\\s+(\\\\S+)\",\"mregex[$int:lv1_hello_interval, $int:lv1_hello_multiplier, $int:lv1_csnp_interval]:^\\\\s+level-1.+?hello interval:\\\\s+(\\\\d+), hello multiplier:\\\\s+(\\\\d+), csnp interval:\\\\s+(\\\\d+)\",\"regex[$int:lv1_adj]:number of active level-1 adjacencies:\\\\s+(\\\\d+)\",\"regex[$int:lv2_metric, $int:lv2_priority, $lv2_circuit_id]:level-2 metric:\\\\s+(\\\\d+), priority:\\\\s+(\\\\d+), circuit id:\\\\s+(\\\\S+)\",\"mregex[$int:lv2_hello_interval, $int:lv2_hello_multiplier, $int:lv2_csnp_interval]:^\\\\s+level-2.+?hello interval:\\\\s+(\\\\d+), hello multiplier:\\\\s+(\\\\d+), csnp interval:\\\\s+(\\\\d+)\",\"regex[$int:lv2_adj]:number of active level-2 adjacencies:\\\\s+(\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$intf:string\",\"$intf_state:string\",\"$protocol_state:string\",\"$mtu:int\",\"$encap:string\",\"$circuit_type:string\",\"$local_circuit_id:string\",\"$lv1_metric:int\",\"$lv1_priority:int\",\"$lv1_circuit_id:string\",\"$lv1_hello_interval:int\",\"$lv1_hello_multiplier:int\",\"$lv1_csnp_interval:int\",\"$lv1_adj:int\",\"$lv2_metric:int\",\"$lv2_priority:int\",\"$lv2_circuit_id:string\",\"$lv2_hello_interval:int\",\"$lv2_hello_multiplier:int\",\"$lv2_csnp_interval:int\",\"$lv2_adj:int\"]},\"xxid\":\"0c52f514-b7bf-139e-b56f-b9fd0a9abbeb\"}]},\"xxid\":\"4a839ea0-d964-41d1-8455-467fe5a66286\",\"interfaceKey\":\"$intf\",\"hashColumns\":[\"$intf\"]}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "attributes": [
+                    {
+                        "index": 21,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 22,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "intf",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "intf_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "protocol_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "mtu",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "encap",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "circuit_type",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "local_circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "lv1_metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "lv1_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "lv1_circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "lv1_hello_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "lv1_hello_multiplier",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "lv1_csnp_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 13,
+                        "name": "lv1_adj",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "lv2_metric",
+                        "type": 1
+                    },
+                    {
+                        "index": 15,
+                        "name": "lv2_priority",
+                        "type": 1
+                    },
+                    {
+                        "index": 16,
+                        "name": "lv2_circuit_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 17,
+                        "name": "lv2_hello_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 18,
+                        "name": "lv2_hello_multiplier",
+                        "type": 1
+                    },
+                    {
+                        "index": 19,
+                        "name": "lv2_csnp_interval",
+                        "type": 1
+                    },
+                    {
+                        "index": 20,
+                        "name": "lv2_adj",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false,
+                "index": 0,
+                "name": "isis_intfs",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "2d481934f187a95720e67c1c7b0250f0",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "isis_intfs",
+            "dataType": "paragraph",
+            "desc": "ISIS interface table",
+            "extraInfo": {
+                "hashColumns": [
+                    "$intf"
+                ],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs",
+            "intfKey": false,
+            "name": "isis_intfs",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 4
+        },
+        {
+            "capName": "isis_intfs.$intf",
+            "dataType": "string",
+            "desc": "Interface name.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$intf",
+            "intfKey": false,
+            "name": "$intf",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 2
+        },
+        {
+            "capName": "isis_intfs.$intf_state",
+            "dataType": "string",
+            "desc": "Physical interface status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$intf_state",
+            "intfKey": false,
+            "name": "$intf_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$protocol_state",
+            "dataType": "string",
+            "desc": "Protocol status.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$protocol_state",
+            "intfKey": false,
+            "name": "$protocol_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$mtu",
+            "dataType": "int",
+            "desc": "MTU.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$mtu",
+            "intfKey": false,
+            "name": "$mtu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$encap",
+            "dataType": "string",
+            "desc": "Encapsulation type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$encap",
+            "intfKey": false,
+            "name": "$encap",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$circuit_type",
+            "dataType": "string",
+            "desc": "Circuit type.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$circuit_type",
+            "intfKey": false,
+            "name": "$circuit_type",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$local_circuit_id",
+            "dataType": "string",
+            "desc": "Local circuit ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$local_circuit_id",
+            "intfKey": false,
+            "name": "$local_circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv1_metric",
+            "dataType": "int",
+            "desc": "Level-1 metric.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv1_metric",
+            "intfKey": false,
+            "name": "$lv1_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv1_priority",
+            "dataType": "int",
+            "desc": "Level-1 priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv1_priority",
+            "intfKey": false,
+            "name": "$lv1_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv1_circuit_id",
+            "dataType": "string",
+            "desc": "Level-1 circuit ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv1_circuit_id",
+            "intfKey": false,
+            "name": "$lv1_circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv1_hello_interval",
+            "dataType": "int",
+            "desc": "Level-1 hello interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv1_hello_interval",
+            "intfKey": false,
+            "name": "$lv1_hello_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv1_hello_multiplier",
+            "dataType": "int",
+            "desc": "Level-1 hello multiplier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv1_hello_multiplier",
+            "intfKey": false,
+            "name": "$lv1_hello_multiplier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv1_csnp_interval",
+            "dataType": "int",
+            "desc": "Level-1 CSNP interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv1_csnp_interval",
+            "intfKey": false,
+            "name": "$lv1_csnp_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv1_adj",
+            "dataType": "int",
+            "desc": "Number of active level-1 adjacencies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv1_adj",
+            "intfKey": false,
+            "name": "$lv1_adj",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv2_metric",
+            "dataType": "int",
+            "desc": "Level-2 metric.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv2_metric",
+            "intfKey": false,
+            "name": "$lv2_metric",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv2_priority",
+            "dataType": "int",
+            "desc": "Level-2 priority.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv2_priority",
+            "intfKey": false,
+            "name": "$lv2_priority",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv2_circuit_id",
+            "dataType": "string",
+            "desc": "Level-2 circuit ID.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv2_circuit_id",
+            "intfKey": false,
+            "name": "$lv2_circuit_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv2_hello_interval",
+            "dataType": "int",
+            "desc": "Level-2 hello interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv2_hello_interval",
+            "intfKey": false,
+            "name": "$lv2_hello_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv2_hello_multiplier",
+            "dataType": "int",
+            "desc": "Level-2 hello multiplier.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv2_hello_multiplier",
+            "intfKey": false,
+            "name": "$lv2_hello_multiplier",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv2_csnp_interval",
+            "dataType": "int",
+            "desc": "Level-2 CSNP interval.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv2_csnp_interval",
+            "intfKey": false,
+            "name": "$lv2_csnp_interval",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "isis_intfs.$lv2_adj",
+            "dataType": "int",
+            "desc": "Number of active level-2 adjacencies.",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "isis_intfs.$lv2_adj",
+            "intfKey": false,
+            "name": "$lv2_adj",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

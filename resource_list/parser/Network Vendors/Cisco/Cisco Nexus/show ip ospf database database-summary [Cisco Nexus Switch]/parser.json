@@ -1,0 +1,724 @@
+{
+    "_id": "97da181c-a24f-dd46-4de8-d43ec9fc3a4a",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show ip ospf database database-summary",
+    "createTime": {
+        "$date": 1579708846215
+    },
+    "description": "Device Type:\nCisco Nexus Switch\nCommand:\nshow ip ospf database database-summary",
+    "devTypes": [
+        2004
+    ],
+    "params": [],
+    "qualify": {
+        "conditions": [
+            {
+                "escapeExpression": false,
+                "expression": "true",
+                "expressionNames": null,
+                "operator": 2,
+                "schema": "hasOSPFConfig"
+            }
+        ],
+        "expression": "A"
+    },
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "OSPF-N7K#show ip ospf database database-summary\n\n             OSPF Router with ID (111.1.1.1) (Process ID 1 VRF default)\n\nArea 0.0.0.0 database summary\n  LSA Type            Count \n  Opaque Link         0     \n  Router              5     \n  Network             1     \n  Summary Network     18    \n  Summary ASBR        2     \n  Type-7 AS External  0     \n  Opaque Area         0     \n  Subtotal            26    \n\nArea 0.0.0.2 database summary\n  LSA Type            Count \n  Opaque Link         0     \n  Router              2     \n  Network             1     \n  Summary Network     11    \n  Summary ASBR        4     \n  Type-7 AS External  0     \n  Opaque Area         0     \n  Subtotal            18    \n\nArea 0.0.0.3 database summary\n  LSA Type            Count \n  Opaque Link         0     \n  Router              2     \n  Network             1     \n  Summary Network     17    \n  Summary ASBR        3     \n  Type-7 AS External  0     \n  Opaque Area         0     \n  Subtotal            23    \n\nProcess 1 database summary\n  LSA Type            Count \n  Opaque Link         0     \n  Router              9     \n  Network             3     \n  Summary Network     46    \n  Summary ASBR        9     \n  Type-7 AS External  0     \n  Opaque Area         0     \n  Type-5 AS External  2     \n  Opaque AS           0     \n  Total               69    \n\n",
+            "devName": null,
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"4\",\"name\":\"ospf_router_processes\",\"keyVariables\":null,\"startLine\":\"OSPF Router with ID ($router_id) (Process ID $process_id\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$router_id:string\",\"$process_id:string\"]},\"xxid\":\"6e6d5562-f4df-760d-a567-150ac60fc0ae\"},{\"type\":\"4\",\"name\":\"process_database_summary\",\"keyVariables\":null,\"startLine\":\"Process $proc_id database summary\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$int:opaque_link_count]:Opaque Link\\\\s+(\\\\S+)\",\"regex[$int:router_count]:Router\\\\s+(\\\\S+)\",\"regex[$int:network_count]:Network\\\\s+(\\\\S+)\",\"regex[$int:summary_network_count]:Summary Network\\\\s+(\\\\S+)\",\"regex[$int:summary_asbr_count]:Summary ASBR\\\\s+(\\\\S+)\",\"regex[$int:type_7_as_external_count]:Type-7 AS External\\\\s+(\\\\S+)\",\"regex[$int:opaque_area_count]:Opaque Area\\\\s+(\\\\S+)\",\"regex[$int:type_5_as_external_count]:Type-5 AS External\\\\s+(\\\\S+)\",\"regex[$int:opaque_as_count]:Opaque AS\\\\s+(\\\\S+)\",\"regex[$int:total_count]:Total\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$proc_id:string\",\"$opaque_link_count:int\",\"$router_count:int\",\"$network_count:int\",\"$summary_network_count:int\",\"$summary_asbr_count:int\",\"$type_7_as_external_count:int\",\"$opaque_area_count:int\",\"$type_5_as_external_count:int\",\"$opaque_as_count:int\",\"$total_count:int\"]},\"xxid\":\"a18aaeb5-31b9-acd8-c886-69e539bd050a\"}]},\"xxid\":\"380bb888-9890-43c8-4d78-569ce3333d5d\",\"hashColumns\":[\"$proc_id\",\"$router_count\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"area_database_summary\",\"keyVariables\":null,\"startLine\":\"Area $area_id database summary\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":null,\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$opaque_link_count]:Opaque Link\\\\s+(\\\\S+)\",\"regex[$router_count]:Router\\\\s+(\\\\S+)\",\"regex[$network_count]:Network\\\\s+(\\\\S+)\",\"regex[$summary_network_count]:Summary Network\\\\s+(\\\\S+)\",\"regex[$summary_asbr_count]:Summary ASBR\\\\s+(\\\\S+)\",\"regex[$type_7_as_external_count]:Type-7 AS External\\\\s+(\\\\S+)\",\"regex[$opaque_area_count]:Opaque Area\\\\s+(\\\\S+)\",\"regex[$subtotal_count]:Subtotal\\\\s+(\\\\S+)\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$area_id:string\",\"$opaque_link_count:string\",\"$router_count:string\",\"$network_count:string\",\"$summary_network_count:string\",\"$summary_asbr_count:string\",\"$type_7_as_external_count:string\",\"$opaque_area_count:string\",\"$subtotal_count:string\"]},\"xxid\":\"78e23e5d-17f3-f363-1e2f-d61a1619b463\"}]},\"xxid\":\"df33383e-c92b-6d5d-cf0a-3009cbc121bf\",\"hashColumns\":[\"$area_id\",\"$router_count\"],\"hashSort\":false}]},\"xxid\":\"196a90b8-acf3-9893-27f6-078e4ae4f1cf\",\"hashColumns\":[\"$router_id\",\"$process_id\"],\"hashSort\":false},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"1e9285fc-07e6-993d-69de-c371c619411a\"}]}",
+            "tableKeys": [
+                "_original_result.ospf_router_processes.$router_id",
+                "_original_result.ospf_router_processes.process_database_summary.$proc_id",
+                "_original_result.ospf_router_processes.area_database_summary.$area_id"
+            ]
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 2,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$process_id",
+                    "$router_id"
+                ],
+                "hashSort": false,
+                "index": 1,
+                "name": "ospf_router_processes",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 13,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 14,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "proc_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "opaque_link_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 2,
+                        "name": "router_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 3,
+                        "name": "network_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "summary_network_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 5,
+                        "name": "summary_asbr_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 6,
+                        "name": "type_7_as_external_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "opaque_area_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "type_5_as_external_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "opaque_as_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "total_count",
+                        "type": 1
+                    },
+                    {
+                        "index": 11,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 12,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$proc_id",
+                    "$router_count"
+                ],
+                "hashSort": false,
+                "index": 2,
+                "name": "process_database_summary",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "area_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "opaque_link_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "router_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "network_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "summary_network_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "summary_asbr_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "type_7_as_external_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 7,
+                        "name": "opaque_area_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 8,
+                        "name": "subtotal_count",
+                        "type": 4
+                    },
+                    {
+                        "index": 9,
+                        "name": "router_id",
+                        "type": 4
+                    },
+                    {
+                        "index": 10,
+                        "name": "process_id",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$area_id",
+                    "$router_count"
+                ],
+                "hashSort": false,
+                "index": 3,
+                "name": "area_database_summary",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "6b6881f5ed3820778cd1d8985b09c51f",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "ospf_router_processes",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$router_id",
+                    "$process_id"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes",
+            "intfKey": false,
+            "name": "ospf_router_processes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "ospf_router_processes.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "ospf_router_processes.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$proc_id",
+                    "$router_count"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary",
+            "intfKey": false,
+            "name": "process_database_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "process_database_summary.$proc_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$proc_id",
+            "intfKey": false,
+            "name": "$proc_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$opaque_link_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$opaque_link_count",
+            "intfKey": false,
+            "name": "$opaque_link_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$router_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$router_count",
+            "intfKey": false,
+            "name": "$router_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$network_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$network_count",
+            "intfKey": false,
+            "name": "$network_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$summary_network_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$summary_network_count",
+            "intfKey": false,
+            "name": "$summary_network_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$summary_asbr_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$summary_asbr_count",
+            "intfKey": false,
+            "name": "$summary_asbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$type_7_as_external_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$type_7_as_external_count",
+            "intfKey": false,
+            "name": "$type_7_as_external_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$opaque_area_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$opaque_area_count",
+            "intfKey": false,
+            "name": "$opaque_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$type_5_as_external_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$type_5_as_external_count",
+            "intfKey": false,
+            "name": "$type_5_as_external_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$opaque_as_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$opaque_as_count",
+            "intfKey": false,
+            "name": "$opaque_as_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$total_count",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$total_count",
+            "intfKey": false,
+            "name": "$total_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "process_database_summary.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.process_database_summary.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$area_id",
+                    "$router_count"
+                ],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary",
+            "intfKey": false,
+            "name": "area_database_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "area_database_summary.$area_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$area_id",
+            "intfKey": false,
+            "name": "$area_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$opaque_link_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$opaque_link_count",
+            "intfKey": false,
+            "name": "$opaque_link_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$router_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$router_count",
+            "intfKey": false,
+            "name": "$router_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$network_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$network_count",
+            "intfKey": false,
+            "name": "$network_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$summary_network_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$summary_network_count",
+            "intfKey": false,
+            "name": "$summary_network_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$summary_asbr_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$summary_asbr_count",
+            "intfKey": false,
+            "name": "$summary_asbr_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$type_7_as_external_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$type_7_as_external_count",
+            "intfKey": false,
+            "name": "$type_7_as_external_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$opaque_area_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$opaque_area_count",
+            "intfKey": false,
+            "name": "$opaque_area_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$subtotal_count",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$subtotal_count",
+            "intfKey": false,
+            "name": "$subtotal_count",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$router_id",
+            "intfKey": false,
+            "name": "$router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "area_database_summary.$process_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "ospf_router_processes.area_database_summary.$process_id",
+            "intfKey": false,
+            "name": "$process_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

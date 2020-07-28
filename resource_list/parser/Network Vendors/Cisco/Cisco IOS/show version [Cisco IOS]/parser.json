@@ -1,0 +1,540 @@
+{
+    "_id": "af64cf13-e8fc-dd39-9d63-7d96d73d81c9",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show version",
+    "createTime": {
+        "$date": 1576542675572
+    },
+    "description": "Device Type:\nCisco IOS Switch\nCisco Router\nCommand: \n       show version",
+    "devTypes": [
+        2001,
+        2
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": null,
+    "samples": [
+        {
+            "content": "qapp-c3560-1>show version\r\nCisco IOS Software, C3560 Software (C3560-IPSERVICESK9-M), Version 12.2(53)SE2, RELEASE SOFTWARE (fc3)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2010 by Cisco Systems, Inc.\r\nCompiled Wed 21-Apr-10 05:33 by prod_rel_team\r\nImage text-base: 0x01000000, data-base: 0x02E00000\r\n\r\nROM: Bootstrap program is C3560 boot loader\r\nBOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(44)SE5, RELEASE SOFTWARE (fc1)\r\n\r\nqapp-c3560-1 uptime is 4 years, 11 weeks, 1 day, 21 hours, 23 minutes\r\nSystem returned to ROM by power-on\r\nSystem image file is \"flash:/c3560-ipservicesk9-mz.122-53.SE2.bin\"\r\n\r\n\r\nThis product contains cryptographic features and is subject to United\r\nStates and local country laws governing import, export, transfer and\r\nuse. Delivery of Cisco cryptographic products does not imply\r\nthird-party authority to import, export, distribute or use encryption.\r\nImporters, exporters, distributors and users are responsible for\r\ncompliance with U.S. and local country laws. By using this product you\r\nagree to comply with applicable laws and regulations. If you are unable\r\nto comply with U.S. and local laws, return this product immediately.\r\n\r\nA summary of U.S. laws governing Cisco cryptographic products may be found at:\r\nhttp://www.cisco.com/wwl/export/crypto/tool/stqrg.html\r\n\r\nIf you require further assistance please contact us by sending email to\r\nexport@cisco.com.\r\n\r\ncisco WS-C3560G-24TS (PowerPC405) processor (revision F0) with 131072K bytes of memory.\r\nProcessor board ID FOC1434Y29Q\r\nLast reset from power-on\r\n5 Virtual Ethernet interfaces\r\n28 Gigabit Ethernet interfaces\r\nThe password-recovery mechanism is enabled.\r\n\r\n512K bytes of flash-simulated non-volatile configuration memory.\r\nBase ethernet MAC Address       : 08:17:35:D7:CB:80\r\nMotherboard assembly number     : 73-10215-06\r\nPower supply part number        : 341-0098-02\r\nMotherboard serial number       : FOC14474EX3\r\nPower supply serial number      : AZS144100UV\r\nModel revision number           : F0\r\nMotherboard revision number     : A0\r\nModel number                    : WS-C3560G-24TS-S\r\nSystem serial number            : FOC1434Y29Q\r\nTop Assembly Part Number        : 800-26851-03\r\nTop Assembly Revision Number    : C0\r\nVersion ID                      : V05\r\nCLEI Code Number                : COMB200BRA\r\nHardware Board Revision Number  : 0x09\r\n\r\n\r\nSwitch Ports Model              SW Version            SW Image                 \r\n------ ----- -----              ----------            ----------               \r\n*    1 28    WS-C3560G-24TS     12.2(53)SE2           C3560-IPSERVICESK9-M     \r\n\r\n\r\nConfiguration register is 0xF\r\n\r\n\r\n",
+            "devName": "R1",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "Sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$software]:Software\\\\s+\\\\((\\\\S+)\\\\),\",\"regex[$uptime]:uptime is\\\\s+(.*)\",\"regex[$version]:Version\\\\s+(\\\\S+),\",\"regex[$int:uptime_year]:(\\\\d+)\\\\s+year\\\\S+\",\"regex[$int:uptime_week]:(\\\\d+)\\\\s+week\\\\S?\",\"regex[$int:uptime_day]:(\\\\d+)\\\\s+day\\\\S?,\",\"regex[$int:uptime_hours]:(\\\\d+)\\\\s+hour\\\\S?,\",\"regex[$int:uptime_minutes]:(\\\\d+)\\\\s+minute\\\\S?\",\"regex[$system_image_file]:System image file is\\\\s+\\\"(\\\\S+)\\\"\",\"regex[$nvram]:(\\\\S+) bytes of NVRAM.\",\"regex[$config_register]:Configuration register is\\\\s+(\\\\S+)\",\"regex[$cpu]:(\\\\S+)\\\\s+CPU\",\"regex[$cpu_frequency]:\\\\S+\\\\s+CPU\\\\s+at\\\\s+(\\\\S+),\",\"regex[$cpu_implementation]:Implementation (\\\\S+),\",\"regex[$cpu_rev]:Implementation \\\\S+, Rev\\\\s+(\\\\S+),\",\"regex[$cpu_l2_cache]:(\\\\S+)\\\\s+L2 Cache\"]},\"statements\":null,\"variableTypes\":{\"variableType\":[\"$software:string\",\"$uptime:string\",\"$version:string\",\"$uptime_year:int\",\"$uptime_week:int\",\"$uptime_day:int\",\"$uptime_hours:int\",\"$uptime_minutes:int\",\"$system_image_file:string\",\"$nvram:string\",\"$config_register:string\",\"$cpu:string\",\"$cpu_frequency:string\",\"$cpu_implementation:string\",\"$cpu_rev:string\",\"$cpu_l2_cache:string\"]},\"xxid\":\"4b17c653-fdfd-2cbd-2566-5a04b406f098\"},{\"type\":\"8\",\"script\":\"import re\\r\\n\\r\\n\\r\\ndef ParseText(_original_result):\\r\\n    config = _original_result\\r\\n\\r\\n    dicts = {\\r\\n        'slot':[],\\r\\n        'module':[],\\r\\n        'ports':[],\\r\\n        'serial_num':[],\\r\\n        'hw':[],\\r\\n        'sw':[],\\r\\n    }\\r\\n    switch_dict = {}\\r\\n    switch_list = re.findall(r'^(Switch Ports Model\\\\s+SW Version\\\\s+SW \\\\S+.*?)(?:^$)', config, re.M|re.S)\\r\\n    if switch_list:\\r\\n        switch_list_config = switch_list[0]\\r\\n        switch_num_list = re.findall(r'^.+?(\\\\d+)\\\\s+.+?(?:\\\\n)', switch_list_config, re.M|re.S)\\r\\n        if switch_num_list:\\r\\n            for each_switch_num in switch_num_list:\\r\\n                switch_num = 'Switch' + each_switch_num\\r\\n                switch_dict[each_switch_num] = {}\\r\\n                dicts['slot'].append(switch_num)\\r\\n        switch_ports_list = re.findall(r'^.+?\\\\d+\\\\s+(\\\\d+).+?(?:\\\\n)', switch_list_config, re.M|re.S)\\r\\n        if switch_ports_list:\\r\\n            for each_switch_ports in switch_ports_list:\\r\\n                dicts['ports'].append(each_switch_ports)\\r\\n        switch_module_list = re.findall(r'^.+?\\\\d+\\\\s+\\\\d+\\\\s+(\\\\S+).+?(?:\\\\n)', switch_list_config, re.M|re.S)\\r\\n        if switch_module_list:\\r\\n            for each_switch_module in switch_module_list:\\r\\n                dicts['module'].append(each_switch_module)\\r\\n        switch_sw_list = re.findall(r'^.+?\\\\d+\\\\s+\\\\d+\\\\s+\\\\S+\\\\s+(\\\\S+).+?(?:\\\\n)', switch_list_config, re.M|re.S)\\r\\n        if switch_sw_list:\\r\\n            for each_switch_sw in switch_sw_list:\\r\\n                dicts['sw'].append(each_switch_sw)\\r\\n    other_switch_list = re.findall(r'^(Switch\\\\s+\\\\d+[\\\\r\\\\n].*?)(?=^Switch\\\\s+\\\\d+[\\\\r\\\\n]+|\\\\Z)', config, re.M|re.S)\\r\\n    if other_switch_list:\\r\\n        for each_switch in other_switch_list:\\r\\n            other_switch_num = re.search(r'Switch\\\\s+(\\\\d+)', each_switch, re.S)\\r\\n            if other_switch_num:\\r\\n                other_switch_num = str(int(other_switch_num.group(1)))\\r\\n            other_switch_serial_num = re.search(r'^\\\\s*system serial number\\\\s+:\\\\s+(\\\\S+)', each_switch, re.M|re.I)\\r\\n            if other_switch_serial_num:\\r\\n                other_switch_serial_num = other_switch_serial_num.group(1)\\r\\n                switch_dict[other_switch_num]['serial_num'] = other_switch_serial_num\\r\\n            other_switch_hw = re.search(r'^\\\\s*model revision number\\\\s+:\\\\s+(\\\\S+)', each_switch, re.M|re.I)\\r\\n            if other_switch_hw:\\r\\n                other_switch_hw = other_switch_hw.group(1)\\r\\n                switch_dict[other_switch_num]['hw'] = other_switch_hw\\r\\n    local_hw = re.search(r'Model \\\\Sevision \\\\Sumber\\\\s+:\\\\s+(\\\\S+)', config)\\r\\n    if local_hw:\\r\\n        local_hw =local_hw.group(1)\\r\\n    else:\\r\\n        pass\\r\\n    local_serial_num = re.search(r'System \\\\Serial \\\\Sumber\\\\s+:\\\\s+(\\\\S+)', config)\\r\\n    if local_serial_num:\\r\\n        local_serial_num = local_serial_num.group(1)\\r\\n    else:\\r\\n        pass\\r\\n    if switch_dict:\\r\\n        for each in switch_dict:\\r\\n            if switch_dict[each] == {}:\\r\\n                switch_dict[each]['hw'] = local_hw\\r\\n                switch_dict[each]['serial_num'] = local_serial_num\\r\\n\\r\\n        switch_dict_key_list = list(switch_dict.keys())\\r\\n        switch_new_list = []\\r\\n        for each_key in switch_dict_key_list:\\r\\n            each_key = int(each_key)\\r\\n            switch_new_list.append(each_key)\\r\\n        switch_new_list.sort()\\r\\n        for each_new_switch in switch_new_list:\\r\\n            dicts['hw'].append(switch_dict[str(each_new_switch)]['hw'])\\r\\n            dicts['serial_num'].append(switch_dict[str(each_new_switch)]['serial_num'])\\r\\n    dic = {'ver_table': dicts}\\r\\n    return dic\\r\\n\",\"variableTypes\":{\"variableType\":[]},\"tableVariableTypes\":{\"tableVariableType\":[{\"name\":\"$ver_table\",\"variableTypes\":{\"variableType\":[{\"name\":\"$hw\",\"type\":\"string\"},{\"name\":\"$module\",\"type\":\"string\"},{\"name\":\"$ports\",\"type\":\"string\"},{\"name\":\"$serial_num\",\"type\":\"string\"},{\"name\":\"$slot\",\"type\":\"string\"},{\"name\":\"$sw\",\"type\":\"string\"}]}}]},\"name\":\"\",\"xxid\":\"bb822d0e-8dcf-55e5-8c35-3d27c712c309\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$version_ios_cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$version_ios_cli_output:string\"]},\"xxid\":\"2de3b88b-1060-d2b2-aede-68a04b03a76c\"}]}",
+            "tableKeys": []
+        }
+    ],
+    "schemaList": null,
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "software",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "uptime",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "version",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "uptime_year",
+                "type": 1
+            },
+            {
+                "index": 4,
+                "name": "uptime_week",
+                "type": 1
+            },
+            {
+                "index": 5,
+                "name": "uptime_day",
+                "type": 1
+            },
+            {
+                "index": 6,
+                "name": "uptime_hours",
+                "type": 1
+            },
+            {
+                "index": 7,
+                "name": "uptime_minutes",
+                "type": 1
+            },
+            {
+                "index": 8,
+                "name": "system_image_file",
+                "type": 4
+            },
+            {
+                "index": 9,
+                "name": "nvram",
+                "type": 4
+            },
+            {
+                "index": 10,
+                "name": "config_register",
+                "type": 4
+            },
+            {
+                "index": 11,
+                "name": "cpu",
+                "type": 4
+            },
+            {
+                "index": 12,
+                "name": "cpu_frequency",
+                "type": 4
+            },
+            {
+                "index": 13,
+                "name": "cpu_implementation",
+                "type": 4
+            },
+            {
+                "index": 14,
+                "name": "cpu_rev",
+                "type": 4
+            },
+            {
+                "index": 15,
+                "name": "cpu_l2_cache",
+                "type": 4
+            },
+            {
+                "index": 16,
+                "name": "version_ios_cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 6,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "hw",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "module",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "ports",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "serial_num",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "slot",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "sw",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 17,
+                "name": "ver_table",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "94aaf5757d5b1317ede3c25c869e3a1c",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$software",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$software",
+            "intfKey": false,
+            "name": "$software",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime",
+            "intfKey": false,
+            "name": "$uptime",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$version",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$version",
+            "intfKey": false,
+            "name": "$version",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_year",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_year",
+            "intfKey": false,
+            "name": "$uptime_year",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_week",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_week",
+            "intfKey": false,
+            "name": "$uptime_week",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_day",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_day",
+            "intfKey": false,
+            "name": "$uptime_day",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_hours",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_hours",
+            "intfKey": false,
+            "name": "$uptime_hours",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$uptime_minutes",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$uptime_minutes",
+            "intfKey": false,
+            "name": "$uptime_minutes",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$system_image_file",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$system_image_file",
+            "intfKey": false,
+            "name": "$system_image_file",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$nvram",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$nvram",
+            "intfKey": false,
+            "name": "$nvram",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$config_register",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$config_register",
+            "intfKey": false,
+            "name": "$config_register",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cpu",
+            "intfKey": false,
+            "name": "$cpu",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu_frequency",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cpu_frequency",
+            "intfKey": false,
+            "name": "$cpu_frequency",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu_implementation",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cpu_implementation",
+            "intfKey": false,
+            "name": "$cpu_implementation",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu_rev",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cpu_rev",
+            "intfKey": false,
+            "name": "$cpu_rev",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cpu_l2_cache",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cpu_l2_cache",
+            "intfKey": false,
+            "name": "$cpu_l2_cache",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ver_table",
+            "dataType": "table",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ver_table",
+            "intfKey": false,
+            "name": "$ver_table",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "$ver_table.$hw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ver_table.$hw",
+            "intfKey": false,
+            "name": "$hw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ver_table.$module",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ver_table.$module",
+            "intfKey": false,
+            "name": "$module",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ver_table.$ports",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ver_table.$ports",
+            "intfKey": false,
+            "name": "$ports",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ver_table.$serial_num",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ver_table.$serial_num",
+            "intfKey": false,
+            "name": "$serial_num",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ver_table.$slot",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ver_table.$slot",
+            "intfKey": false,
+            "name": "$slot",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$ver_table.$sw",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$ver_table.$sw",
+            "intfKey": false,
+            "name": "$sw",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$version_ios_cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$version_ios_cli_output",
+            "intfKey": false,
+            "name": "$version_ios_cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}

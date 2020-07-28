@@ -1,0 +1,545 @@
+{
+    "_id": "6c5a16c5-ea30-0fa1-cc68-c2f841e63af9",
+    "author": "NetBrain",
+    "bizType": "CLI",
+    "command": "show router bgp summary",
+    "createTime": {
+        "$date": 1583271817345
+    },
+    "description": "",
+    "devTypes": [
+        10417
+    ],
+    "params": [],
+    "qualify": null,
+    "retrieveScript": "",
+    "samples": [
+        {
+            "content": "A:Dut-C# show router bgp summary\n===============================================================================\n BGP Router ID : 21.3.4.5          AS : 35012   Local AS : 100\n===============================================================================\nBGP Admin State         : Up          BGP Oper State              : Up\nConfederation AS        : 40000\nMember Confederations   : 35012 65205 65206 65207 65208\nRapid Withdrawal        : Disabled\nBfd Enabled             : Yes \n \nNumber of Peer Groups   : 1           Number of Peers             : 1\nTotal BGP Paths         : 3           Total Path Memory           : 396\nTotal BGP Active Rts.   : 0           Total BGP Rts.              : 0\nTotal Supressed Rts.    : 0           Total Hist. Rts.            : 0\nTotal Decay Rts.        : 0\n \nTotal VPN Peer Groups   : 1           Total VPN Peers             : 1\nTotal VPN Local Rts.    : 0\nTotal VPN Remote Rts.   : 0           Total VPN Remote Active Rts.: 0\nTotal VPN Supp. Rts.    : 0           Total VPN Hist. Rts.        : 0\nTotal VPN Decay Rts.    : 0\n \nTotal IPv6 Remote Rts.  : 0           Total IPv6 Rem. Active Rts. : 0\n===============================================================================\nBGP Summary\n===============================================================================\nNeighbor\n                AS    PktRcvd InQ  Up/Down   State|Rcv/Act/Sent (IPv4)\n                      PktSent OutQ                 Rcv/Act/Sent (VpnIPv4)\n                                                   Rcv/Act/Sent (IPv6)\n                                                   Rcv/Act/Sent (MCastIPv4)\n-------------------------------------------------------------------------------\n3.3.3.3        20       0    0     01h55m56s Active\n                        0    0\n4.4.4.4        30       0    0     01h55m56s Down\n                        0    0\n===============================================================================",
+            "devName": "",
+            "identify": "{\"ConfigKey\":{\"MustConditions\":{\"Item\":[]},\"OptionalConditions\":{\"Item\":[]}}}",
+            "index": 1,
+            "interfaceKeys": [],
+            "keyWords": "{\"keyWords\":[]}",
+            "name": "sample1",
+            "parserRules": "{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$bgp_router_id,$as,$local_as]:BGP Router ID : (\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+AS : (\\\\d+)\\\\s+Local AS : (\\\\d+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$bgp_router_id:string\",\"$as:string\",\"$local_as:string\"]},\"xxid\":\"5f9bd381-1b27-13ba-4471-a9904a89a72a\"},{\"type\":\"4\",\"name\":\"bgp_info\",\"keyVariables\":\"\",\"startLine\":\"BGP Router ID :\",\"endLine\":\"BGP Summary\",\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"regex[$bgp_admin_state,$bgp_oper_state]:BGP Admin State\\\\s+: (\\\\S+)\\\\s+BGP Oper State\\\\s+: (\\\\S+)\",\"regex[$confederation_as]:Confederation AS\\\\s+: (.+)\",\"regex[$member_confederations]:Member Confederations\\\\s+: (.+)\",\"regex[$rapid_withdrawal]:Rapid Withdrawal\\\\s+: (.+)\",\"regex[$bfd_anabled]:Bfd Enabled\\\\s+: (.+)\",\"regex[$int:number_peer_groups, $int:number_peers]:Number of Peer Groups\\\\s+: (\\\\S+)\\\\s+Number of Peers\\\\s+: (\\\\S+)\",\"regex[$int:total_bgp_paths]:Total BGP Paths\\\\s+: (\\\\S+)\\\\s+Total Path Memory\",\"regex[$int:total_vpn_peer_groups,$int:total_vpn_peers]:Total VPN Peer Groups\\\\s+: (\\\\S+)\\\\s+Total VPN Peers\\\\s+: (\\\\S+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$bgp_admin_state:string\",\"$bgp_oper_state:string\",\"$confederation_as:string\",\"$member_confederations:string\",\"$rapid_withdrawal:string\",\"$bfd_anabled:string\",\"$number_peer_groups:int\",\"$number_peers:int\",\"$total_bgp_paths:int\",\"$total_vpn_peer_groups:int\",\"$total_vpn_peers:int\"]},\"xxid\":\"f91b6925-236a-be70-870c-4b0ff3cd1f95\"}]},\"xxid\":\"af3486e3-beca-0502-b8bf-aa9ecd88e57a\",\"hashColumns\":[\"$bgp_admin_state\",\"$bgp_oper_state\",\"$confederation_as\",\"$member_confederations\",\"$rapid_withdrawal\",\"$bfd_anabled\",\"$number_peer_groups\",\"$number_peers\",\"$total_bgp_paths\",\"$total_vpn_peer_groups\",\"$total_vpn_peers\"],\"hashSort\":false},{\"type\":\"4\",\"name\":\"bgp_summary\",\"keyVariables\":\"\",\"startLine\":\"BGP Summary\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[]},\"statements\":[],\"variableTypes\":{\"variableType\":[]},\"xxid\":\"c5ab4b0b-bf3c-0eb9-84fe-4c06c4068b6a\"},{\"type\":\"4\",\"name\":\"bgp_neighbors\",\"keyVariables\":\"\",\"startLine\":\"regex[$neighbor,$as,$state]:^(\\\\d+.\\\\d+.\\\\d+.\\\\d+)\\\\s+(\\\\d+)\\\\s+\\\\d+\\\\s+\\\\d+\\\\s+.+ (\\\\w+)\",\"endLine\":null,\"isLineAsParagraph\":\"0\",\"lineAsParagraph\":\"1\",\"excludeEndLine\":\"1\",\"isUsePrevars\":\"0\",\"usePrevars\":\"\",\"child\":{\"parseRule\":[{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$neighbor:string\",\"$as:string\",\"$state:string\"]},\"xxid\":\"bc59acf9-fb0e-0227-6546-47614578c09a\"}]},\"xxid\":\"7d1cd8af-3c57-5581-ab0c-54d8c3ca431f\",\"hashColumns\":[\"$neighbor\",\"$as\",\"$state\"],\"hashSort\":false}]},\"xxid\":\"d777e88f-c566-96fd-86f8-f0a37ed27e16\"},{\"type\":\"0\",\"keyWords\":{\"keyWord\":[\"mregex[$cli_output]:(.+)\"]},\"statements\":[],\"variableTypes\":{\"variableType\":[\"$cli_output:string\"]},\"xxid\":\"6d6e6755-14b1-87fe-6399-2eb83d77d8cc\"}]}",
+            "tableKeys": [
+                "_original_result.bgp_info.$bgp_admin_state",
+                "_original_result.bgp_summary.bgp_neighbors.$neighbor"
+            ]
+        }
+    ],
+    "schemaList": [],
+    "sequences": [
+        1
+    ],
+    "structure": {
+        "structure": [
+            {
+                "index": 0,
+                "name": "bgp_router_id",
+                "type": 4
+            },
+            {
+                "index": 1,
+                "name": "as",
+                "type": 4
+            },
+            {
+                "index": 2,
+                "name": "local_as",
+                "type": 4
+            },
+            {
+                "index": 3,
+                "name": "cli_output",
+                "type": 4
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 11,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 12,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "bgp_admin_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "bgp_oper_state",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "confederation_as",
+                        "type": 4
+                    },
+                    {
+                        "index": 3,
+                        "name": "member_confederations",
+                        "type": 4
+                    },
+                    {
+                        "index": 4,
+                        "name": "rapid_withdrawal",
+                        "type": 4
+                    },
+                    {
+                        "index": 5,
+                        "name": "bfd_anabled",
+                        "type": 4
+                    },
+                    {
+                        "index": 6,
+                        "name": "number_peer_groups",
+                        "type": 1
+                    },
+                    {
+                        "index": 7,
+                        "name": "number_peers",
+                        "type": 1
+                    },
+                    {
+                        "index": 8,
+                        "name": "total_bgp_paths",
+                        "type": 1
+                    },
+                    {
+                        "index": 9,
+                        "name": "total_vpn_peer_groups",
+                        "type": 1
+                    },
+                    {
+                        "index": 10,
+                        "name": "total_vpn_peers",
+                        "type": 1
+                    }
+                ],
+                "hashColumns": [
+                    "$bfd_anabled",
+                    "$bgp_admin_state",
+                    "$bgp_oper_state",
+                    "$confederation_as",
+                    "$member_confederations",
+                    "$number_peer_groups",
+                    "$number_peers",
+                    "$rapid_withdrawal",
+                    "$total_bgp_paths",
+                    "$total_vpn_peer_groups",
+                    "$total_vpn_peers"
+                ],
+                "hashSort": false,
+                "index": 4,
+                "name": "bgp_info",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 0,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 1,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": null,
+                "hashColumns": null,
+                "hashSort": false,
+                "index": 5,
+                "name": "bgp_summary",
+                "type": 11
+            },
+            {
+                "attributes": [
+                    {
+                        "index": 3,
+                        "name": "_rowCount",
+                        "type": 1
+                    },
+                    {
+                        "index": 4,
+                        "name": "_hashCmp",
+                        "type": 4
+                    }
+                ],
+                "column": [
+                    {
+                        "index": 0,
+                        "name": "neighbor",
+                        "type": 4
+                    },
+                    {
+                        "index": 1,
+                        "name": "as",
+                        "type": 4
+                    },
+                    {
+                        "index": 2,
+                        "name": "state",
+                        "type": 4
+                    }
+                ],
+                "hashColumns": [
+                    "$as",
+                    "$neighbor",
+                    "$state"
+                ],
+                "hashSort": false,
+                "index": 6,
+                "name": "bgp_neighbors",
+                "type": 11
+            }
+        ]
+    },
+    "structureId": "59994aa7dd1409d51d0a58c2427dfefa",
+    "supportNodeType": 0,
+    "type": 1,
+    "variables": [
+        {
+            "capName": "$bgp_router_id",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$bgp_router_id",
+            "intfKey": false,
+            "name": "$bgp_router_id",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$local_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$local_as",
+            "intfKey": false,
+            "name": "$local_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$bgp_admin_state",
+                    "$bgp_oper_state",
+                    "$confederation_as",
+                    "$member_confederations",
+                    "$rapid_withdrawal",
+                    "$bfd_anabled",
+                    "$number_peer_groups",
+                    "$number_peers",
+                    "$total_bgp_paths",
+                    "$total_vpn_peer_groups",
+                    "$total_vpn_peers"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_info",
+            "intfKey": false,
+            "name": "bgp_info",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_info.$bgp_admin_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$bgp_admin_state",
+            "intfKey": false,
+            "name": "$bgp_admin_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$bgp_oper_state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$bgp_oper_state",
+            "intfKey": false,
+            "name": "$bgp_oper_state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$confederation_as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$confederation_as",
+            "intfKey": false,
+            "name": "$confederation_as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$member_confederations",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$member_confederations",
+            "intfKey": false,
+            "name": "$member_confederations",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$rapid_withdrawal",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$rapid_withdrawal",
+            "intfKey": false,
+            "name": "$rapid_withdrawal",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$bfd_anabled",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$bfd_anabled",
+            "intfKey": false,
+            "name": "$bfd_anabled",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$number_peer_groups",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$number_peer_groups",
+            "intfKey": false,
+            "name": "$number_peer_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$number_peers",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$number_peers",
+            "intfKey": false,
+            "name": "$number_peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$total_bgp_paths",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$total_bgp_paths",
+            "intfKey": false,
+            "name": "$total_bgp_paths",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$total_vpn_peer_groups",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$total_vpn_peer_groups",
+            "intfKey": false,
+            "name": "$total_vpn_peer_groups",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_info.$total_vpn_peers",
+            "dataType": "int",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_info.$total_vpn_peers",
+            "intfKey": false,
+            "name": "$total_vpn_peers",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_summary",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": null,
+                "hashSort": false
+            },
+            "fullName": "bgp_summary",
+            "intfKey": false,
+            "name": "bgp_summary",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_neighbors",
+            "dataType": "paragraph",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [
+                    "$neighbor",
+                    "$as",
+                    "$state"
+                ],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.bgp_neighbors",
+            "intfKey": false,
+            "name": "bgp_neighbors",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 3
+        },
+        {
+            "capName": "bgp_neighbors.$neighbor",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.bgp_neighbors.$neighbor",
+            "intfKey": false,
+            "name": "$neighbor",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$as",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.bgp_neighbors.$as",
+            "intfKey": false,
+            "name": "$as",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "bgp_neighbors.$state",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "bgp_summary.bgp_neighbors.$state",
+            "intfKey": false,
+            "name": "$state",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        },
+        {
+            "capName": "$cli_output",
+            "dataType": "string",
+            "desc": "",
+            "extraInfo": {
+                "hashColumns": [],
+                "hashSort": false
+            },
+            "fullName": "$cli_output",
+            "intfKey": false,
+            "name": "$cli_output",
+            "realType": null,
+            "sampleIndex": 1,
+            "varType": 1
+        }
+    ],
+    "version": "7.1"
+}
