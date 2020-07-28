@@ -42,11 +42,11 @@ for names in list_dir:
 # pprint.pprint(vendor_tree)
 
 vendor_readme_template ='''
-# Auto DVT Group by Vendor
+## Auto DVT Group by Vendor
 {% for vendor in vendor_tree %}
-## {{vendor}}
+### {{vendor}}
 {% for feature in vendor_tree[vendor] %}
-### {{feature}}
+#### {{feature}}
 {% endfor %}
 {% endfor %}
 '''
@@ -55,11 +55,11 @@ vendor_res_txt = vendor_res.render(vendor_tree=vendor_tree)
 # print(vendor_res_txt)
 
 feature_readme_template ='''
-# Auto DVT Group by Feature
+## Auto DVT Group by Feature
 {% for feature in feature_tree %}
-## {{feature}}
+### {{feature}}
 {% for vendor in feature_tree[feature] %}
-### {{vendor}}
+#### {{vendor}}
 {% endfor %}
 {% endfor %}
 '''
