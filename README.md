@@ -1,5 +1,5 @@
 # NetBrain Automation Repository
-**Version: 05/12/2020**
+**Version: 07/28/2020**
 
 *To install Automation Package, please check [ASL1_Automation_Success_Utility_Documentation](docs/ASL1_Automation_Success_Utility_Documentation.pdf)*
 
